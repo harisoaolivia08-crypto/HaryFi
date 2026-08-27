@@ -211,10 +211,6 @@
 
     <script>
 
-        /* ==================================================
-           ALPHABET
-        ================================================== */
-
         const alphabet = [
             "A", "B", "C", "D", "E", "F",
             "G", "H", "I", "J", "K", "L",
@@ -224,9 +220,9 @@
         ];
 
 
-        /* ==================================================
-           TEXTE
-        ================================================== */
+        /*
+         * Text unter chaque lettre
+         */
 
         const pronunciation = {
 
@@ -265,14 +261,16 @@
         };
 
 
-        /* ==================================================
-           FICHIERS MP3
-           
-           Dossier :
-           Audio/
-
-           Les fichiers restent avec leurs noms actuels.
-        ================================================== */
+        /*
+         * FICHIERS MP3
+         *
+         * Dossier : Audio
+         *
+         * Ä = ae.mp3
+         * Ö = oe.mp3
+         * Ü = ue.mp3
+         * ß = ss.mp3
+         */
 
         const audioFiles = {
 
@@ -303,17 +301,15 @@
             "Y": "Audio/y.mp3",
             "Z": "Audio/z.mp3",
 
-            "Ä": "Audio/ä.mp3",
-            "Ö": "Audio/ö.mp3",
-            "Ü": "Audio/ü.mp3",
-            "ß": "Audio/ß.mp3"
+            /* NOUVEAUX NOMS DES 4 FICHIERS */
+
+            "Ä": "Audio/ae.mp3",
+            "Ö": "Audio/oe.mp3",
+            "Ü": "Audio/ue.mp3",
+            "ß": "Audio/ss.mp3"
 
         };
 
-
-        /* ==================================================
-           COULEURS
-        ================================================== */
 
         const colors = [
 
@@ -332,10 +328,6 @@
         ];
 
 
-        /* ==================================================
-           ELEMENTS
-        ================================================== */
-
         const grid =
             document.getElementById("alphabetGrid");
 
@@ -345,10 +337,6 @@
 
         let currentAudio = null;
 
-
-        /* ==================================================
-           CRÉATION DES CARTES
-        ================================================== */
 
         alphabet.forEach((letter, index) => {
 
@@ -425,15 +413,12 @@
 
         /* ==================================================
            LECTURE MP3
-           
-           Correction :
-           Les caractères spéciaux comme
-           ä ö ü ß sont correctement encodés.
         ================================================== */
 
         function playLetter(letter, card) {
 
             const file = audioFiles[letter];
+
 
             if (!file) {
 
@@ -444,7 +429,7 @@
             }
 
 
-            /* Arrêter le précédent MP3 */
+            /* Arrêter l'ancien audio */
 
             if (currentAudio) {
 
@@ -457,56 +442,21 @@
 
 
             /*
-             * Séparer le dossier et le nom du fichier.
-             */
-
-            const slashIndex = file.lastIndexOf("/");
-
-            const folder =
-                file.substring(0, slashIndex + 1);
-
-            const filename =
-                file.substring(slashIndex + 1);
-
-
-            /*
-             * Encoder le nom du fichier.
-             *
-             * Exemple :
-             *
-             * ä.mp3 → %C3%A4.mp3
-             * ö.mp3 → %C3%B6.mp3
-             * ü.mp3 → %C3%BC.mp3
-             * ß.mp3 → %C3%9F.mp3
-             */
-
-            const encodedFile =
-                folder + encodeURIComponent(filename);
-
-
-            /*
-             * Créer le lecteur audio.
+             * Créer le nouvel audio
              */
 
             const audio =
-                new Audio();
+                new Audio(file);
 
             currentAudio = audio;
 
-            audio.preload = "auto";
-
             audio.volume = 1.0;
 
-
-            /*
-             * Utiliser l'URL encodée.
-             */
-
-            audio.src = encodedFile;
+            audio.preload = "auto";
 
 
             /*
-             * Animation.
+             * Animation
              */
 
             card.classList.remove("playing");
@@ -517,7 +467,7 @@
 
 
             /*
-             * Statut.
+             * Statut
              */
 
             audioStatus.textContent =
@@ -525,14 +475,14 @@
 
 
             /*
-             * Erreur de chargement.
+             * Erreur
              */
 
             audio.addEventListener("error", () => {
 
                 console.error(
                     "MP3 konnte nicht geladen werden:",
-                    encodedFile
+                    file
                 );
 
                 card.classList.remove("playing");
@@ -544,7 +494,7 @@
 
 
             /*
-             * Fin de lecture.
+             * Fin de lecture
              */
 
             audio.addEventListener("ended", () => {
@@ -562,10 +512,8 @@
 
 
             /*
-             * Charger puis jouer.
+             * Lecture
              */
-
-            audio.load();
 
             audio.play().catch(error => {
 
