@@ -20,9 +20,12 @@ function showHome() {
 
     hideAllPages();
 
-    document
-        .getElementById("homePage")
-        .classList.add("active");
+    const page =
+        document.getElementById("homePage");
+
+    if (page) {
+        page.classList.add("active");
+    }
 
     window.scrollTo({
         top: 0,
@@ -36,9 +39,12 @@ function showLevels() {
 
     hideAllPages();
 
-    document
-        .getElementById("levelsPage")
-        .classList.add("active");
+    const page =
+        document.getElementById("levelsPage");
+
+    if (page) {
+        page.classList.add("active");
+    }
 
     window.scrollTo({
         top: 0,
@@ -52,9 +58,12 @@ function openA1() {
 
     hideAllPages();
 
-    document
-        .getElementById("a1Page")
-        .classList.add("active");
+    const page =
+        document.getElementById("a1Page");
+
+    if (page) {
+        page.classList.add("active");
+    }
 
     window.scrollTo({
         top: 0,
@@ -68,9 +77,12 @@ function openAlphabet() {
 
     hideAllPages();
 
-    document
-        .getElementById("alphabetPage")
-        .classList.add("active");
+    const page =
+        document.getElementById("alphabetPage");
+
+    if (page) {
+        page.classList.add("active");
+    }
 
     window.scrollTo({
         top: 0,
@@ -190,6 +202,144 @@ const a1Lessons = [
 
 
 /* =========================================
+   LEKTION SEITEN
+========================================= */
+
+const lessonPages = {
+
+    1: "lektion1.html",
+
+    2: "lektion2_page1.html",
+
+    3: "lektion3.html",
+
+    4: "lektion4.html",
+
+    5: "lektion5.html",
+
+    6: "lektion6.html",
+
+    7: "lektion7.html",
+
+    8: "lektion8.html",
+
+    9: "lektion9.html",
+
+    10: "lektion10.html",
+
+    11: "lektion11.html",
+
+    12: "lektion12.html",
+
+    13: "lektion13.html",
+
+    14: "lektion14.html",
+
+    15: "lektion15.html",
+
+    16: "lektion16.html",
+
+    17: "lektion17.html",
+
+    18: "lektion18.html",
+
+    19: "lektion19.html",
+
+    20: "lektion20.html",
+
+    21: "lektion21.html",
+
+    22: "lektion22.html",
+
+    23: "lektion23.html",
+
+    24: "lektion24.html",
+
+    25: "lektion25.html",
+
+    26: "lektion26.html",
+
+    27: "lektion27.html",
+
+    28: "lektion28.html",
+
+    29: "lektion29.html",
+
+    30: "lektion30.html",
+
+    31: "lektion31.html",
+
+    32: "lektion32.html",
+
+    33: "lektion33.html",
+
+    34: "lektion34.html",
+
+    35: "lektion35.html",
+
+    36: "lektion36.html",
+
+    37: "lektion37.html",
+
+    38: "lektion38.html",
+
+    39: "lektion39.html",
+
+    40: "lektion40.html",
+
+    41: "lektion41.html",
+
+    42: "lektion42.html",
+
+    43: "lektion43.html",
+
+    44: "lektion44.html",
+
+    45: "lektion45.html",
+
+    46: "lektion46.html",
+
+    47: "lektion47.html",
+
+    48: "lektion48.html",
+
+    49: "lektion49.html",
+
+    50: "lektion50.html"
+
+};
+
+
+/* =========================================
+   OUVRIR UNE LEKTION
+========================================= */
+
+function openLesson(number) {
+
+    const page =
+        lessonPages[number];
+
+    if (!page) {
+        console.error(
+            "Page de Lektion introuvable pour :",
+            number
+        );
+        return;
+    }
+
+    console.log(
+        "Ouverture de la Lektion",
+        number,
+        "→",
+        page
+    );
+
+    window.location.href = page;
+
+}
+
+
+/* =========================================
    CREATE LESSON LIST
 ========================================= */
 
@@ -198,15 +348,33 @@ function createLessonList() {
     const container =
         document.getElementById("lessonList");
 
-    if (!container) return;
+    if (!container) {
+        return;
+    }
 
     container.innerHTML = "";
 
 
     a1Lessons.forEach((lesson, index) => {
 
+        const lessonNumber =
+            index + 1;
+
+
         const card =
-            document.createElement("div");
+            document.createElement("button");
+
+
+        /*
+         * BUTTON
+         *
+         * Un vrai bouton est plus fiable
+         * sur téléphone qu'un div cliquable.
+         */
+
+        card.type =
+            "button";
+
 
         card.className =
             "lesson-card";
@@ -216,90 +384,71 @@ function createLessonList() {
             `${index * 0.025}s`;
 
 
+        card.style.cursor =
+            "pointer";
+
+
+        /*
+         * Numéro
+         */
+
         const number =
             document.createElement("div");
+
 
         number.className =
             "lesson-number";
 
-        number.textContent =
-            String(index + 1).padStart(2, "0");
 
+        number.textContent =
+            String(lessonNumber)
+                .padStart(2, "0");
+
+
+        /*
+         * Nom
+         */
 
         const name =
             document.createElement("div");
 
+
         name.className =
             "lesson-name";
+
 
         name.textContent =
             lesson;
 
+
+        /*
+         * Ajouter les éléments
+         */
 
         card.appendChild(number);
 
         card.appendChild(name);
 
 
-        /* =========================================
-           OUVERTURE DES LEKTIONEN
-        ========================================= */
+        /*
+         * CLIC
+         */
 
-        card.addEventListener("click", () => {
+        card.addEventListener(
+            "click",
+            function () {
 
-            let page;
-
-
-            /*
-             * LEKTION 1
-             */
-
-            if (index === 0) {
-
-                page = "lektion1.html";
+                openLesson(
+                    lessonNumber
+                );
 
             }
-
-
-            /*
-             * LEKTION 2
-             */
-
-            else if (index === 1) {
-
-                page = "lektion2_page1.html";
-
-            }
-
-
-            /*
-             * LEKTION 3 À 50
-             */
-
-            else {
-
-                page =
-                    `lektion${index + 1}.html`;
-
-            }
-
-
-            /*
-             * Ouvrir la page
-             */
-
-            window.location.href = page;
-
-        });
+        );
 
 
         /*
-         * Curseur
+         * Ajouter à la liste
          */
-
-        card.style.cursor =
-            "pointer";
-
 
         container.appendChild(card);
 
@@ -356,7 +505,9 @@ function createAlphabet() {
         );
 
 
-    if (!grid) return;
+    if (!grid) {
+        return;
+    }
 
 
     grid.innerHTML = "";
@@ -365,7 +516,13 @@ function createAlphabet() {
     germanAlphabet.forEach(letter => {
 
         const card =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
+
+        card.type =
+            "button";
 
 
         card.className =
@@ -424,19 +581,13 @@ function speakLetter(letter, card) {
     }
 
 
-    /*
-       Stoppe die vorherige Aussprache
-    */
-
     window.speechSynthesis.cancel();
 
 
-    /*
-       Animation
-    */
-
     document
-        .querySelectorAll(".letter-card")
+        .querySelectorAll(
+            ".letter-card"
+        )
         .forEach(element => {
 
             element.classList.remove(
@@ -451,10 +602,6 @@ function speakLetter(letter, card) {
     );
 
 
-    /*
-       Deutsche Stimme
-    */
-
     const speech =
         new SpeechSynthesisUtterance(
             letter
@@ -464,11 +611,6 @@ function speakLetter(letter, card) {
     speech.lang =
         "de-DE";
 
-
-    /*
-       Langsam, damit ein Anfänger
-       den Buchstaben gut hören kann.
-    */
 
     speech.rate =
         0.65;
@@ -504,13 +646,25 @@ const canvas =
     );
 
 
-const ctx =
-    canvas.getContext("2d");
+/*
+ * Protection :
+ * si le canvas n'existe pas,
+ * l'application ne plante pas.
+ */
 
+let ctx = null;
 
 let canvasWidth = 0;
 
 let canvasHeight = 0;
+
+
+if (canvas) {
+
+    ctx =
+        canvas.getContext("2d");
+
+}
 
 
 /* =========================================
@@ -595,6 +749,11 @@ const germanWords = [
 ========================================= */
 
 function resizeCanvas() {
+
+    if (!canvas || !ctx) {
+        return;
+    }
+
 
     const ratio =
         Math.min(
@@ -718,7 +877,9 @@ class WordParticle {
 
         if (!initial) {
 
-            if (Math.random() > .5) {
+            if (
+                Math.random() > .5
+            ) {
 
                 this.x =
                     Math.random() > .5
@@ -842,6 +1003,11 @@ class WordParticle {
 
     draw() {
 
+        if (!ctx) {
+            return;
+        }
+
+
         ctx.save();
 
 
@@ -907,17 +1073,17 @@ let particles = [];
 
 function createParticles() {
 
+    if (!canvas || !ctx) {
+        return;
+    }
+
+
     particles = [];
 
 
     const isMobile =
         window.innerWidth < 600;
 
-
-    /*
-       Nombre limité pour garder
-       l'animation fluide.
-    */
 
     const count =
         isMobile
@@ -955,6 +1121,11 @@ window.addEventListener(
 
 function animateCanvas() {
 
+    if (!canvas || !ctx) {
+        return;
+    }
+
+
     ctx.clearRect(
         0,
         0,
@@ -981,7 +1152,11 @@ function animateCanvas() {
 }
 
 
-animateCanvas();
+if (canvas && ctx) {
+
+    animateCanvas();
+
+}
 
 
 /* =========================================
