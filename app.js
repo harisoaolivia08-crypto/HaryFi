@@ -12,6 +12,7 @@ function hideAllPages() {
     document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
     });
+
 }
 
 
@@ -27,6 +28,7 @@ function showHome() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -42,6 +44,7 @@ function showLevels() {
         top: 0,
         behavior: "smooth"
     });
+
 }
 
 
@@ -57,6 +60,23 @@ function openA1() {
         top: 0,
         behavior: "smooth"
     });
+
+}
+
+
+function openAlphabet() {
+
+    hideAllPages();
+
+    document
+        .getElementById("alphabetPage")
+        .classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
 
@@ -182,15 +202,19 @@ function createLessonList() {
 
     container.innerHTML = "";
 
+
     a1Lessons.forEach((lesson, index) => {
 
         const card =
             document.createElement("div");
 
-        card.className = "lesson-card";
+        card.className =
+            "lesson-card";
+
 
         card.style.animationDelay =
             `${index * 0.025}s`;
+
 
         const number =
             document.createElement("div");
@@ -216,26 +240,237 @@ function createLessonList() {
 
         card.appendChild(name);
 
+
+        /*
+           Lektion 1 ouvre
+           l'alphabet.
+        */
+
+        if (index === 0) {
+
+            card.addEventListener(
+                "click",
+                openAlphabet
+            );
+
+        }
+
+
         container.appendChild(card);
 
     });
+
 }
 
 
 /* =========================================
-   CANVAS – ANIMATED GERMAN WORDS
+   LEKTION 1 – ALPHABET
+========================================= */
+
+const germanAlphabet = [
+
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z"
+
+];
+
+
+/* =========================================
+   CREATE ALPHABET
+========================================= */
+
+function createAlphabet() {
+
+    const grid =
+        document.getElementById(
+            "alphabetGrid"
+        );
+
+
+    if (!grid) return;
+
+
+    grid.innerHTML = "";
+
+
+    germanAlphabet.forEach(letter => {
+
+        const card =
+            document.createElement("button");
+
+
+        card.className =
+            "letter-card";
+
+
+        card.innerHTML = `
+
+            <div class="letter">
+                ${letter}
+            </div>
+
+            <div class="letter-audio">
+                🔊 Anhören
+            </div>
+
+        `;
+
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                speakLetter(
+                    letter,
+                    card
+                );
+
+            }
+        );
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================
+   PRONONCIATION DES LETTRES
+========================================= */
+
+function speakLetter(letter, card) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+
+        alert(
+            "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Stoppe die vorherige Aussprache
+    */
+
+    window.speechSynthesis.cancel();
+
+
+    /*
+       Animation
+    */
+
+    document
+        .querySelectorAll(".letter-card")
+        .forEach(element => {
+
+            element.classList.remove(
+                "playing"
+            );
+
+        });
+
+
+    card.classList.add(
+        "playing"
+    );
+
+
+    /*
+       Deutsche Stimme
+    */
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            letter
+        );
+
+
+    speech.lang =
+        "de-DE";
+
+
+    /*
+       Langsam, damit ein Anfänger
+       den Buchstaben gut hören kann.
+    */
+
+    speech.rate =
+        0.65;
+
+
+    speech.pitch =
+        1.0;
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+
+    speech.onend = () => {
+
+        card.classList.remove(
+            "playing"
+        );
+
+    };
+
+}
+
+
+/* =========================================
+   CANVAS – FOND ANIMÉ
 ========================================= */
 
 const canvas =
-    document.getElementById("wordCanvas");
+    document.getElementById(
+        "wordCanvas"
+    );
+
 
 const ctx =
     canvas.getContext("2d");
 
 
 let canvasWidth = 0;
+
 let canvasHeight = 0;
 
+
+/* =========================================
+   MOTS ALLEMANDS
+========================================= */
 
 const germanWords = [
 
@@ -244,7 +479,7 @@ const germanWords = [
     "GUTEN TAG",
     "DANKE",
     "BITTE",
-    "Tschüss".toUpperCase(),
+    "TSCHÜSS",
     "WILLKOMMEN",
     "DEUTSCH",
     "LERNEN",
@@ -311,31 +546,41 @@ const germanWords = [
 
 
 /* =========================================
-   RESIZE
+   CANVAS RESIZE
 ========================================= */
 
 function resizeCanvas() {
 
     const ratio =
-        Math.min(window.devicePixelRatio || 1, 1.5);
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
+
 
     canvasWidth =
         window.innerWidth;
 
+
     canvasHeight =
         window.innerHeight;
+
 
     canvas.width =
         canvasWidth * ratio;
 
+
     canvas.height =
         canvasHeight * ratio;
+
 
     canvas.style.width =
         canvasWidth + "px";
 
+
     canvas.style.height =
         canvasHeight + "px";
+
 
     ctx.setTransform(
         ratio,
@@ -345,6 +590,7 @@ function resizeCanvas() {
         0,
         0
     );
+
 }
 
 
@@ -352,6 +598,7 @@ window.addEventListener(
     "resize",
     resizeCanvas
 );
+
 
 resizeCanvas();
 
@@ -452,12 +699,14 @@ class WordParticle {
         const random =
             Math.random();
 
+
         if (random < .35) {
 
             return 12 +
                 Math.random() * 8;
 
         }
+
 
         if (random < .75) {
 
@@ -466,12 +715,14 @@ class WordParticle {
 
         }
 
+
         if (random < .95) {
 
             return 32 +
                 Math.random() * 18;
 
         }
+
 
         return 52 +
             Math.random() * 25;
@@ -494,6 +745,7 @@ class WordParticle {
 
         ];
 
+
         return colors[
             Math.floor(
                 Math.random() *
@@ -506,22 +758,34 @@ class WordParticle {
 
     update() {
 
-        this.x += this.speedX;
+        this.x +=
+            this.speedX;
 
-        this.y += this.speedY;
+
+        this.y +=
+            this.speedY;
+
 
         this.rotation +=
             this.rotationSpeed;
 
 
-        const margin = 180;
+        const margin =
+            180;
 
 
         if (
+
             this.x < -margin ||
-            this.x > canvasWidth + margin ||
+
+            this.x >
+            canvasWidth + margin ||
+
             this.y < -margin ||
-            this.y > canvasHeight + margin
+
+            this.y >
+            canvasHeight + margin
+
         ) {
 
             this.reset(false);
@@ -535,10 +799,12 @@ class WordParticle {
 
         ctx.save();
 
+
         ctx.translate(
             this.x,
             this.y
         );
+
 
         ctx.rotate(
             this.rotation
@@ -551,6 +817,7 @@ class WordParticle {
 
         ctx.textAlign =
             "center";
+
 
         ctx.textBaseline =
             "middle";
@@ -597,15 +864,15 @@ function createParticles() {
 
     particles = [];
 
-    /*
-       On limite le nombre de mots
-       pour éviter que l'animation
-       ralentisse sur téléphone.
-    */
 
     const isMobile =
         window.innerWidth < 600;
 
+
+    /*
+       Nombre limité pour garder
+       l'animation fluide.
+    */
 
     const count =
         isMobile
@@ -673,7 +940,7 @@ animateCanvas();
 
 
 /* =========================================
-   TOUCH / SWIPE POUR LES NIVEAUX
+   SWIPE NIVEAUX
 ========================================= */
 
 let touchStartX = 0;
@@ -694,7 +961,8 @@ if (levelsPage) {
         event => {
 
             touchStartX =
-                event.changedTouches[0].screenX;
+                event.changedTouches[0]
+                    .screenX;
 
         },
         {
@@ -708,17 +976,14 @@ if (levelsPage) {
         event => {
 
             touchEndX =
-                event.changedTouches[0].screenX;
+                event.changedTouches[0]
+                    .screenX;
+
 
             const difference =
-                touchEndX - touchStartX;
+                touchEndX -
+                touchStartX;
 
-
-            /*
-              Swipe gauche / droite.
-              Pour l'instant on anime
-              simplement les cartes.
-            */
 
             if (
                 Math.abs(difference) > 60
@@ -734,6 +999,7 @@ if (levelsPage) {
                             card.animate(
 
                                 [
+
                                     {
                                         transform:
                                             "translateX(0)"
@@ -754,6 +1020,7 @@ if (levelsPage) {
                                 ],
 
                                 {
+
                                     duration: 450,
 
                                     delay:
@@ -761,6 +1028,7 @@ if (levelsPage) {
 
                                     easing:
                                         "ease-out"
+
                                 }
 
                             );
@@ -784,278 +1052,14 @@ if (levelsPage) {
 ========================================= */
 
 document.addEventListener(
-
     "DOMContentLoaded",
     () => {
 
         createLessonList();
 
+        createAlphabet();
+
         showHome();
 
     }
 );
-/* =========================================
-   LEKTION 1 – DEUTSCHES ALPHABET
-========================================= */
-
-const germanAlphabet = [
-    "A", "B", "C", "D", "E", "F", "G",
-    "H", "I", "J", "K", "L", "M", "N",
-    "O", "P", "Q", "R", "S", "T", "U",
-    "V", "W", "X", "Y", "Z"
-];
-
-
-/* =========================================
-   AFFICHER ALPHABET
-========================================= */
-
-function createAlphabet() {
-
-    const grid =
-        document.getElementById("alphabetGrid");
-
-    if (!grid) return;
-
-    grid.innerHTML = "";
-
-    germanAlphabet.forEach(letter => {
-
-        const card =
-            document.createElement("button");
-
-        card.className =
-            "letter-card";
-
-        card.innerHTML = `
-            <div class="letter">${letter}</div>
-            <div class="letter-audio">
-                🔊 Anhören
-            </div>
-        `;
-
-        card.addEventListener(
-            "click",
-            () => {
-
-                speakLetter(
-                    letter,
-                    card
-                );
-
-            }
-        );
-
-        grid.appendChild(card);
-
-    });
-}
-
-
-/* =========================================
-   AUDIO LETTRE
-========================================= */
-
-function speakLetter(letter, card) {
-
-    if (
-        !("speechSynthesis" in window)
-    ) {
-        alert(
-            "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
-        );
-
-        return;
-    }
-
-
-    /*
-       Stoppe vorherige Aussprache
-    */
-
-    window.speechSynthesis.cancel();
-
-
-    /*
-       Animation
-    */
-
-    document
-        .querySelectorAll(".letter-card")
-        .forEach(element => {
-
-            element.classList.remove(
-                "playing"
-            );
-
-        });
-
-
-    card.classList.add("playing");
-
-
-    /*
-       Deutsche Aussprache
-    */
-
-    const speech =
-        new SpeechSynthesisUtterance(
-            letter
-        );
-
-    speech.lang =
-        "de-DE";
-
-    speech.rate =
-        0.65;
-
-    speech.pitch =
-        1.0;
-
-
-    window.speechSynthesis.speak(
-        speech
-    );
-
-
-    speech.onend = () => {
-
-        card.classList.remove(
-            "playing"
-        );
-
-    };/* =========================================
-   LEKTION 1 – DEUTSCHES ALPHABET
-========================================= */
-
-const germanAlphabet = [
-    "A", "B", "C", "D", "E", "F", "G",
-    "H", "I", "J", "K", "L", "M", "N",
-    "O", "P", "Q", "R", "S", "T", "U",
-    "V", "W", "X", "Y", "Z"
-];
-
-
-/* =========================================
-   AFFICHER ALPHABET
-========================================= */
-
-function createAlphabet() {
-
-    const grid =
-        document.getElementById("alphabetGrid");
-
-    if (!grid) return;
-
-    grid.innerHTML = "";
-
-    germanAlphabet.forEach(letter => {
-
-        const card =
-            document.createElement("button");
-
-        card.className =
-            "letter-card";
-
-        card.innerHTML = `
-            <div class="letter">${letter}</div>
-            <div class="letter-audio">
-                🔊 Anhören
-            </div>
-        `;
-
-        card.addEventListener(
-            "click",
-            () => {
-
-                speakLetter(
-                    letter,
-                    card
-                );
-
-            }
-        );
-
-        grid.appendChild(card);
-
-    });
-}
-
-
-/* =========================================
-   AUDIO LETTRE
-========================================= */
-
-function speakLetter(letter, card) {
-
-    if (
-        !("speechSynthesis" in window)
-    ) {
-        alert(
-            "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
-        );
-
-        return;
-    }
-
-
-    /*
-       Stoppe vorherige Aussprache
-    */
-
-    window.speechSynthesis.cancel();
-
-
-    /*
-       Animation
-    */
-
-    document
-        .querySelectorAll(".letter-card")
-        .forEach(element => {
-
-            element.classList.remove(
-                "playing"
-            );
-
-        });
-
-
-    card.classList.add("playing");
-
-
-    /*
-       Deutsche Aussprache
-    */
-
-    const speech =
-        new SpeechSynthesisUtterance(
-            letter
-        );
-
-    speech.lang =
-        "de-DE";
-
-    speech.rate =
-        0.65;
-
-    speech.pitch =
-        1.0;
-
-
-    window.speechSynthesis.speak(
-        speech
-    );
-
-
-    speech.onend = () => {
-
-        card.classList.remove(
-            "playing"
-        );
-
-    };
-
-}
-
-}
