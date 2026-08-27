@@ -935,6 +935,142 @@ body {
         width: 135px;
 
         height: 190px;
+       /* =========================
+   ALPHABET
+========================= */
+
+.alphabet-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 25px 80px;
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(110px, 1fr));
+
+    gap: 18px;
+}
+
+.letter-card {
+    position: relative;
+
+    height: 125px;
+
+    border: 1px solid rgba(255,255,255,.6);
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.30);
+
+    backdrop-filter: blur(15px);
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.10);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+.letter-card:hover {
+    transform:
+        translateY(-8px)
+        scale(1.04);
+
+    background:
+        rgba(255,255,255,.55);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.18);
+}
+
+.letter-card:active {
+    transform:
+        scale(.88)
+        rotate(3deg);
+}
+
+.letter {
+    font-size: 48px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    color: #111;
+}
+
+.letter-audio {
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: #633000;
+}
+
+.letter-card.playing {
+    animation: letterPulse .45s ease;
+}
+
+@keyframes letterPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.18) rotate(-3deg);
+    }
+
+    70% {
+        transform: scale(.95) rotate(3deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 500px) {
+
+    .alphabet-grid {
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 10px;
+    }
+
+    .letter-card {
+        height: 95px;
+        border-radius: 18px;
+    }
+
+    .letter {
+        font-size: 35px;
+    }
+
+    .letter-audio {
+        font-size: 8px;
+    }
+}
     }
 
     .level-name {
