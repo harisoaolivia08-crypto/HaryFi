@@ -67,7 +67,9 @@
 
         .word-card {
             background: rgba(255,255,255,.90);
-            transition: transform .25s ease, box-shadow .25s ease;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
         }
 
         .word-card:hover {
@@ -80,6 +82,7 @@
         }
 
         @keyframes pulseCard {
+
             0% {
                 transform: scale(1);
             }
@@ -97,27 +100,20 @@
             }
         }
 
-        .main-button {
-            transition: transform .2s ease, box-shadow .2s ease;
+        .main-button,
+        .audio-button {
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
         }
 
-        .main-button:hover {
-            transform: scale(1.05);
+        .main-button:hover,
+        .audio-button:hover {
+            transform: scale(1.04);
             box-shadow: 0 20px 45px rgba(0,0,0,.25);
         }
 
-        .main-button:active {
-            transform: scale(.96);
-        }
-
-        .audio-button {
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-
-        .audio-button:hover {
-            transform: scale(1.04);
-        }
-
+        .main-button:active,
         .audio-button:active {
             transform: scale(.96);
         }
@@ -140,6 +136,7 @@
         }
 
         @keyframes appear {
+
             from {
                 opacity: 0;
                 transform: translateY(25px);
@@ -175,6 +172,7 @@
             opacity: .75;
             font-size: 15px;
         }
+
     </style>
 </head>
 
@@ -241,7 +239,7 @@
 
 
         <!-- =================================================
-             AUDIO LEKTION
+             BOUTON AUDIO 1
         ================================================== -->
 
         <button
@@ -293,7 +291,8 @@
                     Formell
                 </h2>
 
-                <!-- BOUTON AUDIO FORMELL -->
+
+                <!-- AUDIO ERKLÄRUNG FORMELL -->
 
                 <button
                     id="formellAudioButton"
@@ -331,8 +330,7 @@
                     sm:grid-cols-2
                     lg:grid-cols-3
                     gap-5
-                "
-            >
+            ">
             </div>
 
         </div>
@@ -362,7 +360,8 @@
                     Informell
                 </h2>
 
-                <!-- BOUTON AUDIO INFORMELL -->
+
+                <!-- AUDIO ERKLÄRUNG INFORMELL -->
 
                 <button
                     id="informellAudioButton"
@@ -400,8 +399,7 @@
                     sm:grid-cols-2
                     lg:grid-cols-3
                     gap-5
-                "
-            >
+            ">
             </div>
 
         </div>
@@ -431,7 +429,8 @@
                     Vokabular
                 </h2>
 
-                <!-- BOUTON AUDIO VOKABULAR -->
+
+                <!-- AUDIO ERKLÄRUNG VOKABULAR -->
 
                 <button
                     id="vocabAudioButton"
@@ -592,6 +591,7 @@
 
     </section>
 
+
 </main>
 
 
@@ -599,16 +599,26 @@
 <script>
 
 /* =====================================================
-   GITHUB PAGES AUDIO
-   Les fichiers seront ajoutés plus tard.
+   HARYFI – LEKTION 2 – PAGE 1
+   AUDIO GITHUB PAGES
 ===================================================== */
+
+
+/*
+ * Tous les MP3 seront dans :
+ *
+ * HaryFi/Audio/
+ *
+ * Tu peux les ajouter plus tard.
+ */
 
 const AUDIO_BASE =
     "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
 
 
+
 /* =====================================================
-   FICHIERS AUDIO
+   AUDIO GÉNÉRAUX
 ===================================================== */
 
 const audioFiles = {
@@ -626,6 +636,7 @@ const audioFiles = {
         AUDIO_BASE + "l2_vocabular.mp3"
 
 };
+
 
 
 /* =====================================================
@@ -665,6 +676,7 @@ const formellAudio = {
         AUDIO_BASE + "l2_auf_wiederhoeren.mp3"
 
 };
+
 
 
 /* =====================================================
@@ -722,51 +734,79 @@ const informellAudio = {
 };
 
 
+
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
 const startButton =
-    document.getElementById("startButton");
+    document.getElementById(
+        "startButton"
+    );
+
 
 const formellAudioButton =
-    document.getElementById("formellAudioButton");
+    document.getElementById(
+        "formellAudioButton"
+    );
+
 
 const informellAudioButton =
-    document.getElementById("informellAudioButton");
+    document.getElementById(
+        "informellAudioButton"
+    );
+
 
 const vocabAudioButton =
-    document.getElementById("vocabAudioButton");
+    document.getElementById(
+        "vocabAudioButton"
+    );
+
 
 const status =
-    document.getElementById("status");
+    document.getElementById(
+        "status"
+    );
+
 
 const formellSection =
-    document.getElementById("formellSection");
+    document.getElementById(
+        "formellSection"
+    );
+
 
 const informellSection =
-    document.getElementById("informellSection");
+    document.getElementById(
+        "informellSection"
+    );
+
 
 const formellContainer =
-    document.getElementById("formellWords");
+    document.getElementById(
+        "formellWords"
+    );
+
 
 const informellContainer =
-    document.getElementById("informellWords");
+    document.getElementById(
+        "informellWords"
+    );
 
+
+
+/* =====================================================
+   AUDIO ACTUEL
+===================================================== */
 
 let currentAudio = null;
 
 
+
 /* =====================================================
-   AUDIO ABSPIELEN
+   ARRÊTER AUDIO
 ===================================================== */
 
-function playAudio(url, text, card = null) {
-
-    if (!url) {
-        return;
-    }
-
+function stopCurrentAudio() {
 
     if (currentAudio) {
 
@@ -774,24 +814,67 @@ function playAudio(url, text, card = null) {
 
         currentAudio.currentTime = 0;
 
+        currentAudio = null;
+
     }
+
+
+    document
+        .querySelectorAll(".playing")
+        .forEach(card => {
+
+            card.classList.remove(
+                "playing"
+            );
+
+        });
+
+}
+
+
+
+/* =====================================================
+   JOUER AUDIO
+===================================================== */
+
+function playAudio(
+    url,
+    text,
+    card = null
+) {
+
+    if (!url) {
+        return;
+    }
+
+
+    stopCurrentAudio();
 
 
     const audio =
         new Audio(url);
 
-    currentAudio = audio;
+
+    currentAudio =
+        audio;
+
 
     audio.volume = 1;
 
 
     if (card) {
 
-        card.classList.remove("playing");
+        card.classList.remove(
+            "playing"
+        );
+
 
         void card.offsetWidth;
 
-        card.classList.add("playing");
+
+        card.classList.add(
+            "playing"
+        );
 
     }
 
@@ -805,11 +888,26 @@ function playAudio(url, text, card = null) {
         () => {
 
             if (card) {
-                card.classList.remove("playing");
+
+                card.classList.remove(
+                    "playing"
+                );
+
+            }
+
+
+            if (
+                currentAudio === audio
+            ) {
+
+                currentAudio = null;
+
             }
 
         },
-        { once: true }
+        {
+            once: true
+        }
     );
 
 
@@ -818,19 +916,36 @@ function playAudio(url, text, card = null) {
         () => {
 
             if (card) {
-                card.classList.remove("playing");
+
+                card.classList.remove(
+                    "playing"
+                );
+
             }
+
 
             status.textContent =
                 "⚠️ Audiodatei noch nicht vorhanden.";
+
 
             console.log(
                 "Audio nicht gefunden:",
                 url
             );
 
+
+            if (
+                currentAudio === audio
+            ) {
+
+                currentAudio = null;
+
+            }
+
         },
-        { once: true }
+        {
+            once: true
+        }
     );
 
 
@@ -847,8 +962,9 @@ function playAudio(url, text, card = null) {
 }
 
 
+
 /* =====================================================
-   CARTES
+   CARTE MOT
 ===================================================== */
 
 function createCard(
@@ -858,10 +974,13 @@ function createCard(
 ) {
 
     const card =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
 
 
-    card.type = "button";
+    card.type =
+        "button";
 
 
     card.className = `
@@ -875,12 +994,20 @@ function createCard(
 
     card.innerHTML = `
 
-        <div class="text-2xl md:text-3xl font-black">
+        <div class="
+            text-2xl
+            md:text-3xl
+            font-black
+        ">
             ${word}
         </div>
 
-        <div class="text-sm opacity-60 mt-3">
-            🔊 Anhören
+        <div class="
+            text-sm
+            opacity-60
+            mt-3
+        ">
+            🔊 Aussprache anhören
         </div>
 
     `;
@@ -900,39 +1027,53 @@ function createCard(
     );
 
 
-    container.appendChild(card);
+    container.appendChild(
+        card
+    );
 
 }
 
 
+
 /* =====================================================
-   CREATION DES CARTES
+   CRÉER LES CARTES FORMELL
 ===================================================== */
 
-formellWords.forEach(word => {
+formellWords.forEach(
+    word => {
 
-    createCard(
-        word,
-        formellAudio,
-        formellContainer
-    );
+        createCard(
+            word,
+            formellAudio,
+            formellContainer
+        );
 
-});
+    }
+);
 
-
-informellWords.forEach(word => {
-
-    createCard(
-        word,
-        informellAudio,
-        informellContainer
-    );
-
-});
 
 
 /* =====================================================
-   BOUTON : LEKTION STARTEN
+   CRÉER LES CARTES INFORMELL
+===================================================== */
+
+informellWords.forEach(
+    word => {
+
+        createCard(
+            word,
+            informellAudio,
+            informellContainer
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   BOUTON 1
+   LEKTION STARTEN
 ===================================================== */
 
 startButton.addEventListener(
@@ -940,10 +1081,22 @@ startButton.addEventListener(
     () => {
 
         /*
-         * Le bouton démarre uniquement
-         * l'audio général de la leçon.
-         *
-         * L'audio sera ajouté plus tard.
+         * Afficher Formell.
+         */
+
+        formellSection.classList.remove(
+            "hidden-section"
+        );
+
+
+        formellSection.classList.add(
+            "visible-section"
+        );
+
+
+        /*
+         * Jouer uniquement
+         * l'audio d'introduction.
          */
 
         playAudio(
@@ -951,29 +1104,13 @@ startButton.addEventListener(
             "Lektion 2"
         );
 
-
-        /*
-         * Afficher la partie Formell.
-         */
-
-        formellSection.classList.remove(
-            "hidden-section"
-        );
-
-        formellSection.classList.add(
-            "visible-section"
-        );
-
-
-        status.textContent =
-            "🤝 Formell";
-
     }
 );
 
 
+
 /* =====================================================
-   BOUTON : FORMELL
+   BOUTON FORMELL
 ===================================================== */
 
 formellAudioButton.addEventListener(
@@ -982,15 +1119,16 @@ formellAudioButton.addEventListener(
 
         playAudio(
             audioFiles.formell,
-            "Erklärung: Formell"
+            "Erklärung Formell"
         );
 
     }
 );
 
 
+
 /* =====================================================
-   BOUTON : INFORMELL
+   BOUTON INFORMELL
 ===================================================== */
 
 informellAudioButton.addEventListener(
@@ -998,29 +1136,35 @@ informellAudioButton.addEventListener(
     () => {
 
         /*
-         * Afficher Informell si nécessaire.
+         * Afficher Informell.
          */
 
         informellSection.classList.remove(
             "hidden-section"
         );
 
+
         informellSection.classList.add(
             "visible-section"
         );
 
 
+        /*
+         * Jouer son explication.
+         */
+
         playAudio(
             audioFiles.informell,
-            "Erklärung: Informell"
+            "Erklärung Informell"
         );
 
     }
 );
 
 
+
 /* =====================================================
-   BOUTON : VOKABULAR
+   BOUTON VOKABULAR
 ===================================================== */
 
 vocabAudioButton.addEventListener(
@@ -1034,6 +1178,7 @@ vocabAudioButton.addEventListener(
 
     }
 );
+
 
 </script>
 
