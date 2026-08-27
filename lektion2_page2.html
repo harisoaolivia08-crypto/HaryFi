@@ -59,17 +59,17 @@
         }
 
         .glass {
-            background: rgba(255,255,255,.22);
+            background: rgba(255, 255, 255, .22);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,.45);
+            border: 1px solid rgba(255, 255, 255, .45);
         }
 
         .lesson-card {
-            background: rgba(255,255,255,.93);
+            background: rgba(255, 255, 255, .93);
             border-radius: 30px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
         }
 
         .audio-button {
@@ -80,7 +80,7 @@
 
         .audio-button:hover {
             transform: scale(1.04);
-            box-shadow: 0 15px 30px rgba(0,0,0,.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
         }
 
         .audio-button:active {
@@ -123,6 +123,34 @@
             margin: 0 auto 20px;
         }
 
+        /*
+         * BOUTON 4 :
+         * plus petit et rectangulaire
+         */
+
+        .vokabular-card {
+            padding: 20px 25px;
+            max-width: 850px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .vokabular-card .number {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            font-size: 17px;
+            margin: 0 0 12px;
+        }
+
+        .vokabular-card h2 {
+            font-size: 26px;
+        }
+
+        .vokabular-card p {
+            margin-bottom: 18px;
+        }
+
         .content-section {
             display: none;
             margin-top: 35px;
@@ -141,7 +169,7 @@
             font-size: 18px;
             font-weight: 700;
 
-            box-shadow: 0 6px 16px rgba(0,0,0,.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
         }
 
         .vocab-item {
@@ -153,7 +181,7 @@
             font-size: 18px;
             font-weight: 700;
 
-            box-shadow: 0 6px 16px rgba(0,0,0,.08);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
         }
 
         .vocab-item strong {
@@ -164,6 +192,29 @@
             font-size: 32px;
             font-weight: 900;
             margin-bottom: 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            .lesson-card {
+                padding: 24px 18px;
+                border-radius: 24px;
+            }
+
+            .vokabular-card {
+                padding: 18px;
+            }
+
+            .satz,
+            .vocab-item {
+                font-size: 16px;
+                padding: 16px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
         }
     </style>
 </head>
@@ -261,7 +312,7 @@
 
     <!-- =================================================
          4 BOUTONS
-    ================================================== -->
+===================================================== -->
 
     <section class="
         grid
@@ -392,20 +443,25 @@
 
 
         <!-- =============================================
-             BOUTON 4
+             BOUTON 4 – VOKABULAR
+             PETIT + RECTANGLE
         ============================================== -->
 
-        <div class="lesson-card text-center">
+        <div class="
+            lesson-card
+            vokabular-card
+            text-center
+        ">
 
             <div class="number">
                 4
             </div>
 
-            <h2 class="text-3xl font-black mb-4">
+            <h2 class="text-2xl font-black mb-3">
                 Vokabular
             </h2>
 
-            <p class="font-semibold opacity-75 mb-6">
+            <p class="font-semibold opacity-75 mb-4">
                 Wichtige Wörter und Ausdrücke.
             </p>
 
@@ -416,11 +472,11 @@
                     audio-button
                     bg-black
                     text-white
-                    px-8
-                    py-4
+                    px-7
+                    py-3
                     rounded-2xl
                     font-black
-                    text-lg
+                    text-base
                     shadow-xl
                 "
             >
@@ -428,6 +484,7 @@
             </button>
 
         </div>
+
 
     </section>
 
@@ -778,6 +835,16 @@ function playAudio(
     removePlaying();
 
 
+    if (!url) {
+
+        status.textContent =
+            "⚠️ Kein Audio konfiguriert.";
+
+        return;
+
+    }
+
+
     const audio =
         new Audio(url);
 
@@ -866,7 +933,7 @@ function playAudio(
 
 
 /* =====================================================
-   BOUTON 1
+   BOUTON 1 – LEKTION STARTEN
 ===================================================== */
 
 buttons.button1.addEventListener(
