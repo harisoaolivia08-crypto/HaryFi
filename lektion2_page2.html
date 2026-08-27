@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HaryFi – Lektion 2: Seite 2</title>
+    <title>HaryFi – Lektion 2: Kurze Sätze zum Üben</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -37,6 +37,7 @@
         }
 
         @keyframes gradientMove {
+
             0% {
                 background-position: 0% 50%;
             }
@@ -59,17 +60,19 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, .22);
+            background: rgba(255,255,255,.22);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, .45);
+            border: 1px solid rgba(255,255,255,.45);
         }
 
         .lesson-card {
-            background: rgba(255, 255, 255, .90);
+            background: rgba(255,255,255,.90);
             border-radius: 30px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.15);
 
             transition:
                 transform .25s ease,
@@ -78,19 +81,24 @@
 
         .lesson-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, .22);
+
+            box-shadow:
+                0 25px 50px rgba(0,0,0,.22);
         }
 
         .audio-button {
             transition:
                 transform .2s ease,
                 box-shadow .2s ease;
+
             cursor: pointer;
         }
 
         .audio-button:hover {
             transform: scale(1.04);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
+
+            box-shadow:
+                0 15px 30px rgba(0,0,0,.25);
         }
 
         .audio-button:active {
@@ -102,6 +110,7 @@
         }
 
         @keyframes pulse {
+
             0% {
                 transform: scale(1);
             }
@@ -125,6 +134,7 @@
         .number {
             width: 55px;
             height: 55px;
+
             border-radius: 18px;
 
             display: flex;
@@ -141,16 +151,76 @@
         }
 
         .back-button {
-            transition: transform .2s ease;
+            transition:
+                transform .2s ease;
         }
 
         .back-button:hover {
             transform: translateX(-5px);
         }
+
+        .content-section {
+            display: none;
+            margin-top: 35px;
+        }
+
+        .content-section.show {
+            display: block;
+            animation: appear .5s ease;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .phrase {
+            background: rgba(255,255,255,.92);
+
+            border-radius: 20px;
+
+            padding: 20px;
+
+            margin-bottom: 12px;
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.08);
+        }
+
+        .german {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .french {
+            margin-top: 5px;
+            opacity: .7;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="px-5 py-5">
 
@@ -158,12 +228,29 @@
 
         <a
             href="lektion2.html"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg back-button"
+            class="
+                glass
+                rounded-2xl
+                px-5
+                py-3
+                font-black
+                text-lg
+                back-button
+            "
         >
             ← Lektion 2
         </a>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+        <div
+            class="
+                glass
+                rounded-full
+                px-5
+                py-2
+                font-bold
+                text-sm
+            "
+        >
             🇩🇪 Deutschkurs
         </div>
 
@@ -172,12 +259,19 @@
 </header>
 
 
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <main class="max-w-6xl mx-auto px-5 pb-20">
 
 
-    <!-- TITRE -->
+    <!-- =================================================
+         TITRE
+    ================================================== -->
 
-    <section class="text-center pt-8 pb-12">
+    <section class="text-center pt-8 pb-10">
 
         <div
             class="
@@ -196,6 +290,7 @@
             Lektion 2 · Seite 2
         </div>
 
+
         <h1
             class="
                 text-5xl
@@ -205,8 +300,9 @@
                 mb-5
             "
         >
-            Begrüßung & Verabschiedung
+            Kurze Sätze zum Üben
         </h1>
+
 
         <p
             class="
@@ -217,8 +313,9 @@
                 mx-auto
             "
         >
-            Übe die wichtigsten Ausdrücke der Lektion.
+            Übe kurze deutsche Sätze und verbessere deine Aussprache.
         </p>
+
 
         <div
             id="status"
@@ -230,12 +327,24 @@
     </section>
 
 
-    <!-- 4 BOUTONS -->
 
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-7">
+    <!-- =================================================
+         4 BOUTONS
+    ================================================== -->
+
+    <section
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            gap-7
+        "
+    >
 
 
-        <!-- BOUTON 1 -->
+        <!-- =============================================
+             BOUTON 1
+        ============================================== -->
 
         <div class="lesson-card text-center">
 
@@ -244,12 +353,12 @@
             </div>
 
             <h2 class="text-3xl font-black mb-4">
-                Erklärung
+                Lektion starten
             </h2>
 
             <p class="font-semibold opacity-75 mb-6">
-                Höre dir die allgemeine Erklärung
-                der Lektion an.
+                Höre die allgemeine Erklärung
+                dieser Lektion.
             </p>
 
             <button
@@ -267,13 +376,16 @@
                     shadow-xl
                 "
             >
-                ▶️ Erklärung anhören
+                ▶️ Lektion starten
             </button>
 
         </div>
 
 
-        <!-- BOUTON 2 -->
+
+        <!-- =============================================
+             BOUTON 2
+        ============================================== -->
 
         <div class="lesson-card text-center">
 
@@ -282,12 +394,12 @@
             </div>
 
             <h2 class="text-3xl font-black mb-4">
-                Begrüßung
+                Erklärung Formell
             </h2>
 
             <p class="font-semibold opacity-75 mb-6">
-                Höre die richtige Aussprache
-                der Begrüßungen.
+                Höre die Erklärung der formellen
+                Sätze.
             </p>
 
             <button
@@ -305,13 +417,16 @@
                     shadow-xl
                 "
             >
-                ▶️ Begrüßung anhören
+                ▶️ Erklärung Formell
             </button>
 
         </div>
 
 
-        <!-- BOUTON 3 -->
+
+        <!-- =============================================
+             BOUTON 3
+        ============================================== -->
 
         <div class="lesson-card text-center">
 
@@ -320,12 +435,12 @@
             </div>
 
             <h2 class="text-3xl font-black mb-4">
-                Verabschiedung
+                Erklärung Informell
             </h2>
 
             <p class="font-semibold opacity-75 mb-6">
-                Höre die richtige Aussprache
-                der Verabschiedungen.
+                Höre die Erklärung der informellen
+                Sätze.
             </p>
 
             <button
@@ -343,13 +458,16 @@
                     shadow-xl
                 "
             >
-                ▶️ Verabschiedung anhören
+                ▶️ Erklärung Informell
             </button>
 
         </div>
 
 
-        <!-- BOUTON 4 -->
+
+        <!-- =============================================
+             BOUTON 4
+        ============================================== -->
 
         <div class="lesson-card text-center">
 
@@ -358,12 +476,12 @@
             </div>
 
             <h2 class="text-3xl font-black mb-4">
-                Übung
+                Vokabular
             </h2>
 
             <p class="font-semibold opacity-75 mb-6">
-                Höre die Übung und wiederhole
-                die Sätze laut.
+                Höre und übe das wichtige Vokabular
+                der Lektion.
             </p>
 
             <button
@@ -381,7 +499,7 @@
                     shadow-xl
                 "
             >
-                ▶️ Übung anhören
+                ▶️ Vokabular anhören
             </button>
 
         </div>
@@ -389,7 +507,320 @@
     </section>
 
 
-    <!-- NAVIGATION -->
+
+    <!-- =================================================
+         INHALT FORMELL
+    ================================================== -->
+
+    <section
+        id="formellContent"
+        class="content-section"
+    >
+
+        <div class="glass rounded-[32px] p-6 md:p-10">
+
+            <h2 class="section-title text-center">
+                🤝 Formelle Sätze
+            </h2>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Wie geht es Ihnen?
+                </div>
+
+                <div class="french">
+                    Comment allez-vous ?
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Guten Morgen.
+                </div>
+
+                <div class="french">
+                    Bonjour.
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Guten Tag.
+                </div>
+
+                <div class="french">
+                    Bonjour.
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Guten Abend.
+                </div>
+
+                <div class="french">
+                    Bonsoir.
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Auf Wiedersehen.
+                </div>
+
+                <div class="french">
+                    Au revoir.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         INHALT INFORMELL
+    ================================================== -->
+
+    <section
+        id="informellContent"
+        class="content-section"
+    >
+
+        <div class="glass rounded-[32px] p-6 md:p-10">
+
+            <h2 class="section-title text-center">
+                👋 Informelle Sätze
+            </h2>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Wie geht es dir?
+                </div>
+
+                <div class="french">
+                    Comment ça va ?
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Hallo!
+                </div>
+
+                <div class="french">
+                    Salut !
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Hi!
+                </div>
+
+                <div class="french">
+                    Salut !
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Tschüss!
+                </div>
+
+                <div class="french">
+                    Salut ! / Au revoir !
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Bis bald!
+                </div>
+
+                <div class="french">
+                    À bientôt !
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Bis später!
+                </div>
+
+                <div class="french">
+                    À plus tard !
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         VOKABULAR
+    ================================================== -->
+
+    <section
+        id="vocabContent"
+        class="content-section"
+    >
+
+        <div class="glass rounded-[32px] p-6 md:p-10">
+
+            <h2 class="section-title text-center">
+                📚 Vokabular
+            </h2>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Ich heiße …
+                </div>
+
+                <div class="french">
+                    Je m'appelle …
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Ich komme aus …
+                </div>
+
+                <div class="french">
+                    Je viens de …
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Wie geht es Ihnen?
+                </div>
+
+                <div class="french">
+                    Comment allez-vous ?
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Wie geht es dir?
+                </div>
+
+                <div class="french">
+                    Comment ça va ?
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Mir geht es gut.
+                </div>
+
+                <div class="french">
+                    Je vais bien.
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Und dir?
+                </div>
+
+                <div class="french">
+                    Et toi ?
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Ich auch.
+                </div>
+
+                <div class="french">
+                    Moi aussi.
+                </div>
+
+            </div>
+
+
+            <div class="phrase">
+
+                <div class="german">
+                    Ich bin …
+                </div>
+
+                <div class="french">
+                    Je suis …
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
 
     <section
         class="
@@ -418,6 +849,7 @@
             ← Seite 1
         </a>
 
+
         <a
             href="lektion2.html"
             class="
@@ -437,47 +869,48 @@
 </main>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
 /* =====================================================
-   DOSSIER AUDIO
+   AUDIO
 ===================================================== */
 
 /*
-   Le dossier Audio doit être au même niveau
-   que ce fichier HTML.
+   Les fichiers audio seront ajoutés plus tard.
 
-   Structure :
+   Dossier :
 
-   HaryFi/
-   ├── lektion2_page2.html
-   └── Audio/
-       ├── l2_page2_erklaerung.mp3
-       ├── l2_page2_begruessung.mp3
-       ├── l2_page2_verabschiedung.mp3
-       └── l2_page2_uebung.mp3
+   Audio/
+
+   Fichiers :
+
+   l2_page2_start.mp3
+   l2_page2_formell.mp3
+   l2_page2_informell.mp3
+   l2_page2_vocabular.mp3
 */
 
 const AUDIO_BASE = "Audio/";
 
 
-/* =====================================================
-   FICHIERS AUDIO
-===================================================== */
-
 const audioFiles = {
 
     button1:
-        AUDIO_BASE + "l2_page2_erklaerung.mp3",
+        AUDIO_BASE + "l2_page2_start.mp3",
 
     button2:
-        AUDIO_BASE + "l2_page2_begruessung.mp3",
+        AUDIO_BASE + "l2_page2_formell.mp3",
 
     button3:
-        AUDIO_BASE + "l2_page2_verabschiedung.mp3",
+        AUDIO_BASE + "l2_page2_informell.mp3",
 
     button4:
-        AUDIO_BASE + "l2_page2_uebung.mp3"
+        AUDIO_BASE + "l2_page2_vocabular.mp3"
 
 };
 
@@ -488,6 +921,7 @@ const audioFiles = {
 
 const status =
     document.getElementById("status");
+
 
 const buttons = {
 
@@ -506,11 +940,34 @@ const buttons = {
 };
 
 
-/* =====================================================
-   AUDIO ACTUEL
-===================================================== */
+const formellContent =
+    document.getElementById("formellContent");
+
+
+const informellContent =
+    document.getElementById("informellContent");
+
+
+const vocabContent =
+    document.getElementById("vocabContent");
+
 
 let currentAudio = null;
+
+
+/* =====================================================
+   CACHER LES CONTENUS
+===================================================== */
+
+function hideContents() {
+
+    formellContent.classList.remove("show");
+
+    informellContent.classList.remove("show");
+
+    vocabContent.classList.remove("show");
+
+}
 
 
 /* =====================================================
@@ -555,7 +1012,11 @@ function removePlaying() {
    LIRE AUDIO
 ===================================================== */
 
-function playAudio(url, message, button) {
+function playAudio(
+    url,
+    message,
+    button
+) {
 
     stopCurrentAudio();
 
@@ -614,7 +1075,7 @@ function playAudio(url, message, button) {
             currentAudio = null;
 
             status.textContent =
-                "⚠️ Audiodatei nicht gefunden.";
+                "⚠️ Audiodatei noch nicht vorhanden.";
 
             console.error(
                 "Audio nicht gefunden:",
@@ -650,15 +1111,18 @@ function playAudio(url, message, button) {
 
 /* =====================================================
    BOUTON 1
+   LEKTION STARTEN
 ===================================================== */
 
 buttons.button1.addEventListener(
     "click",
     () => {
 
+        hideContents();
+
         playAudio(
             audioFiles.button1,
-            "Erklärung der Lektion",
+            "Lektion 2",
             buttons.button1
         );
 
@@ -668,15 +1132,20 @@ buttons.button1.addEventListener(
 
 /* =====================================================
    BOUTON 2
+   FORMELL
 ===================================================== */
 
 buttons.button2.addEventListener(
     "click",
     () => {
 
+        hideContents();
+
+        formellContent.classList.add("show");
+
         playAudio(
             audioFiles.button2,
-            "Begrüßung",
+            "Erklärung Formell",
             buttons.button2
         );
 
@@ -686,15 +1155,20 @@ buttons.button2.addEventListener(
 
 /* =====================================================
    BOUTON 3
+   INFORMELL
 ===================================================== */
 
 buttons.button3.addEventListener(
     "click",
     () => {
 
+        hideContents();
+
+        informellContent.classList.add("show");
+
         playAudio(
             audioFiles.button3,
-            "Verabschiedung",
+            "Erklärung Informell",
             buttons.button3
         );
 
@@ -704,15 +1178,20 @@ buttons.button3.addEventListener(
 
 /* =====================================================
    BOUTON 4
+   VOKABULAR
 ===================================================== */
 
 buttons.button4.addEventListener(
     "click",
     () => {
 
+        hideContents();
+
+        vocabContent.classList.add("show");
+
         playAudio(
             audioFiles.button4,
-            "Übung",
+            "Vokabular",
             buttons.button4
         );
 
@@ -720,6 +1199,7 @@ buttons.button4.addEventListener(
 );
 
 </script>
+
 
 </body>
 </html>
