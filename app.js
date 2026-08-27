@@ -241,19 +241,64 @@ function createLessonList() {
         card.appendChild(name);
 
 
+        /* =========================================
+           OUVERTURE DES LEKTIONEN
+        ========================================= */
+
+        card.addEventListener("click", () => {
+
+            let page;
+
+
+            /*
+             * LEKTION 1
+             */
+
+            if (index === 0) {
+
+                page = "lektion1.html";
+
+            }
+
+
+            /*
+             * LEKTION 2
+             */
+
+            else if (index === 1) {
+
+                page = "lektion2_page1.html";
+
+            }
+
+
+            /*
+             * LEKTION 3 À 50
+             */
+
+            else {
+
+                page =
+                    `lektion${index + 1}.html`;
+
+            }
+
+
+            /*
+             * Ouvrir la page
+             */
+
+            window.location.href = page;
+
+        });
+
+
         /*
-           Lektion 1 ouvre
-           l'alphabet.
-        */
+         * Curseur
+         */
 
-        if (index === 0) {
-
-            card.addEventListener(
-                "click",
-                openAlphabet
-            );
-
-        }
+        card.style.cursor =
+            "pointer";
 
 
         container.appendChild(card);
