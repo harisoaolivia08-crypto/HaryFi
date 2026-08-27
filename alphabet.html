@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HaryFi – Lektion 1 – Alphabet</title>
+    <title>HaryFi – Alphabet & Aussprache</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -52,9 +52,9 @@
         }
 
         .letter-card {
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
         .letter-card:hover {
@@ -98,12 +98,13 @@
 
         .audio-status {
             margin-top: 12px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
-            opacity: .8;
+            opacity: .75;
         }
     </style>
 </head>
+
 
 <body>
 
@@ -133,13 +134,16 @@
 
     <main class="max-w-7xl mx-auto px-5 pb-16">
 
-        <!-- TITRE -->
+
+        <!-- TITEL -->
 
         <section class="text-center pt-8 pb-12">
 
-            <div class="inline-block glass rounded-full px-5 py-2 mb-5
-                        text-xs font-black uppercase tracking-widest">
-                Lektion 1 – Seite 1
+            <div
+                class="inline-block glass rounded-full px-5 py-2 mb-5
+                       text-xs font-black uppercase tracking-widest"
+            >
+                Seite 1 · Lektion 1
             </div>
 
             <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
@@ -163,37 +167,47 @@
 
             <div
                 id="alphabetGrid"
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5"
+                class="
+                    grid
+                    grid-cols-2
+                    sm:grid-cols-3
+                    md:grid-cols-4
+                    lg:grid-cols-6
+                    gap-5
+                "
             >
             </div>
 
         </section>
 
 
-        <!-- NAVIGATION -->
+        <!-- RETOUR -->
 
-        <section class="flex justify-center gap-4 mt-14 flex-wrap">
+        <section class="flex justify-center mt-14">
 
             <a
                 href="lektion1.html"
-                class="bg-black text-white px-7 py-4 rounded-2xl font-black
-                       hover:scale-105 transition shadow-xl"
+                class="
+                    bg-black
+                    text-white
+                    px-8
+                    py-4
+                    rounded-2xl
+                    font-black
+                    hover:scale-105
+                    transition
+                    shadow-xl
+                "
             >
-                ← Lektion 1
-            </a>
-
-            <a
-                href="video.html"
-                class="bg-white text-black px-7 py-4 rounded-2xl font-black
-                       hover:scale-105 transition shadow-xl"
-            >
-                Video →
+                ← Zurück zu Lektion 1
             </a>
 
         </section>
 
     </main>
 
+
+    <!-- JAVASCRIPT -->
 
     <script>
 
@@ -202,10 +216,13 @@
             "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R",
             "S", "T", "U", "V", "W", "X",
-            "Y", "Z",
-            "Ä", "Ö", "Ü", "ß"
+            "Y", "Z", "Ä", "Ö", "Ü", "ß"
         ];
 
+
+        /*
+         * Text unter chaque lettre
+         */
 
         const pronunciation = {
 
@@ -244,44 +261,51 @@
         };
 
 
+        /*
+         * Tes fichiers MP3
+         *
+         * Dossier : Audio
+         */
+
         const audioFiles = {
 
-            "A": "./Audio/a.mp3",
-            "B": "./Audio/b.mp3",
-            "C": "./Audio/c.mp3",
-            "D": "./Audio/d.mp3",
-            "E": "./Audio/e.mp3",
-            "F": "./Audio/f.mp3",
-            "G": "./Audio/g.mp3",
-            "H": "./Audio/h.mp3",
-            "I": "./Audio/i.mp3",
-            "J": "./Audio/j.mp3",
-            "K": "./Audio/k.mp3",
-            "L": "./Audio/l.mp3",
-            "M": "./Audio/m.mp3",
-            "N": "./Audio/n.mp3",
-            "O": "./Audio/o.mp3",
-            "P": "./Audio/p.mp3",
-            "Q": "./Audio/q.mp3",
-            "R": "./Audio/r.mp3",
-            "S": "./Audio/s.mp3",
-            "T": "./Audio/t.mp3",
-            "U": "./Audio/u.mp3",
-            "V": "./Audio/v.mp3",
-            "W": "./Audio/w.mp3",
-            "X": "./Audio/x.mp3",
-            "Y": "./Audio/y.mp3",
-            "Z": "./Audio/z.mp3",
+            "A": "Audio/a.mp3",
+            "B": "Audio/b.mp3",
+            "C": "Audio/c.mp3",
+            "D": "Audio/d.mp3",
+            "E": "Audio/e.mp3",
+            "F": "Audio/f.mp3",
+            "G": "Audio/g.mp3",
+            "H": "Audio/h.mp3",
+            "I": "Audio/i.mp3",
+            "J": "Audio/j.mp3",
+            "K": "Audio/k.mp3",
+            "L": "Audio/l.mp3",
+            "M": "Audio/m.mp3",
+            "N": "Audio/n.mp3",
+            "O": "Audio/o.mp3",
+            "P": "Audio/p.mp3",
+            "Q": "Audio/q.mp3",
+            "R": "Audio/r.mp3",
+            "S": "Audio/s.mp3",
+            "T": "Audio/t.mp3",
+            "U": "Audio/u.mp3",
+            "V": "Audio/v.mp3",
+            "W": "Audio/w.mp3",
+            "X": "Audio/x.mp3",
+            "Y": "Audio/y.mp3",
+            "Z": "Audio/z.mp3",
 
-            "Ä": "./Audio/ae.mp3",
-            "Ö": "./Audio/oe.mp3",
-            "Ü": "./Audio/ue.mp3",
-            "ß": "./Audio/ss.mp3"
+            "Ä": "Audio/ä.mp3",
+            "Ö": "Audio/ö.mp3",
+            "Ü": "Audio/ü.mp3",
+            "ß": "Audio/ß.mp3"
 
         };
 
 
         const colors = [
+
             "from-red-500 to-orange-400",
             "from-orange-500 to-yellow-400",
             "from-yellow-400 to-lime-400",
@@ -293,6 +317,7 @@
             "from-purple-500 to-fuchsia-400",
             "from-fuchsia-500 to-pink-400",
             "from-pink-500 to-rose-400"
+
         ];
 
 
@@ -301,6 +326,7 @@
 
         const audioStatus =
             document.getElementById("audioStatus");
+
 
         let currentAudio = null;
 
@@ -362,6 +388,7 @@
                 ">
                     🔊
                 </div>
+
             `;
 
 
@@ -379,33 +406,35 @@
 
         function playLetter(letter, card) {
 
-            const file = audioFiles[letter];
+            const file =
+                audioFiles[letter];
+
 
             if (!file) {
+
+                audioStatus.textContent =
+                    "⚠️ Audiodatei nicht gefunden.";
+
                 return;
+
             }
 
 
             if (currentAudio) {
 
                 currentAudio.pause();
-                currentAudio.currentTime = 0;
-                currentAudio.removeAttribute("src");
-                currentAudio.load();
 
-                currentAudio = null;
+                currentAudio.currentTime = 0;
 
             }
 
 
             const audio =
-                document.createElement("audio");
-
-            audio.preload = "auto";
-            audio.src = file;
-            audio.volume = 1.0;
+                new Audio(file);
 
             currentAudio = audio;
+
+            audio.volume = 1.0;
 
 
             card.classList.remove("playing");
@@ -419,55 +448,45 @@
                 "🔊 Aussprache: " + letter;
 
 
-            audio.addEventListener(
-                "canplaythrough",
-                () => {
+            audio.addEventListener("error", () => {
 
-                    if (currentAudio !== audio) {
-                        return;
-                    }
+                console.error(
+                    "MP3 konnte nicht geladen werden:",
+                    file
+                );
 
-                    audio.play().catch(() => {
-                        audioStatus.textContent =
-                            "🔊 Klicke auf einen Buchstaben";
-                    });
+                audioStatus.textContent =
+                    "⚠️ MP3 nicht gefunden: " + file;
 
-                },
-                { once: true }
-            );
+            });
 
 
-            audio.addEventListener(
-                "error",
-                () => {
+            audio.addEventListener("ended", () => {
 
-                    card.classList.remove("playing");
+                card.classList.remove("playing");
 
-                    audioStatus.textContent =
-                        "🔊 Klicke auf einen Buchstaben";
+                audioStatus.textContent =
+                    "🔊 Klicke auf einen Buchstaben";
 
-                }
-            );
+            });
 
 
-            audio.addEventListener(
-                "ended",
-                () => {
+            audio.play().catch(error => {
 
-                    card.classList.remove("playing");
+                console.error(
+                    "Audio-Fehler:",
+                    error
+                );
 
-                    audioStatus.textContent =
-                        "🔊 Klicke auf einen Buchstaben";
+                audioStatus.textContent =
+                    "⚠️ MP3 konnte nicht abgespielt werden.";
 
-                }
-            );
-
-
-            audio.load();
+            });
 
         }
 
     </script>
 
 </body>
+
 </html>
