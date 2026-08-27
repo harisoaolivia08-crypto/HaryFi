@@ -120,12 +120,31 @@
             transform: scale(.96);
         }
 
+        /* =====================================================
+           RESPONSIVE IMAGES (MOBILE / TABLETTE / ORDI)
+        ===================================================== */
+        
+        /* 📱 Mobile (par défaut) */
         .illustration {
             width: 100%;
             height: 220px;
             object-fit: cover;
             border-radius: 24px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, .18);
+        }
+
+        /* 📱 Tablette (à partir de 768px) */
+        @media (min-width: 768px) {
+            .illustration {
+                height: 360px;
+            }
+        }
+
+        /* 💻 Ordinateur (à partir de 1024px) */
+        @media (min-width: 1024px) {
+            .illustration {
+                height: 460px;
+            }
         }
 
         .hidden-section {
@@ -174,18 +193,18 @@
      HEADER
 ====================================================== -->
 
-<header class="px-5 py-5">
+<header class="px-4 md:px-8 py-5">
 
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
 
         <a
             href="lektion2.html"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg back-button"
+            class="glass rounded-2xl px-4 md:px-5 py-2.5 md:py-3 font-black text-base md:text-lg back-button"
         >
             ← Lektion 2
         </a>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+        <div class="glass rounded-full px-4 md:px-5 py-2 font-bold text-xs md:text-sm">
             🇩🇪 Deutschkurs
         </div>
 
@@ -195,23 +214,23 @@
 
 
 
-<main class="max-w-4xl mx-auto px-5 pb-20">
+<main class="max-w-4xl mx-auto px-4 md:px-8 pb-20">
 
 
 <!-- =====================================================
      TITRE
 ====================================================== -->
 
-<section class="text-center pt-8 pb-10">
+<section class="text-center pt-4 md:pt-8 pb-8 md:pb-10">
 
     <div
         class="
             inline-block
             glass
             rounded-full
-            px-5
-            py-2
-            mb-5
+            px-4
+            py-1.5
+            mb-4
             text-xs
             font-black
             uppercase
@@ -222,12 +241,12 @@
     </div>
 
 
-    <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-4 md:mb-5">
         Sich vorstellen
     </h1>
 
 
-    <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
+    <p class="text-base sm:text-lg md:text-xl font-semibold max-w-2xl mx-auto opacity-90">
         Lerne dich formell und informell vorzustellen.
     </p>
 
@@ -239,14 +258,19 @@
         type="button"
         class="
             main-button
-            mt-8
+            mt-6
+            md:mt-8
             bg-black
             text-white
-            px-10
-            py-5
-            rounded-3xl
+            px-8
+            md:px-10
+            py-4
+            md:py-5
+            rounded-2xl
+            md:rounded-3xl
             font-black
-            text-xl
+            text-lg
+            md:text-xl
             shadow-2xl
         "
     >
@@ -254,7 +278,7 @@
     </button>
 
 
-    <div id="status" class="status">
+    <div id="status" class="status text-sm md:text-base">
         Klicke auf „Lektion starten“.
     </div>
 
@@ -271,19 +295,19 @@
     class="hidden-section"
 >
 
-    <div class="glass rounded-[32px] p-6 md:p-10">
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
 
-        <div class="text-center mb-8">
+        <div class="text-center mb-6 md:mb-8">
 
-            <div class="text-5xl mb-4">
+            <div class="text-4xl md:text-5xl mb-3 md:mb-4">
                 🤝
             </div>
 
-            <h2 class="text-4xl md:text-5xl font-black">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
                 Formell
             </h2>
 
-            <p class="font-semibold opacity-75 mt-2">
+            <p class="font-semibold opacity-75 mt-1 md:mt-2 text-sm md:text-base">
                 Formelle Sätze zum Vorstellen
             </p>
 
@@ -293,13 +317,19 @@
                 type="button"
                 class="
                     audio-button
-                    mt-5
+                    mt-4
+                    md:mt-5
                     bg-black
                     text-white
-                    px-7
-                    py-3
-                    rounded-2xl
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
                     font-black
+                    text-sm
+                    md:text-base
                     shadow-xl
                 "
             >
@@ -310,7 +340,7 @@
 
 
         <img
-            class="illustration mb-8"
+            class="illustration mb-6 md:mb-8"
             src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80"
             alt="Formelle Vorstellung"
         >
@@ -320,7 +350,7 @@
 
         <div
             id="formellWords"
-            class="flex flex-col gap-4"
+            class="flex flex-col gap-3 md:gap-4"
         >
         </div>
 
@@ -336,22 +366,22 @@
 
 <section
     id="informellSection"
-    class="hidden-section mt-12"
+    class="hidden-section mt-8 md:mt-12"
 >
 
-    <div class="glass rounded-[32px] p-6 md:p-10">
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
 
-        <div class="text-center mb-8">
+        <div class="text-center mb-6 md:mb-8">
 
-            <div class="text-5xl mb-4">
+            <div class="text-4xl md:text-5xl mb-3 md:mb-4">
                 👋
             </div>
 
-            <h2 class="text-4xl md:text-5xl font-black">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black">
                 Informell
             </h2>
 
-            <p class="font-semibold opacity-75 mt-2">
+            <p class="font-semibold opacity-75 mt-1 md:mt-2 text-sm md:text-base">
                 Informelle Sätze zum Vorstellen
             </p>
 
@@ -361,13 +391,19 @@
                 type="button"
                 class="
                     audio-button
-                    mt-5
+                    mt-4
+                    md:mt-5
                     bg-black
                     text-white
-                    px-7
-                    py-3
-                    rounded-2xl
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
                     font-black
+                    text-sm
+                    md:text-base
                     shadow-xl
                 "
             >
@@ -378,7 +414,7 @@
 
 
         <img
-            class="illustration mb-8"
+            class="illustration mb-6 md:mb-8"
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
             alt="Informelle Vorstellung"
         >
@@ -388,7 +424,7 @@
 
         <div
             id="informellWords"
-            class="flex flex-col gap-4"
+            class="flex flex-col gap-3 md:gap-4"
         >
         </div>
 
@@ -404,18 +440,18 @@
 
 <section
     id="vocabSection"
-    class="hidden-section mt-12"
+    class="hidden-section mt-8 md:mt-12"
 >
 
-    <div class="glass rounded-[32px] p-6 md:p-10">
+    <div class="glass rounded-3xl md:rounded-[32px] p-5 sm:p-8 md:p-10">
 
-        <div class="text-center mb-7">
+        <div class="text-center mb-6 md:mb-7">
 
-            <div class="text-4xl mb-3">
+            <div class="text-3xl md:text-4xl mb-2 md:mb-3">
                 📚
             </div>
 
-            <h2 class="text-3xl md:text-4xl font-black">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black">
                 Vokabular
             </h2>
 
@@ -425,13 +461,19 @@
                 type="button"
                 class="
                     audio-button
-                    mt-5
+                    mt-4
+                    md:mt-5
                     bg-black
                     text-white
-                    px-7
-                    py-3
-                    rounded-2xl
+                    px-6
+                    md:px-7
+                    py-2.5
+                    md:py-3
+                    rounded-xl
+                    md:rounded-2xl
                     font-black
+                    text-sm
+                    md:text-base
                     shadow-xl
                 "
             >
@@ -443,38 +485,38 @@
 
         <!-- LISTE LIGNE 1, 2, 3 VOKABULAR -->
 
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-3 md:gap-4">
 
             <!-- LIGNE 1 -->
-            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
-                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
                     1
                 </span>
                 <div>
-                    <div class="text-lg font-black text-gray-900">Ich heiße …</div>
-                    <div class="text-sm font-semibold text-gray-600 mt-1">Je m'appelle … / Izaho dia …</div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Ich heiße …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Je m'appelle … / Izaho dia …</div>
                 </div>
             </div>
 
             <!-- LIGNE 2 -->
-            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
-                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
                     2
                 </span>
                 <div>
-                    <div class="text-lg font-black text-gray-900">Mein Name ist …</div>
-                    <div class="text-sm font-semibold text-gray-600 mt-1">Mon nom est … / Ny anarako dia …</div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Mein Name ist …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Mon nom est … / Ny anarako dia …</div>
                 </div>
             </div>
 
             <!-- LIGNE 3 -->
-            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
-                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+            <div class="word-card rounded-2xl p-4 md:p-5 shadow-lg flex items-center gap-3 md:gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center">
                     3
                 </span>
                 <div>
-                    <div class="text-lg font-black text-gray-900">Ich komme aus …</div>
-                    <div class="text-sm font-semibold text-gray-600 mt-1">Je viens de … / Avy any …</div>
+                    <div class="text-base md:text-lg font-black text-gray-900">Ich komme aus …</div>
+                    <div class="text-xs md:text-sm font-semibold text-gray-600 mt-0.5 md:mt-1">Je viens de … / Avy any …</div>
                 </div>
             </div>
 
@@ -490,17 +532,21 @@
      RETOUR
 ====================================================== -->
 
-<section class="flex justify-center mt-14">
+<section class="flex justify-center mt-10 md:mt-14">
 
     <a
         href="lektion2.html"
         class="
             bg-black
             text-white
-            px-8
-            py-4
+            px-7
+            md:px-8
+            py-3.5
+            md:py-4
             rounded-2xl
             font-black
+            text-sm
+            md:text-base
             shadow-xl
         "
     >
@@ -668,30 +714,30 @@ function playAudio(url, text, card = null) {
 
 
 /* =====================================================
-   CRÉATION DES LIGNES NUMÉROTÉES (1, 2, 3...)
+   CRÉATION DES LIGNES NUMÉROTÉES RESPONSIVES (1, 2, 3...)
 ===================================================== */
 
 function createLineCard(item, index, container) {
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "word-card rounded-2xl p-5 text-left shadow-md flex items-center justify-between gap-4 cursor-pointer border border-white/60";
+    card.className = "word-card rounded-2xl p-4 md:p-5 text-left shadow-md flex items-center justify-between gap-3 md:gap-4 cursor-pointer border border-white/60";
 
     card.innerHTML = `
-        <div class="flex items-start gap-4">
-            <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center mt-0.5">
+        <div class="flex items-start gap-3 md:gap-4">
+            <span class="flex-shrink-0 bg-black text-white font-black text-xs md:text-sm rounded-xl w-7 h-7 md:w-8 md:h-8 flex items-center justify-center mt-0.5">
                 ${index + 1}
             </span>
             <div>
-                <div class="text-lg md:text-xl font-black text-gray-900 leading-snug">
+                <div class="text-base sm:text-lg md:text-xl font-black text-gray-900 leading-snug">
                     ${item.de}
                 </div>
-                <div class="text-sm font-semibold text-gray-600 mt-1">
+                <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">
                     ${item.fr}
                 </div>
             </div>
         </div>
 
-        <div class="flex-shrink-0 text-xs font-bold text-gray-700 bg-gray-100 px-3 py-2 rounded-xl flex items-center gap-1.5">
+        <div class="flex-shrink-0 text-xs font-bold text-gray-700 bg-gray-100 px-2.5 md:px-3 py-1.5 md:py-2 rounded-xl flex items-center gap-1.5">
             <span>🔊</span>
             <span class="hidden sm:inline">Anhören</span>
         </div>
