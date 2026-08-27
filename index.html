@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaryFi – Deutsch lernen</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         CANVAS – FOND ANIMÉ
+    ========================== -->
+    <canvas id="wordCanvas"></canvas>
+
+    <!-- =========================
+         ÉCRAN 1 – ACCUEIL
+    ========================== -->
+    <section id="homePage" class="page active">
+
+        <div class="top-logo">
+            <div class="logo-box">HF</div>
+
+            <div>
+                <div class="logo-name">
+                    HARY<span>FI</span>
+                </div>
+                <div class="logo-subtitle">
+                    DEUTSCH LERNEN
+                </div>
+            </div>
+        </div>
+
+        <div class="home-content">
+
+            <div class="welcome-badge">
+                🇩🇪 HARYFI
+            </div>
+
+            <h1>
+                Ndao Hianatra
+                <span>Allemand</span>
+            </h1>
+
+            <p class="home-text">
+                Lerne Deutsch mit HaryFi.
+            </p>
+
+            <button class="start-button" onclick="showLevels()">
+                BEGINNEN
+                <span>➜</span>
+            </button>
+
+        </div>
+
+        <div class="home-footer">
+            <div>
+                <strong>A1 – C2</strong>
+                <small>Niveaustufen</small>
+            </div>
+
+            <div>
+                <strong>50+</strong>
+                <small>Lektionen</small>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <small>Interaktiv</small>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ÉCRAN 2 – NIVEAU
+    ========================== -->
+    <section id="levelsPage" class="page">
+
+        <div class="screen-header">
+
+            <button class="back-button" onclick="showHome()">
+                ← Zurück
+            </button>
+
+            <div class="header-logo">
+                HARY<span>FI</span>
+            </div>
+
+            <div class="header-title">
+                WÄHLE DEIN NIVEAU
+            </div>
+
+        </div>
+
+
+        <div class="levels-container">
+
+            <button class="level-card a1" onclick="openA1()">
+                <span class="level-number">01</span>
+                <span class="level-name">A1</span>
+                <span class="level-description">
+                    Anfänger
+                </span>
+            </button>
+
+            <button class="level-card a2">
+                <span class="level-number">02</span>
+                <span class="level-name">A2</span>
+                <span class="level-description">
+                    Grundstufe
+                </span>
+            </button>
+
+            <button class="level-card b1">
+                <span class="level-number">03</span>
+                <span class="level-name">B1</span>
+                <span class="level-description">
+                    Mittelstufe
+                </span>
+            </button>
+
+            <button class="level-card b2">
+                <span class="level-number">04</span>
+                <span class="level-name">B2</span>
+                <span class="level-description">
+                    Gute Kenntnisse
+                </span>
+            </button>
+
+            <button class="level-card c1">
+                <span class="level-number">05</span>
+                <span class="level-name">C1</span>
+                <span class="level-description">
+                    Fortgeschritten
+                </span>
+            </button>
+
+            <button class="level-card c2">
+                <span class="level-number">06</span>
+                <span class="level-name">C2</span>
+                <span class="level-description">
+                    Meisterstufe
+                </span>
+            </button>
+
+        </div>
+
+        <div class="swipe-hint">
+            <span>←</span>
+            WÄHLE EIN NIVEAU
+            <span>→</span>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ÉCRAN 3 – A1 INHALT
+    ========================== -->
+    <section id="a1Page" class="page">
+
+        <div class="lesson-header">
+
+            <button class="back-button" onclick="showLevels()">
+                ← Zurück
+            </button>
+
+            <div class="header-logo">
+                HARY<span>FI</span>
+            </div>
+
+            <div class="a1-title">
+                🇩🇪 A1 – LEKTIONEN
+            </div>
+
+        </div>
+
+
+        <main class="lesson-content">
+
+            <div class="lesson-intro">
+
+                <div class="a1-badge">
+                    A1
+                </div>
+
+                <h2>
+                    A1 – Lektionen
+                </h2>
+
+                <p>
+                    Lerne die wichtigsten Grundlagen der deutschen Sprache.
+                </p>
+
+            </div>
+
+
+            <!-- LESSON LIST -->
+            <div id="lessonList" class="lesson-list"></div>
+
+        </main>
+
+    </section>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
