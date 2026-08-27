@@ -58,6 +58,10 @@
             }
         }
 
+        /* =========================================
+           GLASS
+        ========================================= */
+
         .glass {
             background: rgba(255, 255, 255, .22);
             backdrop-filter: blur(16px);
@@ -65,33 +69,35 @@
             border: 1px solid rgba(255, 255, 255, .45);
         }
 
-        .lesson-card {
-            background: rgba(255, 255, 255, .93);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
-        }
 
+        /* =========================================
+           BOUTONS PRINCIPAUX
+        ========================================= */
+
+        .main-button,
         .audio-button {
             transition:
                 transform .2s ease,
                 box-shadow .2s ease;
         }
 
+        .main-button:hover,
         .audio-button:hover {
             transform: scale(1.04);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .25);
         }
 
+        .main-button:active,
         .audio-button:active {
             transform: scale(.96);
         }
 
         .audio-button.playing {
-            animation: pulse .7s ease infinite;
+            animation: pulseButton .7s ease infinite;
         }
 
-        @keyframes pulse {
+        @keyframes pulseButton {
+
             0% {
                 transform: scale(1);
             }
@@ -103,119 +109,223 @@
             100% {
                 transform: scale(1);
             }
+
         }
 
+
+        /* =========================================
+           CARTE PRINCIPALE
+        ========================================= */
+
+        .content-card {
+            background: rgba(255, 255, 255, .90);
+            border-radius: 30px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, .15);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, .20);
+        }
+
+
+        /* =========================================
+           SECTIONS
+        ========================================= */
+
+        .hidden-section {
+            display: none;
+        }
+
+        .visible-section {
+            display: block;
+
+            animation:
+                appear .7s ease;
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =========================================
+           TITRE SECTION
+        ========================================= */
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+
+        /* =========================================
+           PHRASES
+        ========================================= */
+
+        .satz {
+            background: rgba(255, 255, 255, .88);
+
+            border-radius: 20px;
+
+            padding: 20px 22px;
+
+            margin-bottom: 14px;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            line-height: 1.6;
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, .08);
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .satz:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px rgba(0, 0, 0, .12);
+        }
+
+
+        /* =========================================
+           VOKABULAR
+        ========================================= */
+
+        .vocab-list {
+            display: grid;
+
+            gap: 10px;
+        }
+
+        .vocab-item {
+            background: rgba(255, 255, 255, .88);
+
+            border-radius: 14px;
+
+            padding: 15px 18px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 5px 14px rgba(0, 0, 0, .07);
+
+            transition:
+                transform .2s ease;
+        }
+
+        .vocab-item:hover {
+            transform: translateX(4px);
+        }
+
+        .vocab-german {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .vocab-french {
+            margin-top: 4px;
+
+            font-size: 15px;
+
+            opacity: .72;
+        }
+
+
+        /* =========================================
+           PETIT NUMÉRO
+        ========================================= */
+
         .number {
-            width: 55px;
-            height: 55px;
-            border-radius: 18px;
+            width: 52px;
+            height: 52px;
+
+            border-radius: 17px;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
             background: #000;
+
             color: #fff;
 
-            font-size: 20px;
+            font-size: 19px;
+
             font-weight: 900;
 
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
         }
 
-        /*
-         * BOUTON 4 :
-         * plus petit et rectangulaire
-         */
 
-        .vokabular-card {
-            padding: 20px 25px;
-            max-width: 850px;
-            width: 100%;
-            margin: 0 auto;
+        /* =========================================
+           BOUTON DE RETOUR
+        ========================================= */
+
+        .back-button {
+            transition:
+                transform .2s ease;
         }
 
-        .vokabular-card .number {
-            width: 45px;
-            height: 45px;
-            border-radius: 14px;
-            font-size: 17px;
-            margin: 0 0 12px;
+        .back-button:hover {
+            transform:
+                translateX(-5px);
         }
 
-        .vokabular-card h2 {
-            font-size: 26px;
-        }
 
-        .vokabular-card p {
-            margin-bottom: 18px;
-        }
+        /* =========================================
+           MOBILE
+        ========================================= */
 
-        .content-section {
-            display: none;
-            margin-top: 35px;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        .satz {
-            background: #f7f7f7;
-            border-radius: 18px;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-
-            font-size: 18px;
-            font-weight: 700;
-
-            box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
-        }
-
-        .vocab-item {
-            background: #f7f7f7;
-            border-radius: 18px;
-            padding: 18px 20px;
-            margin-bottom: 14px;
-
-            font-size: 18px;
-            font-weight: 700;
-
-            box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
-        }
-
-        .vocab-item strong {
-            font-weight: 900;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 25px;
-        }
-
-        @media (max-width: 600px) {
-
-            .lesson-card {
-                padding: 24px 18px;
-                border-radius: 24px;
-            }
-
-            .vokabular-card {
-                padding: 18px;
-            }
-
-            .satz,
-            .vocab-item {
-                font-size: 16px;
-                padding: 16px;
-            }
+        @media (max-width: 640px) {
 
             .section-title {
-                font-size: 27px;
+                font-size: 30px;
+            }
+
+            .satz {
+                font-size: 16px;
+                padding: 17px;
             }
 
         }
+
     </style>
 </head>
 
@@ -229,16 +339,43 @@
 
 <header class="px-5 py-5">
 
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <div
+        class="
+            max-w-7xl
+            mx-auto
+            flex
+            items-center
+            justify-between
+            gap-4
+        "
+    >
 
         <a
             href="lektion2.html"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg"
+            class="
+                glass
+                rounded-2xl
+                px-5
+                py-3
+                font-black
+                text-lg
+                back-button
+            "
         >
             ← Lektion 2
         </a>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+
+        <div
+            class="
+                glass
+                rounded-full
+                px-5
+                py-2
+                font-bold
+                text-sm
+            "
+        >
             🇩🇪 Deutschkurs
         </div>
 
@@ -252,16 +389,30 @@
      MAIN
 ===================================================== -->
 
-<main class="max-w-6xl mx-auto px-5 pb-20">
+<main
+    class="
+        max-w-6xl
+        mx-auto
+        px-5
+        pb-20
+    "
+>
 
 
-    <!-- =================================================
-         TITRE
-    ================================================== -->
+<!-- =====================================================
+     TITRE
+===================================================== -->
 
-    <section class="text-center pt-8 pb-10">
+<section
+    class="
+        text-center
+        pt-8
+        pb-10
+    "
+>
 
-        <div class="
+    <div
+        class="
             inline-block
             glass
             rounded-full
@@ -272,393 +423,543 @@
             font-black
             uppercase
             tracking-widest
-        ">
-            Lektion 2 · Seite 2
-        </div>
+        "
+    >
+        Lektion 2 · Seite 2
+    </div>
 
 
-        <h1 class="
+    <h1
+        class="
             text-5xl
             md:text-7xl
             font-black
             tracking-tight
             mb-5
-        ">
-            Sich vorstellen
-        </h1>
+        "
+    >
+        Sich vorstellen
+    </h1>
 
 
-        <p class="
+    <p
+        class="
             text-lg
             md:text-xl
             font-semibold
             max-w-3xl
             mx-auto
-        ">
-            Formell und informell vorstellen.
-        </p>
+        "
+    >
+        Formell und informell vorstellen.
+    </p>
 
 
-        <div
-            id="status"
-            class="mt-5 font-black opacity-80"
-        >
-            Wähle einen Bereich.
-        </div>
+    <!-- =========================================
+         LEKTION STARTEN
+    ========================================== -->
 
-    </section>
+    <button
+        id="startButton"
+        type="button"
+        class="
+            main-button
+            mt-8
+            bg-black
+            text-white
+            px-10
+            py-5
+            rounded-3xl
+            font-black
+            text-xl
+            shadow-2xl
+        "
+    >
+        ▶️ Lektion starten
+    </button>
+
+
+    <div
+        id="status"
+        class="mt-5 font-black opacity-80"
+    >
+        Klicke auf „Lektion starten“.
+    </div>
+
+</section>
 
 
 
-    <!-- =================================================
-         4 BOUTONS
+<!-- =====================================================
+     4 BOUTONS
 ===================================================== -->
 
-    <section class="
+<section
+    id="buttonSection"
+    class="
         grid
         grid-cols-1
-        md:grid-cols-2
-        gap-7
-    ">
+        sm:grid-cols-2
+        gap-6
+        mb-12
+    "
+>
 
 
-        <!-- =============================================
-             BOUTON 1
-        ============================================== -->
+    <!-- =========================================
+         BOUTON 1
+    ========================================== -->
 
-        <div class="lesson-card text-center">
+    <div class="glass rounded-[30px] p-6 text-center">
 
-            <div class="number">
-                1
-            </div>
-
-            <h2 class="text-3xl font-black mb-4">
-                Lektion starten
-            </h2>
-
-            <p class="font-semibold opacity-75 mb-6">
-                Höre die allgemeine Erklärung der Lektion.
-            </p>
-
-            <button
-                id="audioButton1"
-                type="button"
-                class="
-                    audio-button
-                    bg-black
-                    text-white
-                    px-8
-                    py-4
-                    rounded-2xl
-                    font-black
-                    text-lg
-                    shadow-xl
-                "
-            >
-                ▶️ Lektion starten
-            </button>
-
+        <div class="number">
+            1
         </div>
 
+        <h2 class="text-2xl font-black mb-3">
+            Lektion starten
+        </h2>
+
+        <p class="font-semibold opacity-70 mb-5">
+            Allgemeine Erklärung der Lektion.
+        </p>
+
+        <button
+            id="audioButton1"
+            type="button"
+            class="
+                audio-button
+                bg-black
+                text-white
+                px-7
+                py-3
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ▶️ Lektion starten
+        </button>
+
+    </div>
 
 
-        <!-- =============================================
-             BOUTON 2
-        ============================================== -->
 
-        <div class="lesson-card text-center">
+    <!-- =========================================
+         BOUTON 2
+    ========================================== -->
 
-            <div class="number">
-                2
+    <div class="glass rounded-[30px] p-6 text-center">
+
+        <div class="number">
+            2
+        </div>
+
+        <h2 class="text-2xl font-black mb-3">
+            Formell
+        </h2>
+
+        <p class="font-semibold opacity-70 mb-5">
+            Formelle Sätze zum Vorstellen.
+        </p>
+
+        <button
+            id="audioButton2"
+            type="button"
+            class="
+                audio-button
+                bg-black
+                text-white
+                px-7
+                py-3
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ▶️ Formell
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================================
+         BOUTON 3
+    ========================================== -->
+
+    <div class="glass rounded-[30px] p-6 text-center">
+
+        <div class="number">
+            3
+        </div>
+
+        <h2 class="text-2xl font-black mb-3">
+            Informell
+        </h2>
+
+        <p class="font-semibold opacity-70 mb-5">
+            Informelle Sätze zum Vorstellen.
+        </p>
+
+        <button
+            id="audioButton3"
+            type="button"
+            class="
+                audio-button
+                bg-black
+                text-white
+                px-7
+                py-3
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ▶️ Informell
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================================
+         BOUTON 4
+    ========================================== -->
+
+    <div
+        class="
+            glass
+            rounded-[24px]
+            p-5
+            text-center
+            sm:col-span-2
+            sm:max-w-md
+            sm:mx-auto
+            w-full
+        "
+    >
+
+        <div class="number">
+            4
+        </div>
+
+        <h2 class="text-2xl font-black mb-3">
+            Vokabular
+        </h2>
+
+        <p class="font-semibold opacity-70 mb-5">
+            Wichtige Wörter und Ausdrücke.
+        </p>
+
+        <button
+            id="audioButton4"
+            type="button"
+            class="
+                audio-button
+                bg-black
+                text-white
+                px-7
+                py-3
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ▶️ Vokabular anhören
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FORMELL
+===================================================== -->
+
+<section
+    id="formellSection"
+    class="
+        hidden-section
+        mt-12
+    "
+>
+
+    <div
+        class="
+            glass
+            rounded-[32px]
+            p-6
+            md:p-10
+        "
+    >
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                🤝
             </div>
 
-            <h2 class="text-3xl font-black mb-4">
+            <h2 class="section-title">
                 Formell
             </h2>
 
-            <p class="font-semibold opacity-75 mb-6">
+            <p class="font-semibold opacity-70 mt-3">
                 Formelle Sätze zum Vorstellen.
             </p>
 
-            <button
-                id="audioButton2"
-                type="button"
-                class="
-                    audio-button
-                    bg-black
-                    text-white
-                    px-8
-                    py-4
-                    rounded-2xl
-                    font-black
-                    text-lg
-                    shadow-xl
-                "
-            >
-                ▶️ Formell
-            </button>
-
         </div>
 
 
+        <!-- =========================================
+             PHRASE 1
+        ========================================== -->
 
-        <!-- =============================================
-             BOUTON 3
-        ============================================== -->
+        <div class="satz">
+            Guten Morgen, ich heiße Hary.
+        </div>
 
-        <div class="lesson-card text-center">
 
-            <div class="number">
-                3
+        <!-- =========================================
+             PHRASE 2
+        ========================================== -->
+
+        <div class="satz">
+            Guten Tag, mein Name ist Fitiavana.
+            Ich komme aus Madagaskar.
+        </div>
+
+
+        <!-- =========================================
+             PHRASE 3
+        ========================================== -->
+
+        <div class="satz">
+            Guten Abend, ich heiße Ndimby.
+            Ich komme aus Madagaskar, aus Fianarantsoa.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMELL
+===================================================== -->
+
+<section
+    id="informellSection"
+    class="
+        hidden-section
+        mt-12
+    "
+>
+
+    <div
+        class="
+            glass
+            rounded-[32px]
+            p-6
+            md:p-10
+        "
+    >
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                👋
             </div>
 
-            <h2 class="text-3xl font-black mb-4">
+            <h2 class="section-title">
                 Informell
             </h2>
 
-            <p class="font-semibold opacity-75 mb-6">
+            <p class="font-semibold opacity-70 mt-3">
                 Informelle Sätze zum Vorstellen.
             </p>
 
-            <button
-                id="audioButton3"
-                type="button"
-                class="
-                    audio-button
-                    bg-black
-                    text-white
-                    px-8
-                    py-4
-                    rounded-2xl
-                    font-black
-                    text-lg
-                    shadow-xl
-                "
-            >
-                ▶️ Informell
-            </button>
-
         </div>
 
 
+        <!-- =========================================
+             PHRASE 1
+        ========================================== -->
 
-        <!-- =============================================
-             BOUTON 4 – VOKABULAR
-             PETIT + RECTANGLE
-        ============================================== -->
+        <div class="satz">
+            Servus, ich bin Anna.
+            Ich komme aus Deutschland, aus Berlin.
+        </div>
 
-        <div class="
-            lesson-card
-            vokabular-card
-            text-center
-        ">
 
-            <div class="number">
-                4
+        <!-- =========================================
+             PHRASE 2
+        ========================================== -->
+
+        <div class="satz">
+            Moin, ich bin Max.
+            Ich komme aus Deutschland, aus Berlin.
+        </div>
+
+
+        <!-- =========================================
+             PHRASE 3
+        ========================================== -->
+
+        <div class="satz">
+            Hallo, ich bin Marie.
+            Ich komme aus Deutschland, aus Berlin.
+            Wie geht es dir?
+        </div>
+
+
+        <!-- =========================================
+             PHRASE 4
+        ========================================== -->
+
+        <div class="satz">
+            Ich bin Olivia.
+            Ich komme aus Madagaskar, aus Fandriana.
+            Mir geht es gut. Und dir?
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOKABULAR
+===================================================== -->
+
+<section
+    id="vokabularSection"
+    class="
+        hidden-section
+        mt-12
+    "
+>
+
+    <div
+        class="
+            glass
+            rounded-[32px]
+            p-6
+            md:p-10
+        "
+    >
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                📚
             </div>
 
-            <h2 class="text-2xl font-black mb-3">
+            <h2 class="section-title">
                 Vokabular
             </h2>
 
-            <p class="font-semibold opacity-75 mb-4">
+            <p class="font-semibold opacity-70 mt-3">
                 Wichtige Wörter und Ausdrücke.
             </p>
 
-            <button
-                id="audioButton4"
-                type="button"
-                class="
-                    audio-button
-                    bg-black
-                    text-white
-                    px-7
-                    py-3
-                    rounded-2xl
-                    font-black
-                    text-base
-                    shadow-xl
-                "
-            >
-                ▶️ Vokabular anhören
-            </button>
-
         </div>
 
 
-    </section>
+        <div class="vocab-list">
 
 
-
-    <!-- =====================================================
-         FORMELL – SÄTZE
-    ====================================================== -->
-
-    <section
-        id="formellSection"
-        class="content-section"
-    >
-
-        <div class="lesson-card">
-
-            <h2 class="section-title">
-                🧑‍💼 Formell
-            </h2>
-
-
-            <div class="satz">
-                Guten Morgen, ich heiße Hary.
-            </div>
-
-
-            <div class="satz">
-                Guten Tag, mein Name ist Fitiavana.
-                Ich komme aus Madagaskar.
-            </div>
-
-
-            <div class="satz">
-                Guten Abend, ich heiße Ndimby.
-                Ich komme aus Madagaskar, aus Fianarantsoa.
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         INFORMELL – SÄTZE
-    ====================================================== -->
-
-    <section
-        id="informellSection"
-        class="content-section"
-    >
-
-        <div class="lesson-card">
-
-            <h2 class="section-title">
-                👋 Informell
-            </h2>
-
-
-            <div class="satz">
-                Servus, ich bin Anna.
-                Ich komme aus Deutschland, aus Berlin.
-            </div>
-
-
-            <div class="satz">
-                Moin, ich bin Max.
-                Ich komme aus Deutschland, aus Berlin.
-            </div>
-
-
-            <div class="satz">
-                Hallo, ich bin Marie.
-                Ich komme aus Deutschland, aus Berlin.
-                Wie geht es dir?
-            </div>
-
-
-            <div class="satz">
-                Ich bin Olivia.
-                Ich komme aus Madagaskar, aus Fandriana.
-                Mir geht es gut. Und dir?
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         VOKABULAR
-    ====================================================== -->
-
-    <section
-        id="vokabularSection"
-        class="content-section"
-    >
-
-        <div class="lesson-card">
-
-            <h2 class="section-title">
-                📚 Vokabular
-            </h2>
-
+            <!-- =====================================
+                 VOCAB 1
+            ====================================== -->
 
             <div class="vocab-item">
-                <strong>Ich heiße …</strong>
-                = Je suis …
+
+                <div class="vocab-german">
+                    Ich heiße …
+                </div>
+
+                <div class="vocab-french">
+                    Je suis …
+                </div>
+
             </div>
 
+
+            <!-- =====================================
+                 VOCAB 2
+            ====================================== -->
 
             <div class="vocab-item">
-                <strong>Mein Name ist …</strong>
-                = Ny anarako dia …
+
+                <div class="vocab-german">
+                    Mein Name ist …
+                </div>
+
+                <div class="vocab-french">
+                    Ny anarako dia …
+                </div>
+
             </div>
 
+
+            <!-- =====================================
+                 VOCAB 3
+            ====================================== -->
 
             <div class="vocab-item">
-                <strong>Ich komme aus …</strong>
-                = Je viens de …
+
+                <div class="vocab-german">
+                    Ich komme aus …
+                </div>
+
+                <div class="vocab-french">
+                    Je viens de …
+                </div>
+
             </div>
+
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
 
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-    <section class="
+<section
+    class="
         flex
-        flex-col
-        sm:flex-row
         justify-center
-        items-center
-        gap-4
         mt-14
-    ">
+    "
+>
 
-        <a
-            href="lektion2_page1.html"
-            class="
-                bg-black
-                text-white
-                px-8
-                py-4
-                rounded-2xl
-                font-black
-                shadow-xl
-            "
-        >
-            ← Seite 1
-        </a>
+    <a
+        href="lektion2.html"
+        class="
+            bg-black
+            text-white
+            px-8
+            py-4
+            rounded-2xl
+            font-black
+            shadow-xl
+        "
+    >
+        ← Lektion 2
+    </a>
 
-
-        <a
-            href="lektion2.html"
-            class="
-                bg-white
-                px-8
-                py-4
-                rounded-2xl
-                font-black
-                shadow-xl
-            "
-        >
-            Lektion 2
-        </a>
-
-    </section>
+</section>
 
 
 </main>
@@ -686,17 +987,21 @@ const AUDIO_BASE =
 
 const audioFiles = {
 
-    button1:
-        AUDIO_BASE + "l2_page2_lektion_starten.mp3",
+    start:
+        AUDIO_BASE +
+        "l2_page2_lektion_starten.mp3",
 
-    button2:
-        AUDIO_BASE + "l2_page2_formell.mp3",
+    formell:
+        AUDIO_BASE +
+        "l2_page2_formell.mp3",
 
-    button3:
-        AUDIO_BASE + "l2_page2_informell.mp3",
+    informell:
+        AUDIO_BASE +
+        "l2_page2_informell.mp3",
 
-    button4:
-        AUDIO_BASE + "l2_page2_vokabular.mp3"
+    vokabular:
+        AUDIO_BASE +
+        "l2_page2_vokabular.mp3"
 
 };
 
@@ -706,25 +1011,40 @@ const audioFiles = {
    ELEMENTS
 ===================================================== */
 
+const startButton =
+    document.getElementById(
+        "startButton"
+    );
+
+
+const audioButton1 =
+    document.getElementById(
+        "audioButton1"
+    );
+
+
+const audioButton2 =
+    document.getElementById(
+        "audioButton2"
+    );
+
+
+const audioButton3 =
+    document.getElementById(
+        "audioButton3"
+    );
+
+
+const audioButton4 =
+    document.getElementById(
+        "audioButton4"
+    );
+
+
 const status =
-    document.getElementById("status");
-
-
-const buttons = {
-
-    button1:
-        document.getElementById("audioButton1"),
-
-    button2:
-        document.getElementById("audioButton2"),
-
-    button3:
-        document.getElementById("audioButton3"),
-
-    button4:
-        document.getElementById("audioButton4")
-
-};
+    document.getElementById(
+        "status"
+    );
 
 
 const formellSection =
@@ -780,7 +1100,13 @@ function stopCurrentAudio() {
 
 function removePlaying() {
 
-    Object.values(buttons).forEach(
+    [
+        audioButton1,
+        audioButton2,
+        audioButton3,
+        audioButton4,
+        startButton
+    ].forEach(
         button => {
 
             if (button) {
@@ -805,15 +1131,47 @@ function removePlaying() {
 function hideSections() {
 
     formellSection.classList.remove(
-        "active"
+        "visible-section"
     );
+
+    formellSection.classList.add(
+        "hidden-section"
+    );
+
 
     informellSection.classList.remove(
-        "active"
+        "visible-section"
     );
 
+    informellSection.classList.add(
+        "hidden-section"
+    );
+
+
     vokabularSection.classList.remove(
-        "active"
+        "visible-section"
+    );
+
+    vokabularSection.classList.add(
+        "hidden-section"
+    );
+
+}
+
+
+
+/* =====================================================
+   AFFICHER UNE SECTION
+===================================================== */
+
+function showSection(section) {
+
+    section.classList.remove(
+        "hidden-section"
+    );
+
+    section.classList.add(
+        "visible-section"
     );
 
 }
@@ -827,7 +1185,7 @@ function hideSections() {
 function playAudio(
     url,
     message,
-    button
+    button = null
 ) {
 
     stopCurrentAudio();
@@ -845,6 +1203,19 @@ function playAudio(
     }
 
 
+    if (button) {
+
+        button.classList.add(
+            "playing"
+        );
+
+    }
+
+
+    status.textContent =
+        "🔊 " + message;
+
+
     const audio =
         new Audio(url);
 
@@ -853,27 +1224,26 @@ function playAudio(
         audio;
 
 
-    button.classList.add(
-        "playing"
-    );
-
-
-    status.textContent =
-        "🔊 " + message;
+    audio.volume =
+        1;
 
 
     audio.addEventListener(
         "ended",
         () => {
 
-            button.classList.remove(
-                "playing"
-            );
+            if (button) {
+
+                button.classList.remove(
+                    "playing"
+                );
+
+            }
 
             currentAudio = null;
 
             status.textContent =
-                "✅ Audio terminé.";
+                "✅ Audio beendet.";
 
         },
         {
@@ -886,17 +1256,21 @@ function playAudio(
         "error",
         () => {
 
-            button.classList.remove(
-                "playing"
-            );
+            if (button) {
+
+                button.classList.remove(
+                    "playing"
+                );
+
+            }
 
             currentAudio = null;
 
             status.textContent =
-                "⚠️ Audio pas encore disponible.";
+                "⚠️ Audiodatei noch nicht vorhanden.";
 
             console.log(
-                "Audio introuvable :",
+                "Audio nicht gefunden:",
                 url
             );
 
@@ -911,19 +1285,23 @@ function playAudio(
         .catch(
             error => {
 
-                button.classList.remove(
-                    "playing"
-                );
+                if (button) {
+
+                    button.classList.remove(
+                        "playing"
+                    );
+
+                }
 
                 currentAudio = null;
 
                 console.log(
-                    "Erreur audio :",
+                    "Audio konnte nicht abgespielt werden:",
                     error
                 );
 
                 status.textContent =
-                    "⚠️ Impossible de lire l'audio.";
+                    "⚠️ Audio konnte nicht abgespielt werden.";
 
             }
         );
@@ -936,16 +1314,33 @@ function playAudio(
    BOUTON 1 – LEKTION STARTEN
 ===================================================== */
 
-buttons.button1.addEventListener(
+startButton.addEventListener(
     "click",
     () => {
 
         hideSections();
 
         playAudio(
-            audioFiles.button1,
-            "Lektion wird gestartet",
-            buttons.button1
+            audioFiles.start,
+            "Lektion 2 – Erklärung",
+            startButton
+        );
+
+    }
+);
+
+
+
+audioButton1.addEventListener(
+    "click",
+    () => {
+
+        hideSections();
+
+        playAudio(
+            audioFiles.start,
+            "Lektion 2 – Erklärung",
+            audioButton1
         );
 
     }
@@ -957,20 +1352,32 @@ buttons.button1.addEventListener(
    BOUTON 2 – FORMELL
 ===================================================== */
 
-buttons.button2.addEventListener(
+audioButton2.addEventListener(
     "click",
     () => {
 
         hideSections();
 
-        formellSection.classList.add(
-            "active"
+        showSection(
+            formellSection
         );
 
         playAudio(
-            audioFiles.button2,
-            "Formell",
-            buttons.button2
+            audioFiles.formell,
+            "Erklärung Formell",
+            audioButton2
+        );
+
+        setTimeout(
+            () => {
+
+                formellSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            },
+            100
         );
 
     }
@@ -982,20 +1389,32 @@ buttons.button2.addEventListener(
    BOUTON 3 – INFORMELL
 ===================================================== */
 
-buttons.button3.addEventListener(
+audioButton3.addEventListener(
     "click",
     () => {
 
         hideSections();
 
-        informellSection.classList.add(
-            "active"
+        showSection(
+            informellSection
         );
 
         playAudio(
-            audioFiles.button3,
-            "Informell",
-            buttons.button3
+            audioFiles.informell,
+            "Erklärung Informell",
+            audioButton3
+        );
+
+        setTimeout(
+            () => {
+
+                informellSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            },
+            100
         );
 
     }
@@ -1007,20 +1426,32 @@ buttons.button3.addEventListener(
    BOUTON 4 – VOKABULAR
 ===================================================== */
 
-buttons.button4.addEventListener(
+audioButton4.addEventListener(
     "click",
     () => {
 
         hideSections();
 
-        vokabularSection.classList.add(
-            "active"
+        showSection(
+            vokabularSection
         );
 
         playAudio(
-            audioFiles.button4,
+            audioFiles.vokabular,
             "Vokabular",
-            buttons.button4
+            audioButton4
+        );
+
+        setTimeout(
+            () => {
+
+                vokabularSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            },
+            100
         );
 
     }
