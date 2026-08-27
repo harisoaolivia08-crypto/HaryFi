@@ -1,0 +1,949 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap');
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    background: #ff8a00;
+    color: #171717;
+}
+
+
+/* =========================
+   CANVAS
+========================= */
+
+#wordCanvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    position: relative;
+
+    min-height: 100vh;
+    width: 100%;
+
+    z-index: 2;
+
+    display: none;
+
+    overflow-x: hidden;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+
+    animation: pageIn 0.7s ease;
+}
+
+@keyframes pageIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.page::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            120deg,
+            #ff3d00,
+            #ff7a00,
+            #ffc400,
+            #ffea61,
+            #ff7a00,
+            #ff3d00
+        );
+
+    background-size: 500% 500%;
+
+    animation: backgroundMove 15s ease infinite;
+}
+
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================
+   SCREEN 1
+========================= */
+
+.top-logo {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 28px 35px;
+}
+
+.logo-box {
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 16px;
+
+    background: #171717;
+
+    color: #ffc400;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+}
+
+.logo-name {
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+
+    color: #111;
+}
+
+.logo-name span {
+    color: white;
+}
+
+.logo-subtitle {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #542900;
+}
+
+
+.home-content {
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.welcome-badge {
+
+    display: inline-flex;
+
+    padding: 12px 22px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.35);
+
+    border: 1px solid rgba(255,255,255,.55);
+
+    backdrop-filter: blur(12px);
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 25px;
+
+    animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+.home-content h1 {
+
+    font-size: clamp(45px, 9vw, 105px);
+
+    line-height: .95;
+
+    font-weight: 900;
+
+    letter-spacing: -5px;
+
+    color: #111;
+
+    max-width: 1000px;
+}
+
+.home-content h1 span {
+
+    display: block;
+
+    color: white;
+
+    text-shadow:
+        0 8px 25px rgba(0,0,0,.15);
+}
+
+
+.home-text {
+
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #542900;
+}
+
+
+.start-button {
+
+    margin-top: 40px;
+
+    border: none;
+
+    cursor: pointer;
+
+    padding: 19px 32px;
+
+    border-radius: 18px;
+
+    background: #111;
+
+    color: #ffc400;
+
+    font-weight: 900;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    display: flex;
+
+    gap: 25px;
+
+    align-items: center;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.3);
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+.start-button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.4);
+}
+
+.start-button span {
+
+    font-size: 25px;
+
+    transition: transform .3s;
+}
+
+.start-button:hover span {
+
+    transform: translateX(7px);
+}
+
+
+.home-footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 80px;
+
+    padding: 25px;
+
+    background: rgba(255,255,255,.18);
+
+    backdrop-filter: blur(15px);
+
+    border-top: 1px solid rgba(255,255,255,.3);
+
+    text-align: center;
+}
+
+.home-footer div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.home-footer strong {
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+.home-footer small {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: #542900;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.screen-header,
+.lesson-header {
+
+    position: relative;
+
+    padding: 25px 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 5;
+}
+
+.header-logo {
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    color: #111;
+}
+
+.header-logo span {
+    color: white;
+}
+
+.header-title {
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.back-button {
+
+    border: 1px solid rgba(255,255,255,.5);
+
+    background: rgba(255,255,255,.25);
+
+    backdrop-filter: blur(10px);
+
+    padding: 11px 18px;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    transition: .3s;
+}
+
+.back-button:hover {
+
+    background: white;
+
+    transform: translateX(-3px);
+}
+
+
+/* =========================
+   SCREEN 2
+========================= */
+
+.levels-container {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 50px 35px;
+
+    flex-wrap: wrap;
+
+    perspective: 1200px;
+}
+
+
+.level-card {
+
+    position: relative;
+
+    width: 180px;
+
+    height: 270px;
+
+    border: none;
+
+    border-radius: 35px;
+
+    cursor: pointer;
+
+    color: white;
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.22);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s;
+
+    animation: cardFloat 4s ease-in-out infinite;
+}
+
+.level-card:nth-child(2) {
+    animation-delay: -.5s;
+}
+
+.level-card:nth-child(3) {
+    animation-delay: -1s;
+}
+
+.level-card:nth-child(4) {
+    animation-delay: -1.5s;
+}
+
+.level-card:nth-child(5) {
+    animation-delay: -2s;
+}
+
+.level-card:nth-child(6) {
+    animation-delay: -2.5s;
+}
+
+@keyframes cardFloat {
+
+    0%,100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotateY(3deg);
+    }
+}
+
+.level-card:hover {
+
+    transform:
+        translateY(-20px)
+        rotateY(-12deg)
+        rotateX(5deg)
+        scale(1.06);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,.35);
+}
+
+.level-card:active {
+
+    transform:
+        scale(.9)
+        rotateY(20deg);
+}
+
+
+/* LEVEL COLORS */
+
+.level-card.a1 {
+    background: linear-gradient(145deg,#ff3d00,#ff7a00);
+}
+
+.level-card.a2 {
+    background: linear-gradient(145deg,#ff7a00,#ffc400);
+}
+
+.level-card.b1 {
+    background: linear-gradient(145deg,#ffc400,#ffe066);
+    color: #111;
+}
+
+.level-card.b2 {
+    background: linear-gradient(145deg,#ffe066,#ff9d00);
+}
+
+.level-card.c1 {
+    background: linear-gradient(145deg,#ff4d00,#d81b60);
+}
+
+.level-card.c2 {
+    background: linear-gradient(145deg,#d81b60,#6a1b9a);
+}
+
+
+.level-number {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 25px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    opacity: .7;
+}
+
+.level-name {
+
+    font-size: 65px;
+
+    font-weight: 900;
+
+    letter-spacing: -4px;
+}
+
+.level-description {
+
+    margin-top: 10px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: .85;
+}
+
+
+.swipe-hint {
+
+    text-align: center;
+
+    padding: 20px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.swipe-hint span {
+
+    margin: 0 15px;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   SCREEN 3
+========================= */
+
+.lesson-header {
+
+    position: sticky;
+
+    top: 0;
+
+    background: rgba(255,255,255,.12);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.a1-title {
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+
+.lesson-content {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 45px 25px 80px;
+}
+
+.lesson-intro {
+
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.a1-badge {
+
+    display: inline-flex;
+
+    padding: 10px 20px;
+
+    border-radius: 50px;
+
+    background: #111;
+
+    color: #ffc400;
+
+    font-weight: 900;
+
+    margin-bottom: 18px;
+}
+
+.lesson-intro h2 {
+
+    font-size: clamp(35px,6vw,65px);
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+
+    color: #111;
+}
+
+.lesson-intro p {
+
+    margin-top: 12px;
+
+    font-weight: 700;
+
+    color: #542900;
+}
+
+
+/* =========================
+   LESSON CARDS
+========================= */
+
+.lesson-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap: 15px;
+}
+
+
+.lesson-card {
+
+    position: relative;
+
+    min-height: 95px;
+
+    padding: 20px 22px;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255,255,255,.55);
+
+    background: rgba(255,255,255,.27);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.08);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .35s,
+        background .35s,
+        box-shadow .35s;
+
+    animation: lessonAppear .6s ease both;
+}
+
+@keyframes lessonAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lesson-card:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.015);
+
+    background: rgba(255,255,255,.45);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.15);
+}
+
+.lesson-number {
+
+    min-width: 48px;
+
+    height: 48px;
+
+    border-radius: 15px;
+
+    background: #111;
+
+    color: #ffc400;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.lesson-name {
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    color: #171717;
+
+    line-height: 1.25;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .levels-container {
+
+        gap: 15px;
+
+        padding-top: 25px;
+    }
+
+    .level-card {
+
+        width: 145px;
+
+        height: 210px;
+
+        border-radius: 28px;
+    }
+
+    .level-name {
+
+        font-size: 52px;
+    }
+
+    .home-footer {
+
+        gap: 25px;
+    }
+
+    .screen-header,
+    .lesson-header {
+
+        padding: 18px;
+    }
+
+    .header-title {
+
+        display: none;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .top-logo {
+
+        padding: 20px;
+    }
+
+    .home-content {
+
+        padding: 20px;
+    }
+
+    .home-content h1 {
+
+        letter-spacing: -3px;
+    }
+
+    .home-footer {
+
+        gap: 18px;
+    }
+
+    .home-footer strong {
+
+        font-size: 19px;
+    }
+
+    .level-card {
+
+        width: 135px;
+
+        height: 190px;
+    }
+
+    .level-name {
+
+        font-size: 46px;
+    }
+
+    .lesson-list {
+
+        grid-template-columns: 1fr;
+    }
+}
