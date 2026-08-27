@@ -14,9 +14,10 @@
     <canvas id="wordCanvas"></canvas>
 
 
-    <!-- =========================
+    <!-- =====================================================
          ÉCRAN 1 – ACCUEIL
-    ========================== -->
+    ====================================================== -->
+
     <section id="homePage" class="page active">
 
         <div class="top-logo">
@@ -116,9 +117,9 @@
 
 
 
-    <!-- =========================
-         ÉCRAN 2 – NIVEAUX
-    ========================== -->
+    <!-- =====================================================
+         ÉCRAN 2 – NIVEAUX A1 – C2
+    ====================================================== -->
 
     <section id="levelsPage" class="page">
 
@@ -149,7 +150,7 @@
         <div class="levels-container">
 
 
-            <!-- A1 -->
+            <!-- ================= A1 ================= -->
 
             <button
                 class="level-card a1"
@@ -171,7 +172,7 @@
 
 
 
-            <!-- A2 -->
+            <!-- ================= A2 ================= -->
 
             <button
                 class="level-card a2">
@@ -192,7 +193,7 @@
 
 
 
-            <!-- B1 -->
+            <!-- ================= B1 ================= -->
 
             <button
                 class="level-card b1">
@@ -213,7 +214,7 @@
 
 
 
-            <!-- B2 -->
+            <!-- ================= B2 ================= -->
 
             <button
                 class="level-card b2">
@@ -234,7 +235,7 @@
 
 
 
-            <!-- C1 -->
+            <!-- ================= C1 ================= -->
 
             <button
                 class="level-card c1">
@@ -255,7 +256,7 @@
 
 
 
-            <!-- C2 -->
+            <!-- ================= C2 ================= -->
 
             <button
                 class="level-card c2">
@@ -297,12 +298,11 @@
 
 
 
-    <!-- =========================
+    <!-- =====================================================
          ÉCRAN 3 – A1 LEKTIONEN
-    ========================== -->
+    ====================================================== -->
 
     <section id="a1Page" class="page">
-
 
         <div class="lesson-header">
 
@@ -335,7 +335,6 @@
 
             <div class="lesson-intro">
 
-
                 <div class="a1-badge">
                     A1
                 </div>
@@ -350,19 +349,20 @@
                     Lerne die wichtigsten Grundlagen der deutschen Sprache.
                 </p>
 
-
             </div>
 
 
 
-            <!--
-                LESSON LIST
-                Die 50 Lektionen werden von app.js eingefügt.
-            -->
+            <!-- =================================================
+                 LESSON LIST
+
+                 app.js erstellt hier die 50 Lektionen.
+            ================================================== -->
 
             <div
                 id="lessonList"
                 class="lesson-list">
+
             </div>
 
 
@@ -372,182 +372,31 @@
 
 
 
-    <!-- =========================
-         ÉCRAN 4 – ANCIEN LEKTION 1
-         
-         Gardé pour compatibilité avec app.js.
-         Le vrai contenu est maintenant
-         dans lektion1.html.
-    ========================== -->
-
-    <section
-        id="alphabetPage"
-        class="page">
-
-
-        <div class="lesson-header">
-
-
-            <button
-                class="back-button"
-                onclick="openA1()">
-
-                ← Zurück
-
-            </button>
-
-
-            <div class="header-logo">
-                HARY<span>FI</span>
-            </div>
-
-
-            <div class="a1-title">
-                LEKTION 1
-            </div>
-
-
-        </div>
-
-
-
-        <main class="alphabet-content">
-
-
-            <div class="lesson-intro">
-
-
-                <div class="a1-badge">
-                    LEKTION 1
-                </div>
-
-
-                <h2>
-
-                    <a
-                        href="lektion1.html"
-                        style="
-                            text-decoration:none;
-                            color:inherit;
-                            cursor:pointer;
-                        ">
-
-                        1. Alphabet & Aussprache
-
-                    </a>
-
-                </h2>
-
-
-                <p>
-                    Klicke auf einen Buchstaben und höre die Aussprache.
-                </p>
-
-
-            </div>
-
-
-
-            <!--
-                Si quelqu'un arrive encore sur
-                cet ancien écran, le bouton ci-dessous
-                permet d'ouvrir la nouvelle page.
-            -->
-
-            <div style="
-                display:flex;
-                justify-content:center;
-                margin:30px 0;
-            ">
-
-                <a
-                    href="lektion1.html"
-                    class="start-button"
-                    style="
-                        text-decoration:none;
-                        display:inline-flex;
-                        align-items:center;
-                        gap:10px;
-                    ">
-
-                    LEKTION 1 ÖFFNEN
-
-                    <span>
-                        ➜
-                    </span>
-
-                </a>
-
-            </div>
-
-
-
-            <!-- ALPHABET ANCIEN ÉCRAN -->
-
-            <div
-                id="alphabetGrid"
-                class="alphabet-grid">
-            </div>
-
-
-
-            <!-- VIDEO -->
-
-            <div class="video-section">
-
-
-                <div class="video-title">
-                    🎬 Das deutsche Alphabet
-                </div>
-
-
-                <div class="video-container">
-
-
-                    <iframe
-                        src="https://www.youtube.com/embed/wSmp39PZg9g"
-                        title="Deutsches Alphabet"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-
-
-                </div>
-
-
-            </div>
-
-
-        </main>
-
-
-    </section>
-
-
-
-    <!-- =========================
-         JAVASCRIPT PRINCIPAL
-    ========================== -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="app.js"></script>
 
 
 
-    <!-- =========================
-         CONNEXION LEKTION 1
-    ========================== -->
+    <!-- =====================================================
+         VERBINDUNG ZU LEKTION 1
+    ====================================================== -->
 
     <script>
 
         /*
-         * HaryFi
+         * HARYFI
          *
-         * Quand l'utilisateur clique sur
-         * "1. Alphabet & Aussprache"
-         * dans la liste A1,
-         * on ouvre directement :
+         * Die Lektion 1 befindet sich jetzt
+         * in einer eigenen Datei:
          *
          * lektion1.html
+         *
+         * Wenn der Benutzer in der A1-Liste
+         * auf "Alphabet & Aussprache" klickt,
+         * wird diese Seite geöffnet.
          */
 
 
@@ -556,56 +405,53 @@
             function(event) {
 
                 /*
-                 * Cherche l'élément cliqué
+                 * Prüfen, ob innerhalb
+                 * der Lektionen geklickt wurde.
                  */
-                const clickedElement =
+
+                const element =
                     event.target.closest(
-                        "#lessonList *"
+                        "#lessonList"
                     );
 
 
-                /*
-                 * Si le clic n'est pas
-                 * dans la liste des leçons,
-                 * on ne fait rien.
-                 */
-                if (!clickedElement) {
+                if (!element) {
                     return;
                 }
 
 
                 /*
-                 * Récupère le texte
+                 * Text der angeklickten
+                 * Lektion holen.
                  */
+
                 const text =
-                    clickedElement.textContent
+                    event.target.textContent
                     .trim()
                     .replace(/\s+/g, " ");
 
 
                 /*
-                 * Vérifie qu'il s'agit
-                 * bien de la Lektion 1.
+                 * Lektion 1 erkennen.
                  */
-                const isLektion1 =
+
+                if (
                     text.includes(
                         "Alphabet & Aussprache"
-                    );
-
-
-                if (isLektion1) {
+                    )
+                ) {
 
                     /*
-                     * Empêche l'ancien
-                     * comportement de app.js.
+                     * Standardverhalten stoppen.
                      */
+
                     event.preventDefault();
-                    event.stopPropagation();
 
 
                     /*
-                     * Ouvre la vraie page.
+                     * Neue Lektion-1-Seite öffnen.
                      */
+
                     window.location.href =
                         "lektion1.html";
 
