@@ -1,356 +1,101 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HaryFi – Lektion 1: Alphabet & Aussprache</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        HaryFi – Lektion 1: Alphabet & Aussprache
+    </title>
+
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
 
-        * {
-            box-sizing: border-box;
+        /* =========================================
+           LEKTION 1
+        ========================================= */
+
+        .alphabet-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px 80px;
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #17120d;
-            background: linear-gradient(
-                -45deg,
-                #ff4500,
-                #ff7e00,
-                #ffd000,
-                #00c9ff,
-                #7c3aed,
-                #ff3cac
-            );
-            background-size: 500% 500%;
-            animation: gradientMove 18s ease infinite;
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(130px, 1fr));
+
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.22);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.45);
-        }
 
         .letter-card {
+
+            border: none;
+            border-radius: 28px;
+
+            min-height: 160px;
+
+            cursor: pointer;
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.20);
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
             position: relative;
             overflow: hidden;
-            transition: transform .25s ease, box-shadow .25s ease;
         }
+
 
         .letter-card:hover {
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,.20);
+
+            transform:
+                translateY(-8px)
+                scale(1.03);
+
+            box-shadow:
+                0 25px 45px rgba(0,0,0,.25);
         }
+
 
         .letter-card:active {
-            transform: scale(.94);
+
+            transform:
+                scale(.90);
         }
 
-        .play-circle {
-            transition: transform .2s ease;
+
+        .letter {
+
+            font-size: 58px;
+            font-weight: 900;
+
+            line-height: 1;
         }
 
-        .letter-card:hover .play-circle {
-            transform: scale(1.15) rotate(8deg);
-        }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 24px;
-            box-shadow: 0 25px 60px rgba(0,0,0,.25);
-        }
+        .pronunciation {
 
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
-</head>
+            margin-top: 12px;
 
-<body>
-
-    <!-- HEADER -->
-    <header class="px-5 py-5">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-
-            <a href="index.html"
-               class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition">
-                ← HaryFi
-            </a>
-
-            <div class="glass rounded-full px-5 py-2 font-bold text-sm">
-                🇩🇪 Deutschkurs
-            </div>
-
-        </div>
-    </header>
-
-
-    <!-- MAIN -->
-    <main class="max-w-7xl mx-auto px-5 pb-16">
-
-        <!-- TITRE -->
-        <section class="text-center pt-8 pb-12">
-
-            <div class="inline-block glass rounded-full px-5 py-2 mb-5
-                        text-xs font-black uppercase tracking-widest">
-                Lektion 1
-            </div>
-
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
-                Alphabet & Aussprache
-            </h1>
-
-            <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
-                Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
-            </p>
-
-        </section>
-
-
-        <!-- ALPHABET -->
-        <section>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5"
-                 id="alphabetGrid">
-            </div>
-
-        </section>
-
-
-        <!-- VIDEO -->
-        <section class="mt-16">
-
-            <div class="text-center mb-7">
-
-                <div class="inline-block glass rounded-full px-5 py-2 mb-4
-                            text-xs font-black uppercase tracking-widest">
-                    🎬 Video
-                </div>
-
-                <h2 class="text-3xl md:text-5xl font-black">
-                    Aussprache lernen
-                </h2>
-
-            </div>
-
-            <div class="video-container">
-                <iframe
-                    src="https://www.youtube.com/embed/wSmp39PZg9g"
-                    title="Deutsch Alphabet Aussprache"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-        </section>
-
-
-        <!-- FOOTER NAVIGATION -->
-        <section class="flex justify-center mt-14">
-
-            <a href="index.html"
-               class="bg-black text-white px-8 py-4 rounded-2xl
-                      font-black hover:scale-105 transition shadow-xl">
-                ← Zurück zum Kurs
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <script>
-
-        /*
-         * Deutsches Alphabet
-         */
-        const alphabet = [
-            "A", "B", "C", "D", "E", "F",
-            "G", "H", "I", "J", "K", "L",
-            "M", "N", "O", "P", "Q", "R",
-            "S", "T", "U", "V", "W", "X",
-            "Y", "Z", "Ä", "Ö", "Ü", "ß"
-        ];
-
-
-        /*
-         * Deutsche Aussprache
-         */
-        const pronunciation = {
-            "A": "A",
-            "B": "Be",
-            "C": "Ce",
-            "D": "De",
-            "E": "E",
-            "F": "Ef",
-            "G": "Ge",
-            "H": "Ha",
-            "I": "I",
-            "J": "Jot",
-            "K": "Ka",
-            "L": "El",
-            "M": "Em",
-            "N": "En",
-            "O": "O",
-            "P": "Pe",
-            "Q": "Ku",
-            "R": "Er",
-            "S": "Es",
-            "T": "Te",
-            "U": "U",
-            "V": "Vau",
-            "W": "We",
-            "X": "Iks",
-            "Y": "Ypsilon",
-            "Z": "Zet",
-            "Ä": "Ä",
-            "Ö": "Ö",
-            "Ü": "Ü",
-            "ß": "Eszett"
-        };
-
-
-        /*
-         * Différentes couleurs
-         */
-        const colors = [
-            "from-red-500 to-orange-400",
-            "from-orange-500 to-yellow-400",
-            "from-yellow-400 to-lime-400",
-            "from-green-500 to-emerald-400",
-            "from-emerald-500 to-cyan-400",
-            "from-cyan-500 to-blue-400",
-            "from-blue-500 to-indigo-400",
-            "from-indigo-500 to-purple-400",
-            "from-purple-500 to-fuchsia-400",
-            "from-fuchsia-500 to-pink-400",
-            "from-pink-500 to-rose-400"
-        ];
-
-
-        /*
-         * Création des cartes
-         */
-        const grid = document.getElementById("alphabetGrid");
-
-        alphabet.forEach((letter, index) => {
-
-            const card = document.createElement("button");
-
-            card.className = `
-                letter-card
-                bg-gradient-to-br
-                ${colors[index % colors.length]}
-                rounded-3xl
-                min-h-[150px]
-                p-5
-                text-white
-                shadow-xl
-                flex
-                flex-col
-                items-center
-                justify-center
-                cursor-pointer
-            `;
-
-            card.innerHTML = `
-
-                <div class="text-6xl font-black drop-shadow-lg">
-                    ${letter}
-                </div>
-
-                <div class="text-sm font-bold mt-2 opacity-90">
-                    ${pronunciation[letter]}
-                </div>
-
-                <div class="
-                    play-circle
-                    mt-3
-                    w-9 h-9
-                    rounded-full
-                    bg-white/25
-                    flex items-center justify-center
-                    text-white
-                ">
-                    🔊
-                </div>
-
-            `;
-
-
-            /*
-             * Audio au clic
-             */
-            card.addEventListener("click", () => {
-
-                speakLetter(letter);
-
-                card.animate(
-                    [
-                        { transform: "scale(1)" },
-                        { transform: "scale(1.12) rotate(2deg)" },
-                        { transform: "scale(1)" }
-                    ],
-                    {
-                        duration: 350,
-                        easing: "ease-out"
-                    }
-                );
-
-            });
-
-
-            grid.appendChild(card);
-
-        });
-
-
-        /*
-         * Synthèse vocale allemande
-         */
-        function speakLetter(letter) {
-
-            if (!("speechSynthesis" in window)) {
-                alert("Die Sprachausgabe wird von diesem Browser nicht unterstützt.");
-                return;
-            }
-
-            window.speechSynthesis.cancel();
-
-            const text = pronunciation[letter];
-
-            const voice = new SpeechSynthesisUtterance(text);
-
-            voice.lang = "de-DE";
-            voice.rate = 0.65;
-            voice.pitch = 1.0;
-            voice.volume = 1.0;
-
-            window.speechSynthesis.speak(voice);
-        }
-
-    </script>
-
-</body>
-</html>
+            font-size:
