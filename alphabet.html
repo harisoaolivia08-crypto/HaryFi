@@ -105,434 +105,435 @@
     </style>
 </head>
 
-
 <body>
 
-    <!-- HEADER -->
+<header class="px-5 py-5">
 
-    <header class="px-5 py-5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <a
+            href="lektion1.html"
+            class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition"
+        >
+            ← Lektion 1
+        </a>
 
-            <a
-                href="lektion1.html"
-                class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition"
-            >
-                ← Lektion 1
-            </a>
-
-            <div class="glass rounded-full px-5 py-2 font-bold text-sm">
-                🇩🇪 Deutschkurs
-            </div>
-
+        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+            🇩🇪 Deutschkurs
         </div>
 
-    </header>
+    </div>
+
+</header>
 
 
-    <!-- MAIN -->
+<main class="max-w-7xl mx-auto px-5 pb-16">
 
-    <main class="max-w-7xl mx-auto px-5 pb-16">
+    <section class="text-center pt-8 pb-12">
 
+        <div
+            class="inline-block glass rounded-full px-5 py-2 mb-5
+                   text-xs font-black uppercase tracking-widest"
+        >
+            Seite 1 · Lektion 1
+        </div>
 
-        <!-- TITEL -->
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+            Alphabet & Aussprache
+        </h1>
 
-        <section class="text-center pt-8 pb-12">
+        <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
+            Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
+        </p>
 
-            <div
-                class="inline-block glass rounded-full px-5 py-2 mb-5
-                       text-xs font-black uppercase tracking-widest"
-            >
-                Seite 1 · Lektion 1
-            </div>
+        <div id="audioStatus" class="audio-status">
+            🔊 Klicke auf einen Buchstaben
+        </div>
 
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
-                Alphabet & Aussprache
-            </h1>
-
-            <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
-                Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
-            </p>
-
-            <div id="audioStatus" class="audio-status">
-                🔊 Klicke auf einen Buchstaben
-            </div>
-
-        </section>
+    </section>
 
 
-        <!-- ALPHABET -->
+    <section>
 
-        <section>
+        <div
+            id="alphabetGrid"
+            class="
+                grid
+                grid-cols-2
+                sm:grid-cols-3
+                md:grid-cols-4
+                lg:grid-cols-6
+                gap-5
+            "
+        >
+        </div>
 
-            <div
-                id="alphabetGrid"
-                class="
-                    grid
-                    grid-cols-2
-                    sm:grid-cols-3
-                    md:grid-cols-4
-                    lg:grid-cols-6
-                    gap-5
-                "
-            >
-            </div>
-
-        </section>
+    </section>
 
 
-        <!-- RETOUR -->
+    <section class="flex justify-center mt-14">
 
-        <section class="flex justify-center mt-14">
-
-            <a
-                href="lektion1.html"
-                class="
-                    bg-black
-                    text-white
-                    px-8
-                    py-4
-                    rounded-2xl
-                    font-black
-                    hover:scale-105
-                    transition
-                    shadow-xl
-                "
-            >
-                ← Zurück zu Lektion 1
-            </a>
-
-        </section>
-
-    </main>
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        const alphabet = [
-            "A", "B", "C", "D", "E", "F",
-            "G", "H", "I", "J", "K", "L",
-            "M", "N", "O", "P", "Q", "R",
-            "S", "T", "U", "V", "W", "X",
-            "Y", "Z", "Ä", "Ö", "Ü", "ß"
-        ];
-
-
-        /*
-         * Text unter chaque lettre
-         */
-
-        const pronunciation = {
-
-            "A": "A",
-            "B": "Be",
-            "C": "Ce",
-            "D": "De",
-            "E": "E",
-            "F": "Ef",
-            "G": "Ge",
-            "H": "Ha",
-            "I": "I",
-            "J": "Jot",
-            "K": "Ka",
-            "L": "El",
-            "M": "Em",
-            "N": "En",
-            "O": "O",
-            "P": "Pe",
-            "Q": "Ku",
-            "R": "Er",
-            "S": "Es",
-            "T": "Te",
-            "U": "U",
-            "V": "Vau",
-            "W": "We",
-            "X": "Iks",
-            "Y": "Ypsilon",
-            "Z": "Zett",
-
-            "Ä": "Ä",
-            "Ö": "Ö",
-            "Ü": "Ü",
-            "ß": "Eszett"
-
-        };
-
-
-        /*
-         * FICHIERS MP3
-         *
-         * Dossier : Audio
-         *
-         * Ä = ae.mp3
-         * Ö = oe.mp3
-         * Ü = ue.mp3
-         * ß = ss.mp3
-         */
-
-        const audioFiles = {
-
-            "A": "Audio/a.mp3",
-            "B": "Audio/b.mp3",
-            "C": "Audio/c.mp3",
-            "D": "Audio/d.mp3",
-            "E": "Audio/e.mp3",
-            "F": "Audio/f.mp3",
-            "G": "Audio/g.mp3",
-            "H": "Audio/h.mp3",
-            "I": "Audio/i.mp3",
-            "J": "Audio/j.mp3",
-            "K": "Audio/k.mp3",
-            "L": "Audio/l.mp3",
-            "M": "Audio/m.mp3",
-            "N": "Audio/n.mp3",
-            "O": "Audio/o.mp3",
-            "P": "Audio/p.mp3",
-            "Q": "Audio/q.mp3",
-            "R": "Audio/r.mp3",
-            "S": "Audio/s.mp3",
-            "T": "Audio/t.mp3",
-            "U": "Audio/u.mp3",
-            "V": "Audio/v.mp3",
-            "W": "Audio/w.mp3",
-            "X": "Audio/x.mp3",
-            "Y": "Audio/y.mp3",
-            "Z": "Audio/z.mp3",
-
-            /* NOUVEAUX NOMS DES 4 FICHIERS */
-
-            "Ä": "Audio/ae.mp3",
-            "Ö": "Audio/oe.mp3",
-            "Ü": "Audio/ue.mp3",
-            "ß": "Audio/ss.mp3"
-
-        };
-
-
-        const colors = [
-
-            "from-red-500 to-orange-400",
-            "from-orange-500 to-yellow-400",
-            "from-yellow-400 to-lime-400",
-            "from-green-500 to-emerald-400",
-            "from-emerald-500 to-cyan-400",
-            "from-cyan-500 to-blue-400",
-            "from-blue-500 to-indigo-400",
-            "from-indigo-500 to-purple-400",
-            "from-purple-500 to-fuchsia-400",
-            "from-fuchsia-500 to-pink-400",
-            "from-pink-500 to-rose-400"
-
-        ];
-
-
-        const grid =
-            document.getElementById("alphabetGrid");
-
-        const audioStatus =
-            document.getElementById("audioStatus");
-
-
-        let currentAudio = null;
-
-
-        alphabet.forEach((letter, index) => {
-
-            const card =
-                document.createElement("button");
-
-            card.type = "button";
-
-            card.className = `
-                letter-card
-                bg-gradient-to-br
-                ${colors[index % colors.length]}
-                rounded-3xl
-                min-h-[150px]
-                p-5
+        <a
+            href="lektion1.html"
+            class="
+                bg-black
                 text-white
+                px-8
+                py-4
+                rounded-2xl
+                font-black
+                hover:scale-105
+                transition
                 shadow-xl
-                flex
-                flex-col
-                items-center
-                justify-center
-                cursor-pointer
-            `;
+            "
+        >
+            ← Zurück zu Lektion 1
+        </a>
+
+    </section>
+
+</main>
 
 
-            card.innerHTML = `
+<script>
 
-                <div class="
-                    text-6xl
-                    font-black
-                    drop-shadow-lg
-                ">
-                    ${letter}
-                </div>
+/* ==================================================
+   ALPHABET
+================================================== */
 
-                <div class="
-                    text-sm
-                    font-bold
-                    mt-2
-                    opacity-90
-                ">
-                    ${pronunciation[letter]}
-                </div>
-
-                <div class="
-                    play-circle
-                    mt-3
-                    w-9
-                    h-9
-                    rounded-full
-                    bg-white/25
-                    flex
-                    items-center
-                    justify-center
-                    text-white
-                ">
-                    🔊
-                </div>
-
-            `;
+const alphabet = [
+    "A", "B", "C", "D", "E", "F",
+    "G", "H", "I", "J", "K", "L",
+    "M", "N", "O", "P", "Q", "R",
+    "S", "T", "U", "V", "W", "X",
+    "Y", "Z", "Ä", "Ö", "Ü", "ß"
+];
 
 
-            card.addEventListener("click", () => {
+/* ==================================================
+   AUSSPRACHE AUF DER KARTE
+================================================== */
 
-                playLetter(letter, card);
+const pronunciation = {
 
-            });
+    "A": "A",
+    "B": "Be",
+    "C": "Ce",
+    "D": "De",
+    "E": "E",
+    "F": "Ef",
+    "G": "Ge",
+    "H": "Ha",
+    "I": "I",
+    "J": "Jot",
+    "K": "Ka",
+    "L": "El",
+    "M": "Em",
+    "N": "En",
+    "O": "O",
+    "P": "Pe",
+    "Q": "Ku",
+    "R": "Er",
+    "S": "Es",
+    "T": "Te",
+    "U": "U",
+    "V": "Vau",
+    "W": "We",
+    "X": "Iks",
+    "Y": "Ypsilon",
+    "Z": "Zett",
 
+    "Ä": "Ä",
+    "Ö": "Ö",
+    "Ü": "Ü",
+    "ß": "Eszett"
 
-            grid.appendChild(card);
-
-        });
-
-
-        /* ==================================================
-           LECTURE MP3
-        ================================================== */
-
-        function playLetter(letter, card) {
-
-            const file = audioFiles[letter];
-
-
-            if (!file) {
-
-                audioStatus.textContent =
-                    "⚠️ Audiodatei nicht gefunden.";
-
-                return;
-            }
-
-
-            /* Arrêter l'ancien audio */
-
-            if (currentAudio) {
-
-                currentAudio.pause();
-
-                currentAudio.currentTime = 0;
-
-                currentAudio = null;
-            }
-
-
-            /*
-             * Créer le nouvel audio
-             */
-
-            const audio =
-                new Audio(file);
-
-            currentAudio = audio;
-
-            audio.volume = 1.0;
-
-            audio.preload = "auto";
+};
 
 
-            /*
-             * Animation
-             */
+/* ==================================================
+   MP3-DATEIEN
+   ==================================================
 
-            card.classList.remove("playing");
+   Alle Dateien befinden sich im Ordner:
 
-            void card.offsetWidth;
+   Audio/
 
-            card.classList.add("playing");
+   Normale Buchstaben:
+   a.mp3 ... z.mp3
+
+   Sonderzeichen:
+   Ä = ae.mp3
+   Ö = oe.mp3
+   Ü = ue.mp3
+   ß = ss.mp3
+
+================================================== */
+
+const audioFiles = {
+
+    "A": "Audio/a.mp3",
+    "B": "Audio/b.mp3",
+    "C": "Audio/c.mp3",
+    "D": "Audio/d.mp3",
+    "E": "Audio/e.mp3",
+    "F": "Audio/f.mp3",
+    "G": "Audio/g.mp3",
+    "H": "Audio/h.mp3",
+    "I": "Audio/i.mp3",
+    "J": "Audio/j.mp3",
+    "K": "Audio/k.mp3",
+    "L": "Audio/l.mp3",
+    "M": "Audio/m.mp3",
+    "N": "Audio/n.mp3",
+    "O": "Audio/o.mp3",
+    "P": "Audio/p.mp3",
+    "Q": "Audio/q.mp3",
+    "R": "Audio/r.mp3",
+    "S": "Audio/s.mp3",
+    "T": "Audio/t.mp3",
+    "U": "Audio/u.mp3",
+    "V": "Audio/v.mp3",
+    "W": "Audio/w.mp3",
+    "X": "Audio/x.mp3",
+    "Y": "Audio/y.mp3",
+    "Z": "Audio/z.mp3",
+
+    "Ä": "Audio/ae.mp3",
+    "Ö": "Audio/oe.mp3",
+    "Ü": "Audio/ue.mp3",
+    "ß": "Audio/ss.mp3"
+
+};
 
 
-            /*
-             * Statut
-             */
+/* ==================================================
+   COULEURS
+================================================== */
 
-            audioStatus.textContent =
-                "🔊 Aussprache: " + letter;
+const colors = [
 
+    "from-red-500 to-orange-400",
+    "from-orange-500 to-yellow-400",
+    "from-yellow-400 to-lime-400",
+    "from-green-500 to-emerald-400",
+    "from-emerald-500 to-cyan-400",
+    "from-cyan-500 to-blue-400",
+    "from-blue-500 to-indigo-400",
+    "from-indigo-500 to-purple-400",
+    "from-purple-500 to-fuchsia-400",
+    "from-fuchsia-500 to-pink-400",
+    "from-pink-500 to-rose-400"
 
-            /*
-             * Erreur
-             */
-
-            audio.addEventListener("error", () => {
-
-                console.error(
-                    "MP3 konnte nicht geladen werden:",
-                    file
-                );
-
-                card.classList.remove("playing");
-
-                audioStatus.textContent =
-                    "⚠️ MP3 konnte nicht geladen werden.";
-
-            });
+];
 
 
-            /*
-             * Fin de lecture
-             */
+/* ==================================================
+   ELEMENTS
+================================================== */
 
-            audio.addEventListener("ended", () => {
+const grid =
+    document.getElementById("alphabetGrid");
 
-                card.classList.remove("playing");
+const audioStatus =
+    document.getElementById("audioStatus");
 
-                audioStatus.textContent =
-                    "🔊 Klicke auf einen Buchstaben";
-
-                if (currentAudio === audio) {
-                    currentAudio = null;
-                }
-
-            });
+let currentAudio = null;
 
 
-            /*
-             * Lecture
-             */
+/* ==================================================
+   CREATION DES CARTES
+================================================== */
 
-            audio.play().catch(error => {
+alphabet.forEach((letter, index) => {
 
-                console.error(
-                    "Audio-Fehler:",
-                    error
-                );
+    const card =
+        document.createElement("button");
 
-                card.classList.remove("playing");
+    card.type = "button";
 
-                audioStatus.textContent =
-                    "⚠️ MP3 konnte nicht abgespielt werden.";
+    card.className = `
+        letter-card
+        bg-gradient-to-br
+        ${colors[index % colors.length]}
+        rounded-3xl
+        min-h-[150px]
+        p-5
+        text-white
+        shadow-xl
+        flex
+        flex-col
+        items-center
+        justify-center
+        cursor-pointer
+    `;
 
-            });
+    card.innerHTML = `
 
+        <div class="
+            text-6xl
+            font-black
+            drop-shadow-lg
+        ">
+            ${letter}
+        </div>
+
+        <div class="
+            text-sm
+            font-bold
+            mt-2
+            opacity-90
+        ">
+            ${pronunciation[letter]}
+        </div>
+
+        <div class="
+            play-circle
+            mt-3
+            w-9
+            h-9
+            rounded-full
+            bg-white/25
+            flex
+            items-center
+            justify-center
+            text-white
+        ">
+            🔊
+        </div>
+
+    `;
+
+
+    card.addEventListener("click", () => {
+
+        playLetter(letter, card);
+
+    });
+
+
+    grid.appendChild(card);
+
+});
+
+
+/* ==================================================
+   LECTURE MP3
+================================================== */
+
+function playLetter(letter, card) {
+
+    const file = audioFiles[letter];
+
+    if (!file) {
+
+        audioStatus.textContent =
+            "⚠️ Audiodatei nicht gefunden.";
+
+        return;
+    }
+
+
+    /* Stopper l'ancien audio */
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+        currentAudio = null;
+    }
+
+
+    /* Nouvelle lecture */
+
+    const audio = new Audio();
+
+    audio.preload = "auto";
+
+    audio.volume = 1.0;
+
+    /*
+     * encodeURI permet de gérer correctement
+     * les chemins utilisés par le navigateur.
+     *
+     * Ici les fichiers spéciaux sont déjà
+     * renommés en ae, oe, ue et ss.
+     */
+
+    audio.src = encodeURI(file);
+
+    currentAudio = audio;
+
+
+    /* Animation */
+
+    card.classList.remove("playing");
+
+    void card.offsetWidth;
+
+    card.classList.add("playing");
+
+
+    /* Statut */
+
+    audioStatus.textContent =
+        "🔊 Aussprache: " + letter;
+
+
+    /* Erreur */
+
+    audio.addEventListener("error", () => {
+
+        console.error(
+            "MP3 konnte nicht geladen werden:",
+            audio.src
+        );
+
+        card.classList.remove("playing");
+
+        audioStatus.textContent =
+            "⚠️ Audiodatei konnte nicht geladen werden.";
+
+    });
+
+
+    /* Fin */
+
+    audio.addEventListener("ended", () => {
+
+        card.classList.remove("playing");
+
+        audioStatus.textContent =
+            "🔊 Klicke auf einen Buchstaben";
+
+        if (currentAudio === audio) {
+            currentAudio = null;
         }
 
-    </script>
+    });
+
+
+    /* Lecture */
+
+    audio.play().catch(error => {
+
+        console.error(
+            "Audio-Fehler:",
+            error
+        );
+
+        card.classList.remove("playing");
+
+        audioStatus.textContent =
+            "⚠️ MP3 konnte nicht abgespielt werden.";
+
+    });
+
+}
+
+</script>
 
 </body>
-
 </html>
