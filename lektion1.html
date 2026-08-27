@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,40 +61,56 @@
             background: rgba(255, 255, 255, 0.22);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.45);
+            border: 1px solid rgba(255, 255, 255, 0.45);
         }
 
         .letter-card {
             position: relative;
             overflow: hidden;
-
             transition:
                 transform .25s ease,
                 box-shadow .25s ease;
         }
 
         .letter-card:hover {
-            transform:
-                translateY(-7px)
-                scale(1.03);
-
-            box-shadow:
-                0 20px 40px rgba(0,0,0,.20);
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,.20);
         }
 
         .letter-card:active {
             transform: scale(.94);
         }
 
+        .letter-card.playing {
+            animation: letterPlaying .45s ease;
+        }
+
+        @keyframes letterPlaying {
+
+            0% {
+                transform: scale(1);
+            }
+
+            35% {
+                transform: scale(1.15) rotate(3deg);
+            }
+
+            65% {
+                transform: scale(1.08) rotate(-2deg);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
         .play-circle {
-            transition:
-                transform .2s ease;
+            transition: transform .2s ease;
         }
 
         .letter-card:hover .play-circle {
-            transform:
-                scale(1.15)
-                rotate(8deg);
+            transform: scale(1.15) rotate(8deg);
         }
 
         .video-container {
@@ -104,9 +119,7 @@
             aspect-ratio: 16 / 9;
             overflow: hidden;
             border-radius: 24px;
-
-            box-shadow:
-                0 25px 60px rgba(0,0,0,.25);
+            box-shadow: 0 25px 60px rgba(0,0,0,.25);
         }
 
         .video-container iframe {
@@ -115,89 +128,35 @@
             border: 0;
         }
 
-        /* Animation lorsqu'une lettre est sélectionnée */
-
-        .playing {
-            animation: letterPlaying .45s ease;
-        }
-
-        @keyframes letterPlaying {
-            0% {
-                transform: scale(1);
-            }
-
-            35% {
-                transform:
-                    scale(1.15)
-                    rotate(3deg);
-            }
-
-            70% {
-                transform:
-                    scale(.96)
-                    rotate(-2deg);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* Petite indication audio */
-
         .audio-status {
-            margin-top: 12px;
-            font-size: 12px;
+            min-height: 25px;
             font-weight: 800;
-            opacity: .75;
         }
     </style>
 </head>
 
-
 <body>
 
 
-    <!-- =====================================================
+    <!-- ==============================
          HEADER
-    ====================================================== -->
+    =============================== -->
 
     <header class="px-5 py-5">
 
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-
             <a
                 href="index.html"
-
-                class="
-                    glass
-                    rounded-2xl
-                    px-5
-                    py-3
-                    font-black
-                    text-lg
-                    hover:scale-105
-                    transition
-                "
+                class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition"
             >
                 ← HaryFi
             </a>
 
 
-            <div
-                class="
-                    glass
-                    rounded-full
-                    px-5
-                    py-2
-                    font-bold
-                    text-sm
-                "
-            >
+            <div class="glass rounded-full px-5 py-2 font-bold text-sm">
                 🇩🇪 Deutschkurs
             </div>
-
 
         </div>
 
@@ -205,94 +164,57 @@
 
 
 
-    <!-- =====================================================
+    <!-- ==============================
          MAIN
-    ====================================================== -->
+    =============================== -->
 
-    <main
-        class="
-            max-w-7xl
-            mx-auto
-            px-5
-            pb-16
-        "
-    >
+    <main class="max-w-7xl mx-auto px-5 pb-16">
 
 
-        <!-- =================================================
-             TITRE
-        ================================================== -->
+        <!-- ==============================
+             TITEL
+        =============================== -->
 
-        <section
-            class="
-                text-center
-                pt-8
-                pb-12
-            "
-        >
+        <section class="text-center pt-8 pb-12">
 
             <div
-                class="
-                    inline-block
-                    glass
-                    rounded-full
-                    px-5
-                    py-2
-                    mb-5
-                    text-xs
-                    font-black
-                    uppercase
-                    tracking-widest
-                "
+                class="inline-block glass rounded-full px-5 py-2 mb-5
+                       text-xs font-black uppercase tracking-widest"
             >
                 Lektion 1
             </div>
 
 
-            <h1
-                class="
-                    text-5xl
-                    md:text-7xl
-                    font-black
-                    tracking-tight
-                    mb-5
-                "
-            >
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
                 Alphabet & Aussprache
             </h1>
 
 
-            <p
-                class="
-                    text-lg
-                    md:text-xl
-                    font-semibold
-                    max-w-2xl
-                    mx-auto
-                "
-            >
+            <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
+
                 Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
+
             </p>
 
 
             <div
                 id="audioStatus"
-                class="audio-status"
+                class="audio-status mt-5"
             >
-                🔊 Klicke auf einen Buchstaben
             </div>
 
         </section>
 
 
 
-        <!-- =================================================
+        <!-- ==============================
              ALPHABET
-        ================================================== -->
+        =============================== -->
 
         <section>
 
             <div
+                id="alphabetGrid"
                 class="
                     grid
                     grid-cols-2
@@ -301,7 +223,6 @@
                     lg:grid-cols-6
                     gap-5
                 "
-                id="alphabetGrid"
             >
             </div>
 
@@ -309,19 +230,14 @@
 
 
 
-        <!-- =================================================
+        <!-- ==============================
              VIDEO
-        ================================================== -->
+        =============================== -->
 
         <section class="mt-16">
 
 
-            <div
-                class="
-                    text-center
-                    mb-7
-                "
-            >
+            <div class="text-center mb-7">
 
                 <div
                     class="
@@ -341,13 +257,7 @@
                 </div>
 
 
-                <h2
-                    class="
-                        text-3xl
-                        md:text-5xl
-                        font-black
-                    "
-                >
+                <h2 class="text-3xl md:text-5xl font-black">
                     Aussprache lernen
                 </h2>
 
@@ -360,7 +270,6 @@
                 <iframe
                     src="https://www.youtube.com/embed/wSmp39PZg9g"
                     title="Deutsch Alphabet Aussprache"
-
                     allow="
                         accelerometer;
                         autoplay;
@@ -370,7 +279,6 @@
                         picture-in-picture;
                         web-share
                     "
-
                     allowfullscreen>
                 </iframe>
 
@@ -380,21 +288,14 @@
 
 
 
-        <!-- =================================================
-             RETOUR
-        ================================================== -->
+        <!-- ==============================
+             ZURÜCK
+        =============================== -->
 
-        <section
-            class="
-                flex
-                justify-center
-                mt-14
-            "
-        >
+        <section class="flex justify-center mt-14">
 
             <a
                 href="index.html"
-
                 class="
                     bg-black
                     text-white
@@ -417,102 +318,43 @@
 
 
 
-    <!-- =====================================================
+    <!-- ==============================
          JAVASCRIPT
-    ====================================================== -->
+         NUR MP3
+         KEINE SYNTHese
+    =============================== -->
 
     <script>
 
 
-        /* ==================================================
-           ALPHABET
-        ================================================== */
+        /*
+         * ==========================================
+         * ALPHABET
+         * ==========================================
+         */
 
         const alphabet = [
 
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H",
-            "I",
-            "J",
-            "K",
-            "L",
-            "M",
-            "N",
-            "O",
-            "P",
-            "Q",
-            "R",
-            "S",
-            "T",
-            "U",
-            "V",
-            "W",
-            "X",
-            "Y",
-            "Z",
-            "Ä",
-            "Ö",
-            "Ü",
-            "ß"
+            "A", "B", "C", "D", "E", "F",
+            "G", "H", "I", "J", "K", "L",
+            "M", "N", "O", "P", "Q", "R",
+            "S", "T", "U", "V", "W", "X",
+            "Y", "Z",
+            "Ä", "Ö", "Ü", "ß"
 
         ];
 
 
 
-        /* ==================================================
-           NOM DES FICHIERS MP3
-           
-           IMPORTANT :
-           Les noms sont en minuscules.
-        ================================================== */
-
-        const audioFiles = {
-
-            "A": "audio/a.mp3",
-            "B": "audio/b.mp3",
-            "C": "audio/c.mp3",
-            "D": "audio/d.mp3",
-            "E": "audio/e.mp3",
-            "F": "audio/f.mp3",
-            "G": "audio/g.mp3",
-            "H": "audio/h.mp3",
-            "I": "audio/i.mp3",
-            "J": "audio/j.mp3",
-            "K": "audio/k.mp3",
-            "L": "audio/l.mp3",
-            "M": "audio/m.mp3",
-            "N": "audio/n.mp3",
-            "O": "audio/o.mp3",
-            "P": "audio/p.mp3",
-            "Q": "audio/q.mp3",
-            "R": "audio/r.mp3",
-            "S": "audio/s.mp3",
-            "T": "audio/t.mp3",
-            "U": "audio/u.mp3",
-            "V": "audio/v.mp3",
-            "W": "audio/w.mp3",
-            "X": "audio/x.mp3",
-            "Y": "audio/y.mp3",
-            "Z": "audio/z.mp3",
-
-            "Ä": "audio/ä.mp3",
-            "Ö": "audio/ö.mp3",
-            "Ü": "audio/ü.mp3",
-            "ß": "audio/ß.mp3"
-
-        };
-
-
-
-        /* ==================================================
-           AFFICHAGE
-        ================================================== */
+        /*
+         * ==========================================
+         * AUSSPRACHE
+         *
+         * Nur Text auf der Karte.
+         * Das Audio kommt ausschließlich
+         * aus den MP3-Dateien.
+         * ==========================================
+         */
 
         const pronunciation = {
 
@@ -541,7 +383,8 @@
             "W": "We",
             "X": "Iks",
             "Y": "Ypsilon",
-            "Z": "Zett",
+            "Z": "Zet",
+
             "Ä": "Ä",
             "Ö": "Ö",
             "Ü": "Ü",
@@ -551,190 +394,236 @@
 
 
 
-        /* ==================================================
-           COULEURS
-        ================================================== */
+        /*
+         * ==========================================
+         * MP3-DATEIEN
+         *
+         * Ordner:
+         *
+         * Audio/
+         *
+         * Dateinamen:
+         *
+         * a.mp3
+         * b.mp3
+         * c.mp3
+         *
+         * usw.
+         * ==========================================
+         */
+
+        const audioFiles = {
+
+            "A": "Audio/a.mp3",
+            "B": "Audio/b.mp3",
+            "C": "Audio/c.mp3",
+            "D": "Audio/d.mp3",
+            "E": "Audio/e.mp3",
+            "F": "Audio/f.mp3",
+            "G": "Audio/g.mp3",
+            "H": "Audio/h.mp3",
+            "I": "Audio/i.mp3",
+            "J": "Audio/j.mp3",
+            "K": "Audio/k.mp3",
+            "L": "Audio/l.mp3",
+            "M": "Audio/m.mp3",
+            "N": "Audio/n.mp3",
+            "O": "Audio/o.mp3",
+            "P": "Audio/p.mp3",
+            "Q": "Audio/q.mp3",
+            "R": "Audio/r.mp3",
+            "S": "Audio/s.mp3",
+            "T": "Audio/t.mp3",
+            "U": "Audio/u.mp3",
+            "V": "Audio/v.mp3",
+            "W": "Audio/w.mp3",
+            "X": "Audio/x.mp3",
+            "Y": "Audio/y.mp3",
+            "Z": "Audio/z.mp3",
+
+            "Ä": "Audio/ä.mp3",
+            "Ö": "Audio/ö.mp3",
+            "Ü": "Audio/ü.mp3",
+            "ß": "Audio/ß.mp3"
+
+        };
+
+
+
+        /*
+         * ==========================================
+         * FARBEN
+         * ==========================================
+         */
 
         const colors = [
 
             "from-red-500 to-orange-400",
-
             "from-orange-500 to-yellow-400",
-
             "from-yellow-400 to-lime-400",
-
             "from-green-500 to-emerald-400",
-
             "from-emerald-500 to-cyan-400",
-
             "from-cyan-500 to-blue-400",
-
             "from-blue-500 to-indigo-400",
-
             "from-indigo-500 to-purple-400",
-
             "from-purple-500 to-fuchsia-400",
-
             "from-fuchsia-500 to-pink-400",
-
             "from-pink-500 to-rose-400"
 
         ];
 
 
 
-        /* ==================================================
-           GRILLE
-        ================================================== */
+        /*
+         * ==========================================
+         * ELEMENTS
+         * ==========================================
+         */
 
         const grid =
-            document.getElementById(
-                "alphabetGrid"
-            );
+            document.getElementById("alphabetGrid");
+
+        const audioStatus =
+            document.getElementById("audioStatus");
 
 
-        /* ==================================================
-           AUDIO ACTUEL
-        ================================================== */
+
+        /*
+         * ==========================================
+         * AUDIO ACTUEL
+         * ==========================================
+         */
 
         let currentAudio = null;
 
 
 
-        /* ==================================================
-           CRÉATION DES CARTES
-        ================================================== */
+        /*
+         * ==========================================
+         * CREATION DES CARTES
+         * ==========================================
+         */
 
-        alphabet.forEach(
-            (letter, index) => {
-
-
-                const card =
-                    document.createElement(
-                        "button"
-                    );
+        alphabet.forEach((letter, index) => {
 
 
-                card.className = `
-
-                    letter-card
-
-                    bg-gradient-to-br
-
-                    ${colors[index % colors.length]}
-
-                    rounded-3xl
-
-                    min-h-[150px]
-
-                    p-5
-
-                    text-white
-
-                    shadow-xl
-
-                    flex
-
-                    flex-col
-
-                    items-center
-
-                    justify-center
-
-                    cursor-pointer
-
-                `;
+            const card =
+                document.createElement("button");
 
 
-                card.innerHTML = `
-
-                    <div
-                        class="
-                            text-6xl
-                            font-black
-                            drop-shadow-lg
-                        "
-                    >
-                        ${letter}
-                    </div>
+            card.type = "button";
 
 
-                    <div
-                        class="
-                            text-sm
-                            font-bold
-                            mt-2
-                            opacity-90
-                        "
-                    >
-                        ${pronunciation[letter]}
-                    </div>
+            card.className = `
+                letter-card
+                bg-gradient-to-br
+                ${colors[index % colors.length]}
+                rounded-3xl
+                min-h-[150px]
+                p-5
+                text-white
+                shadow-xl
+                flex
+                flex-col
+                items-center
+                justify-center
+                cursor-pointer
+            `;
 
 
-                    <div
-                        class="
-                            play-circle
-                            mt-3
-                            w-9
-                            h-9
-                            rounded-full
-                            bg-white/25
-                            flex
-                            items-center
-                            justify-center
-                            text-white
-                        "
-                    >
-                        🔊
-                    </div>
+            card.innerHTML = `
 
-                `;
+                <div
+                    class="
+                        text-6xl
+                        font-black
+                        drop-shadow-lg
+                    "
+                >
+                    ${letter}
+                </div>
+
+
+                <div
+                    class="
+                        text-sm
+                        font-bold
+                        mt-2
+                        opacity-90
+                    "
+                >
+                    ${pronunciation[letter]}
+                </div>
+
+
+                <div
+                    class="
+                        play-circle
+                        mt-3
+                        w-9
+                        h-9
+                        rounded-full
+                        bg-white/25
+                        flex
+                        items-center
+                        justify-center
+                        text-white
+                    "
+                >
+                    🔊
+                </div>
+
+            `;
 
 
 
-                /* ==========================================
-                   CLIC
-                ========================================== */
+            /*
+             * ======================================
+             * CLIC
+             * ======================================
+             */
 
-                card.addEventListener(
-                    "click",
-                    () => {
+            card.addEventListener("click", () => {
 
-                        playLetter(
-                            letter,
-                            card
-                        );
+                playLetter(letter, card);
 
-                    }
-                );
-
-
-                grid.appendChild(card);
-
-            }
-        );
+            });
 
 
 
-        /* ==================================================
-           LECTURE MP3
-        ================================================== */
+            grid.appendChild(card);
 
-        function playLetter(
-            letter,
-            card
-        ) {
+        });
 
 
-            const file =
+
+        /*
+         * ==========================================
+         * LIRE LE MP3
+         *
+         * IMPORTANT :
+         * AUCUNE synthèse vocale.
+         *
+         * Le navigateur lit directement
+         * le fichier MP3.
+         * ==========================================
+         */
+
+        function playLetter(letter, card) {
+
+
+            const audioPath =
                 audioFiles[letter];
 
 
-            if (!file) {
+            /*
+             * Vérification
+             */
 
-                alert(
-                    "Audiodatei nicht gefunden."
-                );
+            if (!audioPath) {
+
+                audioStatus.textContent =
+                    "⚠️ Keine Audiodatei gefunden.";
 
                 return;
 
@@ -743,7 +632,7 @@
 
 
             /*
-             * Stopper l'ancien audio
+             * Arrêter l'ancien audio
              */
 
             if (currentAudio) {
@@ -757,20 +646,14 @@
 
 
             /*
-             * Créer le nouvel audio
+             * Créer le lecteur MP3
              */
 
-            currentAudio =
-                new Audio(file);
+            const audio =
+                new Audio(audioPath);
 
 
-
-            /*
-             * Volume maximum
-             */
-
-            currentAudio.volume =
-                1.0;
+            currentAudio = audio;
 
 
 
@@ -778,80 +661,71 @@
              * Animation de la carte
              */
 
-            card.classList.remove(
-                "playing"
-            );
-
-
-            /*
-             * Force le navigateur
-             * à relancer l'animation
-             */
+            card.classList.remove("playing");
 
             void card.offsetWidth;
 
-
-            card.classList.add(
-                "playing"
-            );
+            card.classList.add("playing");
 
 
 
             /*
-             * Texte d'information
+             * Afficher le statut
              */
 
-            const status =
-                document.getElementById(
-                    "audioStatus"
-                );
-
-
-            status.textContent =
-                "🔊 Aussprache: "
-                + letter;
+            audioStatus.textContent =
+                `🔊 ${letter} wird abgespielt...`;
 
 
 
             /*
-             * Lire le MP3
+             * Lancer le MP3
              */
 
-            currentAudio.play()
-                .catch(
-                    error => {
+            audio.play()
+                .then(() => {
 
-                        console.error(
-                            "Audio-Fehler:",
-                            error
-                        );
+                    console.log(
+                        "MP3 gestartet:",
+                        audioPath
+                    );
 
-                        status.textContent =
-                            "⚠️ Audiodatei konnte nicht abgespielt werden.";
+                })
+                .catch((error) => {
 
-                    }
-                );
+                    console.error(
+                        "MP3 Fehler:",
+                        error
+                    );
+
+
+                    audioStatus.textContent =
+                        `⚠️ Audio nicht gefunden: ${audioPath}`;
+
+                });
 
 
 
             /*
-             * Quand le son est terminé
+             * Quand le MP3 est terminé
              */
 
-            currentAudio.addEventListener(
+            audio.addEventListener(
                 "ended",
                 () => {
 
-                    status.textContent =
-                        "🔊 Klicke auf einen Buchstaben";
+                    card.classList.remove("playing");
+
+                    audioStatus.textContent =
+                        `✓ ${letter} – fertig`;
 
                 }
             );
 
         }
 
-    </script>
 
+    </script>
 
 </body>
 </html>
