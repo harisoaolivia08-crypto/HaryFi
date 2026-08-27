@@ -37,25 +37,11 @@
         }
 
         @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            25% {
-                background-position: 100% 50%;
-            }
-
-            50% {
-                background-position: 100% 100%;
-            }
-
-            75% {
-                background-position: 0% 100%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
         }
 
         .glass {
@@ -67,9 +53,9 @@
 
         .word-card {
             background: rgba(255,255,255,.90);
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+            border: none;
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
         .word-card:hover {
@@ -82,29 +68,15 @@
         }
 
         @keyframes pulseCard {
-
-            0% {
-                transform: scale(1);
-            }
-
-            40% {
-                transform: scale(1.07);
-            }
-
-            70% {
-                transform: scale(.97);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            40% { transform: scale(1.07); }
+            70% { transform: scale(.97); }
+            100% { transform: scale(1); }
         }
 
         .main-button,
         .audio-button {
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
         .main-button:hover,
@@ -136,7 +108,6 @@
         }
 
         @keyframes appear {
-
             from {
                 opacity: 0;
                 transform: translateY(25px);
@@ -157,8 +128,8 @@
 
         .vocab-item {
             background: rgba(255,255,255,.88);
-            border-radius: 14px;
-            padding: 15px 18px;
+            border-radius: 18px;
+            padding: 18px;
             font-weight: 700;
         }
 
@@ -168,11 +139,15 @@
         }
 
         .vocab-french {
-            margin-top: 4px;
+            margin-top: 5px;
             opacity: .75;
             font-size: 15px;
         }
 
+        .section-button-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 
@@ -204,9 +179,9 @@
 <main class="max-w-6xl mx-auto px-5 pb-20">
 
 
-    <!-- =================================================
+    <!-- =====================================================
          TITRE
-    ================================================== -->
+    ====================================================== -->
 
     <section class="text-center pt-8 pb-10">
 
@@ -239,7 +214,8 @@
 
 
         <!-- =================================================
-             BOUTON AUDIO 1
+             BOUTON 1
+             AUDIO GENERAL
         ================================================== -->
 
         <button
@@ -270,9 +246,12 @@
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          FORMELL
-    ================================================== -->
+         
+         Le champ est caché au début.
+         Il apparaît lorsque "Lektion starten" est cliqué.
+    ====================================================== -->
 
     <section
         id="formellSection"
@@ -292,7 +271,7 @@
                 </h2>
 
 
-                <!-- AUDIO ERKLÄRUNG FORMELL -->
+                <!-- AUDIO EXPLICATION FORMELL -->
 
                 <button
                     id="formellAudioButton"
@@ -322,6 +301,8 @@
             >
 
 
+            <!-- MOTS FORMELS -->
+
             <div
                 id="formellWords"
                 class="
@@ -330,7 +311,9 @@
                     sm:grid-cols-2
                     lg:grid-cols-3
                     gap-5
-            ">
+                    hidden-section
+                "
+            >
             </div>
 
         </div>
@@ -339,9 +322,12 @@
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          INFORMELL
-    ================================================== -->
+         
+         Le champ est caché au début.
+         Il apparaît lorsque "Lektion starten" est cliqué.
+    ====================================================== -->
 
     <section
         id="informellSection"
@@ -361,7 +347,7 @@
                 </h2>
 
 
-                <!-- AUDIO ERKLÄRUNG INFORMELL -->
+                <!-- AUDIO EXPLICATION INFORMELL -->
 
                 <button
                     id="informellAudioButton"
@@ -391,6 +377,8 @@
             >
 
 
+            <!-- MOTS INFORMELS -->
+
             <div
                 id="informellWords"
                 class="
@@ -399,7 +387,9 @@
                     sm:grid-cols-2
                     lg:grid-cols-3
                     gap-5
-            ">
+                    hidden-section
+                "
+            >
             </div>
 
         </div>
@@ -408,13 +398,16 @@
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          VOKABULAR
-    ================================================== -->
+         
+         Visible après "Lektion starten".
+         Le vocabulaire possède son propre audio.
+    ====================================================== -->
 
     <section
         id="vocabSection"
-        class="mt-12"
+        class="hidden-section mt-12"
     >
 
         <div class="glass rounded-[32px] p-6 md:p-10">
@@ -430,7 +423,7 @@
                 </h2>
 
 
-                <!-- AUDIO ERKLÄRUNG VOKABULAR -->
+                <!-- AUDIO VOCABULAIRE -->
 
                 <button
                     id="vocabAudioButton"
@@ -568,9 +561,9 @@
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          RETOUR
-    ================================================== -->
+    ====================================================== -->
 
     <section class="flex justify-center mt-14">
 
@@ -591,7 +584,6 @@
 
     </section>
 
-
 </main>
 
 
@@ -599,26 +591,15 @@
 <script>
 
 /* =====================================================
-   HARYFI – LEKTION 2 – PAGE 1
-   AUDIO GITHUB PAGES
+   GITHUB PAGES – DOSSIER AUDIO
 ===================================================== */
-
-
-/*
- * Tous les MP3 seront dans :
- *
- * HaryFi/Audio/
- *
- * Tu peux les ajouter plus tard.
- */
 
 const AUDIO_BASE =
     "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
 
 
-
 /* =====================================================
-   AUDIO GÉNÉRAUX
+   AUDIO PRINCIPAUX
 ===================================================== */
 
 const audioFiles = {
@@ -636,7 +617,6 @@ const audioFiles = {
         AUDIO_BASE + "l2_vocabular.mp3"
 
 };
-
 
 
 /* =====================================================
@@ -676,7 +656,6 @@ const formellAudio = {
         AUDIO_BASE + "l2_auf_wiederhoeren.mp3"
 
 };
-
 
 
 /* =====================================================
@@ -734,76 +713,46 @@ const informellAudio = {
 };
 
 
-
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
 const startButton =
-    document.getElementById(
-        "startButton"
-    );
-
+    document.getElementById("startButton");
 
 const formellAudioButton =
-    document.getElementById(
-        "formellAudioButton"
-    );
-
+    document.getElementById("formellAudioButton");
 
 const informellAudioButton =
-    document.getElementById(
-        "informellAudioButton"
-    );
-
+    document.getElementById("informellAudioButton");
 
 const vocabAudioButton =
-    document.getElementById(
-        "vocabAudioButton"
-    );
-
+    document.getElementById("vocabAudioButton");
 
 const status =
-    document.getElementById(
-        "status"
-    );
-
+    document.getElementById("status");
 
 const formellSection =
-    document.getElementById(
-        "formellSection"
-    );
-
+    document.getElementById("formellSection");
 
 const informellSection =
-    document.getElementById(
-        "informellSection"
-    );
+    document.getElementById("informellSection");
 
+const vocabSection =
+    document.getElementById("vocabSection");
 
 const formellContainer =
-    document.getElementById(
-        "formellWords"
-    );
-
+    document.getElementById("formellWords");
 
 const informellContainer =
-    document.getElementById(
-        "informellWords"
-    );
+    document.getElementById("informellWords");
 
-
-
-/* =====================================================
-   AUDIO ACTUEL
-===================================================== */
 
 let currentAudio = null;
 
 
-
 /* =====================================================
-   ARRÊTER AUDIO
+   AUDIO ARRÊTER
 ===================================================== */
 
 function stopCurrentAudio() {
@@ -818,23 +767,11 @@ function stopCurrentAudio() {
 
     }
 
-
-    document
-        .querySelectorAll(".playing")
-        .forEach(card => {
-
-            card.classList.remove(
-                "playing"
-            );
-
-        });
-
 }
 
 
-
 /* =====================================================
-   JOUER AUDIO
+   AUDIO ABSPIELEN
 ===================================================== */
 
 function playAudio(
@@ -843,20 +780,24 @@ function playAudio(
     card = null
 ) {
 
-    if (!url) {
-        return;
-    }
-
-
     stopCurrentAudio();
+
+
+    if (!url) {
+
+        status.textContent =
+            "⚠️ Keine Audiodatei.";
+
+        return;
+
+    }
 
 
     const audio =
         new Audio(url);
 
 
-    currentAudio =
-        audio;
+    currentAudio = audio;
 
 
     audio.volume = 1;
@@ -864,9 +805,15 @@ function playAudio(
 
     if (card) {
 
-        card.classList.remove(
-            "playing"
-        );
+        document
+            .querySelectorAll(".word-card")
+            .forEach(element => {
+
+                element.classList.remove(
+                    "playing"
+                );
+
+            });
 
 
         void card.offsetWidth;
@@ -895,14 +842,7 @@ function playAudio(
 
             }
 
-
-            if (
-                currentAudio === audio
-            ) {
-
-                currentAudio = null;
-
-            }
+            currentAudio = null;
 
         },
         {
@@ -934,13 +874,7 @@ function playAudio(
             );
 
 
-            if (
-                currentAudio === audio
-            ) {
-
-                currentAudio = null;
-
-            }
+            currentAudio = null;
 
         },
         {
@@ -957,10 +891,12 @@ function playAudio(
                 error
             );
 
+            status.textContent =
+                "▶️ Audio konnte nicht gestartet werden.";
+
         });
 
 }
-
 
 
 /* =====================================================
@@ -974,9 +910,7 @@ function createCard(
 ) {
 
     const card =
-        document.createElement(
-            "button"
-        );
+        document.createElement("button");
 
 
     card.type =
@@ -989,24 +923,17 @@ function createCard(
         p-6
         text-left
         shadow-xl
+        w-full
     `;
 
 
     card.innerHTML = `
 
-        <div class="
-            text-2xl
-            md:text-3xl
-            font-black
-        ">
+        <div class="text-2xl md:text-3xl font-black">
             ${word}
         </div>
 
-        <div class="
-            text-sm
-            opacity-60
-            mt-3
-        ">
+        <div class="text-sm opacity-60 mt-3">
             🔊 Aussprache anhören
         </div>
 
@@ -1019,7 +946,7 @@ function createCard(
 
             playAudio(
                 audioMap[word],
-                word,
+                "Aussprache: " + word,
                 card
             );
 
@@ -1027,12 +954,9 @@ function createCard(
     );
 
 
-    container.appendChild(
-        card
-    );
+    container.appendChild(card);
 
 }
-
 
 
 /* =====================================================
@@ -1052,7 +976,6 @@ formellWords.forEach(
 );
 
 
-
 /* =====================================================
    CRÉER LES CARTES INFORMELL
 ===================================================== */
@@ -1070,7 +993,6 @@ informellWords.forEach(
 );
 
 
-
 /* =====================================================
    BOUTON 1
    LEKTION STARTEN
@@ -1081,22 +1003,8 @@ startButton.addEventListener(
     () => {
 
         /*
-         * Afficher Formell.
-         */
-
-        formellSection.classList.remove(
-            "hidden-section"
-        );
-
-
-        formellSection.classList.add(
-            "visible-section"
-        );
-
-
-        /*
          * Jouer uniquement
-         * l'audio d'introduction.
+         * l'audio général.
          */
 
         playAudio(
@@ -1104,9 +1012,51 @@ startButton.addEventListener(
             "Lektion 2"
         );
 
+
+        /*
+         * Afficher les trois champs.
+         */
+
+        formellSection.classList.remove(
+            "hidden-section"
+        );
+
+        formellSection.classList.add(
+            "visible-section"
+        );
+
+
+        informellSection.classList.remove(
+            "hidden-section"
+        );
+
+        informellSection.classList.add(
+            "visible-section"
+        );
+
+
+        vocabSection.classList.remove(
+            "hidden-section"
+        );
+
+        vocabSection.classList.add(
+            "visible-section"
+        );
+
+
+        status.textContent =
+            "🎧 Lektion 2 – Formell, Informell und Vokabular";
+
+
+        /*
+         * Le bouton reste disponible.
+         */
+
+        startButton.textContent =
+            "▶️ Lektion erneut starten";
+
     }
 );
-
 
 
 /* =====================================================
@@ -1117,14 +1067,30 @@ formellAudioButton.addEventListener(
     "click",
     () => {
 
+        /*
+         * Afficher les mots Formell.
+         */
+
+        formellContainer.classList.remove(
+            "hidden-section"
+        );
+
+        formellContainer.classList.add(
+            "visible-section"
+        );
+
+
+        /*
+         * Jouer l'explication Formell.
+         */
+
         playAudio(
             audioFiles.formell,
-            "Erklärung Formell"
+            "Erklärung: Formell"
         );
 
     }
 );
-
 
 
 /* =====================================================
@@ -1136,31 +1102,29 @@ informellAudioButton.addEventListener(
     () => {
 
         /*
-         * Afficher Informell.
+         * Afficher les mots Informell.
          */
 
-        informellSection.classList.remove(
+        informellContainer.classList.remove(
             "hidden-section"
         );
 
-
-        informellSection.classList.add(
+        informellContainer.classList.add(
             "visible-section"
         );
 
 
         /*
-         * Jouer son explication.
+         * Jouer l'explication Informell.
          */
 
         playAudio(
             audioFiles.informell,
-            "Erklärung Informell"
+            "Erklärung: Informell"
         );
 
     }
 );
-
 
 
 /* =====================================================
@@ -1171,6 +1135,14 @@ vocabAudioButton.addEventListener(
     "click",
     () => {
 
+        /*
+         * Le vocabulaire est déjà affiché
+         * après "Lektion starten".
+         *
+         * Ici on joue seulement
+         * l'audio du vocabulaire.
+         */
+
         playAudio(
             audioFiles.vocabular,
             "Vokabular"
@@ -1178,7 +1150,6 @@ vocabAudioButton.addEventListener(
 
     }
 );
-
 
 </script>
 
