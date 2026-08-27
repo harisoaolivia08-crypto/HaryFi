@@ -59,17 +59,17 @@
         }
 
         .glass {
-            background: rgba(255,255,255,.22);
+            background: rgba(255, 255, 255, .22);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,.45);
+            border: 1px solid rgba(255, 255, 255, .45);
         }
 
         .lesson-card {
-            background: rgba(255,255,255,.90);
+            background: rgba(255, 255, 255, .90);
             border-radius: 30px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
 
             transition:
                 transform .25s ease,
@@ -78,7 +78,7 @@
 
         .lesson-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 25px 50px rgba(0,0,0,.22);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, .22);
         }
 
         .audio-button {
@@ -89,7 +89,7 @@
 
         .audio-button:hover {
             transform: scale(1.04);
-            box-shadow: 0 15px 30px rgba(0,0,0,.25);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .25);
         }
 
         .audio-button:active {
@@ -494,13 +494,6 @@ const AUDIO_BASE =
 
 /* =====================================================
    AUDIO FILES
-=====================================================
-
-   Tu peux ajouter les MP3 plus tard
-   dans le dossier GitHub :
-
-   Audio/
-
 ===================================================== */
 
 const audioFiles = {
@@ -509,7 +502,7 @@ const audioFiles = {
         AUDIO_BASE + "l2_page2_erklaerung.mp3",
 
     button2:
-        AUDIO_BASE + "l2_page2_begreussung.mp3",
+        AUDIO_BASE + "l2_page2_begruessung.mp3",
 
     button3:
         AUDIO_BASE + "l2_page2_verabschiedung.mp3",
@@ -556,6 +549,50 @@ let currentAudio = null;
 
 
 /* =====================================================
+   ARRÊTER AUDIO
+===================================================== */
+
+function stopCurrentAudio() {
+
+    if (currentAudio) {
+
+        currentAudio.pause();
+
+        currentAudio.currentTime = 0;
+
+        currentAudio = null;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ENLEVER ANIMATION
+===================================================== */
+
+function removePlaying() {
+
+    Object.values(buttons).forEach(
+        button => {
+
+            if (button) {
+
+                button.classList.remove(
+                    "playing"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =====================================================
    LIRE AUDIO
 ===================================================== */
 
@@ -565,37 +602,20 @@ function playAudio(
     button
 ) {
 
-    /*
-     * Arrêter l'ancien audio
-     */
+    stopCurrentAudio();
 
-    if (currentAudio) {
+    removePlaying();
 
-        currentAudio.pause();
 
-        currentAudio.currentTime = 0;
+    if (!url) {
+
+        status.textContent =
+            "⚠️ Aucun audio configuré.";
+
+        return;
 
     }
 
-
-    /*
-     * Enlever animation
-     */
-
-    Object.values(buttons).forEach(
-        element => {
-
-            element.classList.remove(
-                "playing"
-            );
-
-        }
-    );
-
-
-    /*
-     * Créer audio
-     */
 
     const audio =
         new Audio(url);
@@ -605,26 +625,14 @@ function playAudio(
         audio;
 
 
-    /*
-     * Animation
-     */
-
     button.classList.add(
         "playing"
     );
 
 
-    /*
-     * Message
-     */
-
     status.textContent =
         "🔊 " + message;
 
-
-    /*
-     * Audio terminé
-     */
 
     audio.addEventListener(
         "ended",
@@ -633,6 +641,8 @@ function playAudio(
             button.classList.remove(
                 "playing"
             );
+
+            currentAudio = null;
 
             status.textContent =
                 "✅ Audio terminé.";
@@ -644,10 +654,6 @@ function playAudio(
     );
 
 
-    /*
-     * Audio introuvable
-     */
-
     audio.addEventListener(
         "error",
         () => {
@@ -655,6 +661,8 @@ function playAudio(
             button.classList.remove(
                 "playing"
             );
+
+            currentAudio = null;
 
             status.textContent =
                 "⚠️ Audio pas encore disponible.";
@@ -671,13 +679,15 @@ function playAudio(
     );
 
 
-    /*
-     * Lire
-     */
-
     audio.play()
         .catch(
             error => {
+
+                button.classList.remove(
+                    "playing"
+                );
+
+                currentAudio = null;
 
                 console.log(
                     "Erreur audio :",
