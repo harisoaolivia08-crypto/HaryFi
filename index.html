@@ -13,15 +13,20 @@
     <!-- CANVAS – FOND ANIMÉ -->
     <canvas id="wordCanvas"></canvas>
 
+
     <!-- =========================
          ÉCRAN 1 – ACCUEIL
     ========================== -->
     <section id="homePage" class="page active">
 
         <div class="top-logo">
-            <div class="logo-box">HF</div>
+
+            <div class="logo-box">
+                HF
+            </div>
 
             <div>
+
                 <div class="logo-name">
                     HARY<span>FI</span>
                 </div>
@@ -29,8 +34,11 @@
                 <div class="logo-subtitle">
                     DEUTSCH LERNEN
                 </div>
+
             </div>
+
         </div>
+
 
         <div class="home-content">
 
@@ -47,28 +55,59 @@
                 Lerne Deutsch mit HaryFi.
             </p>
 
-            <button class="start-button" onclick="showLevels()">
+            <button
+                class="start-button"
+                onclick="showLevels()">
+
                 BEGINNEN
-                <span>➜</span>
+
+                <span>
+                    ➜
+                </span>
+
             </button>
 
         </div>
 
+
         <div class="home-footer">
 
             <div>
-                <strong>A1 – C2</strong>
-                <small>Niveaustufen</small>
+
+                <strong>
+                    A1 – C2
+                </strong>
+
+                <small>
+                    Niveaustufen
+                </small>
+
             </div>
 
-            <div>
-                <strong>50+</strong>
-                <small>Lektionen</small>
-            </div>
 
             <div>
-                <strong>100%</strong>
-                <small>Interaktiv</small>
+
+                <strong>
+                    50+
+                </strong>
+
+                <small>
+                    Lektionen
+                </small>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    100%
+                </strong>
+
+                <small>
+                    Interaktiv
+                </small>
+
             </div>
 
         </div>
@@ -76,20 +115,28 @@
     </section>
 
 
+
     <!-- =========================
          ÉCRAN 2 – NIVEAUX
     ========================== -->
+
     <section id="levelsPage" class="page">
 
         <div class="screen-header">
 
-            <button class="back-button" onclick="showHome()">
+            <button
+                class="back-button"
+                onclick="showHome()">
+
                 ← Zurück
+
             </button>
+
 
             <div class="header-logo">
                 HARY<span>FI</span>
             </div>
+
 
             <div class="header-title">
                 WÄHLE DEIN NIVEAU
@@ -98,9 +145,15 @@
         </div>
 
 
+
         <div class="levels-container">
 
-            <button class="level-card a1" onclick="openA1()">
+
+            <!-- A1 -->
+
+            <button
+                class="level-card a1"
+                onclick="openA1()">
 
                 <span class="level-number">
                     01
@@ -117,7 +170,11 @@
             </button>
 
 
-            <button class="level-card a2">
+
+            <!-- A2 -->
+
+            <button
+                class="level-card a2">
 
                 <span class="level-number">
                     02
@@ -134,7 +191,11 @@
             </button>
 
 
-            <button class="level-card b1">
+
+            <!-- B1 -->
+
+            <button
+                class="level-card b1">
 
                 <span class="level-number">
                     03
@@ -151,7 +212,11 @@
             </button>
 
 
-            <button class="level-card b2">
+
+            <!-- B2 -->
+
+            <button
+                class="level-card b2">
 
                 <span class="level-number">
                     04
@@ -168,7 +233,11 @@
             </button>
 
 
-            <button class="level-card c1">
+
+            <!-- C1 -->
+
+            <button
+                class="level-card c1">
 
                 <span class="level-number">
                     05
@@ -185,7 +254,11 @@
             </button>
 
 
-            <button class="level-card c2">
+
+            <!-- C2 -->
+
+            <button
+                class="level-card c2">
 
                 <span class="level-number">
                     06
@@ -201,127 +274,235 @@
 
             </button>
 
+
         </div>
+
 
 
         <div class="swipe-hint">
 
-            <span>←</span>
+            <span>
+                ←
+            </span>
 
             WÄHLE EIN NIVEAU
 
-            <span>→</span>
+            <span>
+                →
+            </span>
 
         </div>
 
     </section>
 
 
+
     <!-- =========================
          ÉCRAN 3 – A1 LEKTIONEN
     ========================== -->
+
     <section id="a1Page" class="page">
+
 
         <div class="lesson-header">
 
-            <button class="back-button" onclick="showLevels()">
+
+            <button
+                class="back-button"
+                onclick="showLevels()">
+
                 ← Zurück
+
             </button>
+
 
             <div class="header-logo">
                 HARY<span>FI</span>
             </div>
 
+
             <div class="a1-title">
                 🇩🇪 A1 – LEKTIONEN
             </div>
 
+
         </div>
+
 
 
         <main class="lesson-content">
 
+
             <div class="lesson-intro">
+
 
                 <div class="a1-badge">
                     A1
                 </div>
 
+
                 <h2>
                     A1 – Lektionen
                 </h2>
+
 
                 <p>
                     Lerne die wichtigsten Grundlagen der deutschen Sprache.
                 </p>
 
+
             </div>
 
 
-            <div id="lessonList" class="lesson-list"></div>
+
+            <!--
+                LESSON LIST
+                Die 50 Lektionen werden von app.js eingefügt.
+            -->
+
+            <div
+                id="lessonList"
+                class="lesson-list">
+            </div>
+
 
         </main>
 
     </section>
 
 
+
     <!-- =========================
-         ÉCRAN 4 – LEKTION 1
+         ÉCRAN 4 – ANCIEN LEKTION 1
+         
+         Gardé pour compatibilité avec app.js.
+         Le vrai contenu est maintenant
+         dans lektion1.html.
     ========================== -->
-    <section id="alphabetPage" class="page">
+
+    <section
+        id="alphabetPage"
+        class="page">
+
 
         <div class="lesson-header">
 
-            <button class="back-button" onclick="openA1()">
+
+            <button
+                class="back-button"
+                onclick="openA1()">
+
                 ← Zurück
+
             </button>
+
 
             <div class="header-logo">
                 HARY<span>FI</span>
             </div>
 
+
             <div class="a1-title">
                 LEKTION 1
             </div>
 
+
         </div>
+
 
 
         <main class="alphabet-content">
 
+
             <div class="lesson-intro">
+
 
                 <div class="a1-badge">
                     LEKTION 1
                 </div>
 
+
                 <h2>
-                    <a href="lektion1.html">
-    1. Alphabet & Aussprache
-</a>
+
+                    <a
+                        href="lektion1.html"
+                        style="
+                            text-decoration:none;
+                            color:inherit;
+                            cursor:pointer;
+                        ">
+
+                        1. Alphabet & Aussprache
+
+                    </a>
+
                 </h2>
+
 
                 <p>
                     Klicke auf einen Buchstaben und höre die Aussprache.
                 </p>
 
+
             </div>
 
 
-            <!-- ALPHABET -->
 
-            <div id="alphabetGrid" class="alphabet-grid"></div>
+            <!--
+                Si quelqu'un arrive encore sur
+                cet ancien écran, le bouton ci-dessous
+                permet d'ouvrir la nouvelle page.
+            -->
+
+            <div style="
+                display:flex;
+                justify-content:center;
+                margin:30px 0;
+            ">
+
+                <a
+                    href="lektion1.html"
+                    class="start-button"
+                    style="
+                        text-decoration:none;
+                        display:inline-flex;
+                        align-items:center;
+                        gap:10px;
+                    ">
+
+                    LEKTION 1 ÖFFNEN
+
+                    <span>
+                        ➜
+                    </span>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ALPHABET ANCIEN ÉCRAN -->
+
+            <div
+                id="alphabetGrid"
+                class="alphabet-grid">
+            </div>
+
 
 
             <!-- VIDEO -->
 
             <div class="video-section">
 
+
                 <div class="video-title">
                     🎬 Das deutsche Alphabet
                 </div>
 
+
                 <div class="video-container">
+
 
                     <iframe
                         src="https://www.youtube.com/embed/wSmp39PZg9g"
@@ -330,16 +511,112 @@
                         allowfullscreen>
                     </iframe>
 
+
                 </div>
+
 
             </div>
 
+
         </main>
+
 
     </section>
 
 
+
+    <!-- =========================
+         JAVASCRIPT PRINCIPAL
+    ========================== -->
+
     <script src="app.js"></script>
+
+
+
+    <!-- =========================
+         CONNEXION LEKTION 1
+    ========================== -->
+
+    <script>
+
+        /*
+         * HaryFi
+         *
+         * Quand l'utilisateur clique sur
+         * "1. Alphabet & Aussprache"
+         * dans la liste A1,
+         * on ouvre directement :
+         *
+         * lektion1.html
+         */
+
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                /*
+                 * Cherche l'élément cliqué
+                 */
+                const clickedElement =
+                    event.target.closest(
+                        "#lessonList *"
+                    );
+
+
+                /*
+                 * Si le clic n'est pas
+                 * dans la liste des leçons,
+                 * on ne fait rien.
+                 */
+                if (!clickedElement) {
+                    return;
+                }
+
+
+                /*
+                 * Récupère le texte
+                 */
+                const text =
+                    clickedElement.textContent
+                    .trim()
+                    .replace(/\s+/g, " ");
+
+
+                /*
+                 * Vérifie qu'il s'agit
+                 * bien de la Lektion 1.
+                 */
+                const isLektion1 =
+                    text.includes(
+                        "Alphabet & Aussprache"
+                    );
+
+
+                if (isLektion1) {
+
+                    /*
+                     * Empêche l'ancien
+                     * comportement de app.js.
+                     */
+                    event.preventDefault();
+                    event.stopPropagation();
+
+
+                    /*
+                     * Ouvre la vraie page.
+                     */
+                    window.location.href =
+                        "lektion1.html";
+
+                }
+
+            },
+            true
+        );
+
+    </script>
+
 
 </body>
 </html>
