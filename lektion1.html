@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
 
         * {
@@ -19,31 +19,24 @@
         body {
             margin: 0;
             min-height: 100vh;
-
             font-family: 'Plus Jakarta Sans', sans-serif;
-
             color: #17120d;
 
-            background:
-                linear-gradient(
-                    -45deg,
-                    #ff4500,
-                    #ff7e00,
-                    #ffd000,
-                    #00c9ff,
-                    #7c3aed,
-                    #ff3cac
-                );
+            background: linear-gradient(
+                -45deg,
+                #ff4500,
+                #ff7e00,
+                #ffd000,
+                #00c9ff,
+                #7c3aed,
+                #ff3cac
+            );
 
             background-size: 500% 500%;
-
-            animation:
-                gradientMove 18s ease infinite;
+            animation: gradientMove 18s ease infinite;
         }
 
-
         @keyframes gradientMove {
-
             0% {
                 background-position: 0% 50%;
             }
@@ -63,30 +56,17 @@
             100% {
                 background-position: 0% 50%;
             }
-
         }
-
 
         .glass {
-
-            background:
-                rgba(255, 255, 255, 0.22);
-
-            backdrop-filter:
-                blur(16px);
-
-            -webkit-backdrop-filter:
-                blur(16px);
-
-            border:
-                1px solid rgba(255,255,255,0.45);
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.45);
         }
 
-
         .letter-card {
-
             position: relative;
-
             overflow: hidden;
 
             transition:
@@ -94,82 +74,84 @@
                 box-shadow .25s ease;
         }
 
-
         .letter-card:hover {
-
             transform:
-                translateY(-7px) scale(1.03);
+                translateY(-7px)
+                scale(1.03);
 
             box-shadow:
                 0 20px 40px rgba(0,0,0,.20);
         }
 
-
         .letter-card:active {
-
-            transform:
-                scale(.94);
+            transform: scale(.94);
         }
 
-
         .play-circle {
-
             transition:
                 transform .2s ease;
         }
 
-
         .letter-card:hover .play-circle {
-
             transform:
-                scale(1.15) rotate(8deg);
+                scale(1.15)
+                rotate(8deg);
         }
 
-
         .video-container {
-
             position: relative;
-
             width: 100%;
-
-            aspect-ratio:
-                16 / 9;
-
+            aspect-ratio: 16 / 9;
             overflow: hidden;
-
-            border-radius:
-                24px;
+            border-radius: 24px;
 
             box-shadow:
                 0 25px 60px rgba(0,0,0,.25);
         }
 
-
         .video-container iframe {
-
             width: 100%;
-
             height: 100%;
-
             border: 0;
         }
 
+        /* Animation lorsqu'une lettre est sélectionnée */
 
-        /* Indication de la voix utilisée */
-
-        #voiceStatus {
-
-            margin-top: 12px;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            opacity: .75;
+        .playing {
+            animation: letterPlaying .45s ease;
         }
 
-    </style>
+        @keyframes letterPlaying {
+            0% {
+                transform: scale(1);
+            }
 
+            35% {
+                transform:
+                    scale(1.15)
+                    rotate(3deg);
+            }
+
+            70% {
+                transform:
+                    scale(.96)
+                    rotate(-2deg);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Petite indication audio */
+
+        .audio-status {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 800;
+            opacity: .75;
+        }
+    </style>
 </head>
 
 
@@ -197,10 +179,9 @@
                     text-lg
                     hover:scale-105
                     transition
-                ">
-
+                "
+            >
                 ← HaryFi
-
             </a>
 
 
@@ -212,10 +193,9 @@
                     py-2
                     font-bold
                     text-sm
-                ">
-
+                "
+            >
                 🇩🇪 Deutschkurs
-
             </div>
 
 
@@ -235,18 +215,21 @@
             mx-auto
             px-5
             pb-16
-        ">
+        "
+    >
 
 
-        <!-- TITRE -->
+        <!-- =================================================
+             TITRE
+        ================================================== -->
 
         <section
             class="
                 text-center
                 pt-8
                 pb-12
-            ">
-
+            "
+        >
 
             <div
                 class="
@@ -260,10 +243,9 @@
                     font-black
                     uppercase
                     tracking-widest
-                ">
-
+                "
+            >
                 Lektion 1
-
             </div>
 
 
@@ -274,10 +256,9 @@
                     font-black
                     tracking-tight
                     mb-5
-                ">
-
+                "
+            >
                 Alphabet & Aussprache
-
             </h1>
 
 
@@ -288,17 +269,18 @@
                     font-semibold
                     max-w-2xl
                     mx-auto
-                ">
-
+                "
+            >
                 Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
-
             </p>
 
 
-            <div id="voiceStatus">
-                🇩🇪 Deutsche Aussprache wird geladen...
+            <div
+                id="audioStatus"
+                class="audio-status"
+            >
+                🔊 Klicke auf einen Buchstaben
             </div>
-
 
         </section>
 
@@ -319,9 +301,8 @@
                     lg:grid-cols-6
                     gap-5
                 "
-
-                id="alphabetGrid">
-
+                id="alphabetGrid"
+            >
             </div>
 
         </section>
@@ -339,8 +320,8 @@
                 class="
                     text-center
                     mb-7
-                ">
-
+                "
+            >
 
                 <div
                     class="
@@ -354,10 +335,9 @@
                         font-black
                         uppercase
                         tracking-widest
-                    ">
-
+                    "
+                >
                     🎬 Video
-
                 </div>
 
 
@@ -366,12 +346,10 @@
                         text-3xl
                         md:text-5xl
                         font-black
-                    ">
-
+                    "
+                >
                     Aussprache lernen
-
                 </h2>
-
 
             </div>
 
@@ -380,9 +358,7 @@
             <div class="video-container">
 
                 <iframe
-
                     src="https://www.youtube.com/embed/wSmp39PZg9g"
-
                     title="Deutsch Alphabet Aussprache"
 
                     allow="
@@ -396,18 +372,16 @@
                     "
 
                     allowfullscreen>
-
                 </iframe>
 
             </div>
-
 
         </section>
 
 
 
         <!-- =================================================
-             FOOTER
+             RETOUR
         ================================================== -->
 
         <section
@@ -415,8 +389,8 @@
                 flex
                 justify-center
                 mt-14
-            ">
-
+            "
+        >
 
             <a
                 href="index.html"
@@ -431,12 +405,10 @@
                     hover:scale-105
                     transition
                     shadow-xl
-                ">
-
+                "
+            >
                 ← Zurück zum Kurs
-
             </a>
-
 
         </section>
 
@@ -494,72 +466,85 @@
 
 
         /* ==================================================
-           NOMS ALLEMANDS DES LETTRES
+           NOM DES FICHIERS MP3
+           
+           IMPORTANT :
+           Les noms sont en minuscules.
+        ================================================== */
 
-           On utilise des mots allemands complets
-           pour rendre la prononciation plus fiable.
+        const audioFiles = {
+
+            "A": "audio/a.mp3",
+            "B": "audio/b.mp3",
+            "C": "audio/c.mp3",
+            "D": "audio/d.mp3",
+            "E": "audio/e.mp3",
+            "F": "audio/f.mp3",
+            "G": "audio/g.mp3",
+            "H": "audio/h.mp3",
+            "I": "audio/i.mp3",
+            "J": "audio/j.mp3",
+            "K": "audio/k.mp3",
+            "L": "audio/l.mp3",
+            "M": "audio/m.mp3",
+            "N": "audio/n.mp3",
+            "O": "audio/o.mp3",
+            "P": "audio/p.mp3",
+            "Q": "audio/q.mp3",
+            "R": "audio/r.mp3",
+            "S": "audio/s.mp3",
+            "T": "audio/t.mp3",
+            "U": "audio/u.mp3",
+            "V": "audio/v.mp3",
+            "W": "audio/w.mp3",
+            "X": "audio/x.mp3",
+            "Y": "audio/y.mp3",
+            "Z": "audio/z.mp3",
+
+            "Ä": "audio/ä.mp3",
+            "Ö": "audio/ö.mp3",
+            "Ü": "audio/ü.mp3",
+            "ß": "audio/ß.mp3"
+
+        };
+
+
+
+        /* ==================================================
+           AFFICHAGE
         ================================================== */
 
         const pronunciation = {
 
             "A": "A",
-
             "B": "Be",
-
             "C": "Ce",
-
             "D": "De",
-
             "E": "E",
-
             "F": "Ef",
-
             "G": "Ge",
-
             "H": "Ha",
-
             "I": "I",
-
             "J": "Jot",
-
             "K": "Ka",
-
             "L": "El",
-
             "M": "Em",
-
             "N": "En",
-
             "O": "O",
-
             "P": "Pe",
-
             "Q": "Ku",
-
             "R": "Er",
-
             "S": "Es",
-
             "T": "Te",
-
             "U": "U",
-
             "V": "Vau",
-
             "W": "We",
-
             "X": "Iks",
-
             "Y": "Ypsilon",
-
             "Z": "Zett",
-
             "Ä": "Ä",
-
             "Ö": "Ö",
-
             "Ü": "Ü",
-
             "ß": "Eszett"
 
         };
@@ -599,7 +584,7 @@
 
 
         /* ==================================================
-           CRÉATION DES CARTES
+           GRILLE
         ================================================== */
 
         const grid =
@@ -607,6 +592,18 @@
                 "alphabetGrid"
             );
 
+
+        /* ==================================================
+           AUDIO ACTUEL
+        ================================================== */
+
+        let currentAudio = null;
+
+
+
+        /* ==================================================
+           CRÉATION DES CARTES
+        ================================================== */
 
         alphabet.forEach(
             (letter, index) => {
@@ -656,10 +653,9 @@
                             text-6xl
                             font-black
                             drop-shadow-lg
-                        ">
-
+                        "
+                    >
                         ${letter}
-
                     </div>
 
 
@@ -669,10 +665,9 @@
                             font-bold
                             mt-2
                             opacity-90
-                        ">
-
+                        "
+                    >
                         ${pronunciation[letter]}
-
                     </div>
 
 
@@ -688,55 +683,26 @@
                             items-center
                             justify-center
                             text-white
-                        ">
-
+                        "
+                    >
                         🔊
-
                     </div>
 
                 `;
 
 
+
                 /* ==========================================
-                   CLIC SUR UNE LETTRE
+                   CLIC
                 ========================================== */
 
                 card.addEventListener(
                     "click",
                     () => {
 
-                        speakLetter(letter);
-
-
-                        card.animate(
-
-                            [
-
-                                {
-                                    transform:
-                                        "scale(1)"
-                                },
-
-                                {
-                                    transform:
-                                        "scale(1.12) rotate(2deg)"
-                                },
-
-                                {
-                                    transform:
-                                        "scale(1)"
-                                }
-
-                            ],
-
-                            {
-
-                                duration: 350,
-
-                                easing: "ease-out"
-
-                            }
-
+                        playLetter(
+                            letter,
+                            card
                         );
 
                     }
@@ -751,198 +717,138 @@
 
 
         /* ==================================================
-           VOIX DU NAVIGATEUR
+           LECTURE MP3
         ================================================== */
 
-        let germanVoice = null;
+        function playLetter(
+            letter,
+            card
+        ) {
 
 
+            const file =
+                audioFiles[letter];
 
-        function loadGermanVoice() {
 
-            if (
-                !("speechSynthesis" in window)
-            ) {
+            if (!file) {
+
+                alert(
+                    "Audiodatei nicht gefunden."
+                );
 
                 return;
 
             }
 
 
-            const voices =
-                window.speechSynthesis
-                .getVoices();
-
 
             /*
-             * Cherche une vraie voix allemande.
+             * Stopper l'ancien audio
              */
 
-            germanVoice =
-                voices.find(
-                    voice =>
-                        voice.lang
-                        .toLowerCase()
-                        .startsWith("de-de")
-                );
+            if (currentAudio) {
 
+                currentAudio.pause();
 
-            /*
-             * Si aucune de-DE,
-             * cherche n'importe quelle voix allemande.
-             */
-
-            if (!germanVoice) {
-
-                germanVoice =
-                    voices.find(
-                        voice =>
-                            voice.lang
-                            .toLowerCase()
-                            .startsWith("de")
-                    );
+                currentAudio.currentTime = 0;
 
             }
 
+
+
+            /*
+             * Créer le nouvel audio
+             */
+
+            currentAudio =
+                new Audio(file);
+
+
+
+            /*
+             * Volume maximum
+             */
+
+            currentAudio.volume =
+                1.0;
+
+
+
+            /*
+             * Animation de la carte
+             */
+
+            card.classList.remove(
+                "playing"
+            );
+
+
+            /*
+             * Force le navigateur
+             * à relancer l'animation
+             */
+
+            void card.offsetWidth;
+
+
+            card.classList.add(
+                "playing"
+            );
+
+
+
+            /*
+             * Texte d'information
+             */
 
             const status =
                 document.getElementById(
-                    "voiceStatus"
+                    "audioStatus"
                 );
 
 
-            if (germanVoice) {
+            status.textContent =
+                "🔊 Aussprache: "
+                + letter;
 
-                status.textContent =
-                    "🇩🇪 Stimme: "
-                    + germanVoice.name
-                    + " ("
-                    + germanVoice.lang
-                    + ")";
-
-            }
-
-            else {
-
-                status.textContent =
-                    "⚠️ Keine deutsche Stimme gefunden – bitte eine deutsche Stimme auf deinem Gerät aktivieren.";
-
-            }
-
-        }
-
-
-
-        /*
-         * Certains navigateurs chargent les voix
-         * après le chargement de la page.
-         */
-
-        loadGermanVoice();
-
-
-        if (
-            "onvoiceschanged"
-            in window.speechSynthesis
-        ) {
-
-            window.speechSynthesis
-                .addEventListener(
-                    "voiceschanged",
-                    loadGermanVoice
-                );
-
-        }
-
-
-
-        /* ==================================================
-           PRONONCIATION
-        ================================================== */
-
-        function speakLetter(letter) {
-
-
-            if (
-                !("speechSynthesis" in window)
-            ) {
-
-                alert(
-                    "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
-                );
-
-                return;
-
-            }
 
 
             /*
-             * Stoppe die précédente voix.
+             * Lire le MP3
              */
 
-            window.speechSynthesis.cancel();
+            currentAudio.play()
+                .catch(
+                    error => {
 
+                        console.error(
+                            "Audio-Fehler:",
+                            error
+                        );
 
-            /*
-             * Nom allemand de la lettre.
-             */
+                        status.textContent =
+                            "⚠️ Audiodatei konnte nicht abgespielt werden.";
 
-            const text =
-                pronunciation[letter];
-
-
-            const utterance =
-                new SpeechSynthesisUtterance(
-                    text
+                    }
                 );
 
 
-            /*
-             * LANGUE ALLEMANDE
-             */
-
-            utterance.lang =
-                "de-DE";
-
 
             /*
-             * Utilise la voix allemande trouvée.
+             * Quand le son est terminé
              */
 
-            if (germanVoice) {
+            currentAudio.addEventListener(
+                "ended",
+                () => {
 
-                utterance.voice =
-                    germanVoice;
+                    status.textContent =
+                        "🔊 Klicke auf einen Buchstaben";
 
-            }
-
-
-            /*
-             * Langue lente et claire.
-             */
-
-            utterance.rate =
-                0.65;
-
-
-            utterance.pitch =
-                1.0;
-
-
-            utterance.volume =
-                1.0;
-
-
-            /*
-             * Lecture.
-             */
-
-            window.speechSynthesis.speak(
-                utterance
+                }
             );
 
         }
-
 
     </script>
 
