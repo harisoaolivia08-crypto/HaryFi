@@ -66,19 +66,22 @@
         }
 
         .word-card {
-            background: rgba(255, 255, 255, .90);
+            background: rgba(255, 255, 255, .92);
             transition:
-                transform .25s ease,
-                box-shadow .25s ease;
+                transform .2s ease,
+                box-shadow .2s ease,
+                background-color .2s ease;
         }
 
         .word-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .18);
+            transform: translateX(4px);
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .15);
         }
 
         .word-card.playing {
             animation: pulseCard .55s ease;
+            border-color: #00c9ff;
         }
 
         @keyframes pulseCard {
@@ -87,11 +90,11 @@
             }
 
             40% {
-                transform: scale(1.04);
+                transform: scale(1.02);
             }
 
             70% {
-                transform: scale(.97);
+                transform: scale(.98);
             }
 
             100% {
@@ -153,25 +156,6 @@
             opacity: .8;
         }
 
-        .vocab-item {
-            background: rgba(255, 255, 255, .88);
-            border-radius: 14px;
-            padding: 15px 18px;
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
-        }
-
-        .vocab-german {
-            font-weight: 900;
-            font-size: 18px;
-        }
-
-        .vocab-french {
-            margin-top: 4px;
-            opacity: .75;
-            font-size: 15px;
-        }
-
         .back-button {
             transition: transform .2s ease;
         }
@@ -211,7 +195,7 @@
 
 
 
-<main class="max-w-6xl mx-auto px-5 pb-20">
+<main class="max-w-4xl mx-auto px-5 pb-20">
 
 
 <!-- =====================================================
@@ -243,14 +227,12 @@
     </h1>
 
 
-    <p class="text-lg md:text-xl font-semibold max-w-3xl mx-auto">
+    <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
         Lerne dich formell und informell vorzustellen.
     </p>
 
 
-    <!-- =================================================
-         BOUTON AUDIO GÉNÉRAL
-    ================================================== -->
+    <!-- BOUTON AUDIO GÉNÉRAL -->
 
     <button
         id="startButton"
@@ -306,8 +288,6 @@
             </p>
 
 
-            <!-- AUDIO EXPLICATION FORMELL -->
-
             <button
                 id="formellAudioButton"
                 type="button"
@@ -336,16 +316,11 @@
         >
 
 
-        <!-- MOTS FORMELS -->
+        <!-- LISTE LIGNE 1, 2, 3 FORMELLES -->
 
         <div
             id="formellWords"
-            class="
-                grid
-                grid-cols-1
-                md:grid-cols-2
-                gap-5
-            "
+            class="flex flex-col gap-4"
         >
         </div>
 
@@ -381,8 +356,6 @@
             </p>
 
 
-            <!-- AUDIO EXPLICATION INFORMELL -->
-
             <button
                 id="informellAudioButton"
                 type="button"
@@ -411,16 +384,11 @@
         >
 
 
-        <!-- MOTS INFORMELS -->
+        <!-- LISTE LIGNE 1, 2, 3, 4 INFORMELLES -->
 
         <div
             id="informellWords"
-            class="
-                grid
-                grid-cols-1
-                md:grid-cols-2
-                gap-5
-            "
+            class="flex flex-col gap-4"
         >
         </div>
 
@@ -452,8 +420,6 @@
             </h2>
 
 
-            <!-- AUDIO VOCABULAIRE -->
-
             <button
                 id="vocabAudioButton"
                 type="button"
@@ -475,22 +441,41 @@
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- LISTE LIGNE 1, 2, 3 VOKABULAR -->
 
+        <div class="flex flex-col gap-4">
 
-            <div class="vocab-item">
-                <div class="vocab-german">Ich heiße …</div>
-                <div class="vocab-french">Je m'appelle … / Izaho dia …</div>
+            <!-- LIGNE 1 -->
+            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+                    1
+                </span>
+                <div>
+                    <div class="text-lg font-black text-gray-900">Ich heiße …</div>
+                    <div class="text-sm font-semibold text-gray-600 mt-1">Je m'appelle … / Izaho dia …</div>
+                </div>
             </div>
 
-            <div class="vocab-item">
-                <div class="vocab-german">Mein Name ist …</div>
-                <div class="vocab-french">Mon nom est … / Ny anarako dia …</div>
+            <!-- LIGNE 2 -->
+            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+                    2
+                </span>
+                <div>
+                    <div class="text-lg font-black text-gray-900">Mein Name ist …</div>
+                    <div class="text-sm font-semibold text-gray-600 mt-1">Mon nom est … / Ny anarako dia …</div>
+                </div>
             </div>
 
-            <div class="vocab-item">
-                <div class="vocab-german">Ich komme aus …</div>
-                <div class="vocab-french">Je viens de … / Avy any …</div>
+            <!-- LIGNE 3 -->
+            <div class="word-card rounded-2xl p-5 shadow-lg flex items-center gap-4 border border-white/60">
+                <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center">
+                    3
+                </span>
+                <div>
+                    <div class="text-lg font-black text-gray-900">Ich komme aus …</div>
+                    <div class="text-sm font-semibold text-gray-600 mt-1">Je viens de … / Avy any …</div>
+                </div>
             </div>
 
         </div>
@@ -553,7 +538,7 @@ const audioFiles = {
 
 
 /* =====================================================
-   PHRASES FORMELLES AVEC TRADUCTIONS ET AUDIOS
+   PHRASES FORMELLES (LIGNE 1, 2, 3)
 ===================================================== */
 
 const formellData = [
@@ -577,7 +562,7 @@ const formellData = [
 
 
 /* =====================================================
-   PHRASES INFORMELLES AVEC TRADUCTIONS ET AUDIOS
+   PHRASES INFORMELLES (LIGNE 1, 2, 3, 4)
 ===================================================== */
 
 const informellData = [
@@ -683,31 +668,37 @@ function playAudio(url, text, card = null) {
 
 
 /* =====================================================
-   CRÉATION DE CARTE INTERACTIVE UNIFIÉE
+   CRÉATION DES LIGNES NUMÉROTÉES (1, 2, 3...)
 ===================================================== */
 
-function createCard(item, container) {
+function createLineCard(item, index, container) {
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "word-card rounded-3xl p-6 text-left shadow-xl flex flex-col justify-between cursor-pointer border border-white/60";
+    card.className = "word-card rounded-2xl p-5 text-left shadow-md flex items-center justify-between gap-4 cursor-pointer border border-white/60";
 
     card.innerHTML = `
-        <div>
-            <div class="text-xl md:text-2xl font-black text-gray-900 leading-snug">
-                ${item.de}
-            </div>
-            <div class="text-sm font-semibold text-gray-600 mt-3">
-                ${item.fr}
+        <div class="flex items-start gap-4">
+            <span class="flex-shrink-0 bg-black text-white font-black text-sm rounded-xl w-8 h-8 flex items-center justify-center mt-0.5">
+                ${index + 1}
+            </span>
+            <div>
+                <div class="text-lg md:text-xl font-black text-gray-900 leading-snug">
+                    ${item.de}
+                </div>
+                <div class="text-sm font-semibold text-gray-600 mt-1">
+                    ${item.fr}
+                </div>
             </div>
         </div>
 
-        <div class="text-xs font-bold opacity-60 mt-5 flex items-center gap-1">
-            <span>🔊</span> <span>Aussprache anhören</span>
+        <div class="flex-shrink-0 text-xs font-bold text-gray-700 bg-gray-100 px-3 py-2 rounded-xl flex items-center gap-1.5">
+            <span>🔊</span>
+            <span class="hidden sm:inline">Anhören</span>
         </div>
     `;
 
     card.addEventListener("click", () => {
-        playAudio(item.audio, "Aussprache anhören", card);
+        playAudio(item.audio, `Ligne ${index + 1}: ${item.de}`, card);
     });
 
     container.appendChild(card);
@@ -716,11 +707,11 @@ function createCard(item, container) {
 
 
 /* =====================================================
-   INITIALISATION DES CARTES
+   INITIALISATION DES PHRASES
 ===================================================== */
 
-formellData.forEach(item => createCard(item, formellContainer));
-informellData.forEach(item => createCard(item, informellContainer));
+formellData.forEach((item, index) => createLineCard(item, index, formellContainer));
+informellData.forEach((item, index) => createLineCard(item, index, informellContainer));
 
 
 
