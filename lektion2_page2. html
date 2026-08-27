@@ -85,6 +85,7 @@
             transition:
                 transform .2s ease,
                 box-shadow .2s ease;
+            cursor: pointer;
         }
 
         .audio-button:hover {
@@ -149,13 +150,7 @@
     </style>
 </head>
 
-
 <body>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header class="px-5 py-5">
 
@@ -177,17 +172,10 @@
 </header>
 
 
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main class="max-w-6xl mx-auto px-5 pb-20">
 
 
-    <!-- =================================================
-         TITRE
-    ================================================== -->
+    <!-- TITRE -->
 
     <section class="text-center pt-8 pb-12">
 
@@ -208,7 +196,6 @@
             Lektion 2 · Seite 2
         </div>
 
-
         <h1
             class="
                 text-5xl
@@ -220,7 +207,6 @@
         >
             Begrüßung & Verabschiedung
         </h1>
-
 
         <p
             class="
@@ -234,7 +220,6 @@
             Übe die wichtigsten Ausdrücke der Lektion.
         </p>
 
-
         <div
             id="status"
             class="status"
@@ -245,17 +230,12 @@
     </section>
 
 
-
-    <!-- =================================================
-         4 BOUTONS
-    ================================================== -->
+    <!-- 4 BOUTONS -->
 
     <section class="grid grid-cols-1 md:grid-cols-2 gap-7">
 
 
-        <!-- =============================================
-             BOUTON 1
-        ============================================== -->
+        <!-- BOUTON 1 -->
 
         <div class="lesson-card text-center">
 
@@ -271,7 +251,6 @@
                 Höre dir die allgemeine Erklärung
                 der Lektion an.
             </p>
-
 
             <button
                 id="audioButton1"
@@ -294,10 +273,7 @@
         </div>
 
 
-
-        <!-- =============================================
-             BOUTON 2
-        ============================================== -->
+        <!-- BOUTON 2 -->
 
         <div class="lesson-card text-center">
 
@@ -313,7 +289,6 @@
                 Höre die richtige Aussprache
                 der Begrüßungen.
             </p>
-
 
             <button
                 id="audioButton2"
@@ -336,10 +311,7 @@
         </div>
 
 
-
-        <!-- =============================================
-             BOUTON 3
-        ============================================== -->
+        <!-- BOUTON 3 -->
 
         <div class="lesson-card text-center">
 
@@ -355,7 +327,6 @@
                 Höre die richtige Aussprache
                 der Verabschiedungen.
             </p>
-
 
             <button
                 id="audioButton3"
@@ -378,10 +349,7 @@
         </div>
 
 
-
-        <!-- =============================================
-             BOUTON 4
-        ============================================== -->
+        <!-- BOUTON 4 -->
 
         <div class="lesson-card text-center">
 
@@ -397,7 +365,6 @@
                 Höre die Übung und wiederhole
                 die Sätze laut.
             </p>
-
 
             <button
                 id="audioButton4"
@@ -419,14 +386,10 @@
 
         </div>
 
-
     </section>
 
 
-
-    <!-- =================================================
-         NAVIGATION
-    ================================================== -->
+    <!-- NAVIGATION -->
 
     <section
         class="
@@ -455,7 +418,6 @@
             ← Seite 1
         </a>
 
-
         <a
             href="lektion2.html"
             class="
@@ -472,28 +434,35 @@
 
     </section>
 
-
 </main>
 
 
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
 <script>
 
-
 /* =====================================================
-   AUDIO BASE
+   DOSSIER AUDIO
 ===================================================== */
 
-const AUDIO_BASE =
-    "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
+/*
+   Le dossier Audio doit être au même niveau
+   que ce fichier HTML.
+
+   Structure :
+
+   HaryFi/
+   ├── lektion2_page2.html
+   └── Audio/
+       ├── l2_page2_erklaerung.mp3
+       ├── l2_page2_begruessung.mp3
+       ├── l2_page2_verabschiedung.mp3
+       └── l2_page2_uebung.mp3
+*/
+
+const AUDIO_BASE = "Audio/";
 
 
 /* =====================================================
-   AUDIO FILES
+   FICHIERS AUDIO
 ===================================================== */
 
 const audioFiles = {
@@ -513,14 +482,12 @@ const audioFiles = {
 };
 
 
-
 /* =====================================================
    ELEMENTS
 ===================================================== */
 
 const status =
     document.getElementById("status");
-
 
 const buttons = {
 
@@ -539,13 +506,11 @@ const buttons = {
 };
 
 
-
 /* =====================================================
    AUDIO ACTUEL
 ===================================================== */
 
 let currentAudio = null;
-
 
 
 /* =====================================================
@@ -567,40 +532,30 @@ function stopCurrentAudio() {
 }
 
 
-
 /* =====================================================
    ENLEVER ANIMATION
 ===================================================== */
 
 function removePlaying() {
 
-    Object.values(buttons).forEach(
-        button => {
+    Object.values(buttons).forEach(button => {
 
-            if (button) {
+        if (button) {
 
-                button.classList.remove(
-                    "playing"
-                );
-
-            }
+            button.classList.remove("playing");
 
         }
-    );
+
+    });
 
 }
-
 
 
 /* =====================================================
    LIRE AUDIO
 ===================================================== */
 
-function playAudio(
-    url,
-    message,
-    button
-) {
+function playAudio(url, message, button) {
 
     stopCurrentAudio();
 
@@ -610,7 +565,7 @@ function playAudio(
     if (!url) {
 
         status.textContent =
-            "⚠️ Aucun audio configuré.";
+            "⚠️ Kein Audio konfiguriert.";
 
         return;
 
@@ -625,9 +580,7 @@ function playAudio(
         audio;
 
 
-    button.classList.add(
-        "playing"
-    );
+    button.classList.add("playing");
 
 
     status.textContent =
@@ -638,14 +591,12 @@ function playAudio(
         "ended",
         () => {
 
-            button.classList.remove(
-                "playing"
-            );
+            button.classList.remove("playing");
 
             currentAudio = null;
 
             status.textContent =
-                "✅ Audio terminé.";
+                "✅ Audio beendet.";
 
         },
         {
@@ -658,17 +609,15 @@ function playAudio(
         "error",
         () => {
 
-            button.classList.remove(
-                "playing"
-            );
+            button.classList.remove("playing");
 
             currentAudio = null;
 
             status.textContent =
-                "⚠️ Audio pas encore disponible.";
+                "⚠️ Audiodatei nicht gefunden.";
 
-            console.log(
-                "Audio introuvable :",
+            console.error(
+                "Audio nicht gefunden:",
                 url
             );
 
@@ -680,28 +629,23 @@ function playAudio(
 
 
     audio.play()
-        .catch(
-            error => {
+        .catch(error => {
 
-                button.classList.remove(
-                    "playing"
-                );
+            button.classList.remove("playing");
 
-                currentAudio = null;
+            currentAudio = null;
 
-                console.log(
-                    "Erreur audio :",
-                    error
-                );
+            console.error(
+                "Audio konnte nicht abgespielt werden:",
+                error
+            );
 
-                status.textContent =
-                    "⚠️ Impossible de lire l'audio.";
+            status.textContent =
+                "⚠️ Audio konnte nicht abgespielt werden.";
 
-            }
-        );
+        });
 
 }
-
 
 
 /* =====================================================
@@ -722,7 +666,6 @@ buttons.button1.addEventListener(
 );
 
 
-
 /* =====================================================
    BOUTON 2
 ===================================================== */
@@ -739,7 +682,6 @@ buttons.button2.addEventListener(
 
     }
 );
-
 
 
 /* =====================================================
@@ -760,7 +702,6 @@ buttons.button3.addEventListener(
 );
 
 
-
 /* =====================================================
    BOUTON 4
 ===================================================== */
@@ -778,9 +719,7 @@ buttons.button4.addEventListener(
     }
 );
 
-
 </script>
-
 
 </body>
 </html>
