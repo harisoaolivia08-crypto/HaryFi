@@ -784,6 +784,7 @@ if (levelsPage) {
 ========================================= */
 
 document.addEventListener(
+
     "DOMContentLoaded",
     () => {
 
@@ -793,3 +794,268 @@ document.addEventListener(
 
     }
 );
+/* =========================================
+   LEKTION 1 – DEUTSCHES ALPHABET
+========================================= */
+
+const germanAlphabet = [
+    "A", "B", "C", "D", "E", "F", "G",
+    "H", "I", "J", "K", "L", "M", "N",
+    "O", "P", "Q", "R", "S", "T", "U",
+    "V", "W", "X", "Y", "Z"
+];
+
+
+/* =========================================
+   AFFICHER ALPHABET
+========================================= */
+
+function createAlphabet() {
+
+    const grid =
+        document.getElementById("alphabetGrid");
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    germanAlphabet.forEach(letter => {
+
+        const card =
+            document.createElement("button");
+
+        card.className =
+            "letter-card";
+
+        card.innerHTML = `
+            <div class="letter">${letter}</div>
+            <div class="letter-audio">
+                🔊 Anhören
+            </div>
+        `;
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                speakLetter(
+                    letter,
+                    card
+                );
+
+            }
+        );
+
+        grid.appendChild(card);
+
+    });
+}
+
+
+/* =========================================
+   AUDIO LETTRE
+========================================= */
+
+function speakLetter(letter, card) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+        alert(
+            "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
+        );
+
+        return;
+    }
+
+
+    /*
+       Stoppe vorherige Aussprache
+    */
+
+    window.speechSynthesis.cancel();
+
+
+    /*
+       Animation
+    */
+
+    document
+        .querySelectorAll(".letter-card")
+        .forEach(element => {
+
+            element.classList.remove(
+                "playing"
+            );
+
+        });
+
+
+    card.classList.add("playing");
+
+
+    /*
+       Deutsche Aussprache
+    */
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            letter
+        );
+
+    speech.lang =
+        "de-DE";
+
+    speech.rate =
+        0.65;
+
+    speech.pitch =
+        1.0;
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+
+    speech.onend = () => {
+
+        card.classList.remove(
+            "playing"
+        );
+
+    };/* =========================================
+   LEKTION 1 – DEUTSCHES ALPHABET
+========================================= */
+
+const germanAlphabet = [
+    "A", "B", "C", "D", "E", "F", "G",
+    "H", "I", "J", "K", "L", "M", "N",
+    "O", "P", "Q", "R", "S", "T", "U",
+    "V", "W", "X", "Y", "Z"
+];
+
+
+/* =========================================
+   AFFICHER ALPHABET
+========================================= */
+
+function createAlphabet() {
+
+    const grid =
+        document.getElementById("alphabetGrid");
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    germanAlphabet.forEach(letter => {
+
+        const card =
+            document.createElement("button");
+
+        card.className =
+            "letter-card";
+
+        card.innerHTML = `
+            <div class="letter">${letter}</div>
+            <div class="letter-audio">
+                🔊 Anhören
+            </div>
+        `;
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                speakLetter(
+                    letter,
+                    card
+                );
+
+            }
+        );
+
+        grid.appendChild(card);
+
+    });
+}
+
+
+/* =========================================
+   AUDIO LETTRE
+========================================= */
+
+function speakLetter(letter, card) {
+
+    if (
+        !("speechSynthesis" in window)
+    ) {
+        alert(
+            "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
+        );
+
+        return;
+    }
+
+
+    /*
+       Stoppe vorherige Aussprache
+    */
+
+    window.speechSynthesis.cancel();
+
+
+    /*
+       Animation
+    */
+
+    document
+        .querySelectorAll(".letter-card")
+        .forEach(element => {
+
+            element.classList.remove(
+                "playing"
+            );
+
+        });
+
+
+    card.classList.add("playing");
+
+
+    /*
+       Deutsche Aussprache
+    */
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            letter
+        );
+
+    speech.lang =
+        "de-DE";
+
+    speech.rate =
+        0.65;
+
+    speech.pitch =
+        1.0;
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+
+    speech.onend = () => {
+
+        card.classList.remove(
+            "playing"
+        );
+
+    };
+
+}
+
+}
