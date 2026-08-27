@@ -10,9 +10,7 @@
 
 <body>
 
-    <!-- =========================
-         CANVAS – FOND ANIMÉ
-    ========================== -->
+    <!-- CANVAS – FOND ANIMÉ -->
     <canvas id="wordCanvas"></canvas>
 
     <!-- =========================
@@ -27,6 +25,7 @@
                 <div class="logo-name">
                     HARY<span>FI</span>
                 </div>
+
                 <div class="logo-subtitle">
                     DEUTSCH LERNEN
                 </div>
@@ -56,6 +55,7 @@
         </div>
 
         <div class="home-footer">
+
             <div>
                 <strong>A1 – C2</strong>
                 <small>Niveaustufen</small>
@@ -70,13 +70,14 @@
                 <strong>100%</strong>
                 <small>Interaktiv</small>
             </div>
+
         </div>
 
     </section>
 
 
     <!-- =========================
-         ÉCRAN 2 – NIVEAU
+         ÉCRAN 2 – NIVEAUX
     ========================== -->
     <section id="levelsPage" class="page">
 
@@ -100,66 +101,124 @@
         <div class="levels-container">
 
             <button class="level-card a1" onclick="openA1()">
-                <span class="level-number">01</span>
-                <span class="level-name">A1</span>
+
+                <span class="level-number">
+                    01
+                </span>
+
+                <span class="level-name">
+                    A1
+                </span>
+
                 <span class="level-description">
                     Anfänger
                 </span>
+
             </button>
 
+
             <button class="level-card a2">
-                <span class="level-number">02</span>
-                <span class="level-name">A2</span>
+
+                <span class="level-number">
+                    02
+                </span>
+
+                <span class="level-name">
+                    A2
+                </span>
+
                 <span class="level-description">
                     Grundstufe
                 </span>
+
             </button>
 
+
             <button class="level-card b1">
-                <span class="level-number">03</span>
-                <span class="level-name">B1</span>
+
+                <span class="level-number">
+                    03
+                </span>
+
+                <span class="level-name">
+                    B1
+                </span>
+
                 <span class="level-description">
                     Mittelstufe
                 </span>
+
             </button>
 
+
             <button class="level-card b2">
-                <span class="level-number">04</span>
-                <span class="level-name">B2</span>
+
+                <span class="level-number">
+                    04
+                </span>
+
+                <span class="level-name">
+                    B2
+                </span>
+
                 <span class="level-description">
                     Gute Kenntnisse
                 </span>
+
             </button>
 
+
             <button class="level-card c1">
-                <span class="level-number">05</span>
-                <span class="level-name">C1</span>
+
+                <span class="level-number">
+                    05
+                </span>
+
+                <span class="level-name">
+                    C1
+                </span>
+
                 <span class="level-description">
                     Fortgeschritten
                 </span>
+
             </button>
 
+
             <button class="level-card c2">
-                <span class="level-number">06</span>
-                <span class="level-name">C2</span>
+
+                <span class="level-number">
+                    06
+                </span>
+
+                <span class="level-name">
+                    C2
+                </span>
+
                 <span class="level-description">
                     Meisterstufe
                 </span>
+
             </button>
 
         </div>
 
+
         <div class="swipe-hint">
+
             <span>←</span>
+
             WÄHLE EIN NIVEAU
+
             <span>→</span>
+
         </div>
 
     </section>
 
 
     <!-- =========================
-         ÉCRAN 3 – A1 INHALT
+         ÉCRAN 3 – A1 LEKTIONEN
     ========================== -->
     <section id="a1Page" class="page">
 
@@ -199,8 +258,79 @@
             </div>
 
 
-            <!-- LESSON LIST -->
             <div id="lessonList" class="lesson-list"></div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         ÉCRAN 4 – LEKTION 1
+    ========================== -->
+    <section id="alphabetPage" class="page">
+
+        <div class="lesson-header">
+
+            <button class="back-button" onclick="openA1()">
+                ← Zurück
+            </button>
+
+            <div class="header-logo">
+                HARY<span>FI</span>
+            </div>
+
+            <div class="a1-title">
+                LEKTION 1
+            </div>
+
+        </div>
+
+
+        <main class="alphabet-content">
+
+            <div class="lesson-intro">
+
+                <div class="a1-badge">
+                    LEKTION 1
+                </div>
+
+                <h2>
+                    Alphabet & Aussprache
+                </h2>
+
+                <p>
+                    Klicke auf einen Buchstaben und höre die Aussprache.
+                </p>
+
+            </div>
+
+
+            <!-- ALPHABET -->
+
+            <div id="alphabetGrid" class="alphabet-grid"></div>
+
+
+            <!-- VIDEO -->
+
+            <div class="video-section">
+
+                <div class="video-title">
+                    🎬 Das deutsche Alphabet
+                </div>
+
+                <div class="video-container">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/wSmp39PZg9g"
+                        title="Deutsches Alphabet"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+            </div>
 
         </main>
 
@@ -211,36 +341,3 @@
 
 </body>
 </html>
-<section id="alphabetPage" class="page">
-
-    <div class="lesson-header">
-        <button class="back-button" onclick="openA1()">
-            ← Zurück
-        </button>
-
-        <div class="header-logo">
-            HARY<span>FI</span>
-        </div>
-
-        <div class="a1-title">
-            LEKTION 1
-        </div>
-    </div>
-
-    <main class="alphabet-content">
-
-        <div class="lesson-intro">
-            <div class="a1-badge">LEKTION 1</div>
-
-            <h2>Alphabet & Aussprache</h2>
-
-            <p>
-                Klicke auf einen Buchstaben und höre die Aussprache.
-            </p>
-        </div>
-
-        <div id="alphabetGrid" class="alphabet-grid"></div>
-
-    </main>
-
-</section>
