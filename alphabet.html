@@ -37,11 +37,25 @@
         }
 
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .glass {
@@ -54,12 +68,18 @@
         .letter-card {
             position: relative;
             overflow: hidden;
-            transition: transform .25s ease, box-shadow .25s ease;
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
         }
 
         .letter-card:hover {
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,.20);
+            transform:
+                translateY(-7px)
+                scale(1.03);
+
+            box-shadow:
+                0 20px 40px rgba(0,0,0,.20);
         }
 
         .letter-card:active {
@@ -71,16 +91,21 @@
         }
 
         @keyframes letterPlaying {
+
             0% {
                 transform: scale(1);
             }
 
             35% {
-                transform: scale(1.15) rotate(3deg);
+                transform:
+                    scale(1.15)
+                    rotate(3deg);
             }
 
             70% {
-                transform: scale(.96) rotate(-2deg);
+                transform:
+                    scale(.96)
+                    rotate(-2deg);
             }
 
             100% {
@@ -93,7 +118,9 @@
         }
 
         .letter-card:hover .play-circle {
-            transform: scale(1.15) rotate(8deg);
+            transform:
+                scale(1.15)
+                rotate(8deg);
         }
 
         .audio-status {
@@ -103,9 +130,16 @@
             opacity: .75;
         }
     </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
 <header class="px-5 py-5">
 
@@ -113,12 +147,31 @@
 
         <a
             href="lektion1.html"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition"
+            class="
+                glass
+                rounded-2xl
+                px-5
+                py-3
+                font-black
+                text-lg
+                hover:scale-105
+                transition
+            "
         >
             ← Lektion 1
         </a>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+
+        <div
+            class="
+                glass
+                rounded-full
+                px-5
+                py-2
+                font-bold
+                text-sm
+            "
+        >
             🇩🇪 Deutschkurs
         </div>
 
@@ -127,31 +180,76 @@
 </header>
 
 
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
 <main class="max-w-7xl mx-auto px-5 pb-16">
+
+
+    <!-- TITEL -->
 
     <section class="text-center pt-8 pb-12">
 
         <div
-            class="inline-block glass rounded-full px-5 py-2 mb-5
-                   text-xs font-black uppercase tracking-widest"
+            class="
+                inline-block
+                glass
+                rounded-full
+                px-5
+                py-2
+                mb-5
+                text-xs
+                font-black
+                uppercase
+                tracking-widest
+            "
         >
             Seite 1 · Lektion 1
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+
+        <h1
+            class="
+                text-5xl
+                md:text-7xl
+                font-black
+                tracking-tight
+                mb-5
+            "
+        >
             Alphabet & Aussprache
         </h1>
 
-        <p class="text-lg md:text-xl font-semibold max-w-2xl mx-auto">
+
+        <p
+            class="
+                text-lg
+                md:text-xl
+                font-semibold
+                max-w-2xl
+                mx-auto
+            "
+        >
             Klicke auf einen Buchstaben und höre seine deutsche Aussprache.
         </p>
 
-        <div id="audioStatus" class="audio-status">
+
+        <div
+            id="audioStatus"
+            class="audio-status"
+        >
             🔊 Klicke auf einen Buchstaben
         </div>
 
     </section>
 
+
+
+    <!-- =================================================
+         ALPHABET
+    ================================================== -->
 
     <section>
 
@@ -170,6 +268,11 @@
 
     </section>
 
+
+
+    <!-- =================================================
+         RETOUR
+    ================================================== -->
 
     <section class="flex justify-center mt-14">
 
@@ -195,24 +298,38 @@
 </main>
 
 
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
 <script>
 
-/* ==================================================
+
+/* =====================================================
    ALPHABET
-================================================== */
+====================================================== */
 
 const alphabet = [
+
     "A", "B", "C", "D", "E", "F",
     "G", "H", "I", "J", "K", "L",
     "M", "N", "O", "P", "Q", "R",
     "S", "T", "U", "V", "W", "X",
-    "Y", "Z", "Ä", "Ö", "Ü", "ß"
+    "Y", "Z",
+
+    "Ä",
+    "Ö",
+    "Ü",
+    "ß"
+
 ];
 
 
-/* ==================================================
-   AUSSPRACHE AUF DER KARTE
-================================================== */
+
+/* =====================================================
+   AUSSPRACHE
+====================================================== */
 
 const pronunciation = {
 
@@ -251,65 +368,73 @@ const pronunciation = {
 };
 
 
-/* ==================================================
-   MP3-DATEIEN
-   ==================================================
 
-   Alle Dateien befinden sich im Ordner:
+/* =====================================================
+   GITHUB PAGES AUDIO
+====================================================== */
+
+/*
+   Deine GitHub Pages Adresse:
+
+   https://harisoaolivia08-crypto.github.io/HaryFi/
+
+   Alle MP3-Dateien befinden sich im Ordner:
 
    Audio/
 
-   Normale Buchstaben:
-   a.mp3 ... z.mp3
+*/
 
-   Sonderzeichen:
-   Ä = ae.mp3
-   Ö = oe.mp3
-   Ü = ue.mp3
-   ß = ss.mp3
 
-================================================== */
+const AUDIO_BASE =
+    "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
+
+
+
+/* =====================================================
+   MP3 DATEIEN
+====================================================== */
 
 const audioFiles = {
 
-    "A": "Audio/a.mp3",
-    "B": "Audio/b.mp3",
-    "C": "Audio/c.mp3",
-    "D": "Audio/d.mp3",
-    "E": "Audio/e.mp3",
-    "F": "Audio/f.mp3",
-    "G": "Audio/g.mp3",
-    "H": "Audio/h.mp3",
-    "I": "Audio/i.mp3",
-    "J": "Audio/j.mp3",
-    "K": "Audio/k.mp3",
-    "L": "Audio/l.mp3",
-    "M": "Audio/m.mp3",
-    "N": "Audio/n.mp3",
-    "O": "Audio/o.mp3",
-    "P": "Audio/p.mp3",
-    "Q": "Audio/q.mp3",
-    "R": "Audio/r.mp3",
-    "S": "Audio/s.mp3",
-    "T": "Audio/t.mp3",
-    "U": "Audio/u.mp3",
-    "V": "Audio/v.mp3",
-    "W": "Audio/w.mp3",
-    "X": "Audio/x.mp3",
-    "Y": "Audio/y.mp3",
-    "Z": "Audio/z.mp3",
+    "A": AUDIO_BASE + "a.mp3",
+    "B": AUDIO_BASE + "b.mp3",
+    "C": AUDIO_BASE + "c.mp3",
+    "D": AUDIO_BASE + "d.mp3",
+    "E": AUDIO_BASE + "e.mp3",
+    "F": AUDIO_BASE + "f.mp3",
+    "G": AUDIO_BASE + "g.mp3",
+    "H": AUDIO_BASE + "h.mp3",
+    "I": AUDIO_BASE + "i.mp3",
+    "J": AUDIO_BASE + "j.mp3",
+    "K": AUDIO_BASE + "k.mp3",
+    "L": AUDIO_BASE + "l.mp3",
+    "M": AUDIO_BASE + "m.mp3",
+    "N": AUDIO_BASE + "n.mp3",
+    "O": AUDIO_BASE + "o.mp3",
+    "P": AUDIO_BASE + "p.mp3",
+    "Q": AUDIO_BASE + "q.mp3",
+    "R": AUDIO_BASE + "r.mp3",
+    "S": AUDIO_BASE + "s.mp3",
+    "T": AUDIO_BASE + "t.mp3",
+    "U": AUDIO_BASE + "u.mp3",
+    "V": AUDIO_BASE + "v.mp3",
+    "W": AUDIO_BASE + "w.mp3",
+    "X": AUDIO_BASE + "x.mp3",
+    "Y": AUDIO_BASE + "y.mp3",
+    "Z": AUDIO_BASE + "z.mp3",
 
-    "Ä": "Audio/ae.mp3",
-    "Ö": "Audio/oe.mp3",
-    "Ü": "Audio/ue.mp3",
-    "ß": "Audio/ss.mp3"
+    "Ä": AUDIO_BASE + "ae.mp3",
+    "Ö": AUDIO_BASE + "oe.mp3",
+    "Ü": AUDIO_BASE + "ue.mp3",
+    "ß": AUDIO_BASE + "ss.mp3"
 
 };
 
 
-/* ==================================================
+
+/* =====================================================
    COULEURS
-================================================== */
+====================================================== */
 
 const colors = [
 
@@ -328,9 +453,10 @@ const colors = [
 ];
 
 
-/* ==================================================
+
+/* =====================================================
    ELEMENTS
-================================================== */
+====================================================== */
 
 const grid =
     document.getElementById("alphabetGrid");
@@ -341,9 +467,10 @@ const audioStatus =
 let currentAudio = null;
 
 
-/* ==================================================
+
+/* =====================================================
    CREATION DES CARTES
-================================================== */
+====================================================== */
 
 alphabet.forEach((letter, index) => {
 
@@ -368,48 +495,63 @@ alphabet.forEach((letter, index) => {
         cursor-pointer
     `;
 
+
     card.innerHTML = `
 
-        <div class="
-            text-6xl
-            font-black
-            drop-shadow-lg
-        ">
+        <div
+            class="
+                text-6xl
+                font-black
+                drop-shadow-lg
+            "
+        >
             ${letter}
         </div>
 
-        <div class="
-            text-sm
-            font-bold
-            mt-2
-            opacity-90
-        ">
+
+        <div
+            class="
+                text-sm
+                font-bold
+                mt-2
+                opacity-90
+            "
+        >
             ${pronunciation[letter]}
         </div>
 
-        <div class="
-            play-circle
-            mt-3
-            w-9
-            h-9
-            rounded-full
-            bg-white/25
-            flex
-            items-center
-            justify-center
-            text-white
-        ">
+
+        <div
+            class="
+                play-circle
+                mt-3
+                w-9
+                h-9
+                rounded-full
+                bg-white/25
+                flex
+                items-center
+                justify-center
+                text-white
+            "
+        >
             🔊
         </div>
 
     `;
 
 
-    card.addEventListener("click", () => {
+    card.addEventListener(
+        "click",
+        () => {
 
-        playLetter(letter, card);
+            playLetter(
+                letter,
+                card
+            );
 
-    });
+        }
+    );
 
 
     grid.appendChild(card);
@@ -417,13 +559,18 @@ alphabet.forEach((letter, index) => {
 });
 
 
-/* ==================================================
-   LECTURE MP3
-================================================== */
+
+/* =====================================================
+   LECTEUR MP3
+====================================================== */
 
 function playLetter(letter, card) {
 
-    const file = audioFiles[letter];
+    const file =
+        audioFiles[letter];
+
+
+    /* Vérifier le fichier */
 
     if (!file) {
 
@@ -431,10 +578,11 @@ function playLetter(letter, card) {
             "⚠️ Audiodatei nicht gefunden.";
 
         return;
+
     }
 
 
-    /* Stopper l'ancien audio */
+    /* Arrêter le son précédent */
 
     if (currentAudio) {
 
@@ -443,26 +591,21 @@ function playLetter(letter, card) {
         currentAudio.currentTime = 0;
 
         currentAudio = null;
+
     }
 
 
-    /* Nouvelle lecture */
+    /* Créer le lecteur */
 
-    const audio = new Audio();
+    const audio =
+        new Audio();
+
+
+    audio.src = file;
 
     audio.preload = "auto";
 
     audio.volume = 1.0;
-
-    /*
-     * encodeURI permet de gérer correctement
-     * les chemins utilisés par le navigateur.
-     *
-     * Ici les fichiers spéciaux sont déjà
-     * renommés en ae, oe, ue et ss.
-     */
-
-    audio.src = encodeURI(file);
 
     currentAudio = audio;
 
@@ -482,58 +625,89 @@ function playLetter(letter, card) {
         "🔊 Aussprache: " + letter;
 
 
-    /* Erreur */
+    /* =================================================
+       ERREUR DE CHARGEMENT
+    ================================================= */
 
-    audio.addEventListener("error", () => {
+    audio.addEventListener(
+        "error",
+        () => {
 
-        console.error(
-            "MP3 konnte nicht geladen werden:",
-            audio.src
-        );
+            console.error(
+                "MP3 konnte nicht geladen werden:",
+                file
+            );
 
-        card.classList.remove("playing");
+            card.classList.remove(
+                "playing"
+            );
 
-        audioStatus.textContent =
-            "⚠️ Audiodatei konnte nicht geladen werden.";
+            audioStatus.textContent =
+                "⚠️ MP3 konnte nicht geladen werden.";
 
-    });
-
-
-    /* Fin */
-
-    audio.addEventListener("ended", () => {
-
-        card.classList.remove("playing");
-
-        audioStatus.textContent =
-            "🔊 Klicke auf einen Buchstaben";
-
-        if (currentAudio === audio) {
-            currentAudio = null;
         }
+    );
 
-    });
+
+    /* =================================================
+       FIN DE LECTURE
+    ================================================= */
+
+    audio.addEventListener(
+        "ended",
+        () => {
+
+            card.classList.remove(
+                "playing"
+            );
+
+            audioStatus.textContent =
+                "🔊 Klicke auf einen Buchstaben";
 
 
-    /* Lecture */
+            if (currentAudio === audio) {
 
-    audio.play().catch(error => {
+                currentAudio = null;
 
-        console.error(
-            "Audio-Fehler:",
-            error
-        );
+            }
 
-        card.classList.remove("playing");
+        }
+    );
 
-        audioStatus.textContent =
-            "⚠️ MP3 konnte nicht abgespielt werden.";
 
-    });
+    /* =================================================
+       LECTURE
+    ================================================= */
+
+    audio.play()
+        .then(() => {
+
+            console.log(
+                "MP3 gestartet:",
+                file
+            );
+
+        })
+        .catch(error => {
+
+            console.error(
+                "Audio-Fehler:",
+                error
+            );
+
+            card.classList.remove(
+                "playing"
+            );
+
+            audioStatus.textContent =
+                "⚠️ MP3 konnte nicht abgespielt werden.";
+
+        });
 
 }
 
 </script>
+
 
 </body>
 </html>
