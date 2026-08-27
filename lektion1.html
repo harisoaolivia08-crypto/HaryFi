@@ -68,7 +68,6 @@
         .letter-card {
             position: relative;
             overflow: hidden;
-
             transition:
                 transform .25s ease,
                 box-shadow .25s ease;
@@ -87,18 +86,7 @@
             transform: scale(.94);
         }
 
-        .play-circle {
-            transition:
-                transform .2s ease;
-        }
-
-        .letter-card:hover .play-circle {
-            transform:
-                scale(1.15)
-                rotate(8deg);
-        }
-
-        .playing {
+        .letter-card.playing {
             animation: letterPlaying .45s ease;
         }
 
@@ -123,6 +111,16 @@
             100% {
                 transform: scale(1);
             }
+        }
+
+        .play-circle {
+            transition: transform .2s ease;
+        }
+
+        .letter-card:hover .play-circle {
+            transform:
+                scale(1.15)
+                rotate(8deg);
         }
 
         .video-container {
@@ -154,7 +152,6 @@
 
 <body>
 
-
     <!-- HEADER -->
 
     <header class="px-5 py-5">
@@ -163,7 +160,6 @@
 
             <a
                 href="index.html"
-
                 class="
                     glass
                     rounded-2xl
@@ -177,7 +173,6 @@
             >
                 ← HaryFi
             </a>
-
 
             <div
                 class="
@@ -197,7 +192,6 @@
     </header>
 
 
-
     <!-- MAIN -->
 
     <main
@@ -208,7 +202,6 @@
             pb-16
         "
     >
-
 
         <!-- TITRE -->
 
@@ -274,12 +267,12 @@
         </section>
 
 
-
         <!-- ALPHABET -->
 
         <section>
 
             <div
+                id="alphabetGrid"
                 class="
                     grid
                     grid-cols-2
@@ -288,12 +281,10 @@
                     lg:grid-cols-6
                     gap-5
                 "
-                id="alphabetGrid"
             >
             </div>
 
         </section>
-
 
 
         <!-- VIDEO -->
@@ -343,7 +334,6 @@
                 <iframe
                     src="https://www.youtube.com/embed/wSmp39PZg9g"
                     title="Deutsch Alphabet Aussprache"
-
                     allow="
                         accelerometer;
                         autoplay;
@@ -353,14 +343,12 @@
                         picture-in-picture;
                         web-share
                     "
-
                     allowfullscreen>
                 </iframe>
 
             </div>
 
         </section>
-
 
 
         <!-- RETOUR -->
@@ -375,7 +363,6 @@
 
             <a
                 href="index.html"
-
                 class="
                     bg-black
                     text-white
@@ -393,36 +380,34 @@
 
         </section>
 
-
     </main>
 
 
-
-    <!-- =====================================================
-         JAVASCRIPT
-         MP3 UNIQUEMENT
-         PAS DE SYNTHÈSE VOCALE
-    ====================================================== -->
+    <!-- JAVASCRIPT -->
 
     <script>
 
-
-        /* ALPHABET */
+        /*
+         * ==========================================
+         * ALPHABET
+         * ==========================================
+         */
 
         const alphabet = [
-
             "A", "B", "C", "D", "E", "F",
             "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R",
             "S", "T", "U", "V", "W", "X",
             "Y", "Z",
             "Ä", "Ö", "Ü", "ß"
-
         ];
 
 
-
-        /* PRONONCIATION AFFICHÉE */
+        /*
+         * ==========================================
+         * AUSSPRACHE – NUR ANZEIGE
+         * ==========================================
+         */
 
         const pronunciation = {
 
@@ -461,16 +446,24 @@
         };
 
 
-
-        /* ==================================================
-           FICHIERS MP3
-
-           Dossier GitHub :
-
-           Audio/
-
-           Tous les noms sont en minuscules.
-        ================================================== */
+        /*
+         * ==========================================
+         * MP3
+         *
+         * IMPORTANT :
+         *
+         * Dossier = Audio
+         *
+         * Lettres normales :
+         * a.mp3 ... z.mp3
+         *
+         * Lettres spéciales :
+         * ae.mp3
+         * oe.mp3
+         * ue.mp3
+         * ss.mp3
+         * ==========================================
+         */
 
         const audioFiles = {
 
@@ -501,16 +494,19 @@
             "Y": "./Audio/y.mp3",
             "Z": "./Audio/z.mp3",
 
-            "Ä": "./Audio/ä.mp3",
-            "Ö": "./Audio/ö.mp3",
-            "Ü": "./Audio/ü.mp3",
-            "ß": "./Audio/ß.mp3"
+            "Ä": "./Audio/ae.mp3",
+            "Ö": "./Audio/oe.mp3",
+            "Ü": "./Audio/ue.mp3",
+            "ß": "./Audio/ss.mp3"
 
         };
 
 
-
-        /* COULEURS */
+        /*
+         * ==========================================
+         * COULEURS
+         * ==========================================
+         */
 
         const colors = [
 
@@ -529,8 +525,11 @@
         ];
 
 
-
-        /* ÉLÉMENTS */
+        /*
+         * ==========================================
+         * ÉLÉMENTS
+         * ==========================================
+         */
 
         const grid =
             document.getElementById(
@@ -546,8 +545,11 @@
         let currentAudio = null;
 
 
-
-        /* CRÉATION DES CARTES */
+        /*
+         * ==========================================
+         * CRÉATION DES CARTES
+         * ==========================================
+         */
 
         alphabet.forEach(
             (letter, index) => {
@@ -602,7 +604,6 @@
                         ${letter}
                     </div>
 
-
                     <div
                         class="
                             text-sm
@@ -613,7 +614,6 @@
                     >
                         ${pronunciation[letter]}
                     </div>
-
 
                     <div
                         class="
@@ -654,10 +654,16 @@
         );
 
 
-
-        /* ==================================================
-           LECTURE MP3
-        ================================================== */
+        /*
+         * ==========================================
+         * LECTURE MP3
+         * ==========================================
+         *
+         * AUCUNE SYNTHÈSE VOCALE.
+         *
+         * Le navigateur lit directement
+         * le fichier MP3.
+         */
 
         function playLetter(
             letter,
@@ -667,6 +673,10 @@
             const file =
                 audioFiles[letter];
 
+
+            /*
+             * Vérification du fichier
+             */
 
             if (!file) {
 
@@ -678,7 +688,9 @@
             }
 
 
-            /* Arrêter l'ancien MP3 */
+            /*
+             * Arrêter l'ancien audio
+             */
 
             if (currentAudio) {
 
@@ -686,15 +698,15 @@
 
                 currentAudio.currentTime = 0;
 
+                currentAudio.src = "";
+
                 currentAudio = null;
 
             }
 
 
             /*
-             * Création d'un élément AUDIO
-             *
-             * Aucun SpeechSynthesis.
+             * Nouvelle balise audio
              */
 
             const audio =
@@ -712,7 +724,9 @@
             currentAudio = audio;
 
 
-            /* Animation */
+            /*
+             * Animation
+             */
 
             card.classList.remove(
                 "playing"
@@ -725,34 +739,42 @@
             );
 
 
-            /* Statut */
+            /*
+             * Statut
+             */
 
             audioStatus.textContent =
                 "🔊 Aussprache: " + letter;
 
 
-
-            /* Erreur */
+            /*
+             * Erreur de chargement
+             */
 
             audio.addEventListener(
                 "error",
                 () => {
 
                     console.error(
-                        "MP3 konnte nicht geladen werden:",
+                        "MP3 Fehler:",
                         file
                     );
 
+                    card.classList.remove(
+                        "playing"
+                    );
+
                     audioStatus.textContent =
-                        "⚠️ MP3 konnte nicht geladen werden: "
+                        "❌ MP3 nicht gefunden: "
                         + file;
 
                 }
             );
 
 
-
-            /* Fin du son */
+            /*
+             * Lecture terminée
+             */
 
             audio.addEventListener(
                 "ended",
@@ -769,9 +791,8 @@
             );
 
 
-
             /*
-             * Charger puis lire
+             * Lecture
              */
 
             audio.load();
@@ -781,18 +802,20 @@
                 audio.play();
 
 
-            if (playPromise !== undefined) {
+            if (
+                playPromise !== undefined
+            ) {
 
                 playPromise.catch(
                     error => {
 
                         console.error(
-                            "MP3 playback error:",
+                            "Audio playback error:",
                             error
                         );
 
                         audioStatus.textContent =
-                            "⚠️ Die Audiodatei konnte nicht abgespielt werden.";
+                            "⚠️ Audio konnte nicht abgespielt werden.";
 
                     }
                 );
@@ -803,6 +826,6 @@
 
     </script>
 
-
 </body>
+
 </html>
