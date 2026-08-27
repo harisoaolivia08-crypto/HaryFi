@@ -68,6 +68,7 @@
         .letter-card {
             position: relative;
             overflow: hidden;
+
             transition:
                 transform .25s ease,
                 box-shadow .25s ease;
@@ -114,7 +115,8 @@
         }
 
         .play-circle {
-            transition: transform .2s ease;
+            transition:
+                transform .2s ease;
         }
 
         .letter-card:hover .play-circle {
@@ -152,7 +154,10 @@
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
 
     <header class="px-5 py-5">
 
@@ -174,6 +179,7 @@
                 ← HaryFi
             </a>
 
+
             <div
                 class="
                     glass
@@ -192,7 +198,10 @@
     </header>
 
 
-    <!-- MAIN -->
+
+    <!-- ==============================
+         MAIN
+    =============================== -->
 
     <main
         class="
@@ -203,7 +212,10 @@
         "
     >
 
-        <!-- TITRE -->
+
+        <!-- ==============================
+             TITRE
+        =============================== -->
 
         <section
             class="
@@ -267,7 +279,10 @@
         </section>
 
 
-        <!-- ALPHABET -->
+
+        <!-- ==============================
+             ALPHABET
+        =============================== -->
 
         <section>
 
@@ -287,7 +302,10 @@
         </section>
 
 
-        <!-- VIDEO -->
+
+        <!-- ==============================
+             VIDEO
+        =============================== -->
 
         <section class="mt-16">
 
@@ -351,7 +369,10 @@
         </section>
 
 
-        <!-- RETOUR -->
+
+        <!-- ==============================
+             RETOUR
+        =============================== -->
 
         <section
             class="
@@ -380,34 +401,38 @@
 
         </section>
 
+
     </main>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
 
     <script>
 
-        /*
-         * ==========================================
-         * ALPHABET
-         * ==========================================
-         */
+
+        /* ==============================
+           ALPHABET
+        =============================== */
 
         const alphabet = [
+
             "A", "B", "C", "D", "E", "F",
             "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R",
             "S", "T", "U", "V", "W", "X",
             "Y", "Z",
             "Ä", "Ö", "Ü", "ß"
+
         ];
 
 
-        /*
-         * ==========================================
-         * AUSSPRACHE – NUR ANZEIGE
-         * ==========================================
-         */
+
+        /* ==============================
+           AUSSPRACHE
+        =============================== */
 
         const pronunciation = {
 
@@ -446,24 +471,22 @@
         };
 
 
-        /*
-         * ==========================================
-         * MP3
-         *
-         * IMPORTANT :
-         *
-         * Dossier = Audio
-         *
-         * Lettres normales :
-         * a.mp3 ... z.mp3
-         *
-         * Lettres spéciales :
-         * ae.mp3
-         * oe.mp3
-         * ue.mp3
-         * ss.mp3
-         * ==========================================
-         */
+
+        /* ==============================
+           MP3-DATEIEN
+           
+           Dossier:
+           Audio/
+
+           Normale Buchstaben:
+           a.mp3 ... z.mp3
+
+           Sonderzeichen:
+           ae.mp3
+           oe.mp3
+           ue.mp3
+           ss.mp3
+        =============================== */
 
         const audioFiles = {
 
@@ -502,11 +525,10 @@
         };
 
 
-        /*
-         * ==========================================
-         * COULEURS
-         * ==========================================
-         */
+
+        /* ==============================
+           COULEURS
+        =============================== */
 
         const colors = [
 
@@ -525,11 +547,10 @@
         ];
 
 
-        /*
-         * ==========================================
-         * ÉLÉMENTS
-         * ==========================================
-         */
+
+        /* ==============================
+           ELEMENTS
+        =============================== */
 
         const grid =
             document.getElementById(
@@ -545,11 +566,10 @@
         let currentAudio = null;
 
 
-        /*
-         * ==========================================
-         * CRÉATION DES CARTES
-         * ==========================================
-         */
+
+        /* ==============================
+           CRÉATION DES CARTES
+        =============================== */
 
         alphabet.forEach(
             (letter, index) => {
@@ -560,6 +580,7 @@
                     );
 
                 card.type = "button";
+
 
                 card.className = `
 
@@ -604,6 +625,7 @@
                         ${letter}
                     </div>
 
+
                     <div
                         class="
                             text-sm
@@ -614,6 +636,7 @@
                     >
                         ${pronunciation[letter]}
                     </div>
+
 
                     <div
                         class="
@@ -654,16 +677,10 @@
         );
 
 
-        /*
-         * ==========================================
-         * LECTURE MP3
-         * ==========================================
-         *
-         * AUCUNE SYNTHÈSE VOCALE.
-         *
-         * Le navigateur lit directement
-         * le fichier MP3.
-         */
+
+        /* ==============================
+           LECTURE MP3
+        =============================== */
 
         function playLetter(
             letter,
@@ -674,23 +691,14 @@
                 audioFiles[letter];
 
 
-            /*
-             * Vérification du fichier
-             */
-
             if (!file) {
-
-                audioStatus.textContent =
-                    "⚠️ Audiodatei nicht gefunden.";
 
                 return;
 
             }
 
 
-            /*
-             * Arrêter l'ancien audio
-             */
+            /* Arrêter l'ancien audio */
 
             if (currentAudio) {
 
@@ -698,16 +706,18 @@
 
                 currentAudio.currentTime = 0;
 
-                currentAudio.src = "";
+                currentAudio.removeAttribute(
+                    "src"
+                );
+
+                currentAudio.load();
 
                 currentAudio = null;
 
             }
 
 
-            /*
-             * Nouvelle balise audio
-             */
+            /* Créer le nouvel audio */
 
             const audio =
                 document.createElement(
@@ -724,9 +734,7 @@
             currentAudio = audio;
 
 
-            /*
-             * Animation
-             */
+            /* Animation */
 
             card.classList.remove(
                 "playing"
@@ -739,42 +747,73 @@
             );
 
 
-            /*
-             * Statut
-             */
+            /* Message normal */
 
             audioStatus.textContent =
                 "🔊 Aussprache: " + letter;
 
 
-            /*
-             * Erreur de chargement
-             */
+
+            /* ==============================
+               AUDIO PRÊT
+            =============================== */
+
+            audio.addEventListener(
+                "canplaythrough",
+                () => {
+
+                    if (
+                        currentAudio !== audio
+                    ) {
+                        return;
+                    }
+
+
+                    audio.play().catch(
+                        () => {
+
+                            /*
+                             * Aucun message
+                             * d'erreur affiché.
+                             */
+
+                        }
+                    );
+
+                },
+                {
+                    once: true
+                }
+            );
+
+
+
+            /* ==============================
+               ERREUR AUDIO
+               
+               Aucun message d'erreur
+               MP3 ne sera affiché.
+            =============================== */
 
             audio.addEventListener(
                 "error",
                 () => {
-
-                    console.error(
-                        "MP3 Fehler:",
-                        file
-                    );
 
                     card.classList.remove(
                         "playing"
                     );
 
                     audioStatus.textContent =
-                        "❌ MP3 nicht gefunden: "
-                        + file;
+                        "🔊 Klicke auf einen Buchstaben";
 
                 }
             );
 
 
-            /*
-             * Lecture terminée
-             */
+
+            /* ==============================
+               AUDIO TERMINÉ
+            =============================== */
 
             audio.addEventListener(
                 "ended",
@@ -791,40 +830,15 @@
             );
 
 
-            /*
-             * Lecture
-             */
+
+            /* Charger */
 
             audio.load();
-
-
-            const playPromise =
-                audio.play();
-
-
-            if (
-                playPromise !== undefined
-            ) {
-
-                playPromise.catch(
-                    error => {
-
-                        console.error(
-                            "Audio playback error:",
-                            error
-                        );
-
-                        audioStatus.textContent =
-                            "⚠️ Audio konnte nicht abgespielt werden.";
-
-                    }
-                );
-
-            }
 
         }
 
     </script>
+
 
 </body>
 
