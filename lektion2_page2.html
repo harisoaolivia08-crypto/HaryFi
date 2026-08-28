@@ -529,17 +529,18 @@
 
 
 <!-- =====================================================
-     RETOUR
+     NAVIGATION DE BAS DE PAGE
 ====================================================== -->
 
-<section class="flex justify-center mt-10 md:mt-14">
+<section class="flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4 mt-10 md:mt-14">
 
+    <!-- PRÉCÉDENT (PAGE 1) -->
     <a
-        href="lektion2.html"
+        href="lektion2_page1.html"
         class="
             bg-black
             text-white
-            px-7
+            px-6
             md:px-8
             py-3.5
             md:py-4
@@ -548,9 +549,58 @@
             text-sm
             md:text-base
             shadow-xl
+            w-full
+            sm:w-auto
+            text-center
         "
     >
-        ← Lektion 2
+        ← Seite 1
+    </a>
+
+    <!-- SOMMAIRE LEKTION 2 -->
+    <a
+        href="lektion2.html"
+        class="
+            glass
+            text-black
+            px-6
+            md:px-8
+            py-3.5
+            md:py-4
+            rounded-2xl
+            font-black
+            text-sm
+            md:text-base
+            shadow-md
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        Sommaire
+    </a>
+
+    <!-- SUIVANT (LEKTION 3) -->
+    <a
+        href="lektion3.html"
+        class="
+            bg-black
+            text-white
+            px-6
+            md:px-8
+            py-3.5
+            md:py-4
+            rounded-2xl
+            font-black
+            text-sm
+            md:text-base
+            shadow-xl
+            w-full
+            sm:w-auto
+            text-center
+        "
+    >
+        Lektion 3 ➜
     </a>
 
 </section>
