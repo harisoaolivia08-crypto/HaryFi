@@ -2,1220 +2,1321 @@
 <html lang="de">
 
 <head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>HaryFi – Lektion 3 | Personalpronomen</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(99,102,241,.18),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(168,85,247,.16),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #f8faff,
-          #eef2ff
-        );
-
-      min-height: 100vh;
-      color: #172033;
-    }
-
-
-    /* =====================================================
-       HEADER
-    ====================================================== */
-
-    .header {
-
-      width: 100%;
-
-      padding: 18px 25px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-    }
-
-
-    .logo {
-
-      font-size: 25px;
-
-      font-weight: 800;
-
-      color: #4f46e5;
-
-    }
-
-
-    .lesson {
-
-      font-size: 14px;
-
-      font-weight: 700;
-
-      color: #6b7280;
-
-    }
-
-
-
-    /* =====================================================
-       MAIN
-    ====================================================== */
-
-    .container {
-
-      width: min(1000px, 94%);
-
-      margin: auto;
-
-      padding-bottom: 50px;
-
-    }
-
-
-    .hero {
-
-      text-align: center;
-
-      padding: 30px 10px;
-
-    }
-
-
-    .hero h1 {
-
-      margin: 0;
-
-      font-size:
-        clamp(30px, 6vw, 48px);
-
-      font-weight: 800;
-
-      background:
-        linear-gradient(
-          90deg,
-          #4f46e5,
-          #9333ea
-        );
-
-      -webkit-background-clip: text;
-
-      color: transparent;
-
-    }
-
-
-    .hero p {
-
-      color: #64748b;
-
-      margin-top: 10px;
-
-    }
-
-
-
-    /* =====================================================
-       TITRE SECTION
-    ====================================================== */
-
-    .section-title {
-
-      font-size: 22px;
-
-      font-weight: 800;
-
-      margin: 20px 0 15px;
-
-    }
-
-
-
-    /* =====================================================
-       PRONOUNS
-    ====================================================== */
-
-    .pronouns {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 16px;
-
-    }
-
-
-    .pronoun-card {
-
-      background:
-        rgba(255,255,255,.85);
-
-      backdrop-filter:
-        blur(15px);
-
-      border:
-        1px solid
-        rgba(255,255,255,.9);
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 8px 25px
-        rgba(30,41,59,.07);
-
-      transition:
-        transform .2s ease;
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
-
-    .pronoun-card:hover {
-
-      transform:
-        translateY(-4px);
-
-    }
-
-
-    .pronoun-img {
-
-      width: 100%;
-
-      height: 140px;
-
-      object-fit: cover;
-
-      background: #e0e7ff;
-
-    }
-
-
-    .pronoun-body {
-
-      padding: 14px;
-
-      text-align: center;
-
-    }
-
-
-    .pronoun-card .de {
-
-      font-size: 22px;
-
-      font-weight: 800;
-
-      color: #4f46e5;
-
-    }
-
-
-    .pronoun-card .fr {
-
-      margin-top: 2px;
-
-      color: #64748b;
-
-      font-size: 14px;
-
-      font-weight: 600;
-
-    }
-
-
-
-    /* =====================================================
-       BOUTON VOCAL
-    ====================================================== */
-
-    .voice-button {
-
-      margin-top: 12px;
-
-      border: none;
-
-      background:
-        linear-gradient(
-          135deg,
-          #4f46e5,
-          #7c3aed
-        );
-
-      color: white;
-
-      width: 52px;
-
-      height: 52px;
-
-      border-radius: 50%;
-
-      font-size: 24px;
-
-      cursor: pointer;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      box-shadow:
-        0 6px 18px
-        rgba(79,70,229,.25);
-
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-
-    }
-
-
-    .voice-button:hover {
-
-      transform:
-        scale(1.1);
-
-      box-shadow:
-        0 10px 25px
-        rgba(79,70,229,.35);
-
-    }
-
-
-    .voice-button:active {
-
-      transform:
-        scale(.92);
-
-    }
-
-
-    .voice-button.speaking {
-
-      animation:
-        speakingPulse
-        .8s
-        infinite;
-
-    }
-
-
-    @keyframes speakingPulse {
-
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.12);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-
-    }
-
-
-
-    /* =====================================================
-       EXERCISE
-    ====================================================== */
-
-    .exercise {
-
-      margin-top: 40px;
-
-    }
-
-
-    .progress-box {
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      margin-bottom: 10px;
-
-      font-size: 14px;
-
-      font-weight: 700;
-
-      color: #64748b;
-
-    }
-
-
-    .progress {
-
-      height: 9px;
-
-      background: #e2e8f0;
-
-      border-radius: 20px;
-
-      overflow: hidden;
-
-    }
-
-
-    .progress-bar {
-
-      height: 100%;
-
-      width: 11.11%;
-
-      background:
-        linear-gradient(
-          90deg,
-          #4f46e5,
-          #9333ea
-        );
-
-      transition: .3s;
-
-    }
-
-
-
-    /* =====================================================
-       CARD
-    ====================================================== */
-
-    .card {
-
-      margin-top: 20px;
-
-      background:
-        rgba(255,255,255,.82);
-
-      backdrop-filter:
-        blur(20px);
-
-      border-radius: 28px;
-
-      padding: 25px;
-
-      box-shadow:
-        0 15px 45px
-        rgba(30,41,59,.10);
-
-      border:
-        1px solid
-        rgba(255,255,255,.9);
-
-    }
-
-
-    .photo {
-
-      width: 100%;
-
-      height: 280px;
-
-      border-radius: 22px;
-
-      object-fit: cover;
-
-      display: block;
-
-      background: #e0e7ff;
-
-    }
-
-
-    .caption {
-
-      text-align: center;
-
-      margin-top: 15px;
-
-      font-size: 15px;
-
-      font-weight: 600;
-
-      color: #64748b;
-
-    }
-
-
-    .sentence {
-
-      text-align: center;
-
-      font-size: 27px;
-
-      font-weight: 800;
-
-      margin: 20px 0;
-
-    }
-
-
-    .blank {
-
-      display: inline-flex;
-
-      min-width: 95px;
-
-      justify-content: center;
-
-      border-bottom:
-        3px solid #4f46e5;
-
-      color: #4f46e5;
-
-    }
-
-
-
-    /* =====================================================
-       ANSWERS
-    ====================================================== */
-
-    .answers {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 12px;
-
-      margin-top: 20px;
-
-    }
-
-
-    .answer {
-
-      border: none;
-
-      background: #eef2ff;
-
-      color: #4338ca;
-
-      padding: 14px 10px;
-
-      border-radius: 14px;
-
-      font-size: 16px;
-
-      font-weight: 700;
-
-      cursor: pointer;
-
-      transition: .2s;
-
-    }
-
-
-    .answer:hover {
-
-      background: #e0e7ff;
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .answer.correct {
-
-      background: #dcfce7;
-
-      color: #15803d;
-
-    }
-
-
-    .answer.wrong {
-
-      background: #fee2e2;
-
-      color: #b91c1c;
-
-    }
-
-
-
-    /* =====================================================
-       FEEDBACK
-    ====================================================== */
-
-    .feedback {
-
-      min-height: 28px;
-
-      text-align: center;
-
-      font-weight: 800;
-
-      margin-top: 18px;
-
-    }
-
-
-    .success {
-
-      color: #16a34a;
-
-    }
-
-
-    .error {
-
-      color: #dc2626;
-
-    }
-
-
-
-    /* =====================================================
-       NEXT
-    ====================================================== */
-
-    .next {
-
-      display: block;
-
-      margin: 25px auto 0;
-
-      border: none;
-
-      background:
-        linear-gradient(
-          90deg,
-          #4f46e5,
-          #7c3aed
-        );
-
-      color: white;
-
-      padding: 15px 35px;
-
-      border-radius: 16px;
-
-      font-size: 16px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      box-shadow:
-        0 8px 25px
-        rgba(79,70,229,.25);
-
-    }
-
-
-    .next:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .result {
-
-      text-align: center;
-
-      padding: 30px;
-
-    }
-
-
-    .result h2 {
-
-      font-size: 32px;
-
-      font-weight: 800;
-
-      color: #4f46e5;
-
-    }
-
-
-    .score {
-
-      font-size: 45px;
-
-      font-weight: 800;
-
-      margin: 15px 0;
-
-    }
-
-
-
-    /* =====================================================
-       RESPONSIVE
-    ====================================================== */
-
-    @media (max-width: 768px) {
-
-      .pronouns {
-
-        grid-template-columns:
-          repeat(2, 1fr);
-
-      }
-
-    }
-
-
-    @media (max-width: 650px) {
-
-      .answers {
-
-        grid-template-columns:
-          repeat(3, 1fr);
-
-      }
-
-
-      .photo {
-
-        height: 220px;
-
-      }
-
-
-      .sentence {
-
-        font-size: 22px;
-
-      }
-
-
-      .card {
-
-        padding: 18px;
-
-      }
-
-    }
-
-
-    @media (max-width: 480px) {
-
-      .pronouns {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .answers {
-
-        grid-template-columns:
-          repeat(1, 1fr);
-
-      }
-
-    }
-
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HaryFi – Lektion 3</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #17120d;
+
+            background: linear-gradient(
+                -45deg,
+                #ff4500,
+                #ff7e00,
+                #ffd000,
+                #00c9ff,
+                #7c3aed,
+                #ff3cac
+            );
+
+            background-size: 500% 500%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 100%;
+            }
+
+            75% {
+                background-position: 0% 100%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glass {
+            background: rgba(255,255,255,.22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,.45);
+        }
+
+        .page-button {
+            transition: .2s ease;
+        }
+
+        .page-button:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .page-button:active {
+            transform: scale(.96);
+        }
+
+        .audio-button {
+            transition: .2s ease;
+        }
+
+        .audio-button:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .audio-button:active {
+            transform: scale(.96);
+        }
+
+        .audio-button.playing {
+            background: rgba(34,197,94,.85);
+        }
+
+        .answer-correct {
+            background: rgba(34,197,94,.35) !important;
+            border-color: rgba(22,101,52,.6) !important;
+        }
+
+        .answer-wrong {
+            background: rgba(239,68,68,.35) !important;
+            border-color: rgba(127,29,29,.6) !important;
+        }
+    </style>
 </head>
 
 
 <body>
 
+<header class="px-5 py-5">
 
-<header class="header">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-  <div class="logo">
-    HaryFi
-  </div>
+        <!-- RETOUR -->
 
-  <div class="lesson">
-    Lektion 3 • Seite 1
-  </div>
+        <a
+            href="index.html#a1"
+            class="glass rounded-2xl px-5 py-3 font-black text-lg"
+        >
+            ← A1 Lektionen
+        </a>
+
+        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+            🇩🇪 Deutschkurs
+        </div>
+
+    </div>
 
 </header>
 
 
-
-<main class="container">
-
-
-  <!-- =====================================================
-       TITRE
-  ====================================================== -->
-
-  <section class="hero">
-
-    <h1>
-      Personalpronomen
-    </h1>
-
-    <p>
-      👤 Lerne die Personalpronomen und übe sie!
-    </p>
-
-  </section>
+<main class="max-w-6xl mx-auto px-5 pb-20">
 
 
+    <!-- =====================================================
+         TITRE
+    ====================================================== -->
 
-  <h2 class="section-title">
-    📚 Die Personalpronomen
-  </h2>
+    <section class="text-center pt-10 pb-12">
 
-
-
-  <!-- =====================================================
-       PRONOMEN
-  ====================================================== -->
-
-  <section class="pronouns">
-
-
-
-    <!-- ================= ICH ================= -->
-
-    <div class="pronoun-card">
-
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
-        alt="ich">
-
-      <div class="pronoun-body">
-
-        <div class="de">
-          ich
+        <div
+            class="
+                inline-block
+                glass
+                rounded-full
+                px-5
+                py-2
+                mb-5
+                text-xs
+                font-black
+                uppercase
+                tracking-widest
+            "
+        >
+            Lektion 3
         </div>
 
-        <div class="fr">
-          je
-        </div>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
+            Deutsche Verben
+        </h1>
+
+        <p class="text-lg md:text-xl font-semibold max-w-3xl mx-auto">
+            Lerne regelmäßige, unregelmäßige und modale Verben auf Deutsch.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
 
         <button
-          class="voice-button"
-          onclick="speakPronoun('ich', this)"
-          aria-label="ich anhören">
+            id="tabButton1"
+            onclick="openTab('regelmaessig', this)"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-6
+                shadow-xl
+                text-left
+                font-black
+            "
+        >
 
-          🔊
+            <div class="text-4xl mb-3">
+                📗
+            </div>
+
+            <div class="text-xs font-black opacity-60 mb-2">
+                TEIL 1
+            </div>
+
+            <h2 class="text-2xl">
+                Regelmäßige Verben
+            </h2>
+
+            <p class="mt-2 font-semibold opacity-75">
+                lernen · machen · wohnen
+            </p>
 
         </button>
 
-      </div>
-
-    </div>
-
-
-
-    <!-- ================= DU ================= -->
-
-    <div class="pronoun-card">
-
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80"
-        alt="du">
-
-      <div class="pronoun-body">
-
-        <div class="de">
-          du
-        </div>
-
-        <div class="fr">
-          tu
-        </div>
 
         <button
-          class="voice-button"
-          onclick="speakPronoun('du', this)"
-          aria-label="du anhören">
+            id="tabButton2"
+            onclick="openTab('unregelmaessig', this)"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-6
+                shadow-xl
+                text-left
+                font-black
+            "
+        >
 
-          🔊
+            <div class="text-4xl mb-3">
+                📕
+            </div>
+
+            <div class="text-xs font-black opacity-60 mb-2">
+                TEIL 2
+            </div>
+
+            <h2 class="text-2xl">
+                Unregelmäßige Verben
+            </h2>
+
+            <p class="mt-2 font-semibold opacity-75">
+                sprechen · fahren · lesen
+            </p>
 
         </button>
 
-      </div>
-
-    </div>
-
-
-
-    <!-- ================= ER ================= -->
-
-    <div class="pronoun-card">
-
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
-        alt="er">
-
-      <div class="pronoun-body">
-
-        <div class="de">
-          er
-        </div>
-
-        <div class="fr">
-          il
-        </div>
 
         <button
-          class="voice-button"
-          onclick="speakPronoun('er', this)"
-          aria-label="er anhören">
+            id="tabButton3"
+            onclick="openTab('modalverben', this)"
+            class="
+                page-button
+                glass
+                rounded-3xl
+                p-6
+                shadow-xl
+                text-left
+                font-black
+            "
+        >
 
-          🔊
+            <div class="text-4xl mb-3">
+                ⭐
+            </div>
+
+            <div class="text-xs font-black opacity-60 mb-2">
+                TEIL 3
+            </div>
+
+            <h2 class="text-2xl">
+                Modalverben
+            </h2>
+
+            <p class="mt-2 font-semibold opacity-75">
+                können · müssen · wollen
+            </p>
 
         </button>
 
-      </div>
-
-    </div>
+    </section>
 
 
 
-    <!-- ================= SIE ================= -->
+    <!-- =====================================================
+         1. REGELMÄSSIGE VERBEN
+    ====================================================== -->
 
-    <div class="pronoun-card">
+    <section id="regelmaessig" class="tab-content">
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80"
-        alt="sie">
+        <!-- EXPLICATION -->
 
-      <div class="pronoun-body">
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-        <div class="de">
-          sie
+            <div class="text-4xl mb-4">
+                💡
+            </div>
+
+            <h2 class="text-3xl font-black mb-4">
+                Regelmäßige Verben
+            </h2>
+
+            <p class="font-semibold text-lg leading-relaxed">
+                Bei regelmäßigen Verben bleibt der Wortstamm gleich.
+                Man entfernt <b>-en</b> und fügt die richtigen Endungen hinzu.
+            </p>
+
+            <div class="glass rounded-2xl p-5 mt-5">
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 font-black">
+
+                    <div>ich → -e</div>
+                    <div>du → -st</div>
+                    <div>er/sie/es → -t</div>
+                    <div>wir → -en</div>
+                    <div>ihr → -t</div>
+                    <div>sie/Sie → -en</div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          elle
+
+        <!-- LERNEN -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+
+                <div>
+
+                    <div class="text-sm font-black opacity-60">
+                        REGELMÄSSIG
+                    </div>
+
+                    <h2 class="text-4xl font-black mt-1">
+                        lernen
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        apprendre
+                    </p>
+
+                </div>
+
+
+                <!-- 🎵 VRAI MP3 -->
+
+                <button
+                    class="
+                        audio-button
+                        glass
+                        rounded-2xl
+                        px-6
+                        py-4
+                        font-black
+                        text-lg
+                        shadow-lg
+                    "
+                    onclick="playMP3('audio/lernen.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-6">
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
+
+                    <div><b>ich</b> lerne</div>
+                    <div><b>du</b> lernst</div>
+                    <div><b>er/sie/es</b> lernt</div>
+                    <div><b>wir</b> lernen</div>
+                    <div><b>ihr</b> lernt</div>
+                    <div><b>sie/Sie</b> lernen</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Ich lerne jeden Tag Deutsch.
+
+                <div class="text-sm opacity-70 mt-2">
+                    J'apprends l'allemand chaque jour.
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('sie', this)"
-          aria-label="sie anhören">
-
-          🔊
-
-        </button>
-
-      </div>
-
-    </div>
 
 
+        <!-- MACHEN -->
 
-    <!-- ================= ES ================= -->
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-    <div class="pronoun-card">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80"
-        alt="es">
+                <div>
 
-      <div class="pronoun-body">
+                    <div class="text-sm font-black opacity-60">
+                        REGELMÄSSIG
+                    </div>
 
-        <div class="de">
-          es
+                    <h2 class="text-4xl font-black mt-1">
+                        machen
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        faire
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="
+                        audio-button
+                        glass
+                        rounded-2xl
+                        px-6
+                        py-4
+                        font-black
+                        text-lg
+                        shadow-lg
+                    "
+                    onclick="playMP3('audio/machen.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-6">
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
+
+                    <div><b>ich</b> mache</div>
+                    <div><b>du</b> machst</div>
+                    <div><b>er/sie/es</b> macht</div>
+                    <div><b>wir</b> machen</div>
+                    <div><b>ihr</b> macht</div>
+                    <div><b>sie/Sie</b> machen</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Er macht seine Hausaufgaben.
+
+                <div class="text-sm opacity-70 mt-2">
+                    Il fait ses devoirs.
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          il / elle (neutre)
+
+        <!-- EXERCICES -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl">
+
+            <div class="text-4xl mb-4">
+                ✍️
+            </div>
+
+            <h2 class="text-3xl font-black mb-6">
+                Übungen
+            </h2>
+
+            <div class="space-y-4">
+
+                <script>
+                    const regularQuestions = [
+                        ["1. Wir _____ (wohnen) in Stuttgart.", "wohnen"],
+                        ["2. Du _____ (fragen) den Lehrer.", "fragst"],
+                        ["3. Er _____ (spielen) Gitarre.", "spielt"],
+                        ["4. Ich _____ (kochen) eine Suppe.", "koche"],
+                        ["5. Ihr _____ (machen) Sport.", "macht"],
+                        ["6. Sie (Plural) _____ (hören) Musik.", "hören"],
+                        ["7. Sie (Politesse) _____ (kaufen) ein Brot.", "kaufen"]
+                    ];
+                </script>
+
+                <div class="glass rounded-2xl p-4">
+
+                    <p class="font-bold mb-3">
+                        1. Wir _____ (wohnen) in Stuttgart.
+                    </p>
+
+                    <input
+                        id="r1"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse"
+                    >
+
+                    <button
+                        onclick="checkAnswer('r1','wohnen','fbr1')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black"
+                    >
+                        Vérifier
+                    </button>
+
+                    <span id="fbr1" class="ml-3 font-black"></span>
+
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        2. Du _____ (fragen) den Lehrer.
+                    </p>
+
+                    <input id="r2"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r2','fragst','fbr2')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr2" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        3. Er _____ (spielen) Gitarre.
+                    </p>
+
+                    <input id="r3"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r3','spielt','fbr3')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr3" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        4. Ich _____ (kochen) eine Suppe.
+                    </p>
+
+                    <input id="r4"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r4','koche','fbr4')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr4" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        5. Ihr _____ (machen) Sport.
+                    </p>
+
+                    <input id="r5"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r5','macht','fbr5')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr5" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        6. Sie (Plural) _____ (hören) Musik.
+                    </p>
+
+                    <input id="r6"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r6','hören','fbr6')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr6" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        7. Sie (Politesse) _____ (kaufen) ein Brot.
+                    </p>
+
+                    <input id="r7"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('r7','kaufen','fbr7')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbr7" class="ml-3 font-black"></span>
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('es', this)"
-          aria-label="es anhören">
-
-          🔊
-
-        </button>
-
-      </div>
-
-    </div>
+    </section>
 
 
 
-    <!-- ================= WIR ================= -->
+    <!-- =====================================================
+         2. UNREGELMÄSSIGE VERBEN
+    ====================================================== -->
 
-    <div class="pronoun-card">
+    <section id="unregelmaessig" class="tab-content hidden">
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
-        alt="wir">
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-      <div class="pronoun-body">
+            <div class="text-4xl mb-4">
+                💡
+            </div>
 
-        <div class="de">
-          wir
+            <h2 class="text-3xl font-black mb-4">
+                Unregelmäßige Verben
+            </h2>
+
+            <p class="font-semibold text-lg leading-relaxed">
+                Bei einigen unregelmäßigen Verben verändert sich
+                der Vokal im Wortstamm bei <b>du</b> und
+                <b>er/sie/es</b>.
+            </p>
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                <p>
+                    e → i / ie
+                    <br>
+                    sprechen → du sprichst
+                </p>
+
+                <p class="mt-3">
+                    a → ä
+                    <br>
+                    fahren → du fährst
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          nous
+
+        <!-- SPRECHEN -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+
+                <div>
+
+                    <div class="text-sm font-black opacity-60">
+                        UNREGELMÄSSIG
+                    </div>
+
+                    <h2 class="text-4xl font-black">
+                        sprechen
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        parler · e → i
+                    </p>
+
+                </div>
+
+                <button
+                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
+                    onclick="playMP3('audio/sprechen.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-6">
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
+
+                    <div><b>ich</b> spreche</div>
+                    <div><b>du</b> sprichst</div>
+                    <div><b>er/sie/es</b> spricht</div>
+                    <div><b>wir</b> sprechen</div>
+                    <div><b>ihr</b> sprecht</div>
+                    <div><b>sie/Sie</b> sprechen</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Du sprichst sehr gut Deutsch.
+
+                <div class="text-sm opacity-70 mt-2">
+                    Tu parles très bien allemand.
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('wir', this)"
-          aria-label="wir anhören">
 
-          🔊
+        <!-- FAHREN -->
 
-        </button>
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-      </div>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
 
-    </div>
+                <div>
+
+                    <div class="text-sm font-black opacity-60">
+                        UNREGELMÄSSIG
+                    </div>
+
+                    <h2 class="text-4xl font-black">
+                        fahren
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        conduire / aller · a → ä
+                    </p>
+
+                </div>
+
+                <button
+                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
+                    onclick="playMP3('audio/fahren.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
 
 
+            <div class="glass rounded-2xl p-5 mt-6">
 
-    <!-- ================= IHR ================= -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
 
-    <div class="pronoun-card">
+                    <div><b>ich</b> fahre</div>
+                    <div><b>du</b> fährst</div>
+                    <div><b>er/sie/es</b> fährt</div>
+                    <div><b>wir</b> fahren</div>
+                    <div><b>ihr</b> fahrt</div>
+                    <div><b>sie/Sie</b> fahren</div>
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80"
-        alt="ihr">
+                </div>
 
-      <div class="pronoun-body">
+            </div>
 
-        <div class="de">
-          ihr
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Er fährt mit dem Auto.
+
+                <div class="text-sm opacity-70 mt-2">
+                    Il va en voiture.
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          vous (groupe)
+
+        <!-- EXERCICES -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl">
+
+            <div class="text-4xl mb-4">
+                ✍️
+            </div>
+
+            <h2 class="text-3xl font-black mb-6">
+                Übungen
+            </h2>
+
+
+            <div class="space-y-4">
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        1. Maria _____ (lesen) ein Buch.
+                    </p>
+
+                    <input id="u1"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u1','liest','fbu1')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu1" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        2. Du _____ (sprechen) schnell.
+                    </p>
+
+                    <input id="u2"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u2','sprichst','fbu2')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu2" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        3. Er _____ (fahren) nach Berlin.
+                    </p>
+
+                    <input id="u3"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u3','fährt','fbu3')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu3" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        4. Du _____ (sehen) den Film.
+                    </p>
+
+                    <input id="u4"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u4','siehst','fbu4')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu4" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        5. Paul _____ (geben) mir den Schlüssel.
+                    </p>
+
+                    <input id="u5"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u5','gibt','fbu5')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu5" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        6. Du _____ (nehmen) einen Tee.
+                    </p>
+
+                    <input id="u6"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u6','nimmst','fbu6')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu6" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        7. Das Kind _____ (schlafen) gut.
+                    </p>
+
+                    <input id="u7"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('u7','schläft','fbu7')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbu7" class="ml-3 font-black"></span>
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('ihr', this)"
-          aria-label="ihr anhören">
-
-          🔊
-
-        </button>
-
-      </div>
-
-    </div>
+    </section>
 
 
 
-    <!-- ================= SIE PLURAL ================= -->
+    <!-- =====================================================
+         3. MODALVERBEN
+    ====================================================== -->
 
-    <div class="pronoun-card">
+    <section id="modalverben" class="tab-content hidden">
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
-        alt="sie Plural">
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-      <div class="pronoun-body">
+            <div class="text-4xl mb-4">
+                💡
+            </div>
 
-        <div class="de">
-          sie
+            <h2 class="text-3xl font-black mb-4">
+                Modalverben
+            </h2>
+
+            <p class="font-semibold text-lg leading-relaxed">
+                Modalverben drücken zum Beispiel Fähigkeit,
+                Pflicht, Wunsch oder Erlaubnis aus.
+            </p>
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                ⚠️ Wichtig:
+
+                <p class="mt-2">
+                    Das Modalverb wird konjugiert.
+                    Das zweite Verb steht im Infinitiv am Ende.
+                </p>
+
+                <p class="mt-3">
+                    Ich <b>kann</b> Gitarre <b>spielen</b>.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          ils / elles
+
+        <!-- KÖNNEN -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+
+                <div>
+
+                    <div class="text-sm font-black opacity-60">
+                        MODALVERB
+                    </div>
+
+                    <h2 class="text-4xl font-black">
+                        können
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        pouvoir / savoir
+                    </p>
+
+                </div>
+
+                <button
+                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
+                    onclick="playMP3('audio/koennen.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-6">
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
+
+                    <div><b>ich</b> kann</div>
+                    <div><b>du</b> kannst</div>
+                    <div><b>er/sie/es</b> kann</div>
+                    <div><b>wir</b> können</div>
+                    <div><b>ihr</b> könnt</div>
+                    <div><b>sie/Sie</b> können</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Ich kann Gitarre spielen.
+
+                <div class="text-sm opacity-70 mt-2">
+                    Je sais jouer de la guitare.
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('sie', this)"
-          aria-label="sie Plural anhören">
 
-          🔊
+        <!-- MÜSSEN -->
 
-        </button>
+        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
 
-      </div>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
 
-    </div>
+                <div>
+
+                    <div class="text-sm font-black opacity-60">
+                        MODALVERB
+                    </div>
+
+                    <h2 class="text-4xl font-black">
+                        müssen
+                    </h2>
+
+                    <p class="text-lg font-bold opacity-75">
+                        devoir / obligation
+                    </p>
+
+                </div>
+
+                <button
+                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
+                    onclick="playMP3('audio/muessen.mp3', this)"
+                >
+                    🔊 <span>Écouter</span>
+                </button>
+
+            </div>
 
 
+            <div class="glass rounded-2xl p-5 mt-6">
 
-    <!-- ================= SIE FORMELL ================= -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
 
-    <div class="pronoun-card">
+                    <div><b>ich</b> muss</div>
+                    <div><b>du</b> musst</div>
+                    <div><b>er/sie/es</b> muss</div>
+                    <div><b>wir</b> müssen</div>
+                    <div><b>ihr</b> müsst</div>
+                    <div><b>sie/Sie</b> müssen</div>
 
-      <img
-        class="pronoun-img"
-        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
-        alt="Sie Formel">
+                </div>
 
-      <div class="pronoun-body">
+            </div>
 
-        <div class="de">
-          Sie
+
+            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+
+                💬 Wir müssen heute viel lernen.
+
+                <div class="text-sm opacity-70 mt-2">
+                    Nous devons beaucoup étudier aujourd'hui.
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="fr">
-          vous (formel)
+
+        <!-- EXERCICES -->
+
+        <div class="glass rounded-3xl p-7 shadow-xl">
+
+            <div class="text-4xl mb-4">
+                ✍️
+            </div>
+
+            <h2 class="text-3xl font-black mb-6">
+                Übungen
+            </h2>
+
+
+            <div class="space-y-4">
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        1. _____ (können) du morgen kommen?
+                    </p>
+
+                    <input id="m1"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m1','Kannst','fbm1')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm1" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        2. Wir _____ (müssen) die Hausaufgaben machen.
+                    </p>
+
+                    <input id="m2"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m2','müssen','fbm2')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm2" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        3. Ich _____ (wollen) nach Hause gehen.
+                    </p>
+
+                    <input id="m3"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m3','will','fbm3')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm3" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        4. _____ (dürfen) ihr hier parken?
+                    </p>
+
+                    <input id="m4"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m4','Dürft','fbm4')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm4" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        5. Er _____ (sollen) mehr schlafen.
+                    </p>
+
+                    <input id="m5"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m5','soll','fbm5')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm5" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        6. Ich _____ (möchten) einen Kaffee bitte.
+                    </p>
+
+                    <input id="m6"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m6','möchte','fbm6')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm6" class="ml-3 font-black"></span>
+                </div>
+
+
+                <div class="glass rounded-2xl p-4">
+                    <p class="font-bold mb-3">
+                        7. Sie (Plural) _____ (können) gut singen.
+                    </p>
+
+                    <input id="m7"
+                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
+                        placeholder="Réponse">
+
+                    <button onclick="checkAnswer('m7','können','fbm7')"
+                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
+                        Vérifier
+                    </button>
+
+                    <span id="fbm7" class="ml-3 font-black"></span>
+                </div>
+
+            </div>
+
         </div>
 
-        <button
-          class="voice-button"
-          onclick="speakPronoun('Sie', this)"
-          aria-label="Sie anhören">
-
-          🔊
-
-        </button>
-
-      </div>
-
-    </div>
-
-
-  </section>
+    </section>
 
 
 
-  <!-- =====================================================
-       EXERCICE
-  ====================================================== -->
+    <!-- =====================================================
+         RÉSUMÉ
+    ====================================================== -->
 
-  <section class="exercise">
+    <section class="glass rounded-3xl p-7 shadow-xl mt-10">
 
-    <h2 class="section-title">
-      ✏️ Übung
-    </h2>
+        <div class="text-4xl mb-4">
+            📌
+        </div>
 
+        <h2 class="text-3xl font-black mb-5">
+            Résumé Général
+        </h2>
 
-    <div class="progress-box">
+        <div class="space-y-4 font-semibold text-lg">
 
-      <span id="questionNumber">
-        Frage 1 von 9
-      </span>
+            <div class="glass rounded-2xl p-4">
+                📗 <b>Verbes réguliers :</b>
+                le radical reste stable.
+                <br>
+                <span class="text-sm opacity-70">
+                    lernen → ich lerne, du lernst
+                </span>
+            </div>
 
-      <span id="scoreText">
-        Punkte: 0
-      </span>
+            <div class="glass rounded-2xl p-4">
+                📕 <b>Verbes irréguliers :</b>
+                la voyelle peut changer.
+                <br>
+                <span class="text-sm opacity-70">
+                    fahren → du fährst
+                </span>
+            </div>
 
-    </div>
+            <div class="glass rounded-2xl p-4">
+                ⭐ <b>Modalverben :</b>
+                le deuxième verbe va à la fin à l'infinitif.
+                <br>
+                <span class="text-sm opacity-70">
+                    Ich kann gut singen.
+                </span>
+            </div>
 
+        </div>
 
-    <div class="progress">
-
-      <div
-        class="progress-bar"
-        id="progressBar">
-      </div>
-
-    </div>
-
-
-    <div
-      class="card"
-      id="exerciseCard">
-
-
-      <img
-        id="personPhoto"
-        class="photo"
-        src=""
-        alt="Person">
-
-
-      <div
-        class="caption"
-        id="caption">
-      </div>
+    </section>
 
 
-      <div class="sentence">
 
-        <span
-          class="blank"
-          id="blank">
+    <!-- =====================================================
+         RETOUR
+    ====================================================== -->
 
-          _____
+    <section class="flex justify-center mt-14">
 
-        </span>
+        <a
+            href="index.html#a1"
+            class="
+                bg-black
+                text-white
+                px-8
+                py-4
+                rounded-2xl
+                font-black
+                shadow-xl
+            "
+        >
+            ← Zurück zu den A1 Lektionen
+        </a>
 
-        <span id="sentenceRest"></span>
-
-      </div>
-
-
-      <div
-        class="answers"
-        id="answers">
-      </div>
-
-
-      <div
-        class="feedback"
-        id="feedback">
-      </div>
-
-
-      <button
-        class="next"
-        id="nextButton"
-        style="display:none;">
-
-        Nächste Frage →
-
-      </button>
-
-
-    </div>
-
-  </section>
-
+    </section>
 
 </main>
 
@@ -1223,696 +1324,186 @@
 
 <script>
 
-
-/* =====================================================
-   VOCAL – PERSONALPRONOMEN
-====================================================== */
-
-function speakPronoun(word, button) {
-
-
-  /*
-   * Stoppe die aktuelle Aussprache.
-   */
-
-  window.speechSynthesis.cancel();
-
-
-  /*
-   * Entferne Animation von allen
-   * anderen Buttons.
-   */
-
-  document
-    .querySelectorAll(".voice-button")
-    .forEach(function(btn) {
-
-      btn.classList.remove(
-        "speaking"
-      );
-
-    });
-
-
-  /*
-   * Neues Sprachobjekt.
-   */
-
-  const speech =
-    new SpeechSynthesisUtterance(word);
-
-
-  /*
-   * Deutsch einstellen.
-   */
-
-  speech.lang = "de-DE";
-
-
-  /*
-   * Geschwindigkeit.
-   *
-   * 0.75 = langsam und
-   * gut für Deutschlerner.
-   */
-
-  speech.rate = 0.75;
-
-
-  /*
-   * Normale Tonhöhe.
-   */
-
-  speech.pitch = 1;
-
-
-  /*
-   * Lautstärke.
-   */
-
-  speech.volume = 1;
-
-
-  /*
-   * Animation starten.
-   */
-
-  button.classList.add(
-    "speaking"
-  );
-
-
-  /*
-   * Wenn die Aussprache
-   * beendet ist.
-   */
-
-  speech.onend = function() {
-
-    button.classList.remove(
-      "speaking"
-    );
-
-  };
-
-
-  /*
-   * Aussprache starten.
-   */
-
-  window.speechSynthesis.speak(
-    speech
-  );
-
-}
-
-
-
-/* =====================================================
-   EXERCISE
-====================================================== */
-
-const questions = [
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👩 Eine Frau (Anna)",
-
-    sentence:
-      "ist Anna.",
-
-    answer:
-      "sie",
-
-    options:
-      ["er", "sie", "wir"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👨 Ein Mann (Peter)",
-
-    sentence:
-      "ist Peter.",
-
-    answer:
-      "er",
-
-    options:
-      ["sie", "er", "ihr"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👩 Eine Frau aus Deutschland",
-
-    sentence:
-      "kommt aus Deutschland.",
-
-    answer:
-      "sie",
-
-    options:
-      ["du", "sie", "wir"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👭 Zwei Frauen",
-
-    sentence:
-      "sind Maria und Anna.",
-
-    answer:
-      "sie",
-
-    options:
-      ["sie", "er", "ich"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👤 Du sprichst mit Paul.",
-
-    sentence:
-      "bist Paul.",
-
-    answer:
-      "du",
-
-    options:
-      ["du", "wir", "sie"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👨‍💼 Ich stelle mich vor.",
-
-    sentence:
-      "heiße Thomas.",
-
-    answer:
-      "ich",
-
-    options:
-      ["ich", "ihr", "er"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👥 Wir zusammen",
-
-    sentence:
-      "lernen Deutsch.",
-
-    answer:
-      "wir",
-
-    options:
-      ["sie", "wir", "du"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👩‍🏫 Du sprichst höflich mit Frau Müller.",
-
-    sentence:
-      "sind Frau Müller.",
-
-    answer:
-      "Sie",
-
-    options:
-      ["sie", "Sie", "ihr"]
-  },
-
-
-  {
-    image:
-      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80",
-
-    caption:
-      "👨‍👩‍👧‍👦 Gruppe von Freunden",
-
-    sentence:
-      "sind meine Freunde.",
-
-    answer:
-      "sie",
-
-    options:
-      ["wir", "er", "sie"]
-  }
-
-];
-
-
-let currentQuestion = 0;
-
-let score = 0;
-
-let answered = false;
-
-
-const personPhoto =
-  document.getElementById(
-    "personPhoto"
-  );
-
-const caption =
-  document.getElementById(
-    "caption"
-  );
-
-const sentenceRest =
-  document.getElementById(
-    "sentenceRest"
-  );
-
-const answers =
-  document.getElementById(
-    "answers"
-  );
-
-const feedback =
-  document.getElementById(
-    "feedback"
-  );
-
-const nextButton =
-  document.getElementById(
-    "nextButton"
-  );
-
-const questionNumber =
-  document.getElementById(
-    "questionNumber"
-  );
-
-const scoreText =
-  document.getElementById(
-    "scoreText"
-  );
-
-const progressBar =
-  document.getElementById(
-    "progressBar"
-  );
-
-const blank =
-  document.getElementById(
-    "blank"
-  );
-
-
-
-/* =====================================================
-   CHARGER QUESTION
-====================================================== */
-
-function loadQuestion() {
-
-  answered = false;
-
-  const q =
-    questions[currentQuestion];
-
-
-  personPhoto.src =
-    q.image;
-
-
-  caption.textContent =
-    q.caption;
-
-
-  sentenceRest.textContent =
-    " " + q.sentence;
-
-
-  blank.textContent =
-    "_____";
-
-
-  questionNumber.textContent =
-    "Frage " +
-    (currentQuestion + 1) +
-    " von " +
-    questions.length;
-
-
-  scoreText.textContent =
-    "Punkte: " +
-    score;
-
-
-  progressBar.style.width =
-    (
-      (currentQuestion + 1)
-      /
-      questions.length
-      *
-      100
-    ) + "%";
-
-
-  feedback.textContent =
-    "";
-
-
-  feedback.className =
-    "feedback";
-
-
-  nextButton.style.display =
-    "none";
-
-
-  answers.innerHTML =
-    "";
-
-
-  q.options.forEach(
-    function(option) {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.className =
-        "answer";
-
-
-      button.textContent =
-        option;
-
-
-      button.onclick =
-        function() {
-
-          checkAnswer(
-            option,
-            button
-          );
-
-        };
-
-
-      answers.appendChild(
-        button
-      );
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    function openTab(tabId, button) {
+
+        const tabs =
+            document.querySelectorAll('.tab-content');
+
+        tabs.forEach(function(tab) {
+            tab.classList.add('hidden');
+        });
+
+        document
+            .getElementById(tabId)
+            .classList.remove('hidden');
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
 
     }
-  );
-
-}
 
 
+    /* =====================================================
+       🎵 LECTEUR MP3
+    ===================================================== */
 
-/* =====================================================
-   VERIFIER REPONSE
-====================================================== */
-
-function checkAnswer(
-  selected,
-  button
-) {
-
-  if (answered)
-    return;
+    let currentAudio = null;
+    let currentButton = null;
 
 
-  answered = true;
+    function playMP3(file, button) {
+
+        /* Arrêter l'ancien audio */
+
+        if (currentAudio) {
+
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+
+            if (currentButton) {
+
+                currentButton.classList.remove('playing');
+
+                currentButton.innerHTML =
+                    '🔊 <span>Écouter</span>';
+
+            }
+        }
 
 
-  const correct =
-    questions[
-      currentQuestion
-    ].answer;
+        /* Créer le nouveau lecteur */
+
+        const audio = new Audio(file);
+
+        currentAudio = audio;
+        currentButton = button;
 
 
-  blank.textContent =
-    selected;
+        button.classList.add('playing');
+
+        button.innerHTML =
+            '⏸️ <span>Lecture...</span>';
 
 
-  if (
-    selected === correct
-  ) {
+        /* Lire le MP3 */
 
-    score++;
+        audio.play().catch(function(error) {
 
-
-    button.classList.add(
-      "correct"
-    );
-
-
-    feedback.textContent =
-      "✅ Sehr gut! Richtig!";
-
-
-    feedback.classList.add(
-      "success"
-    );
-
-  }
-
-  else {
-
-    button.classList.add(
-      "wrong"
-    );
-
-
-    feedback.textContent =
-      "❌ Nicht ganz. Richtig ist: "
-      +
-      correct;
-
-
-    feedback.classList.add(
-      "error"
-    );
-
-
-    document
-      .querySelectorAll(
-        ".answer"
-      )
-      .forEach(
-        function(btn) {
-
-          if (
-            btn.textContent ===
-            correct
-          ) {
-
-            btn.classList.add(
-              "correct"
+            console.error(
+                "Erreur de lecture audio :",
+                error
             );
 
-          }
+            button.classList.remove('playing');
 
-        }
-      );
+            button.innerHTML =
+                '🔊 <span>Écouter</span>';
 
-  }
+            alert(
+                "Le fichier MP3 n'a pas pu être lu.\n\n" +
+                "Vérifie que le fichier existe bien dans le dossier audio."
+            );
 
-
-  scoreText.textContent =
-    "Punkte: " +
-    score;
-
-
-  /*
-   * Aussprache automatique
-   * de la bonne réponse.
-   */
-
-  const correctButton =
-    document.querySelector(
-      ".answer.correct"
-    );
+        });
 
 
-  if (correctButton) {
+        /* Quand le MP3 est terminé */
 
-    speakPronoun(
-      correct,
-      document.querySelector(
-        ".voice-button"
-      ) || {
-        classList: {
-          add: function(){},
-          remove: function(){}
-        }
-      }
-    );
+        audio.addEventListener(
+            'ended',
+            function() {
 
-  }
+                button.classList.remove('playing');
 
+                button.innerHTML =
+                    '🔊 <span>Écouter</span>';
 
-  nextButton.style.display =
-    "block";
+                currentAudio = null;
+                currentButton = null;
 
-}
+            }
+        );
+
+    }
 
 
 
-/* =====================================================
-   QUESTION SUIVANTE
-====================================================== */
+    /* =====================================================
+       VÉRIFICATION DES EXERCICES
+    ===================================================== */
 
-nextButton.onclick =
-  function() {
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion <
-      questions.length
+    function checkAnswer(
+        inputId,
+        correctAnswer,
+        feedbackId
     ) {
 
-      loadQuestion();
+        const input =
+            document.getElementById(inputId);
+
+        const feedback =
+            document.getElementById(feedbackId);
+
+        const userAnswer =
+            input.value.trim();
+
+
+        if (
+            userAnswer.toLowerCase() ===
+            correctAnswer.toLowerCase()
+        ) {
+
+            feedback.textContent =
+                "✅ Richtig!";
+
+            feedback.style.color =
+                "#166534";
+
+            input.classList.remove(
+                'answer-wrong'
+            );
+
+            input.classList.add(
+                'answer-correct'
+            );
+
+        } else {
+
+            feedback.textContent =
+                "❌ Falsch! Antwort: " +
+                correctAnswer;
+
+            feedback.style.color =
+                "#991B1B";
+
+            input.classList.remove(
+                'answer-correct'
+            );
+
+            input.classList.add(
+                'answer-wrong'
+            );
+
+        }
 
     }
 
-    else {
 
-      showResult();
+    /* =====================================================
+       ONGLET PAR DÉFAUT
+    ===================================================== */
 
-    }
-
-  };
-
-
-
-/* =====================================================
-   RESULTAT
-====================================================== */
-
-function showResult() {
-
-  const percentage =
-    Math.round(
-      (
-        score /
-        questions.length
-      ) * 100
-    );
-
-
-  document
-    .getElementById(
-      "exerciseCard"
-    )
-    .innerHTML = `
-
-      <div class="result">
-
-        <div
-          style="font-size:60px;"
-        >
-          🎉
-        </div>
-
-        <h2>
-          Sehr gut!
-        </h2>
-
-        <p>
-          Du hast die Übung beendet.
-        </p>
-
-        <div class="score">
-
-          ${score}
-          /
-          ${questions.length}
-
-        </div>
-
-        <p>
-
-          Ergebnis:
-          <strong>
-            ${percentage}%
-          </strong>
-
-        </p>
-
-        <button
-          class="next"
-          onclick="restart()"
-        >
-
-          🔄 Noch einmal
-
-        </button>
-
-      </div>
-
-  `;
-
-}
-
-
-
-/* =====================================================
-   RESTART
-====================================================== */
-
-function restart() {
-
-  location.reload();
-
-}
-
-
-
-/* =====================================================
-   START
-====================================================== */
-
-loadQuestion();
+    document
+        .getElementById('regelmaessig')
+        .classList.remove('hidden');
 
 </script>
 
-
 </body>
-
 </html>
