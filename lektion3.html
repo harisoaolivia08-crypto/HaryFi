@@ -41,9 +41,9 @@
     --orange:#ff7a00;
 }
 
-/* =========================
+/* =====================================================
    BODY
-========================= */
+===================================================== */
 
 body {
 
@@ -98,9 +98,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    CONTAINER
-========================= */
+===================================================== */
 
 .container {
 
@@ -109,69 +109,13 @@ body {
 
     margin:0 auto;
 
-    padding:
-        24px 16px 60px;
+    padding:24px 16px 60px;
 }
 
 
-/* =========================
-   HEADER
-========================= */
-
-.header {
-
-    text-align:center;
-
-    background:
-        rgba(255,255,255,.22);
-
-    backdrop-filter:
-        blur(16px);
-
-    -webkit-backdrop-filter:
-        blur(16px);
-
-    border:
-        1px solid rgba(255,255,255,.45);
-
-    border-radius:28px;
-
-    padding:
-        24px;
-
-    margin-bottom:18px;
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.12);
-}
-
-.header h1 {
-
-    margin:0 0 7px;
-
-    font-size:
-        clamp(2rem,5vw,3.2rem);
-
-    font-weight:900;
-
-    letter-spacing:-1px;
-}
-
-.header p {
-
-    margin:0;
-
-    font-size:1rem;
-
-    font-weight:700;
-
-    color:#1f2937;
-}
-
-
-/* =========================
-   TOP NAV
-========================= */
+/* =====================================================
+   TOP NAVIGATION
+===================================================== */
 
 .top-navigation {
 
@@ -205,6 +149,9 @@ body {
         rgba(255,255,255,.22);
 
     backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
         blur(16px);
 
     border:
@@ -251,9 +198,63 @@ body {
 }
 
 
-/* =========================
-   NAV BUTTONS
-========================= */
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    text-align:center;
+
+    background:
+        rgba(255,255,255,.22);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    border:
+        1px solid rgba(255,255,255,.45);
+
+    border-radius:28px;
+
+    padding:24px;
+
+    margin-bottom:18px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.12);
+}
+
+.header h1 {
+
+    margin:0 0 7px;
+
+    font-size:
+        clamp(2rem,5vw,3.2rem);
+
+    font-weight:900;
+
+    letter-spacing:-1px;
+}
+
+.header p {
+
+    margin:0;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    color:#1f2937;
+}
+
+
+/* =====================================================
+   MAIN NAVIGATION
+===================================================== */
 
 .main-nav {
 
@@ -356,9 +357,9 @@ body {
 }
 
 
-/* =========================
-   MAIN GRID
-========================= */
+/* =====================================================
+   GRID
+===================================================== */
 
 .lesson-grid {
 
@@ -380,9 +381,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    GLASS CONTENT
-========================= */
+===================================================== */
 
 .main-content,
 .side-panel {
@@ -407,13 +408,6 @@ body {
         0 20px 40px rgba(0,0,0,.12);
 }
 
-
-/*
-   IMPORTANT :
-   Pas de fond blanc derrière
-   les contenus.
-*/
-
 .tab-content,
 .side-content {
 
@@ -427,9 +421,9 @@ body {
 }
 
 
-/* =========================
+/* =====================================================
    TITLES
-========================= */
+===================================================== */
 
 h2 {
 
@@ -466,9 +460,147 @@ h3 {
 }
 
 
-/* =========================
+/* =====================================================
+   COLLAPSIBLE SECTIONS
+===================================================== */
+
+.section-toggle {
+
+    width:100%;
+
+    border:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:
+        15px 17px;
+
+    margin:
+        18px 0 10px;
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.48);
+
+    border:
+        1px solid rgba(255,255,255,.65);
+
+    backdrop-filter:
+        blur(10px);
+
+    color:#111827;
+
+    font-family:
+        'Plus Jakarta Sans',
+        Arial,
+        sans-serif;
+
+    font-size:.98rem;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.08);
+
+    transition:
+        .25s ease;
+}
+
+.section-toggle:hover {
+
+    background:
+        rgba(255,255,255,.65);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.12);
+}
+
+.section-toggle:active {
+
+    transform:
+        scale(.99);
+}
+
+.toggle-left {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.toggle-arrow {
+
+    width:25px;
+
+    height:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:8px;
+
+    background:
+        rgba(255,255,255,.7);
+
+    font-size:.9rem;
+
+    transition:
+        transform .25s ease;
+}
+
+.section-toggle.open .toggle-arrow {
+
+    transform:
+        rotate(90deg);
+}
+
+.section-content {
+
+    display:none;
+
+    animation:
+        sectionOpen .25s ease;
+}
+
+.section-content.open {
+
+    display:block;
+}
+
+@keyframes sectionOpen {
+
+    from {
+        opacity:0;
+        transform:translateY(-5px);
+    }
+
+    to {
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
    TABLE
-========================= */
+===================================================== */
 
 .grammar-table {
 
@@ -542,9 +674,9 @@ h3 {
 }
 
 
-/* =========================
+/* =====================================================
    PLAY BUTTON
-========================= */
+===================================================== */
 
 .play-btn {
 
@@ -556,8 +688,7 @@ h3 {
 
     border-radius:50%;
 
-    background:
-        #ff7a00;
+    background:#ff7a00;
 
     color:white;
 
@@ -569,15 +700,10 @@ h3 {
 
     justify-content:center;
 
-    font-size:18px;
-
-    font-weight:900;
-
     box-shadow:
         0 5px 12px rgba(0,0,0,.18);
 
-    transition:
-        .2s ease;
+    transition:.2s ease;
 
     flex-shrink:0;
 }
@@ -587,8 +713,7 @@ h3 {
     transform:
         scale(1.12);
 
-    background:
-        #ff5a00;
+    background:#ff5a00;
 
     box-shadow:
         0 8px 18px rgba(0,0,0,.22);
@@ -601,7 +726,7 @@ h3 {
 }
 
 
-/* Triangle */
+/* TRIANGLE */
 
 .play-triangle {
 
@@ -622,9 +747,9 @@ h3 {
 }
 
 
-/* =========================
+/* =====================================================
    EXAMPLES
-========================= */
+===================================================== */
 
 .example-list {
 
@@ -634,7 +759,7 @@ h3 {
 
     gap:10px;
 
-    margin-bottom:24px;
+    margin-bottom:10px;
 }
 
 .example-card {
@@ -663,27 +788,19 @@ h3 {
 }
 
 .theme-nom .example-card {
-
-    border-left-color:
-        var(--nom-color);
+    border-left-color:var(--nom-color);
 }
 
 .theme-akk .example-card {
-
-    border-left-color:
-        var(--akk-color);
+    border-left-color:var(--akk-color);
 }
 
 .theme-dat .example-card {
-
-    border-left-color:
-        var(--dat-color);
+    border-left-color:var(--dat-color);
 }
 
 .theme-ref .example-card {
-
-    border-left-color:
-        var(--ref-color);
+    border-left-color:var(--ref-color);
 }
 
 .ex-de {
@@ -705,9 +822,9 @@ h3 {
 }
 
 
-/* =========================
+/* =====================================================
    EXERCISES
-========================= */
+===================================================== */
 
 .exercise-box {
 
@@ -770,9 +887,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    CHECK BUTTON
-========================= */
+===================================================== */
 
 .check-btn {
 
@@ -824,19 +941,17 @@ input[type="text"]:focus {
 }
 
 .feedback.correct {
-
     color:#059669;
 }
 
 .feedback.wrong {
-
     color:#e11d48;
 }
 
 
-/* =========================
+/* =====================================================
    SIDE PANEL
-========================= */
+===================================================== */
 
 .side-panel {
 
@@ -846,13 +961,6 @@ input[type="text"]:focus {
 
     top:15px;
 }
-
-
-/*
-   Pas de carte blanche.
-   Les informations flottent
-   directement sur le glass panel.
-*/
 
 .side-info {
 
@@ -895,20 +1003,18 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    VERB ENDUNGEN
-========================= */
+===================================================== */
 
 .verb-endungen {
 
-    padding-bottom:
-        16px;
+    padding-bottom:16px;
 
     border-bottom:
         1px solid rgba(255,255,255,.55);
 
-    margin-bottom:
-        16px;
+    margin-bottom:16px;
 }
 
 .theme-nom .verb-endungen h3 {
@@ -927,8 +1033,7 @@ input[type="text"]:focus {
 
     gap:10px;
 
-    padding:
-        7px 0;
+    padding:7px 0;
 
     font-size:.88rem;
 
@@ -949,9 +1054,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    MERKHILFE
-========================= */
+===================================================== */
 
 .merkhilfe {
 
@@ -1005,9 +1110,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    HEART VERBS
-========================= */
+===================================================== */
 
 .heart-card {
 
@@ -1096,9 +1201,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    SUMMARY
-========================= */
+===================================================== */
 
 .summary-table {
 
@@ -1143,9 +1248,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 .footer-back {
 
@@ -1185,9 +1290,9 @@ input[type="text"]:focus {
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:600px) {
 
@@ -1199,7 +1304,8 @@ input[type="text"]:focus {
 
     .header {
 
-        padding:19px 14px;
+        padding:
+            19px 14px;
 
         border-radius:22px;
     }
@@ -1207,7 +1313,8 @@ input[type="text"]:focus {
     .main-content,
     .side-panel {
 
-        padding:17px;
+        padding:
+            17px;
 
         border-radius:21px;
     }
@@ -1242,6 +1349,15 @@ input[type="text"]:focus {
 
         position:static;
     }
+
+    .section-toggle {
+
+        padding:
+            13px 14px;
+
+        font-size:.9rem;
+    }
+
 }
 
 </style>
@@ -1254,90 +1370,90 @@ input[type="text"]:focus {
 <div class="container">
 
 
-<!-- =========================
+<!-- =====================================================
      TOP NAVIGATION
-========================= -->
+===================================================== -->
 
 <div class="top-navigation">
 
-    <a
-        href="index.html#a1"
-        class="back-button"
-    >
-        ← A1 Lektionen
-    </a>
+<a
+    href="index.html#a1"
+    class="back-button"
+>
+    ← A1 Lektionen
+</a>
 
-    <div class="course-label">
-        🇩🇪 Deutschkurs · A1
-    </div>
+<div class="course-label">
+    🇩🇪 Deutschkurs · A1
+</div>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <div class="header">
 
-    <h1>
-        Personalpronomen & Reflexivpronomen
-    </h1>
+<h1>
+    Personalpronomen & Reflexivpronomen
+</h1>
 
-    <p>
-        Nominativ · Akkusativ · Dativ · Reflexiv
-    </p>
+<p>
+    Nominativ · Akkusativ · Dativ · Reflexiv
+</p>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      MAIN NAVIGATION
-========================= -->
+===================================================== -->
 
 <div class="main-nav">
 
-    <button
-        class="nav-btn btn-nom active"
-        onclick="switchTab('nominativ', this)"
-    >
-        1. Nominativ
-    </button>
+<button
+    class="nav-btn btn-nom active"
+    onclick="switchTab('nominativ', this)"
+>
+    1. Nominativ
+</button>
 
-    <button
-        class="nav-btn btn-akk"
-        onclick="switchTab('akkusativ', this)"
-    >
-        2. Akkusativ
-    </button>
+<button
+    class="nav-btn btn-akk"
+    onclick="switchTab('akkusativ', this)"
+>
+    2. Akkusativ
+</button>
 
-    <button
-        class="nav-btn btn-dat"
-        onclick="switchTab('dativ', this)"
-    >
-        3. Dativ
-    </button>
+<button
+    class="nav-btn btn-dat"
+    onclick="switchTab('dativ', this)"
+>
+    3. Dativ
+</button>
 
-    <button
-        class="nav-btn btn-ref"
-        onclick="switchTab('reflexiv', this)"
-    >
-        4. Reflexiv ❤️
-    </button>
+<button
+    class="nav-btn btn-ref"
+    onclick="switchTab('reflexiv', this)"
+>
+    4. Reflexiv ❤️
+</button>
 
-    <button
-        class="nav-btn btn-sum"
-        onclick="switchTab('summary', this)"
-    >
-        📊 Zusammenfassung
-    </button>
+<button
+    class="nav-btn btn-sum"
+    onclick="switchTab('summary', this)"
+>
+    📊 Zusammenfassung
+</button>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      GRID
-========================= -->
+===================================================== -->
 
 <div class="lesson-grid">
 
@@ -1349,18 +1465,40 @@ input[type="text"]:focus {
 <div class="main-content">
 
 
-<!-- =========================
+<!-- =====================================================
      NOMINATIV
-========================= -->
+===================================================== -->
 
 <div
     id="nominativ"
     class="tab-content active"
 >
 
-<h2 style="color:var(--nom-color);">
+<!-- =====================================================
+     1. NOMINATIV – COLLAPSIBLE
+===================================================== -->
+
+<button
+    class="section-toggle"
+    onclick="toggleSection(this)"
+>
+
+<span class="toggle-left">
+
+<span class="toggle-arrow">
+    ▶
+</span>
+
+<span>
     1. Nominativ – Personalpronomen
-</h2>
+</span>
+
+</span>
+
+</button>
+
+
+<div class="section-content">
 
 <span class="fr-sub">
     Le sujet : Qui fait l'action ? · Wer?
@@ -1370,6 +1508,7 @@ input[type="text"]:focus {
 <h3>
     Personalpronomen im Nominativ
 </h3>
+
 
 <table class="grammar-table">
 
@@ -1391,7 +1530,8 @@ input[type="text"]:focus {
 <td><strong>ich</strong></td>
 <td>je</td>
 <td>
-<button class="play-btn" onclick="playAudio('ich')">
+<button class="play-btn"
+onclick="playAudio('ich')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1402,7 +1542,8 @@ input[type="text"]:focus {
 <td><strong>du</strong></td>
 <td>tu</td>
 <td>
-<button class="play-btn" onclick="playAudio('du')">
+<button class="play-btn"
+onclick="playAudio('du')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1413,7 +1554,8 @@ input[type="text"]:focus {
 <td><strong>er</strong></td>
 <td>il</td>
 <td>
-<button class="play-btn" onclick="playAudio('er')">
+<button class="play-btn"
+onclick="playAudio('er')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1424,7 +1566,8 @@ input[type="text"]:focus {
 <td><strong>sie</strong></td>
 <td>elle</td>
 <td>
-<button class="play-btn" onclick="playAudio('sie')">
+<button class="play-btn"
+onclick="playAudio('sie')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1435,7 +1578,8 @@ input[type="text"]:focus {
 <td><strong>es</strong></td>
 <td>neutre</td>
 <td>
-<button class="play-btn" onclick="playAudio('es')">
+<button class="play-btn"
+onclick="playAudio('es')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1446,7 +1590,8 @@ input[type="text"]:focus {
 <td><strong>wir</strong></td>
 <td>nous</td>
 <td>
-<button class="play-btn" onclick="playAudio('wir')">
+<button class="play-btn"
+onclick="playAudio('wir')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1457,7 +1602,8 @@ input[type="text"]:focus {
 <td><strong>ihr</strong></td>
 <td>vous</td>
 <td>
-<button class="play-btn" onclick="playAudio('ihr')">
+<button class="play-btn"
+onclick="playAudio('ihr')">
 <span class="play-triangle"></span>
 </button>
 </td>
@@ -1468,19 +1614,45 @@ input[type="text"]:focus {
 <td><strong>sie / Sie</strong></td>
 <td>ils / elles / Vous</td>
 <td>
-<button class="play-btn" onclick="playAudio('sie, Sie')">
+<button class="play-btn"
+onclick="playAudio('sie, Sie')">
 <span class="play-triangle"></span>
 </button>
 </td>
 </tr>
 
 </tbody>
+
 </table>
 
+</div>
 
-<h3>
-    6 Beispiele
-</h3>
+
+<!-- =====================================================
+     2. BEISPIELE – INDEPENDANT
+===================================================== -->
+
+<button
+    class="section-toggle"
+    onclick="toggleSection(this)"
+>
+
+<span class="toggle-left">
+
+<span class="toggle-arrow">
+    ▶
+</span>
+
+<span>
+    Beispiele
+</span>
+
+</span>
+
+</button>
+
+
+<div class="section-content">
 
 <div class="example-list">
 
@@ -1488,6 +1660,7 @@ input[type="text"]:focus {
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 1. <strong>Ich</strong> lerne heute Deutsch.
 </div>
@@ -1495,11 +1668,14 @@ input[type="text"]:focus {
 <div class="ex-fr">
 J'apprends l'allemand aujourd'hui.
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Ich lerne heute Deutsch')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -1508,6 +1684,7 @@ onclick="playAudio('Ich lerne heute Deutsch')">
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 2. <strong>Du</strong> bist mein Freund.
 </div>
@@ -1515,11 +1692,14 @@ onclick="playAudio('Ich lerne heute Deutsch')">
 <div class="ex-fr">
 Tu es mon ami.
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Du bist mein Freund')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -1528,6 +1708,7 @@ onclick="playAudio('Du bist mein Freund')">
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 3. <strong>Er</strong> wohnt in Berlin.
 </div>
@@ -1535,11 +1716,14 @@ onclick="playAudio('Du bist mein Freund')">
 <div class="ex-fr">
 Il habite à Berlin.
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Er wohnt in Berlin')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -1548,6 +1732,7 @@ onclick="playAudio('Er wohnt in Berlin')">
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 4. <strong>Sie</strong> singt sehr schön.
 </div>
@@ -1555,11 +1740,14 @@ onclick="playAudio('Er wohnt in Berlin')">
 <div class="ex-fr">
 Elle chante très bien.
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Sie singt sehr schön')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -1568,6 +1756,7 @@ onclick="playAudio('Sie singt sehr schön')">
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 5. <strong>Wir</strong> spielen Fußball.
 </div>
@@ -1575,11 +1764,14 @@ onclick="playAudio('Sie singt sehr schön')">
 <div class="ex-fr">
 Nous jouons au football.
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Wir spielen Fußball')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -1588,6 +1780,7 @@ onclick="playAudio('Wir spielen Fußball')">
 <div class="example-card">
 
 <div>
+
 <div class="ex-de">
 6. <strong>Ihr</strong> seid fantastisch!
 </div>
@@ -1595,106 +1788,216 @@ onclick="playAudio('Wir spielen Fußball')">
 <div class="ex-fr">
 Vous êtes fantastiques !
 </div>
+
 </div>
 
 <button class="play-btn"
 onclick="playAudio('Ihr seid fantastisch')">
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
 
+
 </div>
 
+</div>
+
+
+<!-- =====================================================
+     3. ÜBUNGEN – INDEPENDANT
+===================================================== -->
+
+<button
+    class="section-toggle"
+    onclick="toggleSection(this)"
+>
+
+<span class="toggle-left">
+
+<span class="toggle-arrow">
+    ▶
+</span>
+
+<span>
+    Übungen
+</span>
+
+</span>
+
+</button>
+
+
+<div class="section-content">
 
 <div class="exercise-box">
 
-<h3>
-7 Übungen
-</h3>
-
 <div class="q-grid">
 
-<div class="q-item">
-<p>1. (Je) ___ lerne heute Deutsch.</p>
-<input id="q-nom-1" type="text" placeholder="Antwort...">
-</div>
 
 <div class="q-item">
-<p>2. (Tu) ___ bist sehr nett.</p>
-<input id="q-nom-2" type="text" placeholder="Antwort...">
+
+<p>
+1. (Je) ___ lerne heute Deutsch.
+</p>
+
+<input
+id="q-nom-1"
+type="text"
+placeholder="Antwort..."
+>
+
 </div>
+
 
 <div class="q-item">
-<p>3. (Il) ___ wohnt in Deutschland.</p>
-<input id="q-nom-3" type="text" placeholder="Antwort...">
+
+<p>
+2. (Tu) ___ bist sehr nett.
+</p>
+
+<input
+id="q-nom-2"
+type="text"
+placeholder="Antwort..."
+>
+
 </div>
+
 
 <div class="q-item">
-<p>4. (Elle) ___ macht gern Musik.</p>
-<input id="q-nom-4" type="text" placeholder="Antwort...">
+
+<p>
+3. (Il) ___ wohnt in Deutschland.
+</p>
+
+<input
+id="q-nom-3"
+type="text"
+placeholder="Antwort..."
+>
+
 </div>
+
 
 <div class="q-item">
-<p>5. (Nous) ___ haben viel Spaß.</p>
-<input id="q-nom-5" type="text" placeholder="Antwort...">
+
+<p>
+4. (Elle) ___ macht gern Musik.
+</p>
+
+<input
+id="q-nom-4"
+type="text"
+placeholder="Antwort..."
+>
+
 </div>
+
 
 <div class="q-item">
-<p>6. (Vous – groupe) ___ lernt sehr schnell.</p>
-<input id="q-nom-6" type="text" placeholder="Antwort...">
+
+<p>
+5. (Nous) ___ haben viel Spaß.
+</p>
+
+<input
+id="q-nom-5"
+type="text"
+placeholder="Antwort..."
+>
+
 </div>
+
 
 <div class="q-item">
-<p>7. (Ils) ___ spielen im Garten.</p>
-<input id="q-nom-7" type="text" placeholder="Antwort...">
-</div>
+
+<p>
+6. (Vous – groupe) ___ lernt sehr schnell.
+</p>
+
+<input
+id="q-nom-6"
+type="text"
+placeholder="Antwort..."
+>
 
 </div>
 
-<button class="check-btn"
-onclick="checkNom()">
+
+<div class="q-item">
+
+<p>
+7. (Ils) ___ spielen im Garten.
+</p>
+
+<input
+id="q-nom-7"
+type="text"
+placeholder="Antwort..."
+>
+
+</div>
+
+
+</div>
+
+
+<button
+class="check-btn"
+onclick="checkNom()"
+>
 7 Antworten prüfen
 </button>
 
-<div id="fb-nom" class="feedback"></div>
+<div
+id="fb-nom"
+class="feedback"
+></div>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- =========================
+
+<!-- =====================================================
      AKKUSATIV
-========================= -->
+===================================================== -->
 
 <div
-    id="akkusativ"
-    class="tab-content"
+id="akkusativ"
+class="tab-content"
 >
 
 <h2 style="color:var(--akk-color);">
-    2. Akkusativ – Personalpronomen
+2. Akkusativ – Personalpronomen
 </h2>
 
 <span class="fr-sub">
-    COD : Qui ? / Wen?
+COD : Qui ? / Wen?
 </span>
 
 
 <h3>
-    Personalpronomen im Akkusativ
+Personalpronomen im Akkusativ
 </h3>
+
 
 <table class="grammar-table">
 
 <thead>
+
 <tr>
 <th>Nominativ</th>
 <th>Akkusativ</th>
 <th>Français</th>
 <th>Audio</th>
 </tr>
+
 </thead>
 
 <tbody>
@@ -1796,11 +2099,12 @@ onclick="playAudio('sie, Sie')">
 </tr>
 
 </tbody>
+
 </table>
 
 
 <h3>
-6 Beispiele
+Beispiele
 </h3>
 
 <div class="example-list">
@@ -1814,10 +2118,12 @@ onclick="playAudio('sie, Sie')">
 Est-ce qu'il me voit ?
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Sieht er mich?')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -1830,10 +2136,12 @@ onclick="playAudio('Sieht er mich?')">
 Je t'aime !
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich liebe dich')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -1846,10 +2154,12 @@ onclick="playAudio('Ich liebe dich')">
 Nous lui rendons visite.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Wir besuchen ihn')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -1862,10 +2172,12 @@ onclick="playAudio('Wir besuchen ihn')">
 La connais-tu ?
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Kennst du sie?')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -1878,10 +2190,12 @@ onclick="playAudio('Kennst du sie?')">
 Appelez-nous !
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Rufen Sie uns an')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -1894,20 +2208,18 @@ onclick="playAudio('Rufen Sie uns an')">
 Je vous comprends.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich verstehe euch')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 </div>
 
 
 <div class="exercise-box">
-
-<h3>
-7 Übungen
-</h3>
 
 <div class="q-grid">
 
@@ -1960,21 +2272,21 @@ onclick="checkAkk()">
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      DATIV
-========================= -->
+===================================================== -->
 
 <div
-    id="dativ"
-    class="tab-content"
+id="dativ"
+class="tab-content"
 >
 
 <h2 style="color:var(--dat-color);">
-    3. Dativ – Personalpronomen
+3. Dativ – Personalpronomen
 </h2>
 
 <span class="fr-sub">
-    COI : À qui ? / Wem?
+COI : À qui ? / Wem?
 </span>
 
 
@@ -1982,15 +2294,18 @@ onclick="checkAkk()">
 Personalpronomen im Dativ
 </h3>
 
+
 <table class="grammar-table">
 
 <thead>
+
 <tr>
 <th>Nominativ</th>
 <th>Dativ</th>
 <th>Français</th>
 <th>Audio</th>
 </tr>
+
 </thead>
 
 <tbody>
@@ -2092,11 +2407,12 @@ onclick="playAudio('ihnen, Ihnen')">
 </tr>
 
 </tbody>
+
 </table>
 
 
 <h3>
-6 Beispiele
+Beispiele
 </h3>
 
 <div class="example-list">
@@ -2110,10 +2426,12 @@ onclick="playAudio('ihnen, Ihnen')">
 Comment vas-tu ?
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Wie geht es dir?')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -2126,10 +2444,12 @@ onclick="playAudio('Wie geht es dir?')">
 Cela m'aide beaucoup.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Das hilft mir sehr')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -2142,10 +2462,12 @@ onclick="playAudio('Das hilft mir sehr')">
 Je le remercie.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich danke ihm')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -2158,10 +2480,12 @@ onclick="playAudio('Ich danke ihm')">
 Le livre lui appartient.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Das Buch gehört ihr')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -2174,10 +2498,12 @@ onclick="playAudio('Das Buch gehört ihr')">
 Réponds-nous s'il te plaît !
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Antworte uns bitte')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
@@ -2190,20 +2516,18 @@ onclick="playAudio('Antworte uns bitte')">
 Je vous félicite !
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich gratuliere euch')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 </div>
 
 
 <div class="exercise-box">
-
-<h3>
-7 Übungen
-</h3>
 
 <div class="q-grid">
 
@@ -2256,21 +2580,21 @@ onclick="checkDat()">
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      REFLEXIV
-========================= -->
+===================================================== -->
 
 <div
-    id="reflexiv"
-    class="tab-content"
+id="reflexiv"
+class="tab-content"
 >
 
 <h2 style="color:var(--ref-color);">
-    4. Reflexivpronomen ❤️
+4. Reflexivpronomen ❤️
 </h2>
 
 <span class="fr-sub">
-    L'action revient sur le sujet : me, te, se...
+Die Handlung kommt zum Subjekt zurück.
 </span>
 
 
@@ -2278,15 +2602,18 @@ onclick="checkDat()">
 Reflexivpronomen
 </h3>
 
+
 <table class="grammar-table">
 
 <thead>
+
 <tr>
 <th>Person</th>
 <th>Akkusativ</th>
 <th>Dativ</th>
 <th>Français</th>
 </tr>
+
 </thead>
 
 <tbody>
@@ -2334,16 +2661,18 @@ Reflexivpronomen
 </tr>
 
 </tbody>
+
 </table>
 
 
 <h3>
-6 Beispiele
+Beispiele
 </h3>
 
 <div class="example-list">
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 1. Ich freue <strong>mich</strong> sehr!
@@ -2352,14 +2681,17 @@ Reflexivpronomen
 Je suis très content(e) !
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich freue mich sehr')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 2. Du wäschst <strong>dich</strong>.
@@ -2368,14 +2700,17 @@ onclick="playAudio('Ich freue mich sehr')">
 Tu te laves.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Du wäschst dich')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 3. Er zieht <strong>sich</strong> an.
@@ -2384,14 +2719,17 @@ onclick="playAudio('Du wäschst dich')">
 Il s'habille.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Er zieht sich an')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 4. Ich wasche <strong>mir</strong> die Hände.
@@ -2400,14 +2738,17 @@ onclick="playAudio('Er zieht sich an')">
 Je me lave les mains.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Ich wasche mir die Hände')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 5. Kaufst du <strong>dir</strong> ein Buch?
@@ -2416,14 +2757,17 @@ onclick="playAudio('Ich wasche mir die Hände')">
 Tu t'achètes un livre ?
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Kaufst du dir ein Buch?')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 
 <div class="example-card">
+
 <div>
 <div class="ex-de">
 6. Wir ruhen <strong>uns</strong> aus.
@@ -2432,20 +2776,18 @@ onclick="playAudio('Kaufst du dir ein Buch?')">
 Nous nous reposons.
 </div>
 </div>
+
 <button class="play-btn"
 onclick="playAudio('Wir ruhen uns aus')">
 <span class="play-triangle"></span>
 </button>
+
 </div>
 
 </div>
 
 
 <div class="exercise-box">
-
-<h3>
-7 Übungen
-</h3>
 
 <div class="q-grid">
 
@@ -2498,13 +2840,13 @@ onclick="checkRef()">
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      SUMMARY
-========================= -->
+===================================================== -->
 
 <div
-    id="summary"
-    class="tab-content"
+id="summary"
+class="tab-content"
 >
 
 <h2 style="color:var(--sum-color);">
@@ -2597,6 +2939,7 @@ Vue globale des Personalpronomen
 </tr>
 
 </tbody>
+
 </table>
 
 </div>
@@ -2612,13 +2955,13 @@ Vue globale des Personalpronomen
 <div class="side-panel">
 
 
-<!-- =========================
+<!-- =====================================================
      NOMINATIV SIDE
-========================= -->
+===================================================== -->
 
 <div
-    id="side-nominativ"
-    class="side-content active"
+id="side-nominativ"
+class="side-content active"
 >
 
 
@@ -2633,6 +2976,7 @@ Vue globale des Personalpronomen
 <p>
 Terminaisons au présent :
 </p>
+
 
 <div class="ending-line">
 <span><strong>ich</strong></span>
@@ -2664,12 +3008,15 @@ Terminaisons au présent :
 <span class="ending-example">mach-en</span>
 </div>
 
+
 <button
-    class="play-btn"
-    style="margin-top:10px;"
-    onclick="playAudio('ich mache, du machst, er macht, wir machen, ihr macht, sie machen')"
+class="play-btn"
+style="margin-top:10px;"
+onclick="playAudio('ich mache, du machst, er macht, wir machen, ihr macht, sie machen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </div>
@@ -2690,6 +3037,7 @@ Der <strong>Nominativ</strong> ist das Subjekt.
 <p>
 <strong>Wer macht die Aktion?</strong>
 </p>
+
 
 <div class="merk-beispiel">
 
@@ -2716,13 +3064,13 @@ Wir lernen.
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      AKKUSATIV SIDE
-========================= -->
+===================================================== -->
 
 <div
-    id="side-akkusativ"
-    class="side-content"
+id="side-akkusativ"
+class="side-content"
 >
 
 <div class="heart-card">
@@ -2740,15 +3088,24 @@ Diese Verben mit Akkusativ lernen.
 <li>
 
 <div class="verb-text">
-<span class="verb-de">lieben</span>
-<span class="verb-fr">aimer</span>
+
+<span class="verb-de">
+lieben
+</span>
+
+<span class="verb-fr">
+aimer
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('lieben')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2757,15 +3114,24 @@ onclick="playAudio('lieben')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sehen</span>
-<span class="verb-fr">voir</span>
+
+<span class="verb-de">
+sehen
+</span>
+
+<span class="verb-fr">
+voir
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sehen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2774,15 +3140,24 @@ onclick="playAudio('sehen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">besuchen</span>
-<span class="verb-fr">visiter</span>
+
+<span class="verb-de">
+besuchen
+</span>
+
+<span class="verb-fr">
+visiter
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('besuchen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2791,15 +3166,24 @@ onclick="playAudio('besuchen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">brauchen</span>
-<span class="verb-fr">avoir besoin</span>
+
+<span class="verb-de">
+brauchen
+</span>
+
+<span class="verb-fr">
+avoir besoin
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('brauchen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2808,15 +3192,24 @@ onclick="playAudio('brauchen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">anrufen</span>
-<span class="verb-fr">appeler</span>
+
+<span class="verb-de">
+anrufen
+</span>
+
+<span class="verb-fr">
+appeler
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('anrufen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2828,13 +3221,13 @@ onclick="playAudio('anrufen')"
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      DATIV SIDE
-========================= -->
+===================================================== -->
 
 <div
-    id="side-dativ"
-    class="side-content"
+id="side-dativ"
+class="side-content"
 >
 
 <div class="heart-card">
@@ -2852,13 +3245,24 @@ Diese Verben mit Dativ lernen.
 <li>
 
 <div class="verb-text">
-<span class="verb-de">helfen</span>
-<span class="verb-fr">aider</span>
+
+<span class="verb-de">
+helfen
+</span>
+
+<span class="verb-fr">
+aider
+</span>
+
 </div>
 
-<button class="play-btn"
-onclick="playAudio('helfen')">
+<button
+class="play-btn"
+onclick="playAudio('helfen')"
+>
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2867,13 +3271,24 @@ onclick="playAudio('helfen')">
 <li>
 
 <div class="verb-text">
-<span class="verb-de">gehören</span>
-<span class="verb-fr">appartenir à</span>
+
+<span class="verb-de">
+gehören
+</span>
+
+<span class="verb-fr">
+appartenir à
+</span>
+
 </div>
 
-<button class="play-btn"
-onclick="playAudio('gehören')">
+<button
+class="play-btn"
+onclick="playAudio('gehören')"
+>
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2882,13 +3297,24 @@ onclick="playAudio('gehören')">
 <li>
 
 <div class="verb-text">
-<span class="verb-de">danken</span>
-<span class="verb-fr">remercier</span>
+
+<span class="verb-de">
+danken
+</span>
+
+<span class="verb-fr">
+remercier
+</span>
+
 </div>
 
-<button class="play-btn"
-onclick="playAudio('danken')">
+<button
+class="play-btn"
+onclick="playAudio('danken')"
+>
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2897,13 +3323,24 @@ onclick="playAudio('danken')">
 <li>
 
 <div class="verb-text">
-<span class="verb-de">antworten</span>
-<span class="verb-fr">répondre</span>
+
+<span class="verb-de">
+antworten
+</span>
+
+<span class="verb-fr">
+répondre
+</span>
+
 </div>
 
-<button class="play-btn"
-onclick="playAudio('antworten')">
+<button
+class="play-btn"
+onclick="playAudio('antworten')"
+>
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2912,13 +3349,24 @@ onclick="playAudio('antworten')">
 <li>
 
 <div class="verb-text">
-<span class="verb-de">gefallen</span>
-<span class="verb-fr">plaire</span>
+
+<span class="verb-de">
+gefallen
+</span>
+
+<span class="verb-fr">
+plaire
+</span>
+
 </div>
 
-<button class="play-btn"
-onclick="playAudio('gefallen')">
+<button
+class="play-btn"
+onclick="playAudio('gefallen')"
+>
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2930,13 +3378,13 @@ onclick="playAudio('gefallen')">
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      REFLEXIV SIDE
-========================= -->
+===================================================== -->
 
 <div
-    id="side-reflexiv"
-    class="side-content"
+id="side-reflexiv"
+class="side-content"
 >
 
 <div class="heart-card">
@@ -2955,20 +3403,30 @@ style="color:#9d174d;"
 Verbes réfléchis
 </span>
 
+
 <ul class="verb-list">
 
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sich freuen</span>
-<span class="verb-fr">se réjouir</span>
+
+<span class="verb-de">
+sich freuen
+</span>
+
+<span class="verb-fr">
+se réjouir
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sich freuen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2977,15 +3435,24 @@ onclick="playAudio('sich freuen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sich waschen</span>
-<span class="verb-fr">se laver</span>
+
+<span class="verb-de">
+sich waschen
+</span>
+
+<span class="verb-fr">
+se laver
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sich waschen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -2994,15 +3461,24 @@ onclick="playAudio('sich waschen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sich anziehen</span>
-<span class="verb-fr">s'habiller</span>
+
+<span class="verb-de">
+sich anziehen
+</span>
+
+<span class="verb-fr">
+s'habiller
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sich anziehen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -3011,15 +3487,24 @@ onclick="playAudio('sich anziehen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sich ausruhen</span>
-<span class="verb-fr">se reposer</span>
+
+<span class="verb-de">
+sich ausruhen
+</span>
+
+<span class="verb-fr">
+se reposer
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sich ausruhen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -3028,15 +3513,24 @@ onclick="playAudio('sich ausruhen')"
 <li>
 
 <div class="verb-text">
-<span class="verb-de">sich kämmen</span>
-<span class="verb-fr">se coiffer</span>
+
+<span class="verb-de">
+sich kämmen
+</span>
+
+<span class="verb-fr">
+se coiffer
+</span>
+
 </div>
 
 <button
 class="play-btn"
 onclick="playAudio('sich kämmen')"
 >
+
 <span class="play-triangle"></span>
+
 </button>
 
 </li>
@@ -3048,13 +3542,13 @@ onclick="playAudio('sich kämmen')"
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      SUMMARY SIDE
-========================= -->
+===================================================== -->
 
 <div
-    id="side-summary"
-    class="side-content"
+id="side-summary"
+class="side-content"
 >
 
 <div class="side-info">
@@ -3093,9 +3587,9 @@ Reflexiv = Handlung zurück auf das Subjekt
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <div class="footer-back">
 
@@ -3120,19 +3614,27 @@ function switchTab(caseName, button) {
     document
         .querySelectorAll('.tab-content')
         .forEach(tab => {
+
             tab.classList.remove('active');
+
         });
+
 
     document
         .querySelectorAll('.side-content')
         .forEach(side => {
+
             side.classList.remove('active');
+
         });
+
 
     document
         .querySelectorAll('.nav-btn')
         .forEach(btn => {
+
             btn.classList.remove('active');
+
         });
 
 
@@ -3157,26 +3659,38 @@ function switchTab(caseName, button) {
 
 
 /* =====================================================
-   AUDIO TEMPORAIRE
+   COLLAPSIBLE SECTIONS
 ===================================================== */
 
-/*
-   POUR LE MOMENT :
+function toggleSection(button) {
 
-   Les boutons utilisent la voix du navigateur.
+    const content =
+        button.nextElementSibling;
 
-   PLUS TARD :
+    const isOpen =
+        content.classList.contains('open');
 
-   Nous remplacerons cette fonction par de vrais MP3.
 
-   Exemple :
+    if (isOpen) {
 
-   audio/lektion3/ich.mp3
-   audio/lektion3/du.mp3
-   audio/lektion3/mich.mp3
+        content.classList.remove('open');
 
-   etc.
-*/
+        button.classList.remove('open');
+
+    } else {
+
+        content.classList.add('open');
+
+        button.classList.add('open');
+
+    }
+
+}
+
+
+/* =====================================================
+   AUDIO
+===================================================== */
 
 function playAudio(text) {
 
@@ -3225,6 +3739,7 @@ function checkNom() {
 
     let correctCount = 0;
 
+
     for (
         let i = 1;
         i <= 7;
@@ -3240,6 +3755,7 @@ function checkNom() {
             .trim()
             .toLowerCase();
 
+
         if (
             value === answers[i - 1]
         ) {
@@ -3250,10 +3766,12 @@ function checkNom() {
 
     }
 
+
     const feedback =
         document.getElementById(
             'fb-nom'
         );
+
 
     if (correctCount === 7) {
 
@@ -3294,6 +3812,7 @@ function checkAkk() {
 
     let correctCount = 0;
 
+
     for (
         let i = 1;
         i <= 7;
@@ -3309,6 +3828,7 @@ function checkAkk() {
             .trim()
             .toLowerCase();
 
+
         if (
             value === answers[i - 1]
         ) {
@@ -3319,10 +3839,12 @@ function checkAkk() {
 
     }
 
+
     const feedback =
         document.getElementById(
             'fb-akk'
         );
+
 
     if (correctCount === 7) {
 
@@ -3363,6 +3885,7 @@ function checkDat() {
 
     let correctCount = 0;
 
+
     for (
         let i = 1;
         i <= 7;
@@ -3378,6 +3901,7 @@ function checkDat() {
             .trim()
             .toLowerCase();
 
+
         if (
             value === answers[i - 1]
         ) {
@@ -3388,10 +3912,12 @@ function checkDat() {
 
     }
 
+
     const feedback =
         document.getElementById(
             'fb-dat'
         );
+
 
     if (correctCount === 7) {
 
@@ -3432,6 +3958,7 @@ function checkRef() {
 
     let correctCount = 0;
 
+
     for (
         let i = 1;
         i <= 7;
@@ -3447,6 +3974,7 @@ function checkRef() {
             .trim()
             .toLowerCase();
 
+
         if (
             value === answers[i - 1]
         ) {
@@ -3457,10 +3985,12 @@ function checkRef() {
 
     }
 
+
     const feedback =
         document.getElementById(
             'fb-ref'
         );
+
 
     if (correctCount === 7) {
 
