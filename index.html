@@ -1,876 +1,461 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
+<!DOCTYPE html>  <html lang="de">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>HaryFi – Deutsch lernen</title>  <link rel="stylesheet" href="style.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>  <body>  <!-- CANVAS – FOND ANIMÉ -->  
+<canvas id="wordCanvas"></canvas>  
 
-    <title>HaryFi – Deutsch lernen</title>
 
-    <link rel="stylesheet" href="style.css">
+<!-- =====================================================  
+     ÉCRAN 1 – ACCUEIL  
+====================================================== -->  
 
-    <style>
+<section id="homePage" class="page active">  
 
-        /* =====================================================
-           HARYFI – NAVIGATION FIX
-        ===================================================== */
+    <div class="top-logo">  
 
-        .lesson-list {
-            width: 100%;
-        }
+        <div class="logo-box">  
+            HF  
+        </div>  
 
-        .lesson-item,
-        .lesson-card {
-            cursor: pointer;
-        }
+        <div>  
 
-        .lesson-item.disabled,
-        .lesson-card.disabled {
-            cursor: not-allowed;
-            opacity: .65;
-        }
+            <div class="logo-name">  
+                HARY<span>FI</span>  
+            </div>  
 
-        .lesson-status {
-            font-size: 12px;
-            margin-top: 5px;
-            opacity: .7;
-        }
+            <div class="logo-subtitle">  
+                DEUTSCH LERNEN  
+            </div>  
 
-        /* Message */
+        </div>  
 
-        #lessonMessage {
-            position: fixed;
-            left: 50%;
-            bottom: 25px;
-            transform: translateX(-50%) translateY(20px);
+    </div>  
 
-            background: rgba(20, 25, 50, .95);
-            color: white;
 
-            padding: 14px 22px;
-            border-radius: 14px;
+    <div class="home-content">  
 
-            font-size: 14px;
-            font-weight: 700;
+        <div class="welcome-badge">  
+            🇩🇪 HARYFI  
+        </div>  
 
-            opacity: 0;
-            pointer-events: none;
+        <h1>  
+            Ndao Hianatra  
+            <span>Allemand</span>  
+        </h1>  
 
-            transition: .3s;
+        <p class="home-text">  
+            Lerne Deutsch mit HaryFi.  
+        </p>  
 
-            z-index: 9999;
-        }
+        <button  
+            class="start-button"  
+            onclick="showLevels()">  
 
-        #lessonMessage.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+            BEGINNEN  
 
-    </style>
+            <span>  
+                ➜  
+            </span>  
 
-</head>
+        </button>  
 
+    </div>  
 
-<body>
 
+    <div class="home-footer">  
 
-<!-- =====================================================
-     CANVAS – FOND ANIMÉ
-====================================================== -->
+        <div>  
 
-<canvas id="wordCanvas"></canvas>
+            <strong>  
+                A1 – C2  
+            </strong>  
 
+            <small>  
+                Niveaustufen  
+            </small>  
 
+        </div>  
 
-<!-- =====================================================
-     ÉCRAN 1 – ACCUEIL
-====================================================== -->
 
-<section id="homePage" class="page active">
+        <div>  
 
+            <strong>  
+                50+  
+            </strong>  
 
-    <div class="top-logo">
+            <small>  
+                Lektionen  
+            </small>  
 
-        <div class="logo-box">
-            HF
-        </div>
+        </div>  
 
-        <div>
 
-            <div class="logo-name">
-                HARY<span>FI</span>
-            </div>
+        <div>  
 
-            <div class="logo-subtitle">
-                DEUTSCH LERNEN
-            </div>
+            <strong>  
+                100%  
+            </strong>  
 
-        </div>
+            <small>  
+                Interaktiv  
+            </small>  
 
-    </div>
+        </div>  
 
+    </div>  
 
+</section>  
 
-    <div class="home-content">
 
-        <div class="welcome-badge">
-            🇩🇪 HARYFI
-        </div>
 
+<!-- =====================================================  
+     ÉCRAN 2 – NIVEAUX A1 – C2  
+====================================================== -->  
 
-        <h1>
-            Ndao Hianatra
-            <span>Allemand</span>
-        </h1>
+<section id="levelsPage" class="page">  
 
+    <div class="screen-header">  
 
-        <p class="home-text">
-            Lerne Deutsch mit HaryFi.
-        </p>
+        <button  
+            class="back-button"  
+            onclick="showHome()">  
 
+            ← Zurück  
 
-        <button
-            type="button"
-            class="start-button"
-            onclick="showLevels()">
+        </button>  
 
-            BEGINNEN
 
-            <span>
-                ➜
-            </span>
+        <div class="header-logo">  
+            HARY<span>FI</span>  
+        </div>  
 
-        </button>
 
-    </div>
+        <div class="header-title">  
+            WÄHLE DEIN NIVEAU  
+        </div>  
 
+    </div>  
 
 
-    <div class="home-footer">
 
-        <div>
+    <div class="levels-container">  
 
-            <strong>
-                A1 – C2
-            </strong>
 
-            <small>
-                Niveaustufen
-            </small>
+        <!-- ================= A1 ================= -->  
 
-        </div>
+        <button  
+            class="level-card a1"  
+            onclick="openA1()">  
 
+            <span class="level-number">  
+                01  
+            </span>  
 
-        <div>
+            <span class="level-name">  
+                A1  
+            </span>  
 
-            <strong>
-                50+
-            </strong>
+            <span class="level-description">  
+                Anfänger  
+            </span>  
 
-            <small>
-                Lektionen
-            </small>
+        </button>  
 
-        </div>
 
 
-        <div>
+        <!-- ================= A2 ================= -->  
 
-            <strong>
-                100%
-            </strong>
+        <button  
+            class="level-card a2">  
 
-            <small>
-                Interaktiv
-            </small>
+            <span class="level-number">  
+                02  
+            </span>  
 
-        </div>
+            <span class="level-name">  
+                A2  
+            </span>  
 
-    </div>
+            <span class="level-description">  
+                Grundstufe  
+            </span>  
 
-</section>
+        </button>  
 
 
 
+        <!-- ================= B1 ================= -->  
 
-<!-- =====================================================
-     ÉCRAN 2 – NIVEAUX A1 – C2
-====================================================== -->
+        <button  
+            class="level-card b1">  
 
-<section id="levelsPage" class="page">
+            <span class="level-number">  
+                03  
+            </span>  
 
+            <span class="level-name">  
+                B1  
+            </span>  
 
-    <div class="screen-header">
+            <span class="level-description">  
+                Mittelstufe  
+            </span>  
 
+        </button>  
 
-        <button
-            type="button"
-            class="back-button"
-            onclick="showHome()">
 
-            ← Zurück
 
-        </button>
+        <!-- ================= B2 ================= -->  
 
+        <button  
+            class="level-card b2">  
 
-        <div class="header-logo">
-            HARY<span>FI</span>
-        </div>
+            <span class="level-number">  
+                04  
+            </span>  
 
+            <span class="level-name">  
+                B2  
+            </span>  
 
-        <div class="header-title">
-            WÄHLE DEIN NIVEAU
-        </div>
+            <span class="level-description">  
+                Gute Kenntnisse  
+            </span>  
 
-    </div>
+        </button>  
 
 
 
-    <div class="levels-container">
+        <!-- ================= C1 ================= -->  
 
+        <button  
+            class="level-card c1">  
 
-        <!-- A1 -->
+            <span class="level-number">  
+                05  
+            </span>  
 
-        <button
-            type="button"
-            class="level-card a1"
-            onclick="openA1()">
+            <span class="level-name">  
+                C1  
+            </span>  
 
-            <span class="level-number">
-                01
-            </span>
+            <span class="level-description">  
+                Fortgeschritten  
+            </span>  
 
-            <span class="level-name">
-                A1
-            </span>
+        </button>  
 
-            <span class="level-description">
-                Anfänger
-            </span>
 
-        </button>
 
+        <!-- ================= C2 ================= -->  
 
+        <button  
+            class="level-card c2">  
 
-        <!-- A2 -->
+            <span class="level-number">  
+                06  
+            </span>  
 
-        <button
-            type="button"
-            class="level-card a2"
-            onclick="levelComingSoon('A2')">
+            <span class="level-name">  
+                C2  
+            </span>  
 
-            <span class="level-number">
-                02
-            </span>
+            <span class="level-description">  
+                Meisterstufe  
+            </span>  
 
-            <span class="level-name">
-                A2
-            </span>
+        </button>  
 
-            <span class="level-description">
-                Grundstufe
-            </span>
 
-        </button>
+    </div>  
 
 
 
-        <!-- B1 -->
+    <div class="swipe-hint">  
 
-        <button
-            type="button"
-            class="level-card b1"
-            onclick="levelComingSoon('B1')">
+        <span>  
+            ←  
+        </span>  
 
-            <span class="level-number">
-                03
-            </span>
+        WÄHLE EIN NIVEAU  
 
-            <span class="level-name">
-                B1
-            </span>
+        <span>  
+            →  
+        </span>  
 
-            <span class="level-description">
-                Mittelstufe
-            </span>
+    </div>  
 
-        </button>
+</section>  
 
 
 
-        <!-- B2 -->
+<!-- =====================================================  
+     ÉCRAN 3 – A1 LEKTIONEN  
+====================================================== -->  
 
-        <button
-            type="button"
-            class="level-card b2"
-            onclick="levelComingSoon('B2')">
+<section id="a1Page" class="page">  
 
-            <span class="level-number">
-                04
-            </span>
+    <div class="lesson-header">  
 
-            <span class="level-name">
-                B2
-            </span>
 
-            <span class="level-description">
-                Gute Kenntnisse
-            </span>
+        <button  
+            class="back-button"  
+            onclick="showLevels()">  
 
-        </button>
+            ← Zurück  
 
+        </button>  
 
 
-        <!-- C1 -->
+        <div class="header-logo">  
+            HARY<span>FI</span>  
+        </div>  
 
-        <button
-            type="button"
-            class="level-card c1"
-            onclick="levelComingSoon('C1')">
 
-            <span class="level-number">
-                05
-            </span>
+        <div class="a1-title">  
+            🇩🇪 A1 – LEKTIONEN  
+        </div>  
 
-            <span class="level-name">
-                C1
-            </span>
 
-            <span class="level-description">
-                Fortgeschritten
-            </span>
+    </div>  
 
-        </button>
 
 
+    <main class="lesson-content">  
 
-        <!-- C2 -->
 
-        <button
-            type="button"
-            class="level-card c2"
-            onclick="levelComingSoon('C2')">
+        <div class="lesson-intro">  
 
-            <span class="level-number">
-                06
-            </span>
+            <div class="a1-badge">  
+                A1  
+            </div>  
 
-            <span class="level-name">
-                C2
-            </span>
 
-            <span class="level-description">
-                Meisterstufe
-            </span>
+            <h2>  
+                A1 – Lektionen  
+            </h2>  
 
-        </button>
 
+            <p>  
+                Lerne die wichtigsten Grundlagen der deutschen Sprache.  
+            </p>  
 
-    </div>
+        </div>  
 
 
 
-    <div class="swipe-hint">
+        <!-- =================================================  
+             LESSON LIST  
 
-        <span>←</span>
+             app.js erstellt hier die 50 Lektionen.  
+        ================================================== -->  
 
-        WÄHLE EIN NIVEAU
+        <div  
+            id="lessonList"  
+            class="lesson-list">  
 
-        <span>→</span>
+        </div>  
 
-    </div>
 
-</section>
+    </main>  
 
+</section>  
 
 
 
-<!-- =====================================================
-     ÉCRAN 3 – A1 LEKTIONEN
-====================================================== -->
+<!-- =====================================================  
+     JAVASCRIPT  
+====================================================== -->  
 
-<section id="a1Page" class="page">
+<script src="app.js"></script>  
 
 
-    <div class="lesson-header">
 
+<!-- =====================================================  
+     VERBINDUNG ZU LEKTION 1  
+====================================================== -->  
 
-        <button
-            type="button"
-            class="back-button"
-            onclick="showLevels()">
+<script>  
 
-            ← Zurück
+    /*  
+     * HARYFI  
+     *  
+     * Die Lektion 1 befindet sich jetzt  
+     * in einer eigenen Datei:  
+     *  
+     * lektion1.html  
+     *  
+     * Wenn der Benutzer in der A1-Liste  
+     * auf "Alphabet & Aussprache" klickt,  
+     * wird diese Seite geöffnet.  
+     */  
 
-        </button>
 
+    document.addEventListener(  
+        "click",  
+        function(event) {  
 
-        <div class="header-logo">
-            HARY<span>FI</span>
-        </div>
+            /*  
+             * Prüfen, ob innerhalb  
+             * der Lektionen geklickt wurde.  
+             */  
 
+            const element =  
+                event.target.closest(  
+                    "#lessonList"  
+                );  
 
-        <div class="a1-title">
-            🇩🇪 A1 – LEKTIONEN
-        </div>
 
+            if (!element) {  
+                return;  
+            }  
 
-    </div>
 
+            /*  
+             * Text der angeklickten  
+             * Lektion holen.  
+             */  
 
+            const text =  
+                event.target.textContent  
+                .trim()  
+                .replace(/\s+/g, " ");  
 
-    <main class="lesson-content">
 
+            /*  
+             * Lektion 1 erkennen.  
+             */  
 
-        <div class="lesson-intro">
+            if (  
+                text.includes(  
+                    "Alphabet & Aussprache"  
+                )  
+            ) {  
 
-            <div class="a1-badge">
-                A1
-            </div>
+                /*  
+                 * Standardverhalten stoppen.  
+                 */  
 
+                event.preventDefault();  
 
-            <h2>
-                A1 – Lektionen
-            </h2>
 
+                /*  
+                 * Neue Lektion-1-Seite öffnen.  
+                 */  
 
-            <p>
-                Lerne die wichtigsten Grundlagen der deutschen Sprache.
-            </p>
+                window.location.href =  
+                    "lektion1.html";  
 
-        </div>
+            }  
 
-
-
-        <!-- =================================================
-             LESSON LIST
-        ================================================== -->
-
-        <div
-            id="lessonList"
-            class="lesson-list">
-
-            <!-- LEKTION 1 -->
-
-            <div
-                class="lesson-card"
-                data-lesson-file="lektion1.html">
-
-                <div>
-
-                    <div class="lesson-number">
-                        Lektion 1
-                    </div>
-
-                    <h3>
-                        Alphabet & Aussprache
-                    </h3>
-
-                    <p>
-                        Das deutsche Alphabet und die Aussprache.
-                    </p>
-
-                </div>
-
-                <div>
-                    →
-                </div>
-
-            </div>
-
-
-
-            <!-- LEKTION 2 -->
-
-            <div
-                class="lesson-card"
-                data-lesson-file="lektion2.html">
-
-                <div>
-
-                    <div class="lesson-number">
-                        Lektion 2
-                    </div>
-
-                    <h3>
-                        Begrüßung
-                    </h3>
-
-                    <p>
-                        Hallo sagen und sich begrüßen.
-                    </p>
-
-                </div>
-
-                <div>
-                    →
-                </div>
-
-            </div>
-
-
-
-            <!-- LEKTION 3 -->
-
-            <div
-                class="lesson-card"
-                data-lesson-file="lektion3.html">
-
-                <div>
-
-                    <div class="lesson-number">
-                        Lektion 3
-                    </div>
-
-                    <h3>
-                        Sich vorstellen
-                    </h3>
-
-                    <p>
-                        Personalpronomen und erste Sätze.
-                    </p>
-
-                </div>
-
-                <div>
-                    →
-                </div>
-
-            </div>
-
-
-
-            <!-- LEKTION 4 -->
-
-            <div
-                class="lesson-card"
-                data-lesson-file="lektion4.html">
-
-                <div>
-
-                    <div class="lesson-number">
-                        Lektion 4
-                    </div>
-
-                    <h3>
-                        Zahlen
-                    </h3>
-
-                    <p>
-                        Die Zahlen auf Deutsch.
-                    </p>
-
-                </div>
-
-                <div>
-                    →
-                </div>
-
-            </div>
-
-
-
-            <!-- LEKTION 5 -->
-
-            <div
-                class="lesson-card"
-                data-lesson-file="lektion5.html">
-
-                <div>
-
-                    <div class="lesson-number">
-                        Lektion 5
-                    </div>
-
-                    <h3>
-                        Familie
-                    </h3>
-
-                    <p>
-                        Familie und Personen beschreiben.
-                    </p>
-
-                </div>
-
-                <div>
-                    →
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-
-    </main>
-
-</section>
-
-
-
-
-<!-- =====================================================
-     MESSAGE
-====================================================== -->
-
-<div id="lessonMessage"></div>
-
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-====================================================== -->
-
-<script src="app.js"></script>
-
-
-
-<script>
-
-/* =====================================================
-   HARYFI – NAVIGATION
-====================================================== */
-
-
-/*
-   Afficher un message
-*/
-
-function showLessonMessage(message) {
-
-    const box =
-        document.getElementById("lessonMessage");
-
-    if (!box) return;
-
-    box.textContent = message;
-
-    box.classList.add("show");
-
-    setTimeout(function() {
-
-        box.classList.remove("show");
-
-    }, 2500);
-
-}
-
-
-
-/*
-   Ouvrir une leçon
-*/
-
-function openLesson(file) {
-
-    if (!file) {
-
-        showLessonMessage(
-            "Diese Lektion ist noch nicht verfügbar."
-        );
-
-        return;
-    }
-
-
-    /*
-       Ouvrir le fichier dans
-       le même dossier que index.html.
-    */
-
-    window.location.href = file;
-
-}
-
-
-
-/*
-   Gestion de tous les boutons
-   de la liste des Lektionen.
-*/
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const lesson =
-            event.target.closest(
-                "#lessonList .lesson-card"
-            );
-
-
-        if (!lesson) {
-            return;
-        }
-
-
-        event.preventDefault();
-        event.stopPropagation();
-
-
-        const file =
-            lesson.getAttribute(
-                "data-lesson-file"
-            );
-
-
-        if (file) {
-
-            openLesson(file);
-
-        }
-
-    },
-    true
-);
-
-
-
-/*
-   A1
-*/
-
-function openA1() {
-
-    const home =
-        document.getElementById("homePage");
-
-    const levels =
-        document.getElementById("levelsPage");
-
-    const a1 =
-        document.getElementById("a1Page");
-
-
-    if (home) {
-        home.classList.remove("active");
-    }
-
-    if (levels) {
-        levels.classList.remove("active");
-    }
-
-    if (a1) {
-        a1.classList.add("active");
-    }
-
-}
-
-
-
-/*
-   Retour aux niveaux
-*/
-
-function showLevels() {
-
-    const home =
-        document.getElementById("homePage");
-
-    const levels =
-        document.getElementById("levelsPage");
-
-    const a1 =
-        document.getElementById("a1Page");
-
-
-    if (home) {
-        home.classList.remove("active");
-    }
-
-    if (a1) {
-        a1.classList.remove("active");
-    }
-
-    if (levels) {
-        levels.classList.add("active");
-    }
-
-}
-
-
-
-/*
-   Retour à l'accueil
-*/
-
-function showHome() {
-
-    const home =
-        document.getElementById("homePage");
-
-    const levels =
-        document.getElementById("levelsPage");
-
-    const a1 =
-        document.getElementById("a1Page");
-
-
-    if (levels) {
-        levels.classList.remove("active");
-    }
-
-    if (a1) {
-        a1.classList.remove("active");
-    }
-
-    if (home) {
-        home.classList.add("active");
-    }
-
-}
-
-
-
-/*
-   A2 – C2
-*/
-
-function levelComingSoon(level) {
-
-    showLessonMessage(
-        level + " kommt bald! 🚀"
-    );
-
-}
-
-
-
-/* =====================================================
-   SÉCURITÉ NAVIGATION
-====================================================== */
-
-
-/*
-   Si app.js contient une ancienne fonction
-   qui intercepte les clics, cette partie permet
-   quand même aux cartes avec data-lesson-file
-   de fonctionner.
-*/
-
-window.addEventListener(
-    "load",
-    function() {
-
-        const lessons =
-            document.querySelectorAll(
-                "#lessonList .lesson-card"
-            );
-
-
-        lessons.forEach(function(card) {
-
-            card.style.cursor = "pointer";
-
-        });
-
-    }
-);
+        },  
+        true  
+    );  
 
 </script>
 
-
-</body>
+</body>  
 </html>
