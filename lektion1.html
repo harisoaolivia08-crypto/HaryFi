@@ -2,41 +2,61 @@
 <html lang="de">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>HaryFi – Lektion 1: Alphabet & Aussprache</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
+
     <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+
 
         * {
             box-sizing: border-box;
         }
 
+
         body {
+
             margin: 0;
+
             min-height: 100vh;
 
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family:
+                'Plus Jakarta Sans',
+                sans-serif;
 
             color: #17120d;
 
-            background: linear-gradient(
-                -45deg,
-                #ff4500,
-                #ff7e00,
-                #ffd000,
-                #00c9ff,
-                #7c3aed,
-                #ff3cac
-            );
+
+            background:
+                linear-gradient(
+                    -45deg,
+                    #ff4500,
+                    #ff7e00,
+                    #ffd000,
+                    #00c9ff,
+                    #7c3aed,
+                    #ff3cac
+                );
+
 
             background-size: 500% 500%;
 
-            animation: gradientMove 18s ease infinite;
+            animation:
+                gradientMove
+                18s
+                ease
+                infinite;
+
         }
 
 
@@ -67,13 +87,18 @@
 
         .glass {
 
-            background: rgba(255, 255, 255, 0.22);
+            background:
+                rgba(255,255,255,0.22);
 
-            backdrop-filter: blur(16px);
+            backdrop-filter:
+                blur(16px);
 
-            -webkit-backdrop-filter: blur(16px);
+            -webkit-backdrop-filter:
+                blur(16px);
 
-            border: 1px solid rgba(255,255,255,0.45);
+            border:
+                1px solid
+                rgba(255,255,255,0.45);
 
         }
 
@@ -94,14 +119,16 @@
                 scale(1.02);
 
             box-shadow:
-                0 25px 50px rgba(0,0,0,.22);
+                0 25px 50px
+                rgba(0,0,0,.22);
 
         }
 
 
         .lesson-card:active {
 
-            transform: scale(.96);
+            transform:
+                scale(.96);
 
         }
 
@@ -122,426 +149,511 @@
 <body>
 
 
-    <!-- =====================================
-         HEADER
-    ====================================== -->
+<!-- =====================================================
+     HEADER
+====================================================== -->
 
-    <header class="px-5 py-5">
+<header class="px-5 py-5">
 
-        <div
-            class="
-                max-w-7xl
-                mx-auto
-                flex
-                items-center
-                justify-between
-                gap-4
-            "
-        >
-
-
-            <!-- RETOUR INDEX -->
-
-            <a
-                href="index.html"
-
-                class="
-                    glass
-                    rounded-2xl
-                    px-5
-                    py-3
-                    font-black
-                    text-lg
-                    hover:scale-105
-                    transition
-                "
-            >
-                ← A1 Lektion
-            </a>
-
-
-            <!-- LOGO -->
-
-            <div
-                class="
-                    glass
-                    rounded-full
-                    px-5
-                    py-2
-                    font-bold
-                    text-sm
-                "
-            >
-                🇩🇪 Deutschkurs
-            </div>
-
-
-        </div>
-
-    </header>
-
-
-
-    <!-- =====================================
-         MAIN
-    ====================================== -->
-
-    <main
+    <div
         class="
-            max-w-6xl
+            max-w-7xl
             mx-auto
-            px-5
-            pb-16
+            flex
+            items-center
+            justify-between
+            gap-4
         "
     >
 
 
-        <!-- =====================================
-             TITRE
-        ====================================== -->
+        <!-- =============================================
+             RETOUR VERS LA LISTE A1
+        ============================================== -->
 
-        <section
+        <a
+            href="index.html#a1"
+
             class="
-                text-center
-                pt-10
-                pb-12
+                glass
+                rounded-2xl
+                px-5
+                py-3
+                font-black
+                text-lg
+                hover:scale-105
+                transition
             "
         >
+
+            ← A1 Lektionen
+
+        </a>
+
+
+
+        <!-- =============================================
+             LOGO
+        ============================================== -->
+
+        <div
+            class="
+                glass
+                rounded-full
+                px-5
+                py-2
+                font-bold
+                text-sm
+            "
+        >
+
+            🇩🇪 Deutschkurs
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main
+    class="
+        max-w-6xl
+        mx-auto
+        px-5
+        pb-16
+    "
+>
+
+
+    <!-- =================================================
+         TITRE
+    ================================================== -->
+
+    <section
+        class="
+            text-center
+            pt-10
+            pb-12
+        "
+    >
+
+
+        <div
+            class="
+                inline-block
+                glass
+                rounded-full
+                px-5
+                py-2
+                mb-5
+                text-xs
+                font-black
+                uppercase
+                tracking-widest
+            "
+        >
+
+            A1 · Lektion 1
+
+        </div>
+
+
+
+        <h1
+            class="
+                text-5xl
+                md:text-7xl
+                font-black
+                tracking-tight
+                mb-5
+            "
+        >
+
+            Alphabet & Aussprache
+
+        </h1>
+
+
+
+        <p
+            class="
+                text-lg
+                md:text-xl
+                font-semibold
+                max-w-2xl
+                mx-auto
+            "
+        >
+
+            Lerne das deutsche Alphabet,
+            höre die Aussprache,
+            schaue das Video und
+            schreibe anschließend deine Reflexion.
+
+        </p>
+
+
+    </section>
+
+
+
+
+    <!-- =================================================
+         3 ACTIVITÉS
+    ================================================== -->
+
+    <section
+        class="
+            grid
+            grid-cols-1
+            md:grid-cols-3
+            gap-6
+        "
+    >
+
+
+        <!-- =============================================
+             SEITE 1
+        ============================================== -->
+
+        <a
+            href="alphabet.html"
+
+            class="
+                lesson-card
+                bg-gradient-to-br
+                from-red-500
+                to-orange-400
+                rounded-3xl
+                p-8
+                text-white
+                shadow-xl
+                text-center
+                block
+            "
+        >
+
+
+            <div class="icon">
+
+                🔤
+
+            </div>
+
 
 
             <div
                 class="
-                    inline-block
-                    glass
-                    rounded-full
-                    px-5
-                    py-2
-                    mb-5
-                    text-xs
+                    text-sm
                     font-black
                     uppercase
                     tracking-widest
+                    opacity-80
                 "
             >
-                A1 · Lektion 1
+
+                Seite 1
+
             </div>
 
 
-            <h1
+
+            <h2
                 class="
-                    text-5xl
-                    md:text-7xl
+                    text-3xl
                     font-black
-                    tracking-tight
-                    mb-5
+                    mt-2
+                    mb-3
                 "
             >
-                Alphabet & Aussprache
-            </h1>
+
+                Alphabet
+
+            </h2>
+
 
 
             <p
                 class="
-                    text-lg
-                    md:text-xl
                     font-semibold
-                    max-w-2xl
-                    mx-auto
+                    opacity-90
                 "
             >
-                Lerne das deutsche Alphabet, höre die Aussprache,
-                schaue das Video und schreibe anschließend deine Reflexion.
+
+                Lerne die Buchstaben
+                und höre die deutsche Aussprache.
+
             </p>
 
-        </section>
 
 
-
-        <!-- =====================================
-             3 ACTIVITÉS
-        ====================================== -->
-
-        <section
-            class="
-                grid
-                grid-cols-1
-                md:grid-cols-3
-                gap-6
-            "
-        >
-
-
-            <!-- =================================
-                 PAGE 1 – ALPHABET
-            ================================== -->
-
-            <a
-                href="alphabet.html"
-
+            <div
                 class="
-                    lesson-card
-                    bg-gradient-to-br
-                    from-red-500
-                    to-orange-400
-                    rounded-3xl
-                    p-8
-                    text-white
-                    shadow-xl
-                    text-center
-                    block
-                "
-            >
-
-                <div class="icon">
-                    🔤
-                </div>
-
-
-                <div
-                    class="
-                        text-sm
-                        font-black
-                        uppercase
-                        tracking-widest
-                        opacity-80
-                    "
-                >
-                    Seite 1
-                </div>
-
-
-                <h2
-                    class="
-                        text-3xl
-                        font-black
-                        mt-2
-                        mb-3
-                    "
-                >
-                    Alphabet
-                </h2>
-
-
-                <p
-                    class="
-                        font-semibold
-                        opacity-90
-                    "
-                >
-                    Lerne die Buchstaben und höre die deutsche Aussprache.
-                </p>
-
-
-                <div
-                    class="
-                        mt-6
-                        bg-white/20
-                        rounded-2xl
-                        px-5
-                        py-3
-                        font-black
-                    "
-                >
-                    Öffnen →
-                </div>
-
-            </a>
-
-
-
-            <!-- =================================
-                 PAGE 2 – VIDEO
-            ================================== -->
-
-            <a
-                href="video.html"
-
-                class="
-                    lesson-card
-                    bg-gradient-to-br
-                    from-blue-500
-                    to-cyan-400
-                    rounded-3xl
-                    p-8
-                    text-white
-                    shadow-xl
-                    text-center
-                    block
-                "
-            >
-
-                <div class="icon">
-                    🎬
-                </div>
-
-
-                <div
-                    class="
-                        text-sm
-                        font-black
-                        uppercase
-                        tracking-widest
-                        opacity-80
-                    "
-                >
-                    Seite 2
-                </div>
-
-
-                <h2
-                    class="
-                        text-3xl
-                        font-black
-                        mt-2
-                        mb-3
-                    "
-                >
-                    Video
-                </h2>
-
-
-                <p
-                    class="
-                        font-semibold
-                        opacity-90
-                    "
-                >
-                    Schaue das Video und übe die Aussprache des Alphabets.
-                </p>
-
-
-                <div
-                    class="
-                        mt-6
-                        bg-white/20
-                        rounded-2xl
-                        px-5
-                        py-3
-                        font-black
-                    "
-                >
-                    Video ansehen →
-                </div>
-
-            </a>
-
-
-
-            <!-- =================================
-                 PAGE 3 – REFLEKTION
-            ================================== -->
-
-            <a
-                href="reflektion.html"
-
-                class="
-                    lesson-card
-                    bg-gradient-to-br
-                    from-purple-600
-                    to-fuchsia-500
-                    rounded-3xl
-                    p-8
-                    text-white
-                    shadow-xl
-                    text-center
-                    block
-                "
-            >
-
-                <div class="icon">
-                    📝
-                </div>
-
-
-                <div
-                    class="
-                        text-sm
-                        font-black
-                        uppercase
-                        tracking-widest
-                        opacity-80
-                    "
-                >
-                    Seite 3
-                </div>
-
-
-                <h2
-                    class="
-                        text-3xl
-                        font-black
-                        mt-2
-                        mb-3
-                    "
-                >
-                    Reflektion
-                </h2>
-
-
-                <p
-                    class="
-                        font-semibold
-                        opacity-90
-                    "
-                >
-                    Schreibe deine Notizen und was du in der Lektion gelernt hast.
-                </p>
-
-
-                <div
-                    class="
-                        mt-6
-                        bg-white/20
-                        rounded-2xl
-                        px-5
-                        py-3
-                        font-black
-                    "
-                >
-                    Notizen schreiben →
-                </div>
-
-            </a>
-
-
-        </section>
-
-
-
-        <!-- =====================================
-             NAVIGATION
-        ====================================== -->
-
-        <section
-            class="
-                flex
-                justify-center
-                mt-14
-            "
-        >
-
-            <a
-                href="index.html"
-
-                class="
-                    bg-black
-                    text-white
-                    px-8
-                    py-4
+                    mt-6
+                    bg-white/20
                     rounded-2xl
+                    px-5
+                    py-3
                     font-black
-                    hover:scale-105
-                    transition
-                    shadow-xl
                 "
             >
-                ← Zurück zu A1 Lektion
-            </a>
 
-        </section>
+                Öffnen →
+
+            </div>
 
 
-    </main>
+        </a>
+
+
+
+
+        <!-- =============================================
+             SEITE 2
+        ============================================== -->
+
+        <a
+            href="video.html"
+
+            class="
+                lesson-card
+                bg-gradient-to-br
+                from-blue-500
+                to-cyan-400
+                rounded-3xl
+                p-8
+                text-white
+                shadow-xl
+                text-center
+                block
+            "
+        >
+
+
+            <div class="icon">
+
+                🎬
+
+            </div>
+
+
+
+            <div
+                class="
+                    text-sm
+                    font-black
+                    uppercase
+                    tracking-widest
+                    opacity-80
+                "
+            >
+
+                Seite 2
+
+            </div>
+
+
+
+            <h2
+                class="
+                    text-3xl
+                    font-black
+                    mt-2
+                    mb-3
+                "
+            >
+
+                Video
+
+            </h2>
+
+
+
+            <p
+                class="
+                    font-semibold
+                    opacity-90
+                "
+            >
+
+                Schaue das Video
+                und übe die Aussprache des Alphabets.
+
+            </p>
+
+
+
+            <div
+                class="
+                    mt-6
+                    bg-white/20
+                    rounded-2xl
+                    px-5
+                    py-3
+                    font-black
+                "
+            >
+
+                Video ansehen →
+
+            </div>
+
+
+        </a>
+
+
+
+
+        <!-- =============================================
+             SEITE 3
+        ============================================== -->
+
+        <a
+            href="reflektion.html"
+
+            class="
+                lesson-card
+                bg-gradient-to-br
+                from-purple-600
+                to-fuchsia-500
+                rounded-3xl
+                p-8
+                text-white
+                shadow-xl
+                text-center
+                block
+            "
+        >
+
+
+            <div class="icon">
+
+                📝
+
+            </div>
+
+
+
+            <div
+                class="
+                    text-sm
+                    font-black
+                    uppercase
+                    tracking-widest
+                    opacity-80
+                "
+            >
+
+                Seite 3
+
+            </div>
+
+
+
+            <h2
+                class="
+                    text-3xl
+                    font-black
+                    mt-2
+                    mb-3
+                "
+            >
+
+                Reflektion
+
+            </h2>
+
+
+
+            <p
+                class="
+                    font-semibold
+                    opacity-90
+                "
+            >
+
+                Schreibe deine Notizen
+                und was du in der Lektion gelernt hast.
+
+            </p>
+
+
+
+            <div
+                class="
+                    mt-6
+                    bg-white/20
+                    rounded-2xl
+                    px-5
+                    py-3
+                    font-black
+                "
+            >
+
+                Notizen schreiben →
+
+            </div>
+
+
+        </a>
+
+
+    </section>
+
+
+
+
+    <!-- =================================================
+         NAVIGATION
+    ================================================== -->
+
+    <section
+        class="
+            flex
+            justify-center
+            mt-14
+        "
+    >
+
+
+        <!-- =============================================
+             RETOUR VERS A1 – LEKTIONEN
+        ============================================== -->
+
+        <a
+            href="index.html#a1"
+
+            class="
+                bg-black
+                text-white
+                px-8
+                py-4
+                rounded-2xl
+                font-black
+                hover:scale-105
+                transition
+                shadow-xl
+            "
+        >
+
+            ← Zurück zu A1 Lektionen
+
+        </a>
+
+
+    </section>
+
+
+</main>
+
 
 
 </body>
