@@ -2,250 +2,803 @@
 <html lang="de">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
     <title>HaryFi – Deutsch lernen</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- CANVAS – FOND ANIMÉ -->
-    <canvas id="wordCanvas"></canvas>
+
+<!-- =====================================================
+     CANVAS – FOND ANIMÉ
+====================================================== -->
+
+<canvas id="wordCanvas"></canvas>
 
 
-    <!-- =====================================================  
-         ÉCRAN 1 – ACCUEIL  
-    ====================================================== -->
 
-    <section id="homePage" class="page active">
+<!-- =====================================================
+     ÉCRAN 1 – ACCUEIL
+====================================================== -->
 
-        <div class="top-logo">
-            <div class="logo-box">HF</div>
-            <div>
-                <div class="logo-name">HARY<span>FI</span></div>
-                <div class="logo-subtitle">DEUTSCH LERNEN</div>
-            </div>
+<section id="homePage" class="page active">
+
+
+    <div class="top-logo">
+
+        <div class="logo-box">
+            HF
         </div>
 
-        <div class="home-content">
-            <div class="welcome-badge">🇩🇪 HARYFI</div>
-            <h1>
-                Ndao Hianatra
-                <span>Allemand</span>
-            </h1>
-            <p class="home-text">
-                Lerne Deutsch mit HaryFi.
+        <div>
+
+            <div class="logo-name">
+                HARY<span>FI</span>
+            </div>
+
+            <div class="logo-subtitle">
+                DEUTSCH LERNEN
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="home-content">
+
+        <div class="welcome-badge">
+            🇩🇪 HARYFI
+        </div>
+
+
+        <h1>
+            Ndao Hianatra
+            <span>Allemand</span>
+        </h1>
+
+
+        <p class="home-text">
+            Lerne Deutsch mit HaryFi.
+        </p>
+
+
+        <button
+            type="button"
+            class="start-button"
+            onclick="showLevels()">
+
+            BEGINNEN
+
+            <span>
+                ➜
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <div class="home-footer">
+
+        <div>
+
+            <strong>
+                A1 – C2
+            </strong>
+
+            <small>
+                Niveaustufen
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                50+
+            </strong>
+
+            <small>
+                Lektionen
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                100%
+            </strong>
+
+            <small>
+                Interaktiv
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- =====================================================
+     ÉCRAN 2 – NIVEAUX A1 – C2
+====================================================== -->
+
+<section id="levelsPage" class="page">
+
+
+    <div class="screen-header">
+
+
+        <button
+            type="button"
+            class="back-button"
+            onclick="showHome()">
+
+            ← Zurück
+
+        </button>
+
+
+        <div class="header-logo">
+            HARY<span>FI</span>
+        </div>
+
+
+        <div class="header-title">
+            WÄHLE DEIN NIVEAU
+        </div>
+
+    </div>
+
+
+
+    <div class="levels-container">
+
+
+        <!-- ================= A1 ================= -->
+
+        <button
+            type="button"
+            class="level-card a1"
+            onclick="openA1()">
+
+            <span class="level-number">
+                01
+            </span>
+
+            <span class="level-name">
+                A1
+            </span>
+
+            <span class="level-description">
+                Anfänger
+            </span>
+
+        </button>
+
+
+
+        <!-- ================= A2 ================= -->
+
+        <button
+            type="button"
+            class="level-card a2"
+            onclick="comingSoon('A2')">
+
+            <span class="level-number">
+                02
+            </span>
+
+            <span class="level-name">
+                A2
+            </span>
+
+            <span class="level-description">
+                Grundstufe
+            </span>
+
+        </button>
+
+
+
+        <!-- ================= B1 ================= -->
+
+        <button
+            type="button"
+            class="level-card b1"
+            onclick="comingSoon('B1')">
+
+            <span class="level-number">
+                03
+            </span>
+
+            <span class="level-name">
+                B1
+            </span>
+
+            <span class="level-description">
+                Mittelstufe
+            </span>
+
+        </button>
+
+
+
+        <!-- ================= B2 ================= -->
+
+        <button
+            type="button"
+            class="level-card b2"
+            onclick="comingSoon('B2')">
+
+            <span class="level-number">
+                04
+            </span>
+
+            <span class="level-name">
+                B2
+            </span>
+
+            <span class="level-description">
+                Gute Kenntnisse
+            </span>
+
+        </button>
+
+
+
+        <!-- ================= C1 ================= -->
+
+        <button
+            type="button"
+            class="level-card c1"
+            onclick="comingSoon('C1')">
+
+            <span class="level-number">
+                05
+            </span>
+
+            <span class="level-name">
+                C1
+            </span>
+
+            <span class="level-description">
+                Fortgeschritten
+            </span>
+
+        </button>
+
+
+
+        <!-- ================= C2 ================= -->
+
+        <button
+            type="button"
+            class="level-card c2"
+            onclick="comingSoon('C2')">
+
+            <span class="level-number">
+                06
+            </span>
+
+            <span class="level-name">
+                C2
+            </span>
+
+            <span class="level-description">
+                Meisterstufe
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+
+    <div class="swipe-hint">
+
+        <span>
+            ←
+        </span>
+
+        WÄHLE EIN NIVEAU
+
+        <span>
+            →
+        </span>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- =====================================================
+     ÉCRAN 3 – A1 LEKTIONEN
+====================================================== -->
+
+<section id="a1Page" class="page">
+
+
+    <div class="lesson-header">
+
+
+        <button
+            type="button"
+            class="back-button"
+            onclick="showLevels()">
+
+            ← Zurück
+
+        </button>
+
+
+        <div class="header-logo">
+            HARY<span>FI</span>
+        </div>
+
+
+        <div class="a1-title">
+            🇩🇪 A1 – LEKTIONEN
+        </div>
+
+
+    </div>
+
+
+
+    <main class="lesson-content">
+
+
+        <div class="lesson-intro">
+
+            <div class="a1-badge">
+                A1
+            </div>
+
+
+            <h2>
+                A1 – Lektionen
+            </h2>
+
+
+            <p>
+                Lerne die wichtigsten Grundlagen der deutschen Sprache.
             </p>
 
-            <button class="start-button" onclick="showLevels()">
-                BEGINNEN <span>➜</span>
-            </button>
         </div>
 
-        <div class="home-footer">
-            <div>
-                <strong>A1 – C2</strong>
-                <small>Niveaustufen</small>
-            </div>
-            <div>
-                <strong>50+</strong>
-                <small>Lektionen</small>
-            </div>
-            <div>
-                <strong>100%</strong>
-                <small>Interaktiv</small>
-            </div>
-        </div>
-
-    </section>
 
 
-    <!-- =====================================================  
-         ÉCRAN 2 – NIVEAUX A1 – C2  
-    ====================================================== -->
+        <!-- =================================================
+             LESSON LIST
+             
+             app.js erstellt die Lektionen.
+        ================================================== -->
 
-    <section id="levelsPage" class="page">
-
-        <div class="screen-header">
-            <button class="back-button" onclick="showHome()">
-                ← Zurück
-            </button>
-            <div class="header-logo">HARY<span>FI</span></div>
-            <div class="header-title">WÄHLE DEIN NIVEAU</div>
-        </div>
-
-        <div class="levels-container">
-
-            <!-- A1 -->
-            <button class="level-card a1" onclick="openA1()">
-                <span class="level-number">01</span>
-                <span class="level-name">A1</span>
-                <span class="level-description">Anfänger</span>
-            </button>
-
-            <!-- A2 -->
-            <button class="level-card a2">
-                <span class="level-number">02</span>
-                <span class="level-name">A2</span>
-                <span class="level-description">Grundstufe</span>
-            </button>
-
-            <!-- B1 -->
-            <button class="level-card b1">
-                <span class="level-number">03</span>
-                <span class="level-name">B1</span>
-                <span class="level-description">Mittelstufe</span>
-            </button>
-
-            <!-- B2 -->
-            <button class="level-card b2">
-                <span class="level-number">04</span>
-                <span class="level-name">B2</span>
-                <span class="level-description">Gute Kenntnisse</span>
-            </button>
-
-            <!-- C1 -->
-            <button class="level-card c1">
-                <span class="level-number">05</span>
-                <span class="level-name">C1</span>
-                <span class="level-description">Fortgeschritten</span>
-            </button>
-
-            <!-- C2 -->
-            <button class="level-card c2">
-                <span class="level-number">06</span>
-                <span class="level-name">C2</span>
-                <span class="level-description">Meisterstufe</span>
-            </button>
+        <div
+            id="lessonList"
+            class="lesson-list">
 
         </div>
 
-        <div class="swipe-hint">
-            <span>←</span> WÄHLE EIN NIVEAU <span>→</span>
-        </div>
 
-    </section>
+    </main>
 
-
-    <!-- =====================================================  
-         ÉCRAN 3 – A1 LEKTIONEN  
-    ====================================================== -->
-
-    <section id="a1Page" class="page">
-
-        <div class="lesson-header">
-            <button class="back-button" onclick="showLevels()">
-                ← Zurück
-            </button>
-            <div class="header-logo">HARY<span>FI</span></div>
-            <div class="a1-title">🇩🇪 A1 – LEKTIONEN</div>
-        </div>
-
-        <main class="lesson-content">
-
-            <div class="lesson-intro">
-                <div class="a1-badge">A1</div>
-                <h2>A1 – Lektionen</h2>
-                <p>Lerne die wichtigsten Grundlagen der deutschen Sprache.</p>
-            </div>
-
-            <!-- LISTE DES LEÇONS DYNAMIQUE (GÉNÉRÉE PAR APP.JS) -->
-            <div id="lessonList" class="lesson-list"></div>
-
-        </main>
-
-    </section>
+</section>
 
 
-    <!-- =====================================================  
-         SCRIPTS JAVASCRIPT  
-    ====================================================== -->
 
-    <script src="app.js"></script>
 
-    <script>
-        /* =====================================================
-           GESTION DE LA NAVIGATION ET DU BOUTON RETOUR NAVIGATEUR
-        ===================================================== */
+<!-- =====================================================
+     MESSAGE
+====================================================== -->
 
-        function switchPage(pageId, pushState = true) {
-            document.querySelectorAll(".page").forEach(page => {
-                page.classList.remove("active");
-            });
+<div
+    id="navigationMessage"
+    style="
+        position:fixed;
+        left:50%;
+        bottom:25px;
+        transform:translateX(-50%);
+        background:#172033;
+        color:white;
+        padding:12px 20px;
+        border-radius:12px;
+        font-weight:700;
+        font-size:14px;
+        opacity:0;
+        pointer-events:none;
+        transition:.3s;
+        z-index:9999;
+    ">
+</div>
 
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add("active");
-            }
 
-            if (pushState) {
-                window.location.hash = pageId.replace("Page", "");
-            }
+
+
+<!-- =====================================================
+     APP.JS
+====================================================== -->
+
+<script src="app.js"></script>
+
+
+
+
+<!-- =====================================================
+     HARYFI NAVIGATION SYSTEM
+====================================================== -->
+
+<script>
+
+
+/* =====================================================
+   UTILITAIRE
+====================================================== */
+
+function showMessage(message) {
+
+    const box =
+        document.getElementById(
+            "navigationMessage"
+        );
+
+    if (!box) return;
+
+    box.textContent = message;
+
+    box.style.opacity = "1";
+
+    setTimeout(function() {
+
+        box.style.opacity = "0";
+
+    }, 2000);
+
+}
+
+
+
+/* =====================================================
+   ACCUEIL
+====================================================== */
+
+function showHome() {
+
+    const home =
+        document.getElementById(
+            "homePage"
+        );
+
+    const levels =
+        document.getElementById(
+            "levelsPage"
+        );
+
+    const a1 =
+        document.getElementById(
+            "a1Page"
+        );
+
+
+    if (home)
+        home.classList.add("active");
+
+    if (levels)
+        levels.classList.remove("active");
+
+    if (a1)
+        a1.classList.remove("active");
+
+
+    /*
+     * URL propre :
+     * index.html
+     */
+
+    history.pushState(
+        null,
+        "",
+        "index.html"
+    );
+
+}
+
+
+
+/* =====================================================
+   NIVEAUX A1 – C2
+====================================================== */
+
+function showLevels() {
+
+    const home =
+        document.getElementById(
+            "homePage"
+        );
+
+    const levels =
+        document.getElementById(
+            "levelsPage"
+        );
+
+    const a1 =
+        document.getElementById(
+            "a1Page"
+        );
+
+
+    if (home)
+        home.classList.remove("active");
+
+    if (levels)
+        levels.classList.add("active");
+
+    if (a1)
+        a1.classList.remove("active");
+
+
+    /*
+     * URL :
+     * index.html#levels
+     */
+
+    history.pushState(
+        null,
+        "",
+        "index.html#levels"
+    );
+
+}
+
+
+
+/* =====================================================
+   A1 – LISTE DES LEKTIONEN
+====================================================== */
+
+function openA1() {
+
+    const home =
+        document.getElementById(
+            "homePage"
+        );
+
+    const levels =
+        document.getElementById(
+            "levelsPage"
+        );
+
+    const a1 =
+        document.getElementById(
+            "a1Page"
+        );
+
+
+    if (home)
+        home.classList.remove("active");
+
+    if (levels)
+        levels.classList.remove("active");
+
+    if (a1)
+        a1.classList.add("active");
+
+
+    /*
+     * URL :
+     * index.html#a1
+     */
+
+    history.pushState(
+        null,
+        "",
+        "index.html#a1"
+    );
+
+}
+
+
+
+/* =====================================================
+   A2 – C2
+====================================================== */
+
+function comingSoon(level) {
+
+    showMessage(
+        level + " kommt bald! 🚀"
+    );
+
+}
+
+
+
+/* =====================================================
+   NAVIGATION DES LEKTIONEN
+====================================================== */
+
+
+/*
+ * Nous surveillons les clics
+ * dans lessonList.
+ */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+
+        const lesson =
+            event.target.closest(
+                "#lessonList"
+            );
+
+
+        if (!lesson) {
+            return;
         }
 
-        function showHome() {
-            switchPage("homePage");
+
+        /*
+         * Récupérer le texte
+         * de la carte.
+         */
+
+        const text =
+            lesson.textContent
+            .trim()
+            .replace(/\s+/g, " ");
+
+
+        /* =========================
+           LEKTION 1
+        ========================= */
+
+        if (
+            text.includes(
+                "Alphabet & Aussprache"
+            )
+        ) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            window.location.href =
+                "lektion1.html";
+
+            return;
         }
 
-        function showLevels() {
-            switchPage("levelsPage");
+
+        /* =========================
+           LEKTION 3
+        ========================= */
+
+        if (
+            text.includes(
+                "Sich vorstellen"
+            )
+        ) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            window.location.href =
+                "lektion3.html";
+
+            return;
         }
 
-        function openA1() {
-            switchPage("a1Page");
-        }
 
-        // Synchroniser avec les boutons Précédent/Suivant du navigateur
-        window.addEventListener("hashchange", () => {
-            const hash = window.location.hash.replace("#", "");
-            if (hash === "levels") {
-                switchPage("levelsPage", false);
-            } else if (hash === "a1") {
-                switchPage("a1Page", false);
-            } else {
-                switchPage("homePage", false);
-            }
-        });
-
-        // Initialisation selon l'URL au chargement
-        window.addEventListener("DOMContentLoaded", () => {
-            const hash = window.location.hash.replace("#", "");
-            if (hash === "levels") switchPage("levelsPage", false);
-            else if (hash === "a1") switchPage("a1Page", false);
-            else switchPage("homePage", false);
-        });
+    },
+    true
+);
 
 
-        /* =====================================================
-           REDIRECTION VERS LES LEÇONS (LEKTION 1 ET LEKTION 2)
-        ===================================================== */
 
-        document.addEventListener("click", function (event) {
-            const lessonItem = event.target.closest("#lessonList > *");
-            if (!lessonItem) return;
 
-            // 1. Détection par attribut de donnée s'il existe (ex: data-href="lektion2.html")
-            const customHref = lessonItem.getAttribute("data-href");
-            if (customHref) {
-                event.preventDefault();
-                window.location.href = customHref;
-                return;
-            }
+/* =====================================================
+   AU CHARGEMENT
+====================================================== */
 
-            // 2. Détection par le texte contenu dans la carte de leçon
-            const text = lessonItem.textContent.trim().replace(/\s+/g, " ");
 
-            if (text.includes("Alphabet & Aussprache") || text.includes("Lektion 1")) {
-                event.preventDefault();
-                window.location.href = "lektion1.html";
-            } else if (text.includes("Sich vorstellen") || text.includes("Lektion 2")) {
-                event.preventDefault();
-                window.location.href = "lektion2.html";
-            }
-        }, true);
-    </script>
+/*
+ * Si quelqu'un ouvre directement :
+ *
+ * index.html#a1
+ *
+ * on affiche automatiquement
+ * la liste A1.
+ */
+
+function loadPageFromURL() {
+
+    const hash =
+        window.location.hash;
+
+
+    if (hash === "#a1") {
+
+        openA1();
+
+        return;
+    }
+
+
+    if (hash === "#levels") {
+
+        showLevels();
+
+        return;
+    }
+
+
+    /*
+     * Sinon accueil.
+     */
+
+    showHome();
+
+}
+
+
+
+/*
+ * Navigation navigateur :
+ * bouton précédent / suivant.
+ */
+
+window.addEventListener(
+    "popstate",
+    function() {
+
+        loadPageFromURL();
+
+    }
+);
+
+
+/*
+ * Premier chargement.
+ */
+
+window.addEventListener(
+    "load",
+    function() {
+
+        loadPageFromURL();
+
+    }
+);
+
+
+</script>
+
 
 </body>
-
 </html>
