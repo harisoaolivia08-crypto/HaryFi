@@ -113,14 +113,13 @@
             }
         }
 
-        .play-circle {
-            transition: transform .2s ease;
+        .action-pill {
+            transition: transform .2s ease, background-color .2s ease;
         }
 
-        .letter-card:hover .play-circle {
-            transform:
-                scale(1.15)
-                rotate(8deg);
+        .letter-card:hover .action-pill {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.35);
         }
 
         .audio-status {
@@ -373,18 +372,6 @@ const pronunciation = {
    GITHUB PAGES AUDIO
 ====================================================== */
 
-/*
-   Deine GitHub Pages Adresse:
-
-   https://harisoaolivia08-crypto.github.io/HaryFi/
-
-   Alle MP3-Dateien befinden sich im Ordner:
-
-   Audio/
-
-*/
-
-
 const AUDIO_BASE =
     "https://harisoaolivia08-crypto.github.io/HaryFi/Audio/";
 
@@ -484,14 +471,14 @@ alphabet.forEach((letter, index) => {
         bg-gradient-to-br
         ${colors[index % colors.length]}
         rounded-3xl
-        min-h-[150px]
+        min-h-[160px]
         p-5
         text-white
         shadow-xl
         flex
         flex-col
         items-center
-        justify-center
+        justify-between
         cursor-pointer
     `;
 
@@ -500,9 +487,10 @@ alphabet.forEach((letter, index) => {
 
         <div
             class="
-                text-6xl
+                text-5xl
                 font-black
                 drop-shadow-lg
+                mt-1
             "
         >
             ${letter}
@@ -511,9 +499,8 @@ alphabet.forEach((letter, index) => {
 
         <div
             class="
-                text-sm
+                text-xs
                 font-bold
-                mt-2
                 opacity-90
             "
         >
@@ -523,19 +510,22 @@ alphabet.forEach((letter, index) => {
 
         <div
             class="
-                play-circle
+                action-pill
                 mt-3
-                w-9
-                h-9
-                rounded-full
-                bg-white/25
+                w-full
+                bg-white/20
+                rounded-2xl
+                py-2
+                px-4
+                font-black
+                text-xs
                 flex
                 items-center
                 justify-center
-                text-white
+                gap-1.5
             "
         >
-            🔊
+            <span>🔊</span> Hören
         </div>
 
     `;
@@ -570,8 +560,6 @@ function playLetter(letter, card) {
         audioFiles[letter];
 
 
-    /* Vérifier le fichier */
-
     if (!file) {
 
         audioStatus.textContent =
@@ -581,8 +569,6 @@ function playLetter(letter, card) {
 
     }
 
-
-    /* Arrêter le son précédent */
 
     if (currentAudio) {
 
@@ -594,8 +580,6 @@ function playLetter(letter, card) {
 
     }
 
-
-    /* Créer le lecteur */
 
     const audio =
         new Audio();
@@ -610,8 +594,6 @@ function playLetter(letter, card) {
     currentAudio = audio;
 
 
-    /* Animation */
-
     card.classList.remove("playing");
 
     void card.offsetWidth;
@@ -619,24 +601,13 @@ function playLetter(letter, card) {
     card.classList.add("playing");
 
 
-    /* Statut */
-
     audioStatus.textContent =
         "🔊 Aussprache: " + letter;
 
 
-    /* =================================================
-       ERREUR DE CHARGEMENT
-    ================================================= */
-
     audio.addEventListener(
         "error",
         () => {
-
-            console.error(
-                "MP3 konnte nicht geladen werden:",
-                file
-            );
 
             card.classList.remove(
                 "playing"
@@ -648,10 +619,6 @@ function playLetter(letter, card) {
         }
     );
 
-
-    /* =================================================
-       FIN DE LECTURE
-    ================================================= */
 
     audio.addEventListener(
         "ended",
@@ -675,25 +642,8 @@ function playLetter(letter, card) {
     );
 
 
-    /* =================================================
-       LECTURE
-    ================================================= */
-
     audio.play()
-        .then(() => {
-
-            console.log(
-                "MP3 gestartet:",
-                file
-            );
-
-        })
         .catch(error => {
-
-            console.error(
-                "Audio-Fehler:",
-                error
-            );
 
             card.classList.remove(
                 "playing"
