@@ -1,2996 +1,1152 @@
-<!DOCTYPE html>
-<html lang="de">
-
+<!DOCTYPE html><html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HaryFi – Lektion 3 | Personalpronomen</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    box-sizing:border-box;
+<meta name="theme-color" content="#ff7a00"><title>HaryFi – Lektion 4 | Personalpronomen & Possessivartikel</title><style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-:root{
-
-    --nom-grad:linear-gradient(135deg,#60a5fa,#3b82f6,#1d4ed8);
-    --akk-grad:linear-gradient(135deg,#34d399,#10b981,#047857);
-    --dat-grad:linear-gradient(135deg,#a78bfa,#8b5cf6,#6d28d9);
-    --ref-grad:linear-gradient(135deg,#f472b6,#ec4899,#be185d);
-    --sum-grad:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);
-
-    --nom-color:#2563eb;
-    --akk-color:#059669;
-    --dat-color:#7c3aed;
-    --ref-color:#db2777;
-    --sum-color:#d97706;
-
-    --orange:#ff7a00;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-
-    margin:0;
-    min-height:100vh;
-
-    font-family:'Plus Jakarta Sans',Arial,sans-serif;
-
-    color:#17120d;
-
-    background:
-    linear-gradient(
-        -45deg,
-        #ff4500,
-        #ff7e00,
-        #ffd000,
-        #00c9ff,
-        #7c3aed,
-        #ff3cac
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    color: #171717;
+    background: linear-gradient(
+        135deg,
+        #ff3d00,
+        #ff7a00,
+        #ffc400,
+        #ffe866
     );
-
-    background-size:500% 500%;
-
-    animation:gradientMove 18s ease infinite;
+    background-size: 400% 400%;
+    animation: backgroundMove 15s ease infinite;
+    overflow-x: hidden;
 }
 
-@keyframes gradientMove{
-
-    0%{background-position:0% 50%}
-    25%{background-position:100% 50%}
-    50%{background-position:100% 100%}
-    75%{background-position:0% 100%}
-    100%{background-position:0% 50%}
-}
-
-.container{
-
-    width:100%;
-    max-width:1180px;
-
-    margin:auto;
-
-    padding:24px 16px 60px;
-}
-
-/* =========================
-   TOP
-========================= */
-
-.top-navigation{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:20px;
-
-    flex-wrap:wrap;
-}
-
-.back-button,
-.course-label{
-
-    background:rgba(255,255,255,.22);
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.45);
-
-    border-radius:18px;
-
-    font-weight:900;
-}
-
-.back-button{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    text-decoration:none;
-
-    color:#111827;
-
-    padding:12px 18px;
-
-    transition:.2s;
-}
-
-.back-button:hover{
-
-    transform:translateY(-3px);
-
-    background:rgba(255,255,255,.4);
-}
-
-.course-label{
-
-    padding:11px 18px;
-
-    border-radius:999px;
-
-    font-size:.9rem;
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* =========================
    HEADER
 ========================= */
 
-.header{
-
-    text-align:center;
-
-    background:rgba(255,255,255,.22);
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.45);
-
-    border-radius:28px;
-
-    padding:25px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 20px;
+    background: rgba(255,255,255,.20);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,.4);
 }
 
-.header h1{
-
-    margin:0 0 8px;
-
-    font-size:clamp(2rem,5vw,3.2rem);
-
-    font-weight:900;
-
-    letter-spacing:-1px;
+.header-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-.header p{
-
-    margin:0;
-
-    font-size:1rem;
-
-    font-weight:700;
+.logo {
+    font-size: 25px;
+    font-weight: 900;
 }
 
-/* =========================
-   MAIN NAV
-========================= */
-
-.main-nav{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-bottom:22px;
-
-    flex-wrap:wrap;
+.logo span {
+    color: white;
 }
 
-.nav-btn{
-
-    border:2px solid rgba(255,255,255,.8);
-
-    padding:13px 19px;
-
-    font-size:.92rem;
-
-    font-weight:900;
-
-    border-radius:16px;
-
-    cursor:pointer;
-
-    background:rgba(255,255,255,.75);
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:0 7px 18px rgba(0,0,0,.12);
-
-    transition:.25s;
+.back-btn {
+    border: none;
+    background: rgba(255,255,255,.45);
+    padding: 11px 18px;
+    border-radius: 30px;
+    font-weight: 800;
+    cursor: pointer;
 }
 
-.nav-btn:hover{
-
-    transform:translateY(-4px) scale(1.02);
-}
-
-.nav-btn.active{
-
-    color:white;
-
-    border-color:white;
-}
-
-.nav-btn.btn-nom{color:var(--nom-color)}
-.nav-btn.btn-nom.active{background:var(--nom-grad)}
-
-.nav-btn.btn-akk{color:var(--akk-color)}
-.nav-btn.btn-akk.active{background:var(--akk-grad)}
-
-.nav-btn.btn-dat{color:var(--dat-color)}
-.nav-btn.btn-dat.active{background:var(--dat-grad)}
-
-.nav-btn.btn-ref{color:var(--ref-color)}
-.nav-btn.btn-ref.active{background:var(--ref-grad)}
-
-.nav-btn.btn-sum{color:var(--sum-color)}
-.nav-btn.btn-sum.active{background:var(--sum-grad)}
-
-/* =========================
-   GRID
-========================= */
-
-.lesson-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        minmax(0,2.2fr)
-        minmax(260px,1fr);
-
-    gap:20px;
-}
-
-.main-content,
-.side-panel{
-
-    background:rgba(255,255,255,.22);
-
-    backdrop-filter:blur(16px);
-
-    border:1px solid rgba(255,255,255,.45);
-
-    border-radius:26px;
-
-    padding:24px;
-
-    box-shadow:0 20px 40px rgba(0,0,0,.12);
-}
-
-.tab-content,
-.side-content{
-
-    display:none;
-}
-
-.tab-content.active,
-.side-content.active{
-
-    display:block;
+.back-btn:hover {
+    background: white;
 }
 
 /* =========================
-   BIG TITLES
+   MAIN
 ========================= */
 
-.case-title{
-
-    margin:0 0 6px;
-
-    font-size:clamp(1.75rem,4vw,2.35rem);
-
-    font-weight:900;
-
-    letter-spacing:-.7px;
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px 80px;
 }
 
-.theme-nom .case-title{color:var(--nom-color)}
-.theme-akk .case-title{color:var(--akk-color)}
-.theme-dat .case-title{color:var(--dat-color)}
-.theme-ref .case-title{color:var(--ref-color)}
-.theme-sum .case-title{color:var(--sum-color)}
-
-.fr-sub{
-
-    display:block;
-
-    font-size:.9rem;
-
-    color:#374151;
-
-    font-weight:700;
-
-    margin-bottom:18px;
+.hero {
+    text-align: center;
+    padding: 30px 10px 45px;
 }
 
-h3{
+.badge {
+    display: inline-block;
+    background: #111;
+    color: #ffc400;
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
 
-    font-size:1.1rem;
+h1 {
+    font-size: clamp(35px, 7vw, 70px);
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -3px;
+}
 
-    font-weight:900;
-
-    margin:22px 0 12px;
+.hero p {
+    margin-top: 18px;
+    font-size: 17px;
+    font-weight: 700;
 }
 
 /* =========================
-   COLLAPSIBLE
+   TABS
 ========================= */
 
-.section-toggle{
-
-    width:100%;
-
-    border:none;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:17px 18px;
-
-    margin:20px 0 10px;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.48);
-
-    border:1px solid rgba(255,255,255,.65);
-
-    color:#111827;
-
-    font-family:inherit;
-
-    font-size:1.08rem;
-
-    font-weight:900;
-
-    cursor:pointer;
-
-    box-shadow:0 6px 16px rgba(0,0,0,.08);
-
-    transition:.25s;
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
-.section-toggle:hover{
-
-    background:rgba(255,255,255,.7);
-
-    transform:translateY(-2px);
+.nav-btn {
+    border: 1px solid rgba(255,255,255,.6);
+    background: rgba(255,255,255,.30);
+    backdrop-filter: blur(10px);
+    padding: 13px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: .25s;
 }
 
-.toggle-left{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
+.nav-btn:hover,
+.nav-btn.active {
+    background: #111;
+    color: #ffc400;
+    transform: translateY(-2px);
 }
 
-.toggle-arrow{
+/* =========================
+   CONTENT
+========================= */
 
-    width:27px;
-    height:27px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:8px;
-
-    background:rgba(255,255,255,.7);
-
-    transition:.25s;
+.tab-content {
+    display: none;
+    animation: contentIn .4s ease;
 }
 
-.section-toggle.open .toggle-arrow{
-
-    transform:rotate(90deg);
+.tab-content.active {
+    display: block;
 }
 
-.section-content{
-
-    display:none;
-
-    animation:sectionOpen .25s ease;
-}
-
-.section-content.open{
-
-    display:block;
-}
-
-@keyframes sectionOpen{
-
-    from{
-        opacity:0;
-        transform:translateY(-5px);
+@keyframes contentIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+.card {
+    background: rgba(255,255,255,.40);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.10);
+}
+
+.card h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    margin: 20px 0 10px;
+    font-size: 21px;
+}
+
+.info {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.highlight {
+    font-weight: 900;
+    color: #a63d00;
 }
 
 /* =========================
    TABLE
 ========================= */
 
-.grammar-table{
-
-    width:100%;
-
-    border-collapse:separate;
-
-    border-spacing:0;
-
-    overflow:hidden;
-
-    border-radius:16px;
-
-    margin:14px 0 24px;
-
-    box-shadow:0 5px 16px rgba(0,0,0,.07);
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 18px;
 }
 
-.grammar-table th,
-.grammar-table td{
-
-    padding:12px;
-
-    text-align:left;
-
-    font-size:.9rem;
+table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+    background: rgba(255,255,255,.55);
 }
 
-.grammar-table tr{
-
-    background:rgba(255,255,255,.92);
+th,
+td {
+    padding: 13px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.10);
 }
 
-.grammar-table tr:nth-child(even){
-
-    background:rgba(248,250,252,.92);
+th {
+    background: #111;
+    color: #ffc400;
+    font-weight: 900;
 }
 
-.theme-nom .grammar-table th{
-
-    background:#dbeafe;
-    color:var(--nom-color);
+td {
+    font-weight: 700;
 }
 
-.theme-akk .grammar-table th{
-
-    background:#d1fae5;
-    color:var(--akk-color);
+.de {
+    font-weight: 900;
+    font-size: 17px;
 }
 
-.theme-dat .grammar-table th{
-
-    background:#ede9fe;
-    color:var(--dat-color);
-}
-
-.theme-ref .grammar-table th{
-
-    background:#fce7f3;
-    color:var(--ref-color);
+.fr {
+    color: #633000;
+    font-size: 14px;
 }
 
 /* =========================
-   AUDIO
+   AUDIO BUTTON
 ========================= */
 
-.play-btn{
-
-    width:38px;
-    height:38px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#ff7a00;
-
-    color:white;
-
-    cursor:pointer;
-
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:0 5px 12px rgba(0,0,0,.18);
-
-    transition:.2s;
-
-    flex-shrink:0;
+.audio-btn {
+    border: none;
+    background: #111;
+    color: #ffc400;
+    padding: 9px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 800;
 }
 
-.play-btn:hover{
-
-    transform:scale(1.12);
-
-    background:#ff5a00;
+.audio-btn:hover {
+    transform: scale(1.05);
 }
 
-.play-triangle{
-
-    width:0;
-    height:0;
-
-    border-top:7px solid transparent;
-    border-bottom:7px solid transparent;
-    border-left:11px solid white;
-
-    margin-left:3px;
+.audio-btn.playing {
+    background: #059669;
+    color: white;
 }
 
 /* =========================
    EXAMPLES
 ========================= */
 
-.example-list{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:10px;
-
-    margin-bottom:10px;
+.example {
+    background: rgba(255,255,255,.45);
+    border-left: 5px solid #111;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
 }
 
-.example-card{
-
-    background:rgba(255,255,255,.92);
-
-    padding:14px 15px;
-
-    border-radius:15px;
-
-    border-left:6px solid #cbd5e1;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
+.example strong {
+    font-size: 18px;
 }
 
-.theme-nom .example-card{
-    border-left-color:var(--nom-color);
+.example small {
+    display: block;
+    margin-top: 5px;
+    color: #633000;
 }
 
-.theme-akk .example-card{
-    border-left-color:var(--akk-color);
+/* =========================
+   COLLAPSIBLE
+========================= */
+
+.section-button {
+    width: 100%;
+    border: none;
+    background: #111;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 900;
+    margin-top: 10px;
 }
 
-.theme-dat .example-card{
-    border-left-color:var(--dat-color);
+.section-button span {
+    float: right;
 }
 
-.theme-ref .example-card{
-    border-left-color:var(--ref-color);
+.section-content {
+    display: none;
+    padding: 18px 5px 5px;
 }
 
-.ex-de{
-
-    font-weight:900;
-
-    font-size:1rem;
-}
-
-.ex-fr{
-
-    font-size:.84rem;
-
-    color:#64748b;
-
-    margin-top:3px;
-
-    font-weight:600;
+.section-content.open {
+    display: block;
 }
 
 /* =========================
    EXERCISES
 ========================= */
 
-.exercise-box{
-
-    background:rgba(255,255,255,.68);
-
-    padding:19px;
-
-    border-radius:19px;
-
-    border:2px solid rgba(255,255,255,.75);
+.exercise {
+    margin-top: 18px;
+    padding: 18px;
+    background: rgba(255,255,255,.35);
+    border-radius: 18px;
 }
 
-.q-grid{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:13px;
+.exercise p {
+    margin-bottom: 10px;
+    font-weight: 800;
 }
 
-.q-item p{
-
-    margin:0 0 6px;
-
-    font-weight:800;
-
-    font-size:.92rem;
+.exercise input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid rgba(0,0,0,.15);
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    background: white;
 }
 
-input[type="text"]{
-
-    width:100%;
-
-    padding:11px 13px;
-
-    border:2px solid #cbd5e1;
-
-    border-radius:11px;
-
-    font-size:.94rem;
-
-    font-weight:700;
-
-    outline:none;
-
-    background:white;
+.exercise input:focus {
+    border-color: #111;
 }
 
-input[type="text"]:focus{
-
-    border-color:var(--orange);
+.check-btn {
+    margin-top: 18px;
+    border: none;
+    background: #111;
+    color: #ffc400;
+    padding: 13px 22px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 900;
 }
 
-.check-btn{
-
-    width:100%;
-
-    border:none;
-
-    margin-top:16px;
-
-    padding:13px 20px;
-
-    border-radius:13px;
-
-    background:linear-gradient(135deg,#111827,#374151);
-
-    color:white;
-
-    font-weight:900;
-
-    cursor:pointer;
+.feedback {
+    margin-top: 15px;
+    padding: 13px;
+    border-radius: 12px;
+    font-weight: 900;
+    display: none;
 }
 
-.feedback{
-
-    text-align:center;
-
-    font-weight:900;
-
-    margin-top:12px;
+.feedback.correct {
+    display: block;
+    background: rgba(5,150,105,.15);
+    color: #047857;
 }
 
-.feedback.correct{
-    color:#059669;
-}
-
-.feedback.wrong{
-    color:#e11d48;
-}
-
-/* =========================
-   SIDE PANEL
-========================= */
-
-.side-panel{
-
-    height:max-content;
-
-    position:sticky;
-
-    top:15px;
-}
-
-.side-content{
-
-    display:none;
-}
-
-.side-content.active{
-
-    display:block;
-}
-
-/* =========================
-   VERB ENDUNGEN
-========================= */
-
-.verb-endungen{
-
-    padding-bottom:16px;
-
-    border-bottom:1px solid rgba(255,255,255,.55);
-
-    margin-bottom:16px;
-}
-
-.verb-endungen h3{
-
-    margin-top:0;
-
-    font-size:1.2rem;
-}
-
-.ending-line{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:7px 0;
-
-    font-size:.88rem;
-
-    font-weight:800;
-}
-
-.ending-example{
-
-    background:rgba(255,255,255,.55);
-
-    padding:3px 8px;
-
-    border-radius:8px;
-
-    font-weight:900;
-}
-
-/* =========================
-   MERKHILFE
-========================= */
-
-.merkhilfe{
-
-    padding:4px 2px 5px;
-}
-
-.merkhilfe h3{
-
-    color:#111827;
-
-    margin-top:0;
-
-    margin-bottom:8px;
-
-    font-size:1.2rem;
-}
-
-.merkhilfe p{
-
-    margin:6px 0;
-
-    font-size:.87rem;
-
-    font-weight:700;
-
-    line-height:1.55;
-}
-
-.merk-beispiel{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:7px;
-
-    margin-top:10px;
-}
-
-.merk-word{
-
-    padding:7px 10px;
-
-    border-radius:10px;
-
-    background:rgba(255,255,255,.6);
-
-    font-weight:900;
-}
-
-/* =========================
-   VERB CARDS
-========================= */
-
-.heart-card{
-
-    padding:4px 2px;
-
-    margin-bottom:8px;
-}
-
-.heart-title{
-
-    font-size:1.2rem;
-
-    font-weight:900;
-
-    color:#be123c;
-
-    margin:0 0 4px;
-}
-
-.heart-sub{
-
-    font-size:.8rem;
-
-    font-weight:700;
-
-    color:#9f1239;
-}
-
-.verb-list{
-
-    list-style:none;
-
-    padding:0;
-
-    margin:12px 0 0;
-}
-
-.verb-list li{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:7px;
-
-    padding:9px 0;
-
-    border-bottom:1px dashed rgba(190,24,93,.3);
-}
-
-.verb-text{
-
-    flex:1;
-}
-
-.verb-de{
-
-    display:block;
-
-    font-weight:900;
-
-    color:#881337;
-
-    font-size:.9rem;
-}
-
-.verb-fr{
-
-    display:block;
-
-    font-size:.77rem;
-
-    color:#9f1239;
-
-    font-weight:600;
-
-    font-style:italic;
+.feedback.wrong {
+    display: block;
+    background: rgba(225,29,72,.12);
+    color: #be123c;
 }
 
 /* =========================
    SUMMARY
 ========================= */
 
-.summary-table{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-    margin-top:15px;
-
-    border-radius:14px;
-
-    overflow:hidden;
+.summary-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 15px;
 }
 
-.summary-table th,
-.summary-table td{
-
-    border:1px solid #e2e8f0;
-
-    padding:10px;
-
-    text-align:center;
-
-    font-size:.82rem;
+.summary-item {
+    background: rgba(255,255,255,.45);
+    padding: 20px;
+    border-radius: 18px;
 }
 
-.summary-table th{
-
-    background:#fef3c7;
-
-    color:#b45309;
-
-    font-weight:900;
-}
-
-.summary-table tr:nth-child(even){
-
-    background:#fffbe2;
+.summary-item strong {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 /* =========================
-   FOOTER
+   RESPONSIVE
 ========================= */
 
-.footer-back{
+@media (max-width: 600px) {
 
-    display:flex;
+    header {
+        padding: 12px;
+    }
 
-    justify-content:center;
+    .logo {
+        font-size: 21px;
+    }
 
-    margin-top:25px;
-}
+    .back-btn {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
 
-.footer-back a{
+    main {
+        padding: 20px 12px 60px;
+    }
 
-    text-decoration:none;
+    .hero {
+        padding-top: 20px;
+    }
 
-    background:rgba(0,0,0,.85);
+    .card {
+        padding: 18px;
+        border-radius: 20px;
+    }
 
-    color:white;
+    .tabs {
+        gap: 7px;
+    }
 
-    padding:13px 22px;
-
-    border-radius:15px;
-
-    font-weight:900;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:900px){
-
-    .lesson-grid{
-
-        grid-template-columns:1fr;
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 12px;
     }
 }
+</style></head><body><header>
+    <div class="header-inner">    <button class="back-btn" onclick="goBack()">
+        ← A1
+    </button>
 
-@media(max-width:600px){
+    <div class="logo">
+        HARY<span>FI</span>
+    </div>
 
-    .container{
-
-        padding:14px 10px 40px;
-    }
-
-    .header{
-
-        padding:19px 14px;
-
-        border-radius:22px;
-    }
-
-    .main-content,
-    .side-panel{
-
-        padding:17px;
-
-        border-radius:21px;
-    }
-
-    .nav-btn{
-
-        width:100%;
-    }
-
-    .grammar-table{
-
-        display:block;
-
-        overflow-x:auto;
-
-        white-space:nowrap;
-    }
-
-    .side-panel{
-
-        position:static;
-    }
-
-    .section-toggle{
-
-        padding:14px;
-
-        font-size:1rem;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body class="theme-nom">
-
-<div class="container">
-
-
-<!-- =========================
-     TOP
-========================= -->
-
-<div class="top-navigation">
-
-<a href="index.html#a1" class="back-button">
-← A1 Lektionen
-</a>
-
-<div class="course-label">
-🇩🇪 Deutschkurs · A1
-</div>
+    <div>
+        🇩🇪 Lektion 4
+    </div>
 
 </div>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<div class="header">
+</header><main><section class="hero"><div class="badge">
+    A1 · LEKTION 4
+</div>
 
 <h1>
-Personalpronomen & Reflexivpronomen
+    Personalpronomen<br>
+    & Possessivartikel
 </h1>
 
 <p>
-Nominativ · Akkusativ · Dativ · Reflexiv
+    Ich · mich · mir · mein
 </p>
 
-</div>
-
-
-<!-- =========================
+</section><!-- =========================
      NAVIGATION
-========================= -->
-
-<div class="main-nav">
-
-<button class="nav-btn btn-nom active"
-onclick="switchTab('nominativ',this)">
-1. Nominativ
+========================= --><nav class="tabs"><button
+    class="nav-btn active"
+    onclick="switchTab('personal', this)">
+    👤 Personalpronomen
 </button>
 
-<button class="nav-btn btn-akk"
-onclick="switchTab('akkusativ',this)">
-2. Akkusativ
+<button
+    class="nav-btn"
+    onclick="switchTab('akkusativ', this)">
+    🎯 Akkusativ
 </button>
 
-<button class="nav-btn btn-dat"
-onclick="switchTab('dativ',this)">
-3. Dativ
+<button
+    class="nav-btn"
+    onclick="switchTab('dativ', this)">
+    📍 Dativ
 </button>
 
-<button class="nav-btn btn-ref"
-onclick="switchTab('reflexiv',this)">
-4. Reflexiv ❤️
+<button
+    class="nav-btn"
+    onclick="switchTab('possessiv', this)">
+    🏠 Possessivartikel
 </button>
 
-<button class="nav-btn btn-sum"
-onclick="switchTab('summary',this)">
-📊 Zusammenfassung
+<button
+    class="nav-btn"
+    onclick="switchTab('uebung', this)">
+    ✏️ Übungen
 </button>
 
-</div>
-
-
-<div class="lesson-grid">
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<div class="main-content">
-
-
-<!-- =====================================================
-     NOMINATIV
-===================================================== -->
-
-<div id="nominativ" class="tab-content active">
-
-<h2 class="case-title">
-1. Nominativ – Personalpronomen
-</h2>
-
-<span class="fr-sub">
-Das Subjekt: Wer macht die Aktion?
-</span>
-
-
-<!-- TABLE -->
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Personalpronomen im Nominativ</span>
-</span>
-
+<button
+    class="nav-btn"
+    onclick="switchTab('summary', this)">
+    📚 Zusammenfassung
 </button>
 
-<div class="section-content">
-
-<table class="grammar-table">
-
-<thead>
+</nav><!-- =====================================================
+     PERSONALPRONOMEN
+===================================================== --><section id="personal" class="tab-content active"><div class="card"><h2>👤 Personalpronomen</h2><p class="info">
+Personalpronomen ersetzen eine Person oder eine Sache.
+</p><div class="table-wrapper"><table><thead>
 <tr>
-<th>Person</th>
 <th>Deutsch</th>
-<th>Français</th>
+<th>Französisch</th>
+<th>Beispiel</th>
 <th>Audio</th>
 </tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td>1. Sing.</td>
-<td><strong>ich</strong></td>
-<td>je</td>
+</thead><tbody><tr>
+<td class="de">ich</td>
+<td class="fr">je</td>
+<td>Ich lerne Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('ich')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('ich', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>2. Sing.</td>
-<td><strong>du</strong></td>
-<td>tu</td>
+</tr><tr>
+<td class="de">du</td>
+<td class="fr">tu</td>
+<td>Du lernst Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('du')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('du', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>3. Sing.</td>
-<td><strong>er</strong></td>
-<td>il</td>
+</tr><tr>
+<td class="de">er</td>
+<td class="fr">il</td>
+<td>Er lernt Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('er')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('er', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>3. Sing.</td>
-<td><strong>sie</strong></td>
-<td>elle</td>
+</tr><tr>
+<td class="de">sie</td>
+<td class="fr">elle</td>
+<td>Sie lernt Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('sie')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('sie', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>3. Sing.</td>
-<td><strong>es</strong></td>
-<td>neutre</td>
+</tr><tr>
+<td class="de">es</td>
+<td class="fr">ça / il / elle</td>
+<td>Es ist gut.</td>
 <td>
-<button class="play-btn" onclick="playAudio('es')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('es', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>1. Plur.</td>
-<td><strong>wir</strong></td>
-<td>nous</td>
+</tr><tr>
+<td class="de">wir</td>
+<td class="fr">nous</td>
+<td>Wir lernen Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('wir')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('wir', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>2. Plur.</td>
-<td><strong>ihr</strong></td>
-<td>vous</td>
+</tr><tr>
+<td class="de">ihr</td>
+<td class="fr">vous</td>
+<td>Ihr lernt Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('ihr')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('ihr', this)">🔊</button>
 </td>
-</tr>
-
-<tr>
-<td>3. Plur.</td>
-<td><strong>sie / Sie</strong></td>
-<td>ils / elles / Vous</td>
+</tr><tr>
+<td class="de">sie</td>
+<td class="fr">ils / elles</td>
+<td>Sie lernen Deutsch.</td>
 <td>
-<button class="play-btn" onclick="playAudio('sie, Sie')">
-<span class="play-triangle"></span>
-</button>
+<button class="audio-btn" onclick="playAudio('sie', this)">🔊</button>
 </td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-
-<!-- BEISPIELE -->
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Beispiele</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="example-list">
-
-<div class="example-card">
-<div>
-<div class="ex-de">
-<strong>Ich</strong> lerne heute Deutsch.
-</div>
-<div class="ex-fr">
-J'apprends l'allemand aujourd'hui.
-</div>
-</div>
-
-<button class="play-btn"
-onclick="playAudio('Ich lerne heute Deutsch')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-
-<div class="example-card">
-<div>
-<div class="ex-de">
-<strong>Du</strong> bist mein Freund.
-</div>
-<div class="ex-fr">
-Tu es mon ami.
-</div>
-</div>
-
-<button class="play-btn"
-onclick="playAudio('Du bist mein Freund')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-
-<div class="example-card">
-<div>
-<div class="ex-de">
-<strong>Er</strong> wohnt in Berlin.
-</div>
-<div class="ex-fr">
-Il habite à Berlin.
-</div>
-</div>
-
-<button class="play-btn"
-onclick="playAudio('Er wohnt in Berlin')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-
-<div class="example-card">
-<div>
-<div class="ex-de">
-<strong>Sie</strong> singt sehr schön.
-</div>
-<div class="ex-fr">
-Elle chante très bien.
-</div>
-</div>
-
-<button class="play-btn"
-onclick="playAudio('Sie singt sehr schön')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-
-<div class="example-card">
-<div>
-<div class="ex-de">
-<strong>Wir</strong> spielen Fußball.
-</div>
-<div class="ex-fr">
-Nous jouons au football.
-</div>
-</div>
-
-<button class="play-btn"
-onclick="playAudio('Wir spielen Fußball')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- ÜBUNGEN -->
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Übungen</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="exercise-box">
-
-<div class="q-grid">
-
-<div class="q-item">
-<p>1. (Je) ___ lerne heute Deutsch.</p>
-<input id="q-nom-1" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>2. (Tu) ___ bist sehr nett.</p>
-<input id="q-nom-2" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>3. (Il) ___ wohnt in Deutschland.</p>
-<input id="q-nom-3" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>4. (Elle) ___ macht gern Musik.</p>
-<input id="q-nom-4" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>5. (Nous) ___ haben viel Spaß.</p>
-<input id="q-nom-5" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>6. (Vous – groupe) ___ lernt sehr schnell.</p>
-<input id="q-nom-6" type="text" placeholder="Antwort...">
-</div>
-
-<div class="q-item">
-<p>7. (Ils) ___ spielen im Garten.</p>
-<input id="q-nom-7" type="text" placeholder="Antwort...">
-</div>
-
-</div>
-
-<button class="check-btn"
-onclick="checkNom()">
-7 Antworten prüfen
-</button>
-
-<div id="fb-nom" class="feedback"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
+</tr><tr>
+<td class="de">Sie</td>
+<td class="fr">vous (formel)</td>
+<td>Sie lernen Deutsch.</td>
+<td>
+<button class="audio-btn" onclick="playAudio('Sie', this)">🔊</button>
+</td>
+</tr></tbody></table></div></div><div class="card"><h2>🔑 Merke</h2><p class="info">
+<strong>ich</strong> = je<br>
+<strong>du</strong> = tu<br>
+<strong>er</strong> = il<br>
+<strong>sie</strong> = elle / ils / elles<br>
+<strong>wir</strong> = nous<br>
+<strong>ihr</strong> = vous<br>
+<strong>Sie</strong> = vous formel
+</p></div></section><!-- =====================================================
      AKKUSATIV
-===================================================== -->
-
-<div id="akkusativ" class="tab-content">
-
-<h2 class="case-title">
-2. Akkusativ – Personalpronomen
-</h2>
-
-<span class="fr-sub">
-Das direkte Objekt: Wen? / Was?
-</span>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Personalpronomen im Akkusativ</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<table class="grammar-table">
-
-<thead>
+===================================================== --><section id="akkusativ" class="tab-content"><div class="card"><h2>🎯 Personalpronomen im Akkusativ</h2><p class="info">
+Der Akkusativ répond souvent à la question :
+<strong>Wen?</strong> oder <strong>Was?</strong>
+</p><div class="table-wrapper"><table><thead>
 <tr>
 <th>Nominativ</th>
 <th>Akkusativ</th>
 <th>Français</th>
-<th>Audio</th>
 </tr>
-</thead>
-
-<tbody>
-
-<tr>
+</thead><tbody><tr>
 <td>ich</td>
 <td><strong>mich</strong></td>
 <td>me / moi</td>
-<td><button class="play-btn" onclick="playAudio('mich')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>du</td>
 <td><strong>dich</strong></td>
 <td>te / toi</td>
-<td><button class="play-btn" onclick="playAudio('dich')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>er</td>
 <td><strong>ihn</strong></td>
 <td>le / lui</td>
-<td><button class="play-btn" onclick="playAudio('ihn')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>sie</td>
 <td><strong>sie</strong></td>
 <td>la / elle</td>
-<td><button class="play-btn" onclick="playAudio('sie')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>es</td>
 <td><strong>es</strong></td>
-<td>le / neutre</td>
-<td><button class="play-btn" onclick="playAudio('es')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+<td>le / ça</td>
+</tr><tr>
 <td>wir</td>
 <td><strong>uns</strong></td>
 <td>nous</td>
-<td><button class="play-btn" onclick="playAudio('uns')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>ihr</td>
 <td><strong>euch</strong></td>
 <td>vous</td>
-<td><button class="play-btn" onclick="playAudio('euch')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>sie / Sie</td>
 <td><strong>sie / Sie</strong></td>
-<td>les / Vous</td>
-<td><button class="play-btn" onclick="playAudio('sie, Sie')"><span class="play-triangle"></span></button></td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Beispiele</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="example-list">
-
-<div class="example-card">
-<div>
-<div class="ex-de">Sieht er <strong>mich</strong>?</div>
-<div class="ex-fr">Est-ce qu'il me voit ?</div>
-</div>
-<button class="play-btn" onclick="playAudio('Sieht er mich?')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Ich liebe <strong>dich</strong>!</div>
-<div class="ex-fr">Je t'aime !</div>
-</div>
-<button class="play-btn" onclick="playAudio('Ich liebe dich')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Wir besuchen <strong>ihn</strong>.</div>
-<div class="ex-fr">Nous lui rendons visite.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Wir besuchen ihn')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Kennst du <strong>sie</strong>?</div>
-<div class="ex-fr">La connais-tu ?</div>
-</div>
-<button class="play-btn" onclick="playAudio('Kennst du sie?')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Rufen Sie <strong>uns</strong> an!</div>
-<div class="ex-fr">Appelez-nous !</div>
-</div>
-<button class="play-btn" onclick="playAudio('Rufen Sie uns an')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Übungen</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="exercise-box">
-
-<div class="q-grid">
-
-<div class="q-item">
-<p>1. Er liebt ___ (du).</p>
-<input id="q-akk-1" type="text">
-</div>
-
-<div class="q-item">
-<p>2. Sieht sie ___ (ich)?</p>
-<input id="q-akk-2" type="text">
-</div>
-
-<div class="q-item">
-<p>3. Ich frage ___ (er).</p>
-<input id="q-akk-3" type="text">
-</div>
-
-<div class="q-item">
-<p>4. Wir hören ___ (sie).</p>
-<input id="q-akk-4" type="text">
-</div>
-
-<div class="q-item">
-<p>5. Rufen Sie ___ (wir) an!</p>
-<input id="q-akk-5" type="text">
-</div>
-
-<div class="q-item">
-<p>6. Ich besuche ___ (ihr).</p>
-<input id="q-akk-6" type="text">
-</div>
-
-<div class="q-item">
-<p>7. Der Lehrer braucht ___ (Sie).</p>
-<input id="q-akk-7" type="text">
-</div>
-
-</div>
-
-<button class="check-btn" onclick="checkAkk()">
-7 Antworten prüfen
-</button>
-
-<div id="fb-akk" class="feedback"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
+<td>les / vous</td>
+</tr></tbody></table></div></div><div class="card"><h2>💡 Beispiele</h2><div class="example">
+<strong>Ich sehe dich.</strong>
+<small>Je te vois.</small>
+</div><div class="example">
+<strong>Er sieht mich.</strong>
+<small>Il me voit.</small>
+</div><div class="example">
+<strong>Wir besuchen euch.</strong>
+<small>Nous vous rendons visite.</small>
+</div><div class="example">
+<strong>Sie kennt ihn.</strong>
+<small>Elle le connaît.</small>
+</div></div></section><!-- =====================================================
      DATIV
-===================================================== -->
-
-<div id="dativ" class="tab-content">
-
-<h2 class="case-title">
-3. Dativ – Personalpronomen
-</h2>
-
-<span class="fr-sub">
-Das indirekte Objekt: Wem?
-</span>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Personalpronomen im Dativ</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<table class="grammar-table">
-
-<thead>
+===================================================== --><section id="dativ" class="tab-content"><div class="card"><h2>📍 Personalpronomen im Dativ</h2><p class="info">
+Der Dativ antwortet oft auf die Frage:
+<strong>Wem?</strong>
+</p><div class="table-wrapper"><table><thead>
 <tr>
 <th>Nominativ</th>
 <th>Dativ</th>
 <th>Français</th>
-<th>Audio</th>
 </tr>
-</thead>
-
-<tbody>
-
-<tr>
+</thead><tbody><tr>
 <td>ich</td>
 <td><strong>mir</strong></td>
 <td>à moi / me</td>
-<td><button class="play-btn" onclick="playAudio('mir')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>du</td>
 <td><strong>dir</strong></td>
 <td>à toi / te</td>
-<td><button class="play-btn" onclick="playAudio('dir')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>er</td>
 <td><strong>ihm</strong></td>
-<td>à lui</td>
-<td><button class="play-btn" onclick="playAudio('ihm')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+<td>à lui / lui</td>
+</tr><tr>
 <td>sie</td>
 <td><strong>ihr</strong></td>
-<td>à elle</td>
-<td><button class="play-btn" onclick="playAudio('ihr')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+<td>à elle / lui</td>
+</tr><tr>
 <td>es</td>
 <td><strong>ihm</strong></td>
-<td>à lui / neutre</td>
-<td><button class="play-btn" onclick="playAudio('ihm')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+<td>à cela</td>
+</tr><tr>
 <td>wir</td>
 <td><strong>uns</strong></td>
 <td>à nous</td>
-<td><button class="play-btn" onclick="playAudio('uns')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>ihr</td>
 <td><strong>euch</strong></td>
 <td>à vous</td>
-<td><button class="play-btn" onclick="playAudio('euch')"><span class="play-triangle"></span></button></td>
-</tr>
-
-<tr>
+</tr><tr>
 <td>sie / Sie</td>
 <td><strong>ihnen / Ihnen</strong></td>
-<td>à eux / à Vous</td>
-<td><button class="play-btn" onclick="playAudio('ihnen, Ihnen')"><span class="play-triangle"></span></button></td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Beispiele</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="example-list">
-
-<div class="example-card">
-<div>
-<div class="ex-de">Wie geht es <strong>dir</strong>?</div>
-<div class="ex-fr">Comment vas-tu ?</div>
-</div>
-<button class="play-btn" onclick="playAudio('Wie geht es dir?')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Das hilft <strong>mir</strong> sehr.</div>
-<div class="ex-fr">Cela m'aide beaucoup.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Das hilft mir sehr')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Ich danke <strong>ihm</strong>.</div>
-<div class="ex-fr">Je le remercie.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Ich danke ihm')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Das Buch gehört <strong>ihr</strong>.</div>
-<div class="ex-fr">Le livre lui appartient.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Das Buch gehört ihr')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Ich helfe <strong>euch</strong>.</div>
-<div class="ex-fr">Je vous aide.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Ich helfe euch')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Übungen</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="exercise-box">
-
-<div class="q-grid">
-
-<div class="q-item">
-<p>1. Wie geht es ___ (du)?</p>
-<input id="q-dat-1" type="text">
-</div>
-
-<div class="q-item">
-<p>2. Das Buch gehört ___ (ich).</p>
-<input id="q-dat-2" type="text">
-</div>
-
-<div class="q-item">
-<p>3. Ich danke ___ (er).</p>
-<input id="q-dat-3" type="text">
-</div>
-
-<div class="q-item">
-<p>4. Es gefällt ___ (sie).</p>
-<input id="q-dat-4" type="text">
-</div>
-
-<div class="q-item">
-<p>5. Antworte ___ (wir) schnell!</p>
-<input id="q-dat-5" type="text">
-</div>
-
-<div class="q-item">
-<p>6. Ich helfe ___ (ihr).</p>
-<input id="q-dat-6" type="text">
-</div>
-
-<div class="q-item">
-<p>7. Wir gratulieren ___ (Sie).</p>
-<input id="q-dat-7" type="text">
-</div>
-
-</div>
-
-<button class="check-btn" onclick="checkDat()">
-7 Antworten prüfen
-</button>
-
-<div id="fb-dat" class="feedback"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     REFLEXIV
-===================================================== -->
-
-<div id="reflexiv" class="tab-content">
-
-<h2 class="case-title">
-4. Reflexivpronomen ❤️
-</h2>
-
-<span class="fr-sub">
-Die Handlung kommt zum Subjekt zurück.
-</span>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Reflexivpronomen</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<table class="grammar-table">
-
-<thead>
+<td>à eux / à vous</td>
+</tr></tbody></table></div></div><div class="card"><h2>💡 Beispiele</h2><div class="example">
+<strong>Er hilft mir.</strong>
+<small>Il m'aide.</small>
+</div><div class="example">
+<strong>Ich helfe dir.</strong>
+<small>Je t'aide.</small>
+</div><div class="example">
+<strong>Sie gibt ihm das Buch.</strong>
+<small>Elle lui donne le livre.</small>
+</div><div class="example">
+<strong>Wir helfen euch.</strong>
+<small>Nous vous aidons.</small>
+</div></div><div class="card"><h2>⭐ Très important</h2><p class="info">
+<strong>ich → mich → mir</strong>
+</p><p class="info">
+Nominativ → Akkusativ → Dativ
+</p><br><p class="info">
+<strong>Ich sehe mich.</strong><br>
+Je me vois.
+</p><p class="info">
+<strong>Er hilft mir.</strong><br>
+Il m'aide.
+</p></div></section><!-- =====================================================
+     POSSESSIVARTIKEL
+===================================================== --><section id="possessiv" class="tab-content"><div class="card"><h2>🏠 Possessivartikel</h2><p class="info">
+Possessivartikel zeigen, wem etwas gehört.
+</p><p class="info">
+<strong>mein</strong> = mon / ma<br>
+<strong>dein</strong> = ton / ta<br>
+<strong>sein</strong> = son / sa pour « il »<br>
+<strong>ihr</strong> = son / sa pour « elle »<br>
+<strong>unser</strong> = notre<br>
+<strong>euer</strong> = votre<br>
+<strong>Ihr</strong> = votre formel
+</p></div><div class="card"><h2>📊 Übersicht</h2><div class="table-wrapper"><table><thead>
 <tr>
-<th>Person</th>
-<th>Akkusativ</th>
-<th>Dativ</th>
+<th>Personalpronomen</th>
+<th>Possessivartikel</th>
+<th>Beispiel</th>
 <th>Français</th>
 </tr>
-</thead>
-
-<tbody>
-
-<tr>
+</thead><tbody><tr>
 <td>ich</td>
-<td><strong>mich</strong></td>
-<td><strong>mir</strong></td>
-<td>me</td>
-</tr>
-
-<tr>
+<td><strong>mein</strong></td>
+<td>mein Haus</td>
+<td>ma maison</td>
+</tr><tr>
 <td>du</td>
-<td><strong>dich</strong></td>
-<td><strong>dir</strong></td>
-<td>te</td>
-</tr>
-
-<tr>
-<td>er / sie / es</td>
-<td><strong>sich</strong></td>
-<td><strong>sich</strong></td>
-<td>se</td>
-</tr>
-
-<tr>
+<td><strong>dein</strong></td>
+<td>dein Haus</td>
+<td>ta maison</td>
+</tr><tr>
+<td>er</td>
+<td><strong>sein</strong></td>
+<td>sein Haus</td>
+<td>sa maison</td>
+</tr><tr>
+<td>sie</td>
+<td><strong>ihr</strong></td>
+<td>ihr Haus</td>
+<td>sa maison</td>
+</tr><tr>
 <td>wir</td>
-<td><strong>uns</strong></td>
-<td><strong>uns</strong></td>
-<td>nous</td>
-</tr>
-
-<tr>
+<td><strong>unser</strong></td>
+<td>unser Haus</td>
+<td>notre maison</td>
+</tr><tr>
 <td>ihr</td>
-<td><strong>euch</strong></td>
-<td><strong>euch</strong></td>
-<td>vous</td>
-</tr>
+<td><strong>euer</strong></td>
+<td>euer Haus</td>
+<td>votre maison</td>
+</tr><tr>
+<td>sie</td>
+<td><strong>ihr</strong></td>
+<td>ihr Haus</td>
+<td>leur maison</td>
+</tr><tr>
+<td>Sie</td>
+<td><strong>Ihr</strong></td>
+<td>Ihr Haus</td>
+<td>votre maison</td>
+</tr></tbody></table></div></div><div class="card"><h2>💡 Beispiele mit „mein“</h2><div class="example">
+<strong>Das ist mein Bruder.</strong>
+<small>C'est mon frère.</small>
+</div><div class="example">
+<strong>Das ist meine Schwester.</strong>
+<small>C'est ma sœur.</small>
+</div><div class="example">
+<strong>Mein Vater arbeitet.</strong>
+<small>Mon père travaille.</small>
+</div><div class="example">
+<strong>Meine Mutter ist nett.</strong>
+<small>Ma mère est gentille.</small>
+</div></div><div class="card"><h2>🔑 Merksatz</h2><p class="info">
+<strong>ich → mein</strong><br>
+<strong>du → dein</strong><br>
+<strong>er → sein</strong><br>
+<strong>sie → ihr</strong><br>
+<strong>wir → unser</strong><br>
+<strong>ihr → euer</strong><br>
+<strong>Sie → Ihr</strong>
+</p></div></section><!-- =====================================================
+     ÜBUNGEN
+===================================================== --><section id="uebung" class="tab-content"><div class="card"><h2>✏️ Übungen</h2><p class="info">
+Teste dein Wissen. Schreibe die richtige Form.
+</p><div class="exercise"><p>1. Ich sehe ___. (du)</p><input
+id="ex1"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-<tr>
-<td>sie / Sie</td>
-<td><strong>sich</strong></td>
-<td><strong>sich</strong></td>
-<td>se</td>
-</tr>
+</div><div class="exercise"><p>2. Er hilft ___. (ich)</p><input
+id="ex2"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-</tbody>
-</table>
+</div><div class="exercise"><p>3. Das ist ___ Bruder. (ich)</p><input
+id="ex3"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-</div>
+</div><div class="exercise"><p>4. Ich gebe ___ das Buch. (du)</p><input
+id="ex4"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
+</div><div class="exercise"><p>5. Sie sieht ___. (er)</p><input
+id="ex5"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-<button class="section-toggle"
-onclick="toggleSection(this)">
+</div><div class="exercise"><p>6. Das ist ___ Auto. (er)</p><input
+id="ex6"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Beispiele</span>
-</span>
+</div><div class="exercise"><p>7. Wir helfen ___. (ihr)</p><input
+id="ex7"
+type="text"
+autocomplete="off"
+placeholder="Antwort">
 
-</button>
-
-<div class="section-content">
-
-<div class="example-list">
-
-<div class="example-card">
-<div>
-<div class="ex-de">Ich freue <strong>mich</strong> sehr!</div>
-<div class="ex-fr">Je suis très content(e) !</div>
-</div>
-<button class="play-btn" onclick="playAudio('Ich freue mich sehr')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Du wäschst <strong>dich</strong>.</div>
-<div class="ex-fr">Tu te laves.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Du wäschst dich')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Er zieht <strong>sich</strong> an.</div>
-<div class="ex-fr">Il s'habille.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Er zieht sich an')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Ich wasche <strong>mir</strong> die Hände.</div>
-<div class="ex-fr">Je me lave les mains.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Ich wasche mir die Hände')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-<div class="example-card">
-<div>
-<div class="ex-de">Wir ruhen <strong>uns</strong> aus.</div>
-<div class="ex-fr">Nous nous reposons.</div>
-</div>
-<button class="play-btn" onclick="playAudio('Wir ruhen uns aus')">
-<span class="play-triangle"></span>
-</button>
-</div>
-
-</div>
-
-</div>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Übungen</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<div class="exercise-box">
-
-<div class="q-grid">
-
-<div class="q-item">
-<p>1. Ich freue ___ (ich).</p>
-<input id="q-ref-1" type="text">
-</div>
-
-<div class="q-item">
-<p>2. Du wäschst ___ (du).</p>
-<input id="q-ref-2" type="text">
-</div>
-
-<div class="q-item">
-<p>3. Ich wasche ___ die Hände.</p>
-<input id="q-ref-3" type="text">
-</div>
-
-<div class="q-item">
-<p>4. Du kaufst ___ ein Eis.</p>
-<input id="q-ref-4" type="text">
-</div>
-
-<div class="q-item">
-<p>5. Wir ruhen ___ aus.</p>
-<input id="q-ref-5" type="text">
-</div>
-
-<div class="q-item">
-<p>6. Zieht ihr ___ an?</p>
-<input id="q-ref-6" type="text">
-</div>
-
-<div class="q-item">
-<p>7. Sie kämmt ___.</p>
-<input id="q-ref-7" type="text">
-</div>
-
-</div>
-
-<button class="check-btn" onclick="checkRef()">
-7 Antworten prüfen
-</button>
-
-<div id="fb-ref" class="feedback"></div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
+</div><button class="check-btn" onclick="checkExercises()">
+    ✓ Antworten prüfen
+</button><div id="exerciseFeedback" class="feedback"></div></div></section><!-- =====================================================
      SUMMARY
-===================================================== -->
-
-<div id="summary" class="tab-content">
-
-<h2 class="case-title">
-📊 Zusammenfassung
-</h2>
-
-<span class="fr-sub">
-Nominativ · Akkusativ · Dativ · Reflexiv
-</span>
-
-
-<button class="section-toggle"
-onclick="toggleSection(this)">
-
-<span class="toggle-left">
-<span class="toggle-arrow">▶</span>
-<span>Alle Personalpronomen auf einen Blick</span>
-</span>
-
-</button>
-
-<div class="section-content">
-
-<table class="summary-table">
-
-<thead>
-
-<tr>
-<th>Nominativ</th>
-<th>Akkusativ</th>
-<th>Dativ</th>
-<th>Reflexiv</th>
-<th>Français</th>
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-<td><strong>ich</strong></td>
-<td><strong>mich</strong></td>
-<td><strong>mir</strong></td>
-<td>mich / mir</td>
-<td>je</td>
-</tr>
-
-<tr>
-<td><strong>du</strong></td>
-<td><strong>dich</strong></td>
-<td><strong>dir</strong></td>
-<td>dich / dir</td>
-<td>tu</td>
-</tr>
-
-<tr>
-<td><strong>er</strong></td>
-<td><strong>ihn</strong></td>
-<td><strong>ihm</strong></td>
-<td>sich</td>
-<td>il</td>
-</tr>
-
-<tr>
-<td><strong>sie</strong></td>
-<td><strong>sie</strong></td>
-<td><strong>ihr</strong></td>
-<td>sich</td>
-<td>elle</td>
-</tr>
-
-<tr>
-<td><strong>es</strong></td>
-<td><strong>es</strong></td>
-<td><strong>ihm</strong></td>
-<td>sich</td>
-<td>neutre</td>
-</tr>
-
-<tr>
-<td><strong>wir</strong></td>
-<td><strong>uns</strong></td>
-<td><strong>uns</strong></td>
-<td>uns</td>
-<td>nous</td>
-</tr>
-
-<tr>
-<td><strong>ihr</strong></td>
-<td><strong>euch</strong></td>
-<td><strong>euch</strong></td>
-<td>euch</td>
-<td>vous</td>
-</tr>
-
-<tr>
-<td><strong>sie / Sie</strong></td>
-<td><strong>sie / Sie</strong></td>
-<td><strong>ihnen / Ihnen</strong></td>
-<td>sich</td>
-<td>ils / elles / Vous</td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     SIDE PANEL
-===================================================== -->
-
-<div class="side-panel">
-
-
-<!-- =====================================================
-     NOMINATIV SIDE
-===================================================== -->
-
-<div id="side-nominativ" class="side-content active">
-
-<div class="verb-endungen">
-
-<h3>🔤 Verb-Endungen</h3>
-
-<div class="ending-line">
-<span><strong>ich</strong></span>
-<span class="ending-example">mach-e</span>
-</div>
-
-<div class="ending-line">
-<span><strong>du</strong></span>
-<span class="ending-example">mach-st</span>
-</div>
-
-<div class="ending-line">
-<span><strong>er / sie / es</strong></span>
-<span class="ending-example">mach-t</span>
-</div>
-
-<div class="ending-line">
-<span><strong>wir</strong></span>
-<span class="ending-example">mach-en</span>
-</div>
-
-<div class="ending-line">
-<span><strong>ihr</strong></span>
-<span class="ending-example">mach-t</span>
-</div>
-
-<div class="ending-line">
-<span><strong>sie / Sie</strong></span>
-<span class="ending-example">mach-en</span>
-</div>
-
-</div>
-
-<div class="merkhilfe">
-
-<h3>💡 Merkhilfe</h3>
-
-<p>
-Der <strong>Nominativ</strong> ist das Subjekt.
-</p>
-
-<p>
-<strong>Wer macht die Aktion?</strong>
-</p>
-
-<div class="merk-beispiel">
-
-<div class="merk-word">Ich lerne.</div>
-<div class="merk-word">Du lernst.</div>
-<div class="merk-word">Er lernt.</div>
-<div class="merk-word">Wir lernen.</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     AKKUSATIV SIDE
-===================================================== -->
-
-<div id="side-akkusativ" class="side-content">
-
-<div class="merkhilfe">
-
-<h3>💡 Merkhilfe</h3>
-
-<p>
-Der <strong>Akkusativ</strong> ist das direkte Objekt.
-</p>
-
-<p>
-<strong>Wen oder was?</strong>
-</p>
-
-<div class="merk-beispiel">
-
-<div class="merk-word">Ich sehe ihn.</div>
-<div class="merk-word">Er liebt mich.</div>
-<div class="merk-word">Sie kennt dich.</div>
-<div class="merk-word">Wir hören sie.</div>
-
-</div>
-
-</div>
-
-<div class="heart-card">
-
-<h3 class="heart-title">
-❤️ Akkusativ-Verben
-</h3>
-
-<span class="heart-sub">
-Diese Verben mit Akkusativ lernen.
-</span>
-
-<ul class="verb-list">
-
-<li>
-<div class="verb-text">
-<span class="verb-de">lieben</span>
-<span class="verb-fr">aimer</span>
-</div>
-<button class="play-btn" onclick="playAudio('lieben')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sehen</span>
-<span class="verb-fr">voir</span>
-</div>
-<button class="play-btn" onclick="playAudio('sehen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">besuchen</span>
-<span class="verb-fr">visiter</span>
-</div>
-<button class="play-btn" onclick="playAudio('besuchen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">brauchen</span>
-<span class="verb-fr">avoir besoin de</span>
-</div>
-<button class="play-btn" onclick="playAudio('brauchen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">anrufen</span>
-<span class="verb-fr">appeler</span>
-</div>
-<button class="play-btn" onclick="playAudio('anrufen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     DATIV SIDE
-===================================================== -->
-
-<div id="side-dativ" class="side-content">
-
-<div class="merkhilfe">
-
-<h3>💡 Merkhilfe</h3>
-
-<p>
-Der <strong>Dativ</strong> ist das indirekte Objekt.
-</p>
-
-<p>
-<strong>Wem?</strong>
-</p>
-
-<div class="merk-beispiel">
-
-<div class="merk-word">Ich helfe ihm.</div>
-<div class="merk-word">Sie hilft mir.</div>
-<div class="merk-word">Wir danken ihr.</div>
-<div class="merk-word">Er antwortet uns.</div>
-
-</div>
-
-</div>
-
-<div class="heart-card">
-
-<h3 class="heart-title">
-❤️ Dativ-Verben
-</h3>
-
-<span class="heart-sub">
-Diese Verben mit Dativ lernen.
-</span>
-
-<ul class="verb-list">
-
-<li>
-<div class="verb-text">
-<span class="verb-de">helfen</span>
-<span class="verb-fr">aider</span>
-</div>
-<button class="play-btn" onclick="playAudio('helfen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">gehören</span>
-<span class="verb-fr">appartenir à</span>
-</div>
-<button class="play-btn" onclick="playAudio('gehören')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">danken</span>
-<span class="verb-fr">remercier</span>
-</div>
-<button class="play-btn" onclick="playAudio('danken')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">antworten</span>
-<span class="verb-fr">répondre</span>
-</div>
-<button class="play-btn" onclick="playAudio('antworten')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">gefallen</span>
-<span class="verb-fr">plaire</span>
-</div>
-<button class="play-btn" onclick="playAudio('gefallen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     REFLEXIV SIDE
-===================================================== -->
-
-<div id="side-reflexiv" class="side-content">
-
-<div class="merkhilfe">
-
-<h3>💡 Merkhilfe</h3>
-
-<p>
-Beim <strong>Reflexiv</strong> kommt die Handlung zum Subjekt zurück.
-</p>
-
-<p>
-<strong>Wer macht die Aktion und auf wen wirkt sie zurück?</strong>
-</p>
-
-<div class="merk-beispiel">
-
-<div class="merk-word">Ich wasche mich.</div>
-<div class="merk-word">Du wäschst dich.</div>
-<div class="merk-word">Er wäscht sich.</div>
-<div class="merk-word">Wir waschen uns.</div>
-
-</div>
-
-</div>
-
-<div class="heart-card">
-
-<h3 class="heart-title">
-❤️ Reflexive Verben
-</h3>
-
-<span class="heart-sub">
-Verbes réfléchis
-</span>
-
-<ul class="verb-list">
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sich freuen</span>
-<span class="verb-fr">se réjouir</span>
-</div>
-<button class="play-btn" onclick="playAudio('sich freuen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sich waschen</span>
-<span class="verb-fr">se laver</span>
-</div>
-<button class="play-btn" onclick="playAudio('sich waschen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sich anziehen</span>
-<span class="verb-fr">s'habiller</span>
-</div>
-<button class="play-btn" onclick="playAudio('sich anziehen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sich ausruhen</span>
-<span class="verb-fr">se reposer</span>
-</div>
-<button class="play-btn" onclick="playAudio('sich ausruhen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-<li>
-<div class="verb-text">
-<span class="verb-de">sich kämmen</span>
-<span class="verb-fr">se coiffer</span>
-</div>
-<button class="play-btn" onclick="playAudio('sich kämmen')">
-<span class="play-triangle"></span>
-</button>
-</li>
-
-</ul>
-
-</div>
-
-</div>
-
-
-<!-- =====================================================
-     SUMMARY SIDE
-===================================================== -->
-
-<div id="side-summary" class="side-content">
-
-<div class="merkhilfe">
-
-<h3>💡 Die wichtigste Regel</h3>
-
-<p>
-<strong>Nominativ</strong> → Wer?
-</p>
-
-<p>
-<strong>Akkusativ</strong> → Wen / Was?
-</p>
-
-<p>
-<strong>Dativ</strong> → Wem?
-</p>
-
-<p>
-<strong>Reflexiv</strong> → Handlung zurück zum Subjekt
-</p>
-
-<div class="merk-beispiel">
-
-<div class="merk-word">Wer? → ich</div>
-<div class="merk-word">Wen? → mich</div>
-<div class="merk-word">Wem? → mir</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="footer-back">
-
-<a href="index.html#a1">
-← Zurück zu den A1 Lektionen
-</a>
-
-</div>
-
-</div>
-
-
-<script>
-
-/* =====================================================
-   TAB SWITCH
-===================================================== */
-
-function switchTab(caseName,button){
-
-    document
-    .querySelectorAll('.tab-content')
-    .forEach(tab=>{
-        tab.classList.remove('active');
-    });
-
-    document
-    .querySelectorAll('.side-content')
-    .forEach(side=>{
-        side.classList.remove('active');
-    });
-
-    document
-    .querySelectorAll('.nav-btn')
-    .forEach(btn=>{
-        btn.classList.remove('active');
-    });
-
-    document.body.className =
-        'theme-' + caseName.substring(0,3);
-
-    document
-    .getElementById(caseName)
-    .classList.add('active');
-
-    document
-    .getElementById('side-' + caseName)
-    .classList.add('active');
-
-    button.classList.add('active');
-}
-
-
-/* =====================================================
-   COLLAPSIBLE
-===================================================== */
-
-function toggleSection(button){
-
-    const content =
-        button.nextElementSibling;
-
-    const isOpen =
-        content.classList.contains('open');
-
-    if(isOpen){
-
-        content.classList.remove('open');
-
-        button.classList.remove('open');
-
-    }else{
-
-        content.classList.add('open');
-
-        button.classList.add('open');
-    }
-}
-
+===================================================== --><section id="summary" class="tab-content"><div class="card"><h2>📚 Zusammenfassung</h2><div class="summary-box"><div class="summary-item">
+<strong>ich</strong>
+Nominativ
+</div><div class="summary-item">
+<strong>mich</strong>
+Akkusativ
+</div><div class="summary-item">
+<strong>mir</strong>
+Dativ
+</div><div class="summary-item">
+<strong>mein</strong>
+Possessivartikel
+</div></div></div><div class="card"><h2>⭐ Das musst du wissen</h2><p class="info"><strong>1. Personalpronomen</strong><br>
+ich, du, er, sie, es, wir, ihr, sie, Sie
+
+<br><br>
+
+<strong>2. Akkusativ</strong><br>
+ich → mich<br>
+du → dich<br>
+er → ihn<br>
+wir → uns<br>
+ihr → euch
+
+<br><br>
+
+<strong>3. Dativ</strong><br>
+ich → mir<br>
+du → dir<br>
+er → ihm<br>
+sie → ihr<br>
+wir → uns<br>
+ihr → euch
+
+<br><br>
+
+<strong>4. Possessivartikel</strong><br>
+ich → mein<br>
+du → dein<br>
+er → sein<br>
+sie → ihr<br>
+wir → unser<br>
+ihr → euer<br>
+Sie → Ihr
+
+</p></div><div class="card"><h2>🎯 Wichtigster Merksatz</h2><p class="info" style="font-size:24px;font-weight:900;text-align:center;">ICH → MICH → MIR → MEIN
+
+</p><p class="info" style="text-align:center;">
+Nominativ → Akkusativ → Dativ → Besitz
+</p></div></section></main><script>
 
 /* =====================================================
    AUDIO
 ===================================================== */
 
-function playAudio(text){
+let currentSpeech = null;
 
-    if('speechSynthesis' in window){
+function playAudio(text, button = null) {
 
-        window.speechSynthesis.cancel();
-
-        const utterance =
-            new SpeechSynthesisUtterance(text);
-
-        utterance.lang='de-DE';
-
-        utterance.rate=.88;
-
-        window.speechSynthesis.speak(
-            utterance
-        );
-
-    }else{
-
-        alert(
-            'Audio non supporté : ' + text
-        );
+    if (!("speechSynthesis" in window)) {
+        alert("Die Sprachausgabe wird von diesem Browser nicht unterstützt.");
+        return;
     }
+
+    window.speechSynthesis.cancel();
+
+    document
+        .querySelectorAll(".audio-btn")
+        .forEach(btn => btn.classList.remove("playing"));
+
+    if (!text || !text.trim()) {
+        return;
+    }
+
+    currentSpeech = new SpeechSynthesisUtterance(text);
+
+    currentSpeech.lang = "de-DE";
+    currentSpeech.rate = 0.82;
+    currentSpeech.pitch = 1;
+    currentSpeech.volume = 1;
+
+    if (button) {
+        button.classList.add("playing");
+    }
+
+    currentSpeech.onend = function() {
+
+        if (button) {
+            button.classList.remove("playing");
+        }
+
+    };
+
+    currentSpeech.onerror = function() {
+
+        if (button) {
+            button.classList.remove("playing");
+        }
+
+    };
+
+    window.speechSynthesis.speak(currentSpeech);
 }
 
 
 /* =====================================================
-   NORMALIZE
+   TAB SWITCH
 ===================================================== */
 
-function normalize(value){
+const tabAudio = {
+
+    personal:
+        "Personalpronomen. Ich, du, er, sie, es, wir, ihr, sie und Sie.",
+
+    akkusativ:
+        "Personalpronomen im Akkusativ. Ich wird mich. Du wird dich. Er wird ihn.",
+
+    dativ:
+        "Personalpronomen im Dativ. Ich wird mir. Du wird dir. Er wird ihm.",
+
+    possessiv:
+        "Possessivartikel. Ich wird mein. Du wird dein. Er wird sein. Sie wird ihr.",
+
+    uebung:
+        "Übungen. Teste dein Wissen über Personalpronomen und Possessivartikel.",
+
+    summary:
+        "Zusammenfassung. Ich, mich, mir und mein. Nominativ, Akkusativ, Dativ und Besitz."
+};
+
+
+function switchTab(tabName, button) {
+
+    document
+        .querySelectorAll(".tab-content")
+        .forEach(tab => {
+            tab.classList.remove("active");
+        });
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    const selectedTab =
+        document.getElementById(tabName);
+
+    if (selectedTab) {
+        selectedTab.classList.add("active");
+    }
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    if (tabAudio[tabName]) {
+        setTimeout(() => {
+            playAudio(tabAudio[tabName]);
+        }, 100);
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =====================================================
+   EXERCISES
+===================================================== */
+
+function normalize(value) {
 
     return value
         .trim()
         .toLowerCase()
-        .replace(/\s+/g,' ');
+        .replace(/\s+/g, " ");
+
 }
 
 
-/* =====================================================
-   GENERIC CHECK
-===================================================== */
+function checkExercises() {
 
-function checkAnswers(ids,answers,feedbackId,message){
+    const answers = [
+        "dich",
+        "mir",
+        "mein",
+        "dir",
+        "ihn",
+        "sein",
+        "euch"
+    ];
 
-    let correct=0;
+    let correct = 0;
 
-    for(let i=0;i<ids.length;i++){
+    for (let i = 1; i <= 7; i++) {
 
-        const value =
-            normalize(
-                document
-                .getElementById(ids[i])
-                .value
-            );
+        const input =
+            document.getElementById("ex" + i);
 
-        if(
-            answers[i].includes(value)
-        ){
+        if (!input) {
+            continue;
+        }
+
+        const answer =
+            normalize(input.value);
+
+        if (answer === answers[i - 1]) {
 
             correct++;
+
+            input.style.borderColor = "#059669";
+
+        } else {
+
+            input.style.borderColor = "#e11d48";
+
         }
     }
 
     const feedback =
-        document.getElementById(feedbackId);
+        document.getElementById("exerciseFeedback");
 
-    if(correct===ids.length){
+    if (!feedback) {
+        return;
+    }
 
-        feedback.className=
-            'feedback correct';
+    feedback.classList.remove("correct", "wrong");
 
-        feedback.textContent=
-            '🎉 Perfekt! ' +
+    if (correct === 7) {
+
+        feedback.classList.add("correct");
+
+        feedback.textContent =
+            "🎉 Perfekt! 7/7 richtig!";
+
+        playAudio(
+            "Perfekt! Sieben von sieben Antworten sind richtig!"
+        );
+
+    } else {
+
+        feedback.classList.add("wrong");
+
+        feedback.textContent =
+            "❌ " + correct + "/7 richtig. Versuche es noch einmal.";
+
+        playAudio(
             correct +
-            '/' +
-            ids.length +
-            ' richtig!';
-
-    }else{
-
-        feedback.className=
-            'feedback wrong';
-
-        feedback.textContent=
-            `❌ ${correct}/${ids.length} richtig. Versuche es noch einmal!`;
+            " von sieben Antworten sind richtig. Versuche es noch einmal."
+        );
     }
 }
 
 
 /* =====================================================
-   NOMINATIV
+   RETOUR
 ===================================================== */
 
-function checkNom(){
+function goBack() {
 
-    checkAnswers(
+    if (document.referrer) {
+        window.history.back();
+    } else {
+        window.location.href = "index.html";
+    }
 
-        [
-            'q-nom-1',
-            'q-nom-2',
-            'q-nom-3',
-            'q-nom-4',
-            'q-nom-5',
-            'q-nom-6',
-            'q-nom-7'
-        ],
-
-        [
-            ['ich'],
-            ['du'],
-            ['er'],
-            ['sie'],
-            ['wir'],
-            ['ihr'],
-            ['sie']
-        ],
-
-        'fb-nom'
-    );
 }
 
 
 /* =====================================================
-   AKKUSATIV
+   STOP AUDIO
 ===================================================== */
 
-function checkAkk(){
+window.addEventListener("beforeunload", function() {
 
-    checkAnswers(
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
 
-        [
-            'q-akk-1',
-            'q-akk-2',
-            'q-akk-3',
-            'q-akk-4',
-            'q-akk-5',
-            'q-akk-6',
-            'q-akk-7'
-        ],
-
-        [
-            ['dich'],
-            ['mich'],
-            ['ihn'],
-            ['sie'],
-            ['uns'],
-            ['euch'],
-            ['sie']
-        ],
-
-        'fb-akk'
-    );
-}
+});
 
 
 /* =====================================================
-   DATIV
+   INITIALISATION
 ===================================================== */
 
-function checkDat(){
+document.addEventListener("DOMContentLoaded", function() {
 
-    checkAnswers(
+    const firstTab =
+        document.querySelector(".tab-content");
 
-        [
-            'q-dat-1',
-            'q-dat-2',
-            'q-dat-3',
-            'q-dat-4',
-            'q-dat-5',
-            'q-dat-6',
-            'q-dat-7'
-        ],
+    if (firstTab) {
+        firstTab.classList.add("active");
+    }
 
-        [
-            ['dir'],
-            ['mir'],
-            ['ihm'],
-            ['ihr'],
-            ['uns'],
-            ['euch'],
-            ['ihnen','Ihnen'.toLowerCase()]
-        ],
+});
 
-        'fb-dat'
-    );
-}
-
-
-/* =====================================================
-   REFLEXIV
-===================================================== */
-
-function checkRef(){
-
-    checkAnswers(
-
-        [
-            'q-ref-1',
-            'q-ref-2',
-            'q-ref-3',
-            'q-ref-4',
-            'q-ref-5',
-            'q-ref-6',
-            'q-ref-7'
-        ],
-
-        [
-            ['mich'],
-            ['dich'],
-            ['mir'],
-            ['dir'],
-            ['uns'],
-            ['euch'],
-            ['sich']
-        ],
-
-        'fb-ref'
-    );
-}
-
-</script>
-
-</body>
+</script></body>
 </html>
