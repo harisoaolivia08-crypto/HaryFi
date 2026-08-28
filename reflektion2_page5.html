@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HaryFi – Lektion 2: Reflektion</title>
+    <title>HaryFi – Lektion 2: Reflexion</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+
         * {
             box-sizing: border-box;
         }
@@ -17,7 +19,7 @@
         body {
             margin: 0;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: #17120d;
 
             background: linear-gradient(
@@ -56,58 +58,104 @@
             }
         }
 
+        /* =========================================
+           GLASS & CARDS
+        ========================================= */
         .glass {
-            background: rgba(255,255,255,.22);
+            background: rgba(255, 255, 255, .22);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,.45);
+            border: 1px solid rgba(255, 255, 255, .45);
         }
 
         .reflection-card {
-            background: rgba(255,255,255,.92);
-            border-radius: 28px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            background: rgba(255, 255, 255, .92);
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+        }
+
+        @media (min-width: 768px) {
+            .reflection-card {
+                border-radius: 32px;
+                padding: 35px;
+            }
         }
 
         .question-card {
-            background: rgba(255,255,255,.85);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,.08);
+            background: rgba(255, 255, 255, .88);
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+            border: 1px solid rgba(255, 255, 255, .6);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        @media (min-width: 768px) {
+            .question-card {
+                border-radius: 24px;
+                padding: 22px;
+                margin-bottom: 18px;
+            }
+        }
+
+        .question-card:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
         }
 
         textarea {
             width: 100%;
-            min-height: 90px;
-            margin-top: 12px;
-            padding: 14px;
-            border: 2px solid rgba(0,0,0,.12);
-            border-radius: 15px;
+            min-height: 95px;
+            margin-top: 10px;
+            padding: 14px 16px;
+            border: 2px solid rgba(0, 0, 0, .12);
+            border-radius: 14px;
             resize: vertical;
-            font-family: Arial, sans-serif;
-            font-size: 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: #17120d;
+            background-color: #ffffff;
             outline: none;
+            transition: border-color .2s ease, box-shadow .2s ease;
+        }
+
+        @media (min-width: 768px) {
+            textarea {
+                font-size: 16px;
+                border-radius: 16px;
+            }
         }
 
         textarea:focus {
-            border-color: #111;
+            border-color: #00c9ff;
+            box-shadow: 0 0 0 4px rgba(0, 201, 255, .15);
         }
 
+        /* =========================================
+           BUTTONS
+        ========================================= */
         .save-button,
         .back-button {
-            transition: .2s ease;
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
         .save-button:hover,
         .back-button:hover {
-            transform: translateY(-4px) scale(1.03);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .2);
         }
 
         .save-button:active,
         .back-button:active {
-            transform: scale(.96);
+            transform: scale(.97);
+        }
+
+        .status {
+            min-height: 24px;
+            transition: opacity 0.3s ease;
         }
     </style>
 </head>
@@ -116,18 +164,19 @@
 <body>
 
 
-<header class="px-5 py-5">
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="px-4 md:px-8 py-5">
 
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-        <a
-            href="lektion2.html"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg"
-        >
+        <a href="lektion2.html" class="glass rounded-2xl px-4 md:px-5 py-2.5 md:py-3 font-black text-base md:text-lg">
             ← Lektion 2
         </a>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
+        <div class="glass rounded-full px-4 md:px-5 py-2 font-bold text-xs md:text-sm">
             🇩🇪 Deutschkurs
         </div>
 
@@ -137,35 +186,26 @@
 
 
 
-<main class="max-w-4xl mx-auto px-5 pb-20">
+<!-- =====================================================
+     MAIN CONTENT
+====================================================== -->
+
+<main class="max-w-4xl mx-auto px-4 md:px-8 pb-20">
 
 
     <!-- TITRE -->
 
-    <section class="text-center pt-8 pb-10">
+    <section class="text-center pt-4 md:pt-8 pb-8 md:pb-10">
 
-        <div
-            class="
-                inline-block
-                glass
-                rounded-full
-                px-5
-                py-2
-                mb-5
-                text-xs
-                font-black
-                uppercase
-                tracking-widest
-            "
-        >
+        <div class="inline-block glass rounded-full px-4 py-1.5 mb-4 text-xs font-black uppercase tracking-widest">
             Lektion 2 · Seite 5
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
-            Reflektion
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-3 md:mb-4">
+            Reflexion
         </h1>
 
-        <p class="text-lg md:text-xl font-semibold">
+        <p class="text-base sm:text-lg md:text-xl font-semibold opacity-90">
             Denke über deine Lernerfolge in Lektion 2 nach.
         </p>
 
@@ -173,191 +213,132 @@
 
 
 
-    <!-- REFLEKTION -->
+    <!-- CARTE PRINCIPALE -->
 
     <section class="reflection-card">
 
-        <div class="text-center mb-8">
-
-            <div class="text-5xl mb-4">
+        <div class="text-center mb-6 md:mb-8">
+            <div class="text-4xl md:text-5xl mb-2 md:mb-3">
                 🧠
             </div>
-
-            <h2 class="text-3xl md:text-4xl font-black">
-                Meine Reflektion
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black">
+                Meine Reflexion
             </h2>
-
-            <p class="mt-3 font-semibold opacity-70">
-                Schreibe deine Antworten auf.
+            <p class="mt-1 md:mt-2 text-xs md:text-sm font-semibold opacity-70">
+                Schreibe deine Antworten auf. Sie werden automatisch gespeichert.
             </p>
-
         </div>
 
 
-
-        <!-- FRAGE 1 -->
-
+        <!-- QUESTION 1 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 1. Was habe ich in dieser Lektion gelernt?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 2 -->
-
+        <!-- QUESTION 2 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 2. Kann ich mich auf Deutsch vorstellen?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 3 -->
-
+        <!-- QUESTION 3 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 3. Kann ich jemanden formell begrüßen?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 4 -->
-
+        <!-- QUESTION 4 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 4. Kann ich jemanden informell begrüßen?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 5 -->
-
+        <!-- QUESTION 5 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 5. Kann ich sagen, woher ich komme?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 6 -->
-
+        <!-- QUESTION 6 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 6. Was kann ich schon gut?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
-
-
-        <!-- FRAGE 7 -->
-
+        <!-- QUESTION 7 -->
         <div class="question-card">
-
-            <h3 class="text-xl font-black">
+            <h3 class="text-base sm:text-lg md:text-xl font-black text-gray-900">
                 7. Was muss ich noch üben?
             </h3>
-
-            <textarea
-                placeholder="Meine Antwort..."
-            ></textarea>
-
+            <textarea placeholder="Meine Antwort..."></textarea>
         </div>
 
 
-
-        <!-- BOUTON -->
-
-        <div class="text-center mt-8">
-
+        <!-- BOUTON DE SAUVEGARDE -->
+        <div class="text-center mt-6 md:mt-8">
             <button
                 id="saveButton"
                 type="button"
                 class="
                     save-button
+                    w-full
+                    sm:w-auto
                     bg-black
                     text-white
                     px-8
                     py-4
                     rounded-2xl
                     font-black
+                    text-base
+                    md:text-lg
                     shadow-xl
                 "
             >
                 💾 Antworten speichern
             </button>
 
-            <div
-                id="status"
-                class="mt-4 font-bold opacity-70"
-            ></div>
-
+            <div id="status" class="status mt-3 text-sm md:text-base font-bold text-emerald-700"></div>
         </div>
 
     </section>
 
 
 
-    <!-- RETOUR -->
+    <!-- NAVIGATION RETOUR -->
 
-    <section class="flex justify-center mt-12">
-
+    <section class="flex justify-center mt-8 md:mt-12">
         <a
             href="lektion2.html"
             class="
                 back-button
+                w-full
+                sm:w-auto
+                text-center
                 bg-white
+                text-black
                 px-8
                 py-4
                 rounded-2xl
                 font-black
+                text-base
                 shadow-xl
             "
         >
             ← Zurück zu Lektion 2
         </a>
-
     </section>
 
 
@@ -365,72 +346,59 @@
 
 
 
+<!-- =====================================================
+     JAVASCRIPT (SAUVEGARDE AUTOMATIQUE ET MANUELLE)
+====================================================== -->
+
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const textareas = document.querySelectorAll("textarea");
+        const saveButton = document.getElementById("saveButton");
+        const status = document.getElementById("status");
+        const STORAGE_KEY = "haryfi_lektion2_reflektion";
+        let statusTimeout = null;
 
-const textareas =
-    document.querySelectorAll("textarea");
+        // Fonction de sauvegarde
+        function saveAnswers(showStatus = true) {
+            const answers = Array.from(textareas).map(t => t.value);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
 
-const saveButton =
-    document.getElementById("saveButton");
+            if (showStatus) {
+                status.textContent = "✅ Deine Antworten wurden erfolgreich gespeichert!";
+                status.style.opacity = "1";
 
-const status =
-    document.getElementById("status");
-
-
-/* =========================
-   SPEICHERN
-========================= */
-
-saveButton.addEventListener("click", () => {
-
-    const answers = [];
-
-    textareas.forEach(
-        textarea => {
-            answers.push(textarea.value);
-        }
-    );
-
-    localStorage.setItem(
-        "haryfi_lektion2_reflektion",
-        JSON.stringify(answers)
-    );
-
-    status.textContent =
-        "✅ Deine Antworten wurden gespeichert.";
-
-});
-
-
-/* =========================
-   ANTWORTEN LADEN
-========================= */
-
-const saved =
-    localStorage.getItem(
-        "haryfi_lektion2_reflektion"
-    );
-
-if (saved) {
-
-    const answers =
-        JSON.parse(saved);
-
-    textareas.forEach(
-        (textarea, index) => {
-
-            if (answers[index]) {
-                textarea.value =
-                    answers[index];
+                if (statusTimeout) clearTimeout(statusTimeout);
+                statusTimeout = setTimeout(() => {
+                    status.style.opacity = "0";
+                }, 3000);
             }
-
         }
-    );
 
-}
+        // Charger les réponses sauvegardées au démarrage
+        const savedData = localStorage.getItem(STORAGE_KEY);
+        if (savedData) {
+            try {
+                const answers = JSON.parse(savedData);
+                textareas.forEach((textarea, index) => {
+                    if (answers[index] !== undefined) {
+                        textarea.value = answers[index];
+                    }
+                });
+            } catch (e) {
+                console.error("Erreur de lecture du localStorage :", e);
+            }
+        }
 
+        // Sauvegarde au clic sur le bouton
+        saveButton.addEventListener("click", () => saveAnswers(true));
+
+        // Sauvegarde automatique transparente lors du changement de texte
+        textareas.forEach(textarea => {
+            textarea.addEventListener("input", () => saveAnswers(false));
+        });
+    });
 </script>
 
-
 </body>
+
 </html>
