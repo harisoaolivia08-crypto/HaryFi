@@ -11,1101 +11,901 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================================================
-   HARYFI – LEKTION 4
-   VERBEN
-========================================================= */
-
-:root {
-    --black: #111111;
-    --orange: #ff7a00;
-    --orange-dark: #ff3d00;
-    --yellow: #ffc400;
-    --yellow-light: #ffea61;
-
-    --glass: rgba(255,255,255,.25);
-    --glass-strong: rgba(255,255,255,.42);
-
-    --text: #171717;
-    --brown: #542900;
+:root{
+    --black:#111;
+    --orange:#ff7a00;
+    --orange-dark:#ff3d00;
+    --yellow:#ffc400;
+    --yellow-light:#ffea61;
+    --text:#171717;
+    --brown:#542900;
 }
 
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    min-height: 100vh;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    color: var(--text);
-    overflow-x: hidden;
+body{
+    min-height:100vh;
+    font-family:"Plus Jakarta Sans",sans-serif;
+    color:var(--text);
+    overflow-x:hidden;
 
     background:
-        linear-gradient(
-            120deg,
-            #ff3d00,
-            #ff7a00,
-            #ffc400,
-            #ffea61,
-            #ff7a00,
-            #ff3d00
-        );
+    linear-gradient(
+        120deg,
+        #ff3d00,
+        #ff7a00,
+        #ffc400,
+        #ffea61,
+        #ff7a00,
+        #ff3d00
+    );
 
-    background-size: 500% 500%;
-    animation: backgroundMove 15s ease infinite;
+    background-size:500% 500%;
+    animation:backgroundMove 15s ease infinite;
 }
 
-@keyframes backgroundMove {
+@keyframes backgroundMove{
+    0%{background-position:0% 50%}
+    25%{background-position:50% 100%}
+    50%{background-position:100% 50%}
+    75%{background-position:50% 0%}
+    100%{background-position:0% 50%}
+}
 
-    0% {
-        background-position: 0% 50%;
+#wordCanvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+}
+
+.lesson-page{
+    position:relative;
+    z-index:2;
+    width:100%;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.lesson-header{
+    position:sticky;
+    top:0;
+    z-index:20;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 30px;
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.35);
+}
+
+.header-logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:#111;
+}
+
+.header-logo span{
+    color:white;
+}
+
+.header-center{
+    text-align:center;
+}
+
+.header-lesson{
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    color:#542900;
+}
+
+.header-title{
+    font-size:15px;
+    font-weight:900;
+}
+
+.back-button{
+    border:1px solid rgba(255,255,255,.6);
+    background:rgba(255,255,255,.28);
+    backdrop-filter:blur(10px);
+
+    padding:10px 17px;
+    border-radius:50px;
+
+    font-family:inherit;
+    font-size:12px;
+    font-weight:800;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.back-button:hover{
+    background:white;
+    transform:translateX(-4px);
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    max-width:1050px;
+    margin:auto;
+    padding:55px 25px 30px;
+    text-align:center;
+}
+
+.lesson-badge{
+    display:inline-flex;
+    padding:10px 20px;
+    border-radius:50px;
+
+    background:#111;
+    color:#ffc400;
+
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,85px);
+    line-height:.95;
+    letter-spacing:-5px;
+    font-weight:900;
+    color:#111;
+}
+
+.hero h1 span{
+    color:white;
+    text-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.hero p{
+    max-width:700px;
+    margin:22px auto 0;
+
+    font-size:16px;
+    line-height:1.7;
+    font-weight:700;
+    color:#542900;
+}
+
+/* PROGRESS */
+
+.lesson-progress{
+    width:100%;
+    max-width:700px;
+    margin:30px auto 0;
+
+    padding:15px 20px;
+    border-radius:20px;
+
+    background:rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.5);
+
+    backdrop-filter:blur(12px);
+}
+
+.progress-text{
+    display:flex;
+    justify-content:space-between;
+
+    font-size:11px;
+    font-weight:900;
+
+    margin-bottom:8px;
+}
+
+.progress-bar{
+    width:100%;
+    height:8px;
+    border-radius:20px;
+
+    background:rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:25%;
+    height:100%;
+    border-radius:inherit;
+    background:#111;
+    transition:width .4s ease;
+}
+
+/* CONTENT */
+
+.lesson-content{
+    width:100%;
+    max-width:1050px;
+    margin:auto;
+    padding:20px 25px 100px;
+}
+
+/* SECTIONS */
+
+.lesson-section{
+    margin-bottom:18px;
+    border-radius:25px;
+    overflow:hidden;
+
+    background:rgba(255,255,255,.24);
+    border:1px solid rgba(255,255,255,.5);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.1);
+
+    transition:.3s;
+}
+
+.lesson-section:hover{
+    box-shadow:0 18px 40px rgba(0,0,0,.16);
+}
+
+.section-header{
+    width:100%;
+    border:none;
+    background:transparent;
+
+    padding:22px 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    cursor:pointer;
+    font-family:inherit;
+    text-align:left;
+}
+
+.section-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.section-number{
+    width:45px;
+    height:45px;
+    flex-shrink:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:14px;
+
+    background:#111;
+    color:#ffc400;
+
+    font-size:13px;
+    font-weight:900;
+}
+
+.section-info h2{
+    font-size:18px;
+    font-weight:900;
+    color:#111;
+}
+
+.section-info p{
+    margin-top:4px;
+    font-size:11px;
+    font-weight:700;
+    color:#542900;
+}
+
+.section-arrow{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    font-size:20px;
+    transition:transform .35s;
+}
+
+.lesson-section.open .section-arrow{
+    transform:rotate(180deg);
+}
+
+.section-content{
+    display:none;
+    padding:0 25px 30px;
+    animation:sectionIn .4s ease;
+}
+
+.lesson-section.open .section-content{
+    display:block;
+}
+
+@keyframes sectionIn{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
     }
 
-    25% {
-        background-position: 50% 100%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    75% {
-        background-position: 50% 0%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* =========================================================
-   FLOATING WORDS
-========================================================= */
-
-#wordCanvas {
-    position: fixed;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-.lesson-page {
-    position: relative;
-    z-index: 2;
-
-    width: 100%;
-    min-height: 100vh;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.lesson-header {
-
-    position: sticky;
-    top: 0;
-
-    z-index: 20;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 18px 30px;
-
-    background: rgba(255,255,255,.15);
-    backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(255,255,255,.35);
-}
-
-.header-logo {
-
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: -1px;
-    color: #111;
-}
-
-.header-logo span {
-    color: white;
-}
-
-.header-center {
-
-    text-align: center;
-}
-
-.header-lesson {
-
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #542900;
-}
-
-.header-title {
-
-    font-size: 15px;
-    font-weight: 900;
-}
-
-.back-button {
-
-    border: 1px solid rgba(255,255,255,.6);
-
-    background: rgba(255,255,255,.28);
-    backdrop-filter: blur(10px);
-
-    padding: 10px 17px;
-
-    border-radius: 50px;
-
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.back-button:hover {
-
-    background: white;
-
-    transform: translateX(-4px);
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    width: 100%;
-    max-width: 1050px;
-
-    margin: auto;
-
-    padding: 55px 25px 30px;
-
-    text-align: center;
-}
-
-.lesson-badge {
-
-    display: inline-flex;
-
-    padding: 10px 20px;
-
-    border-radius: 50px;
-
-    background: #111;
-    color: #ffc400;
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 18px;
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.2);
-}
-
-.hero h1 {
-
-    font-size: clamp(45px, 8vw, 85px);
-
-    line-height: .95;
-
-    letter-spacing: -5px;
-
-    font-weight: 900;
-
-    color: #111;
-}
-
-.hero h1 span {
-    color: white;
-
-    text-shadow:
-        0 8px 25px rgba(0,0,0,.15);
-}
-
-.hero p {
-
-    max-width: 700px;
-
-    margin: 22px auto 0;
-
-    font-size: 16px;
-    line-height: 1.7;
-
-    font-weight: 700;
-
-    color: #542900;
-}
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-.lesson-progress {
-
-    width: 100%;
-    max-width: 700px;
-
-    margin: 30px auto 0;
-
-    padding: 15px 20px;
-
-    border-radius: 20px;
-
-    background: rgba(255,255,255,.25);
-
-    border: 1px solid rgba(255,255,255,.5);
-
-    backdrop-filter: blur(12px);
-}
-
-.progress-text {
-
-    display: flex;
-    justify-content: space-between;
-
-    font-size: 11px;
-    font-weight: 900;
-
-    margin-bottom: 8px;
-}
-
-.progress-bar {
-
-    width: 100%;
-    height: 8px;
-
-    border-radius: 20px;
-
-    background: rgba(0,0,0,.12);
-
-    overflow: hidden;
-}
-
-.progress-fill {
-
-    width: 25%;
-    height: 100%;
-
-    border-radius: inherit;
-
-    background: #111;
-
-    transition: width .4s ease;
-}
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.lesson-content {
-
-    width: 100%;
-    max-width: 1050px;
-
-    margin: auto;
-
-    padding: 20px 25px 100px;
-}
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.lesson-section {
-
-    margin-bottom: 18px;
-
-    border-radius: 25px;
-
-    overflow: hidden;
-
-    background: rgba(255,255,255,.24);
-
-    border: 1px solid rgba(255,255,255,.5);
-
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.1);
-
-    transition: .3s;
-}
-
-.lesson-section:hover {
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.16);
-}
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-header {
-
-    width: 100%;
-
-    border: none;
-
-    background: transparent;
-
-    padding: 22px 25px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    cursor: pointer;
-
-    font-family: inherit;
-
-    text-align: left;
-}
-
-.section-left {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 16px;
-}
-
-.section-number {
-
-    width: 45px;
-    height: 45px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 14px;
-
-    background: #111;
-    color: #ffc400;
-
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.section-info h2 {
-
-    font-size: 18px;
-    font-weight: 900;
-
-    color: #111;
-}
-
-.section-info p {
-
-    margin-top: 4px;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    color: #542900;
-}
-
-.section-arrow {
-
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.35);
-
-    font-size: 20px;
-
-    transition: transform .35s;
-}
-
-.lesson-section.open .section-arrow {
-
-    transform: rotate(180deg);
-}
-
-/* =========================================================
-   SECTION CONTENT
-========================================================= */
-
-.section-content {
-
-    display: none;
-
-    padding: 0 25px 30px;
-
-    animation: sectionIn .4s ease;
-}
-
-.lesson-section.open .section-content {
-    display: block;
-}
-
-@keyframes sectionIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-/* =========================================================
-   EXPLANATION
-========================================================= */
+/* EXPLANATION */
 
-.explanation {
+.explanation{
+    padding:22px;
+    margin-bottom:22px;
 
-    padding: 22px;
+    border-radius:20px;
 
-    margin-bottom: 22px;
+    background:rgba(255,255,255,.42);
 
-    border-radius: 20px;
+    border-left:7px solid #111;
 
-    background: rgba(255,255,255,.42);
-
-    border-left: 7px solid #111;
-
-    line-height: 1.7;
+    line-height:1.7;
 }
 
-.explanation h3 {
-
-    margin-bottom: 10px;
-
-    font-size: 17px;
-    font-weight: 900;
+.explanation h3{
+    margin-bottom:10px;
+    font-size:17px;
+    font-weight:900;
 }
 
-.explanation p {
-
-    font-size: 14px;
-    font-weight: 600;
-
-    color: #3e220d;
+.explanation p{
+    font-size:14px;
+    font-weight:600;
+    color:#3e220d;
+    margin-bottom:10px;
 }
 
-.explanation strong {
-    color: #111;
+.explanation strong{
+    color:#111;
 }
 
-/* =========================================================
-   TERMINATION TABLE
-========================================================= */
+/* ENDINGS */
 
-.ending-table {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 10px;
-
-    margin-top: 18px;
+.ending-table{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:18px;
 }
 
-.ending {
+.ending{
+    padding:15px;
+    border-radius:15px;
 
-    padding: 15px;
+    background:rgba(255,255,255,.5);
+    text-align:center;
 
-    border-radius: 15px;
-
-    background: rgba(255,255,255,.5);
-
-    text-align: center;
-
-    border: 1px solid rgba(255,255,255,.6);
+    border:1px solid rgba(255,255,255,.6);
 }
 
-.ending strong {
-
-    display: block;
-
-    font-size: 15px;
+.ending strong{
+    display:block;
+    font-size:15px;
 }
 
-.ending span {
-
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    color: #7a3500;
+.ending span{
+    display:block;
+    margin-top:4px;
+    font-size:13px;
+    font-weight:800;
+    color:#7a3500;
 }
 
-/* =========================================================
-   VERB CARD
-========================================================= */
+/* VERB CARD */
 
-.verb-card {
+.verb-card{
+    margin-top:20px;
+    padding:22px;
 
-    margin-top: 20px;
+    border-radius:23px;
 
-    padding: 22px;
+    background:rgba(255,255,255,.35);
+    border:1px solid rgba(255,255,255,.6);
 
-    border-radius: 23px;
-
-    background: rgba(255,255,255,.35);
-
-    border: 1px solid rgba(255,255,255,.6);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.08);
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-.verb-header {
+.verb-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 18px;
+    margin-bottom:18px;
 }
 
-.verb-title {
-
-    font-size: 22px;
-    font-weight: 900;
-
-    color: #111;
+.verb-title{
+    font-size:22px;
+    font-weight:900;
+    color:#111;
 }
 
-.verb-title small {
+.verb-title small{
+    display:block;
+    margin-top:4px;
 
-    display: block;
-
-    margin-top: 4px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    color: #633000;
+    font-size:12px;
+    font-weight:700;
+    color:#633000;
 }
 
-/* =========================================================
-   AUDIO
-========================================================= */
+/* AUDIO */
 
-.audio-btn {
+.audio-btn{
+    flex-shrink:0;
 
-    flex-shrink: 0;
+    border:none;
 
-    border: none;
+    padding:11px 17px;
+    border-radius:50px;
 
-    padding: 11px 17px;
+    background:#111;
+    color:#ffc400;
 
-    border-radius: 50px;
+    font-family:inherit;
+    font-size:12px;
+    font-weight:900;
 
-    background: #111;
+    cursor:pointer;
 
-    color: #ffc400;
+    display:flex;
+    align-items:center;
+    gap:7px;
 
-    font-family: inherit;
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    transition: .25s;
+    transition:.25s;
 }
 
-.audio-btn:hover {
-
-    transform: scale(1.06);
-
-    box-shadow:
-        0 10px 20px rgba(0,0,0,.2);
+.audio-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 
-.audio-btn.playing {
-
-    animation: audioPulse .6s ease infinite alternate;
+.audio-btn.playing{
+    animation:audioPulse .6s ease infinite alternate;
 }
 
-@keyframes audioPulse {
+@keyframes audioPulse{
+    from{transform:scale(1)}
+    to{transform:scale(1.08)}
+}
 
-    from {
-        transform: scale(1);
+/* CONJUGATION */
+
+.conjugation{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.conj-item{
+    padding:10px 12px;
+    border-radius:13px;
+
+    background:rgba(255,255,255,.55);
+
+    font-size:14px;
+    font-weight:700;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+}
+
+.conj-text{
+    flex:1;
+}
+
+.conj-item strong{
+    display:inline-block;
+    min-width:80px;
+    color:#7a3500;
+}
+
+.conj-item.current{
+    background:#111;
+    color:white;
+}
+
+.conj-item.current strong{
+    color:#ffc400;
+}
+
+.mini-audio{
+    border:none;
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    background:#111;
+    color:#ffc400;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.2s;
+}
+
+.conj-item.current .mini-audio{
+    background:#ffc400;
+    color:#111;
+}
+
+.mini-audio:hover{
+    transform:scale(1.12);
+}
+
+/* EXAMPLE */
+
+.example{
+    margin-top:16px;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    background:rgba(255,196,0,.3);
+
+    font-size:14px;
+    font-weight:800;
+    line-height:1.6;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.example-text{
+    flex:1;
+}
+
+.translation{
+    display:block;
+    margin-top:3px;
+
+    font-size:12px;
+    font-weight:600;
+    color:#633000;
+}
+
+.example-audio{
+    border:none;
+
+    width:42px;
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#111;
+    color:#ffc400;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.2s;
+}
+
+.example-audio:hover{
+    transform:scale(1.1);
+}
+
+/* IMPORTANT */
+
+.important{
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#111;
+    color:white;
+
+    line-height:1.7;
+    font-size:13px;
+}
+
+.important strong{
+    color:#ffc400;
+}
+
+/* EXERCISES */
+
+.exercise-box{
+    margin-top:25px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.38);
+
+    border:2px dashed rgba(17,17,17,.35);
+}
+
+.exercise-title{
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.quiz-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.quiz-item{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:9px;
+
+    padding:13px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.5);
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.quiz-question{
+    flex:1;
+    min-width:220px;
+}
+
+.quiz-input{
+    width:120px;
+
+    padding:9px 11px;
+
+    border:2px solid rgba(17,17,17,.25);
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.7);
+
+    font-family:inherit;
+    font-size:13px;
+    font-weight:800;
+
+    outline:none;
+}
+
+.quiz-input:focus{
+    border-color:#111;
+}
+
+.check-btn{
+    border:none;
+
+    padding:9px 13px;
+
+    border-radius:10px;
+
+    background:#111;
+    color:#ffc400;
+
+    font-family:inherit;
+    font-size:11px;
+    font-weight:900;
+
+    cursor:pointer;
+}
+
+.feedback{
+    font-size:12px;
+    font-weight:900;
+    min-width:100px;
+}
+
+/* SUMMARY */
+
+.summary{
+    margin-top:25px;
+
+    padding:25px;
+
+    border-radius:25px;
+
+    background:#111;
+    color:white;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+.summary h2{
+    color:#ffc400;
+    font-size:23px;
+    font-weight:900;
+    margin-bottom:15px;
+}
+
+.summary ul{
+    list-style:none;
+
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+}
+
+.summary li{
+    font-size:13px;
+    line-height:1.6;
+    font-weight:600;
+}
+
+.summary li::before{
+    content:"✓";
+    color:#ffc400;
+    font-weight:900;
+    margin-right:9px;
+}
+
+/* FOOTER */
+
+.lesson-footer{
+    padding:30px 20px 45px;
+
+    text-align:center;
+
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+
+    color:#542900;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+    .lesson-header{
+        padding:15px;
     }
 
-    to {
-        transform: scale(1.08);
-    }
-}
-
-/* =========================================================
-   CONJUGATION
-========================================================= */
-
-.conjugation {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 8px;
-}
-
-.conj-item {
-
-    padding: 13px 15px;
-
-    border-radius: 13px;
-
-    background: rgba(255,255,255,.55);
-
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.conj-item strong {
-
-    display: inline-block;
-
-    min-width: 80px;
-
-    color: #7a3500;
-}
-
-.conj-item.current {
-
-    background: #111;
-    color: white;
-}
-
-.conj-item.current strong {
-    color: #ffc400;
-}
-
-/* =========================================================
-   EXAMPLE
-========================================================= */
-
-.example {
-
-    margin-top: 16px;
-
-    padding: 14px 16px;
-
-    border-radius: 14px;
-
-    background: rgba(255,196,0,.3);
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    line-height: 1.6;
-}
-
-.example .translation {
-
-    display: block;
-
-    margin-top: 3px;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: #633000;
-}
-
-/* =========================================================
-   IMPORTANT BOX
-========================================================= */
-
-.important {
-
-    margin-top: 20px;
-
-    padding: 18px;
-
-    border-radius: 18px;
-
-    background: #111;
-
-    color: white;
-
-    line-height: 1.7;
-
-    font-size: 13px;
-}
-
-.important strong {
-    color: #ffc400;
-}
-
-/* =========================================================
-   EXERCISES
-========================================================= */
-
-.exercise-box {
-
-    margin-top: 25px;
-
-    padding: 22px;
-
-    border-radius: 22px;
-
-    background: rgba(255,255,255,.38);
-
-    border: 2px dashed rgba(17,17,17,.35);
-}
-
-.exercise-title {
-
-    font-size: 18px;
-
-    font-weight: 900;
-
-    margin-bottom: 18px;
-}
-
-.quiz-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-}
-
-.quiz-item {
-
-    display: flex;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 9px;
-
-    padding: 13px;
-
-    border-radius: 15px;
-
-    background: rgba(255,255,255,.5);
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-.quiz-question {
-
-    flex: 1;
-    min-width: 220px;
-}
-
-.quiz-input {
-
-    width: 120px;
-
-    padding: 9px 11px;
-
-    border: 2px solid rgba(17,17,17,.25);
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,.7);
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    outline: none;
-}
-
-.quiz-input:focus {
-
-    border-color: #111;
-}
-
-.check-btn {
-
-    border: none;
-
-    padding: 9px 13px;
-
-    border-radius: 10px;
-
-    background: #111;
-
-    color: #ffc400;
-
-    font-family: inherit;
-
-    font-size: 11px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-}
-
-.feedback {
-
-    font-size: 12px;
-
-    font-weight: 900;
-
-    min-width: 100px;
-}
-
-/* =========================================================
-   SUMMARY
-========================================================= */
-
-.summary {
-
-    margin-top: 25px;
-
-    padding: 25px;
-
-    border-radius: 25px;
-
-    background: #111;
-
-    color: white;
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.25);
-}
-
-.summary h2 {
-
-    color: #ffc400;
-
-    font-size: 23px;
-
-    font-weight: 900;
-
-    margin-bottom: 15px;
-}
-
-.summary ul {
-
-    list-style: none;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 11px;
-}
-
-.summary li {
-
-    font-size: 13px;
-
-    line-height: 1.6;
-
-    font-weight: 600;
-}
-
-.summary li::before {
-
-    content: "✓";
-
-    color: #ffc400;
-
-    font-weight: 900;
-
-    margin-right: 9px;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.lesson-footer {
-
-    padding: 30px 20px 45px;
-
-    text-align: center;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    color: #542900;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 700px) {
-
-    .lesson-header {
-        padding: 15px;
+    .header-logo{
+        font-size:20px;
     }
 
-    .header-logo {
-        font-size: 20px;
+    .header-center{
+        display:none;
     }
 
-    .header-center {
-        display: none;
+    .hero{
+        padding-top:40px;
     }
 
-    .hero {
-        padding-top: 40px;
+    .hero h1{
+        letter-spacing:-3px;
     }
 
-    .hero h1 {
-        letter-spacing: -3px;
+    .lesson-content{
+        padding-left:15px;
+        padding-right:15px;
     }
 
-    .lesson-content {
-        padding-left: 15px;
-        padding-right: 15px;
+    .section-header{
+        padding:18px;
     }
 
-    .section-header {
-        padding: 18px;
+    .section-content{
+        padding:0 18px 22px;
     }
 
-    .section-content {
-        padding: 0 18px 22px;
+    .ending-table{
+        grid-template-columns:1fr 1fr;
     }
 
-    .ending-table {
-        grid-template-columns: 1fr 1fr;
+    .conjugation{
+        grid-template-columns:1fr;
     }
 
-    .conjugation {
-        grid-template-columns: 1fr;
+    .verb-header{
+        align-items:flex-start;
     }
 
-    .verb-header {
-        align-items: flex-start;
-    }
-
-    .verb-title {
-        font-size: 18px;
-    }
-
-}
-
-@media (max-width: 450px) {
-
-    .back-button {
-        padding: 9px 12px;
-        font-size: 10px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .section-number {
-        width: 40px;
-        height: 40px;
-    }
-
-    .section-info h2 {
-        font-size: 15px;
-    }
-
-    .section-info p {
-        font-size: 9px;
-    }
-
-    .ending-table {
-        grid-template-columns: 1fr;
-    }
-
-    .audio-btn {
-        padding: 9px 12px;
-        font-size: 10px;
-    }
-
-    .quiz-question {
-        min-width: 100%;
-    }
-
-    .quiz-input {
-        width: 100%;
-    }
-
-    .check-btn {
-        flex: 1;
+    .verb-title{
+        font-size:18px;
     }
 }
 
+@media(max-width:450px){
+
+    .back-button{
+        padding:9px 12px;
+        font-size:10px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .section-number{
+        width:40px;
+        height:40px;
+    }
+
+    .section-info h2{
+        font-size:15px;
+    }
+
+    .section-info p{
+        font-size:9px;
+    }
+
+    .ending-table{
+        grid-template-columns:1fr;
+    }
+
+    .audio-btn{
+        padding:9px 12px;
+        font-size:10px;
+    }
+
+    .quiz-question{
+        min-width:100%;
+    }
+
+    .quiz-input{
+        width:100%;
+    }
+
+    .check-btn{
+        flex:1;
+    }
+
+    .example{
+        align-items:flex-start;
+    }
+}
 </style>
 </head>
 
@@ -1115,10 +915,6 @@ body {
 
 <main class="lesson-page">
 
-<!-- ======================================================
-     HEADER
-====================================================== -->
-
 <header class="lesson-header">
 
     <div class="header-logo">
@@ -1126,15 +922,8 @@ body {
     </div>
 
     <div class="header-center">
-
-        <div class="header-lesson">
-            LEKTION 04
-        </div>
-
-        <div class="header-title">
-            Verben
-        </div>
-
+        <div class="header-lesson">LEKTION 04</div>
+        <div class="header-title">Verben</div>
     </div>
 
     <button class="back-button" onclick="goBack()">
@@ -1142,11 +931,6 @@ body {
     </button>
 
 </header>
-
-
-<!-- ======================================================
-     HERO
-====================================================== -->
 
 <section class="hero">
 
@@ -1162,13 +946,13 @@ body {
     <p>
         Lerne die wichtigsten Verben im Deutschen:
         regelmäßige Verben, unregelmäßige Verben,
-        Modalverben und ihre Konjugation im Präsens.
+        Modalverben und Satzbau.
     </p>
 
     <div class="lesson-progress">
 
         <div class="progress-text">
-            <span>LEKTION 4</span>
+            <span>FORTSCHRITT</span>
             <span id="progressText">25 %</span>
         </div>
 
@@ -1180,1387 +964,1481 @@ body {
 
 </section>
 
-
-<!-- ======================================================
-     CONTENT
-====================================================== -->
-
 <section class="lesson-content">
 
-
-<!-- ======================================================
-     SECTION 1 – REGELMÄSSIGE VERBEN
-====================================================== -->
+<!-- =====================================================
+     01 REGELMÄSSIGE VERBEN
+===================================================== -->
 
 <div class="lesson-section open">
 
-    <button class="section-header" onclick="toggleSection(this)">
+<button class="section-header" onclick="toggleSection(this)">
 
-        <div class="section-left">
+    <div class="section-left">
 
-            <div class="section-number">
-                01
-            </div>
+        <div class="section-number">01</div>
 
-            <div class="section-info">
+        <div class="section-info">
 
-                <h2>
-                    Regelmäßige Verben
-                </h2>
+            <h2>Regelmäßige Verben</h2>
 
-                <p>
-                    Verbes réguliers
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section-arrow">
-            ▼
-        </div>
-
-    </button>
-
-
-    <div class="section-content">
-
-        <div class="explanation">
-
-            <h3>
-                💡 Was sind regelmäßige Verben?
-            </h3>
-
-            <p>
-                Bei regelmäßigen Verben bleibt der
-                <strong>Verbstamm gleich</strong>.
-                Man entfernt <strong>-en</strong> vom Infinitiv
-                und fügt die richtige Endung hinzu.
-            </p>
-
-            <div class="ending-table">
-
-                <div class="ending">
-                    <strong>ich</strong>
-                    <span>-e</span>
-                </div>
-
-                <div class="ending">
-                    <strong>du</strong>
-                    <span>-st</span>
-                </div>
-
-                <div class="ending">
-                    <strong>er / sie / es</strong>
-                    <span>-t</span>
-                </div>
-
-                <div class="ending">
-                    <strong>wir</strong>
-                    <span>-en</span>
-                </div>
-
-                <div class="ending">
-                    <strong>ihr</strong>
-                    <span>-t</span>
-                </div>
-
-                <div class="ending">
-                    <strong>sie / Sie</strong>
-                    <span>-en</span>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- LERNEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    lernen
-
-                    <small>
-                        apprendre
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Ich lerne jeden Tag Deutsch.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item current">
-                    <strong>ich</strong> lerne
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> lernen
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> lernst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> lernt
-                </div>
-
-                <div class="conj-item">
-                    <strong>er/sie/es</strong> lernt
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> lernen
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Ich lerne jeden Tag Deutsch.
-
-                <span class="translation">
-                    J'apprends l'allemand chaque jour.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- MACHEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    machen
-
-                    <small>
-                        faire
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Er macht seine Hausaufgaben.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item">
-                    <strong>ich</strong> mache
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> machen
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> machst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> macht
-                </div>
-
-                <div class="conj-item">
-                    <strong>er/sie/es</strong> macht
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> machen
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Er macht seine Hausaufgaben.
-
-                <span class="translation">
-                    Il fait ses devoirs.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- EXERCICES -->
-
-        <div class="exercise-box">
-
-            <div class="exercise-title">
-                ✍️ Übung – Regelmäßige Verben
-            </div>
-
-            <div class="quiz-list">
-
-                <div class="quiz-item">
-                    <span class="quiz-question">
-                        1. Wir _____ (wohnen) in Stuttgart.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="r1"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('r1','wohnen','fr1')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fr1"></span>
-                </div>
-
-
-                <div class="quiz-item">
-                    <span class="quiz-question">
-                        2. Du _____ (fragen) den Lehrer.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="r2"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('r2','fragst','fr2')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fr2"></span>
-                </div>
-
-
-                <div class="quiz-item">
-                    <span class="quiz-question">
-                        3. Er _____ (spielen) Gitarre.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="r3"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('r3','spielt','fr3')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fr3"></span>
-                </div>
-
-
-                <div class="quiz-item">
-                    <span class="quiz-question">
-                        4. Ich _____ (kochen) eine Suppe.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="r4"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('r4','koche','fr4')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fr4"></span>
-                </div>
-
-
-                <div class="quiz-item">
-                    <span class="quiz-question">
-                        5. Ihr _____ (machen) Sport.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="r5"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('r5','macht','fr5')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fr5"></span>
-                </div>
-
-            </div>
+            <p>Verbes réguliers</p>
 
         </div>
 
     </div>
 
+    <div class="section-arrow">▼</div>
+
+</button>
+
+<div class="section-content">
+
+<div class="explanation">
+
+<h3>💡 Was sind regelmäßige Verben?</h3>
+
+<p>
+Bei regelmäßigen Verben bleibt der
+<strong>Verbstamm gleich</strong>.
+</p>
+
+<p>
+Man entfernt <strong>-en</strong> vom Infinitiv
+und fügt die passende Endung hinzu.
+</p>
+
+<div class="ending-table">
+
+<div class="ending">
+<strong>ich</strong>
+<span>-e</span>
 </div>
 
+<div class="ending">
+<strong>du</strong>
+<span>-st</span>
+</div>
 
-<!-- ======================================================
-     SECTION 2 – UNREGELMÄSSIGE VERBEN
-====================================================== -->
+<div class="ending">
+<strong>er / sie / es</strong>
+<span>-t</span>
+</div>
+
+<div class="ending">
+<strong>wir</strong>
+<span>-en</span>
+</div>
+
+<div class="ending">
+<strong>ihr</strong>
+<span>-t</span>
+</div>
+
+<div class="ending">
+<strong>sie / Sie</strong>
+<span>-en</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- LERNEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+lernen
+
+<small>
+apprendre
+</small>
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Ich lerne jeden Tag Deutsch.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>ich</strong> lerne
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich lerne',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> lernen
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir lernen',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> lernst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du lernst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> lernt
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr lernt',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>er/sie/es</strong> lernt
+</span>
+<button class="mini-audio"
+onclick="playAudio('er lernt',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> lernen
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie lernen',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+💬 Ich lerne jeden Tag Deutsch.
+
+<span class="translation">
+J'apprends l'allemand chaque jour.
+</span>
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Ich lerne jeden Tag Deutsch.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- MACHEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+machen
+
+<small>
+faire
+</small>
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Er macht seine Hausaufgaben.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ich</strong> mache
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich mache',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> machen
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir machen',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> machst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du machst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> macht
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr macht',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>er/sie/es</strong> macht
+</span>
+<button class="mini-audio"
+onclick="playAudio('er macht',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> machen
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie machen',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+💬 Er macht seine Hausaufgaben.
+
+<span class="translation">
+Il fait ses devoirs.
+</span>
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Er macht seine Hausaufgaben.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- ÜBUNG -->
+
+<div class="exercise-box">
+
+<div class="exercise-title">
+✍️ Übung – Regelmäßige Verben
+</div>
+
+<div class="quiz-list">
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+1. Wir _____ (wohnen) in Stuttgart.
+</span>
+
+<input class="quiz-input" id="r1" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('r1','wohnen','fr1')">
+Prüfen
+</button>
+
+<span class="feedback" id="fr1"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+2. Du _____ (fragen) den Lehrer.
+</span>
+
+<input class="quiz-input" id="r2" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('r2','fragst','fr2')">
+Prüfen
+</button>
+
+<span class="feedback" id="fr2"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+3. Er _____ (spielen) Gitarre.
+</span>
+
+<input class="quiz-input" id="r3" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('r3','spielt','fr3')">
+Prüfen
+</button>
+
+<span class="feedback" id="fr3"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+4. Ich _____ (kochen) eine Suppe.
+</span>
+
+<input class="quiz-input" id="r4" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('r4','koche','fr4')">
+Prüfen
+</button>
+
+<span class="feedback" id="fr4"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+5. Ihr _____ (machen) Sport.
+</span>
+
+<input class="quiz-input" id="r5" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('r5','macht','fr5')">
+Prüfen
+</button>
+
+<span class="feedback" id="fr5"></span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     02 UNREGELMÄSSIGE VERBEN
+===================================================== -->
 
 <div class="lesson-section">
 
-    <button class="section-header" onclick="toggleSection(this)">
+<button class="section-header" onclick="toggleSection(this)">
 
-        <div class="section-left">
+<div class="section-left">
 
-            <div class="section-number">
-                02
-            </div>
+<div class="section-number">02</div>
 
-            <div class="section-info">
+<div class="section-info">
 
-                <h2>
-                    Unregelmäßige Verben
-                </h2>
+<h2>Unregelmäßige Verben</h2>
 
-                <p>
-                    Verbes irréguliers
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section-arrow">
-            ▼
-        </div>
-
-    </button>
-
-
-    <div class="section-content">
-
-        <div class="explanation">
-
-            <h3>
-                💡 Was passiert?
-            </h3>
-
-            <p>
-                Bei einigen Verben verändert sich der
-                <strong>Vokal im Verbstamm</strong>
-                bei <strong>du</strong> und
-                <strong>er/sie/es</strong>.
-            </p>
-
-            <div class="important">
-
-                ⚠️ <strong>Merke:</strong><br>
-
-                Häufige Veränderungen:
-
-                <br><br>
-
-                <strong>e → i</strong>
-                → sprechen → du sprichst
-
-                <br>
-
-                <strong>e → ie</strong>
-                → lesen → du liest
-
-                <br>
-
-                <strong>a → ä</strong>
-                → fahren → du fährst
-
-            </div>
-
-        </div>
-
-
-        <!-- SPRECHEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    sprechen
-
-                    <small>
-                        parler • e → i
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Du sprichst sehr gut Deutsch.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item">
-                    <strong>ich</strong> spreche
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> sprechen
-                </div>
-
-                <div class="conj-item current">
-                    <strong>du</strong> sprichst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> sprecht
-                </div>
-
-                <div class="conj-item">
-                    <strong>er/sie/es</strong> spricht
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> sprechen
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Du sprichst sehr gut Deutsch.
-
-                <span class="translation">
-                    Tu parles très bien allemand.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- FAHREN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    fahren
-
-                    <small>
-                        conduire / aller • a → ä
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Er fährt mit dem Auto.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item">
-                    <strong>ich</strong> fahre
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> fahren
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> fährst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> fahrt
-                </div>
-
-                <div class="conj-item current">
-                    <strong>er/sie/es</strong> fährt
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> fahren
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Er fährt mit dem Auto.
-
-                <span class="translation">
-                    Il va / conduit en voiture.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- LESEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    lesen
-
-                    <small>
-                        lire • e → ie
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Maria liest ein Buch.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item">
-                    <strong>ich</strong> lese
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> lesen
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> liest
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> lest
-                </div>
-
-                <div class="conj-item current">
-                    <strong>er/sie/es</strong> liest
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> lesen
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Maria liest ein Buch.
-
-                <span class="translation">
-                    Maria lit un livre.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- ÜBUNG -->
-
-        <div class="exercise-box">
-
-            <div class="exercise-title">
-                ✍️ Übung – Unregelmäßige Verben
-            </div>
-
-            <div class="quiz-list">
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        1. Maria _____ (lesen) ein Buch.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u1"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u1','liest','fu1')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu1"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        2. Du _____ (sprechen) schnell.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u2"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u2','sprichst','fu2')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu2"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        3. Er _____ (fahren) nach Berlin.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u3"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u3','fährt','fu3')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu3"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        4. Du _____ (sehen) den Film.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u4"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u4','siehst','fu4')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu4"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        5. Paul _____ (geben) mir den Schlüssel.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u5"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u5','gibt','fu5')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu5"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        6. Du _____ (nehmen) einen Tee.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u6"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u6','nimmst','fu6')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu6"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        7. Das Kind _____ (schlafen) gut.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="u7"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('u7','schläft','fu7')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fu7"></span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<p>Verbes irréguliers</p>
 
 </div>
 
+</div>
 
-<!-- ======================================================
-     SECTION 3 – MODALVERBEN
-====================================================== -->
+<div class="section-arrow">▼</div>
+
+</button>
+
+<div class="section-content">
+
+<div class="explanation">
+
+<h3>💡 Was passiert?</h3>
+
+<p>
+Bei einigen Verben verändert sich der
+<strong>Vokal im Verbstamm</strong>
+bei <strong>du</strong> und
+<strong>er/sie/es</strong>.
+</p>
+
+<div class="important">
+
+⚠️ <strong>Merke:</strong>
+
+<br><br>
+
+<strong>e → i</strong>
+<br>
+sprechen → du sprichst
+
+<br><br>
+
+<strong>e → ie</strong>
+<br>
+lesen → du liest
+
+<br><br>
+
+<strong>a → ä</strong>
+<br>
+fahren → du fährst
+
+</div>
+
+</div>
+
+<!-- SPRECHEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+sprechen
+
+<small>
+parler • e → i
+</small>
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Du sprichst sehr gut Deutsch.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ich</strong> spreche
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich spreche',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> sprechen
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir sprechen',this)">🔊</button>
+</div>
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>du</strong> sprichst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du sprichst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> sprecht
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr sprecht',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>er/sie/es</strong> spricht
+</span>
+<button class="mini-audio"
+onclick="playAudio('er spricht',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> sprechen
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie sprechen',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+💬 Du sprichst sehr gut Deutsch.
+
+<span class="translation">
+Tu parles très bien allemand.
+</span>
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Du sprichst sehr gut Deutsch.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- FAHREN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+fahren
+
+<small>
+conduire / aller • a → ä
+</small>
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Er fährt mit dem Auto.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ich</strong> fahre
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich fahre',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> fahren
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir fahren',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> fährst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du fährst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> fahrt
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr fahrt',this)">🔊</button>
+</div>
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>er/sie/es</strong> fährt
+</span>
+<button class="mini-audio"
+onclick="playAudio('er fährt',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> fahren
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie fahren',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+💬 Er fährt mit dem Auto.
+
+<span class="translation">
+Il va / conduit en voiture.
+</span>
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Er fährt mit dem Auto.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- LESEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+lesen
+
+<small>
+lire • e → ie
+</small>
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Maria liest ein Buch.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ich</strong> lese
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich lese',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> lesen
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir lesen',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> liest
+</span>
+<button class="mini-audio"
+onclick="playAudio('du liest',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> lest
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr lest',this)">🔊</button>
+</div>
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>er/sie/es</strong> liest
+</span>
+<button class="mini-audio"
+onclick="playAudio('er liest',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> lesen
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie lesen',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+💬 Maria liest ein Buch.
+
+<span class="translation">
+Maria lit un livre.
+</span>
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Maria liest ein Buch.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- ÜBUNG -->
+
+<div class="exercise-box">
+
+<div class="exercise-title">
+✍️ Übung – Unregelmäßige Verben
+</div>
+
+<div class="quiz-list">
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+1. Maria _____ (lesen) ein Buch.
+</span>
+
+<input class="quiz-input" id="u1" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u1','liest','fu1')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu1"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+2. Du _____ (sprechen) schnell.
+</span>
+
+<input class="quiz-input" id="u2" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u2','sprichst','fu2')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu2"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+3. Er _____ (fahren) nach Berlin.
+</span>
+
+<input class="quiz-input" id="u3" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u3','fährt','fu3')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu3"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+4. Du _____ (sehen) den Film.
+</span>
+
+<input class="quiz-input" id="u4" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u4','siehst','fu4')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu4"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+5. Paul _____ (geben) mir den Schlüssel.
+</span>
+
+<input class="quiz-input" id="u5" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u5','gibt','fu5')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu5"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+6. Du _____ (nehmen) einen Tee.
+</span>
+
+<input class="quiz-input" id="u6" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u6','nimmst','fu6')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu6"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+7. Das Kind _____ (schlafen) gut.
+</span>
+
+<input class="quiz-input" id="u7" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('u7','schläft','fu7')">
+Prüfen
+</button>
+
+<span class="feedback" id="fu7"></span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     03 MODALVERBEN
+===================================================== -->
 
 <div class="lesson-section">
 
-    <button class="section-header" onclick="toggleSection(this)">
+<button class="section-header" onclick="toggleSection(this)">
 
-        <div class="section-left">
+<div class="section-left">
 
-            <div class="section-number">
-                03
-            </div>
+<div class="section-number">03</div>
 
-            <div class="section-info">
+<div class="section-info">
 
-                <h2>
-                    Modalverben
-                </h2>
+<h2>Modalverben</h2>
 
-                <p>
-                    Verbes modaux
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section-arrow">
-            ▼
-        </div>
-
-    </button>
-
-
-    <div class="section-content">
-
-        <div class="explanation">
-
-            <h3>
-                💡 Was sind Modalverben?
-            </h3>
-
-            <p>
-                Modalverben zeigen zum Beispiel
-                <strong>Fähigkeit, Pflicht, Wunsch,
-                Erlaubnis oder Absicht</strong>.
-            </p>
-
-            <div class="important">
-
-                ⚠️ <strong>Wichtig:</strong><br><br>
-
-                Bei einem Modalverb steht das zweite Verb
-                normalerweise als <strong>Infinitiv am Ende</strong>.
-
-                <br><br>
-
-                Ich <strong>kann</strong> Deutsch
-                <strong>sprechen</strong>.
-
-            </div>
-
-        </div>
-
-
-        <!-- KÖNNEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    können
-
-                    <small>
-                        pouvoir / savoir
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Ich kann Gitarre spielen.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item current">
-                    <strong>ich</strong> kann
-                </div>
-
-                <div class="conj-item">
-                    <strong>wir</strong> können
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> kannst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> könnt
-                </div>
-
-                <div class="conj-item">
-                    <strong>er/sie/es</strong> kann
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> können
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Ich kann Gitarre spielen.
-
-                <span class="translation">
-                    Je sais jouer de la guitare.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- MÜSSEN -->
-
-        <div class="verb-card">
-
-            <div class="verb-header">
-
-                <div class="verb-title">
-
-                    müssen
-
-                    <small>
-                        devoir / obligation
-                    </small>
-
-                </div>
-
-                <button
-                    class="audio-btn"
-                    onclick="playAudio('Wir müssen heute viel lernen.', this)">
-                    🔊 Anhören
-                </button>
-
-            </div>
-
-            <div class="conjugation">
-
-                <div class="conj-item">
-                    <strong>ich</strong> muss
-                </div>
-
-                <div class="conj-item current">
-                    <strong>wir</strong> müssen
-                </div>
-
-                <div class="conj-item">
-                    <strong>du</strong> musst
-                </div>
-
-                <div class="conj-item">
-                    <strong>ihr</strong> müsst
-                </div>
-
-                <div class="conj-item">
-                    <strong>er/sie/es</strong> muss
-                </div>
-
-                <div class="conj-item">
-                    <strong>sie/Sie</strong> müssen
-                </div>
-
-            </div>
-
-            <div class="example">
-
-                💬 Wir müssen heute viel lernen.
-
-                <span class="translation">
-                    Nous devons beaucoup étudier aujourd'hui.
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- MODALVERBEN ÜBERSICHT -->
-
-        <div class="explanation">
-
-            <h3>
-                📚 Die wichtigsten Modalverben
-            </h3>
-
-            <p>
-                <strong>können</strong> → Fähigkeit
-                <br>
-                Ich kann schwimmen.
-            </p>
-
-            <p>
-                <strong>müssen</strong> → Pflicht
-                <br>
-                Ich muss arbeiten.
-            </p>
-
-            <p>
-                <strong>wollen</strong> → Wunsch / Absicht
-                <br>
-                Ich will nach Hause gehen.
-            </p>
-
-            <p>
-                <strong>dürfen</strong> → Erlaubnis
-                <br>
-                Darf ich hier sitzen?
-            </p>
-
-            <p>
-                <strong>sollen</strong> → Auftrag / Empfehlung
-                <br>
-                Du sollst mehr schlafen.
-            </p>
-
-            <p>
-                <strong>mögen</strong> → etwas gern haben
-                <br>
-                Ich mag Kaffee.
-            </p>
-
-        </div>
-
-
-        <!-- ÜBUNG -->
-
-        <div class="exercise-box">
-
-            <div class="exercise-title">
-                ✍️ Übung – Modalverben
-            </div>
-
-            <div class="quiz-list">
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        1. _____ (können) du morgen kommen?
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m1"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m1','kannst','fm1')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm1"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        2. Wir _____ (müssen) Hausaufgaben machen.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m2"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m2','müssen','fm2')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm2"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        3. Ich _____ (wollen) nach Hause gehen.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m3"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m3','will','fm3')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm3"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        4. _____ (dürfen) ihr hier parken?
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m4"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m4','dürft','fm4')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm4"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        5. Er _____ (sollen) mehr schlafen.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m5"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m5','soll','fm5')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm5"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        6. Ich _____ (mögen) Kaffee.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m6"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m6','mag','fm6')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm6"></span>
-
-                </div>
-
-
-                <div class="quiz-item">
-
-                    <span class="quiz-question">
-                        7. Sie _____ (können) gut singen.
-                    </span>
-
-                    <input
-                        class="quiz-input"
-                        id="m7"
-                        placeholder="Antwort">
-
-                    <button
-                        class="check-btn"
-                        onclick="checkAnswer('m7','können','fm7')">
-                        Prüfen
-                    </button>
-
-                    <span class="feedback" id="fm7"></span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<p>Verbes modaux</p>
 
 </div>
 
+</div>
 
-<!-- ======================================================
-     SECTION 4 – SATZBAU
-====================================================== -->
+<div class="section-arrow">▼</div>
+
+</button>
+
+<div class="section-content">
+
+<div class="explanation">
+
+<h3>💡 Was sind Modalverben?</h3>
+
+<p>
+Modalverben zeigen zum Beispiel
+<strong>Fähigkeit, Pflicht, Wunsch,
+Erlaubnis oder Empfehlung</strong>.
+</p>
+
+<div class="important">
+
+⚠️ <strong>Wichtig:</strong>
+
+<br><br>
+
+Das Modalverb steht normalerweise
+auf <strong>Position 2</strong>.
+
+<br><br>
+
+Das zweite Verb steht als
+<strong>Infinitiv am Ende</strong>.
+
+<br><br>
+
+Ich <strong>kann</strong> Deutsch
+<strong>sprechen</strong>.
+
+</div>
+
+</div>
+
+<!-- KÖNNEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+
+können
+
+<small>
+pouvoir / savoir
+</small>
+
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Ich kann Gitarre spielen.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>ich</strong> kann
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich kann',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>wir</strong> können
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir können',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> kannst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du kannst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> könnt
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr könnt',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>er/sie/es</strong> kann
+</span>
+<button class="mini-audio"
+onclick="playAudio('er kann',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> können
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie können',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+
+💬 Ich kann Gitarre spielen.
+
+<span class="translation">
+Je sais jouer de la guitare.
+</span>
+
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Ich kann Gitarre spielen.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<!-- MÜSSEN -->
+
+<div class="verb-card">
+
+<div class="verb-header">
+
+<div class="verb-title">
+
+müssen
+
+<small>
+devoir / obligation
+</small>
+
+</div>
+
+<button class="audio-btn"
+onclick="playAudio('Wir müssen heute viel lernen.',this)">
+🔊 Anhören
+</button>
+
+</div>
+
+<div class="conjugation">
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ich</strong> muss
+</span>
+<button class="mini-audio"
+onclick="playAudio('ich muss',this)">🔊</button>
+</div>
+
+<div class="conj-item current">
+<span class="conj-text">
+<strong>wir</strong> müssen
+</span>
+<button class="mini-audio"
+onclick="playAudio('wir müssen',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>du</strong> musst
+</span>
+<button class="mini-audio"
+onclick="playAudio('du musst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>ihr</strong> müsst
+</span>
+<button class="mini-audio"
+onclick="playAudio('ihr müsst',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>er/sie/es</strong> muss
+</span>
+<button class="mini-audio"
+onclick="playAudio('er muss',this)">🔊</button>
+</div>
+
+<div class="conj-item">
+<span class="conj-text">
+<strong>sie/Sie</strong> müssen
+</span>
+<button class="mini-audio"
+onclick="playAudio('sie müssen',this)">🔊</button>
+</div>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+
+💬 Wir müssen heute viel lernen.
+
+<span class="translation">
+Nous devons beaucoup étudier aujourd'hui.
+</span>
+
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Wir müssen heute viel lernen.',this)">
+🔊
+</button>
+
+</div>
+
+</div>
+
+<div class="explanation">
+
+<h3>📚 Die wichtigsten Modalverben</h3>
+
+<p>
+<strong>können</strong> → Fähigkeit
+<br>
+Ich kann schwimmen.
+</p>
+
+<p>
+<strong>müssen</strong> → Pflicht
+<br>
+Ich muss arbeiten.
+</p>
+
+<p>
+<strong>wollen</strong> → Wunsch / Absicht
+<br>
+Ich will nach Hause gehen.
+</p>
+
+<p>
+<strong>dürfen</strong> → Erlaubnis
+<br>
+Darf ich hier sitzen?
+</p>
+
+<p>
+<strong>sollen</strong> → Auftrag / Empfehlung
+<br>
+Du sollst mehr schlafen.
+</p>
+
+<p>
+<strong>mögen</strong> → etwas gern haben
+<br>
+Ich mag Kaffee.
+</p>
+
+</div>
+
+<!-- ÜBUNG -->
+
+<div class="exercise-box">
+
+<div class="exercise-title">
+✍️ Übung – Modalverben
+</div>
+
+<div class="quiz-list">
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+1. _____ (können) du morgen kommen?
+</span>
+
+<input class="quiz-input" id="m1" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m1','kannst','fm1')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm1"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+2. Wir _____ (müssen) Hausaufgaben machen.
+</span>
+
+<input class="quiz-input" id="m2" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m2','müssen','fm2')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm2"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+3. Ich _____ (wollen) nach Hause gehen.
+</span>
+
+<input class="quiz-input" id="m3" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m3','will','fm3')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm3"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+4. _____ (dürfen) ihr hier parken?
+</span>
+
+<input class="quiz-input" id="m4" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m4','dürft','fm4')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm4"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+5. Er _____ (sollen) mehr schlafen.
+</span>
+
+<input class="quiz-input" id="m5" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m5','soll','fm5')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm5"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+6. Ich _____ (mögen) Kaffee.
+</span>
+
+<input class="quiz-input" id="m6" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m6','mag','fm6')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm6"></span>
+
+</div>
+
+<div class="quiz-item">
+
+<span class="quiz-question">
+7. Sie _____ (können) gut singen.
+</span>
+
+<input class="quiz-input" id="m7" placeholder="Antwort">
+
+<button class="check-btn"
+onclick="checkAnswer('m7','können','fm7')">
+Prüfen
+</button>
+
+<span class="feedback" id="fm7"></span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     04 SATZBAU
+===================================================== -->
 
 <div class="lesson-section">
 
-    <button class="section-header" onclick="toggleSection(this)">
+<button class="section-header" onclick="toggleSection(this)">
 
-        <div class="section-left">
+<div class="section-left">
 
-            <div class="section-number">
-                04
-            </div>
+<div class="section-number">04</div>
 
-            <div class="section-info">
+<div class="section-info">
 
-                <h2>
-                    Verben im Satz
-                </h2>
+<h2>Verben im Satz</h2>
 
-                <p>
-                    Position des Verbs
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section-arrow">
-            ▼
-        </div>
-
-    </button>
-
-
-    <div class="section-content">
-
-        <div class="explanation">
-
-            <h3>
-                🧠 Grundregel
-            </h3>
-
-            <p>
-                Im deutschen Hauptsatz steht das
-                <strong>konjugierte Verb meistens an Position 2</strong>.
-            </p>
-
-        </div>
-
-
-        <div class="verb-card">
-
-            <div class="verb-title">
-                Beispiele
-            </div>
-
-            <div class="example">
-                1️⃣ Ich <strong>lerne</strong> Deutsch.
-                <span class="translation">
-                    J'apprends l'allemand.
-                </span>
-            </div>
-
-            <div class="example">
-                2️⃣ Heute <strong>lerne</strong> ich Deutsch.
-                <span class="translation">
-                    Aujourd'hui, j'apprends l'allemand.
-                </span>
-            </div>
-
-            <div class="example">
-                3️⃣ Ich <strong>kann</strong> Deutsch
-                <strong>sprechen</strong>.
-                <span class="translation">
-                    Je sais parler allemand.
-                </span>
-            </div>
-
-            <div class="important">
-
-                <strong>Merke:</strong><br><br>
-
-                Normales Verb:
-                <strong>Verb = Position 2</strong>
-
-                <br><br>
-
-                Modalverb + Infinitiv:
-                <strong>Modalverb = Position 2</strong>
-                <br>
-                <strong>Infinitiv = Ende</strong>
-
-            </div>
-
-        </div>
-
-    </div>
+<p>Position des Verbs</p>
 
 </div>
 
+</div>
 
-<!-- ======================================================
-     SUMMARY
-====================================================== -->
+<div class="section-arrow">▼</div>
+
+</button>
+
+<div class="section-content">
+
+<div class="explanation">
+
+<h3>🧠 Grundregel</h3>
+
+<p>
+Im deutschen Hauptsatz steht das
+<strong>konjugierte Verb meistens auf Position 2</strong>.
+</p>
+
+</div>
+
+<div class="verb-card">
+
+<div class="verb-title">
+Beispiele
+</div>
+
+<div class="example">
+
+<div class="example-text">
+
+1️⃣ Ich <strong>lerne</strong> Deutsch.
+
+<span class="translation">
+J'apprends l'allemand.
+</span>
+
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Ich lerne Deutsch.',this)">
+🔊
+</button>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+
+2️⃣ Heute <strong>lerne</strong> ich Deutsch.
+
+<span class="translation">
+Aujourd'hui, j'apprends l'allemand.
+</span>
+
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Heute lerne ich Deutsch.',this)">
+🔊
+</button>
+
+</div>
+
+<div class="example">
+
+<div class="example-text">
+
+3️⃣ Ich <strong>kann</strong> Deutsch
+<strong>sprechen</strong>.
+
+<span class="translation">
+Je sais parler allemand.
+</span>
+
+</div>
+
+<button class="example-audio"
+onclick="playAudio('Ich kann Deutsch sprechen.',this)">
+🔊
+</button>
+
+</div>
+
+<div class="important">
+
+<strong>Merke:</strong>
+
+<br><br>
+
+Normales Verb:
+<strong>Verb = Position 2</strong>
+
+<br><br>
+
+Modalverb + Infinitiv:
+<br>
+<strong>Modalverb = Position 2</strong>
+<br>
+<strong>Infinitiv = Ende</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SUMMARY -->
 
 <div class="summary">
 
-    <h2>
-        📌 Lektion 4 – Zusammenfassung
-    </h2>
+<h2>
+📌 Lektion 4 – Zusammenfassung
+</h2>
 
-    <ul>
+<ul>
 
-        <li>
-            <strong>Regelmäßige Verben:</strong>
-            Der Verbstamm bleibt gleich.
-        </li>
+<li>
+<strong>Regelmäßige Verben:</strong>
+Der Verbstamm bleibt gleich.
+</li>
 
-        <li>
-            <strong>Unregelmäßige Verben:</strong>
-            Bei einigen Verben verändert sich der Vokal bei
-            du und er/sie/es.
-        </li>
+<li>
+<strong>Unregelmäßige Verben:</strong>
+Bei einigen Verben verändert sich der Vokal bei
+du und er/sie/es.
+</li>
 
-        <li>
-            <strong>Modalverben:</strong>
-            können, müssen, wollen, dürfen, sollen, mögen.
-        </li>
+<li>
+<strong>Modalverben:</strong>
+können, müssen, wollen, dürfen, sollen, mögen.
+</li>
 
-        <li>
-            Im Hauptsatz steht das konjugierte Verb normalerweise
-            auf Position 2.
-        </li>
+<li>
+Im Hauptsatz steht das konjugierte Verb normalerweise
+auf Position 2.
+</li>
 
-        <li>
-            Bei Modalverben steht der zweite Infinitiv
-            am Ende des Satzes.
-        </li>
+<li>
+Bei Modalverben steht der zweite Infinitiv
+am Ende des Satzes.
+</li>
 
-    </ul>
+</ul>
 
 </div>
 
-
 </section>
 
-
 <footer class="lesson-footer">
-
-    HARYFI • DEUTSCH LERNEN • LEKTION 4
-
+HARYFI • DEUTSCH LERNEN • LEKTION 4
 </footer>
 
 </main>
 
-
 <script>
 
-/* =========================================================
-   SECTION OPEN / CLOSE
-========================================================= */
+/* =====================================================
+   SECTION
+===================================================== */
 
-function toggleSection(button) {
+function toggleSection(button){
 
-    const section = button.closest(".lesson-section");
+    const section =
+        button.closest(".lesson-section");
 
     section.classList.toggle("open");
 
     updateProgress();
-
 }
 
 
-/* =========================================================
+/* =====================================================
    PROGRESS
-========================================================= */
+===================================================== */
 
-function updateProgress() {
+function updateProgress(){
 
     const sections =
         document.querySelectorAll(".lesson-section");
@@ -2569,25 +2447,42 @@ function updateProgress() {
         document.querySelectorAll(".lesson-section.open").length;
 
     const percentage =
-        Math.round((opened / sections.length) * 100);
+        Math.round(
+            (opened / sections.length) * 100
+        );
 
-    document.getElementById("progressFill").style.width =
-        percentage + "%";
+    document.getElementById("progressFill")
+        .style.width = percentage + "%";
 
-    document.getElementById("progressText").textContent =
-        percentage + " %";
+    document.getElementById("progressText")
+        .textContent = percentage + " %";
 }
 
 
-/* =========================================================
+/* =====================================================
    AUDIO
-========================================================= */
+===================================================== */
 
-let currentAudioButton = null;
+let currentButton = null;
 
-function playAudio(text, button) {
+function resetAudioButtons(){
 
-    if (!("speechSynthesis" in window)) {
+    document
+        .querySelectorAll(".audio-btn")
+        .forEach(btn => {
+
+            btn.classList.remove("playing");
+
+            btn.innerHTML = "🔊 Anhören";
+        });
+}
+
+
+/* Audio allemand */
+
+function playAudio(text,button){
+
+    if(!("speechSynthesis" in window)){
 
         alert(
             "Die Sprachausgabe wird von diesem Browser nicht unterstützt."
@@ -2598,53 +2493,86 @@ function playAudio(text, button) {
 
     window.speechSynthesis.cancel();
 
-    document
-        .querySelectorAll(".audio-btn")
-        .forEach(btn => {
-            btn.classList.remove("playing");
-            btn.innerHTML = "🔊 Anhören";
-        });
+    resetAudioButtons();
 
-    currentAudioButton = button;
+    if(currentButton){
+        currentButton.classList.remove("playing");
+    }
 
-    button.classList.add("playing");
-    button.innerHTML = "🔊 Läuft...";
+    currentButton = button;
+
+    if(button.classList.contains("audio-btn")){
+
+        button.classList.add("playing");
+
+        button.innerHTML = "🔊 Läuft...";
+    }
 
     const utterance =
         new SpeechSynthesisUtterance(text);
 
     utterance.lang = "de-DE";
 
-    utterance.rate = 0.78;
+    /* Geschwindigkeit für Lernende */
+
+    utterance.rate = 0.72;
+
     utterance.pitch = 1;
 
-    utterance.onend = function() {
+    /* Versuche, eine deutsche Stimme zu verwenden */
 
-        button.classList.remove("playing");
+    const voices =
+        window.speechSynthesis.getVoices();
 
-        button.innerHTML = "🔊 Anhören";
+    const germanVoice =
+        voices.find(
+            voice =>
+                voice.lang &&
+                voice.lang.toLowerCase()
+                    .startsWith("de")
+        );
 
-        currentAudioButton = null;
+    if(germanVoice){
+        utterance.voice = germanVoice;
+    }
+
+    utterance.onend = function(){
+
+        if(button.classList.contains("audio-btn")){
+
+            button.classList.remove("playing");
+
+            button.innerHTML = "🔊 Anhören";
+        }
+
+        currentButton = null;
     };
 
-    utterance.onerror = function() {
+    utterance.onerror = function(){
 
-        button.classList.remove("playing");
+        if(button.classList.contains("audio-btn")){
 
-        button.innerHTML = "🔊 Anhören";
+            button.classList.remove("playing");
 
-        currentAudioButton = null;
+            button.innerHTML = "🔊 Anhören";
+        }
+
+        currentButton = null;
     };
 
     window.speechSynthesis.speak(utterance);
 }
 
 
-/* =========================================================
-   EXERCISE CHECK
-========================================================= */
+/* =====================================================
+   EXERCISE
+===================================================== */
 
-function checkAnswer(inputId, correctAnswer, feedbackId) {
+function checkAnswer(
+    inputId,
+    correctAnswer,
+    feedbackId
+){
 
     const input =
         document.getElementById(inputId);
@@ -2662,7 +2590,7 @@ function checkAnswer(inputId, correctAnswer, feedbackId) {
             .trim()
             .toLowerCase();
 
-    if (userAnswer === correct) {
+    if(userAnswer === correct){
 
         feedback.textContent =
             "✅ Richtig!";
@@ -2673,71 +2601,75 @@ function checkAnswer(inputId, correctAnswer, feedbackId) {
         input.style.borderColor =
             "#087f23";
 
-    } else {
+        input.style.background =
+            "rgba(180,255,190,.5)";
+
+    }else{
 
         feedback.textContent =
-            "❌ Falsch – " + correctAnswer;
+            "❌ " + correctAnswer;
 
         feedback.style.color =
             "#b00020";
 
         input.style.borderColor =
             "#b00020";
+
+        input.style.background =
+            "rgba(255,180,180,.5)";
     }
 }
 
 
-/* =========================================================
+/* =====================================================
    ENTER = CHECK
-========================================================= */
+===================================================== */
 
-document.querySelectorAll(".quiz-input").forEach(input => {
+document
+.querySelectorAll(".quiz-input")
+.forEach(input => {
 
-    input.addEventListener("keydown", function(event) {
+    input.addEventListener(
+        "keydown",
+        function(event){
 
-        if (event.key === "Enter") {
+            if(event.key === "Enter"){
 
-            const button =
-                this.parentElement.querySelector(".check-btn");
+                const button =
+                    this.parentElement
+                        .querySelector(".check-btn");
 
-            if (button) {
-                button.click();
+                if(button){
+                    button.click();
+                }
             }
 
         }
-
-    });
+    );
 
 });
 
 
-/* =========================================================
-   BACK BUTTON
-========================================================= */
+/* =====================================================
+   BACK
+===================================================== */
 
-function goBack() {
+function goBack(){
 
-    if (document.referrer) {
-
-        window.location.href = "index.html";
-
-    } else {
-
-        window.location.href = "index.html";
-
-    }
+    window.location.href =
+        "index.html";
 }
 
 
-/* =========================================================
-   FLOATING WORD CANVAS
-========================================================= */
+/* =====================================================
+   FLOATING WORDS
+===================================================== */
 
 const canvas =
     document.getElementById("wordCanvas");
 
 const ctx =
-    canvas ? canvas.getContext("2d") : null;
+    canvas.getContext("2d");
 
 let canvasWidth = 0;
 let canvasHeight = 0;
@@ -2750,7 +2682,6 @@ const germanWords = [
     "SIE",
     "WIR",
     "IHR",
-    "SIE",
 
     "LERNEN",
     "SPRECHEN",
@@ -2780,12 +2711,13 @@ const germanWords = [
 ];
 
 
-function resizeCanvas() {
-
-    if (!canvas || !ctx) return;
+function resizeCanvas(){
 
     const ratio =
-        Math.min(window.devicePixelRatio || 1, 1.5);
+        Math.min(
+            window.devicePixelRatio || 1,
+            1.5
+        );
 
     canvasWidth =
         window.innerWidth;
@@ -2816,13 +2748,13 @@ function resizeCanvas() {
 }
 
 
-class WordParticle {
+class WordParticle{
 
-    constructor() {
+    constructor(){
         this.reset(true);
     }
 
-    reset(initial = false) {
+    reset(initial=false){
 
         this.word =
             germanWords[
@@ -2856,16 +2788,16 @@ class WordParticle {
         this.opacity =
             .10 + Math.random() * .20;
 
-        if (!initial) {
+        if(!initial){
 
-            if (Math.random() > .5) {
+            if(Math.random() > .5){
 
                 this.x =
                     Math.random() > .5
                     ? -150
                     : canvasWidth + 150;
 
-            } else {
+            }else{
 
                 this.y =
                     Math.random() > .5
@@ -2875,27 +2807,26 @@ class WordParticle {
         }
     }
 
-    randomSize() {
+    randomSize(){
 
         const random =
             Math.random();
 
-        if (random < .35)
+        if(random < .35)
             return 12 + Math.random() * 8;
 
-        if (random < .75)
+        if(random < .75)
             return 20 + Math.random() * 12;
 
-        if (random < .95)
+        if(random < .95)
             return 32 + Math.random() * 18;
 
         return 52 + Math.random() * 25;
     }
 
-    update() {
+    update(){
 
         this.x += this.speedX;
-
         this.y += this.speedY;
 
         this.rotation +=
@@ -2903,27 +2834,18 @@ class WordParticle {
 
         const margin = 180;
 
-        if (
-
+        if(
             this.x < -margin ||
-
-            this.x >
-            canvasWidth + margin ||
-
+            this.x > canvasWidth + margin ||
             this.y < -margin ||
-
-            this.y >
-            canvasHeight + margin
-
-        ) {
+            this.y > canvasHeight + margin
+        ){
 
             this.reset(false);
         }
     }
 
-    draw() {
-
-        if (!ctx) return;
+    draw(){
 
         ctx.save();
 
@@ -2949,7 +2871,7 @@ class WordParticle {
             this.opacity;
 
         ctx.fillStyle =
-            "#111111";
+            "#111";
 
         ctx.shadowColor =
             "rgba(0,0,0,.10)";
@@ -2971,9 +2893,7 @@ class WordParticle {
 let particles = [];
 
 
-function createParticles() {
-
-    if (!canvas) return;
+function createParticles(){
 
     particles = [];
 
@@ -2983,23 +2903,20 @@ function createParticles() {
     const count =
         isMobile ? 22 : 38;
 
-    for (
+    for(
         let i = 0;
         i < count;
         i++
-    ) {
+    ){
 
         particles.push(
             new WordParticle()
         );
-
     }
 }
 
 
-function animateCanvas() {
-
-    if (!ctx) return;
+function animateCanvas(){
 
     ctx.clearRect(
         0,
@@ -3023,35 +2940,42 @@ function animateCanvas() {
 }
 
 
-if (canvas) {
+/* =====================================================
+   INIT
+===================================================== */
 
-    resizeCanvas();
+resizeCanvas();
 
-    createParticles();
+createParticles();
 
-    animateCanvas();
+animateCanvas();
 
-    window.addEventListener(
-        "resize",
-        () => {
+window.addEventListener(
+    "resize",
+    function(){
 
-            resizeCanvas();
-            createParticles();
+        resizeCanvas();
+        createParticles();
 
-        }
-    );
-}
-
-
-/* =========================================================
-   INITIALISATION
-========================================================= */
+    }
+);
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    function(){
 
         updateProgress();
+
+        /*
+         * Certains téléphones chargent les voix
+         * après le démarrage de la page.
+         */
+
+        if("speechSynthesis" in window){
+
+            window.speechSynthesis
+                .getVoices();
+        }
 
     }
 );
