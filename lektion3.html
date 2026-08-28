@@ -1,557 +1,1918 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
   <title>HaryFi – Lektion 3 | Personalpronomen</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-    
-    * { 
-      box-sizing: border-box; 
+
+    * {
+      box-sizing: border-box;
     }
-    
-    body { 
-      margin: 0; 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      background: radial-gradient(circle at 10% 10%, rgba(99,102,241,.18), transparent 30%), 
-                  radial-gradient(circle at 90% 20%, rgba(168,85,247,.16), transparent 30%), 
-                  linear-gradient(135deg, #f8faff, #eef2ff); 
-      min-height: 100vh; 
-      color: #172033; 
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(99,102,241,.18),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(168,85,247,.16),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #f8faff,
+          #eef2ff
+        );
+
+      min-height: 100vh;
+      color: #172033;
     }
-    
-    /* HEADER */
-    .header { 
-      width: 100%; 
-      padding: 18px 25px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-    }
-    .logo { 
-      font-size: 25px; 
-      font-weight: 800; 
-      color: #4f46e5; 
-    }
-    .lesson { 
-      font-size: 14px; 
-      font-weight: 700; 
-      color: #6b7280; 
-    }
-    
-    /* MAIN */
-    .container { 
-      width: min(1000px, 94%); 
-      margin: auto; 
-      padding-bottom: 50px; 
-    }
-    .hero { 
-      text-align: center; 
-      padding: 30px 10px; 
-    }
-    .hero h1 { 
-      margin: 0; 
-      font-size: clamp(30px, 6vw, 48px); 
-      font-weight: 800; 
-      background: linear-gradient(90deg, #4f46e5, #9333ea); 
-      -webkit-background-clip: text; 
-      color: transparent; 
-    }
-    .hero p { 
-      color: #64748b; 
-      margin-top: 10px; 
-    }
-    
-    /* PRONOMEN CARDS WITH PHOTOS */
-    .section-title { 
-      font-size: 22px; 
-      font-weight: 800; 
-      margin: 20px 0 15px; 
-    }
-    .pronouns { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 16px; 
-    }
-    .pronoun-card { 
-      background: rgba(255,255,255,.85); 
-      backdrop-filter: blur(15px); 
-      border: 1px solid rgba(255,255,255,.9); 
-      border-radius: 20px; 
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(30,41,59,.07); 
-      transition: transform .2s ease; 
-      display: flex;
-      flex-direction: column;
-    }
-    .pronoun-card:hover { 
-      transform: translateY(-4px); 
-    }
-    .pronoun-img {
+
+
+    /* =====================================================
+       HEADER
+    ====================================================== */
+
+    .header {
+
       width: 100%;
-      height: 140px;
-      object-fit: cover;
-      background: #e0e7ff;
+
+      padding: 18px 25px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
     }
-    .pronoun-body {
-      padding: 14px;
+
+
+    .logo {
+
+      font-size: 25px;
+
+      font-weight: 800;
+
+      color: #4f46e5;
+
+    }
+
+
+    .lesson {
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      color: #6b7280;
+
+    }
+
+
+
+    /* =====================================================
+       MAIN
+    ====================================================== */
+
+    .container {
+
+      width: min(1000px, 94%);
+
+      margin: auto;
+
+      padding-bottom: 50px;
+
+    }
+
+
+    .hero {
+
       text-align: center;
+
+      padding: 30px 10px;
+
     }
-    .pronoun-card .de { 
-      font-size: 22px; 
-      font-weight: 800; 
-      color: #4f46e5; 
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      font-size:
+        clamp(30px, 6vw, 48px);
+
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          90deg,
+          #4f46e5,
+          #9333ea
+        );
+
+      -webkit-background-clip: text;
+
+      color: transparent;
+
     }
-    .pronoun-card .fr { 
-      margin-top: 2px; 
-      color: #64748b; 
-      font-size: 14px; 
+
+
+    .hero p {
+
+      color: #64748b;
+
+      margin-top: 10px;
+
+    }
+
+
+
+    /* =====================================================
+       TITRE SECTION
+    ====================================================== */
+
+    .section-title {
+
+      font-size: 22px;
+
+      font-weight: 800;
+
+      margin: 20px 0 15px;
+
+    }
+
+
+
+    /* =====================================================
+       PRONOUNS
+    ====================================================== */
+
+    .pronouns {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+
+    }
+
+
+    .pronoun-card {
+
+      background:
+        rgba(255,255,255,.85);
+
+      backdrop-filter:
+        blur(15px);
+
+      border:
+        1px solid
+        rgba(255,255,255,.9);
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 8px 25px
+        rgba(30,41,59,.07);
+
+      transition:
+        transform .2s ease;
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+
+    .pronoun-card:hover {
+
+      transform:
+        translateY(-4px);
+
+    }
+
+
+    .pronoun-img {
+
+      width: 100%;
+
+      height: 140px;
+
+      object-fit: cover;
+
+      background: #e0e7ff;
+
+    }
+
+
+    .pronoun-body {
+
+      padding: 14px;
+
+      text-align: center;
+
+    }
+
+
+    .pronoun-card .de {
+
+      font-size: 22px;
+
+      font-weight: 800;
+
+      color: #4f46e5;
+
+    }
+
+
+    .pronoun-card .fr {
+
+      margin-top: 2px;
+
+      color: #64748b;
+
+      font-size: 14px;
+
       font-weight: 600;
+
     }
-    
-    /* EXERCISE */
-    .exercise { 
-      margin-top: 40px; 
+
+
+
+    /* =====================================================
+       BOUTON VOCAL
+    ====================================================== */
+
+    .voice-button {
+
+      margin-top: 12px;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4f46e5,
+          #7c3aed
+        );
+
+      color: white;
+
+      width: 52px;
+
+      height: 52px;
+
+      border-radius: 50%;
+
+      font-size: 24px;
+
+      cursor: pointer;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      box-shadow:
+        0 6px 18px
+        rgba(79,70,229,.25);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
     }
-    .progress-box { 
-      display: flex; 
-      justify-content: space-between; 
-      margin-bottom: 10px; 
-      font-size: 14px; 
-      font-weight: 700; 
-      color: #64748b; 
+
+
+    .voice-button:hover {
+
+      transform:
+        scale(1.1);
+
+      box-shadow:
+        0 10px 25px
+        rgba(79,70,229,.35);
+
     }
-    .progress { 
-      height: 9px; 
-      background: #e2e8f0; 
-      border-radius: 20px; 
-      overflow: hidden; 
+
+
+    .voice-button:active {
+
+      transform:
+        scale(.92);
+
     }
-    .progress-bar { 
-      height: 100%; 
-      width: 11.11%; 
-      background: linear-gradient(90deg, #4f46e5, #9333ea); 
-      transition: .3s; 
+
+
+    .voice-button.speaking {
+
+      animation:
+        speakingPulse
+        .8s
+        infinite;
+
     }
-    
-    /* CARD */
-    .card { 
-      margin-top: 20px; 
-      background: rgba(255,255,255,.82); 
-      backdrop-filter: blur(20px); 
-      border-radius: 28px; 
-      padding: 25px; 
-      box-shadow: 0 15px 45px rgba(30,41,59,.10); 
-      border: 1px solid rgba(255,255,255,.9); 
+
+
+    @keyframes speakingPulse {
+
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+
     }
-    .photo { 
-      width: 100%; 
-      height: 280px; 
-      border-radius: 22px; 
-      object-fit: cover; 
-      display: block; 
-      background: #e0e7ff; 
+
+
+
+    /* =====================================================
+       EXERCISE
+    ====================================================== */
+
+    .exercise {
+
+      margin-top: 40px;
+
     }
-    .caption { 
-      text-align: center; 
-      margin-top: 15px; 
-      font-size: 15px; 
+
+
+    .progress-box {
+
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      margin-bottom: 10px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      color: #64748b;
+
+    }
+
+
+    .progress {
+
+      height: 9px;
+
+      background: #e2e8f0;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+    }
+
+
+    .progress-bar {
+
+      height: 100%;
+
+      width: 11.11%;
+
+      background:
+        linear-gradient(
+          90deg,
+          #4f46e5,
+          #9333ea
+        );
+
+      transition: .3s;
+
+    }
+
+
+
+    /* =====================================================
+       CARD
+    ====================================================== */
+
+    .card {
+
+      margin-top: 20px;
+
+      background:
+        rgba(255,255,255,.82);
+
+      backdrop-filter:
+        blur(20px);
+
+      border-radius: 28px;
+
+      padding: 25px;
+
+      box-shadow:
+        0 15px 45px
+        rgba(30,41,59,.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,.9);
+
+    }
+
+
+    .photo {
+
+      width: 100%;
+
+      height: 280px;
+
+      border-radius: 22px;
+
+      object-fit: cover;
+
+      display: block;
+
+      background: #e0e7ff;
+
+    }
+
+
+    .caption {
+
+      text-align: center;
+
+      margin-top: 15px;
+
+      font-size: 15px;
+
       font-weight: 600;
-      color: #64748b; 
+
+      color: #64748b;
+
     }
-    .sentence { 
-      text-align: center; 
-      font-size: 27px; 
-      font-weight: 800; 
-      margin: 20px 0; 
+
+
+    .sentence {
+
+      text-align: center;
+
+      font-size: 27px;
+
+      font-weight: 800;
+
+      margin: 20px 0;
+
     }
-    .blank { 
-      display: inline-flex; 
-      min-width: 95px; 
-      justify-content: center; 
-      border-bottom: 3px solid #4f46e5; 
-      color: #4f46e5; 
+
+
+    .blank {
+
+      display: inline-flex;
+
+      min-width: 95px;
+
+      justify-content: center;
+
+      border-bottom:
+        3px solid #4f46e5;
+
+      color: #4f46e5;
+
     }
-    
-    /* BUTTONS */
-    .answers { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 12px; 
-      margin-top: 20px; 
+
+
+
+    /* =====================================================
+       ANSWERS
+    ====================================================== */
+
+    .answers {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+
+      margin-top: 20px;
+
     }
-    .answer { 
-      border: none; 
-      background: #eef2ff; 
-      color: #4338ca; 
-      padding: 14px 10px; 
-      border-radius: 14px; 
-      font-size: 16px; 
-      font-weight: 700; 
-      cursor: pointer; 
-      transition: .2s; 
+
+
+    .answer {
+
+      border: none;
+
+      background: #eef2ff;
+
+      color: #4338ca;
+
+      padding: 14px 10px;
+
+      border-radius: 14px;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition: .2s;
+
     }
-    .answer:hover { 
-      background: #e0e7ff; 
-      transform: translateY(-2px); 
+
+
+    .answer:hover {
+
+      background: #e0e7ff;
+
+      transform:
+        translateY(-2px);
+
     }
-    .answer.correct { 
-      background: #dcfce7; 
-      color: #15803d; 
+
+
+    .answer.correct {
+
+      background: #dcfce7;
+
+      color: #15803d;
+
     }
-    .answer.wrong { 
-      background: #fee2e2; 
-      color: #b91c1c; 
+
+
+    .answer.wrong {
+
+      background: #fee2e2;
+
+      color: #b91c1c;
+
     }
-    
-    /* FEEDBACK */
-    .feedback { 
-      min-height: 28px; 
-      text-align: center; 
-      font-weight: 800; 
-      margin-top: 18px; 
+
+
+
+    /* =====================================================
+       FEEDBACK
+    ====================================================== */
+
+    .feedback {
+
+      min-height: 28px;
+
+      text-align: center;
+
+      font-weight: 800;
+
+      margin-top: 18px;
+
     }
-    .success { color: #16a34a; }
-    .error { color: #dc2626; }
-    
-    /* NEXT */
-    .next { 
-      display: block; 
-      margin: 25px auto 0; 
-      border: none; 
-      background: linear-gradient(90deg, #4f46e5, #7c3aed); 
-      color: white; 
-      padding: 15px 35px; 
-      border-radius: 16px; 
-      font-size: 16px; 
-      font-weight: 800; 
-      cursor: pointer; 
-      box-shadow: 0 8px 25px rgba(79,70,229,.25); 
+
+
+    .success {
+
+      color: #16a34a;
+
     }
-    .next:hover { 
-      transform: translateY(-2px); 
+
+
+    .error {
+
+      color: #dc2626;
+
     }
-    .result { 
-      text-align: center; 
-      padding: 30px; 
+
+
+
+    /* =====================================================
+       NEXT
+    ====================================================== */
+
+    .next {
+
+      display: block;
+
+      margin: 25px auto 0;
+
+      border: none;
+
+      background:
+        linear-gradient(
+          90deg,
+          #4f46e5,
+          #7c3aed
+        );
+
+      color: white;
+
+      padding: 15px 35px;
+
+      border-radius: 16px;
+
+      font-size: 16px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 25px
+        rgba(79,70,229,.25);
+
     }
-    .result h2 { 
-      font-size: 32px; 
-      font-weight: 800; 
-      color: #4f46e5; 
+
+
+    .next:hover {
+
+      transform:
+        translateY(-2px);
+
     }
-    .score { 
-      font-size: 45px; 
-      font-weight: 800; 
-      margin: 15px 0; 
+
+
+    .result {
+
+      text-align: center;
+
+      padding: 30px;
+
     }
-    
-    /* RESPONSIVE */
-    @media (max-width: 768px) { 
-      .pronouns { grid-template-columns: repeat(2, 1fr); } 
+
+
+    .result h2 {
+
+      font-size: 32px;
+
+      font-weight: 800;
+
+      color: #4f46e5;
+
     }
-    @media (max-width: 650px) { 
-      .answers { grid-template-columns: repeat(3, 1fr); } 
-      .photo { height: 220px; } 
-      .sentence { font-size: 22px; } 
-      .card { padding: 18px; } 
+
+
+    .score {
+
+      font-size: 45px;
+
+      font-weight: 800;
+
+      margin: 15px 0;
+
     }
-    @media (max-width: 480px) { 
-      .pronouns { grid-template-columns: 1fr; } 
-      .answers { grid-template-columns: repeat(1, 1fr); } 
+
+
+
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
+
+    @media (max-width: 768px) {
+
+      .pronouns {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
     }
+
+
+    @media (max-width: 650px) {
+
+      .answers {
+
+        grid-template-columns:
+          repeat(3, 1fr);
+
+      }
+
+
+      .photo {
+
+        height: 220px;
+
+      }
+
+
+      .sentence {
+
+        font-size: 22px;
+
+      }
+
+
+      .card {
+
+        padding: 18px;
+
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .pronouns {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .answers {
+
+        grid-template-columns:
+          repeat(1, 1fr);
+
+      }
+
+    }
+
   </style>
+
 </head>
+
+
 <body>
 
-  <header class="header">
-    <div class="logo">HaryFi</div>
-    <div class="lesson">Lektion 3 • Seite 1</div>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <h1>Personalpronomen</h1>
-      <p>👤 Lerne die Personalpronomen und übe sie!</p>
-    </section>
+<header class="header">
 
-    <h2 class="section-title">📚 Die Personalpronomen</h2>
-    <section class="pronouns">
-      
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="ich">
-        <div class="pronoun-body">
-          <div class="de">ich</div>
-          <div class="fr">je</div>
+  <div class="logo">
+    HaryFi
+  </div>
+
+  <div class="lesson">
+    Lektion 3 • Seite 1
+  </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+  <!-- =====================================================
+       TITRE
+  ====================================================== -->
+
+  <section class="hero">
+
+    <h1>
+      Personalpronomen
+    </h1>
+
+    <p>
+      👤 Lerne die Personalpronomen und übe sie!
+    </p>
+
+  </section>
+
+
+
+  <h2 class="section-title">
+    📚 Die Personalpronomen
+  </h2>
+
+
+
+  <!-- =====================================================
+       PRONOMEN
+  ====================================================== -->
+
+  <section class="pronouns">
+
+
+
+    <!-- ================= ICH ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+        alt="ich">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          ich
         </div>
-      </div>
 
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80" alt="du">
-        <div class="pronoun-body">
-          <div class="de">du</div>
-          <div class="fr">tu</div>
+        <div class="fr">
+          je
         </div>
-      </div>
 
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="er">
-        <div class="pronoun-body">
-          <div class="de">er</div>
-          <div class="fr">il</div>
-        </div>
-      </div>
+        <button
+          class="voice-button"
+          onclick="speakPronoun('ich', this)"
+          aria-label="ich anhören">
 
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="sie">
-        <div class="pronoun-body">
-          <div class="de">sie</div>
-          <div class="fr">elle</div>
-        </div>
-      </div>
+          🔊
 
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80" alt="es">
-        <div class="pronoun-body">
-          <div class="de">es</div>
-          <div class="fr">il / elle (neutre)</div>
-        </div>
-      </div>
-
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="wir">
-        <div class="pronoun-body">
-          <div class="de">wir</div>
-          <div class="fr">nous</div>
-        </div>
-      </div>
-
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="ihr">
-        <div class="pronoun-body">
-          <div class="de">ihr</div>
-          <div class="fr">vous (groupe)</div>
-        </div>
-      </div>
-
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="sie (Plural)">
-        <div class="pronoun-body">
-          <div class="de">sie</div>
-          <div class="fr">ils / elles</div>
-        </div>
-      </div>
-
-      <div class="pronoun-card">
-        <img class="pronoun-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Sie (Formel)">
-        <div class="pronoun-body">
-          <div class="de">Sie</div>
-          <div class="fr">vous (formel)</div>
-        </div>
-      </div>
-
-    </section>
-
-    <section class="exercise">
-      <h2 class="section-title">✏️ Übung</h2>
-      
-      <div class="progress-box">
-        <span id="questionNumber">Frage 1 von 9</span>
-        <span id="scoreText">Punkte: 0</span>
-      </div>
-      
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-
-      <div class="card" id="exerciseCard">
-        <img id="personPhoto" class="photo" src="" alt="Person">
-        <div class="caption" id="caption"></div>
-        <div class="sentence">
-          <span class="blank" id="blank">_____</span> <span id="sentenceRest"></span>
-        </div>
-        <div class="answers" id="answers"></div>
-        <div class="feedback" id="feedback"></div>
-        <button class="next" id="nextButton" style="display:none;">
-          Nächste Frage →
         </button>
+
       </div>
-    </section>
-  </main>
 
-  <script>
-    const questions = [
-      {
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
-        caption: "👩 Eine Frau (Anna)",
-        sentence: "ist Anna.",
-        answer: "sie",
-        options: ["er", "sie", "wir"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
-        caption: "👨 Ein Mann (Peter)",
-        sentence: "ist Peter.",
-        answer: "er",
-        options: ["sie", "er", "ihr"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80",
-        caption: "👩 Eine Frau aus Deutschland",
-        sentence: "kommt aus Deutschland.",
-        answer: "sie",
-        options: ["du", "sie", "wir"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
-        caption: "👭 Zwei Frauen",
-        sentence: "sind Maria und Anna.",
-        answer: "sie",
-        options: ["sie", "er", "ich"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=80",
-        caption: "👤 Du sprichst mit Paul.",
-        sentence: "bist Paul.",
-        answer: "du",
-        options: ["du", "wir", "sie"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
-        caption: "👨‍💼 Ich stelle mich vor.",
-        sentence: "heiße Thomas.",
-        answer: "ich",
-        options: ["ich", "ihr", "er"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
-        caption: "👥 Wir zusammen",
-        sentence: "lernen Deutsch.",
-        answer: "wir",
-        options: ["sie", "wir", "du"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-        caption: "👩‍🏫 Du sprichst höflich mit Frau Müller.",
-        sentence: "sind Frau Müller.",
-        answer: "Sie",
-        options: ["sie", "Sie", "ihr"]
-      },
-      {
-        image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80",
-        caption: "👨‍👩‍👧‍👦 Gruppe von Freunden",
-        sentence: "sind meine Freunde.",
-        answer: "sie",
-        options: ["wir", "er", "sie"]
-      }
-    ];
+    </div>
 
-    let currentQuestion = 0;
-    let score = 0;
-    let answered = false;
 
-    const personPhoto = document.getElementById("personPhoto");
-    const caption = document.getElementById("caption");
-    const sentenceRest = document.getElementById("sentenceRest");
-    const answers = document.getElementById("answers");
-    const feedback = document.getElementById("feedback");
-    const nextButton = document.getElementById("nextButton");
-    const questionNumber = document.getElementById("questionNumber");
-    const scoreText = document.getElementById("scoreText");
-    const progressBar = document.getElementById("progressBar");
-    const blank = document.getElementById("blank");
 
-    function loadQuestion() {
-      answered = false;
-      const q = questions[currentQuestion];
-      
-      personPhoto.src = q.image;
-      caption.textContent = q.caption;
-      sentenceRest.textContent = " " + q.sentence;
-      blank.textContent = "_____";
-      
-      questionNumber.textContent = "Frage " + (currentQuestion + 1) + " von " + questions.length;
-      scoreText.textContent = "Punkte: " + score;
-      progressBar.style.width = ((currentQuestion + 1) / questions.length * 100) + "%";
-      
-      feedback.textContent = "";
-      feedback.className = "feedback";
-      nextButton.style.display = "none";
-      
-      answers.innerHTML = "";
-      q.options.forEach(option => {
-        const button = document.createElement("button");
-        button.className = "answer";
-        button.textContent = option;
-        button.onclick = () => checkAnswer(option, button);
-        answers.appendChild(button);
-      });
-    }
+    <!-- ================= DU ================= -->
 
-    function checkAnswer(selected, button) {
-      if (answered) return;
-      answered = true;
-      
-      const correct = questions[currentQuestion].answer;
-      blank.textContent = selected;
-      
-      if (selected === correct) {
-        score++;
-        button.classList.add("correct");
-        feedback.textContent = "✅ Sehr gut! Richtig!";
-        feedback.classList.add("success");
-      } else {
-        button.classList.add("wrong");
-        feedback.textContent = "❌ Nicht ganz. Richtig ist: " + correct;
-        feedback.classList.add("error");
-        
-        document.querySelectorAll(".answer").forEach(btn => {
-          if (btn.textContent === correct) {
-            btn.classList.add("correct");
-          }
-        });
-      }
-      
-      scoreText.textContent = "Punkte: " + score;
-      nextButton.style.display = "block";
-    }
+    <div class="pronoun-card">
 
-    nextButton.onclick = () => {
-      currentQuestion++;
-      if (currentQuestion < questions.length) {
-        loadQuestion();
-      } else {
-        showResult();
-      }
-    };
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80"
+        alt="du">
 
-    function showResult() {
-      const percentage = Math.round((score / questions.length) * 100);
-      document.getElementById("exerciseCard").innerHTML = `
-        <div class="result">
-          <div style="font-size:60px;">🎉</div>
-          <h2>Sehr gut!</h2>
-          <p>Du hast die Übung beendet.</p>
-          <div class="score">
-            ${score} / ${questions.length}
-          </div>
-          <p>
-            Ergebnis: <strong>${percentage}%</strong>
-          </p>
-          <button class="next" onclick="restart()">
-            🔄 Noch einmal
-          </button>
+      <div class="pronoun-body">
+
+        <div class="de">
+          du
         </div>
-      `;
+
+        <div class="fr">
+          tu
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('du', this)"
+          aria-label="du anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= ER ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+        alt="er">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          er
+        </div>
+
+        <div class="fr">
+          il
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('er', this)"
+          aria-label="er anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= SIE ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80"
+        alt="sie">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          sie
+        </div>
+
+        <div class="fr">
+          elle
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('sie', this)"
+          aria-label="sie anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= ES ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80"
+        alt="es">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          es
+        </div>
+
+        <div class="fr">
+          il / elle (neutre)
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('es', this)"
+          aria-label="es anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= WIR ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
+        alt="wir">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          wir
+        </div>
+
+        <div class="fr">
+          nous
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('wir', this)"
+          aria-label="wir anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= IHR ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80"
+        alt="ihr">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          ihr
+        </div>
+
+        <div class="fr">
+          vous (groupe)
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('ihr', this)"
+          aria-label="ihr anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= SIE PLURAL ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
+        alt="sie Plural">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          sie
+        </div>
+
+        <div class="fr">
+          ils / elles
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('sie', this)"
+          aria-label="sie Plural anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================= SIE FORMELL ================= -->
+
+    <div class="pronoun-card">
+
+      <img
+        class="pronoun-img"
+        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+        alt="Sie Formel">
+
+      <div class="pronoun-body">
+
+        <div class="de">
+          Sie
+        </div>
+
+        <div class="fr">
+          vous (formel)
+        </div>
+
+        <button
+          class="voice-button"
+          onclick="speakPronoun('Sie', this)"
+          aria-label="Sie anhören">
+
+          🔊
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- =====================================================
+       EXERCICE
+  ====================================================== -->
+
+  <section class="exercise">
+
+    <h2 class="section-title">
+      ✏️ Übung
+    </h2>
+
+
+    <div class="progress-box">
+
+      <span id="questionNumber">
+        Frage 1 von 9
+      </span>
+
+      <span id="scoreText">
+        Punkte: 0
+      </span>
+
+    </div>
+
+
+    <div class="progress">
+
+      <div
+        class="progress-bar"
+        id="progressBar">
+      </div>
+
+    </div>
+
+
+    <div
+      class="card"
+      id="exerciseCard">
+
+
+      <img
+        id="personPhoto"
+        class="photo"
+        src=""
+        alt="Person">
+
+
+      <div
+        class="caption"
+        id="caption">
+      </div>
+
+
+      <div class="sentence">
+
+        <span
+          class="blank"
+          id="blank">
+
+          _____
+
+        </span>
+
+        <span id="sentenceRest"></span>
+
+      </div>
+
+
+      <div
+        class="answers"
+        id="answers">
+      </div>
+
+
+      <div
+        class="feedback"
+        id="feedback">
+      </div>
+
+
+      <button
+        class="next"
+        id="nextButton"
+        style="display:none;">
+
+        Nächste Frage →
+
+      </button>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<script>
+
+
+/* =====================================================
+   VOCAL – PERSONALPRONOMEN
+====================================================== */
+
+function speakPronoun(word, button) {
+
+
+  /*
+   * Stoppe die aktuelle Aussprache.
+   */
+
+  window.speechSynthesis.cancel();
+
+
+  /*
+   * Entferne Animation von allen
+   * anderen Buttons.
+   */
+
+  document
+    .querySelectorAll(".voice-button")
+    .forEach(function(btn) {
+
+      btn.classList.remove(
+        "speaking"
+      );
+
+    });
+
+
+  /*
+   * Neues Sprachobjekt.
+   */
+
+  const speech =
+    new SpeechSynthesisUtterance(word);
+
+
+  /*
+   * Deutsch einstellen.
+   */
+
+  speech.lang = "de-DE";
+
+
+  /*
+   * Geschwindigkeit.
+   *
+   * 0.75 = langsam und
+   * gut für Deutschlerner.
+   */
+
+  speech.rate = 0.75;
+
+
+  /*
+   * Normale Tonhöhe.
+   */
+
+  speech.pitch = 1;
+
+
+  /*
+   * Lautstärke.
+   */
+
+  speech.volume = 1;
+
+
+  /*
+   * Animation starten.
+   */
+
+  button.classList.add(
+    "speaking"
+  );
+
+
+  /*
+   * Wenn die Aussprache
+   * beendet ist.
+   */
+
+  speech.onend = function() {
+
+    button.classList.remove(
+      "speaking"
+    );
+
+  };
+
+
+  /*
+   * Aussprache starten.
+   */
+
+  window.speechSynthesis.speak(
+    speech
+  );
+
+}
+
+
+
+/* =====================================================
+   EXERCISE
+====================================================== */
+
+const questions = [
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👩 Eine Frau (Anna)",
+
+    sentence:
+      "ist Anna.",
+
+    answer:
+      "sie",
+
+    options:
+      ["er", "sie", "wir"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👨 Ein Mann (Peter)",
+
+    sentence:
+      "ist Peter.",
+
+    answer:
+      "er",
+
+    options:
+      ["sie", "er", "ihr"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👩 Eine Frau aus Deutschland",
+
+    sentence:
+      "kommt aus Deutschland.",
+
+    answer:
+      "sie",
+
+    options:
+      ["du", "sie", "wir"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👭 Zwei Frauen",
+
+    sentence:
+      "sind Maria und Anna.",
+
+    answer:
+      "sie",
+
+    options:
+      ["sie", "er", "ich"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👤 Du sprichst mit Paul.",
+
+    sentence:
+      "bist Paul.",
+
+    answer:
+      "du",
+
+    options:
+      ["du", "wir", "sie"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👨‍💼 Ich stelle mich vor.",
+
+    sentence:
+      "heiße Thomas.",
+
+    answer:
+      "ich",
+
+    options:
+      ["ich", "ihr", "er"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👥 Wir zusammen",
+
+    sentence:
+      "lernen Deutsch.",
+
+    answer:
+      "wir",
+
+    options:
+      ["sie", "wir", "du"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👩‍🏫 Du sprichst höflich mit Frau Müller.",
+
+    sentence:
+      "sind Frau Müller.",
+
+    answer:
+      "Sie",
+
+    options:
+      ["sie", "Sie", "ihr"]
+  },
+
+
+  {
+    image:
+      "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80",
+
+    caption:
+      "👨‍👩‍👧‍👦 Gruppe von Freunden",
+
+    sentence:
+      "sind meine Freunde.",
+
+    answer:
+      "sie",
+
+    options:
+      ["wir", "er", "sie"]
+  }
+
+];
+
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+const personPhoto =
+  document.getElementById(
+    "personPhoto"
+  );
+
+const caption =
+  document.getElementById(
+    "caption"
+  );
+
+const sentenceRest =
+  document.getElementById(
+    "sentenceRest"
+  );
+
+const answers =
+  document.getElementById(
+    "answers"
+  );
+
+const feedback =
+  document.getElementById(
+    "feedback"
+  );
+
+const nextButton =
+  document.getElementById(
+    "nextButton"
+  );
+
+const questionNumber =
+  document.getElementById(
+    "questionNumber"
+  );
+
+const scoreText =
+  document.getElementById(
+    "scoreText"
+  );
+
+const progressBar =
+  document.getElementById(
+    "progressBar"
+  );
+
+const blank =
+  document.getElementById(
+    "blank"
+  );
+
+
+
+/* =====================================================
+   CHARGER QUESTION
+====================================================== */
+
+function loadQuestion() {
+
+  answered = false;
+
+  const q =
+    questions[currentQuestion];
+
+
+  personPhoto.src =
+    q.image;
+
+
+  caption.textContent =
+    q.caption;
+
+
+  sentenceRest.textContent =
+    " " + q.sentence;
+
+
+  blank.textContent =
+    "_____";
+
+
+  questionNumber.textContent =
+    "Frage " +
+    (currentQuestion + 1) +
+    " von " +
+    questions.length;
+
+
+  scoreText.textContent =
+    "Punkte: " +
+    score;
+
+
+  progressBar.style.width =
+    (
+      (currentQuestion + 1)
+      /
+      questions.length
+      *
+      100
+    ) + "%";
+
+
+  feedback.textContent =
+    "";
+
+
+  feedback.className =
+    "feedback";
+
+
+  nextButton.style.display =
+    "none";
+
+
+  answers.innerHTML =
+    "";
+
+
+  q.options.forEach(
+    function(option) {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+        "answer";
+
+
+      button.textContent =
+        option;
+
+
+      button.onclick =
+        function() {
+
+          checkAnswer(
+            option,
+            button
+          );
+
+        };
+
+
+      answers.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =====================================================
+   VERIFIER REPONSE
+====================================================== */
+
+function checkAnswer(
+  selected,
+  button
+) {
+
+  if (answered)
+    return;
+
+
+  answered = true;
+
+
+  const correct =
+    questions[
+      currentQuestion
+    ].answer;
+
+
+  blank.textContent =
+    selected;
+
+
+  if (
+    selected === correct
+  ) {
+
+    score++;
+
+
+    button.classList.add(
+      "correct"
+    );
+
+
+    feedback.textContent =
+      "✅ Sehr gut! Richtig!";
+
+
+    feedback.classList.add(
+      "success"
+    );
+
+  }
+
+  else {
+
+    button.classList.add(
+      "wrong"
+    );
+
+
+    feedback.textContent =
+      "❌ Nicht ganz. Richtig ist: "
+      +
+      correct;
+
+
+    feedback.classList.add(
+      "error"
+    );
+
+
+    document
+      .querySelectorAll(
+        ".answer"
+      )
+      .forEach(
+        function(btn) {
+
+          if (
+            btn.textContent ===
+            correct
+          ) {
+
+            btn.classList.add(
+              "correct"
+            );
+
+          }
+
+        }
+      );
+
+  }
+
+
+  scoreText.textContent =
+    "Punkte: " +
+    score;
+
+
+  /*
+   * Aussprache automatique
+   * de la bonne réponse.
+   */
+
+  const correctButton =
+    document.querySelector(
+      ".answer.correct"
+    );
+
+
+  if (correctButton) {
+
+    speakPronoun(
+      correct,
+      document.querySelector(
+        ".voice-button"
+      ) || {
+        classList: {
+          add: function(){},
+          remove: function(){}
+        }
+      }
+    );
+
+  }
+
+
+  nextButton.style.display =
+    "block";
+
+}
+
+
+
+/* =====================================================
+   QUESTION SUIVANTE
+====================================================== */
+
+nextButton.onclick =
+  function() {
+
+    currentQuestion++;
+
+
+    if (
+      currentQuestion <
+      questions.length
+    ) {
+
+      loadQuestion();
+
     }
 
-    function restart() {
-      location.reload();
+    else {
+
+      showResult();
+
     }
 
-    loadQuestion();
-  </script>
+  };
+
+
+
+/* =====================================================
+   RESULTAT
+====================================================== */
+
+function showResult() {
+
+  const percentage =
+    Math.round(
+      (
+        score /
+        questions.length
+      ) * 100
+    );
+
+
+  document
+    .getElementById(
+      "exerciseCard"
+    )
+    .innerHTML = `
+
+      <div class="result">
+
+        <div
+          style="font-size:60px;"
+        >
+          🎉
+        </div>
+
+        <h2>
+          Sehr gut!
+        </h2>
+
+        <p>
+          Du hast die Übung beendet.
+        </p>
+
+        <div class="score">
+
+          ${score}
+          /
+          ${questions.length}
+
+        </div>
+
+        <p>
+
+          Ergebnis:
+          <strong>
+            ${percentage}%
+          </strong>
+
+        </p>
+
+        <button
+          class="next"
+          onclick="restart()"
+        >
+
+          🔄 Noch einmal
+
+        </button>
+
+      </div>
+
+  `;
+
+}
+
+
+
+/* =====================================================
+   RESTART
+====================================================== */
+
+function restart() {
+
+  location.reload();
+
+}
+
+
+
+/* =====================================================
+   START
+====================================================== */
+
+loadQuestion();
+
+</script>
+
+
 </body>
+
 </html>
