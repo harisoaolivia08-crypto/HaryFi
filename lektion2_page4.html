@@ -10,7 +10,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
 
         * {
@@ -20,9 +19,7 @@
         body {
             margin: 0;
             min-height: 100vh;
-
             font-family: 'Plus Jakarta Sans', sans-serif;
-
             color: #17120d;
 
             background: linear-gradient(
@@ -36,14 +33,10 @@
             );
 
             background-size: 500% 500%;
-
-            animation:
-                gradientMove 18s ease infinite;
+            animation: gradientMove 18s ease infinite;
         }
 
-
         @keyframes gradientMove {
-
             0% {
                 background-position: 0% 50%;
             }
@@ -63,167 +56,139 @@
             100% {
                 background-position: 0% 50%;
             }
-
         }
-
 
         /* =========================================
            GLASS
         ========================================= */
-
         .glass {
-
-            background:
-                rgba(255,255,255,.22);
-
-            backdrop-filter:
-                blur(16px);
-
-            -webkit-backdrop-filter:
-                blur(16px);
-
-            border:
-                1px solid rgba(255,255,255,.45);
-
+            background: rgba(255, 255, 255, .22);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .45);
         }
-
 
         /* =========================================
-           LANGUAGE SECTION
+           LANGUAGE SECTION (ACCORDION)
         ========================================= */
-
         .language-section {
-
-            background:
-                rgba(255,255,255,.90);
-
-            border-radius:
-                30px;
-
-            padding:
-                28px;
-
-            box-shadow:
-                0 15px 35px rgba(0,0,0,.15);
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-
+            background: rgba(255, 255, 255, .90);
+            border-radius: 24px;
+            padding: 20px 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
         }
 
+        @media (min-width: 768px) {
+            .language-section {
+                border-radius: 30px;
+                padding: 28px;
+            }
+        }
 
         .language-section:hover {
-
-            transform:
-                translateY(-5px);
-
-            box-shadow:
-                0 22px 45px rgba(0,0,0,.20);
-
+            box-shadow: 0 22px 45px rgba(0, 0, 0, .20);
         }
 
+        .language-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
 
         .language-title {
-
-            font-size:
-                30px;
-
-            font-weight:
-                900;
-
-            margin-bottom:
-                18px;
-
+            font-size: 22px;
+            font-weight: 900;
+            margin: 0;
         }
 
+        @media (min-width: 768px) {
+            .language-title {
+                font-size: 28px;
+            }
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
 
         .language-text {
-
-            font-size:
-                17px;
-
-            line-height:
-                1.8;
-
-            font-weight:
-                600;
-
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 600;
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 2px solid rgba(0, 0, 0, 0.08);
+            animation: fadeIn 0.4s ease forwards;
         }
 
+        @media (min-width: 768px) {
+            .language-text {
+                font-size: 17px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         /* =========================================
            WHATSAPP TITLE
         ========================================= */
-
         .whatsapp-title {
-
-            background:
-                rgba(255,255,255,.92);
-
-            border-radius:
-                25px;
-
-            padding:
-                25px 30px;
-
-            text-align:
-                center;
-
-            box-shadow:
-                0 15px 35px rgba(0,0,0,.15);
-
-            font-size:
-                22px;
-
-            font-weight:
-                900;
-
+            background: rgba(255, 255, 255, .92);
+            border-radius: 25px;
+            padding: 20px 24px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+            font-size: 18px;
+            font-weight: 900;
         }
 
+        @media (min-width: 768px) {
+            .whatsapp-title {
+                padding: 25px 30px;
+                font-size: 22px;
+            }
+        }
 
         .phone {
-
-            display:
-                inline-block;
-
-            margin-top:
-                8px;
-
-            font-size:
-                27px;
-
-            font-weight:
-                900;
-
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 22px;
+            font-weight: 900;
+            color: #008a00;
         }
 
+        @media (min-width: 768px) {
+            .phone {
+                font-size: 27px;
+            }
+        }
 
         /* =========================================
            NAVIGATION
         ========================================= */
-
         .navigation-button {
-
-            transition:
-                transform .2s ease,
-                box-shadow .2s ease;
-
+            transition: transform .2s ease, box-shadow .2s ease;
         }
-
 
         .navigation-button:hover {
-
-            transform:
-                translateY(-4px);
-
-            box-shadow:
-                0 15px 30px rgba(0,0,0,.20);
-
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .20);
         }
-
     </style>
-
 </head>
 
 
@@ -232,46 +197,17 @@
 
 <!-- =====================================================
      HEADER
-===================================================== -->
+====================================================== -->
 
-<header class="px-5 py-5">
+<header class="px-4 md:px-8 py-5">
 
-    <div
-        class="
-            max-w-7xl
-            mx-auto
-            flex
-            items-center
-            justify-between
-            gap-4
-        "
-    >
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-        <a
-            href="lektion2.html"
-            class="
-                glass
-                rounded-2xl
-                px-5
-                py-3
-                font-black
-                text-lg
-            "
-        >
+        <a href="lektion2.html" class="glass rounded-2xl px-4 md:px-5 py-2.5 md:py-3 font-black text-base md:text-lg">
             ← Lektion 2
         </a>
 
-
-        <div
-            class="
-                glass
-                rounded-full
-                px-5
-                py-2
-                font-bold
-                text-sm
-            "
-        >
+        <div class="glass rounded-full px-4 md:px-5 py-2 font-bold text-xs md:text-sm">
             🇩🇪 Deutschkurs
         </div>
 
@@ -283,278 +219,195 @@
 
 <!-- =====================================================
      MAIN
-===================================================== -->
+====================================================== -->
 
-<main
-    class="
-        max-w-6xl
-        mx-auto
-        px-5
-        pb-20
-    "
->
+<main class="max-w-4xl mx-auto px-4 md:px-8 pb-20">
 
 
-<!-- =====================================================
-     TITRE
-===================================================== -->
+    <!-- TITRE -->
 
-<section
-    class="
-        text-center
-        pt-8
-        pb-10
-    "
->
+    <section class="text-center pt-4 md:pt-8 pb-8 md:pb-10">
 
-    <div
-        class="
-            inline-block
-            glass
-            rounded-full
-            px-5
-            py-2
-            mb-5
-            text-xs
-            font-black
-            uppercase
-            tracking-widest
-        "
-    >
-        Lektion 2 · Seite 4
-    </div>
-
-
-    <h1
-        class="
-            text-4xl
-            md:text-6xl
-            font-black
-            tracking-tight
-        "
-    >
-        Übung
-    </h1>
-
-</section>
-
-
-
-<!-- =====================================================
-     WHATSAPP
-===================================================== -->
-
-<section class="mb-8">
-
-    <div class="whatsapp-title">
-
-        Vereinbaren Sie einen Termin per WhatsApp
-        unter dieser Nummer:
-
-        <div class="phone">
-            +49 155 66152273
+        <div class="inline-block glass rounded-full px-4 py-1.5 mb-4 text-xs font-black uppercase tracking-widest">
+            Lektion 2 · Seite 4
         </div>
 
-    </div>
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight">
+            Übung
+        </h1>
 
-</section>
+    </section>
 
 
 
-<!-- =====================================================
-     SECTION 1 – DEUTSCH
-===================================================== -->
+    <!-- WHATSAPP -->
+
+    <section class="mb-6 md:mb-8">
+
+        <div class="whatsapp-title">
+            Vereinbaren Sie einen Termin per WhatsApp unter dieser Nummer:
+            <br>
+            <a href="https://wa.me/4915566152273" target="_blank" class="phone">
+                📲 +49 155 66152273
+            </a>
+        </div>
 
-<section class="language-section mb-7">
+    </section>
 
-    <h2 class="language-title">
-        🇩🇪 Vorbereitung
-    </h2>
 
-    <div class="language-text">
 
-        Die Übung besteht aus 4 Teilen:
-        Sprechen, Schreiben, Hören und Lesen.
+    <!-- =====================================================
+         SECTION 1 – DEUTSCH
+    ====================================================== -->
 
-        <br><br>
+    <section class="language-section mb-5 md:mb-7">
 
-        Bereiten Sie sich auf die Übung vor.
-        Sie findet per Videocall mit einem
-        Lehrer/einer Lehrerin statt.
+        <div class="language-header">
+            <h2 class="language-title">
+                🇩🇪 Vorbereitung
+            </h2>
+            <span class="accordion-icon">▼</span>
+        </div>
 
-        <br><br>
+        <div class="language-text hidden">
+            Die Übung besteht aus 4 Teilen: Sprechen, Schreiben, Hören und Lesen.
+            <br><br>
+            Bereiten Sie sich auf die Übung vor. Sie findet per Videocall mit einem Lehrer/einer Lehrerin statt.
+            <br><br>
+            Vereinbaren Sie einen Termin per WhatsApp unter: <strong>+49 155 66152273</strong>.
+            <br><br>
+            Bereiten Sie ein Blatt Papier, einen Stift und eine stabile Internetverbindung vor.
+            <br><br>
+            Die Übung dauert etwa 5–10 Minuten.
+            <br><br>
+            Falls Sie Fragen haben, wenden Sie sich bitte an die oben genannte Nummer.
+        </div>
 
-        Vereinbaren Sie einen Termin per WhatsApp
-        unter: +49 155 66152273.
+    </section>
 
-        <br><br>
 
-        Bereiten Sie ein Blatt Papier, einen Stift
-        und eine stabile Internetverbindung vor.
 
-        <br><br>
+    <!-- =====================================================
+         SECTION 2 – MALAGASY
+    ====================================================== -->
 
-        Die Übung dauert etwa 5–10 Minuten.
+    <section class="language-section mb-5 md:mb-7">
 
-        <br><br>
+        <div class="language-header">
+            <h2 class="language-title">
+                🇲🇬 Fiomanana
+            </h2>
+            <span class="accordion-icon">▼</span>
+        </div>
 
-        Falls Sie Fragen haben, wenden Sie sich
-        bitte an die oben genannte Nummer.
+        <div class="language-text hidden">
+            Mizara fizarana 4 ny fanazaran-tena: Fitenenana, Fanoratana, Fihainoana ary Famakiana.
+            <br><br>
+            Miomàna tsara amin’ny fanazaran-tena. Hatao amin’ny antso an-tsary (visiocall) miaraka amin’ny mpampianatra izany.
+            <br><br>
+            Manaova fotoana amin’ny WhatsApp amin’ity laharana ity: <strong>+49 155 66152273</strong>.
+            <br><br>
+            Manomàna taratasy iray, penina ary connexion Internet milamina.
+            <br><br>
+            Maharitra 5–10 minitra eo ho eo ny fanazaran-tena.
+            <br><br>
+            Raha manana fanontaniana ianao, dia antsoy na ifandraiso amin’ilay laharana voalaza etsy ambony.
+        </div>
 
-    </div>
+    </section>
 
-</section>
 
 
+    <!-- =====================================================
+         SECTION 3 – FRANÇAIS
+    ====================================================== -->
 
-<!-- =====================================================
-     SECTION 2 – MALAGASY
-===================================================== -->
+    <section class="language-section mb-5 md:mb-7">
 
-<section class="language-section mb-7">
+        <div class="language-header">
+            <h2 class="language-title">
+                🇫🇷 Préparation
+            </h2>
+            <span class="accordion-icon">▼</span>
+        </div>
 
-    <h2 class="language-title">
-        🇲🇬 Fiomanana
-    </h2>
+        <div class="language-text hidden">
+            L’exercice se compose de 4 parties : parler, écrire, écouter et lire.
+            <br><br>
+            Préparez-vous pour cet exercice. Il se fera en visiocall avec un professeur ou une professeure.
+            <br><br>
+            Prenez rendez-vous par WhatsApp au numéro : <strong>+49 155 66152273</strong>.
+            <br><br>
+            Préparez une feuille, un stylo et une bonne connexion Internet.
+            <br><br>
+            L’exercice dure environ 5 à 10 minutes.
+            <br><br>
+            Si vous avez des questions, contactez le numéro indiqué ci-dessus.
+        </div>
 
-    <div class="language-text">
+    </section>
 
-        Mizara fizarana 4 ny fanazaran-tena:
-        Fitenenana, Fanoratana, Fihainoana ary Famakiana.
 
-        <br><br>
 
-        Miomàna tsara amin’ny fanazaran-tena.
-        Hatao amin’ny antso an-tsary (visiocall)
-        miaraka amin’ny mpampianatra izany.
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
 
-        <br><br>
+    <section class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10 md:mt-14">
 
-        Manaova fotoana amin’ny WhatsApp
-        amin’ity laharana ity:
-        +49 155 66152273.
+        <a href="lektion2_page3.html" class="navigation-button w-full sm:w-auto text-center bg-black text-white px-8 py-4 rounded-2xl font-black shadow-xl">
+            ← Seite 3
+        </a>
 
-        <br><br>
+        <a href="lektion2.html" class="navigation-button w-full sm:w-auto text-center bg-white text-black px-8 py-4 rounded-2xl font-black shadow-xl">
+            Lektion 2
+        </a>
 
-        Manomàna taratasy iray, penina ary
-        connexion Internet milamina.
-
-        <br><br>
-
-        Maharitra 5–10 minitra eo ho eo
-        ny fanazaran-tena.
-
-        <br><br>
-
-        Raha manana fanontaniana ianao,
-        dia antsoy na ifandraiso amin’ilay laharana
-        voalaza etsy ambony.
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SECTION 3 – FRANÇAIS
-===================================================== -->
-
-<section class="language-section">
-
-    <h2 class="language-title">
-        🇫🇷 Préparation
-    </h2>
-
-    <div class="language-text">
-
-        L’exercice se compose de 4 parties :
-        parler, écrire, écouter et lire.
-
-        <br><br>
-
-        Préparez-vous pour cet exercice.
-        Il se fera en visiocall avec un professeur
-        ou une professeure.
-
-        <br><br>
-
-        Prenez rendez-vous par WhatsApp
-        au numéro :
-        +49 155 66152273.
-
-        <br><br>
-
-        Préparez une feuille, un stylo
-        et une bonne connexion Internet.
-
-        <br><br>
-
-        L’exercice dure environ 5 à 10 minutes.
-
-        <br><br>
-
-        Si vous avez des questions,
-        contactez le numéro indiqué ci-dessus.
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<section
-    class="
-        flex
-        flex-col
-        sm:flex-row
-        justify-center
-        items-center
-        gap-4
-        mt-14
-    "
->
-
-    <a
-        href="lektion2_page3.html"
-        class="
-            navigation-button
-            bg-black
-            text-white
-            px-8
-            py-4
-            rounded-2xl
-            font-black
-            shadow-xl
-        "
-    >
-        ← Seite 3
-    </a>
-
-
-    <a
-        href="lektion2.html"
-        class="
-            navigation-button
-            bg-white
-            px-8
-            py-4
-            rounded-2xl
-            font-black
-            shadow-xl
-        "
-    >
-        Lektion 2
-    </a>
-
-</section>
+    </section>
 
 
 </main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT ACCORDÉON / CLAPPER
+====================================================== -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".language-section");
+
+        sections.forEach(section => {
+            const header = section.querySelector(".language-header");
+            const text = section.querySelector(".language-text");
+            const icon = section.querySelector(".accordion-icon");
+
+            header.addEventListener("click", () => {
+                const isOpen = !text.classList.contains("hidden");
+
+                // Fermer TOUTES les autres sections
+                sections.forEach(s => {
+                    const sText = s.querySelector(".language-text");
+                    const sIcon = s.querySelector(".accordion-icon");
+
+                    sText.classList.add("hidden");
+                    if (sIcon) {
+                        sIcon.style.transform = "rotate(0deg)";
+                    }
+                });
+
+                // Si la section cliquée n'était PAS ouverte, on l'ouvre
+                if (!isOpen) {
+                    text.classList.remove("hidden");
+                    if (icon) {
+                        icon.style.transform = "rotate(180deg)";
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 
