@@ -2,1506 +2,2051 @@
 <html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HaryFi – Lektion 3</title>
+  <title>HaryFi – Lektion 3 | Personalpronomen & Possessivartikel</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap"
+    rel="stylesheet">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --nom-grad: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+      --akk-grad: linear-gradient(135deg, #34d399 0%, #10b981 50%, #047857 100%);
+      --dat-grad: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #6d28d9 100%);
+      --poss-grad: linear-gradient(135deg, #fb7185 0%, #f43f5e 50%, #be123c 100%);
+      --sum-grad: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            color: #17120d;
+      --nom-color: #2563eb;
+      --akk-color: #059669;
+      --dat-color: #7c3aed;
+      --poss-color: #e11d48;
+      --sum-color: #d97706;
+    }
 
-            background: linear-gradient(
-                -45deg,
-                #ff4500,
-                #ff7e00,
-                #ffd000,
-                #00c9ff,
-                #7c3aed,
-                #ff3cac
-            );
+    * {
+      box-sizing: border-box;
+    }
 
-            background-size: 500% 500%;
-            animation: gradientMove 18s ease infinite;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 24px 16px;
+      min-height: 100vh;
+      transition: background 0.5s ease-in-out;
+      color: #0f172a;
+    }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
+    body.theme-nom {
+      background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 50%, #60a5fa 100%);
+    }
 
-            25% {
-                background-position: 100% 50%;
-            }
+    body.theme-akk {
+      background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 50%, #34d399 100%);
+    }
 
-            50% {
-                background-position: 100% 100%;
-            }
+    body.theme-dat {
+      background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 50%, #a78bfa 100%);
+    }
 
-            75% {
-                background-position: 0% 100%;
-            }
+    body.theme-poss {
+      background: linear-gradient(135deg, #fecdd3 0%, #fda4af 50%, #fb7185 100%);
+    }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+    body.theme-sum {
+      background: linear-gradient(135deg, #fef08a 0%, #fde047 50%, #facc15 100%);
+    }
 
-        .glass {
-            background: rgba(255,255,255,.22);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,.45);
-        }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
 
-        .page-button {
-            transition: .2s ease;
-        }
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 20px 24px;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.7);
+    }
 
-        .page-button:hover {
-            transform: translateY(-5px) scale(1.02);
-        }
+    .header h1 {
+      font-size: 2.3rem;
+      font-weight: 900;
+      margin: 0 0 4px 0;
+      color: #0f172a;
+    }
 
-        .page-button:active {
-            transform: scale(.96);
-        }
+    .header p {
+      color: #475569;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+    }
 
-        .audio-button {
-            transition: .2s ease;
-        }
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
 
-        .audio-button:hover {
-            transform: translateY(-3px) scale(1.03);
-        }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 3px solid white;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .audio-button:active {
-            transform: scale(.96);
-        }
+    .nav-btn.btn-nom {
+      color: var(--nom-color);
+    }
 
-        .audio-button.playing {
-            background: rgba(34,197,94,.85);
-        }
+    .nav-btn.btn-akk {
+      color: var(--akk-color);
+    }
 
-        .answer-correct {
-            background: rgba(34,197,94,.35) !important;
-            border-color: rgba(22,101,52,.6) !important;
-        }
+    .nav-btn.btn-dat {
+      color: var(--dat-color);
+    }
 
-        .answer-wrong {
-            background: rgba(239,68,68,.35) !important;
-            border-color: rgba(127,29,29,.6) !important;
-        }
-    </style>
+    .nav-btn.btn-poss {
+      color: var(--poss-color);
+    }
+
+    .nav-btn.btn-sum {
+      color: var(--sum-color);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-btn.btn-nom.active {
+      background: var(--nom-grad);
+      color: white;
+    }
+
+    .nav-btn.btn-akk.active {
+      background: var(--akk-grad);
+      color: white;
+    }
+
+    .nav-btn.btn-dat.active {
+      background: var(--dat-grad);
+      color: white;
+    }
+
+    .nav-btn.btn-poss.active {
+      background: var(--poss-grad);
+      color: white;
+    }
+
+    .nav-btn.btn-sum.active {
+      background: var(--sum-grad);
+      color: white;
+    }
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 880px) {
+      .lesson-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .main-content,
+    .side-panel {
+      background: rgba(255, 255, 255, 0.93);
+      backdrop-filter: blur(16px);
+      padding: 26px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .tab-content,
+    .side-content {
+      display: none;
+    }
+
+    .tab-content.active,
+    .side-content.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+
+    h3 {
+      font-weight: 800;
+    }
+
+    .fr-sub {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .grammar-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 16px 0 24px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .grammar-table th,
+    .grammar-table td {
+      padding: 12px 14px;
+      text-align: left;
+    }
+
+    .theme-nom .grammar-table th {
+      background: #dbeafe;
+      color: var(--nom-color);
+    }
+
+    .theme-akk .grammar-table th {
+      background: #d1fae5;
+      color: var(--akk-color);
+    }
+
+    .theme-dat .grammar-table th {
+      background: #ede9fe;
+      color: var(--dat-color);
+    }
+
+    .theme-poss .grammar-table th {
+      background: #ffe4e6;
+      color: var(--poss-color);
+    }
+
+    .grammar-table tr {
+      background: #ffffff;
+    }
+
+    .grammar-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
+    .example-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .example-card {
+      background: #ffffff;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border-left: 6px solid #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .theme-nom .example-card {
+      border-left-color: var(--nom-color);
+    }
+
+    .theme-akk .example-card {
+      border-left-color: var(--akk-color);
+    }
+
+    .theme-dat .example-card {
+      border-left-color: var(--dat-color);
+    }
+
+    .theme-poss .example-card {
+      border-left-color: var(--poss-color);
+    }
+
+    .ex-de {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+
+    .ex-fr {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    /* TRIANGLE PLAY ORANGE */
+    .audio-btn {
+      border: none;
+      background: transparent;
+      color: #f97316;
+      font-size: 1.35rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      font-weight: 900;
+      line-height: 1;
+      transition: transform 0.2s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .audio-btn:hover {
+      color: #ea580c;
+      transform: scale(1.2);
+    }
+
+    .audio-btn:active {
+      transform: scale(0.9);
+    }
+
+    .exercise-box {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 18px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .q-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .q-item p {
+      margin: 0 0 6px 0;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--nom-color);
+    }
+
+    .check-btn {
+      background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 16px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .check-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .feedback {
+      font-weight: 800;
+      margin-top: 12px;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .feedback.correct {
+      color: #059669;
+    }
+
+    .feedback.wrong {
+      color: #e11d48;
+    }
+
+    .heart-card {
+      background: #fff1f2;
+      border: 3px solid #fecdd3;
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(225, 29, 72, 0.08);
+    }
+
+    .heart-title {
+      color: var(--poss-color);
+      font-weight: 900;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+
+    .poss-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0 0;
+    }
+
+    .poss-list li {
+      padding: 9px 0;
+      border-bottom: 1px dashed #fda4af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .poss-de {
+      font-weight: 800;
+      color: #881337;
+      font-size: 0.95rem;
+    }
+
+    .poss-fr {
+      font-size: 0.82rem;
+      color: #9f1239;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .summary-table th {
+      background: #fef3c7;
+      color: #b45309;
+      font-weight: 800;
+    }
+
+    .summary-table tr:nth-child(even) {
+      background: #fffbe2;
+    }
+
+    .note-box {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 16px;
+      border-radius: 16px;
+      margin-top: 18px;
+    }
+
+    .rule-box {
+      padding: 16px;
+      border-radius: 16px;
+      margin: 14px 0;
+      font-weight: 700;
+    }
+
+    .rule-blue {
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      color: #1e40af;
+    }
+
+    .rule-green {
+      background: #ecfdf5;
+      border: 2px solid #a7f3d0;
+      color: #047857;
+    }
+
+    .rule-purple {
+      background: #f5f3ff;
+      border: 2px solid #ddd6fe;
+      color: #6d28d9;
+    }
+
+    .rule-red {
+      background: #fff1f2;
+      border: 2px solid #fecdd3;
+      color: #9f1239;
+    }
+  </style>
 </head>
 
+<body class="theme-nom">
 
-<body>
+<div class="container">
 
-<header class="px-5 py-5">
+  <div class="header">
+    <h1>Personalpronomen & Possessivartikel</h1>
+    <p>Ich · mich · mir · mein – Grammatik, Audio & Übungen</p>
+  </div>
 
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+  <div class="main-nav">
 
-        <!-- RETOUR -->
+    <button class="nav-btn btn-nom active" onclick="switchTab('nominativ', this)">
+      1. Nominativ
+    </button>
 
-        <a
-            href="index.html#a1"
-            class="glass rounded-2xl px-5 py-3 font-black text-lg"
-        >
-            ← A1 Lektionen
-        </a>
+    <button class="nav-btn btn-akk" onclick="switchTab('akkusativ', this)">
+      2. Akkusativ
+    </button>
 
-        <div class="glass rounded-full px-5 py-2 font-bold text-sm">
-            🇩🇪 Deutschkurs
+    <button class="nav-btn btn-dat" onclick="switchTab('dativ', this)">
+      3. Dativ
+    </button>
+
+    <button class="nav-btn btn-poss" onclick="switchTab('possessiv', this)">
+      4. Possessivartikel ❤️
+    </button>
+
+    <button class="nav-btn btn-sum" onclick="switchTab('summary', this)">
+      📊 Zusammenfassung
+    </button>
+
+  </div>
+
+  <div class="lesson-grid">
+
+    <div class="main-content">
+
+      <!-- ================= NOMINATIV ================= -->
+
+      <div id="nominativ" class="tab-content active">
+
+        <h2 style="color:var(--nom-color);">
+          1. Nominativ – Personalpronomen
+        </h2>
+
+        <span class="fr-sub">
+          Le sujet : Qui fait l'action ? / Wer?
+        </span>
+
+        <div class="rule-box rule-blue">
+          💡 <strong>Nominativ = sujet.</strong><br>
+          Beispiel: <strong>Ich</strong> lerne Deutsch.
         </div>
+
+        <h3>Personalpronomen im Nominativ</h3>
+
+        <table class="grammar-table">
+
+          <thead>
+            <tr>
+              <th>Person</th>
+              <th>Deutsch</th>
+              <th>Français</th>
+              <th>Audio</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>1. Sing.</td>
+              <td><strong>ich</strong></td>
+              <td>je</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('ich')" aria-label="ich">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2. Sing.</td>
+              <td><strong>du</strong></td>
+              <td>tu</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('du')" aria-label="du">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>3. Sing.</td>
+              <td><strong>er</strong></td>
+              <td>il</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('er')" aria-label="er">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>3. Sing.</td>
+              <td><strong>sie</strong></td>
+              <td>elle</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('sie')" aria-label="sie">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>3. Sing.</td>
+              <td><strong>es</strong></td>
+              <td>il / elle neutre</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('es')" aria-label="es">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>1. Plur.</td>
+              <td><strong>wir</strong></td>
+              <td>nous</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('wir')" aria-label="wir">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2. Plur.</td>
+              <td><strong>ihr</strong></td>
+              <td>vous</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('ihr')" aria-label="ihr">▶</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>3. Plur.</td>
+              <td><strong>sie / Sie</strong></td>
+              <td>ils / elles / Vous</td>
+              <td>
+                <button class="audio-btn" onclick="playMP3('sie-sie')" aria-label="sie Sie">▶</button>
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <h3>6 Beispiele</h3>
+
+        <div class="example-list">
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">1. <strong>Ich</strong> lerne Deutsch.</div>
+              <div class="ex-fr">J'apprends l'allemand.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ich-lerne-deutsch')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">2. <strong>Du</strong> bist nett.</div>
+              <div class="ex-fr">Tu es gentil(le).</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('du-bist-nett')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">3. <strong>Er</strong> wohnt in Berlin.</div>
+              <div class="ex-fr">Il habite à Berlin.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('er-wohnt-in-berlin')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">4. <strong>Sie</strong> arbeitet heute.</div>
+              <div class="ex-fr">Elle travaille aujourd'hui.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('sie-arbeitet-heute')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">5. <strong>Wir</strong> lernen zusammen.</div>
+              <div class="ex-fr">Nous apprenons ensemble.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('wir-lernen-zusammen')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">6. <strong>Ihr</strong> seid sehr nett.</div>
+              <div class="ex-fr">Vous êtes très gentils.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ihr-seid-sehr-nett')">▶</button>
+          </div>
+
+        </div>
+
+        <div class="exercise-box">
+
+          <h3>7 Übungen</h3>
+
+          <div class="q-grid">
+
+            <div class="q-item">
+              <p>1. (Je) ___ lerne Deutsch.</p>
+              <input type="text" id="q-nom-1" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>2. (Tu) ___ bist nett.</p>
+              <input type="text" id="q-nom-2" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>3. (Il) ___ wohnt hier.</p>
+              <input type="text" id="q-nom-3" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>4. (Elle) ___ arbeitet heute.</p>
+              <input type="text" id="q-nom-4" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>5. (Nous) ___ lernen zusammen.</p>
+              <input type="text" id="q-nom-5" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>6. (Vous groupe) ___ seid nett.</p>
+              <input type="text" id="q-nom-6" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>7. (Ils) ___ spielen Fußball.</p>
+              <input type="text" id="q-nom-7" placeholder="Antwort...">
+            </div>
+
+          </div>
+
+          <button class="check-btn" onclick="checkNom()">
+            7 Antworten prüfen
+          </button>
+
+          <div id="fb-nom" class="feedback"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= AKKUSATIV ================= -->
+
+      <div id="akkusativ" class="tab-content">
+
+        <h2 style="color:var(--akk-color);">
+          2. Akkusativ – Personalpronomen
+        </h2>
+
+        <span class="fr-sub">
+          COD : Qui ? / Wen? Was?
+        </span>
+
+        <div class="rule-box rule-green">
+          💡 <strong>Akkusativ = complément d'objet direct.</strong><br>
+          ich → <strong>mich</strong> · du → <strong>dich</strong>
+        </div>
+
+        <h3>Personalpronomen im Akkusativ</h3>
+
+        <table class="grammar-table">
+
+          <thead>
+            <tr>
+              <th>Nominativ</th>
+              <th>Akkusativ</th>
+              <th>Français</th>
+              <th>Audio</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>ich</td>
+              <td><strong>mich</strong></td>
+              <td>me / moi</td>
+              <td><button class="audio-btn" onclick="playMP3('mich')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>du</td>
+              <td><strong>dich</strong></td>
+              <td>te / toi</td>
+              <td><button class="audio-btn" onclick="playMP3('dich')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>er</td>
+              <td><strong>ihn</strong></td>
+              <td>le / lui</td>
+              <td><button class="audio-btn" onclick="playMP3('ihn')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie</td>
+              <td><strong>sie</strong></td>
+              <td>la / elle</td>
+              <td><button class="audio-btn" onclick="playMP3('sie-akk')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>es</td>
+              <td><strong>es</strong></td>
+              <td>le / neutre</td>
+              <td><button class="audio-btn" onclick="playMP3('es-akk')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>wir</td>
+              <td><strong>uns</strong></td>
+              <td>nous</td>
+              <td><button class="audio-btn" onclick="playMP3('uns-akk')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>ihr</td>
+              <td><strong>euch</strong></td>
+              <td>vous</td>
+              <td><button class="audio-btn" onclick="playMP3('euch')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie / Sie</td>
+              <td><strong>sie / Sie</strong></td>
+              <td>les / Vous</td>
+              <td><button class="audio-btn" onclick="playMP3('sie-sie-akk')">▶</button></td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <h3>6 Beispiele</h3>
+
+        <div class="example-list">
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">1. Er sieht <strong>mich</strong>.</div>
+              <div class="ex-fr">Il me voit.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('er-sieht-mich')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">2. Ich liebe <strong>dich</strong>.</div>
+              <div class="ex-fr">Je t'aime.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ich-liebe-dich')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">3. Wir besuchen <strong>ihn</strong>.</div>
+              <div class="ex-fr">Nous lui rendons visite.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('wir-besuchen-ihn')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">4. Kennst du <strong>sie</strong>?</div>
+              <div class="ex-fr">Tu la connais ?</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('kennst-du-sie')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">5. Rufen Sie <strong>uns</strong> an!</div>
+              <div class="ex-fr">Appelez-nous !</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('rufen-sie-uns-an')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">6. Ich verstehe <strong>euch</strong>.</div>
+              <div class="ex-fr">Je vous comprends.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ich-verstehe-euch')">▶</button>
+          </div>
+
+        </div>
+
+        <div class="exercise-box">
+
+          <h3>7 Übungen</h3>
+
+          <div class="q-grid">
+
+            <div class="q-item">
+              <p>1. Er liebt ___ (du).</p>
+              <input type="text" id="q-akk-1" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>2. Sie sieht ___ (ich).</p>
+              <input type="text" id="q-akk-2" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>3. Ich frage ___ (er).</p>
+              <input type="text" id="q-akk-3" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>4. Wir hören ___ (sie – Singular).</p>
+              <input type="text" id="q-akk-4" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>5. Rufen Sie ___ an! (wir)</p>
+              <input type="text" id="q-akk-5" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>6. Ich besuche ___ morgen. (ihr)</p>
+              <input type="text" id="q-akk-6" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>7. Der Lehrer braucht ___. (Sie – höflich)</p>
+              <input type="text" id="q-akk-7" placeholder="Antwort...">
+            </div>
+
+          </div>
+
+          <button class="check-btn" onclick="checkAkk()">
+            7 Antworten prüfen
+          </button>
+
+          <div id="fb-akk" class="feedback"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= DATIV ================= -->
+
+      <div id="dativ" class="tab-content">
+
+        <h2 style="color:var(--dat-color);">
+          3. Dativ – Personalpronomen
+        </h2>
+
+        <span class="fr-sub">
+          COI : À qui ? / Wem?
+        </span>
+
+        <div class="rule-box rule-purple">
+          💡 <strong>Dativ = complément d'objet indirect.</strong><br>
+          ich → <strong>mir</strong> · du → <strong>dir</strong>
+        </div>
+
+        <h3>Personalpronomen im Dativ</h3>
+
+        <table class="grammar-table">
+
+          <thead>
+            <tr>
+              <th>Nominativ</th>
+              <th>Dativ</th>
+              <th>Français</th>
+              <th>Audio</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>ich</td>
+              <td><strong>mir</strong></td>
+              <td>à moi</td>
+              <td><button class="audio-btn" onclick="playMP3('mir')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>du</td>
+              <td><strong>dir</strong></td>
+              <td>à toi</td>
+              <td><button class="audio-btn" onclick="playMP3('dir')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>er</td>
+              <td><strong>ihm</strong></td>
+              <td>à lui</td>
+              <td><button class="audio-btn" onclick="playMP3('ihm')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie</td>
+              <td><strong>ihr</strong></td>
+              <td>à elle</td>
+              <td><button class="audio-btn" onclick="playMP3('ihr-dativ')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>es</td>
+              <td><strong>ihm</strong></td>
+              <td>à lui / neutre</td>
+              <td><button class="audio-btn" onclick="playMP3('ihm-dativ')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>wir</td>
+              <td><strong>uns</strong></td>
+              <td>à nous</td>
+              <td><button class="audio-btn" onclick="playMP3('uns-dativ')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>ihr</td>
+              <td><strong>euch</strong></td>
+              <td>à vous</td>
+              <td><button class="audio-btn" onclick="playMP3('euch-dativ')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie / Sie</td>
+              <td><strong>ihnen / Ihnen</strong></td>
+              <td>à eux / à Vous</td>
+              <td><button class="audio-btn" onclick="playMP3('ihnen-Ihnen')">▶</button></td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <h3>6 Beispiele</h3>
+
+        <div class="example-list">
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">1. Wie geht es <strong>dir</strong>?</div>
+              <div class="ex-fr">Comment vas-tu ?</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('wie-geht-es-dir')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">2. Das hilft <strong>mir</strong>.</div>
+              <div class="ex-fr">Cela m'aide.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-hilft-mir')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">3. Ich danke <strong>ihm</strong>.</div>
+              <div class="ex-fr">Je le remercie.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ich-danke-ihm')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">4. Das Buch gehört <strong>ihr</strong>.</div>
+              <div class="ex-fr">Le livre lui appartient.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-buch-gehoert-ihr')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">5. Antworte <strong>uns</strong> bitte!</div>
+              <div class="ex-fr">Réponds-nous s'il te plaît !</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('antworte-uns-bitte')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">6. Ich gratuliere <strong>euch</strong>!</div>
+              <div class="ex-fr">Je vous félicite !</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ich-gratuliere-euch')">▶</button>
+          </div>
+
+        </div>
+
+        <div class="exercise-box">
+
+          <h3>7 Übungen</h3>
+
+          <div class="q-grid">
+
+            <div class="q-item">
+              <p>1. Wie geht es ___ (du)?</p>
+              <input type="text" id="q-dat-1" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>2. Das Buch gehört ___ (ich).</p>
+              <input type="text" id="q-dat-2" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>3. Ich danke ___ (er).</p>
+              <input type="text" id="q-dat-3" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>4. Es gefällt ___ (sie).</p>
+              <input type="text" id="q-dat-4" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>5. Antworte ___ schnell! (wir)</p>
+              <input type="text" id="q-dat-5" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>6. Ich helfe ___ (ihr).</p>
+              <input type="text" id="q-dat-6" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>7. Wir gratulieren ___ (Sie – höflich).</p>
+              <input type="text" id="q-dat-7" placeholder="Antwort...">
+            </div>
+
+          </div>
+
+          <button class="check-btn" onclick="checkDat()">
+            7 Antworten prüfen
+          </button>
+
+          <div id="fb-dat" class="feedback"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= POSSESSIV ================= -->
+
+      <div id="possessiv" class="tab-content">
+
+        <h2 style="color:var(--poss-color);">
+          4. Possessivartikel ❤️
+        </h2>
+
+        <span class="fr-sub">
+          Les articles possessifs : mon, ton, son, notre, votre...
+        </span>
+
+        <div class="rule-box rule-red">
+
+          💡 <strong>Possessivartikel</strong> zeigen, wem etwas gehört.
+
+          <br><br>
+
+          ich → <strong>mein</strong><br>
+          du → <strong>dein</strong><br>
+          er → <strong>sein</strong><br>
+          sie → <strong>ihr</strong><br>
+          wir → <strong>unser</strong><br>
+          ihr → <strong>euer</strong><br>
+          sie → <strong>ihr</strong><br>
+          Sie → <strong>Ihr</strong>
+
+        </div>
+
+        <h3>Possessivartikel im Nominativ</h3>
+
+        <table class="grammar-table">
+
+          <thead>
+            <tr>
+              <th>Person</th>
+              <th>Possessivartikel</th>
+              <th>Français</th>
+              <th>Beispiel</th>
+              <th>Audio</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>ich</td>
+              <td><strong>mein</strong></td>
+              <td>mon / ma</td>
+              <td>mein Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('mein')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>du</td>
+              <td><strong>dein</strong></td>
+              <td>ton / ta</td>
+              <td>dein Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('dein')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>er</td>
+              <td><strong>sein</strong></td>
+              <td>son / sa</td>
+              <td>sein Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('sein')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie</td>
+              <td><strong>ihr</strong></td>
+              <td>son / sa</td>
+              <td>ihr Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('ihr-poss')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>wir</td>
+              <td><strong>unser</strong></td>
+              <td>notre</td>
+              <td>unser Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('unser')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>ihr</td>
+              <td><strong>euer</strong></td>
+              <td>votre</td>
+              <td>euer Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('euer')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>sie</td>
+              <td><strong>ihr</strong></td>
+              <td>leur</td>
+              <td>ihr Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('ihr-plural-poss')">▶</button></td>
+            </tr>
+
+            <tr>
+              <td>Sie</td>
+              <td><strong>Ihr</strong></td>
+              <td>votre</td>
+              <td>Ihr Bruder</td>
+              <td><button class="audio-btn" onclick="playMP3('Ihr')">▶</button></td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <h3>6 Beispiele</h3>
+
+        <div class="example-list">
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">1. Das ist <strong>mein</strong> Bruder.</div>
+              <div class="ex-fr">C'est mon frère.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-ist-mein-bruder')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">2. Ist das <strong>dein</strong> Handy?</div>
+              <div class="ex-fr">Est-ce ton téléphone ?</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('ist-das-dein-handy')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">3. Das ist <strong>sein</strong> Auto.</div>
+              <div class="ex-fr">C'est sa voiture à lui.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-ist-sein-auto')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">4. Das ist <strong>ihr</strong> Buch.</div>
+              <div class="ex-fr">C'est son livre à elle.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-ist-ihr-buch')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">5. Das ist <strong>unser</strong> Haus.</div>
+              <div class="ex-fr">C'est notre maison.</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('das-ist-unser-haus')">▶</button>
+          </div>
+
+          <div class="example-card">
+            <div>
+              <div class="ex-de">6. Wo ist <strong>euer</strong> Auto?</div>
+              <div class="ex-fr">Où est votre voiture ?</div>
+            </div>
+            <button class="audio-btn" onclick="playMP3('wo-ist-euer-auto')">▶</button>
+          </div>
+
+        </div>
+
+        <div class="note-box">
+
+          <h3>⚠️ Wichtig: mein / meine</h3>
+
+          <p>
+            Der Possessivartikel passt sich an das Nomen an.
+          </p>
+
+          <p>
+            <strong>mein Bruder</strong> → masculin<br>
+            <strong>meine Schwester</strong> → feminin<br>
+            <strong>mein Kind</strong> → neutre<br>
+            <strong>meine Freunde</strong> → pluriel
+          </p>
+
+        </div>
+
+        <div class="exercise-box">
+
+          <h3>7 Übungen</h3>
+
+          <div class="q-grid">
+
+            <div class="q-item">
+              <p>1. Das ist ___ Bruder. (ich)</p>
+              <input type="text" id="q-poss-1" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>2. Ist das ___ Schwester? (du)</p>
+              <input type="text" id="q-poss-2" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>3. Das ist ___ Auto. (er)</p>
+              <input type="text" id="q-poss-3" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>4. Das ist ___ Tasche. (sie)</p>
+              <input type="text" id="q-poss-4" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>5. Das ist ___ Haus. (wir)</p>
+              <input type="text" id="q-poss-5" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>6. Wo ist ___ Auto? (ihr)</p>
+              <input type="text" id="q-poss-6" placeholder="Antwort...">
+            </div>
+
+            <div class="q-item">
+              <p>7. Ist das ___ Buch? (Sie – höflich)</p>
+              <input type="text" id="q-poss-7" placeholder="Antwort...">
+            </div>
+
+          </div>
+
+          <button class="check-btn" onclick="checkPoss()">
+            7 Antworten prüfen
+          </button>
+
+          <div id="fb-poss" class="feedback"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= SUMMARY ================= -->
+
+      <div id="summary" class="tab-content">
+
+        <h2 style="color:var(--sum-color);">
+          📊 Zusammenfassung
+        </h2>
+
+        <span class="fr-sub">
+          Vue globale : ich → mich → mir → mein
+        </span>
+
+        <table class="summary-table">
+
+          <thead>
+
+            <tr>
+              <th>Person</th>
+              <th>Nominativ</th>
+              <th>Akkusativ</th>
+              <th>Dativ</th>
+              <th>Possessiv</th>
+              <th>Français</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>1. Sing.</td>
+              <td><strong>ich</strong></td>
+              <td><strong>mich</strong></td>
+              <td><strong>mir</strong></td>
+              <td><strong>mein</strong></td>
+              <td>je / me / moi / mon</td>
+            </tr>
+
+            <tr>
+              <td>2. Sing.</td>
+              <td><strong>du</strong></td>
+              <td><strong>dich</strong></td>
+              <td><strong>dir</strong></td>
+              <td><strong>dein</strong></td>
+              <td>tu / te / toi / ton</td>
+            </tr>
+
+            <tr>
+              <td>3. Sing. masc.</td>
+              <td><strong>er</strong></td>
+              <td><strong>ihn</strong></td>
+              <td><strong>ihm</strong></td>
+              <td><strong>sein</strong></td>
+              <td>il / le / lui / son</td>
+            </tr>
+
+            <tr>
+              <td>3. Sing. fem.</td>
+              <td><strong>sie</strong></td>
+              <td><strong>sie</strong></td>
+              <td><strong>ihr</strong></td>
+              <td><strong>ihr</strong></td>
+              <td>elle / la / lui / son</td>
+            </tr>
+
+            <tr>
+              <td>3. Sing. neutre</td>
+              <td><strong>es</strong></td>
+              <td><strong>es</strong></td>
+              <td><strong>ihm</strong></td>
+              <td><strong>sein</strong></td>
+              <td>neutre</td>
+            </tr>
+
+            <tr>
+              <td>1. Plur.</td>
+              <td><strong>wir</strong></td>
+              <td><strong>uns</strong></td>
+              <td><strong>uns</strong></td>
+              <td><strong>unser</strong></td>
+              <td>nous / notre</td>
+            </tr>
+
+            <tr>
+              <td>2. Plur.</td>
+              <td><strong>ihr</strong></td>
+              <td><strong>euch</strong></td>
+              <td><strong>euch</strong></td>
+              <td><strong>euer</strong></td>
+              <td>vous / votre</td>
+            </tr>
+
+            <tr>
+              <td>3. Plur.</td>
+              <td><strong>sie</strong></td>
+              <td><strong>sie</strong></td>
+              <td><strong>ihnen</strong></td>
+              <td><strong>ihr</strong></td>
+              <td>ils / elles / leur</td>
+            </tr>
+
+            <tr>
+              <td>Politesse</td>
+              <td><strong>Sie</strong></td>
+              <td><strong>Sie</strong></td>
+              <td><strong>Ihnen</strong></td>
+              <td><strong>Ihr</strong></td>
+              <td>Vous / votre</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <div class="rule-box rule-red">
+
+          🧠 <strong>Merksatz:</strong>
+
+          <br><br>
+
+          <strong>ich → mich → mir → mein</strong><br>
+          <strong>du → dich → dir → dein</strong><br>
+          <strong>er → ihn → ihm → sein</strong><br>
+          <strong>sie → sie → ihr → ihr</strong><br>
+          <strong>wir → uns → uns → unser</strong><br>
+          <strong>ihr → euch → euch → euer</strong>
+
+        </div>
+
+      </div>
 
     </div>
 
-</header>
 
+    <!-- ================= SIDE PANEL ================= -->
 
-<main class="max-w-6xl mx-auto px-5 pb-20">
+    <div class="side-panel">
 
+      <div id="side-nominativ" class="side-content active">
 
-    <!-- =====================================================
-         TITRE
-    ====================================================== -->
+        <div style="background:#eff6ff;padding:18px;border-radius:18px;border:2px solid #bfdbfe;">
 
-    <section class="text-center pt-10 pb-12">
+          <h3 style="margin-top:0;color:#1d4ed8;">
+            💡 Nominativ
+          </h3>
 
-        <div
-            class="
-                inline-block
-                glass
-                rounded-full
-                px-5
-                py-2
-                mb-5
-                text-xs
-                font-black
-                uppercase
-                tracking-widest
-            "
-        >
-            Lektion 3
-        </div>
+          <p style="font-size:.88rem;color:#1e40af;font-weight:700;">
+            Der Nominativ ist das Subjekt.
+          </p>
 
-        <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-5">
-            Deutsche Verben
-        </h1>
+          <ul style="padding-left:18px;font-weight:700;font-size:.9rem;">
 
-        <p class="text-lg md:text-xl font-semibold max-w-3xl mx-auto">
-            Lerne regelmäßige, unregelmäßige und modale Verben auf Deutsch.
-        </p>
+            <li>ich → mache</li>
+            <li>du → machst</li>
+            <li>er/sie/es → macht</li>
+            <li>wir → machen</li>
+            <li>ihr → macht</li>
+            <li>sie/Sie → machen</li>
 
-    </section>
+          </ul>
 
-
-    <!-- =====================================================
-         NAVIGATION
-    ====================================================== -->
-
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-
-        <button
-            id="tabButton1"
-            onclick="openTab('regelmaessig', this)"
-            class="
-                page-button
-                glass
-                rounded-3xl
-                p-6
-                shadow-xl
-                text-left
-                font-black
-            "
-        >
-
-            <div class="text-4xl mb-3">
-                📗
-            </div>
-
-            <div class="text-xs font-black opacity-60 mb-2">
-                TEIL 1
-            </div>
-
-            <h2 class="text-2xl">
-                Regelmäßige Verben
-            </h2>
-
-            <p class="mt-2 font-semibold opacity-75">
-                lernen · machen · wohnen
-            </p>
-
-        </button>
-
-
-        <button
-            id="tabButton2"
-            onclick="openTab('unregelmaessig', this)"
-            class="
-                page-button
-                glass
-                rounded-3xl
-                p-6
-                shadow-xl
-                text-left
-                font-black
-            "
-        >
-
-            <div class="text-4xl mb-3">
-                📕
-            </div>
-
-            <div class="text-xs font-black opacity-60 mb-2">
-                TEIL 2
-            </div>
-
-            <h2 class="text-2xl">
-                Unregelmäßige Verben
-            </h2>
-
-            <p class="mt-2 font-semibold opacity-75">
-                sprechen · fahren · lesen
-            </p>
-
-        </button>
-
-
-        <button
-            id="tabButton3"
-            onclick="openTab('modalverben', this)"
-            class="
-                page-button
-                glass
-                rounded-3xl
-                p-6
-                shadow-xl
-                text-left
-                font-black
-            "
-        >
-
-            <div class="text-4xl mb-3">
-                ⭐
-            </div>
-
-            <div class="text-xs font-black opacity-60 mb-2">
-                TEIL 3
-            </div>
-
-            <h2 class="text-2xl">
-                Modalverben
-            </h2>
-
-            <p class="mt-2 font-semibold opacity-75">
-                können · müssen · wollen
-            </p>
-
-        </button>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         1. REGELMÄSSIGE VERBEN
-    ====================================================== -->
-
-    <section id="regelmaessig" class="tab-content">
-
-        <!-- EXPLICATION -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="text-4xl mb-4">
-                💡
-            </div>
-
-            <h2 class="text-3xl font-black mb-4">
-                Regelmäßige Verben
-            </h2>
-
-            <p class="font-semibold text-lg leading-relaxed">
-                Bei regelmäßigen Verben bleibt der Wortstamm gleich.
-                Man entfernt <b>-en</b> und fügt die richtigen Endungen hinzu.
-            </p>
-
-            <div class="glass rounded-2xl p-5 mt-5">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 font-black">
-
-                    <div>ich → -e</div>
-                    <div>du → -st</div>
-                    <div>er/sie/es → -t</div>
-                    <div>wir → -en</div>
-                    <div>ihr → -t</div>
-                    <div>sie/Sie → -en</div>
-
-                </div>
-
-            </div>
+          <button class="audio-btn"
+            style="display:block;margin:10px auto 0;font-size:1.7rem;"
+            onclick="playMP3('ich-mache-du-machst-er-macht')">
+            ▶
+          </button>
 
         </div>
 
-
-        <!-- LERNEN -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
-                <div>
-
-                    <div class="text-sm font-black opacity-60">
-                        REGELMÄSSIG
-                    </div>
-
-                    <h2 class="text-4xl font-black mt-1">
-                        lernen
-                    </h2>
-
-                    <p class="text-lg font-bold opacity-75">
-                        apprendre
-                    </p>
-
-                </div>
+      </div>
 
 
-                <!-- 🎵 VRAI MP3 -->
+      <div id="side-akkusativ" class="side-content">
 
-                <button
-                    class="
-                        audio-button
-                        glass
-                        rounded-2xl
-                        px-6
-                        py-4
-                        font-black
-                        text-lg
-                        shadow-lg
-                    "
-                    onclick="playMP3('audio/lernen.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
+        <div class="heart-card">
 
-            </div>
+          <h3 class="heart-title">
+            ❤️ Akkusativ-Verben
+          </h3>
 
+          <span style="font-size:.82rem;color:#be123c;font-weight:700;">
+            Diese Verben nehmen oft den Akkusativ.
+          </span>
 
-            <div class="glass rounded-2xl p-5 mt-6">
+          <ul class="poss-list">
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
+            <li>
+              <span class="poss-de">lieben</span>
+              <span class="poss-fr">aimer</span>
+              <button class="audio-btn" onclick="playMP3('lieben')">▶</button>
+            </li>
 
-                    <div><b>ich</b> lerne</div>
-                    <div><b>du</b> lernst</div>
-                    <div><b>er/sie/es</b> lernt</div>
-                    <div><b>wir</b> lernen</div>
-                    <div><b>ihr</b> lernt</div>
-                    <div><b>sie/Sie</b> lernen</div>
+            <li>
+              <span class="poss-de">sehen</span>
+              <span class="poss-fr">voir</span>
+              <button class="audio-btn" onclick="playMP3('sehen')">▶</button>
+            </li>
 
-                </div>
+            <li>
+              <span class="poss-de">besuchen</span>
+              <span class="poss-fr">visiter</span>
+              <button class="audio-btn" onclick="playMP3('besuchen')">▶</button>
+            </li>
 
-            </div>
+            <li>
+              <span class="poss-de">brauchen</span>
+              <span class="poss-fr">avoir besoin</span>
+              <button class="audio-btn" onclick="playMP3('brauchen')">▶</button>
+            </li>
 
+            <li>
+              <span class="poss-de">anrufen</span>
+              <span class="poss-fr">appeler</span>
+              <button class="audio-btn" onclick="playMP3('anrufen')">▶</button>
+            </li>
 
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Ich lerne jeden Tag Deutsch.
-
-                <div class="text-sm opacity-70 mt-2">
-                    J'apprends l'allemand chaque jour.
-                </div>
-
-            </div>
+          </ul>
 
         </div>
 
+      </div>
 
 
-        <!-- MACHEN -->
+      <div id="side-dativ" class="side-content">
 
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+        <div class="heart-card">
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+          <h3 class="heart-title">
+            ❤️ Dativ-Verben
+          </h3>
 
-                <div>
+          <span style="font-size:.82rem;color:#be123c;font-weight:700;">
+            Diese Verben brauchen den Dativ.
+          </span>
 
-                    <div class="text-sm font-black opacity-60">
-                        REGELMÄSSIG
-                    </div>
+          <ul class="poss-list">
 
-                    <h2 class="text-4xl font-black mt-1">
-                        machen
-                    </h2>
+            <li>
+              <span class="poss-de">helfen</span>
+              <span class="poss-fr">aider</span>
+              <button class="audio-btn" onclick="playMP3('helfen')">▶</button>
+            </li>
 
-                    <p class="text-lg font-bold opacity-75">
-                        faire
-                    </p>
+            <li>
+              <span class="poss-de">danken</span>
+              <span class="poss-fr">remercier</span>
+              <button class="audio-btn" onclick="playMP3('danken')">▶</button>
+            </li>
 
-                </div>
+            <li>
+              <span class="poss-de">gehören</span>
+              <span class="poss-fr">appartenir</span>
+              <button class="audio-btn" onclick="playMP3('gehoeren')">▶</button>
+            </li>
 
+            <li>
+              <span class="poss-de">antworten</span>
+              <span class="poss-fr">répondre</span>
+              <button class="audio-btn" onclick="playMP3('antworten')">▶</button>
+            </li>
 
-                <button
-                    class="
-                        audio-button
-                        glass
-                        rounded-2xl
-                        px-6
-                        py-4
-                        font-black
-                        text-lg
-                        shadow-lg
-                    "
-                    onclick="playMP3('audio/machen.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
+            <li>
+              <span class="poss-de">gefallen</span>
+              <span class="poss-fr">plaire</span>
+              <button class="audio-btn" onclick="playMP3('gefallen')">▶</button>
+            </li>
 
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-6">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
-
-                    <div><b>ich</b> mache</div>
-                    <div><b>du</b> machst</div>
-                    <div><b>er/sie/es</b> macht</div>
-                    <div><b>wir</b> machen</div>
-                    <div><b>ihr</b> macht</div>
-                    <div><b>sie/Sie</b> machen</div>
-
-                </div>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Er macht seine Hausaufgaben.
-
-                <div class="text-sm opacity-70 mt-2">
-                    Il fait ses devoirs.
-                </div>
-
-            </div>
+          </ul>
 
         </div>
 
-
-        <!-- EXERCICES -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl">
-
-            <div class="text-4xl mb-4">
-                ✍️
-            </div>
-
-            <h2 class="text-3xl font-black mb-6">
-                Übungen
-            </h2>
-
-            <div class="space-y-4">
-
-                <script>
-                    const regularQuestions = [
-                        ["1. Wir _____ (wohnen) in Stuttgart.", "wohnen"],
-                        ["2. Du _____ (fragen) den Lehrer.", "fragst"],
-                        ["3. Er _____ (spielen) Gitarre.", "spielt"],
-                        ["4. Ich _____ (kochen) eine Suppe.", "koche"],
-                        ["5. Ihr _____ (machen) Sport.", "macht"],
-                        ["6. Sie (Plural) _____ (hören) Musik.", "hören"],
-                        ["7. Sie (Politesse) _____ (kaufen) ein Brot.", "kaufen"]
-                    ];
-                </script>
-
-                <div class="glass rounded-2xl p-4">
-
-                    <p class="font-bold mb-3">
-                        1. Wir _____ (wohnen) in Stuttgart.
-                    </p>
-
-                    <input
-                        id="r1"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse"
-                    >
-
-                    <button
-                        onclick="checkAnswer('r1','wohnen','fbr1')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black"
-                    >
-                        Vérifier
-                    </button>
-
-                    <span id="fbr1" class="ml-3 font-black"></span>
-
-                </div>
+      </div>
 
 
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        2. Du _____ (fragen) den Lehrer.
-                    </p>
+      <div id="side-possessiv" class="side-content">
 
-                    <input id="r2"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
+        <div class="heart-card">
 
-                    <button onclick="checkAnswer('r2','fragst','fbr2')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
+          <h3 class="heart-title">
+            ❤️ Possessivartikel
+          </h3>
 
-                    <span id="fbr2" class="ml-3 font-black"></span>
-                </div>
+          <span style="font-size:.82rem;color:#be123c;font-weight:700;">
+            Wer besitzt etwas?
+          </span>
 
+          <ul class="poss-list">
 
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        3. Er _____ (spielen) Gitarre.
-                    </p>
+            <li>
+              <span class="poss-de">mein</span>
+              <span class="poss-fr">mon / ma</span>
+              <button class="audio-btn" onclick="playMP3('mein')">▶</button>
+            </li>
 
-                    <input id="r3"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
+            <li>
+              <span class="poss-de">dein</span>
+              <span class="poss-fr">ton / ta</span>
+              <button class="audio-btn" onclick="playMP3('dein')">▶</button>
+            </li>
 
-                    <button onclick="checkAnswer('r3','spielt','fbr3')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
+            <li>
+              <span class="poss-de">sein</span>
+              <span class="poss-fr">son / sa</span>
+              <button class="audio-btn" onclick="playMP3('sein')">▶</button>
+            </li>
 
-                    <span id="fbr3" class="ml-3 font-black"></span>
-                </div>
+            <li>
+              <span class="poss-de">ihr</span>
+              <span class="poss-fr">son / sa / leur</span>
+              <button class="audio-btn" onclick="playMP3('ihr-poss')">▶</button>
+            </li>
 
+            <li>
+              <span class="poss-de">unser</span>
+              <span class="poss-fr">notre</span>
+              <button class="audio-btn" onclick="playMP3('unser')">▶</button>
+            </li>
 
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        4. Ich _____ (kochen) eine Suppe.
-                    </p>
+            <li>
+              <span class="poss-de">euer</span>
+              <span class="poss-fr">votre</span>
+              <button class="audio-btn" onclick="playMP3('euer')">▶</button>
+            </li>
 
-                    <input id="r4"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('r4','koche','fbr4')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbr4" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        5. Ihr _____ (machen) Sport.
-                    </p>
-
-                    <input id="r5"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('r5','macht','fbr5')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbr5" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        6. Sie (Plural) _____ (hören) Musik.
-                    </p>
-
-                    <input id="r6"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('r6','hören','fbr6')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbr6" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        7. Sie (Politesse) _____ (kaufen) ein Brot.
-                    </p>
-
-                    <input id="r7"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('r7','kaufen','fbr7')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbr7" class="ml-3 font-black"></span>
-                </div>
-
-            </div>
+          </ul>
 
         </div>
 
-    </section>
+      </div>
 
 
+      <div id="side-summary" class="side-content">
 
-    <!-- =====================================================
-         2. UNREGELMÄSSIGE VERBEN
-    ====================================================== -->
+        <div style="background:#fef3c7;padding:18px;border-radius:18px;border:2px solid #fde68a;">
 
-    <section id="unregelmaessig" class="tab-content hidden">
+          <h3 style="margin-top:0;color:#b45309;">
+            🧠 Merkhilfe
+          </h3>
 
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+          <p style="font-size:.88rem;color:#92400e;margin:0;font-weight:700;line-height:1.7;">
 
-            <div class="text-4xl mb-4">
-                💡
-            </div>
+            Nominativ = Sujet<br>
 
-            <h2 class="text-3xl font-black mb-4">
-                Unregelmäßige Verben
-            </h2>
+            Akkusativ = COD<br>
+            mich · dich · ihn · sie · uns · euch
 
-            <p class="font-semibold text-lg leading-relaxed">
-                Bei einigen unregelmäßigen Verben verändert sich
-                der Vokal im Wortstamm bei <b>du</b> und
-                <b>er/sie/es</b>.
-            </p>
+            <br><br>
 
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
+            Dativ = COI<br>
+            mir · dir · ihm · ihr · uns · euch
 
-                <p>
-                    e → i / ie
-                    <br>
-                    sprechen → du sprichst
-                </p>
+            <br><br>
 
-                <p class="mt-3">
-                    a → ä
-                    <br>
-                    fahren → du fährst
-                </p>
+            Possessiv = Besitz<br>
+            mein · dein · sein · ihr · unser · euer
 
-            </div>
+          </p>
 
         </div>
 
+      </div>
 
-        <!-- SPRECHEN -->
+    </div>
 
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
+  </div>
 
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
-                <div>
-
-                    <div class="text-sm font-black opacity-60">
-                        UNREGELMÄSSIG
-                    </div>
-
-                    <h2 class="text-4xl font-black">
-                        sprechen
-                    </h2>
-
-                    <p class="text-lg font-bold opacity-75">
-                        parler · e → i
-                    </p>
-
-                </div>
-
-                <button
-                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
-                    onclick="playMP3('audio/sprechen.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-6">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
-
-                    <div><b>ich</b> spreche</div>
-                    <div><b>du</b> sprichst</div>
-                    <div><b>er/sie/es</b> spricht</div>
-                    <div><b>wir</b> sprechen</div>
-                    <div><b>ihr</b> sprecht</div>
-                    <div><b>sie/Sie</b> sprechen</div>
-
-                </div>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Du sprichst sehr gut Deutsch.
-
-                <div class="text-sm opacity-70 mt-2">
-                    Tu parles très bien allemand.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- FAHREN -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
-                <div>
-
-                    <div class="text-sm font-black opacity-60">
-                        UNREGELMÄSSIG
-                    </div>
-
-                    <h2 class="text-4xl font-black">
-                        fahren
-                    </h2>
-
-                    <p class="text-lg font-bold opacity-75">
-                        conduire / aller · a → ä
-                    </p>
-
-                </div>
-
-                <button
-                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
-                    onclick="playMP3('audio/fahren.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-6">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
-
-                    <div><b>ich</b> fahre</div>
-                    <div><b>du</b> fährst</div>
-                    <div><b>er/sie/es</b> fährt</div>
-                    <div><b>wir</b> fahren</div>
-                    <div><b>ihr</b> fahrt</div>
-                    <div><b>sie/Sie</b> fahren</div>
-
-                </div>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Er fährt mit dem Auto.
-
-                <div class="text-sm opacity-70 mt-2">
-                    Il va en voiture.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- EXERCICES -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl">
-
-            <div class="text-4xl mb-4">
-                ✍️
-            </div>
-
-            <h2 class="text-3xl font-black mb-6">
-                Übungen
-            </h2>
-
-
-            <div class="space-y-4">
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        1. Maria _____ (lesen) ein Buch.
-                    </p>
-
-                    <input id="u1"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u1','liest','fbu1')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu1" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        2. Du _____ (sprechen) schnell.
-                    </p>
-
-                    <input id="u2"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u2','sprichst','fbu2')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu2" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        3. Er _____ (fahren) nach Berlin.
-                    </p>
-
-                    <input id="u3"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u3','fährt','fbu3')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu3" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        4. Du _____ (sehen) den Film.
-                    </p>
-
-                    <input id="u4"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u4','siehst','fbu4')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu4" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        5. Paul _____ (geben) mir den Schlüssel.
-                    </p>
-
-                    <input id="u5"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u5','gibt','fbu5')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu5" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        6. Du _____ (nehmen) einen Tee.
-                    </p>
-
-                    <input id="u6"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u6','nimmst','fbu6')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu6" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        7. Das Kind _____ (schlafen) gut.
-                    </p>
-
-                    <input id="u7"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('u7','schläft','fbu7')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbu7" class="ml-3 font-black"></span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         3. MODALVERBEN
-    ====================================================== -->
-
-    <section id="modalverben" class="tab-content hidden">
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="text-4xl mb-4">
-                💡
-            </div>
-
-            <h2 class="text-3xl font-black mb-4">
-                Modalverben
-            </h2>
-
-            <p class="font-semibold text-lg leading-relaxed">
-                Modalverben drücken zum Beispiel Fähigkeit,
-                Pflicht, Wunsch oder Erlaubnis aus.
-            </p>
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                ⚠️ Wichtig:
-
-                <p class="mt-2">
-                    Das Modalverb wird konjugiert.
-                    Das zweite Verb steht im Infinitiv am Ende.
-                </p>
-
-                <p class="mt-3">
-                    Ich <b>kann</b> Gitarre <b>spielen</b>.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <!-- KÖNNEN -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
-                <div>
-
-                    <div class="text-sm font-black opacity-60">
-                        MODALVERB
-                    </div>
-
-                    <h2 class="text-4xl font-black">
-                        können
-                    </h2>
-
-                    <p class="text-lg font-bold opacity-75">
-                        pouvoir / savoir
-                    </p>
-
-                </div>
-
-                <button
-                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
-                    onclick="playMP3('audio/koennen.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-6">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
-
-                    <div><b>ich</b> kann</div>
-                    <div><b>du</b> kannst</div>
-                    <div><b>er/sie/es</b> kann</div>
-                    <div><b>wir</b> können</div>
-                    <div><b>ihr</b> könnt</div>
-                    <div><b>sie/Sie</b> können</div>
-
-                </div>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Ich kann Gitarre spielen.
-
-                <div class="text-sm opacity-70 mt-2">
-                    Je sais jouer de la guitare.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- MÜSSEN -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl mb-7">
-
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-
-                <div>
-
-                    <div class="text-sm font-black opacity-60">
-                        MODALVERB
-                    </div>
-
-                    <h2 class="text-4xl font-black">
-                        müssen
-                    </h2>
-
-                    <p class="text-lg font-bold opacity-75">
-                        devoir / obligation
-                    </p>
-
-                </div>
-
-                <button
-                    class="audio-button glass rounded-2xl px-6 py-4 font-black text-lg shadow-lg"
-                    onclick="playMP3('audio/muessen.mp3', this)"
-                >
-                    🔊 <span>Écouter</span>
-                </button>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-6">
-
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-lg">
-
-                    <div><b>ich</b> muss</div>
-                    <div><b>du</b> musst</div>
-                    <div><b>er/sie/es</b> muss</div>
-                    <div><b>wir</b> müssen</div>
-                    <div><b>ihr</b> müsst</div>
-                    <div><b>sie/Sie</b> müssen</div>
-
-                </div>
-
-            </div>
-
-
-            <div class="glass rounded-2xl p-5 mt-5 font-bold">
-
-                💬 Wir müssen heute viel lernen.
-
-                <div class="text-sm opacity-70 mt-2">
-                    Nous devons beaucoup étudier aujourd'hui.
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- EXERCICES -->
-
-        <div class="glass rounded-3xl p-7 shadow-xl">
-
-            <div class="text-4xl mb-4">
-                ✍️
-            </div>
-
-            <h2 class="text-3xl font-black mb-6">
-                Übungen
-            </h2>
-
-
-            <div class="space-y-4">
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        1. _____ (können) du morgen kommen?
-                    </p>
-
-                    <input id="m1"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m1','Kannst','fbm1')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm1" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        2. Wir _____ (müssen) die Hausaufgaben machen.
-                    </p>
-
-                    <input id="m2"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m2','müssen','fbm2')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm2" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        3. Ich _____ (wollen) nach Hause gehen.
-                    </p>
-
-                    <input id="m3"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m3','will','fbm3')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm3" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        4. _____ (dürfen) ihr hier parken?
-                    </p>
-
-                    <input id="m4"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m4','Dürft','fbm4')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm4" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        5. Er _____ (sollen) mehr schlafen.
-                    </p>
-
-                    <input id="m5"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m5','soll','fbm5')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm5" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        6. Ich _____ (möchten) einen Kaffee bitte.
-                    </p>
-
-                    <input id="m6"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m6','möchte','fbm6')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm6" class="ml-3 font-black"></span>
-                </div>
-
-
-                <div class="glass rounded-2xl p-4">
-                    <p class="font-bold mb-3">
-                        7. Sie (Plural) _____ (können) gut singen.
-                    </p>
-
-                    <input id="m7"
-                        class="w-full rounded-xl p-3 font-bold bg-white/40 border border-white/50"
-                        placeholder="Réponse">
-
-                    <button onclick="checkAnswer('m7','können','fbm7')"
-                        class="mt-3 bg-black text-white px-5 py-3 rounded-xl font-black">
-                        Vérifier
-                    </button>
-
-                    <span id="fbm7" class="ml-3 font-black"></span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         RÉSUMÉ
-    ====================================================== -->
-
-    <section class="glass rounded-3xl p-7 shadow-xl mt-10">
-
-        <div class="text-4xl mb-4">
-            📌
-        </div>
-
-        <h2 class="text-3xl font-black mb-5">
-            Résumé Général
-        </h2>
-
-        <div class="space-y-4 font-semibold text-lg">
-
-            <div class="glass rounded-2xl p-4">
-                📗 <b>Verbes réguliers :</b>
-                le radical reste stable.
-                <br>
-                <span class="text-sm opacity-70">
-                    lernen → ich lerne, du lernst
-                </span>
-            </div>
-
-            <div class="glass rounded-2xl p-4">
-                📕 <b>Verbes irréguliers :</b>
-                la voyelle peut changer.
-                <br>
-                <span class="text-sm opacity-70">
-                    fahren → du fährst
-                </span>
-            </div>
-
-            <div class="glass rounded-2xl p-4">
-                ⭐ <b>Modalverben :</b>
-                le deuxième verbe va à la fin à l'infinitif.
-                <br>
-                <span class="text-sm opacity-70">
-                    Ich kann gut singen.
-                </span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         RETOUR
-    ====================================================== -->
-
-    <section class="flex justify-center mt-14">
-
-        <a
-            href="index.html#a1"
-            class="
-                bg-black
-                text-white
-                px-8
-                py-4
-                rounded-2xl
-                font-black
-                shadow-xl
-            "
-        >
-            ← Zurück zu den A1 Lektionen
-        </a>
-
-    </section>
-
-</main>
-
+</div>
 
 
 <script>
 
-    /* =====================================================
-       NAVIGATION
-    ===================================================== */
+  /* =========================
+     NAVIGATION
+  ========================= */
 
-    function openTab(tabId, button) {
-
-        const tabs =
-            document.querySelectorAll('.tab-content');
-
-        tabs.forEach(function(tab) {
-            tab.classList.add('hidden');
-        });
-
-        document
-            .getElementById(tabId)
-            .classList.remove('hidden');
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-
-    }
-
-
-    /* =====================================================
-       🎵 LECTEUR MP3
-    ===================================================== */
-
-    let currentAudio = null;
-    let currentButton = null;
-
-
-    function playMP3(file, button) {
-
-        /* Arrêter l'ancien audio */
-
-        if (currentAudio) {
-
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-
-            if (currentButton) {
-
-                currentButton.classList.remove('playing');
-
-                currentButton.innerHTML =
-                    '🔊 <span>Écouter</span>';
-
-            }
-        }
-
-
-        /* Créer le nouveau lecteur */
-
-        const audio = new Audio(file);
-
-        currentAudio = audio;
-        currentButton = button;
-
-
-        button.classList.add('playing');
-
-        button.innerHTML =
-            '⏸️ <span>Lecture...</span>';
-
-
-        /* Lire le MP3 */
-
-        audio.play().catch(function(error) {
-
-            console.error(
-                "Erreur de lecture audio :",
-                error
-            );
-
-            button.classList.remove('playing');
-
-            button.innerHTML =
-                '🔊 <span>Écouter</span>';
-
-            alert(
-                "Le fichier MP3 n'a pas pu être lu.\n\n" +
-                "Vérifie que le fichier existe bien dans le dossier audio."
-            );
-
-        });
-
-
-        /* Quand le MP3 est terminé */
-
-        audio.addEventListener(
-            'ended',
-            function() {
-
-                button.classList.remove('playing');
-
-                button.innerHTML =
-                    '🔊 <span>Écouter</span>';
-
-                currentAudio = null;
-                currentButton = null;
-
-            }
-        );
-
-    }
-
-
-
-    /* =====================================================
-       VÉRIFICATION DES EXERCICES
-    ===================================================== */
-
-    function checkAnswer(
-        inputId,
-        correctAnswer,
-        feedbackId
-    ) {
-
-        const input =
-            document.getElementById(inputId);
-
-        const feedback =
-            document.getElementById(feedbackId);
-
-        const userAnswer =
-            input.value.trim();
-
-
-        if (
-            userAnswer.toLowerCase() ===
-            correctAnswer.toLowerCase()
-        ) {
-
-            feedback.textContent =
-                "✅ Richtig!";
-
-            feedback.style.color =
-                "#166534";
-
-            input.classList.remove(
-                'answer-wrong'
-            );
-
-            input.classList.add(
-                'answer-correct'
-            );
-
-        } else {
-
-            feedback.textContent =
-                "❌ Falsch! Antwort: " +
-                correctAnswer;
-
-            feedback.style.color =
-                "#991B1B";
-
-            input.classList.remove(
-                'answer-correct'
-            );
-
-            input.classList.add(
-                'answer-wrong'
-            );
-
-        }
-
-    }
-
-
-    /* =====================================================
-       ONGLET PAR DÉFAUT
-    ===================================================== */
+  function switchTab(caseName, button) {
 
     document
-        .getElementById('regelmaessig')
-        .classList.remove('hidden');
+      .querySelectorAll('.tab-content')
+      .forEach(tab => tab.classList.remove('active'));
+
+    document
+      .querySelectorAll('.side-content')
+      .forEach(side => side.classList.remove('active'));
+
+    document
+      .querySelectorAll('.nav-btn')
+      .forEach(btn => btn.classList.remove('active'));
+
+    document.body.className = 'theme-' + (
+      caseName === 'possessiv'
+        ? 'poss'
+        : caseName.substring(0, 3)
+    );
+
+    document
+      .getElementById(caseName)
+      .classList.add('active');
+
+    document
+      .getElementById('side-' + caseName)
+      .classList.add('active');
+
+    button.classList.add('active');
+  }
+
+
+  /* =========================
+     MP3
+     
+     Les fichiers seront ajoutés
+     plus tard dans le dossier:
+     
+     audio/
+     
+     Exemple:
+     audio/ich.mp3
+     audio/mich.mp3
+     audio/mir.mp3
+     audio/mein.mp3
+     
+     ========================= */
+
+  let currentAudio = null;
+
+  function playMP3(file) {
+
+    const audioPath = 'audio/' + file + '.mp3';
+
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    }
+
+    currentAudio = new Audio(audioPath);
+
+    currentAudio.play().catch(() => {
+
+      console.log(
+        'MP3 non disponible pour le moment: ' +
+        audioPath
+      );
+
+    });
+  }
+
+
+  /* =========================
+     VERIFICATION NOMINATIV
+  ========================= */
+
+  function checkNom() {
+
+    const answers = [
+      'ich',
+      'du',
+      'er',
+      'sie',
+      'wir',
+      'ihr',
+      'sie'
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 7; i++) {
+
+      const val =
+        document
+          .getElementById(`q-nom-${i}`)
+          .value
+          .trim()
+          .toLowerCase();
+
+      if (val === answers[i - 1]) {
+        correctCount++;
+      }
+    }
+
+    const fb = document.getElementById('fb-nom');
+
+    if (correctCount === 7) {
+
+      fb.className = 'feedback correct';
+
+      fb.textContent =
+        '🎉 Perfekt! 7/7 Antworten richtig!';
+
+    } else {
+
+      fb.className = 'feedback wrong';
+
+      fb.textContent =
+        `❌ Score: ${correctCount}/7. Versuche es noch einmal!`;
+    }
+  }
+
+
+  /* =========================
+     VERIFICATION AKKUSATIV
+  ========================= */
+
+  function checkAkk() {
+
+    const answers = [
+      'dich',
+      'mich',
+      'ihn',
+      'sie',
+      'uns',
+      'euch',
+      'sie'
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 7; i++) {
+
+      const val =
+        document
+          .getElementById(`q-akk-${i}`)
+          .value
+          .trim()
+          .toLowerCase();
+
+      if (val === answers[i - 1]) {
+        correctCount++;
+      }
+    }
+
+    const fb = document.getElementById('fb-akk');
+
+    if (correctCount === 7) {
+
+      fb.className = 'feedback correct';
+
+      fb.textContent =
+        '🎉 Ausgezeichnet! 7/7 Antworten richtig!';
+
+    } else {
+
+      fb.className = 'feedback wrong';
+
+      fb.textContent =
+        `❌ Score: ${correctCount}/7. Versuche es noch einmal!`;
+    }
+  }
+
+
+  /* =========================
+     VERIFICATION DATIV
+  ========================= */
+
+  function checkDat() {
+
+    const answers = [
+      'dir',
+      'mir',
+      'ihm',
+      'ihr',
+      'uns',
+      'euch',
+      'ihnen'
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 7; i++) {
+
+      const val =
+        document
+          .getElementById(`q-dat-${i}`)
+          .value
+          .trim()
+          .toLowerCase();
+
+      if (val === answers[i - 1]) {
+        correctCount++;
+      }
+    }
+
+    const fb = document.getElementById('fb-dat');
+
+    if (correctCount === 7) {
+
+      fb.className = 'feedback correct';
+
+      fb.textContent =
+        '🎉 Super! 7/7 Antworten richtig!';
+
+    } else {
+
+      fb.className = 'feedback wrong';
+
+      fb.textContent =
+        `❌ Score: ${correctCount}/7. Versuche es noch einmal!`;
+    }
+  }
+
+
+  /* =========================
+     VERIFICATION POSSESSIV
+  ========================= */
+
+  function checkPoss() {
+
+    const answers = [
+      'mein',
+      'deine',
+      'sein',
+      'ihre',
+      'unser',
+      'euer',
+      'ihr'
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 7; i++) {
+
+      const val =
+        document
+          .getElementById(`q-poss-${i}`)
+          .value
+          .trim()
+          .toLowerCase();
+
+      if (val === answers[i - 1]) {
+        correctCount++;
+      }
+    }
+
+    const fb = document.getElementById('fb-poss');
+
+    if (correctCount === 7) {
+
+      fb.className = 'feedback correct';
+
+      fb.textContent =
+        '🎉 Perfekt! 7/7 Possessivartikel richtig!';
+
+    } else {
+
+      fb.className = 'feedback wrong';
+
+      fb.textContent =
+        `❌ Score: ${correctCount}/7. Versuche es noch einmal!`;
+    }
+  }
 
 </script>
 
