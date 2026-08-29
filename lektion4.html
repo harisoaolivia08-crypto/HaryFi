@@ -964,8 +964,9 @@ onclick="switchTab('uebung',this)">
   </h2>  <span class="fr-sub">
     Das Verb bleibt beim Stamm gleich.
   </span><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Regelmäßige Verben">
 
 <span class="toggle-left">
 
@@ -979,7 +980,7 @@ onclick="toggleSection(this)">
 
 </span>
 
-  </button>  <div class="section-content open"><!-- IMAGE REGEL -->
+  </button>  <div class="section-content"><!-- IMAGE REGEL -->
 
 <div class="lesson-image-box">
 
@@ -1086,8 +1087,9 @@ onclick="toggleSection(this)">
 </table>
 
   </div>  <!-- BEISPIELE --><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Beispiele">
 
 <span class="toggle-left">
   <span class="toggle-arrow">▶</span>
@@ -1097,7 +1099,7 @@ onclick="toggleSection(this)">
   </span>
 </span>
 
-  </button>  <div class="section-content open"><div class="example-list">
+  </button>  <div class="section-content"><div class="example-list">
 
   <div class="example-card">
 
@@ -1200,8 +1202,9 @@ onclick="toggleSection(this)">
   </h2>  <span class="fr-sub">
     Bei manchen Verben verändert sich der Stammvokal.
   </span><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Unregelmäßige Verben">
 
 <span class="toggle-left">
 
@@ -1215,7 +1218,7 @@ onclick="toggleSection(this)">
 
 </span>
 
-  </button>  <div class="section-content open"><!-- IMAGE UNREGEL -->
+  </button>  <div class="section-content"><!-- IMAGE UNREGEL -->
 
 <div class="lesson-image-box">
 
@@ -1298,8 +1301,9 @@ onclick="toggleSection(this)">
 </table>
 
   </div>  <!-- BEISPIELE --><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Beispiele">
 
 <span class="toggle-left">
   <span class="toggle-arrow">▶</span>
@@ -1309,7 +1313,7 @@ onclick="toggleSection(this)">
   </span>
 </span>
 
-  </button>  <div class="section-content open"><div class="example-list">
+  </button>  <div class="section-content"><div class="example-list">
 
   <div class="example-card">
 
@@ -1435,8 +1439,9 @@ onclick="toggleSection(this)">
   </h2>  <span class="fr-sub">
     Können, müssen, wollen, sollen, dürfen und mögen.
   </span><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Modalverben">
 
 <span class="toggle-left">
 
@@ -1450,7 +1455,7 @@ onclick="toggleSection(this)">
 
 </span>
 
-  </button>  <div class="section-content open"><!-- IMAGE MODAL -->
+  </button>  <div class="section-content"><!-- IMAGE MODAL -->
 
 <div class="lesson-image-box">
 
@@ -1526,8 +1531,9 @@ onclick="toggleSection(this)">
 </table>
 
   </div>  <!-- BEISPIELE --><button
-class="section-toggle open"
-onclick="toggleSection(this)">
+class="section-toggle"
+onclick="toggleSection(this)"
+data-audio="Beispiele">
 
 <span class="toggle-left">
 
@@ -1541,7 +1547,7 @@ onclick="toggleSection(this)">
 
 </span>
 
-  </button>  <div class="section-content open"><div class="example-list">
+  </button>  <div class="section-content"><div class="example-list">
 
   <div class="example-card">
 
@@ -1666,7 +1672,23 @@ onclick="toggleSection(this)">
     📊 Zusammenfassung
   </h2>  <span class="fr-sub">
     Alle Verbtypen auf einen Blick.
-  </span>  <table class="grammar-table"><thead>
+  </span>
+
+  <button
+  class="section-toggle"
+  onclick="toggleSection(this)"
+  data-audio="Zusammenfassung">
+
+  <span class="toggle-left">
+    <span class="toggle-arrow">▶</span>
+    <span>Zusammenfassung</span>
+  </span>
+
+  </button>
+
+  <div class="section-content">
+
+  <table class="grammar-table"><thead>
 
   <tr>
     <th>Verbtyp</th>
@@ -1805,7 +1827,11 @@ onclick="toggleSection(this)">
 
 </div>
 
-  </div>  <!-- QUELLEN ZUSAMMENFASSUNG -->  <div class="quellen-box"><h3>
+  </div>
+  
+  </div> <!-- Fin de la section rétractable Zusammenfassung -->
+  
+  <!-- QUELLEN ZUSAMMENFASSUNG -->  <div class="quellen-box"><h3>
   📚 Quellen
 </h3>
 
@@ -1854,7 +1880,23 @@ onclick="toggleSection(this)">
     ✏️ Übung macht den Meister!
   </h2>  <span class="fr-sub">
     Übungen zu regelmäßigen, unregelmäßigen und Modalverben.
-  </span>  <div class="pdf-list"><!-- PDF 1 -->
+  </span>
+
+  <button
+  class="section-toggle"
+  onclick="toggleSection(this)"
+  data-audio="Übung">
+
+  <span class="toggle-left">
+    <span class="toggle-arrow">▶</span>
+    <span>Übung</span>
+  </span>
+
+  </button>
+
+  <div class="section-content">
+  
+  <div class="pdf-list"><!-- PDF 1 -->
 
 <a
   href="lektion4-uebung-regelmaessige-verben.pdf"
@@ -1946,7 +1988,11 @@ onclick="toggleSection(this)">
 
 </a>
 
-  </div>  <!-- QUELLEN ÜBUNG -->  <div class="quellen-box"><h3>
+  </div>
+  
+  </div> <!-- Fin de la section rétractable Übung -->
+  
+  <!-- QUELLEN ÜBUNG -->  <div class="quellen-box"><h3>
   📚 Quellen
 </h3>
 
@@ -2589,6 +2635,26 @@ function switchTab(caseName, button) {
     top: 0,
     behavior: 'smooth'
   });
+  
+  
+  // --- NOUVELLE LOGIQUE D'OUVERTURE ET D'AUDIO AUTOMATIQUE ---
+  // Si on change vers un autre onglet que "Regelmäßige Verben"
+  if (caseName !== 'regel' && selectedTab) {
+    const firstToggle = selectedTab.querySelector('.section-toggle');
+    if (firstToggle) {
+      const content = firstToggle.nextElementSibling;
+      // Ouvrir automatiquement la première section
+      if (!firstToggle.classList.contains('open')) {
+        firstToggle.classList.add('open');
+        if (content) content.classList.add('open');
+      }
+      // Démarrer l'audio automatiquement
+      const audioText = firstToggle.getAttribute('data-audio') || firstToggle.innerText.replace('▶', '').trim();
+      if (audioText) {
+        playAudio(audioText);
+      }
+    }
+  }
 
 }
 
@@ -2607,22 +2673,31 @@ function toggleSection(button) {
     return;
   }
 
-
   const isOpen =
     content.classList.contains('open');
 
-
   if (isOpen) {
-
+    
+    // Fermeture de la section
     content.classList.remove('open');
-
     button.classList.remove('open');
+    
+    // Si tu refermes une section, aucun audio ne se lance
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
 
   } else {
-
+    
+    // Ouverture de la section
     content.classList.add('open');
-
     button.classList.add('open');
+    
+    // Si tu la rouvres, l'audio se lance de nouveau
+    const audioText = button.getAttribute('data-audio') || button.innerText.replace('▶', '').trim();
+    if (audioText) {
+      playAudio(audioText);
+    }
 
   }
 
