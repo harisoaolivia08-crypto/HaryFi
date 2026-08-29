@@ -18,7 +18,6 @@
 
 /* ==================================================
    HARYFI – LEKTION 4
-   THEMES
 ================================================== */
 
 :root {
@@ -47,6 +46,25 @@
 
 
 /* ==================================================
+   GLOBAL
+================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+
+/* ==================================================
    CONTAINER
 ================================================== */
 
@@ -68,6 +86,23 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+}
+
+.back-button {
+  text-decoration: none;
+  color: #111827;
+  background: rgba(255,255,255,.78);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: .9rem;
+  font-weight: 900;
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  transition: .25s;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
 }
 
 .course-label {
@@ -206,6 +241,11 @@
   box-shadow: 0 20px 40px rgba(0,0,0,.12);
 }
 
+.main-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
 .tab-content,
 .side-content {
   display: none;
@@ -259,30 +299,44 @@
 
 /* ==================================================
    IMAGES
-   IMPORTANT:
+   GitHub structure:
    Image/regel.jpg
    Image/unregel.jpg
    Image/modal.jpg
 ================================================== */
 
 .lesson-image-box {
-  margin: 18px 0 24px;
+  width: calc(100% + 30px);
+  margin: 22px -15px 28px;
   text-align: center;
-  width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .lesson-image-box img {
   display: block;
+
   width: 100%;
-  max-width: 850px;
-  height: 280px;
+  max-width: none;
+
+  /*
+     Image wird breit angezeigt.
+     Die Höhe passt sich automatisch an.
+  */
+  height: auto;
+  min-height: 260px;
+  max-height: 520px;
+
   object-fit: cover;
   object-position: center;
-  margin: 0 auto;
+
+  margin: 0;
+
   border-radius: 22px;
-  border: 2px solid rgba(255,255,255,.85);
-  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  border: 2px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.15);
+
   transition:
     transform .3s ease,
     box-shadow .3s ease;
@@ -290,7 +344,9 @@
 
 .lesson-image-box img:hover {
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0,0,0,.20);
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.20);
 }
 
 
@@ -300,14 +356,23 @@
 
 .image-error {
   display: none;
-  max-width: 850px;
-  margin: 0 auto;
+
+  width: 100%;
+
+  margin: 0;
+
   padding: 25px;
+
   border-radius: 22px;
-  background: rgba(255,255,255,.9);
+
+  background: rgba(255,255,255,.95);
+
   border: 2px dashed #ef4444;
+
   color: #991b1b;
+
   font-weight: 800;
+
   line-height: 1.6;
 }
 
@@ -323,21 +388,36 @@
 
 .section-toggle {
   width: 100%;
+
   border: none;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 17px 18px;
+
   margin: 20px 0 10px;
+
   border-radius: 18px;
+
   background: rgba(255,255,255,.48);
+
   border: 1px solid rgba(255,255,255,.65);
+
   color: #111827;
+
   font-family: inherit;
+
   font-size: 1.08rem;
+
   font-weight: 900;
+
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 6px 16px rgba(0,0,0,.08);
+
   transition: .25s;
 }
 
@@ -355,11 +435,15 @@
 .toggle-arrow {
   width: 27px;
   height: 27px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 8px;
+
   background: rgba(255,255,255,.7);
+
   transition: .25s;
 }
 
@@ -397,18 +481,26 @@
 
 .grammar-table {
   width: 100%;
+
   border-collapse: separate;
   border-spacing: 0;
+
   overflow: hidden;
+
   border-radius: 16px;
+
   margin: 14px 0 24px;
-  box-shadow: 0 5px 16px rgba(0,0,0,.07);
+
+  box-shadow:
+    0 5px 16px rgba(0,0,0,.07);
 }
 
 .grammar-table th,
 .grammar-table td {
   padding: 12px;
+
   text-align: left;
+
   font-size: .9rem;
 }
 
@@ -459,14 +551,22 @@
 
 .example-card {
   background: rgba(255,255,255,.92);
+
   padding: 14px 15px;
+
   border-radius: 15px;
+
   border-left: 6px solid #cbd5e1;
+
   display: flex;
+
   justify-content: space-between;
   align-items: center;
+
   gap: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,.05);
 }
 
 .theme-reg .example-card {
@@ -501,16 +601,27 @@
 .play-btn {
   width: 38px;
   height: 38px;
+
   border: none;
+
   border-radius: 50%;
+
   background: #ff7a00;
+
   color: white;
+
   cursor: pointer;
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 12px rgba(0,0,0,.18);
+
+  box-shadow:
+    0 5px 12px rgba(0,0,0,.18);
+
   transition: .2s;
+
   flex-shrink: 0;
 }
 
@@ -522,9 +633,11 @@
 .play-triangle {
   width: 0;
   height: 0;
+
   border-top: 7px solid transparent;
   border-bottom: 7px solid transparent;
   border-left: 11px solid white;
+
   margin-left: 3px;
 }
 
@@ -545,29 +658,39 @@
 
 .merkhilfe h3 {
   color: #111827;
+
   margin-top: 0;
   margin-bottom: 8px;
+
   font-size: 1.2rem;
 }
 
 .merkhilfe p {
   margin: 6px 0;
+
   font-size: .87rem;
+
   font-weight: 700;
+
   line-height: 1.55;
 }
 
 .merk-beispiel {
   display: flex;
   flex-wrap: wrap;
+
   gap: 7px;
+
   margin-top: 10px;
 }
 
 .merk-word {
   padding: 7px 10px;
+
   border-radius: 10px;
+
   background: rgba(255,255,255,.6);
+
   font-weight: 900;
 }
 
@@ -583,30 +706,43 @@
 
 .heart-title {
   font-size: 1.2rem;
+
   font-weight: 900;
+
   color: #be123c;
+
   margin: 0 0 4px;
 }
 
 .heart-sub {
   font-size: .8rem;
+
   font-weight: 700;
+
   color: #9f1239;
 }
 
 .verb-list {
   list-style: none;
+
   padding: 0;
+
   margin: 12px 0 0;
 }
 
 .verb-list li {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 7px;
+
   padding: 9px 0;
-  border-bottom: 1px dashed rgba(190,24,93,.3);
+
+  border-bottom:
+    1px dashed rgba(190,24,93,.3);
 }
 
 .verb-text {
@@ -615,17 +751,78 @@
 
 .verb-de {
   display: block;
+
   font-weight: 900;
+
   color: #881337;
+
   font-size: .9rem;
 }
 
 .verb-fr {
   display: block;
+
   font-size: .77rem;
+
   color: #9f1239;
+
   font-weight: 600;
+
   font-style: italic;
+}
+
+
+/* ==================================================
+   QUELLEN
+================================================== */
+
+.quellen-box {
+  margin-top: 30px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,.78);
+
+  border: 1px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 7px 20px rgba(0,0,0,.07);
+}
+
+.quellen-box h3 {
+  margin: 0 0 10px;
+
+  font-size: 1.1rem;
+
+  font-weight: 900;
+
+  color: #111827;
+}
+
+.quellen-box p {
+  margin: 6px 0;
+
+  font-size: .82rem;
+
+  line-height: 1.6;
+
+  color: #475569;
+
+  font-weight: 600;
+}
+
+.quellen-box a {
+  color: #2563eb;
+
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+.quellen-box a:hover {
+  text-decoration: underline;
 }
 
 
@@ -635,44 +832,67 @@
 
 .pdf-list {
   display: flex;
+
   flex-direction: column;
+
   gap: 12px;
 }
 
 .pdf-card {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   text-decoration: none;
+
   background: rgba(255,255,255,.92);
+
   padding: 15px;
+
   border-radius: 17px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.08);
+
   transition: .25s;
 }
 
 .pdf-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 9px 20px rgba(0,0,0,.12);
+
+  box-shadow:
+    0 9px 20px rgba(0,0,0,.12);
 }
 
 .pdf-icon {
   width: 48px;
   height: 48px;
+
   border-radius: 13px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-weight: 900;
+
   color: white;
+
   background: #dc2626;
+
   flex-shrink: 0;
 }
 
 .pdf-info {
   flex: 1;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 3px;
 }
 
@@ -682,12 +902,15 @@
 
 .pdf-info span {
   color: #64748b;
+
   font-size: .8rem;
 }
 
 .pdf-arrow {
   font-size: 1.5rem;
+
   font-weight: 900;
+
   color: #111827;
 }
 
@@ -698,19 +921,30 @@
 
 .footer-back {
   display: flex;
+
   justify-content: center;
+
   margin-top: 25px;
 }
 
 .footer-back a {
   text-decoration: none;
+
   background: #111;
+
   color: #ffc400;
+
   padding: 14px 28px;
+
   border-radius: 18px;
+
   font-weight: 900;
-  box-shadow: 0 10px 25px rgba(0,0,0,.2);
-  transition: transform .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.2);
+
+  transition:
+    transform .3s ease;
 }
 
 .footer-back a:hover {
@@ -735,6 +969,10 @@
 }
 
 
+/* ==================================================
+   TABLET / MOBILE
+================================================== */
+
 @media(max-width:600px) {
 
   .container {
@@ -743,21 +981,25 @@
 
   .top-navigation {
     flex-direction: column;
+
     align-items: stretch;
   }
 
+  .back-button,
   .course-label {
     text-align: center;
   }
 
   .header {
     padding: 19px 14px;
+
     border-radius: 22px;
   }
 
   .main-content,
   .side-panel {
     padding: 17px;
+
     border-radius: 21px;
   }
 
@@ -767,18 +1009,58 @@
 
   .grammar-table {
     display: block;
+
     overflow-x: auto;
+
     white-space: nowrap;
   }
 
   .section-toggle {
     padding: 14px;
+
     font-size: 1rem;
   }
 
+
+  /*
+     IMAGE MOBILE
+     Toujours large.
+  */
+
+  .lesson-image-box {
+    width: calc(100% + 34px);
+
+    margin-left: -17px;
+    margin-right: -17px;
+
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
   .lesson-image-box img {
-    height: 200px;
+    width: 100%;
+
+    min-height: 200px;
+
+    max-height: 380px;
+
     border-radius: 18px;
+
+    object-fit: cover;
+  }
+
+
+  .image-error {
+    border-radius: 18px;
+  }
+
+
+  .example-card {
+    align-items: flex-start;
+  }
+
+  .quellen-box {
+    padding: 17px;
   }
 
 }
@@ -803,6 +1085,13 @@
     padding: 12px;
   }
 
+  .lesson-image-box {
+    width: calc(100% + 28px);
+
+    margin-left: -14px;
+    margin-right: -14px;
+  }
+
 }
 
 
@@ -813,6 +1102,7 @@
 button:focus-visible,
 a:focus-visible {
   outline: 3px solid #2563eb;
+
   outline-offset: 3px;
 }
 
@@ -1168,6 +1458,28 @@ a:focus-visible {
 
   </div>
 
+
+  <!-- QUELLEN -->
+
+  <div class="quellen-box">
+
+    <h3>
+      📚 Quellen
+    </h3>
+
+    <p>
+      Die grammatischen Informationen orientieren sich
+      an den grundlegenden Regeln der deutschen Grammatik
+      für das Sprachniveau A1.
+    </p>
+
+    <p>
+      Beispiele und Erklärungen wurden für den
+      HaryFi-Deutschkurs vereinfacht und angepasst.
+    </p>
+
+  </div>
+
 </div>
 
 
@@ -1422,6 +1734,28 @@ a:focus-visible {
 
   </div>
 
+
+  <!-- QUELLEN -->
+
+  <div class="quellen-box">
+
+    <h3>
+      📚 Quellen
+    </h3>
+
+    <p>
+      Die grammatischen Informationen orientieren sich
+      an den grundlegenden Regeln der deutschen Grammatik
+      für das Sprachniveau A1.
+    </p>
+
+    <p>
+      Beispiele und Erklärungen wurden für den
+      HaryFi-Deutschkurs vereinfacht und angepasst.
+    </p>
+
+  </div>
+
 </div>
 
 
@@ -1669,6 +2003,28 @@ a:focus-visible {
 
   </div>
 
+
+  <!-- QUELLEN -->
+
+  <div class="quellen-box">
+
+    <h3>
+      📚 Quellen
+    </h3>
+
+    <p>
+      Die grammatischen Informationen orientieren sich
+      an den grundlegenden Regeln der deutschen Grammatik
+      für das Sprachniveau A1.
+    </p>
+
+    <p>
+      Beispiele und Erklärungen wurden für den
+      HaryFi-Deutschkurs vereinfacht und angepasst.
+    </p>
+
+  </div>
+
 </div>
 
 
@@ -1836,6 +2192,28 @@ a:focus-visible {
 
   </div>
 
+
+  <!-- QUELLEN -->
+
+  <div class="quellen-box">
+
+    <h3>
+      📚 Quellen
+    </h3>
+
+    <p>
+      Die grammatischen Informationen orientieren sich
+      an den grundlegenden Regeln der deutschen Grammatik
+      für das Sprachniveau A1.
+    </p>
+
+    <p>
+      Beispiele und Erklärungen wurden für den
+      HaryFi-Deutschkurs vereinfacht und angepasst.
+    </p>
+
+  </div>
+
 </div>
 
 
@@ -1865,7 +2243,7 @@ a:focus-visible {
       rel="noopener noreferrer"
       class="pdf-card">
 
-      <div class="pdf-icon type-pdf">
+      <div class="pdf-icon">
         PDF
       </div>
 
@@ -1896,7 +2274,7 @@ a:focus-visible {
       rel="noopener noreferrer"
       class="pdf-card">
 
-      <div class="pdf-icon type-pdf">
+      <div class="pdf-icon">
         PDF
       </div>
 
@@ -1927,7 +2305,7 @@ a:focus-visible {
       rel="noopener noreferrer"
       class="pdf-card">
 
-      <div class="pdf-icon type-pdf">
+      <div class="pdf-icon">
         PDF
       </div>
 
@@ -1948,6 +2326,22 @@ a:focus-visible {
       </div>
 
     </a>
+
+  </div>
+
+
+  <!-- QUELLEN -->
+
+  <div class="quellen-box">
+
+    <h3>
+      📚 Quellen
+    </h3>
+
+    <p>
+      Die Übungen wurden für den HaryFi-Deutschkurs
+      auf A1-Niveau erstellt.
+    </p>
 
   </div>
 
@@ -2486,7 +2880,7 @@ a:focus-visible {
 
 
 <!-- ==================================================
-     SUMMARY
+     SUMMARY SIDE
 ================================================== -->
 
 <div id="side-summary" class="side-content">
@@ -2513,7 +2907,7 @@ a:focus-visible {
 
 
 <!-- ==================================================
-     ÜBUNG
+     ÜBUNG SIDE
 ================================================== -->
 
 <div id="side-uebung" class="side-content">
@@ -2632,17 +3026,30 @@ function switchTab(caseName, button) {
     'page active theme-' + themePrefix;
 
 
-  document
-    .getElementById(caseName)
-    .classList.add('active');
+  const selectedTab =
+    document.getElementById(caseName);
+
+  const selectedSide =
+    document.getElementById('side-' + caseName);
 
 
-  document
-    .getElementById('side-' + caseName)
-    .classList.add('active');
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
+
+
+  if (selectedSide) {
+    selectedSide.classList.add('active');
+  }
 
 
   button.classList.add('active');
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
 
 }
 
@@ -2655,6 +3062,11 @@ function toggleSection(button) {
 
   const content =
     button.nextElementSibling;
+
+
+  if (!content) {
+    return;
+  }
 
 
   const isOpen =
@@ -2686,12 +3098,15 @@ function showImageError(image, fileName) {
 
   image.style.display = 'none';
 
+
   const errorBox =
     image.parentElement.querySelector('.image-error');
+
 
   if (errorBox) {
 
     errorBox.style.display = 'block';
+
 
     errorBox.innerHTML = `
       <strong>⚠️ Bild konnte nicht geladen werden.</strong>
@@ -2745,16 +3160,21 @@ function playAudio(text) {
 
 
 /* ==================================================
-   PREVENT AUDIO WHEN CHANGING TAB
+   PREVENT AUDIO WHEN LEAVING
 ================================================== */
 
-window.addEventListener('beforeunload', function() {
+window.addEventListener(
+  'beforeunload',
+  function() {
 
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
+    if ('speechSynthesis' in window) {
+
+      window.speechSynthesis.cancel();
+
+    }
+
   }
-
-});
+);
 
 
 </script>
