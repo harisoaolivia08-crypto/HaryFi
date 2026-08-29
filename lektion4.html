@@ -15,7 +15,6 @@
 
 /* ================================
    HARYFI – LEKTION 4
-   THEMES
 ================================ */
 
 :root {
@@ -33,7 +32,6 @@
   --uebung-grad: linear-gradient(135deg, #6366f1, #4f46e5, #4338ca);
 }
 
-
 /* ================================
    CONTAINER
 ================================ */
@@ -44,7 +42,6 @@
   margin: auto;
   padding: 24px 16px 60px;
 }
-
 
 /* ================================
    TOP NAVIGATION
@@ -67,7 +64,6 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
-
 
 /* ================================
    HEADER
@@ -97,7 +93,6 @@
   font-weight: 700;
   color: #542900;
 }
-
 
 /* ================================
    MAIN NAVIGATION
@@ -173,7 +168,6 @@
   background: var(--uebung-grad);
 }
 
-
 /* ================================
    GRID
 ================================ */
@@ -203,7 +197,6 @@
 .side-content.active {
   display: block;
 }
-
 
 /* ================================
    TITLES
@@ -244,46 +237,40 @@
   margin-bottom: 18px;
 }
 
-
 /* ================================
    IMAGES
-   LESSON 4
+   CORRIGÉ POUR GITHUB
 ================================ */
 
 .lesson-image-box {
   margin: 18px 0 24px;
   text-align: center;
   width: 100%;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 22px;
 }
 
 .lesson-image-box img {
   display: block;
   width: 100%;
   max-width: 850px;
-
-  /* MÊME TAILLE POUR LES 3 IMAGES */
   height: 280px;
-
-  /* L'image remplit le cadre sans être déformée */
   object-fit: cover;
-
   margin: 0 auto;
-
   border-radius: 22px;
-
   border: 2px solid rgba(255,255,255,.85);
-
   box-shadow: 0 10px 25px rgba(0,0,0,.15);
-
-  transition: transform .3s ease,
-              box-shadow .3s ease;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
 .lesson-image-box img:hover {
   transform: translateY(-3px);
   box-shadow: 0 14px 30px rgba(0,0,0,.20);
 }
-
 
 /* ================================
    ACCORDION
@@ -358,7 +345,6 @@
 
 }
 
-
 /* ================================
    TABLES
 ================================ */
@@ -413,7 +399,6 @@
   color: var(--uebung-color);
 }
 
-
 /* ================================
    EXAMPLES
 ================================ */
@@ -461,7 +446,6 @@
   font-weight: 600;
 }
 
-
 /* ================================
    AUDIO
 ================================ */
@@ -495,7 +479,6 @@
   border-left: 11px solid white;
   margin-left: 3px;
 }
-
 
 /* ================================
    SIDE PANEL
@@ -538,7 +521,6 @@
   background: rgba(255, 255, 255, .6);
   font-weight: 900;
 }
-
 
 /* ================================
    IMPORTANT VERBS
@@ -595,7 +577,6 @@
   font-weight: 600;
   font-style: italic;
 }
-
 
 /* ================================
    PDF
@@ -659,7 +640,6 @@
   color: #111827;
 }
 
-
 /* ================================
    FOOTER
 ================================ */
@@ -685,7 +665,6 @@
   transform: scale(1.05);
 }
 
-
 /* ================================
    RESPONSIVE
 ================================ */
@@ -701,7 +680,6 @@
   }
 
 }
-
 
 @media(max-width:600px) {
 
@@ -735,7 +713,10 @@
     font-size: 1rem;
   }
 
-  /* Même taille sur téléphone */
+  .lesson-image-box {
+    min-height: 200px;
+  }
+
   .lesson-image-box img {
     height: 200px;
     border-radius: 18px;
@@ -751,9 +732,7 @@
 
 <div class="container">
 
-  <!-- ================================
-       TOP NAVIGATION
-  ================================= -->
+  <!-- TOP NAVIGATION -->
 
   <div class="top-navigation">
 
@@ -768,9 +747,7 @@
   </div>
 
 
-  <!-- ================================
-       HEADER
-  ================================= -->
+  <!-- HEADER -->
 
   <div class="header">
 
@@ -783,9 +760,7 @@
   </div>
 
 
-  <!-- ================================
-       MAIN NAVIGATION
-  ================================= -->
+  <!-- MAIN NAVIGATION -->
 
   <div class="main-nav">
 
@@ -824,17 +799,14 @@
 
   <div class="lesson-grid">
 
-
-    <!-- ==================================================
-         MAIN CONTENT
-    ================================================== -->
+    <!-- MAIN CONTENT -->
 
     <div class="main-content">
 
 
-      <!-- ==================================================
+      <!-- ==========================================
            2. REGELMÄSSIGE VERBEN
-      ================================================== -->
+      =========================================== -->
 
       <div id="regel" class="tab-content active">
 
@@ -869,17 +841,15 @@
         <div class="section-content open">
 
 
-          <!-- ================================
-               IMAGE 1
-               REGELMÄSSIGE VERBEN
-          ================================= -->
+          <!-- IMAGE 1 -->
 
           <div class="lesson-image-box">
 
             <img
-              src="./Image/lektion4-regelmaessige-verben.jpg"
+              src="Image/lektion4-regelmaessige-verben.jpg"
               alt="Regelmäßige Verben"
               loading="lazy"
+              onerror="imageError(this)"
             >
 
           </div>
@@ -888,13 +858,11 @@
           <table class="grammar-table">
 
             <thead>
-
               <tr>
                 <th>Person</th>
                 <th>machen</th>
                 <th>Audio</th>
               </tr>
-
             </thead>
 
             <tbody>
@@ -902,94 +870,65 @@
               <tr>
                 <td>ich</td>
                 <td>mach<strong>e</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('mache')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
-
 
               <tr>
                 <td>du</td>
                 <td>mach<strong>st</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('machst')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
-
 
               <tr>
                 <td>er / sie / es</td>
                 <td>mach<strong>t</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('macht')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
-
 
               <tr>
                 <td>wir</td>
                 <td>mach<strong>en</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('machen')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
-
 
               <tr>
                 <td>ihr</td>
                 <td>mach<strong>t</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('macht')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
 
-
               <tr>
                 <td>sie / Sie</td>
                 <td>mach<strong>en</strong></td>
-
                 <td>
-                  <button
-                    class="play-btn"
+                  <button class="play-btn"
                     onclick="playAudio('machen')">
-
                     <span class="play-triangle"></span>
-
                   </button>
                 </td>
               </tr>
@@ -1008,15 +947,8 @@
           onclick="toggleSection(this)">
 
           <span class="toggle-left">
-
-            <span class="toggle-arrow">
-              ▶
-            </span>
-
-            <span>
-              Beispiele
-            </span>
-
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele</span>
           </span>
 
         </button>
@@ -1026,11 +958,9 @@
 
           <div class="example-list">
 
-
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Ich <strong>mache</strong> Hausaufgaben.
                 </div>
@@ -1038,15 +968,11 @@
                 <div class="ex-fr">
                   Je fais mes devoirs.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Ich mache Hausaufgaben')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1055,7 +981,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Wir <strong>lernen</strong> Deutsch.
                 </div>
@@ -1063,15 +988,11 @@
                 <div class="ex-fr">
                   Nous apprenons l'allemand.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Wir lernen Deutsch')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1080,7 +1001,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Sie <strong>arbeiten</strong> heute.
                 </div>
@@ -1088,15 +1008,11 @@
                 <div class="ex-fr">
                   Ils travaillent aujourd'hui.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Sie arbeiten heute')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1108,9 +1024,9 @@
       </div>
 
 
-      <!-- ==================================================
+      <!-- ==========================================
            3. UNREGELMÄSSIGE VERBEN
-      ================================================== -->
+      =========================================== -->
 
       <div id="unregel" class="tab-content">
 
@@ -1128,15 +1044,8 @@
           onclick="toggleSection(this)">
 
           <span class="toggle-left">
-
-            <span class="toggle-arrow">
-              ▶
-            </span>
-
-            <span>
-              Unregelmäßige Verben
-            </span>
-
+            <span class="toggle-arrow">▶</span>
+            <span>Unregelmäßige Verben</span>
           </span>
 
         </button>
@@ -1145,17 +1054,15 @@
         <div class="section-content open">
 
 
-          <!-- ================================
-               IMAGE 2
-               UNREGELMÄSSIGE VERBEN
-          ================================= -->
+          <!-- IMAGE 2 -->
 
           <div class="lesson-image-box">
 
             <img
-              src="./Image/lektion4-unregelmaessige-verben.jpg"
+              src="Image/lektion4-unregelmaessige-verben.jpg"
               alt="Unregelmäßige Verben"
               loading="lazy"
+              onerror="imageError(this)"
             >
 
           </div>
@@ -1164,13 +1071,11 @@
           <table class="grammar-table">
 
             <thead>
-
               <tr>
                 <th>Person</th>
                 <th>fahren</th>
                 <th>lesen</th>
               </tr>
-
             </thead>
 
             <tbody>
@@ -1225,15 +1130,8 @@
           onclick="toggleSection(this)">
 
           <span class="toggle-left">
-
-            <span class="toggle-arrow">
-              ▶
-            </span>
-
-            <span>
-              Beispiele
-            </span>
-
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele</span>
           </span>
 
         </button>
@@ -1243,11 +1141,9 @@
 
           <div class="example-list">
 
-
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Du <strong>fährst</strong> nach Berlin.
                 </div>
@@ -1255,15 +1151,11 @@
                 <div class="ex-fr">
                   Tu vas à Berlin.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Du fährst nach Berlin')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1272,7 +1164,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Er <strong>liest</strong> ein Buch.
                 </div>
@@ -1280,15 +1171,11 @@
                 <div class="ex-fr">
                   Il lit un livre.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Er liest ein Buch')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1297,7 +1184,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Du <strong>isst</strong> eine Pizza.
                 </div>
@@ -1305,15 +1191,11 @@
                 <div class="ex-fr">
                   Tu manges une pizza.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Du isst eine Pizza')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1322,7 +1204,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Du <strong>sprichst</strong> Deutsch.
                 </div>
@@ -1330,15 +1211,11 @@
                 <div class="ex-fr">
                   Tu parles allemand.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Du sprichst Deutsch')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1350,9 +1227,9 @@
       </div>
 
 
-      <!-- ==================================================
+      <!-- ==========================================
            4. MODALVERBEN
-      ================================================== -->
+      =========================================== -->
 
       <div id="modal" class="tab-content">
 
@@ -1370,15 +1247,8 @@
           onclick="toggleSection(this)">
 
           <span class="toggle-left">
-
-            <span class="toggle-arrow">
-              ▶
-            </span>
-
-            <span>
-              Modalverben
-            </span>
-
+            <span class="toggle-arrow">▶</span>
+            <span>Modalverben</span>
           </span>
 
         </button>
@@ -1387,17 +1257,15 @@
         <div class="section-content open">
 
 
-          <!-- ================================
-               IMAGE 3
-               MODALVERBEN
-          ================================= -->
+          <!-- IMAGE 3 -->
 
           <div class="lesson-image-box">
 
             <img
-              src="./Image/lektion4-modalverben.jpg"
+              src="Image/lektion4-modalverben.jpg"
               alt="Modalverben"
               loading="lazy"
+              onerror="imageError(this)"
             >
 
           </div>
@@ -1406,12 +1274,10 @@
           <table class="grammar-table">
 
             <thead>
-
               <tr>
                 <th>Modalverb</th>
                 <th>Bedeutung</th>
               </tr>
-
             </thead>
 
             <tbody>
@@ -1460,15 +1326,8 @@
           onclick="toggleSection(this)">
 
           <span class="toggle-left">
-
-            <span class="toggle-arrow">
-              ▶
-            </span>
-
-            <span>
-              Beispiele
-            </span>
-
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele</span>
           </span>
 
         </button>
@@ -1478,11 +1337,9 @@
 
           <div class="example-list">
 
-
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Ich <strong>kann</strong> Deutsch sprechen.
                 </div>
@@ -1490,15 +1347,11 @@
                 <div class="ex-fr">
                   Je peux parler allemand.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Ich kann Deutsch sprechen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1507,7 +1360,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Ich <strong>muss</strong> heute lernen.
                 </div>
@@ -1515,15 +1367,11 @@
                 <div class="ex-fr">
                   Je dois étudier aujourd'hui.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Ich muss heute lernen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1532,7 +1380,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Du <strong>darfst</strong> hier sitzen.
                 </div>
@@ -1540,15 +1387,11 @@
                 <div class="ex-fr">
                   Tu as le droit de t'asseoir ici.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Du darfst hier sitzen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1557,7 +1400,6 @@
             <div class="example-card">
 
               <div>
-
                 <div class="ex-de">
                   Wir <strong>wollen</strong> Deutsch lernen.
                 </div>
@@ -1565,15 +1407,11 @@
                 <div class="ex-fr">
                   Nous voulons apprendre l'allemand.
                 </div>
-
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('Wir wollen Deutsch lernen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </div>
@@ -1585,9 +1423,9 @@
       </div>
 
 
-      <!-- ==================================================
+      <!-- ==========================================
            5. ZUSAMMENFASSUNG
-      ================================================== -->
+      =========================================== -->
 
       <div id="summary" class="tab-content">
 
@@ -1603,13 +1441,11 @@
         <table class="grammar-table">
 
           <thead>
-
             <tr>
               <th>Verbtyp</th>
               <th>Stamm</th>
               <th>Besonderheit</th>
             </tr>
-
           </thead>
 
           <tbody>
@@ -1646,11 +1482,9 @@
 
         <div class="example-list">
 
-
           <div class="example-card">
 
             <div>
-
               <div class="ex-de">
                 Ich <strong>lerne</strong> Deutsch.
               </div>
@@ -1658,15 +1492,11 @@
               <div class="ex-fr">
                 Regelmäßig
               </div>
-
             </div>
 
-            <button
-              class="play-btn"
+            <button class="play-btn"
               onclick="playAudio('Ich lerne Deutsch')">
-
               <span class="play-triangle"></span>
-
             </button>
 
           </div>
@@ -1675,7 +1505,6 @@
           <div class="example-card">
 
             <div>
-
               <div class="ex-de">
                 Du <strong>fährst</strong> nach Hause.
               </div>
@@ -1683,15 +1512,11 @@
               <div class="ex-fr">
                 Unregelmäßig
               </div>
-
             </div>
 
-            <button
-              class="play-btn"
+            <button class="play-btn"
               onclick="playAudio('Du fährst nach Hause')">
-
               <span class="play-triangle"></span>
-
             </button>
 
           </div>
@@ -1700,7 +1525,6 @@
           <div class="example-card">
 
             <div>
-
               <div class="ex-de">
                 Ich <strong>kann</strong> Deutsch sprechen.
               </div>
@@ -1708,15 +1532,11 @@
               <div class="ex-fr">
                 Modalverb + Infinitiv
               </div>
-
             </div>
 
-            <button
-              class="play-btn"
+            <button class="play-btn"
               onclick="playAudio('Ich kann Deutsch sprechen')">
-
               <span class="play-triangle"></span>
-
             </button>
 
           </div>
@@ -1726,9 +1546,9 @@
       </div>
 
 
-      <!-- ==================================================
+      <!-- ==========================================
            6. ÜBUNG
-      ================================================== -->
+      =========================================== -->
 
       <div id="uebung" class="tab-content">
 
@@ -1743,16 +1563,13 @@
 
         <div class="pdf-list">
 
-
-          <!-- PDF 1 -->
-
           <a
             href="lektion4-uebung-regelmaessige-verben.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="pdf-card">
 
-            <div class="pdf-icon type-pdf">
+            <div class="pdf-icon">
               PDF
             </div>
 
@@ -1775,15 +1592,13 @@
           </a>
 
 
-          <!-- PDF 2 -->
-
           <a
             href="Unregelmaessige_Verben_Uebung.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="pdf-card">
 
-            <div class="pdf-icon type-pdf">
+            <div class="pdf-icon">
               PDF
             </div>
 
@@ -1806,15 +1621,13 @@
           </a>
 
 
-          <!-- PDF 3 -->
-
           <a
             href="Modalverben_Uebungen.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="pdf-card">
 
-            <div class="pdf-icon type-pdf">
+            <div class="pdf-icon">
               PDF
             </div>
 
@@ -1843,28 +1656,25 @@
     </div>
 
 
-    <!-- ==================================================
+    <!-- ==========================================
          SIDE PANEL
-    ================================================== -->
+    =========================================== -->
 
     <div class="side-panel">
 
 
-      <!-- REGELMÄSSIG -->
+      <!-- REGEL -->
 
       <div id="side-regel" class="side-content active">
 
         <div class="merkhilfe">
 
-          <h3>
-            💡 Merkhilfe
-          </h3>
+          <h3>💡 Merkhilfe</h3>
 
           <p>
             Der Verbstamm bleibt
             <strong>immer gleich</strong>.
           </p>
-
 
           <div class="merk-beispiel">
 
@@ -1912,12 +1722,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('lernen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -1937,12 +1744,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('arbeiten')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -1962,12 +1766,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('wohnen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -1987,12 +1788,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('machen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2004,22 +1802,19 @@
       </div>
 
 
-      <!-- UNREGELMÄSSIG -->
+      <!-- UNREGEL -->
 
       <div id="side-unregel" class="side-content">
 
         <div class="merkhilfe">
 
-          <h3>
-            💡 Merkhilfe
-          </h3>
+          <h3>💡 Merkhilfe</h3>
 
           <p>
             Achtung beim
             <strong>Vokalwechsel</strong>
             bei du und er/sie/es.
           </p>
-
 
           <div class="merk-beispiel">
 
@@ -2067,12 +1862,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('fahren')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2092,12 +1884,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('lesen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2117,12 +1906,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('essen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2142,12 +1928,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('sprechen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2159,15 +1942,13 @@
       </div>
 
 
-      <!-- MODALVERBEN -->
+      <!-- MODAL -->
 
       <div id="side-modal" class="side-content">
 
         <div class="merkhilfe">
 
-          <h3>
-            ⭐ Goldene Regel
-          </h3>
+          <h3>⭐ Goldene Regel</h3>
 
           <p>
             Das konjugierte
@@ -2180,7 +1961,6 @@
             <strong>Infinitiv</strong>
             steht am Satzende.
           </p>
-
 
           <div class="merk-beispiel">
 
@@ -2206,7 +1986,6 @@
 
           <ul class="verb-list">
 
-
             <li>
 
               <div class="verb-text">
@@ -2221,12 +2000,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('können')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2246,12 +2022,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('müssen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2271,12 +2044,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('wollen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2296,12 +2066,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('sollen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2321,12 +2088,9 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('dürfen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
@@ -2346,16 +2110,12 @@
 
               </div>
 
-              <button
-                class="play-btn"
+              <button class="play-btn"
                 onclick="playAudio('mögen')">
-
                 <span class="play-triangle"></span>
-
               </button>
 
             </li>
-
 
           </ul>
 
@@ -2370,9 +2130,7 @@
 
         <div class="merkhilfe">
 
-          <h3>
-            💡 Wichtig
-          </h3>
+          <h3>💡 Wichtig</h3>
 
           <p>
             Das konjugierte Verb steht normalerweise auf
@@ -2395,9 +2153,7 @@
 
         <div class="merkhilfe">
 
-          <h3>
-            🎯 Tipp
-          </h3>
+          <h3>🎯 Tipp</h3>
 
           <p>
             Lies zuerst die Aufgabe genau durch.
@@ -2407,7 +2163,6 @@
             Achte auf:
             <strong>Person + Verbform</strong>.
           </p>
-
 
           <div class="merk-beispiel">
 
@@ -2434,9 +2189,7 @@
   </div>
 
 
-  <!-- ================================
-       FOOTER
-  ================================= -->
+  <!-- FOOTER -->
 
   <div class="footer-back">
 
@@ -2449,12 +2202,7 @@
 </div>
 
 
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
-
 <script>
-
 
 /* ================================
    TAB SWITCH
@@ -2466,13 +2214,11 @@ function switchTab(caseName, button) {
     window.speechSynthesis.cancel();
   }
 
-
   document
     .querySelectorAll('.tab-content')
     .forEach(tab => {
       tab.classList.remove('active');
     });
-
 
   document
     .querySelectorAll('.side-content')
@@ -2480,43 +2226,34 @@ function switchTab(caseName, button) {
       side.classList.remove('active');
     });
 
-
   document
     .querySelectorAll('.nav-btn')
     .forEach(btn => {
       btn.classList.remove('active');
     });
 
-
   let themePrefix = caseName.substring(0,3);
-
 
   if (caseName === 'uebung') {
     themePrefix = 'ueb';
   }
 
-
   if (caseName === 'summary') {
     themePrefix = 'sum';
   }
 
-
   document.body.className =
     'page active theme-' + themePrefix;
-
 
   document
     .getElementById(caseName)
     .classList.add('active');
 
-
   document
     .getElementById('side-' + caseName)
     .classList.add('active');
 
-
   button.classList.add('active');
-
 }
 
 
@@ -2529,10 +2266,8 @@ function toggleSection(button) {
   const content =
     button.nextElementSibling;
 
-
   const isOpen =
     content.classList.contains('open');
-
 
   if (isOpen) {
 
@@ -2561,15 +2296,12 @@ function playAudio(text) {
 
     window.speechSynthesis.cancel();
 
-
     const utterance =
       new SpeechSynthesisUtterance(text);
-
 
     utterance.lang = 'de-DE';
 
     utterance.rate = .88;
-
 
     window.speechSynthesis.speak(
       utterance
@@ -2585,8 +2317,35 @@ function playAudio(text) {
 
 }
 
-</script>
 
+/* ================================
+   IMAGE ERROR
+================================ */
+
+function imageError(img) {
+
+  const box = img.parentElement;
+
+  img.style.display = 'none';
+
+  box.innerHTML = `
+    <div style="
+      padding:30px;
+      text-align:center;
+      font-weight:800;
+      color:#64748b;
+    ">
+      🖼️ Bild konnte nicht geladen werden.
+      <br>
+      <small>
+        Bitte den Dateinamen und den Ordner „Image“ prüfen.
+      </small>
+    </div>
+  `;
+
+}
+
+</script>
 
 </body>
 </html>
