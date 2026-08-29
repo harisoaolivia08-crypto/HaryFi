@@ -132,6 +132,30 @@ body {
   color: #542900;
 }
 
+.start-btn {
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: var(--intro-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+  background: #1d4ed8;
+}
+
 
 /* ==================================================
    MAIN NAVIGATION
@@ -566,11 +590,22 @@ body {
   padding: 4px 2px 5px;
 }
 
+.merkhilfe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .merkhilfe h3 {
   color: #111827;
-  margin-top: 0;
-  margin-bottom: 8px;
+  margin: 0;
   font-size: 1.2rem;
+}
+
+.merkhilfe-btn {
+  padding: 6px 12px;
+  font-size: .8rem;
 }
 
 .merkhilfe p {
@@ -923,7 +958,13 @@ a:focus-visible {
      HEADER
 ================================================== --><div class="header">  <h1>Verben</h1>  <p>
     Regelmäßige Verben · Unregelmäßige Verben · Modalverben
-  </p></div><!-- ==================================================
+  </p>
+  
+  <button class="start-btn" onclick="playAudio('Verben')">
+    Starten ▶
+  </button>
+  
+</div><!-- ==================================================
      MAIN NAVIGATION
 ================================================== --><div class="main-nav"><button
 class="nav-btn btn-reg active"
@@ -2037,9 +2078,13 @@ data-audio="Beispiele">
      SIDE PANEL
 ================================================== --><div class="side-panel"><!-- ==================================================
      REGELMÄSSIG
-================================================== --><div id="side-regel" class="side-content active">  <div class="merkhilfe"><h3>
-  💡 Merkhilfe
-</h3>
+================================================== --><div id="side-regel" class="side-content active">  <div class="merkhilfe">
+    <div class="merkhilfe-header">
+      <h3>💡 Merkhilfe</h3>
+      <button class="play-btn merkhilfe-btn" onclick="playAudio('Der Verbstamm bleibt immer gleich.')">
+        <span class="play-triangle"></span>
+      </button>
+    </div>
 
 <p>
   Der Verbstamm bleibt
@@ -2177,9 +2222,13 @@ data-audio="Beispiele">
 
   </div></div><!-- ==================================================
      UNREGELMÄSSIG
-================================================== --><div id="side-unregel" class="side-content">  <div class="merkhilfe"><h3>
-  💡 Merkhilfe
-</h3>
+================================================== --><div id="side-unregel" class="side-content">  <div class="merkhilfe">
+    <div class="merkhilfe-header">
+      <h3>💡 Merkhilfe</h3>
+      <button class="play-btn merkhilfe-btn" onclick="playAudio('Achtung beim Vokalwechsel bei du und er, sie, es.')">
+        <span class="play-triangle"></span>
+      </button>
+    </div>
 
 <p>
   Achtung beim
@@ -2318,9 +2367,13 @@ data-audio="Beispiele">
 
   </div></div><!-- ==================================================
      MODALVERBEN
-================================================== --><div id="side-modal" class="side-content">  <div class="merkhilfe"><h3>
-  ⭐ Goldene Regel
-</h3>
+================================================== --><div id="side-modal" class="side-content">  <div class="merkhilfe">
+    <div class="merkhilfe-header">
+      <h3>⭐ Goldene Regel</h3>
+      <button class="play-btn merkhilfe-btn" onclick="playAudio('Das konjugierte Modalverb steht auf Position 2. Der Infinitiv steht am Satzende.')">
+        <span class="play-triangle"></span>
+      </button>
+    </div>
 
 <p>
   Das konjugierte
@@ -2507,9 +2560,13 @@ data-audio="Beispiele">
 
   </div></div><!-- ==================================================
      SUMMARY SIDE
-================================================== --><div id="side-summary" class="side-content">  <div class="merkhilfe"><h3>
-  💡 Wichtig
-</h3>
+================================================== --><div id="side-summary" class="side-content">  <div class="merkhilfe">
+    <div class="merkhilfe-header">
+      <h3>💡 Wichtig</h3>
+      <button class="play-btn merkhilfe-btn" onclick="playAudio('Das konjugierte Verb steht normalerweise auf Position 2. Bei Modalverben steht der Infinitiv am Ende.')">
+        <span class="play-triangle"></span>
+      </button>
+    </div>
 
 <p>
   Das konjugierte Verb steht normalerweise auf
@@ -2523,9 +2580,13 @@ data-audio="Beispiele">
 
   </div></div><!-- ==================================================
      ÜBUNG SIDE
-================================================== --><div id="side-uebung" class="side-content">  <div class="merkhilfe"><h3>
-  🎯 Tipp
-</h3>
+================================================== --><div id="side-uebung" class="side-content">  <div class="merkhilfe">
+    <div class="merkhilfe-header">
+      <h3>🎯 Tipp</h3>
+      <button class="play-btn merkhilfe-btn" onclick="playAudio('Lies zuerst die Aufgabe genau durch. Achte auf Person und Verbform.')">
+        <span class="play-triangle"></span>
+      </button>
+    </div>
 
 <p>
   Lies zuerst die Aufgabe genau durch.
@@ -2637,7 +2698,7 @@ function switchTab(caseName, button) {
   });
   
   
-  // --- NOUVELLE LOGIQUE D'OUVERTURE ET D'AUDIO AUTOMATIQUE ---
+  // --- LOGIQUE D'OUVERTURE ET D'AUDIO AUTOMATIQUE ---
   // Si on change vers un autre onglet que "Regelmäßige Verben"
   if (caseName !== 'regel' && selectedTab) {
     const firstToggle = selectedTab.querySelector('.section-toggle');
