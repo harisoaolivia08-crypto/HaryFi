@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HaryFi – Grammatik | Nominativ, Akkusativ & Dativ</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet"><style>
+
+/* ==================================================
+   HARYFI – GRAMMATIK: NOMINATIV, AKKUSATIV & DATIV
+================================================== */
+
+:root {
+  --intro-color: #2563eb;
+  --nom-color: #15803D;
+  --akk-color: #2563EB;
+  --dat-color: #7C3AED;
+  --sum-color: #d97706;
+  --uebung-color: #4f46e5;
+
+  --nom-grad:
+    linear-gradient(135deg, #34d399, #10b981, #047857);
+
+  --akk-grad:
+    linear-gradient(135deg, #60a5fa, #2563eb, #1d4ed8);
+
+  --dat-grad:
+    linear-gradient(135deg, #a78bfa, #7c3aed, #6d28d9);
+
+  --sum-grad:
+    linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+
+  --uebung-grad:
+    linear-gradient(135deg, #6366f1, #4f46e5, #4338ca);
+}
+
+
+/* ==================================================
+   GLOBAL
+================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: #F5EBE0;
+  color: #2B1810;
+  line-height: 1.5;
+}
+
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: auto;
+  padding: 24px 16px 60px;
+}
+
+
+/* ==================================================
+   TOP NAVIGATION
+================================================== */
+
+.top-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  text-decoration: none;
+  color: #111827;
+  background: rgba(255,255,255,.78);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: .9rem;
+  font-weight: 900;
+  border: 1px solid rgba(255,255,255,.7);
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  transition: .25s;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+}
+
+.course-label {
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: .9rem;
+  font-weight: 900;
+  background: rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.5);
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
+  text-align: center;
+  background: rgba(255,255,255,.22);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 28px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+
+.header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem,5vw,3.2rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.header p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #542900;
+}
+
+.start-btn {
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: var(--intro-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+  background: #1d4ed8;
+}
+
+
+/* ==================================================
+   MAIN NAVIGATION
+================================================== */
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  border: 2px solid rgba(255,255,255,.8);
+  padding: 13px 19px;
+  font-size: .92rem;
+  font-weight: 900;
+  border-radius: 16px;
+  cursor: pointer;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 7px 18px rgba(0,0,0,.12);
+  transition: .25s;
+}
+
+.nav-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.nav-btn.active {
+  color: white;
+  border-color: white;
+}
+
+.nav-btn.btn-nom {
+  color: var(--nom-color);
+}
+.nav-btn.btn-nom.active {
+  background: var(--nom-grad);
+}
+
+.nav-btn.btn-akk {
+  color: var(--akk-color);
+}
+.nav-btn.btn-akk.active {
+  background: var(--akk-grad);
+}
+
+.nav-btn.btn-dat {
+  color: var(--dat-color);
+}
+.nav-btn.btn-dat.active {
+  background: var(--dat-grad);
+}
+
+.nav-btn.btn-sum {
+  color: var(--sum-color);
+}
+.nav-btn.btn-sum.active {
+  background: var(--sum-grad);
+}
+
+.nav-btn.btn-ueb {
+  color: var(--uebung-color);
+}
+.nav-btn.btn-ueb.active {
+  background: var(--uebung-grad);
+}
+
+
+/* ==================================================
+   GRID
+================================================== */
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: minmax(0,2.2fr) minmax(260px,1fr);
+  gap: 20px;
+}
+
+.main-content,
+.side-panel {
+  background: rgba(255,255,255,.22);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.45);
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+}
+
+.main-content {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.tab-content,
+.side-content {
+  display: none;
+}
+
+.tab-content.active,
+.side-content.active {
+  display: block;
+}
+
+
+/* ==================================================
+   TITLES
+================================================== */
+
+.case-title {
+  margin: 0 0 6px;
+  font-size: clamp(1.75rem,4vw,2.35rem);
+  font-weight: 900;
+  letter-spacing: -.7px;
+}
+
+.theme-nom .case-title { color: var(--nom-color); }
+.theme-akk .case-title { color: var(--akk-color); }
+.theme-dat .case-title { color: var(--dat-color); }
+.theme-sum .case-title { color: var(--sum-color); }
+.theme-ueb .case-title { color: var(--uebung-color); }
+
+.fr-sub {
+  display: block;
+  font-size: .9rem;
+  color: #542900;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+
+/* ==================================================
+   IMAGES
+================================================== */
+
+.lesson-image-box {
+  width: calc(100% + 30px);
+  margin: 22px -15px 28px;
+  text-align: center;
+  overflow: visible;
+}
+
+.lesson-image-box img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 260px;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  border-radius: 22px;
+  border: 2px solid rgba(255,255,255,.9);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.lesson-image-box img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.20);
+}
+
+
+/* ==================================================
+   IMAGE ERROR
+================================================== */
+
+.image-error {
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 25px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.95);
+  border: 2px dashed #ef4444;
+  color: #991b1b;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.image-error strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+
+/* ==================================================
+   ACCORDION
+================================================== */
+
+.section-toggle {
+  width: 100%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 18px;
+  margin: 20px 0 10px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.48);
+  border: 1px solid rgba(255,255,255,.65);
+  color: #111827;
+  font-family: inherit;
+  font-size: 1.08rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  transition: .25s;
+}
+
+.section-toggle:hover {
+  background: rgba(255,255,255,.7);
+  transform: translateY(-2px);
+}
+
+.toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-arrow {
+  width: 27px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,.7);
+  transition: .25s;
+}
+
+.section-toggle.open .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.section-content {
+  display: none;
+  animation: sectionOpen .25s ease;
+}
+
+.section-content.open {
+  display: block;
+}
+
+@keyframes sectionOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==================================================
+   TABLES
+================================================== */
+
+.grammar-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  margin: 14px 0 24px;
+  box-shadow: 0 5px 16px rgba(0,0,0,.07);
+}
+
+.grammar-table th,
+.grammar-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: .9rem;
+}
+
+.grammar-table tr {
+  background: rgba(255,255,255,.92);
+}
+
+.grammar-table tr:nth-child(even) {
+  background: rgba(248,250,252,.92);
+}
+
+.theme-nom .grammar-table th { background: #d1fae5; color: var(--nom-color); }
+.theme-akk .grammar-table th { background: #dbeafe; color: var(--akk-color); }
+.theme-dat .grammar-table th { background: #ede9fe; color: var(--dat-color); }
+.theme-sum .grammar-table th { background: #fef3c7; color: var(--sum-color); }
+.theme-ueb .grammar-table th { background: #e0e7ff; color: var(--uebung-color); }
+
+
+/* ==================================================
+   EXAMPLES
+================================================== */
+
+.example-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.example-card {
+  background: rgba(255,255,255,.92);
+  padding: 14px 15px;
+  border-radius: 15px;
+  border-left: 6px solid #cbd5e1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.theme-nom .example-card { border-left-color: var(--nom-color); }
+.theme-akk .example-card { border-left-color: var(--akk-color); }
+.theme-dat .example-card { border-left-color: var(--dat-color); }
+.theme-sum .example-card { border-left-color: var(--sum-color); }
+.theme-ueb .example-card { border-left-color: var(--uebung-color); }
+
+.ex-de {
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.ex-fr {
+  font-size: .84rem;
+  color: #64748b;
+  margin-top: 3px;
+  font-weight: 600;
+}
+
+.question {
+  display: inline-block;
+  padding: .35rem .7rem;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: .3rem 0;
+}
+.nom-question { background: #BBF7D0; color: #166534; }
+.akk-question { background: #BFDBFE; color: #1D4ED8; }
+.dat-question { background: #DDD6FE; color: #6D28D9; }
+
+.nom-word { color: #15803D; font-weight: bold; }
+.akk-word { color: #2563EB; font-weight: bold; }
+.dat-word { color: #7C3AED; font-weight: bold; }
+
+.exercise-box {
+  background: rgba(255,255,255,.85);
+  padding: 16px;
+  border-radius: 16px;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+
+.exercise-item {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 260px;
+  padding: .5rem;
+  margin-top: .3rem;
+  border: 1px solid #C4A482;
+  border-radius: 6px;
+  background: #FFF8F0;
+  font-family: inherit;
+}
+
+
+/* ==================================================
+   AUDIO
+================================================== */
+
+.play-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #ff7a00;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 12px rgba(0,0,0,.18);
+  transition: .2s;
+  flex-shrink: 0;
+}
+
+.play-btn:hover {
+  transform: scale(1.12);
+  background: #ff5a00;
+}
+
+.play-triangle {
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid white;
+  margin-left: 3px;
+}
+
+
+/* ==================================================
+   SIDE PANEL
+================================================== */
+
+.side-panel {
+  height: max-content;
+  position: sticky;
+  top: 15px;
+}
+
+.merkhilfe {
+  padding: 4px 2px 5px;
+}
+
+.merkhilfe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.merkhilfe h3 {
+  color: #111827;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.merkhilfe-btn {
+  padding: 6px 12px;
+  font-size: .8rem;
+}
+
+.merkhilfe p {
+  margin: 6px 0;
+  font-size: .87rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.merk-beispiel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.merk-word {
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.6);
+  font-weight: 900;
+  font-size: .85rem;
+}
+
+
+/* ==================================================
+   IMPORTANT VERBS (HEART CARD)
+================================================== */
+
+.heart-card {
+  padding: 4px 2px;
+  margin-top: 14px;
+}
+
+.heart-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #be123c;
+  margin: 0 0 4px;
+}
+
+.heart-sub {
+  font-size: .8rem;
+  font-weight: 700;
+  color: #9f1239;
+}
+
+.verb-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.verb-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 0;
+  border-bottom: 1px dashed rgba(190,24,93,.3);
+}
+
+.verb-text {
+  flex: 1;
+}
+
+.verb-de {
+  display: block;
+  font-weight: 900;
+  color: #881337;
+  font-size: .9rem;
+}
+
+.verb-fr {
+  display: block;
+  font-size: .77rem;
+  color: #9f1239;
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+/* ==================================================
+   QUELLEN
+================================================== */
+
+.quellen-box {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(255,255,255,.8);
+  box-shadow: 0 7px 20px rgba(0,0,0,.07);
+}
+
+.quellen-box h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #111827;
+}
+
+.quellen-box p {
+  margin: 6px 0;
+  font-size: .82rem;
+  line-height: 1.6;
+  color: #475569;
+  font-weight: 600;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer-back {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.footer-back a {
+  text-decoration: none;
+  background: #111;
+  color: #ffc400;
+  padding: 14px 28px;
+  border-radius: 18px;
+  font-weight: 900;
+  box-shadow: 0 10px 25px rgba(0,0,0,.2);
+  transition: transform .3s ease;
+}
+
+.footer-back a:hover {
+  transform: scale(1.05);
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media(max-width:900px) {
+  .lesson-grid {
+    grid-template-columns: 1fr;
+  }
+  .side-panel {
+    position: static;
+  }
+}
+
+@media(max-width:600px) {
+  .container {
+    padding: 14px 10px 40px;
+  }
+  .top-navigation {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .back-button,
+  .course-label {
+    text-align: center;
+  }
+  .header {
+    padding: 19px 14px;
+    border-radius: 22px;
+  }
+  .main-content,
+  .side-panel {
+    padding: 17px;
+    border-radius: 21px;
+  }
+  .nav-btn {
+    width: 100%;
+  }
+  .grammar-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .section-toggle {
+    padding: 14px;
+    font-size: 1rem;
+  }
+  .lesson-image-box {
+    width: calc(100% + 34px);
+    margin-left: -17px;
+    margin-right: -17px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+  .lesson-image-box img {
+    width: 100%;
+    min-height: 200px;
+    max-height: 380px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  .image-error {
+    border-radius: 18px;
+  }
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+</style></head>
+<body class="page active theme-nom"><div class="container">
+
+<!-- ================= TOP NAVIGATION ================= -->
+<div class="top-navigation">  
+  <a href="index.html#a1" class="back-button">← A1/A2 Lektionen</a>  
+  <div class="course-label">🇩🇪 Deutschkurs · Grammatik</div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<div class="header">  
+  <h1>Nominativ, Akkusativ & Dativ</h1>  
+  <p>Die drei wichtigsten Kasus in der deutschen Grammatik</p>
+  <button class="start-btn" onclick="playAudio('Nominativ, Akkusativ und Dativ')">
+    Starten ▶
+  </button>
+</div>
+
+<!-- ================= MAIN NAVIGATION ================= -->
+<div class="main-nav">
+  <button class="nav-btn btn-nom active" onclick="switchTab('nominativ',this)">1. Nominativ</button>
+  <button class="nav-btn btn-akk" onclick="switchTab('akkusativ',this)">2. Akkusativ</button>
+  <button class="nav-btn btn-dat" onclick="switchTab('dativ',this)">3. Dativ</button>
+  <button class="nav-btn btn-sum" onclick="switchTab('summary',this)">📊 Zusammenfassung</button>
+  <button class="nav-btn btn-ueb" onclick="switchTab('uebung',this)">✏️ Übungen</button>
+</div>
+
+<div class="lesson-grid">
+<!-- ================= MAIN CONTENT ================= -->
+<div class="main-content">
+
+  <!-- ================= 1. NOMINATIV ================= -->
+  <div id="nominativ" class="tab-content active">  
+    <h2 class="case-title">1. Nominativ</h2>  
+    <span class="fr-sub">Wer oder was? Das Subjekt im Satz.</span>
+    
+    <!-- Erklärung -->
+    <button class="section-toggle open" onclick="toggleSection(this)" data-audio="Erklärung Nominativ">
+      <span class="toggle-left">
+        <span class="toggle-arrow">▶</span>
+        <span>Erklärung</span>
+      </span>
+    </button>  
+    <div class="section-content open">
+      
+      <div class="lesson-image-box">
+        <img src="./Image/nominativ.jpg" alt="Nominativ" loading="lazy" onerror="showImageError(this,'nominativ.jpg')">
+        <div class="image-error">
+          <strong>⚠️ Bild konnte nicht geladen werden.</strong>
+          Bitte prüfen, ob die Datei <strong>nominativ.jpg</strong> im Ordner <strong>Image</strong> liegt.
+        </div>
+      </div>
+
+      <p>Der <strong>Nominativ</strong> zeigt meistens, wer oder was etwas macht.</p>
+      <span class="question nom-question">Wer? / Was?</span>
+      <p style="margin-top:10px;">👉 Der Nominativ ist meistens das <strong>Subjekt</strong> im Satz.</p>
+    </div>
+
+    <!-- Artikel & Tabelle -->
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Artikel Nominativ">
+      <span class="toggle-left">
+        <span class="toggle-arrow">▶</span>
+        <span>Artikel & Tabelle</span>
+      </span>
+    </button>  
+    <div class="section-content">
+      <table class="grammar-table">
+        <thead>
+          <tr>
+            <th>Fall</th>
+            <th>Maskulin</th>
+            <th>Feminin</th>
+            <th>Neutral</th>
+            <th>Plural</th>
+            <th>Audio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nominativ</strong></td>
+            <td>der</td>
+            <td>die</td>
+            <td>das</td>
+            <td>die</td>
+            <td>
+              <button class="play-btn" onclick="playAudio('der die das die')">
+                <span class="play-triangle"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Beispiele -->
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Beispiele Nominativ">
+      <span class="toggle-left">
+        <span class="toggle-arrow">▶</span>
+        <span>Beispiele</span>
+      </span>
+    </button>  
+    <div class="section-content">
+      <div class="example-list">
+        <div class="example-card">
+          <div>
+            <div class="ex-de"><strong>Der Mann</strong> arbeitet.</div>
+            <div class="ex-fr">L'homme travaille.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Der Mann arbeitet')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de"><strong>Die Frau</strong> kocht.</div>
+            <div class="ex-fr">La femme cuisine.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Die Frau kocht')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de"><strong>Das Kind</strong> spielt.</div>
+            <div class="ex-fr">L'enfant joue.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Das Kind spielt')"><span class="play-triangle"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quellen -->  
+    <div class="quellen-box">
+      <h3>📚 Quellen</h3>
+      <p>Erklärungen zum Nominativ für den Deutschunterricht auf A1/A2 Niveau.</p>
+    </div>
+  </div>
+
+
+  <!-- ================= 2. AKKUSATIV ================= -->
+  <div id="akkusativ" class="tab-content">  
+    <h2 class="case-title">2. Akkusativ</h2>  
+    <span class="fr-sub">Wen oder was? Das direkte Objekt.</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)" data-audio="Erklärung Akkusativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Erklärung</span></span>
+    </button>  
+    <div class="section-content open">
+      
+      <div class="lesson-image-box">
+        <img src="./Image/akkusativ.jpg" alt="Akkusativ" loading="lazy" onerror="showImageError(this,'akkusativ.jpg')">
+        <div class="image-error">
+          <strong>⚠️ Bild konnte nicht geladen werden.</strong>
+          Bitte prüfen, ob die Datei <strong>akkusativ.jpg</strong> im Ordner <strong>Image</strong> liegt.
+        </div>
+      </div>
+
+      <p>Der <strong>Akkusativ</strong> zeigt meistens, wen oder was eine Person sieht, kauft, hat usw.</p>
+      <span class="question akk-question">Wen? / Was?</span>
+      <p style="margin-top:10px;">👉 Der Akkusativ ist meistens das <strong>direkte Objekt</strong>.</p>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Artikel Akkusativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Artikel & Tabelle</span></span>
+    </button>  
+    <div class="section-content">
+      <table class="grammar-table">
+        <thead>
+          <tr>
+            <th>Fall</th>
+            <th>Maskulin</th>
+            <th>Feminin</th>
+            <th>Neutral</th>
+            <th>Plural</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nominativ</strong></td>
+            <td>der</td>
+            <td>die</td>
+            <td>das</td>
+            <td>die</td>
+          </tr>
+          <tr>
+            <td><strong>Akkusativ</strong></td>
+            <td><strong>den</strong></td>
+            <td>die</td>
+            <td>das</td>
+            <td>die</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-weight:700; margin-top:10px;">⭐ Wichtig: Maskulin <strong>der → den</strong></p>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Beispiele Akkusativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Beispiele</span></span>
+    </button>  
+    <div class="section-content">
+      <div class="example-list">
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich sehe <span class="akk-word">den Mann</span>.</div>
+            <div class="ex-fr">Je vois l'homme.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich sehe den Mann')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich kaufe <span class="akk-word">die Banane</span>.</div>
+            <div class="ex-fr">J'achète la banane.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich kaufe die Banane')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich habe <span class="akk-word">einen Hund</span>.</div>
+            <div class="ex-fr">J'ai un chien.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich habe einen Hund')"><span class="play-triangle"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quellen-box">
+      <h3>📚 Quellen</h3>
+      <p>Inhalte angepasst an den Standard der deutschen Grammatik.</p>
+    </div>
+  </div>
+
+
+  <!-- ================= 3. DATIV ================= -->
+  <div id="dativ" class="tab-content">  
+    <h2 class="case-title">3. Dativ</h2>  
+    <span class="fr-sub">Wem? Das indirekte Objekt.</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)" data-audio="Erklärung Dativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Erklärung</span></span>
+    </button>  
+    <div class="section-content open">
+      
+      <div class="lesson-image-box">
+        <img src="./Image/dativ.jpg" alt="Dativ" loading="lazy" onerror="showImageError(this,'dativ.jpg')">
+        <div class="image-error">
+          <strong>⚠️ Bild konnte nicht geladen werden.</strong>
+          Bitte prüfen, ob die Datei <strong>dativ.jpg</strong> im Ordner <strong>Image</strong> liegt.
+        </div>
+      </div>
+
+      <p>Der <strong>Dativ</strong> zeigt meistens, wem etwas gegeben, geholfen oder gesagt wird.</p>
+      <span class="question dat-question">Wem?</span>
+      <p style="margin-top:10px;">👉 Der Dativ ist oft das <strong>indirekte Objekt</strong>.</p>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Artikel Dativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Artikel & Tabelle</span></span>
+    </button>  
+    <div class="section-content">
+      <table class="grammar-table">
+        <thead>
+          <tr>
+            <th>Fall</th>
+            <th>Maskulin</th>
+            <th>Feminin</th>
+            <th>Neutral</th>
+            <th>Plural</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Nominativ</strong></td>
+            <td>der</td>
+            <td>die</td>
+            <td>das</td>
+            <td>die</td>
+          </tr>
+          <tr>
+            <td><strong>Dativ</strong></td>
+            <td><strong>dem</strong></td>
+            <td><strong>der</strong></td>
+            <td><strong>dem</strong></td>
+            <td><strong>den</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)" data-audio="Beispiele Dativ">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Beispiele</span></span>
+    </button>  
+    <div class="section-content">
+      <div class="example-list">
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich helfe <span class="dat-word">dem Mann</span>.</div>
+            <div class="ex-fr">J'aide l'homme.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich helfe dem Mann')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich helfe <span class="dat-word">der Frau</span>.</div>
+            <div class="ex-fr">J'aide la femme.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich helfe der Frau')"><span class="play-triangle"></span></button>
+        </div>
+        <div class="example-card">
+          <div>
+            <div class="ex-de">Ich danke <span class="dat-word">meiner Mutter</span>.</div>
+            <div class="ex-fr">Je remercie ma mère.</div>
+          </div>
+          <button class="play-btn" onclick="playAudio('Ich danke meiner Mutter')"><span class="play-triangle"></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quellen-box">
+      <h3>📚 Quellen</h3>
+      <p>Grammatikmaterialien A1/A2.</p>
+    </div>
+  </div>
+
+
+  <!-- ================= 4. ZUSAMMENFASSUNG ================= -->
+  <div id="summary" class="tab-content">  
+    <h2 class="case-title">📊 Zusammenfassung</h2>  
+    <span class="fr-sub">Alle drei Fälle im Vergleich.</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)" data-audio="Zusammenfassung der Fälle">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Alle drei Fälle zusammen</span></span>
+    </button>  
+    <div class="section-content open">
+      <div class="example-card" style="margin-bottom: 15px;">
+        <div>
+          <div class="ex-de">
+            <span class="nom-word">Der Mann</span> gibt <span class="dat-word">dem Kind</span> <span class="akk-word">den Apfel</span>.
+          </div>
+          <div class="ex-fr">L'homme donne la pomme à l'enfant.</div>
+        </div>
+        <button class="play-btn" onclick="playAudio('Der Mann gibt dem Kind den Apfel')"><span class="play-triangle"></span></button>
+      </div>
+      <p style="font-weight:700;">🟢 <strong>Wer gibt?</strong> → Der Mann (Nominativ)</p>
+      <p style="font-weight:700;">🟣 <strong>Wem?</strong> → dem Kind (Dativ)</p>
+      <p style="font-weight:700;">🔵 <strong>Was?</strong> → den Apfel (Akkusativ)</p>
+    </div>
+
+    <div class="quellen-box">
+      <h3>📚 Quellen</h3>
+      <p>Übersicht erstellt für den HaryFi-Kurs.</p>
+    </div>
+  </div>
+
+
+  <!-- ================= 5. ÜBUNG ================= -->
+  <div id="uebung" class="tab-content">  
+    <h2 class="case-title">✏️ Übung macht den Meister!</h2>  
+    <span class="fr-sub">Teste dein Wissen zu Nominativ, Akkusativ und Dativ.</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)" data-audio="Übungen">
+      <span class="toggle-left"><span class="toggle-arrow">▶</span><span>Interaktive Übung</span></span>
+    </button>  
+    <div class="section-content open">
+      <div class="exercise-box">
+        <div class="exercise-item">
+          1. <strong>Der Mann</strong> arbeitet.<br>
+          Fall: <input type="text" placeholder="Nominativ / Akkusativ / Dativ">
+        </div>
+        <div class="exercise-item">
+          2. Ich sehe <strong>den Mann</strong>.<br>
+          Fall: <input type="text" placeholder="Nominativ / Akkusativ / Dativ">
+        </div>
+        <div class="exercise-item">
+          3. Ich helfe <strong>dem Mann</strong>.<br>
+          Fall: <input type="text" placeholder="Nominativ / Akkusativ / Dativ">
+        </div>
+        <div class="exercise-item">
+          4. Ich kaufe <strong>einen Apfel</strong>.<br>
+          Fall: <input type="text" placeholder="Nominativ / Akkusativ / Dativ">
+        </div>
+      </div>
+    </div>
+
+    <div class="quellen-box">
+      <h3>📚 Quellen</h3>
+      <p>Übungsaufgaben konzipiert für das Niveau A1-A2.</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ================= SIDE PANEL ================= -->
+<div class="side-panel">
+
+  <!-- SIDE 1: NOMINATIV -->
+  <div id="side-nominativ" class="side-content active">  
+    <div class="merkhilfe">
+      <div class="merkhilfe-header">
+        <h3>💡 Merkhilfe</h3>
+        <button class="play-btn merkhilfe-btn" onclick="playAudio('Der Nominativ ist das Subjekt im Satz. Frage: Wer oder was?')">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+      <p>Der Nominativ ist immer das <strong>Subjekt</strong>.</p>
+      <div class="merk-beispiel">
+        <div class="merk-word">Wer? / Was?</div>
+        <div class="merk-word">der, die, das</div>
+      </div>
+    </div>  
+    <div class="heart-card">
+      <h3 class="heart-title">❤️ Wichtige Verben</h3>
+      <span class="heart-sub">mit Nominativ</span>
+      <ul class="verb-list">
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">sein</span>
+            <span class="verb-fr">être</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('sein')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">werden</span>
+            <span class="verb-fr">devenir</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('werden')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">bleiben</span>
+            <span class="verb-fr">rester</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('bleiben')"><span class="play-triangle"></span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SIDE 2: AKKUSATIV -->
+  <div id="side-akkusativ" class="side-content">  
+    <div class="merkhilfe">
+      <div class="merkhilfe-header">
+        <h3>💡 Merkhilfe</h3>
+        <button class="play-btn merkhilfe-btn" onclick="playAudio('Der Akkusativ ist das direkte Objekt. Frage: Wen oder was? Maskulin ändert sich von der zu den.')">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+      <p>Direktes Objekt im Akkusativ.</p>
+      <div class="merk-beispiel">
+        <div class="merk-word">Wen? / Was?</div>
+        <div class="merk-word">der → den</div>
+      </div>
+    </div>  
+    <div class="heart-card">
+      <h3 class="heart-title">❤️ Wichtige Verben</h3>
+      <span class="heart-sub">mit Akkusativ</span>
+      <ul class="verb-list">
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">haben</span>
+            <span class="verb-fr">avoir</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('haben')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">kaufen</span>
+            <span class="verb-fr">acheter</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('kaufen')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">sehen</span>
+            <span class="verb-fr">voir</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('sehen')"><span class="play-triangle"></span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SIDE 3: DATIV -->
+  <div id="side-dativ" class="side-content">  
+    <div class="merkhilfe">
+      <div class="merkhilfe-header">
+        <h3>💡 Merkhilfe</h3>
+        <button class="play-btn merkhilfe-btn" onclick="playAudio('Der Dativ ist das indirekte Objekt. Frage: Wem?')">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+      <p>Indirektes Objekt im Dativ.</p>
+      <div class="merk-beispiel">
+        <div class="merk-word">Wem?</div>
+        <div class="merk-word">dem, der, den</div>
+      </div>
+    </div>  
+    <div class="heart-card">
+      <h3 class="heart-title">❤️ Wichtige Verben</h3>
+      <span class="heart-sub">mit Dativ</span>
+      <ul class="verb-list">
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">helfen</span>
+            <span class="verb-fr">aider</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('helfen')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">danken</span>
+            <span class="verb-fr">remercier</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('danken')"><span class="play-triangle"></span></button>
+        </li>
+        <li>
+          <div class="verb-text">
+            <span class="verb-de">gefallen</span>
+            <span class="verb-fr">plaire</span>
+          </div>
+          <button class="play-btn" onclick="playAudio('gefallen')"><span class="play-triangle"></span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SIDE 4: SUMMARY -->
+  <div id="side-summary" class="side-content">  
+    <div class="merkhilfe">
+      <div class="merkhilfe-header">
+        <h3>💡 Zusammenfassung</h3>
+        <button class="play-btn merkhilfe-btn" onclick="playAudio('Merke dir die Fragen: Nominativ Wer oder was, Akkusativ Wen oder was, Dativ Wem.')">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+      <p>Alle Fälle auf einen Blick.</p>
+      <div class="merk-beispiel">
+        <div class="merk-word">🟢 Wer?</div>
+        <div class="merk-word">🔵 Wen?</div>
+        <div class="merk-word">🟣 Wem?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDE 5: ÜBUNG -->
+  <div id="side-uebung" class="side-content">  
+    <div class="merkhilfe">
+      <div class="merkhilfe-header">
+        <h3>🎯 Tipp</h3>
+        <button class="play-btn merkhilfe-btn" onclick="playAudio('Lies die Sätze genau und frage nach dem Kasus.')">
+          <span class="play-triangle"></span>
+        </button>
+      </div>
+      <p>Frage immer nach dem Kasus im Satz (Wer, Wen, Wem).</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div class="footer-back">  
+  <a href="index.html#a1">← Zurück zu den A1 Lektionen</a>
+</div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+
+function switchTab(caseName, button) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  document.querySelectorAll('.side-content').forEach(side => {
+    side.classList.remove('active');
+  });
+
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+
+  let themePrefix = caseName.substring(0,3);
+  if (caseName === 'uebung') { themePrefix = 'ueb'; }
+  if (caseName === 'summary') { themePrefix = 'sum'; }
+
+  document.body.className = 'page active theme-' + themePrefix;
+
+  const selectedTab = document.getElementById(caseName);
+  const selectedSide = document.getElementById('side-' + caseName);
+
+  if (selectedTab) selectedTab.classList.add('active');
+  if (selectedSide) selectedSide.classList.add('active');
+
+  button.classList.add('active');
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  if (caseName !== 'nominativ' && selectedTab) {
+    const firstToggle = selectedTab.querySelector('.section-toggle');
+    if (firstToggle) {
+      const content = firstToggle.nextElementSibling;
+      if (!firstToggle.classList.contains('open')) {
+        firstToggle.classList.add('open');
+        if (content) content.classList.add('open');
+      }
+      const audioText = firstToggle.getAttribute('data-audio') || firstToggle.innerText.replace('▶', '').trim();
+      if (audioText) {
+        playAudio(audioText);
+      }
+    }
+  }
+}
+
+function toggleSection(button) {
+  const content = button.nextElementSibling;
+  if (!content) return;
+
+  const isOpen = content.classList.contains('open');
+
+  if (isOpen) {
+    content.classList.remove('open');
+    button.classList.remove('open');
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+  } else {
+    content.classList.add('open');
+    button.classList.add('open');
+    const audioText = button.getAttribute('data-audio') || button.innerText.replace('▶', '').trim();
+    if (audioText) {
+      playAudio(audioText);
+    }
+  }
+}
+
+function showImageError(image, fileName) {
+  image.style.display = 'none';
+  const errorBox = image.parentElement.querySelector('.image-error');
+  if (errorBox) {
+    errorBox.style.display = 'block';
+    errorBox.innerHTML = `
+      <strong>⚠️ Bild konnte nicht geladen werden.</strong>
+      Bitte prüfen, ob die Datei <strong>${fileName}</strong> im Ordner <strong>Image</strong> liegt.
+    `;
+  }
+}
+
+function playAudio(text) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    utterance.rate = .88;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  } else {
+    alert('Audio non supporté : ' + text);
+  }
+}
+
+window.addEventListener('beforeunload', function() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+});
+
+</script></body>
+</html>
