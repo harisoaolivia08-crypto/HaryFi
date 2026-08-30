@@ -3,1057 +3,1295 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-    <title>HaryFi – Lektion 2: Die Uhrzeit</title>
+<title>HaryFi – Lektion 2: Die Uhrzeit</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
+<style>
 
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
+body {
 
-            margin: 0;
+    margin: 0;
 
-            min-height: 100vh;
+    min-height: 100vh;
 
-            font-family:
-                'Plus Jakarta Sans',
-                sans-serif;
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
 
-            color: #ffffff;
+    color: #ffffff;
 
-            background:
-                linear-gradient(
-                    -45deg,
-                    #ff4500,
-                    #ff7e00,
-                    #ffd000,
-                    #00c9ff,
-                    #7c3aed,
-                    #ff3cac
-                );
+    background:
+        linear-gradient(
+            -45deg,
+            #ff4500,
+            #ff7e00,
+            #ffd000,
+            #00c9ff,
+            #7c3aed,
+            #ff3cac
+        );
 
-            background-size: 500% 500%;
+    background-size: 500% 500%;
 
-            animation:
-                gradientMove
-                18s
-                ease
-                infinite;
+    animation:
+        gradientMove
+        18s
+        ease
+        infinite;
 
-            padding-bottom: 50px;
+    padding-bottom: 50px;
+}
 
-        }
+@keyframes gradientMove {
 
-        @keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
 
-            0% {
-                background-position: 0% 50%;
-            }
+    25% {
+        background-position: 100% 50%;
+    }
 
-            25% {
-                background-position: 100% 50%;
-            }
+    50% {
+        background-position: 100% 100%;
+    }
 
-            50% {
-                background-position: 100% 100%;
-            }
+    75% {
+        background-position: 0% 100%;
+    }
 
-            75% {
-                background-position: 0% 100%;
-            }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-            100% {
-                background-position: 0% 50%;
-            }
+.glass {
 
-        }
+    background:
+        rgba(255,255,255,0.25);
 
-        .glass {
+    backdrop-filter:
+        blur(16px);
 
-            background: rgba(255,255,255,0.25);
+    -webkit-backdrop-filter:
+        blur(16px);
 
-            backdrop-filter: blur(16px);
+    border:
+        1px solid rgba(255,255,255,0.45);
+}
 
-            -webkit-backdrop-filter: blur(16px);
 
-            border: 1px solid rgba(255,255,255,0.45);
+/* DASHBOARD */
 
-        }
+.dashboard-grid {
 
-        /* Grille des 6 cartes colorées style Dashboard */
+    display: grid;
 
-        .dashboard-grid {
+    grid-template-columns:
+        repeat(1, minmax(0, 1fr));
+
+    gap: 1.75rem;
+}
 
-            display: grid;
+@media (min-width: 768px) {
 
-            grid-template-columns:
-                repeat(1, minmax(0, 1fr));
+    .dashboard-grid {
 
-            gap: 1.75rem;
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+}
 
-        }
 
-        @media (min-width: 768px) {
+/* CARTES */
 
-            .dashboard-grid {
+.section-card {
 
-                grid-template-columns:
-                    repeat(3, minmax(0, 1fr));
+    border-radius: 2rem;
 
-            }
+    overflow: hidden;
 
-        }
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.2);
 
-        /* Cartes colorées individuelles */
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
 
-        .section-card {
+    display: flex;
 
-            border-radius: 2rem;
+    flex-direction: column;
 
-            overflow: hidden;
+    border:
+        1px solid rgba(255,255,255,0.3);
+}
 
-            box-shadow:
-                0 20px 40px rgba(0, 0, 0, 0.2);
+.section-card:hover {
 
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease;
+    transform:
+        translateY(-6px);
 
-            display: flex;
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.3);
+}
 
-            flex-direction: column;
 
-            border:
-                1px solid rgba(255, 255, 255, 0.3);
+.card-1 {
+    background:
+        linear-gradient(
+            135deg,
+            #ff4500,
+            #ff7e00
+        );
+}
 
-        }
+.card-2 {
+    background:
+        linear-gradient(
+            135deg,
+            #00c9ff,
+            #4f46e5
+        );
+}
 
-        .section-card:hover {
+.card-3 {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #ff3cac
+        );
+}
 
-            transform: translateY(-6px);
+.card-4 {
+    background:
+        linear-gradient(
+            135deg,
+            #059669,
+            #0284c7
+        );
+}
 
-            box-shadow:
-                0 30px 60px rgba(0,0,0,0.3);
+.card-5 {
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #ec4899
+        );
+}
 
-        }
+.card-6 {
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #8b5cf6
+        );
+}
 
-        /* Gradients uniques */
 
-        .card-1 {
-            background:
-                linear-gradient(135deg, #ff4500, #ff7e00);
-        }
+.section-btn {
 
-        .card-2 {
-            background:
-                linear-gradient(135deg, #00c9ff, #4f46e5);
-        }
+    width: 100%;
 
-        .card-3 {
-            background:
-                linear-gradient(135deg, #7c3aed, #ff3cac);
-        }
+    border: none;
 
-        .card-4 {
-            background:
-                linear-gradient(135deg, #059669, #0284c7);
-        }
+    background: transparent;
 
-        .card-5 {
-            background:
-                linear-gradient(135deg, #f59e0b, #ec4899);
-        }
+    padding: 30px 24px;
 
-        .card-6 {
-            background:
-                linear-gradient(135deg, #3b82f6, #8b5cf6);
-        }
+    display: flex;
 
-        .section-btn {
+    flex-direction: column;
 
-            width: 100%;
+    align-items: center;
 
-            border: none;
+    text-align: center;
 
-            background: transparent;
+    cursor: pointer;
 
-            padding: 30px 24px;
+    color: #ffffff;
+}
 
-            display: flex;
 
-            flex-direction: column;
+.section-icon-box {
 
-            align-items: center;
+    width: 75px;
 
-            text-align: center;
+    height: 75px;
 
-            cursor: pointer;
+    background:
+        rgba(255,255,255,0.2);
 
-            color: #ffffff;
+    backdrop-filter:
+        blur(10px);
 
-        }
+    border-radius: 20px;
 
-        .section-icon-box {
+    display: flex;
 
-            width: 75px;
+    align-items: center;
 
-            height: 75px;
+    justify-content: center;
 
-            background:
-                rgba(255, 255, 255, 0.2);
+    font-size: 38px;
 
-            backdrop-filter: blur(10px);
+    margin-bottom: 18px;
 
-            border-radius: 20px;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15);
 
-            display: flex;
+    border:
+        1px solid rgba(255,255,255,0.4);
+}
 
-            align-items: center;
 
-            justify-content: center;
+.section-part {
 
-            font-size: 38px;
+    font-size: 0.75rem;
 
-            margin-bottom: 18px;
+    font-weight: 900;
 
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.15);
+    text-transform: uppercase;
 
-            border:
-                1px solid rgba(255,255,255,0.4);
+    letter-spacing: 0.15em;
 
-        }
+    opacity: 0.85;
 
-        .section-part {
+    margin-bottom: 6px;
+}
 
-            font-size: 0.75rem;
 
-            font-weight: 900;
+.section-title {
 
-            text-transform: uppercase;
+    font-size: 1.5rem;
 
-            letter-spacing: 0.15em;
+    font-weight: 900;
 
-            opacity: 0.85;
+    margin-bottom: 8px;
 
-            margin-bottom: 6px;
+    line-height: 1.2;
+}
 
-        }
 
-        .section-title {
+.section-desc {
 
-            font-size: 1.5rem;
+    font-size: 0.88rem;
 
-            font-weight: 900;
+    font-weight: 600;
 
-            margin-bottom: 8px;
+    opacity: 0.9;
 
-            line-height: 1.2;
+    margin-bottom: 20px;
 
-        }
+    line-height: 1.4;
+}
 
-        .section-desc {
 
-            font-size: 0.88rem;
+.open-action-btn {
 
-            font-weight: 600;
+    display: inline-flex;
 
-            opacity: 0.9;
+    align-items: center;
 
-            margin-bottom: 20px;
+    gap: 8px;
 
-            line-height: 1.4;
+    background:
+        rgba(255,255,255,0.25);
 
-        }
+    padding: 10px 20px;
 
-        .open-action-btn {
+    border-radius: 50px;
 
-            display: inline-flex;
+    font-weight: 800;
 
-            align-items: center;
+    font-size: 0.9rem;
 
-            gap: 8px;
+    border:
+        1px solid rgba(255,255,255,0.4);
 
-            background:
-                rgba(255, 255, 255, 0.25);
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
 
-            padding: 10px 20px;
 
-            border-radius: 50px;
+.section-btn:hover
+.open-action-btn {
 
-            font-weight: 800;
+    background:
+        rgba(255,255,255,0.4);
 
-            font-size: 0.9rem;
+    transform:
+        scale(1.05);
+}
 
-            border:
-                1px solid rgba(255,255,255,0.4);
 
-            transition:
-                background .2s ease,
-                transform .2s ease;
+/* PAGES DES 6 SECTIONS */
 
-        }
+.section-page {
 
-        .section-btn:hover .open-action-btn {
+    display: none;
 
-            background:
-                rgba(255, 255, 255, 0.4);
+    background:
+        rgba(255,255,255,0.95);
 
-            transform: scale(1.05);
+    color: #17120d;
 
-        }
+    border-radius: 2rem;
 
-        /* Pages internes */
+    padding: 30px;
 
-        .section-page {
+    box-shadow:
+        0 30px 60px rgba(0,0,0,0.3);
 
-            display: none;
+    animation:
+        fadeIn .3s ease;
 
-            background:
-                rgba(255, 255, 255, 0.95);
+    text-align: left;
+}
 
-            color: #17120d;
 
-            border-radius: 2rem;
+.section-page.active {
+    display: block;
+}
 
-            padding: 30px;
 
-            box-shadow:
-                0 30px 60px rgba(0,0,0,0.3);
+@keyframes fadeIn {
 
-            animation:
-                fadeIn .3s ease;
+    from {
 
-            text-align: left;
+        opacity: 0;
 
-        }
+        transform:
+            translateY(15px);
+    }
 
-        .section-page.active {
+    to {
 
-            display: block;
+        opacity: 1;
 
-        }
+        transform:
+            translateY(0);
+    }
+}
 
-        @keyframes fadeIn {
 
-            from {
+/* BOUTON ZURÜCK DANS LES SECTIONS */
 
-                opacity: 0;
+.back-btn {
 
-                transform: translateY(15px);
+    display: inline-flex;
 
-            }
+    align-items: center;
 
-            to {
+    gap: 8px;
 
-                opacity: 1;
+    background:
+        #4f46e5;
 
-                transform: translateY(0);
+    color: white;
 
-            }
+    padding:
+        10px 20px;
 
-        }
+    border-radius:
+        12px;
 
-        .back-btn {
+    font-weight:
+        800;
 
-            display: inline-flex;
+    font-size:
+        0.9rem;
 
-            align-items: center;
+    border: none;
 
-            gap: 8px;
+    cursor: pointer;
 
-            background: #4f46e5;
+    margin-bottom:
+        20px;
 
-            color: white;
+    transition:
+        transform .2s ease;
+}
 
-            padding: 10px 20px;
 
-            border-radius: 12px;
+.back-btn:hover {
 
-            font-weight: 800;
+    transform:
+        scale(1.04);
+}
 
-            font-size: 0.9rem;
 
-            border: none;
+/* INFO */
 
-            cursor: pointer;
+.info-box {
 
-            margin-bottom: 20px;
+    padding:
+        16px;
 
-            transition:
-                transform .2s ease;
+    border-radius:
+        1rem;
 
-        }
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99,102,241,.08),
+            rgba(16,185,129,.08)
+        );
 
-        .back-btn:hover {
+    border:
+        1px solid rgba(99,102,241,.15);
 
-            transform: scale(1.04);
+    margin-bottom:
+        14px;
+}
 
-        }
 
-        .info-box {
+.info-box h3 {
 
-            padding: 16px;
+    color:
+        #3730a3;
 
-            border-radius: 1rem;
+    font-weight:
+        800;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(99,102,241,.08),
-                    rgba(16,185,129,.08)
-                );
+    margin-bottom:
+        6px;
+}
 
-            border:
-                1px solid rgba(99,102,241,.15);
 
-            margin-bottom: 14px;
+.info-box p {
 
-        }
+    color:
+        #475569;
 
-        .info-box h3 {
+    font-weight:
+        600;
 
-            color: #3730a3;
+    font-size:
+        0.9rem;
+}
 
-            font-weight: 800;
 
-            margin-bottom: 6px;
+/* SOUS DOSSIERS */
 
-        }
+.sub-folder {
 
-        .info-box p {
+    margin-top:
+        12px;
 
-            color: #475569;
+    border-radius:
+        1rem;
 
-            font-weight: 600;
+    overflow:
+        hidden;
 
-            font-size: 0.9rem;
+    border:
+        1px solid #e2e8f0;
 
-        }
+    background:
+        rgba(248,250,252,.9);
+}
 
-        .sub-folder {
 
-            margin-top: 12px;
+.sub-btn {
 
-            border-radius: 1rem;
+    width:
+        100%;
 
-            overflow: hidden;
+    border:
+        none;
 
-            border:
-                1px solid #e2e8f0;
+    background:
+        #f8fafc;
 
-            background:
-                rgba(248,250,252,.9);
+    padding:
+        14px 16px;
 
-        }
+    display:
+        flex;
 
-        .sub-btn {
+    align-items:
+        center;
 
-            width: 100%;
+    gap:
+        10px;
 
-            border: none;
+    cursor:
+        pointer;
 
-            background: #f8fafc;
+    font-weight:
+        800;
 
-            padding: 14px 16px;
+    color:
+        #334155;
 
-            display: flex;
+    text-align:
+        left;
 
-            align-items: center;
+    font-size:
+        0.92rem;
+}
 
-            gap: 10px;
 
-            cursor: pointer;
+.sub-btn:hover {
 
-            font-weight: 800;
+    background:
+        #eef2ff;
+}
 
-            color: #334155;
 
-            text-align: left;
+.sub-arrow {
 
-            font-size: 0.92rem;
+    margin-left:
+        auto;
 
-        }
+    color:
+        #4f46e5;
 
-        .sub-btn:hover {
+    transition:
+        transform .3s ease;
+}
 
-            background: #eef2ff;
 
-        }
+.sub-folder.active
+.sub-arrow {
 
-        .sub-arrow {
+    transform:
+        rotate(180deg);
+}
 
-            margin-left: auto;
 
-            color: #4f46e5;
+.sub-content {
 
-            transition:
-                transform .3s ease;
+    display:
+        none;
 
-        }
+    padding:
+        14px;
 
-        .sub-folder.active .sub-arrow {
+    background:
+        white;
+}
 
-            transform: rotate(180deg);
 
-        }
+.sub-folder.active
+.sub-content {
 
-        .sub-content {
+    display:
+        block;
+}
 
-            display: none;
 
-            padding: 14px;
+/* AUDIO */
 
-            background: white;
+.audio-word {
 
-        }
+    display:
+        flex;
 
-        .sub-folder.active .sub-content {
+    align-items:
+        center;
 
-            display: block;
+    gap:
+        10px;
 
-        }
+    padding:
+        10px 12px;
 
-        .audio-word {
+    margin:
+        8px 0;
 
-            display: flex;
+    background:
+        #f8fafc;
 
-            align-items: center;
+    border-radius:
+        10px;
 
-            gap: 10px;
+    border:
+        1px solid #e2e8f0;
+}
 
-            padding: 10px 12px;
 
-            margin: 8px 0;
+.audio-word .word {
 
-            background: #f8fafc;
+    flex:
+        1;
+}
 
-            border-radius: 10px;
 
-            border:
-                1px solid #e2e8f0;
+.audio-word .word strong {
 
-        }
+    display:
+        block;
 
-        .audio-word .word {
+    color:
+        #3730a3;
 
-            flex: 1;
+    font-weight:
+        800;
 
-        }
+    font-size:
+        0.9rem;
+}
 
-        .audio-word .word strong {
 
-            display: block;
+.audio-word .word span {
 
-            color: #3730a3;
+    display:
+        block;
 
-            font-weight: 800;
+    color:
+        #64748b;
 
-            font-size: 0.9rem;
+    font-size:
+        0.78rem;
 
-        }
+    font-weight:
+        600;
+}
 
-        .audio-word .word span {
 
-            display: block;
+audio {
 
-            color: #64748b;
+    width:
+        105px;
 
-            font-size: 0.78rem;
+    height:
+        32px;
+}
 
-            font-weight: 600;
 
-        }
+/* HEURE */
 
-        audio {
+.time-grid {
 
-            width: 105px;
+    display:
+        grid;
 
-            height: 32px;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(110px,1fr)
+        );
 
-        }
+    gap:
+        10px;
 
-        .time-grid {
+    margin-top:
+        10px;
+}
 
-            display: grid;
 
-            grid-template-columns:
-                repeat(auto-fit, minmax(110px, 1fr));
+.time-card {
 
-            gap: 10px;
+    padding:
+        14px 10px;
 
-            margin-top: 10px;
+    border-radius:
+        0.85rem;
 
-        }
+    text-align:
+        center;
 
-        .time-card {
+    background:
+        linear-gradient(
+            145deg,
+            #eef2ff,
+            #f0fdf4
+        );
 
-            padding: 14px 10px;
+    border:
+        1px solid #dbeafe;
+}
 
-            border-radius: 0.85rem;
 
-            text-align: center;
+.time {
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #eef2ff,
-                    #f0fdf4
-                );
+    font-size:
+        1.2rem;
 
-            border:
-                1px solid #dbeafe;
+    font-weight:
+        900;
 
-        }
+    color:
+        #3730a3;
+}
 
-        .time {
 
-            font-size: 1.2rem;
+.time-say {
 
-            font-weight: 900;
+    font-size:
+        0.8rem;
 
-            color: #3730a3;
+    margin-top:
+        2px;
 
-        }
+    font-weight:
+        700;
 
-        .time-say {
+    color:
+        #334155;
+}
 
-            font-size: 0.8rem;
 
-            margin-top: 2px;
+/* NOMBRES */
 
-            font-weight: 700;
+.number-grid {
 
-            color: #334155;
+    display:
+        grid;
 
-        }
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(75px,1fr)
+        );
 
-        .number-grid {
+    gap:
+        8px;
 
-            display: grid;
+    margin-top:
+        10px;
+}
 
-            grid-template-columns:
-                repeat(auto-fit, minmax(75px, 1fr));
 
-            gap: 8px;
+.number-card {
 
-            margin-top: 10px;
+    padding:
+        10px 4px;
 
-        }
+    border-radius:
+        0.75rem;
 
-        .number-card {
+    text-align:
+        center;
 
-            padding: 10px 4px;
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        );
 
-            border-radius: 0.75rem;
+    border:
+        1px solid #ddd6fe;
+}
 
-            text-align: center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #f5f3ff
-                );
+.number {
 
-            border:
-                1px solid #ddd6fe;
+    font-size:
+        1.1rem;
 
-        }
+    font-weight:
+        900;
 
-        .number {
+    color:
+        #3730a3;
+}
 
-            font-size: 1.1rem;
 
-            font-weight: 900;
+.number-word {
 
-            color: #3730a3;
+    font-size:
+        0.75rem;
 
-        }
+    font-weight:
+        700;
 
-        .number-word {
+    color:
+        #475569;
+}
 
-            font-size: 0.75rem;
 
-            font-weight: 700;
+/* REGLES */
 
-            color: #475569;
+.rule-box {
 
-        }
+    padding:
+        14px;
 
-        .rule-box {
+    border-radius:
+        0.85rem;
 
-            padding: 14px;
+    margin:
+        10px 0;
 
-            border-radius: 0.85rem;
+    background:
+        #fffbeb;
 
-            margin: 10px 0;
+    border:
+        1px solid #fde68a;
+}
 
-            background: #fffbeb;
 
-            border:
-                1px solid #fde68a;
+.rule-box h3 {
 
-        }
+    color:
+        #92400e;
 
-        .rule-box h3 {
+    font-weight:
+        800;
 
-            color: #92400e;
+    margin-bottom:
+        4px;
 
-            font-weight: 800;
+    font-size:
+        0.9rem;
+}
 
-            margin-bottom: 4px;
 
-            font-size: 0.9rem;
+.rule-big {
 
-        }
+    font-size:
+        1.05rem;
 
-        .rule-big {
+    font-weight:
+        900;
 
-            font-size: 1.05rem;
+    color:
+        #92400e;
 
-            font-weight: 900;
+    text-align:
+        center;
 
-            color: #92400e;
+    padding:
+        6px;
+}
 
-            text-align: center;
 
-            padding: 6px;
+/* JOURNEE */
 
-        }
+.day-timeline {
 
-        .day-timeline {
+    position:
+        relative;
 
-            position: relative;
+    margin:
+        12px 0;
+}
 
-            margin: 12px 0;
 
-        }
+.day-item {
 
-        .day-item {
+    display:
+        flex;
 
-            display: flex;
+    gap:
+        12px;
 
-            gap: 12px;
+    position:
+        relative;
 
-            position: relative;
+    padding-bottom:
+        14px;
+}
 
-            padding-bottom: 14px;
 
-        }
+.day-item:last-child {
 
-        .day-item:last-child {
+    padding-bottom:
+        0;
+}
 
-            padding-bottom: 0;
 
-        }
+.day-icon {
 
-        .day-icon {
+    width:
+        36px;
 
-            width: 36px;
+    height:
+        36px;
 
-            height: 36px;
+    min-width:
+        36px;
 
-            min-width: 36px;
+    border-radius:
+        10px;
 
-            border-radius: 10px;
+    display:
+        flex;
 
-            display: flex;
+    align-items:
+        center;
 
-            align-items: center;
+    justify-content:
+        center;
 
-            justify-content: center;
+    background:
+        linear-gradient(
+            135deg,
+            #e0e7ff,
+            #dcfce7
+        );
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #e0e7ff,
-                    #dcfce7
-                );
+    font-size:
+        18px;
+}
 
-            font-size: 18px;
 
-        }
+.day-card {
 
-        .day-card {
+    flex:
+        1;
 
-            flex: 1;
+    padding:
+        10px 12px;
 
-            padding: 10px 12px;
+    border-radius:
+        0.85rem;
 
-            border-radius: 0.85rem;
+    background:
+        #f8fafc;
 
-            background: #f8fafc;
+    border:
+        1px solid #e2e8f0;
+}
 
-            border:
-                1px solid #e2e8f0;
 
-        }
+.day-time {
 
-        .day-time {
+    font-weight:
+        900;
 
-            font-weight: 900;
+    color:
+        #4f46e5;
 
-            color: #4f46e5;
+    font-size:
+        0.85rem;
+}
 
-            font-size: 0.85rem;
 
-        }
+.day-title {
 
-        .day-title {
+    font-weight:
+        800;
 
-            font-weight: 800;
+    margin-top:
+        1px;
 
-            margin-top: 1px;
+    font-size:
+        0.9rem;
 
-            font-size: 0.9rem;
+    color:
+        #1e293b;
+}
 
-            color: #1e293b;
 
-        }
+/* DIALOG */
 
-        .dialog {
+.dialog {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef2ff,
-                    #f0fdf4
-                );
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f0fdf4
+        );
 
-            padding: 14px;
+    padding:
+        14px;
 
-            border-radius: 1rem;
+    border-radius:
+        1rem;
+}
 
-        }
 
-        .dialog-line {
+.dialog-line {
 
-            display: flex;
+    display:
+        flex;
 
-            gap: 10px;
+    gap:
+        10px;
 
-            margin-bottom: 10px;
+    margin-bottom:
+        10px;
 
-            align-items: flex-start;
+    align-items:
+        flex-start;
+}
 
-        }
 
-        .avatar {
+.avatar {
 
-            width: 32px;
+    width:
+        32px;
 
-            height: 32px;
+    height:
+        32px;
 
-            min-width: 32px;
+    min-width:
+        32px;
 
-            border-radius: 50%;
+    border-radius:
+        50%;
 
-            display: flex;
+    display:
+        flex;
 
-            align-items: center;
+    align-items:
+        center;
 
-            justify-content: center;
+    justify-content:
+        center;
 
-            background: white;
+    background:
+        white;
 
-            box-shadow:
-                0 4px 10px rgba(15,23,42,.10);
+    box-shadow:
+        0 4px 10px rgba(15,23,42,.10);
 
-            font-size: 15px;
+    font-size:
+        15px;
+}
 
-        }
 
-        .bubble {
+.bubble {
 
-            background: white;
+    background:
+        white;
 
-            padding: 10px 12px;
+    padding:
+        10px 12px;
 
-            border-radius:
-                4px 14px 14px 14px;
+    border-radius:
+        4px 14px 14px 14px;
 
-            box-shadow:
-                0 4px 12px rgba(15,23,42,.06);
+    box-shadow:
+        0 4px 12px rgba(15,23,42,.06);
 
-            font-weight: 600;
+    font-weight:
+        600;
 
-            font-size: 0.85rem;
+    font-size:
+        0.85rem;
 
-            color: #1e293b;
+    color:
+        #1e293b;
+}
 
-        }
 
-        .speaker {
+.speaker {
 
-            display: block;
+    display:
+        block;
 
-            color: #4f46e5;
+    color:
+        #4f46e5;
 
-            font-weight: 900;
+    font-weight:
+        900;
 
-            font-size: 0.75rem;
+    font-size:
+        0.75rem;
 
-            margin-bottom: 2px;
+    margin-bottom:
+        2px;
+}
 
-        }
 
-        .exercise {
+/* EXERCICES */
 
-            padding: 14px;
+.exercise {
 
-            margin: 10px 0;
+    padding:
+        14px;
 
-            border-radius: 0.85rem;
+    margin:
+        10px 0;
 
-            background: #f8fafc;
+    border-radius:
+        0.85rem;
 
-            border:
-                1px solid #e2e8f0;
+    background:
+        #f8fafc;
 
-        }
+    border:
+        1px solid #e2e8f0;
+}
 
-        .exercise-number {
 
-            font-weight: 900;
+.exercise-number {
 
-            color: #4f46e5;
+    font-weight:
+        900;
 
-            margin-bottom: 5px;
+    color:
+        #4f46e5;
 
-            font-size: 0.88rem;
+    margin-bottom:
+        5px;
 
-        }
+    font-size:
+        0.88rem;
+}
 
-        .exercise input {
 
-            border:
-                1px solid #c7d2fe;
+.exercise input {
 
-            border-radius: 8px;
+    border:
+        1px solid #c7d2fe;
 
-            padding: 8px 10px;
+    border-radius:
+        8px;
 
-            width: 100%;
+    padding:
+        8px 10px;
 
-            margin-top: 5px;
+    width:
+        100%;
 
-            background: white;
+    margin-top:
+        5px;
 
-            outline: none;
+    background:
+        white;
 
-            font-family: inherit;
+    outline:
+        none;
 
-            font-weight: 600;
+    font-family:
+        inherit;
 
-            font-size: 0.88rem;
+    font-weight:
+        600;
 
-            color: #1e293b;
+    font-size:
+        0.88rem;
 
-        }
+    color:
+        #1e293b;
+}
 
-        .remember {
 
-            padding: 14px;
+/* MEMOIRE */
 
-            border-radius: 1rem;
+.remember {
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(79,70,229,.10),
-                    rgba(16,185,129,.09)
-                );
+    padding:
+        14px;
 
-            border:
-                1px solid rgba(79,70,229,.15);
+    border-radius:
+        1rem;
 
-            margin-bottom: 10px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79,70,229,.10),
+            rgba(16,185,129,.09)
+        );
 
-            color: #1e293b;
+    border:
+        1px solid rgba(79,70,229,.15);
 
-        }
+    margin-bottom:
+        10px;
 
-        .remember h3 {
+    color:
+        #1e293b;
+}
 
-            color: #3730a3;
 
-            font-weight: 800;
+.remember h3 {
 
-            margin-bottom: 5px;
+    color:
+        #3730a3;
 
-            font-size: 0.95rem;
+    font-weight:
+        800;
 
-        }
+    margin-bottom:
+        5px;
 
-        .remember p {
+    font-size:
+        0.95rem;
+}
 
-            font-size: 0.88rem;
 
-            font-weight: 600;
+.remember p {
 
-        }
+    font-size:
+        0.88rem;
 
-        .print-btn {
+    font-weight:
+        600;
+}
 
-            border: none;
 
-            border-radius: 1rem;
+/* BOUTON START */
 
-            padding: 12px 24px;
+.print-btn {
 
-            background:
-                rgba(255,255,255,0.9);
+    border:
+        none;
 
-            color: #4f46e5;
+    border-radius:
+        1rem;
 
-            font-weight: 900;
+    padding:
+        12px 24px;
 
-            cursor: pointer;
+    background:
+        rgba(255,255,255,0.9);
 
-            box-shadow:
-                0 10px 25px rgba(0,0,0,0.1);
+    color:
+        #4f46e5;
 
-            transition:
-                transform .25s ease;
+    font-weight:
+        900;
 
-        }
+    cursor:
+        pointer;
 
-        .print-btn:hover {
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.1);
 
-            transform: scale(1.05);
+    transition:
+        transform .25s ease;
+}
 
-        }
 
-    </style>
+.print-btn:hover {
+
+    transform:
+        scale(1.05);
+}
+
+</style>
 
 </head>
 
 
 <body>
 
+
 <header class="px-5 py-5">
 
     <div
         class="max-w-7xl mx-auto flex items-center justify-between gap-4">
 
-        <!-- BOUTON MODIFIÉ -->
+        <!-- BOUTON DU HAUT : RETOUR VERS A1 -->
 
         <a
             href="index.html#a1"
@@ -1062,6 +1300,7 @@
             ← Zurück
 
         </a>
+
 
         <div
             class="glass rounded-full px-5 py-2 font-bold text-sm">
@@ -1075,735 +1314,411 @@
 </header>
 
 
-<main class="max-w-6xl mx-auto px-5 pb-16">
+<main
+    class="max-w-6xl mx-auto px-5 pb-16">
 
 
-    <div id="dashboard-view">
+<!-- ================================================= -->
+<!-- DASHBOARD PRINCIPAL : DIE UHRZEIT -->
+<!-- ================================================= -->
 
-        <section class="text-center pt-6 pb-10">
+<div id="dashboard-view">
 
-            <div
-                class="inline-block glass rounded-full px-5 py-2 mb-4 text-xs font-black uppercase tracking-widest">
 
-                A1 · Lektion 2
+    <section
+        class="text-center pt-6 pb-10">
 
-            </div>
 
-            <h1
-                class="text-4xl md:text-6xl font-black tracking-tight mb-4 drop-shadow-md">
+        <!-- A1 · LEKTION 2 SUPPRIME -->
 
-                Die Uhrzeit
 
-            </h1>
+        <h1
+            class="text-4xl md:text-6xl font-black tracking-tight mb-4 drop-shadow-md">
 
-            <p
-                class="text-base md:text-lg font-semibold max-w-2xl mx-auto opacity-95">
+            Die Uhrzeit
 
-                Lerne die Uhrzeit auszudrücken,
-                den Tagesablauf zu beschreiben
-                und im Alltag anzuwenden.
+        </h1>
 
-            </p>
 
-            <div class="mt-5 flex justify-center">
+        <p
+            class="text-base md:text-lg font-semibold max-w-2xl mx-auto opacity-95">
 
-                <button
-                    class="print-btn"
-                    onclick="startLesson()">
+            Lerne die Uhrzeit auszudrücken,
+            den Tagesablauf zu beschreiben
+            und im Alltag anzuwenden.
 
-                    🚀 Lektion Starten
+        </p>
 
-                </button>
 
-            </div>
+        <div class="mt-5 flex justify-center">
 
-        </section>
+            <button
+                class="print-btn"
+                onclick="startLesson()">
 
+                🚀 Lektion Starten
 
-        <div class="dashboard-grid">
+            </button>
 
+        </div>
 
-            <div class="section-card card-1">
+    </section>
 
-                <button
-                    class="section-btn"
-                    onclick="openSection(1)">
 
-                    <div class="section-icon-box">
-                        🕐
-                    </div>
+    <!-- 6 CARTES -->
 
-                    <div class="section-part">
-                        Teil 1
-                    </div>
+    <div class="dashboard-grid">
 
-                    <div class="section-title">
-                        Uhrzeit Kennenlernen
-                    </div>
 
-                    <div class="section-desc">
-                        Uhrzeit, Fragen, Präposition „um“
-                        & Zahlen (1–60).
-                    </div>
+        <!-- CARD 1 -->
 
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
+        <div class="section-card card-1">
 
-                </button>
+            <button
+                class="section-btn"
+                onclick="openSection(1)">
 
-            </div>
+                <div class="section-icon-box">
+                    🕐
+                </div>
 
+                <div class="section-part">
+                    Teil 1
+                </div>
 
-            <div class="section-card card-2">
+                <div class="section-title">
+                    Uhrzeit Kennenlernen
+                </div>
 
-                <button
-                    class="section-btn"
-                    onclick="openSection(2)">
+                <div class="section-desc">
+                    Uhrzeit, Fragen,
+                    Präposition „um“
+                    & Zahlen (1–60).
+                </div>
 
-                    <div class="section-icon-box">
-                        📋
-                    </div>
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
 
-                    <div class="section-part">
-                        Teil 2
-                    </div>
-
-                    <div class="section-title">
-                        Formen der Uhrzeit
-                    </div>
-
-                    <div class="section-desc">
-                        Formelle (24h) & Informelle
-                        Uhrzeit (nach, vor, halb).
-                    </div>
-
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
-
-                </button>
-
-            </div>
-
-
-            <div class="section-card card-3">
-
-                <button
-                    class="section-btn"
-                    onclick="openSection(3)">
-
-                    <div class="section-icon-box">
-                        🌅
-                    </div>
-
-                    <div class="section-part">
-                        Teil 3
-                    </div>
-
-                    <div class="section-title">
-                        Tagesablauf & Zeitangabe
-                    </div>
-
-                    <div class="section-desc">
-                        Tagesablauf und Tageszeiten
-                        im Alltag.
-                    </div>
-
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
-
-                </button>
-
-            </div>
-
-
-            <div class="section-card card-4">
-
-                <button
-                    class="section-btn"
-                    onclick="openSection(4)">
-
-                    <div class="section-icon-box">
-                        💬
-                    </div>
-
-                    <div class="section-part">
-                        Teil 4
-                    </div>
-
-                    <div class="section-title">
-                        Dialog und Übung
-                    </div>
-
-                    <div class="section-desc">
-                        Ein normaler Morgen im
-                        echten Gespräch.
-                    </div>
-
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
-
-                </button>
-
-            </div>
-
-
-            <div class="section-card card-5">
-
-                <button
-                    class="section-btn"
-                    onclick="openSection(5)">
-
-                    <div class="section-icon-box">
-                        🧠
-                    </div>
-
-                    <div class="section-part">
-                        Teil 5
-                    </div>
-
-                    <div class="section-title">
-                        Zusammenfassung
-                    </div>
-
-                    <div class="section-desc">
-                        Das musst du dir merken!
-                        Wichtigste Regeln.
-                    </div>
-
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
-
-                </button>
-
-            </div>
-
-
-            <div class="section-card card-6">
-
-                <button
-                    class="section-btn"
-                    onclick="openSection(6)">
-
-                    <div class="section-icon-box">
-                        ✏️
-                    </div>
-
-                    <div class="section-part">
-                        Teil 6
-                    </div>
-
-                    <div class="section-title">
-                        Reflektion
-                    </div>
-
-                    <div class="section-desc">
-                        Übungen & Selbsttest
-                        zum Gelernten.
-                    </div>
-
-                    <div class="open-action-btn">
-                        Öffnen →
-                    </div>
-
-                </button>
-
-            </div>
-
+            </button>
 
         </div>
 
 
-        <section class="flex justify-center mt-12">
+        <!-- CARD 2 -->
 
-            <a
-                href="index.html#a1"
-                class="bg-black text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-xl">
+        <div class="section-card card-2">
 
-                ← Zurück zu A1 Lektionen
+            <button
+                class="section-btn"
+                onclick="openSection(2)">
 
-            </a>
+                <div class="section-icon-box">
+                    📋
+                </div>
 
-        </section>
+                <div class="section-part">
+                    Teil 2
+                </div>
+
+                <div class="section-title">
+                    Formen der Uhrzeit
+                </div>
+
+                <div class="section-desc">
+                    Formelle (24h) &
+                    Informelle Uhrzeit
+                    (nach, vor, halb).
+                </div>
+
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+
+        <div class="section-card card-3">
+
+            <button
+                class="section-btn"
+                onclick="openSection(3)">
+
+                <div class="section-icon-box">
+                    🌅
+                </div>
+
+                <div class="section-part">
+                    Teil 3
+                </div>
+
+                <div class="section-title">
+                    Tagesablauf & Zeitangabe
+                </div>
+
+                <div class="section-desc">
+                    Tagesablauf und
+                    Tageszeiten im Alltag.
+                </div>
+
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- CARD 4 -->
+
+        <div class="section-card card-4">
+
+            <button
+                class="section-btn"
+                onclick="openSection(4)">
+
+                <div class="section-icon-box">
+                    💬
+                </div>
+
+                <div class="section-part">
+                    Teil 4
+                </div>
+
+                <div class="section-title">
+                    Dialog und Übung
+                </div>
+
+                <div class="section-desc">
+                    Ein normaler Morgen
+                    im echten Gespräch.
+                </div>
+
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- CARD 5 -->
+
+        <div class="section-card card-5">
+
+            <button
+                class="section-btn"
+                onclick="openSection(5)">
+
+                <div class="section-icon-box">
+                    🧠
+                </div>
+
+                <div class="section-part">
+                    Teil 5
+                </div>
+
+                <div class="section-title">
+                    Zusammenfassung
+                </div>
+
+                <div class="section-desc">
+                    Das musst du dir merken!
+                    Wichtigste Regeln.
+                </div>
+
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
+
+            </button>
+
+        </div>
+
+
+        <!-- CARD 6 -->
+
+        <div class="section-card card-6">
+
+            <button
+                class="section-btn"
+                onclick="openSection(6)">
+
+                <div class="section-icon-box">
+                    ✏️
+                </div>
+
+                <div class="section-part">
+                    Teil 6
+                </div>
+
+                <div class="section-title">
+                    Reflektion
+                </div>
+
+                <div class="section-desc">
+                    Übungen & Selbsttest
+                    zum Gelernten.
+                </div>
+
+                <div class="open-action-btn">
+                    Öffnen →
+                </div>
+
+            </button>
+
+        </div>
+
 
     </div>
 
 
-    <!-- PAGE 1 -->
+    <!-- BOUTON BAS : CONSERVE -->
 
-    <div id="page-1" class="section-page">
+    <section
+        class="flex justify-center mt-12">
 
-        <h2
-            class="text-2xl font-black text-slate-900 mb-4"
-            style="
-                background: linear-gradient(
+        <a
+            href="index.html#a1"
+            class="bg-black text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-xl">
+
+            ← Zurück zu A1 Lektionen
+
+        </a>
+
+    </section>
+
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 1 -->
+<!-- ================================================= -->
+
+<div
+    id="page-1"
+    class="section-page">
+
+
+    <!-- NOUVEAU BOUTON : RETOUR AU GRAND TITRE -->
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4"
+        style="
+            background:
+                linear-gradient(
                     135deg,
                     #ff4500,
                     #ff7e00
                 );
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                display: inline-block;
-            ">
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        ">
 
-            🕐 Teil 1: Uhrzeit Kennenlernen
+        🕐 Teil 1: Uhrzeit Kennenlernen
 
-        </h2>
-
-
-        <div
-            class="info-box"
-            style="border-left: 4px solid #ff7e00;">
-
-            <h3>
-                ⏰ Was ist die Uhrzeit?
-            </h3>
-
-            <p>
-                Mit der Uhrzeit sagen wir,
-                wann etwas passiert
-                (aufstehen, arbeiten, lernen).
-            </p>
-
-        </div>
+    </h2>
 
 
-        <div
-            class="sub-folder"
-            style="border: 1px solid rgba(255,126,0,0.3);">
+    <div
+        class="info-box"
+        style="
+            border-left:
+                4px solid #ff7e00;
+        ">
 
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
+        <h3>
+            ⏰ Was ist die Uhrzeit?
+        </h3>
 
-                🗣️ Wichtige Fragen
+        <p>
+            Mit der Uhrzeit sagen wir,
+            wann etwas passiert
+            (aufstehen, arbeiten, lernen).
+        </p>
 
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="audio-word">
-
-                    <div class="word">
-
-                        <strong>
-                            Wie spät ist es?
-                        </strong>
-
-                        <span>
-                            Frage
-                        </span>
-
-                    </div>
-
-                    <audio controls>
-                        <source src="audio/wie_spaet_ist_es.mp3">
-                    </audio>
-
-                </div>
+    </div>
 
 
-                <div class="audio-word">
+    <div
+        class="sub-folder"
+        style="
+            border:
+                1px solid rgba(255,126,0,0.3);
+        ">
 
-                    <div class="word">
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
 
-                        <strong>
-                            Um wie viel Uhr?
-                        </strong>
+            🗣️ Wichtige Fragen
 
-                        <span>
-                            Zeitpunkt
-                        </span>
+            <span class="sub-arrow">
+                ⌄
+            </span>
 
-                    </div>
+        </button>
 
-                    <audio controls>
-                        <source src="audio/um_wie_viel_uhr.mp3">
-                    </audio>
+
+        <div class="sub-content">
+
+            <div class="audio-word">
+
+                <div class="word">
+
+                    <strong>
+                        Wie spät ist es?
+                    </strong>
+
+                    <span>
+                        Frage
+                    </span>
 
                 </div>
+
+                <audio controls>
+                    <source
+                        src="audio/wie_spaet_ist_es.mp3">
+                </audio>
 
             </div>
 
-        </div>
 
+            <div class="audio-word">
 
-        <div
-            class="sub-folder"
-            style="border: 1px solid rgba(255,126,0,0.3);">
+                <div class="word">
 
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
+                    <strong>
+                        Um wie viel Uhr?
+                    </strong>
 
-                📌 Präposition „um“
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div
-                    class="rule-box"
-                    style="
-                        margin:0 0 10px 0;
-                        background: #fffaf0;
-                        border: 1px solid #fed7aa;
-                    ">
-
-                    <div
-                        class="rule-big"
-                        style="color: #c2410c;">
-
-                        UM + Uhrzeit
-
-                    </div>
+                    <span>
+                        Zeitpunkt
+                    </span>
 
                 </div>
 
-
-                <div class="audio-word">
-
-                    <div class="word">
-
-                        <strong>
-                            um acht Uhr
-                        </strong>
-
-                        <span>
-                            Wann?
-                        </span>
-
-                    </div>
-
-                    <audio controls>
-                        <source src="audio/um_acht_uhr.mp3">
-                    </audio>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="sub-folder"
-            style="border: 1px solid rgba(255,126,0,0.3);">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                🔢 Zahlen (Minuten)
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="number-grid">
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            1
-
-                        </div>
-
-                        <div class="number-word">
-                            eins
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            5
-
-                        </div>
-
-                        <div class="number-word">
-                            fünf
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            10
-
-                        </div>
-
-                        <div class="number-word">
-                            zehn
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            15
-
-                        </div>
-
-                        <div class="number-word">
-                            fünfzehn
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            30
-
-                        </div>
-
-                        <div class="number-word">
-                            dreißig
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="number-card"
-                        style="
-                            background:
-                                linear-gradient(
-                                    135deg,
-                                    #fff7ed,
-                                    #ffedd5
-                                );
-                            border:
-                                1px solid #fed7aa;
-                        ">
-
-                        <div
-                            class="number"
-                            style="color: #c2410c;">
-
-                            60
-
-                        </div>
-
-                        <div class="number-word">
-                            sechzig
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="sub-folder"
-            style="
-                border: 2px solid #ff7e00;
-                background:
-                    linear-gradient(
-                        135deg,
-                        rgba(255,69,0,0.06),
-                        rgba(255,126,0,0.06)
-                    );
-            ">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)"
-                style="background: transparent;">
-
-                📚 Wichtige Wörter
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div
-                    class="info-box"
-                    style="
-                        margin-bottom: 12px;
-                        border-left: 4px solid #ff4500;
-                    ">
-
-                    <h3>
-                        💡 Essenzielle Vokabeln
-                    </h3>
-
-                    <p>
-                        Wichtige Begriffe rund um
-                        das Thema Uhrzeit und
-                        Zeitangaben im Alltag.
-                    </p>
-
-                </div>
-
-
-                <div class="audio-word">
-
-                    <div class="word">
-
-                        <strong>
-                            die Uhrzeit, -en
-                        </strong>
-
-                        <span>
-                            die Zeitangabe
-                        </span>
-
-                    </div>
-
-                    <audio controls>
-                        <source src="audio/die_uhrzeit.mp3">
-                    </audio>
-
-                </div>
-
-
-                <div class="audio-word">
-
-                    <div class="word">
-
-                        <strong>
-                            die Minute, -n
-                        </strong>
-
-                        <span>
-                            Zeiteinheit (60 Sekunden)
-                        </span>
-
-                    </div>
-
-                    <audio controls>
-                        <source src="audio/die_minute.mp3">
-                    </audio>
-
-                </div>
-
-
-                <div class="audio-word">
-
-                    <div class="word">
-
-                        <strong>
-                            die Stunde, -n
-                        </strong>
-
-                        <span>
-                            Zeiteinheit (60 Minuten)
-                        </span>
-
-                    </div>
-
-                    <audio controls>
-                        <source src="audio/die_stunde.mp3">
-                    </audio>
-
-                </div>
+                <audio controls>
+                    <source
+                        src="audio/um_wie_viel_uhr.mp3">
+                </audio>
 
             </div>
 
@@ -1812,856 +1727,1439 @@
     </div>
 
 
-    <!-- PAGE 2 -->
+    <div
+        class="sub-folder"
+        style="
+            border:
+                1px solid rgba(255,126,0,0.3);
+        ">
 
-    <div id="page-2" class="section-page">
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
 
-        <h2 class="text-2xl font-black text-slate-900 mb-4">
+            📌 Präposition „um“
 
-            📋 Teil 2: Formen der Uhrzeit
+            <span class="sub-arrow">
+                ⌄
+            </span>
 
-        </h2>
-
-
-        <div class="sub-folder">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                📋 Formelle Uhrzeit
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
+        </button>
 
 
-            <div class="sub-content">
+        <div class="sub-content">
+
+            <div
+                class="rule-box"
+                style="
+                    margin:
+                        0 0 10px 0;
+                    background:
+                        #fffaf0;
+                    border:
+                        1px solid #fed7aa;
+                ">
 
                 <div
-                    class="info-box"
+                    class="rule-big"
                     style="
-                        margin-bottom: 12px;
-                        border-left: 4px solid #4f46e5;
+                        color:
+                            #c2410c;
                     ">
 
-                    <p>
-                        Bei offiziellen Situationen
-                        benutzen wir meistens das
-                        24-Stunden-System.
-                    </p>
-
-                </div>
-
-
-                <div class="time-grid">
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            08:00
-                        </div>
-
-                        <div class="time-say">
-                            acht Uhr
-                        </div>
-
-                        <audio controls>
-                            <source src="audio/acht_uhr.mp3">
-                        </audio>
-
-                    </div>
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            14:30
-                        </div>
-
-                        <div class="time-say">
-                            14 Uhr dreißig
-                        </div>
-
-                        <audio controls>
-                            <source src="audio/vierzehn_uhr_dreissig.mp3">
-                        </audio>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="sub-folder">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                🏠 Informelle Uhrzeit
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="rule-box">
-
-                    <h3>
-                        ⭐ Wichtig bei „halb“
-                    </h3>
-
-                    <div class="rule-big">
-                        08:30 → halb neun
-                    </div>
-
-                </div>
-
-
-                <div class="time-grid">
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            08:15
-                        </div>
-
-                        <div class="time-say">
-                            Viertel nach acht
-                        </div>
-
-                        <audio controls>
-                            <source src="audio/viertel_nach_acht.mp3">
-                        </audio>
-
-                    </div>
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            08:45
-                        </div>
-
-                        <div class="time-say">
-                            Viertel vor neun
-                        </div>
-
-                        <audio controls>
-                            <source src="audio/viertel_vor_neun.mp3">
-                        </audio>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PAGE 3 -->
-
-    <div id="page-3" class="section-page">
-
-        <h2 class="text-2xl font-black text-slate-900 mb-4">
-
-            🌅 Teil 3: Tagesablauf & Zeitangabe
-
-        </h2>
-
-
-        <div class="sub-folder">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                🌅 Tagesablauf
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="day-timeline">
-
-
-                    <div class="day-item">
-
-                        <div class="day-icon">
-                            🌅
-                        </div>
-
-                        <div class="day-card">
-
-                            <div class="day-time">
-                                07:00 Uhr
-                            </div>
-
-                            <div class="day-title">
-                                aufstehen
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="day-item">
-
-                        <div class="day-icon">
-                            ☕
-                        </div>
-
-                        <div class="day-card">
-
-                            <div class="day-time">
-                                07:30 Uhr
-                            </div>
-
-                            <div class="day-title">
-                                frühstücken
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="day-item">
-
-                        <div class="day-icon">
-                            🌙
-                        </div>
-
-                        <div class="day-card">
-
-                            <div class="day-time">
-                                22:30 Uhr
-                            </div>
-
-                            <div class="day-title">
-                                schlafen
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="sub-folder">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                ☀️ Tageszeiten
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="time-grid">
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            🌅
-                        </div>
-
-                        <div class="time-say">
-                            der Morgen
-                        </div>
-
-                    </div>
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            🍽️
-                        </div>
-
-                        <div class="time-say">
-                            der Mittag
-                        </div>
-
-                    </div>
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            🌆
-                        </div>
-
-                        <div class="time-say">
-                            der Abend
-                        </div>
-
-                    </div>
-
-
-                    <div class="time-card">
-
-                        <div class="time">
-                            🌙
-                        </div>
-
-                        <div class="time-say">
-                            die Nacht
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PAGE 4 -->
-
-    <div id="page-4" class="section-page">
-
-        <h2 class="text-2xl font-black text-slate-900 mb-4">
-
-            💬 Teil 4: Dialog und Übung
-
-        </h2>
-
-
-        <div
-            class="dialog"
-            style="margin-top:5px;">
-
-            <div class="dialog-line">
-
-                <div class="avatar">
-                    👩
-                </div>
-
-                <div class="bubble">
-
-                    <span class="speaker">
-                        Mama
-                    </span>
-
-                    „Maria, guten Morgen!
-                    Wie spät ist es?“
-
-                </div>
-
-            </div>
-
-
-            <div class="dialog-line">
-
-                <div class="avatar">
-                    👧
-                </div>
-
-                <div class="bubble">
-
-                    <span class="speaker">
-                        Maria
-                    </span>
-
-                    „Guten Morgen!
-                    Es ist halb acht.“
-
-                </div>
-
-            </div>
-
-
-            <div class="dialog-line">
-
-                <div class="avatar">
-                    👦
-                </div>
-
-                <div class="bubble">
-
-                    <span class="speaker">
-                        Max
-                    </span>
-
-                    „Wann kommt der Bus?“
-
-                </div>
-
-            </div>
-
-
-            <div class="dialog-line">
-
-                <div class="avatar">
-                    👩
-                </div>
-
-                <div class="bubble">
-
-                    <span class="speaker">
-                        Mama
-                    </span>
-
-                    „Der Bus kommt um
-                    Viertel vor acht.“
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="sub-folder"
-            style="margin-top: 16px;">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                ✏️ Übung zum Dialog
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div class="exercise">
-
-                    <div class="exercise-number">
-                        01 · Textverständnis
-                    </div>
-
-                    Wie spät ist es laut Maria?
-
-                    Es ist
-
-                    <input
-                        type="text"
-                        placeholder="Uhrzeit auf Deutsch">
-
-                </div>
-
-
-                <div class="exercise">
-
-                    <div class="exercise-number">
-                        02 · Wortschatz
-                    </div>
-
-                    Wann kommt der Bus?
-
-                    Der Bus kommt um
-
-                    <input
-                        type="text"
-                        placeholder="Zeitangabe">.
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="sub-folder"
-            style="margin-top: 12px;">
-
-            <button
-                class="sub-btn"
-                onclick="toggleSub(this)">
-
-                📄 Übungs-pdf
-
-                <span class="sub-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-
-            <div class="sub-content">
-
-                <div
-                    class="info-box"
-                    style="margin-bottom: 12px;">
-
-                    <h3>
-                        📥 Arbeitsblatt herunterladen
-                    </h3>
-
-                    <p>
-                        Hier finden Sie zusätzliche
-                        Übungen als PDF-Dokument
-                        zum Ausdrucken.
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="#"
-                    target="_blank"
-                    class="print-btn"
-                    style="
-                        display: inline-block;
-                        text-align: center;
-                        text-decoration: none;
-                        font-size: 0.9rem;
-                    ">
-
-                    📥 Übungs-pdf öffnen / herunterladen
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- PAGE 5 -->
-
-    <div id="page-5" class="section-page">
-
-        <h2 class="text-2xl font-black text-slate-900 mb-4">
-
-            🧠 Teil 5: Zusammenfassung
-
-        </h2>
-
-
-        <div class="remember">
-
-            <h3>
-                🕐 Uhrzeit Regeln
-            </h3>
-
-            <p>
-
-                <strong>
-                    08:15
-                </strong>
-                →
-                Viertel nach acht
-
-                <br>
-
-                <strong>
-                    08:30
-                </strong>
-                →
-                halb neun
-                (nächste Stunde!)
-
-                <br>
-
-                <strong>
-                    08:45
-                </strong>
-                →
-                Viertel vor neun
-
-            </p>
-
-        </div>
-
-
-        <div class="remember">
-
-            <h3>
-                📌 Wichtigste Präposition
-            </h3>
-
-            <p>
-
-                <strong>
                     UM + Uhrzeit
-                </strong>
 
-                (z.B.
-                <em>
-                    um acht Uhr
-                </em>)
+                </div>
 
-            </p>
+            </div>
+
+
+            <div class="audio-word">
+
+                <div class="word">
+
+                    <strong>
+                        um acht Uhr
+                    </strong>
+
+                    <span>
+                        Wann?
+                    </span>
+
+                </div>
+
+                <audio controls>
+                    <source
+                        src="audio/um_acht_uhr.mp3">
+                </audio>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="sub-folder"
+        style="
+            border:
+                1px solid rgba(255,126,0,0.3);
+        ">
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            🔢 Zahlen (Minuten)
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+            <div class="number-grid">
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        1
+
+                    </div>
+
+                    <div class="number-word">
+                        eins
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        5
+
+                    </div>
+
+                    <div class="number-word">
+                        fünf
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        10
+
+                    </div>
+
+                    <div class="number-word">
+                        zehn
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        15
+
+                    </div>
+
+                    <div class="number-word">
+                        fünfzehn
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        30
+
+                    </div>
+
+                    <div class="number-word">
+                        dreißig
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="number-card"
+                    style="
+                        background:
+                            linear-gradient(
+                                135deg,
+                                #fff7ed,
+                                #ffedd5
+                            );
+                        border:
+                            1px solid #fed7aa;
+                    ">
+
+                    <div
+                        class="number"
+                        style="
+                            color:
+                                #c2410c;
+                        ">
+
+                        60
+
+                    </div>
+
+                    <div class="number-word">
+                        sechzig
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- PAGE 6 -->
+    <div
+        class="sub-folder"
+        style="
+            border:
+                2px solid #ff7e00;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,69,0,0.06),
+                    rgba(255,126,0,0.06)
+                );
+        ">
 
-    <div id="page-6" class="section-page">
-
-        <h2
-            class="text-2xl font-black text-slate-900 mb-4"
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)"
             style="
                 background:
-                    linear-gradient(
-                        135deg,
-                        #3b82f6,
-                        #8b5cf6
-                    );
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                display: inline-block;
+                    transparent;
             ">
 
-            💭 Teil 6:
-            Reflektion & Selbstbewertung
+            📚 Wichtige Wörter
 
-        </h2>
+            <span class="sub-arrow">
+                ⌄
+            </span>
 
-
-        <div
-            class="info-box"
-            style="
-                border-left: 4px solid #8b5cf6;
-                margin-bottom: 16px;
-            ">
-
-            <h3>
-                🎯 Selbstreflexion
-            </h3>
-
-            <p>
-                Überprüfe deinen Lernfortschritt
-                zur Uhrzeit. Beantworte die Fragen
-                für dich selbst!
-            </p>
-
-        </div>
+        </button>
 
 
-        <div
-            class="rule-box"
-            style="
-                background:
-                    linear-gradient(
-                        135deg,
-                        #eef2ff,
-                        #f3e8ff
-                    );
-                border:
-                    1px solid #c7d2fe;
-                margin-bottom: 14px;
-            ">
+        <div class="sub-content">
 
-            <h3
+            <div
+                class="info-box"
                 style="
-                    color: #4f46e5;
-                    margin-bottom: 6px;
+                    margin-bottom:
+                        12px;
+                    border-left:
+                        4px solid #ff4500;
                 ">
 
-                🤔 Frage 1:
-                Kannst du die formelle Uhrzeit nennen?
+                <h3>
+                    💡 Essenzielle Vokabeln
+                </h3>
 
-            </h3>
+                <p>
+                    Wichtige Begriffe rund um
+                    das Thema Uhrzeit und
+                    Zeitangaben im Alltag.
+                </p>
 
-
-            <p
-                style="
-                    color: #334155;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                ">
-
-                Fällt es dir leicht,
-                Zeiten wie 14:30 Uhr
-                (vierzehn Uhr dreißig)
-                fehlerfrei auszusprechen?
-
-            </p>
+            </div>
 
 
-            <input
-                type="text"
-                placeholder="Deine Antwort hier eingeben..."
-                style="
-                    border: 1px solid #a5b4fc;
-                    border-radius: 8px;
-                    padding: 8px 10px;
-                    width: 100%;
-                    background: white;
-                    outline: none;
-                    font-family: inherit;
-                    font-weight: 600;
-                    font-size: 0.88rem;
-                    color: #1e293b;
-                ">
+            <div class="audio-word">
 
-        </div>
+                <div class="word">
 
+                    <strong>
+                        die Uhrzeit, -en
+                    </strong>
 
-        <div
-            class="rule-box"
-            style="
-                background:
-                    linear-gradient(
-                        135deg,
-                        #eef2ff,
-                        #f3e8ff
-                    );
-                border:
-                    1px solid #c7d2fe;
-                margin-bottom: 14px;
-            ">
+                    <span>
+                        die Zeitangabe
+                    </span>
 
-            <h3
-                style="
-                    color: #4f46e5;
-                    margin-bottom: 6px;
-                ">
+                </div>
 
-                🤔 Frage 2:
-                Verstehst du die informelle Uhrzeit?
+                <audio controls>
+                    <source
+                        src="audio/die_uhrzeit.mp3">
+                </audio>
 
-            </h3>
+            </div>
 
 
-            <p
-                style="
-                    color: #334155;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                ">
+            <div class="audio-word">
 
-                Weißt du jetzt,
-                warum 08:30 Uhr als
-                „halb neun“ bezeichnet wird?
+                <div class="word">
 
-            </p>
+                    <strong>
+                        die Minute, -n
+                    </strong>
 
+                    <span>
+                        Zeiteinheit (60 Sekunden)
+                    </span>
 
-            <input
-                type="text"
-                placeholder="Deine Antwort hier eingeben..."
-                style="
-                    border: 1px solid #a5b4fc;
-                    border-radius: 8px;
-                    padding: 8px 10px;
-                    width: 100%;
-                    background: white;
-                    outline: none;
-                    font-family: inherit;
-                    font-weight: 600;
-                    font-size: 0.88rem;
-                    color: #1e293b;
-                ">
+                </div>
 
-        </div>
+                <audio controls>
+                    <source
+                        src="audio/die_minute.mp3">
+                </audio>
+
+            </div>
 
 
-        <div
-            class="rule-box"
-            style="
-                background:
-                    linear-gradient(
-                        135deg,
-                        #eef2ff,
-                        #f3e8ff
-                    );
-                border:
-                    1px solid #c7d2fe;
-                margin-bottom: 14px;
-            ">
+            <div class="audio-word">
 
-            <h3
-                style="
-                    color: #4f46e5;
-                    margin-bottom: 6px;
-                ">
+                <div class="word">
 
-                🤔 Frage 3:
-                Die Präposition „um“ im Alltag
+                    <strong>
+                        die Stunde, -n
+                    </strong>
 
-            </h3>
+                    <span>
+                        Zeiteinheit (60 Minuten)
+                    </span>
 
+                </div>
 
-            <p
-                style="
-                    color: #334155;
-                    font-size: 0.9rem;
-                    font-weight: 600;
-                    margin-bottom: 10px;
-                ">
+                <audio controls>
+                    <source
+                        src="audio/die_stunde.mp3">
+                </audio>
 
-                Kannst du eigene Sätze
-                mit „um“ bilden
-                (z.B. Um wie viel Uhr
-                stehst du auf)?
-
-            </p>
-
-
-            <input
-                type="text"
-                placeholder="Deine Antwort hier eingeben..."
-                style="
-                    border: 1px solid #a5b4fc;
-                    border-radius: 8px;
-                    padding: 8px 10px;
-                    width: 100%;
-                    background: white;
-                    outline: none;
-                    font-family: inherit;
-                    font-weight: 600;
-                    font-size: 0.88rem;
-                    color: #1e293b;
-                ">
+            </div>
 
         </div>
 
     </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 2 -->
+<!-- ================================================= -->
+
+<div
+    id="page-2"
+    class="section-page">
+
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4">
+
+        📋 Teil 2: Formen der Uhrzeit
+
+    </h2>
+
+
+    <div class="sub-folder">
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            📋 Formelle Uhrzeit
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+            <div
+                class="info-box"
+                style="
+                    margin-bottom:
+                        12px;
+                    border-left:
+                        4px solid #4f46e5;
+                ">
+
+                <p>
+                    Bei offiziellen Situationen
+                    benutzen wir meistens das
+                    24-Stunden-System.
+                </p>
+
+            </div>
+
+
+            <div class="time-grid">
+
+                <div class="time-card">
+
+                    <div class="time">
+                        08:00
+                    </div>
+
+                    <div class="time-say">
+                        acht Uhr
+                    </div>
+
+                    <audio controls>
+                        <source
+                            src="audio/acht_uhr.mp3">
+                    </audio>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        14:30
+                    </div>
+
+                    <div class="time-say">
+                        14 Uhr dreißig
+                    </div>
+
+                    <audio controls>
+                        <source
+                            src="audio/vierzehn_uhr_dreissig.mp3">
+                    </audio>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="sub-folder">
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            🏠 Informelle Uhrzeit
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+            <div class="rule-box">
+
+                <h3>
+                    ⭐ Wichtig bei „halb“
+                </h3>
+
+                <div class="rule-big">
+                    08:30 → halb neun
+                </div>
+
+            </div>
+
+
+            <div class="time-grid">
+
+                <div class="time-card">
+
+                    <div class="time">
+                        08:15
+                    </div>
+
+                    <div class="time-say">
+                        Viertel nach acht
+                    </div>
+
+                    <audio controls>
+                        <source
+                            src="audio/viertel_nach_acht.mp3">
+                    </audio>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        08:45
+                    </div>
+
+                    <div class="time-say">
+                        Viertel vor neun
+                    </div>
+
+                    <audio controls>
+                        <source
+                            src="audio/viertel_vor_neun.mp3">
+                    </audio>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 3 -->
+<!-- ================================================= -->
+
+<div
+    id="page-3"
+    class="section-page">
+
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4">
+
+        🌅 Teil 3: Tagesablauf & Zeitangabe
+
+    </h2>
+
+
+    <div class="sub-folder">
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            🌅 Tagesablauf
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+            <div class="day-timeline">
+
+
+                <div class="day-item">
+
+                    <div class="day-icon">
+                        🌅
+                    </div>
+
+                    <div class="day-card">
+
+                        <div class="day-time">
+                            07:00 Uhr
+                        </div>
+
+                        <div class="day-title">
+                            aufstehen
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="day-item">
+
+                    <div class="day-icon">
+                        ☕
+                    </div>
+
+                    <div class="day-card">
+
+                        <div class="day-time">
+                            07:30 Uhr
+                        </div>
+
+                        <div class="day-title">
+                            frühstücken
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="day-item">
+
+                    <div class="day-icon">
+                        🌙
+                    </div>
+
+                    <div class="day-card">
+
+                        <div class="day-time">
+                            22:30 Uhr
+                        </div>
+
+                        <div class="day-title">
+                            schlafen
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="sub-folder">
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            ☀️ Tageszeiten
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+            <div class="time-grid">
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        🌅
+                    </div>
+
+                    <div class="time-say">
+                        der Morgen
+                    </div>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        🍽️
+                    </div>
+
+                    <div class="time-say">
+                        der Mittag
+                    </div>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        🌆
+                    </div>
+
+                    <div class="time-say">
+                        der Abend
+                    </div>
+
+                </div>
+
+
+                <div class="time-card">
+
+                    <div class="time">
+                        🌙
+                    </div>
+
+                    <div class="time-say">
+                        die Nacht
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 4 -->
+<!-- ================================================= -->
+
+<div
+    id="page-4"
+    class="section-page">
+
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4">
+
+        💬 Teil 4: Dialog und Übung
+
+    </h2>
+
+
+    <div
+        class="dialog"
+        style="
+            margin-top:
+                5px;
+        ">
+
+
+        <div class="dialog-line">
+
+            <div class="avatar">
+                👩
+            </div>
+
+            <div class="bubble">
+
+                <span class="speaker">
+                    Mama
+                </span>
+
+                „Maria, guten Morgen!
+                Wie spät ist es?“
+
+            </div>
+
+        </div>
+
+
+        <div class="dialog-line">
+
+            <div class="avatar">
+                👧
+            </div>
+
+            <div class="bubble">
+
+                <span class="speaker">
+                    Maria
+                </span>
+
+                „Guten Morgen!
+                Es ist halb acht.“
+
+            </div>
+
+        </div>
+
+
+        <div class="dialog-line">
+
+            <div class="avatar">
+                👦
+            </div>
+
+            <div class="bubble">
+
+                <span class="speaker">
+                    Max
+                </span>
+
+                „Wann kommt der Bus?“
+
+            </div>
+
+        </div>
+
+
+        <div class="dialog-line">
+
+            <div class="avatar">
+                👩
+            </div>
+
+            <div class="bubble">
+
+                <span class="speaker">
+                    Mama
+                </span>
+
+                „Der Bus kommt um
+                Viertel vor acht.“
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        class="sub-folder"
+        style="
+            margin-top:
+                16px;
+        ">
+
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            ✏️ Übung zum Dialog
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+
+            <div class="exercise">
+
+                <div class="exercise-number">
+                    01 · Textverständnis
+                </div>
+
+                Wie spät ist es laut Maria?
+
+                Es ist
+
+                <input
+                    type="text"
+                    placeholder="Uhrzeit auf Deutsch">
+
+            </div>
+
+
+            <div class="exercise">
+
+                <div class="exercise-number">
+                    02 · Wortschatz
+                </div>
+
+                Wann kommt der Bus?
+
+                Der Bus kommt um
+
+                <input
+                    type="text"
+                    placeholder="Zeitangabe">.
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="sub-folder"
+        style="
+            margin-top:
+                12px;
+        ">
+
+
+        <button
+            class="sub-btn"
+            onclick="toggleSub(this)">
+
+            📄 Übungs-pdf
+
+            <span class="sub-arrow">
+                ⌄
+            </span>
+
+        </button>
+
+
+        <div class="sub-content">
+
+
+            <div
+                class="info-box"
+                style="
+                    margin-bottom:
+                        12px;
+                ">
+
+                <h3>
+                    📥 Arbeitsblatt herunterladen
+                </h3>
+
+                <p>
+                    Hier finden Sie zusätzliche
+                    Übungen als PDF-Dokument
+                    zum Ausdrucken.
+                </p>
+
+            </div>
+
+
+            <a
+                href="#"
+                target="_blank"
+                class="print-btn"
+                style="
+                    display:
+                        inline-block;
+                    text-align:
+                        center;
+                    text-decoration:
+                        none;
+                    font-size:
+                        0.9rem;
+                ">
+
+                📥 Übungs-pdf öffnen /
+                herunterladen
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 5 -->
+<!-- ================================================= -->
+
+<div
+    id="page-5"
+    class="section-page">
+
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4">
+
+        🧠 Teil 5: Zusammenfassung
+
+    </h2>
+
+
+    <div class="remember">
+
+        <h3>
+            🕐 Uhrzeit Regeln
+        </h3>
+
+        <p>
+
+            <strong>
+                08:15
+            </strong>
+            →
+            Viertel nach acht
+
+            <br>
+
+            <strong>
+                08:30
+            </strong>
+            →
+            halb neun
+            (nächste Stunde!)
+
+            <br>
+
+            <strong>
+                08:45
+            </strong>
+            →
+            Viertel vor neun
+
+        </p>
+
+    </div>
+
+
+    <div class="remember">
+
+        <h3>
+            📌 Wichtigste Präposition
+        </h3>
+
+        <p>
+
+            <strong>
+                UM + Uhrzeit
+            </strong>
+
+            (z.B.
+            <em>
+                um acht Uhr
+            </em>)
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- PAGE 6 -->
+<!-- ================================================= -->
+
+<div
+    id="page-6"
+    class="section-page">
+
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Zurück
+
+    </button>
+
+
+    <h2
+        class="text-2xl font-black text-slate-900 mb-4"
+        style="
+            background:
+                linear-gradient(
+                    135deg,
+                    #3b82f6,
+                    #8b5cf6
+                );
+            -webkit-background-clip:
+                text;
+            -webkit-text-fill-color:
+                transparent;
+            display:
+                inline-block;
+        ">
+
+        💭 Teil 6:
+        Reflektion & Selbstbewertung
+
+    </h2>
+
+
+    <div
+        class="info-box"
+        style="
+            border-left:
+                4px solid #8b5cf6;
+            margin-bottom:
+                16px;
+        ">
+
+        <h3>
+            🎯 Selbstreflexion
+        </h3>
+
+        <p>
+            Überprüfe deinen Lernfortschritt
+            zur Uhrzeit. Beantworte die Fragen
+            für dich selbst!
+        </p>
+
+    </div>
+
+
+    <div
+        class="rule-box"
+        style="
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f3e8ff
+                );
+            border:
+                1px solid #c7d2fe;
+            margin-bottom:
+                14px;
+        ">
+
+
+        <h3
+            style="
+                color:
+                    #4f46e5;
+                margin-bottom:
+                    6px;
+            ">
+
+            🤔 Frage 1:
+            Kannst du die formelle
+            Uhrzeit nennen?
+
+        </h3>
+
+
+        <p
+            style="
+                color:
+                    #334155;
+                font-size:
+                    0.9rem;
+                font-weight:
+                    600;
+                margin-bottom:
+                    10px;
+            ">
+
+            Fällt es dir leicht,
+            Zeiten wie 14:30 Uhr
+            (vierzehn Uhr dreißig)
+            fehlerfrei auszusprechen?
+
+        </p>
+
+
+        <input
+            type="text"
+            placeholder="Deine Antwort hier eingeben..."
+            style="
+                border:
+                    1px solid #a5b4fc;
+                border-radius:
+                    8px;
+                padding:
+                    8px 10px;
+                width:
+                    100%;
+                background:
+                    white;
+                outline:
+                    none;
+                font-family:
+                    inherit;
+                font-weight:
+                    600;
+                font-size:
+                    0.88rem;
+                color:
+                    #1e293b;
+            ">
+
+    </div>
+
+
+    <div
+        class="rule-box"
+        style="
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f3e8ff
+                );
+            border:
+                1px solid #c7d2fe;
+            margin-bottom:
+                14px;
+        ">
+
+
+        <h3
+            style="
+                color:
+                    #4f46e5;
+                margin-bottom:
+                    6px;
+            ">
+
+            🤔 Frage 2:
+            Verstehst du die informelle
+            Uhrzeit?
+
+        </h3>
+
+
+        <p
+            style="
+                color:
+                    #334155;
+                font-size:
+                    0.9rem;
+                font-weight:
+                    600;
+                margin-bottom:
+                    10px;
+            ">
+
+            Weißt du jetzt,
+            warum 08:30 Uhr als
+            „halb neun“ bezeichnet wird?
+
+        </p>
+
+
+        <input
+            type="text"
+            placeholder="Deine Antwort hier eingeben..."
+            style="
+                border:
+                    1px solid #a5b4fc;
+                border-radius:
+                    8px;
+                padding:
+                    8px 10px;
+                width:
+                    100%;
+                background:
+                    white;
+                outline:
+                    none;
+                font-family:
+                    inherit;
+                font-weight:
+                    600;
+                font-size:
+                    0.88rem;
+                color:
+                    #1e293b;
+            ">
+
+    </div>
+
+
+    <div
+        class="rule-box"
+        style="
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f3e8ff
+                );
+            border:
+                1px solid #c7d2fe;
+            margin-bottom:
+                14px;
+        ">
+
+
+        <h3
+            style="
+                color:
+                    #4f46e5;
+                margin-bottom:
+                    6px;
+            ">
+
+            🤔 Frage 3:
+            Die Präposition „um“
+            im Alltag
+
+        </h3>
+
+
+        <p
+            style="
+                color:
+                    #334155;
+                font-size:
+                    0.9rem;
+                font-weight:
+                    600;
+                margin-bottom:
+                    10px;
+            ">
+
+            Kannst du eigene Sätze
+            mit „um“ bilden
+            (z.B. Um wie viel Uhr
+            stehst du auf)?
+
+        </p>
+
+
+        <input
+            type="text"
+            placeholder="Deine Antwort hier eingeben..."
+            style="
+                border:
+                    1px solid #a5b4fc;
+                border-radius:
+                    8px;
+                padding:
+                    8px 10px;
+                width:
+                    100%;
+                background:
+                    white;
+                outline:
+                    none;
+                font-family:
+                    inherit;
+                font-weight:
+                    600;
+                font-size:
+                    0.88rem;
+                color:
+                    #1e293b;
+            ">
+
+    </div>
+
+</div>
 
 
 </main>
@@ -2669,178 +3167,198 @@
 
 <script>
 
-    /* Bouton Lektion Starten */
 
-    function startLesson() {
+/* ========================================= */
+/* AUDIO START */
+/* ========================================= */
 
-        try {
+function startLesson() {
 
-            const lessonAudio =
-                new Audio(
-                    'audio/lektion_starten.mp3'
-                );
+    try {
 
-            lessonAudio
-                .play()
-                .catch(
-                    e =>
-                        console.log(
-                            "Audio de démarrage non disponible ou bloqué"
-                        )
-                );
+        const lessonAudio =
+            new Audio(
+                'audio/lektion_starten.mp3'
+            );
 
-        } catch(e) {}
-
-    }
-
-
-    /* Ouverture des sections */
-
-    function openSection(num) {
-
-        try {
-
-            const sectionAudio =
-                new Audio(
-                    'audio/section_' +
-                    num +
-                    '.mp3'
-                );
-
-            sectionAudio
-                .play()
-                .catch(
-                    e =>
-                        console.log(
-                            "Audio de section non disponible ou bloqué"
-                        )
-                );
-
-        } catch(e) {}
-
-
-        document
-            .getElementById(
-                'dashboard-view'
-            )
-            .style.display = 'none';
-
-
-        document
-            .querySelectorAll(
-                '.section-page'
-            )
-            .forEach(
-                page =>
-                    page.classList.remove(
-                        'active'
+        lessonAudio
+            .play()
+            .catch(
+                e =>
+                    console.log(
+                        "Audio de démarrage non disponible ou bloqué"
                     )
             );
 
+    } catch(e) {}
 
-        const targetPage =
-            document.getElementById(
-                'page-' + num
+}
+
+
+/* ========================================= */
+/* OUVRIR UNE SECTION */
+/* ========================================= */
+
+function openSection(num) {
+
+    try {
+
+        const sectionAudio =
+            new Audio(
+                'audio/section_' +
+                num +
+                '.mp3'
             );
 
-
-        if (targetPage) {
-
-            targetPage.classList.add(
-                'active'
-            );
-
-        }
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-
-    }
-
-
-    /* Retour au dashboard */
-
-    function showDashboard() {
-
-        document
-            .querySelectorAll(
-                '.section-page'
-            )
-            .forEach(
-                page =>
-                    page.classList.remove(
-                        'active'
+        sectionAudio
+            .play()
+            .catch(
+                e =>
+                    console.log(
+                        "Audio de section non disponible ou bloqué"
                     )
             );
 
-
-        document
-            .getElementById(
-                'dashboard-view'
-            )
-            .style.display = 'block';
+    } catch(e) {}
 
 
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    document
+        .getElementById(
+            'dashboard-view'
+        )
+        .style.display =
+            'none';
+
+
+    document
+        .querySelectorAll(
+            '.section-page'
+        )
+        .forEach(
+            page =>
+                page.classList.remove(
+                    'active'
+                )
+        );
+
+
+    const targetPage =
+        document.getElementById(
+            'page-' + num
+        );
+
+
+    if (targetPage) {
+
+        targetPage.classList.add(
+            'active'
+        );
 
     }
 
 
-    /* Sous-dossiers */
+    window.scrollTo({
 
-    function toggleSub(button) {
+        top: 0,
 
-        const folder =
-            button.parentElement;
+        behavior:
+            'smooth'
 
+    });
 
-        const willBeActive =
-            !folder.classList.contains(
-                "active"
-            );
+}
 
 
-        folder.classList.toggle(
+/* ========================================= */
+/* RETOUR AU GRAND TITRE "DIE UHRZEIT" */
+/* ========================================= */
+
+function showDashboard() {
+
+    document
+        .querySelectorAll(
+            '.section-page'
+        )
+        .forEach(
+            page =>
+                page.classList.remove(
+                    'active'
+                )
+        );
+
+
+    document
+        .getElementById(
+            'dashboard-view'
+        )
+        .style.display =
+            'block';
+
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior:
+            'smooth'
+
+    });
+
+}
+
+
+/* ========================================= */
+/* SOUS-DOSSIERS */
+/* ========================================= */
+
+function toggleSub(button) {
+
+    const folder =
+        button.parentElement;
+
+
+    const willBeActive =
+        !folder.classList.contains(
             "active"
         );
 
 
-        if (willBeActive) {
+    folder.classList.toggle(
+        "active"
+    );
 
-            try {
 
-                const subAudio =
-                    folder.querySelector(
-                        '.sub-content audio'
+    if (willBeActive) {
+
+        try {
+
+            const subAudio =
+                folder.querySelector(
+                    '.sub-content audio'
+                );
+
+
+            if (subAudio) {
+
+                subAudio.currentTime =
+                    0;
+
+                subAudio
+                    .play()
+                    .catch(
+                        e =>
+                            console.log(
+                                "Audio interne non disponible ou bloqué"
+                            )
                     );
 
+            }
 
-                if (subAudio) {
-
-                    subAudio.currentTime = 0;
-
-                    subAudio
-                        .play()
-                        .catch(
-                            e =>
-                                console.log(
-                                    "Audio interne non disponible ou bloqué"
-                                )
-                        );
-
-                }
-
-            } catch(e) {}
-
-        }
+        } catch(e) {}
 
     }
+
+}
 
 </script>
 
