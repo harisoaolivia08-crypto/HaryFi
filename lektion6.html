@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HaryFi – Lektion A1 | W-Fragen & Antworten</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --wfr-grad:linear-gradient(135deg,#60a5fa,#3b82f6,#1d4ed8);
+    --jan-grad:linear-gradient(135deg,#34d399,#10b981,#047857);
+    --nic-grad:linear-gradient(135deg,#a78bfa,#8b5cf6,#6d28d9);
+    --doc-grad:linear-gradient(135deg,#f472b6,#ec4899,#be185d);
+    --wei-grad:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);
+    --ueb-grad:linear-gradient(135deg,#fb7185,#e11d48,#9f1239);
+
+    --wfr-color:#2563eb;
+    --jan-color:#059669;
+    --nic-color:#7c3aed;
+    --doc-color:#db2777;
+    --wei-color:#d97706;
+    --ueb-color:#e11d48;
+
+    --orange:#ff7a00;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Plus Jakarta Sans',Arial,sans-serif;
+    color:#17120d;
+    background:
+    linear-gradient(
+        -45deg,
+        #ff4500,
+        #ff7e00,
+        #ffd000,
+        #00c9ff,
+        #7c3aed,
+        #ff3cac
+    );
+    background-size:500% 500%;
+    animation:gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    25%{background-position:100% 50%}
+    50%{background-position:100% 100%}
+    75%{background-position:0% 100%}
+    100%{background-position:0% 50%}
+}
+
+.container{
+    width:100%;
+    max-width:1180px;
+    margin:auto;
+    padding:24px 16px 60px;
+}
+
+/* =========================
+   TOP
+========================= */
+
+.top-navigation{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.back-button,
+.course-label{
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:18px;
+    font-weight:900;
+}
+
+.back-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color:#111827;
+    padding:12px 18px;
+    transition:.2s;
+}
+
+.back-button:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.4);
+}
+
+.course-label{
+    padding:11px 18px;
+    border-radius:999px;
+    font-size:.9rem;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    text-align:center;
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:28px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(2rem,5vw,3.2rem);
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.header p{
+    margin:0 0 14px;
+    font-size:1.1rem;
+    font-weight:800;
+    color:#1f2937;
+}
+
+.start-lesson-btn{
+    background:linear-gradient(135deg,#ff7a00,#ff5a00);
+    color:white;
+    border:none;
+    padding:12px 24px;
+    font-size:1rem;
+    font-weight:900;
+    border-radius:16px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(255,122,0,0.3);
+    transition:.25s;
+}
+
+.start-lesson-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:linear-gradient(135deg,#ff5a00,#e04a00);
+}
+
+/* =========================
+   MAIN NAV
+========================= */
+
+.main-nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+}
+
+.nav-btn{
+    border:2px solid rgba(255,255,255,.8);
+    padding:13px 19px;
+    font-size:.92rem;
+    font-weight:900;
+    border-radius:16px;
+    cursor:pointer;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(10px);
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
+    transition:.25s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.nav-btn.active{
+    color:white;
+    border-color:white;
+}
+
+.nav-btn.btn-wfr{color:var(--wfr-color)}
+.nav-btn.btn-wfr.active{background:var(--wfr-grad)}
+
+.nav-btn.btn-jan{color:var(--jan-color)}
+.nav-btn.btn-jan.active{background:var(--jan-grad)}
+
+.nav-btn.btn-nic{color:var(--nic-color)}
+.nav-btn.btn-nic.active{background:var(--nic-grad)}
+
+.nav-btn.btn-doc{color:var(--doc-color)}
+.nav-btn.btn-doc.active{background:var(--doc-grad)}
+
+.nav-btn.btn-wei{color:var(--wei-color)}
+.nav-btn.btn-wei.active{background:var(--wei-grad)}
+
+.nav-btn.btn-ueb{color:var(--ueb-color)}
+.nav-btn.btn-ueb.active{background:var(--ueb-grad)}
+
+/* =========================
+   GRID
+========================= */
+
+.lesson-grid{
+    display:grid;
+    grid-template-columns:
+        minmax(0,2.2fr)
+        minmax(260px,1fr);
+    gap:20px;
+}
+
+.main-content,
+.side-panel{
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:26px;
+    padding:24px;
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.tab-content,
+.side-content{
+    display:none;
+}
+
+.tab-content.active,
+.side-content.active{
+    display:block;
+}
+
+/* =========================
+   BIG TITLES
+========================= */
+
+.case-title{
+    margin:0 0 6px;
+    font-size:clamp(1.75rem,4vw,2.35rem);
+    font-weight:900;
+    letter-spacing:-.7px;
+}
+
+.theme-wfr .case-title{color:var(--wfr-color)}
+.theme-jan .case-title{color:var(--jan-color)}
+.theme-nic .case-title{color:var(--nic-color)}
+.theme-doc .case-title{color:var(--doc-color)}
+.theme-wei .case-title{color:var(--wei-color)}
+.theme-ueb .case-title{color:var(--ueb-color)}
+
+.fr-sub{
+    display:block;
+    font-size:.9rem;
+    color:#374151;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+h3{
+    font-size:1.1rem;
+    font-weight:900;
+    margin:22px 0 12px;
+}
+
+/* =========================
+   COLLAPSIBLE
+========================= */
+
+.section-toggle{
+    width:100%;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px 18px;
+    margin:20px 0 10px;
+    border-radius:18px;
+    background:rgba(255,255,255,.48);
+    border:1px solid rgba(255,255,255,.65);
+    color:#111827;
+    font-family:inherit;
+    font-size:1.08rem;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.section-toggle:hover{
+    background:rgba(255,255,255,.7);
+    transform:translateY(-2px);
+}
+
+.toggle-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.toggle-arrow{
+    width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:rgba(255,255,255,.7);
+    transition:.25s;
+}
+
+.section-toggle.open .toggle-arrow{
+    transform:rotate(90deg);
+}
+
+.section-content{
+    display:none;
+    animation:sectionOpen .25s ease;
+}
+
+.section-content.open{
+    display:block;
+}
+
+@keyframes sectionOpen{
+    from{
+        opacity:0;
+        transform:translateY(-5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.grammar-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    overflow:hidden;
+    border-radius:16px;
+    margin:14px 0 24px;
+    box-shadow:0 5px 16px rgba(0,0,0,.07);
+}
+
+.grammar-table th,
+.grammar-table td{
+    padding:12px;
+    text-align:left;
+    font-size:.9rem;
+}
+
+.grammar-table tr{
+    background:rgba(255,255,255,.92);
+}
+
+.grammar-table tr:nth-child(even){
+    background:rgba(248,250,252,.92);
+}
+
+.theme-wfr .grammar-table th{background:#dbeafe;color:var(--wfr-color)}
+.theme-jan .grammar-table th{background:#d1fae5;color:var(--jan-color)}
+.theme-nic .grammar-table th{background:#ede9fe;color:var(--nic-color)}
+.theme-doc .grammar-table th{background:#fce7f3;color:var(--doc-color)}
+.theme-wei .grammar-table th{background:#fef3c7;color:var(--wei-color)}
+.theme-ueb .grammar-table th{background:#ffe4e6;color:var(--ueb-color)}
+
+/* =========================
+   AUDIO
+========================= */
+
+.play-btn{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#ff7a00;
+    color:white;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+    transition:.2s;
+    flex-shrink:0;
+}
+
+.play-btn:hover{
+    transform:scale(1.12);
+    background:#ff5a00;
+}
+
+.play-triangle{
+    width:0;
+    height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:11px solid white;
+    margin-left:3px;
+}
+
+/* =========================
+   EXAMPLES
+========================= */
+
+.example-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.example-card{
+    background:rgba(255,255,255,.92);
+    padding:14px 15px;
+    border-radius:15px;
+    border-left:6px solid #cbd5e1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.theme-wfr .example-card{border-left-color:var(--wfr-color)}
+.theme-jan .example-card{border-left-color:var(--jan-color)}
+.theme-nic .example-card{border-left-color:var(--nic-color)}
+.theme-doc .example-card{border-left-color:var(--doc-color)}
+.theme-wei .example-card{border-left-color:var(--wei-color)}
+.theme-ueb .example-card{border-left-color:var(--ueb-color)}
+
+.ex-de{
+    font-weight:900;
+    font-size:1rem;
+}
+
+.ex-fr{
+    font-size:.84rem;
+    color:#64748b;
+    margin-top:3px;
+    font-weight:600;
+}
+
+/* =========================
+   SIDE PANEL
+========================= */
+
+.side-panel{
+    height:max-content;
+    position:sticky;
+    top:15px;
+}
+
+.side-content{
+    display:none;
+}
+
+.side-content.active{
+    display:block;
+}
+
+/* =========================
+   MERKHILFE
+========================= */
+
+.merkhilfe{
+    padding:4px 2px 5px;
+}
+
+.merkhilfe h3{
+    color:#111827;
+    margin-top:0;
+    margin-bottom:8px;
+    font-size:1.2rem;
+}
+
+.merkhilfe p{
+    margin:6px 0;
+    font-size:.87rem;
+    font-weight:700;
+    line-height:1.55;
+}
+
+.merk-beispiel{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.merk-word{
+    padding:7px 10px;
+    border-radius:10px;
+    background:rgba(255,255,255,.6);
+    font-weight:900;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-back{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+}
+
+.footer-back a{
+    text-decoration:none;
+    background:rgba(0,0,0,.85);
+    color:white;
+    padding:13px 22px;
+    border-radius:15px;
+    font-weight:900;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+    .lesson-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    .container{
+        padding:14px 10px 40px;
+    }
+    .header{
+        padding:19px 14px;
+        border-radius:22px;
+    }
+    .main-content,
+    .side-panel{
+        padding:17px;
+        border-radius:21px;
+    }
+    .nav-btn{
+        width:100%;
+    }
+    .grammar-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+    .side-panel{
+        position:static;
+    }
+    .section-toggle{
+        padding:14px;
+        font-size:1rem;
+    }
+}
+
+</style>
+</head>
+
+<body class="theme-wfr">
+
+<div class="container">
+
+<div class="top-navigation">
+    <a href="index.html#a1" class="back-button">
+        ← A1 Lektionen
+    </a>
+    <div class="course-label">
+        Deutschkurs
+    </div>
+</div>
+
+<div class="header">
+    <h1>W-Fragen & Antworten</h1>
+    <p>tsy misy mafy tsy laitran´ny Zoto</p>
+    <button class="start-lesson-btn" onclick="playLessonStartAudio()">🚀 Lektion Starten</button>
+</div>
+
+<div class="main-nav">
+    <button class="nav-btn btn-wfr active" onclick="switchTab('wfragen',this)">
+        1. W-Fragen
+    </button>
+    <button class="nav-btn btn-jan" onclick="switchTab('jainein',this)">
+        2. Ja / Nein
+    </button>
+    <button class="nav-btn btn-nic" onclick="switchTab('nicht',this)">
+        3. nicht / kein
+    </button>
+    <button class="nav-btn btn-doc" onclick="switchTab('doch',this)">
+        4. doch ❤️
+    </button>
+    <button class="nav-btn btn-wei" onclick="switchTab('weiss',this)">
+        5. Ich weiß nicht
+    </button>
+    <button class="nav-btn btn-ueb" onclick="switchTab('uebungen',this)">
+        Übungen
+    </button>
+</div>
+
+<div class="lesson-grid">
+
+<div class="main-content">
+
+<div id="wfragen" class="tab-content active">
+    <h2 class="case-title">1. W-Fragen</h2>
+    <span class="fr-sub">Das Subjekt & Fragewörter: Wer? Was? Wo? Wann? Warum? Wie?</span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Die wichtigsten W-Fragen</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px; text-align:center;">
+            <img src="1000014271.png" alt="W-Fragen Übersicht" style="max-width:100%; height:auto; border-radius:12px; margin-bottom:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            <div style="overflow-x:auto;">
+                <table class="grammar-table" style="min-width:700px; text-align:center;">
+                    <thead>
+                        <tr>
+                            <th>wer</th>
+                            <th>wie</th>
+                            <th>was</th>
+                            <th>wo</th>
+                            <th>wann</th>
+                            <th>welche</th>
+                            <th>warum</th>
+                            <th>woher</th>
+                            <th>wohin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>qui</td>
+                            <td>comment</td>
+                            <td>quoi</td>
+                            <td>où</td>
+                            <td>quand</td>
+                            <td>lequel / quelle</td>
+                            <td>pourquoi</td>
+                            <td>d'où</td>
+                            <td>où (vers)</td>
+                        </tr>
+                        <tr>
+                            <td>iza</td>
+                            <td>ahoana</td>
+                            <td>inona</td>
+                            <td>aiza</td>
+                            <td>rahoviana</td>
+                            <td>iza amin'ireo</td>
+                            <td>nahoana</td>
+                            <td>avy aiza</td>
+                            <td>ho aiza</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Formel einer W-Frage</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; text-align:center;">
+            <img src="1000014275.jpg" alt="Formel einer W-Frage" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Satzbau & Beispiele</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Wo <strong>wohnst</strong> du?</div>
+                    <div class="ex-fr">Où habites-tu ? → Ich wohne in Berlin.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Wo wohnst du?')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Was <strong>machst</strong> du?</div>
+                    <div class="ex-fr">Qu'est-ce que tu fais ? → Ich lerne Deutsch.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Was machst du?')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="jainein" class="tab-content">
+    <h2 class="case-title">2. Ja- / Nein-Fragen</h2>
+    <span class="fr-sub">Das Verb steht an Position 1.</span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Fragen & Antworten</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de"><strong>Bist</strong> du müde?</div>
+                    <div class="ex-fr">Ja, ich bin müde. / Nein, ich bin nicht müde.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Bist du müde?')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de"><strong>Hast</strong> du Zeit?</div>
+                    <div class="ex-fr">Ja, ich habe Zeit. / Nein, ich habe keine Zeit.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Hast du Zeit?')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="nicht" class="tab-content">
+    <h2 class="case-title">3. nicht oder kein?</h2>
+    <span class="fr-sub">Unterschied zwischen Nomen und Verben/Adjektiven verneinen</span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Wann benutzen wir „kein“?</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <table class="grammar-table">
+            <thead>
+                <tr>
+                    <th>Positiv</th>
+                    <th>Negativ</th>
+                    <th>Français</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ich habe ein Auto.</td>
+                    <td>Ich habe <strong>kein Auto</strong>.</td>
+                    <td>Je n'ai pas de voiture.</td>
+                </tr>
+                <tr>
+                    <td>Ich habe eine Schwester.</td>
+                    <td>Ich habe <strong>keine Schwester</strong>.</td>
+                    <td>Je n'ai pas de sœur.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Wann benutzen wir „nicht“?</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <table class="grammar-table">
+            <thead>
+                <tr>
+                    <th>Positiv</th>
+                    <th>Negativ</th>
+                    <th>Français</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ich komme.</td>
+                    <td>Ich komme <strong>nicht</strong>.</td>
+                    <td>Je ne viens pas.</td>
+                </tr>
+                <tr>
+                    <td>Ich bin müde.</td>
+                    <td>Ich bin <strong>nicht</strong> müde.</td>
+                    <td>Je ne suis pas fatigué(e).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="doch" class="tab-content">
+    <h2 class="case-title">4. „doch“ ❤️</h2>
+    <span class="fr-sub">Eine negative Aussage korrigieren</span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Verwendung</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Du hast kein Auto. → <strong>Doch!</strong> Ich habe ein Auto.</div>
+                    <div class="ex-fr">Tu n'as pas de voiture. → Si ! J'ai une voiture.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Doch! Ich habe ein Auto.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Du bist nicht müde. → <strong>Doch!</strong> Ich bin müde.</div>
+                    <div class="ex-fr">Tu n'es pas fatigué. → Si ! Je suis fatigué.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Doch! Ich bin müde.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="weiss" class="tab-content">
+    <h2 class="case-title">5. Ich weiß nicht</h2>
+    <span class="fr-sub">Wenn du die Antwort nicht kennst</span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Ausdrücke & Alltag</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich weiß nicht.</div>
+                    <div class="ex-fr">Je ne sais pas.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich weiß nicht.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich weiß es nicht.</div>
+                    <div class="ex-fr">Je ne le sais pas.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich weiß es nicht.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="uebungen" class="tab-content">
+    <h2 class="case-title">Übungen</h2>
+    <span class="fr-sub">PDF-Dateien zum Herunterladen</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Download PDFs</span>
+        </span>
+    </button>
+    <div class="section-content open">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:rgba(255,255,255,.92); padding:16px; border-radius:15px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 12px rgba(0,0,0,.05);">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span style="font-size:1.8rem;">📄</span>
+                    <div>
+                        <div style="font-weight:900; font-size:1rem; color:var(--ueb-color);">Übungsblatt W-Fragen.pdf</div>
+                        <div style="font-size:0.82rem; color:#64748b; font-weight:600;">A1 Niveau • Zum Herunterladen</div>
+                    </div>
+                </div>
+                <a href="#" download style="background:var(--ueb-grad); color:white; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:900; font-size:0.9rem; box-shadow:0 4px 12px rgba(225,29,72,0.3);">📥 Télécharger</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="side-panel">
+
+    <div id="side-wfragen" class="side-content active">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p>W-Fragen verlangen eine konkrete Information.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">Wer?</div>
+                <div class="merk-word">Was?</div>
+                <div class="merk-word">Wo?</div>
+                <div class="merk-word">Wann?</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-jainein" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p>Bei Ja/Nein-Fragen steht das Verb immer an erster Stelle im Satz.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">Bist du...</div>
+                <div class="merk-word">Hast du...</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-nicht" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p><strong>kein</strong> verneint Nomen (mit unbestimmtem Artikel oder ohne Artikel).</p>
+            <p><strong>nicht</strong> verneint Verben, Adjektive oder ganze Sätze.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">kein Auto</div>
+                <div class="merk-word">nicht müde</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-doch" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p>Nutze <strong>„Doch!“</strong>, um eine negative Aussage deines Gesprächspartners zu bejahen/korrigieren.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">Doch! Ich habe Zeit.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-weiss" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p><strong>„Ich weiß nicht“</strong> ist eine völlig natürliche und höfliche Antwort, wenn dir eine Information fehlt.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">Ich weiß es nicht.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-uebungen" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p>Laden Sie hier Ihre Übungs-PDFs herunter, um direkt zu lernen.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">PDF Download</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="footer-back">
+    <a href="index.html#a1">
+        ← Zurück zu den A1 Lektionen
+    </a>
+</div>
+
+</div>
+
+<script>
+
+function switchTab(caseName, button){
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.side-content').forEach(side => side.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+    document.body.className = 'theme-' + (caseName === 'uebungen' ? 'ueb' : caseName.substring(0,3));
+
+    const activeTab = document.getElementById(caseName);
+    activeTab.classList.add('active');
+    document.getElementById('side-' + caseName).classList.add('active');
+    button.classList.add('active');
+
+    if(caseName === 'uebungen'){
+        playAudio('Übungen');
+    } else if(caseName !== 'wfragen'){
+        const firstToggle = activeTab.querySelector('.section-toggle');
+        const firstContent = activeTab.querySelector('.section-content');
+        if(firstToggle && firstContent && !firstContent.classList.contains('open')){
+            firstToggle.classList.add('open');
+            firstContent.classList.add('open');
+            const titleText = firstToggle.querySelector('.toggle-left span:nth-child(2)').textContent;
+            playAudio(titleText);
+        }
+    }
+}
+
+function toggleSection(button){
+    const content = button.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+
+    if(isOpen){
+        content.classList.remove('open');
+        button.classList.remove('open');
+    }else{
+        content.classList.add('open');
+        button.classList.add('open');
+        const titleText = button.querySelector('.toggle-left span:nth-child(2)').textContent;
+        playAudio(titleText);
+    }
+}
+
+function playLessonStartAudio(){
+    playAudio("W-Fragen und Antworten. Lektion starten.");
+}
+
+function playAudio(text){
+    if('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'de-DE';
+        utterance.rate = 0.88;
+        window.speechSynthesis.speak(utterance);
+    }else{
+        alert('Audio non supporté : ' + text);
+    }
+}
+
+</script>
+
+</body>
+</html>
