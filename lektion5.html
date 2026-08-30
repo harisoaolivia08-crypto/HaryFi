@@ -1001,9 +1001,12 @@
 
 
 <script>
-/* FONCTION POUR LE BOUTON "Lektion Starten" */
+/* FONCTION POUR LE BOUTON "Lektion Starten" (Joue uniquement l'audio sans changer de page) */
 function startLesson() {
-    openSection(1);
+    try {
+        const lessonAudio = new Audio('audio/lektion_starten.mp3');
+        lessonAudio.play().catch(e => console.log("Audio de démarrage non disponible ou bloqué"));
+    } catch(e) {}
 }
 
 /* FONCTIONS DE CHANGEMENT DE VUE (PAGES) AVEC AUDIO */
