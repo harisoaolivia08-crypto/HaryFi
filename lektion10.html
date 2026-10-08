@@ -1,35 +1,465 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HaryFi – Lektion 10: Reflexive Verben</title>
-  <style>
-    :root{--pink:#db2777;--purple:#7c3aed;--ink:#2b1810;--glass:rgba(255,255,255,.82)}
-    *{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#fce7f3,#ddd6fe,#bfdbfe);line-height:1.5}
-    .container{max-width:1100px;margin:auto;padding:20px 16px 50px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}.back,.badge{padding:11px 16px;border-radius:999px;font-weight:800;text-decoration:none;color:#35112b;background:rgba(255,255,255,.7);border:1px solid white}.header,.card{background:var(--glass);border:1px solid rgba(255,255,255,.9);border-radius:24px;box-shadow:0 12px 30px rgba(76,29,149,.14)}.header{text-align:center;padding:28px;margin-bottom:18px}.header h1{margin:0;color:var(--pink);font-size:clamp(2rem,5vw,3.3rem)}.header p{font-weight:700;margin:8px 0 18px}.start{border:0;border-radius:999px;padding:12px 24px;background:linear-gradient(135deg,var(--pink),var(--purple));color:white;font-weight:800;font-size:1rem;cursor:pointer}.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}.card{padding:22px;margin-bottom:18px}.card h2{margin-top:0;color:var(--purple)}.tip{background:#fdf2f8;border-left:6px solid var(--pink);padding:14px;border-radius:12px;font-weight:700}.table-wrap{overflow-x:auto}.table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}.table th,.table td{padding:12px;text-align:left;border-bottom:1px solid #f1d5e5}.table th{background:#fce7f3;color:#9d174d}.table tr:last-child td{border-bottom:0}.examples{display:grid;gap:10px}.example{padding:13px 15px;background:white;border-left:5px solid var(--purple);border-radius:12px}.de{font-weight:800}.fr{color:#64748b;font-size:.9rem}.verbs{list-style:none;padding:0;margin:0}.verbs li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed #e9a8c7}.verbs li:last-child{border:0}.verb{font-weight:800;color:#9d174d}.audio{border:0;background:#f472b6;color:white;border-radius:50%;width:32px;height:32px;cursor:pointer}.exercise{background:#fff;padding:13px;border-radius:12px;margin:10px 0}.exercise input{display:block;width:100%;max-width:300px;padding:9px;border:2px solid #e9d5ff;border-radius:8px;margin-top:6px}.check{width:100%;padding:12px;border:0;border-radius:10px;background:#111827;color:white;font-weight:800;cursor:pointer}.feedback{text-align:center;font-weight:800;margin-top:10px}.footer{text-align:center;margin-top:20px}.footer a{color:#4c1d95;font-weight:800}@media(max-width:760px){.grid{grid-template-columns:1fr}.top{flex-direction:column;align-items:stretch}.back,.badge{text-align:center}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaryFi – Lektion: Reflexive Verben (A1)</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #17120d;
+            background: linear-gradient(-45deg, #ff4500, #ff7e00, #ffd000, #00c9ff, #7c3aed, #ff3cac);
+            background-size: 500% 500%;
+            animation: gradientMove 18s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lesson-card {
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-4px) scale(1.005);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .18);
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .audio-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-btn:hover {
+            background: #ffffff;
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
+
 <body>
-  <main class="container">
-    <nav class="top"><a class="back" href="index.html#a1">← A1 Lektionen</a><span class="badge">🇩🇪 Deutschkurs · Lektion 10</span></nav>
-    <header class="header"><h1>Reflexive Verben</h1><p>Verben mit <strong>sich</strong> – die Handlung kommt zum Subjekt zurück.</p><button class="start" onclick="speak('Lektion zehn: Reflexive Verben')">▶ Anhören</button></header>
-    <div class="grid">
-      <section>
-        <article class="card"><h2>💡 Was bedeutet reflexiv?</h2><p>Ein reflexives Verb beschreibt eine Handlung, die eine Person selbst betrifft.</p><div class="tip">Ich wasche <strong>mich</strong>. → Je me lave.<br>Die Person wäscht sich selbst.</div></article>
-        <article class="card"><h2>📋 Reflexivpronomen im Akkusativ</h2><div class="table-wrap"><table class="table"><tr><th>Person</th><th>Pronomen</th><th>Beispiel</th></tr><tr><td>ich</td><td><strong>mich</strong></td><td>Ich freue mich.</td></tr><tr><td>du</td><td><strong>dich</strong></td><td>Du wäschst dich.</td></tr><tr><td>er/sie/es</td><td><strong>sich</strong></td><td>Sie kämmt sich.</td></tr><tr><td>wir</td><td><strong>uns</strong></td><td>Wir ruhen uns aus.</td></tr><tr><td>ihr</td><td><strong>euch</strong></td><td>Ihr zieht euch an.</td></tr><tr><td>sie/Sie</td><td><strong>sich</strong></td><td>Sie setzen sich.</td></tr></table></div></article>
-        <article class="card"><h2>🗣️ Beispiele</h2><div class="examples"><div class="example"><div class="de">Ich <strong>dusche mich</strong> jeden Morgen.</div><div class="fr">Je me douche chaque matin.</div></div><div class="example"><div class="de">Wir <strong>treffen uns</strong> um acht Uhr.</div><div class="fr">Nous nous retrouvons à huit heures.</div></div><div class="example"><div class="de">Er <strong>zieht sich</strong> schnell <strong>an</strong>.</div><div class="fr">Il s'habille rapidement.</div></div></div></article>
-      </section>
-      <aside>
-        <article class="card"><h2>❤️ Wichtige Verben</h2><ul class="verbs"><li><span><span class="verb">sich freuen</span><br><small>se réjouir</small></span><button class="audio" onclick="speak('sich freuen')">▶</button></li><li><span><span class="verb">sich waschen</span><br><small>se laver</small></span><button class="audio" onclick="speak('sich waschen')">▶</button></li><li><span><span class="verb">sich anziehen</span><br><small>s'habiller</small></span><button class="audio" onclick="speak('sich anziehen')">▶</button></li><li><span><span class="verb">sich setzen</span><br><small>s'asseoir</small></span><button class="audio" onclick="speak('sich setzen')">▶</button></li><li><span><span class="verb">sich ausruhen</span><br><small>se reposer</small></span><button class="audio" onclick="speak('sich ausruhen')">▶</button></li></ul></article>
-        <article class="card"><h2>✏️ Übung</h2><p>Complète avec le bon pronom réfléchi.</p><div class="exercise">1. Ich freue <input id="q1" placeholder="mich / dich / sich"></div><div class="exercise">2. Du wäschst <input id="q2" placeholder="..."></div><div class="exercise">3. Wir ruhen <input id="q3" placeholder="..."></div><div class="exercise">4. Ihr zieht <input id="q4" placeholder="..."> an.</div><div class="exercise">5. Sie setzt <input id="q5" placeholder="..."></div><button class="check" onclick="checkAnswers()">Antworten prüfen</button><div id="feedback" class="feedback"></div></article>
-      </aside>
-    </div>
-    <footer class="footer"><a href="index.html#a1">← Zurück zu la liste des leçons</a></footer>
-  </main>
-  <script>
-    function speak(text){if(!('speechSynthesis' in window))return; speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.8;speechSynthesis.speak(u)}
-    function checkAnswers(){const answers=['mich','dich','uns','euch','sich'];let score=0;answers.forEach((a,i)=>{const input=document.getElementById('q'+(i+1));if(input.value.trim().toLowerCase()===a){score++;input.style.borderColor='#16a34a'}else input.style.borderColor='#ef4444'});const f=document.getElementById('feedback');f.textContent=`${score}/5 richtige Antworten`;f.style.color=score===5?'#15803d':'#be123c'}
-  </script>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+    <header class="px-5 py-5 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            
+            <a href="index.html#a1" class="glass rounded-2xl px-5 py-3 font-black text-sm md:text-base hover:scale-105 transition shadow-lg flex items-center gap-2">
+                <span>←</span> A1 Lektionen
+            </a>
+
+            <div class="glass rounded-full px-6 py-2.5 font-extrabold text-sm tracking-wide flex items-center gap-2 shadow-md">
+                <span class="text-xl">🇩🇪</span> Deutschkurs · HaryFi
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 md:px-6 pb-20">
+        <section class="text-center pt-8 pb-12">
+            <div class="inline-block glass rounded-full px-6 py-2 mb-4 text-xs md:text-sm font-black uppercase tracking-widest text-gray-900 badge-glow">
+                Grammatik · Level A1
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-4 text-gray-900 drop-shadow-sm">
+                Reflexive Verben
+            </h1>
+
+            <p class="text-lg md:text-2xl font-bold max-w-3xl mx-auto text-gray-800 leading-relaxed mb-8">
+                Les verbes réfléchis en allemand : fonctionnement, structures de phrase, vocabulaire du quotidien et exercices pratiques.
+            </p>
+
+            <a href="#section-1" class="inline-flex items-center gap-3 bg-gradient-to-r from-gray-900 via-black to-gray-800 text-white font-black text-xl md:text-2xl px-10 py-5 rounded-3xl shadow-2xl hover:scale-105 active:scale-95 transition border-2 border-white/30">
+                <span>▶</span> Lektion Starten
+            </a>
+        </section>
+
+        <div class="space-y-10">
+
+            <section id="section-1" class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-3xl shadow-lg">
+                            💡
+                        </div>
+                        <div>
+                            <span class="text-xs font-black uppercase tracking-widest text-orange-950">Abschnitt 1</span>
+                            <h2 class="text-2xl md:text-3xl font-black">1. Erklärung</h2>
+                        </div>
+                    </div>
+                    <button onclick="speak('Reflexive Verben sind Verben, bei denen die Handlung auf die Person selbst zurückgeht.')" class="bg-white/60 hover:bg-white text-orange-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2">
+                        <span>▶</span> Lektion Starten
+                    </button>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <div class="flex items-center gap-3 bg-white/40 p-3 rounded-2xl border border-white/60">
+                        <button class="audio-btn" onclick="speak('Reflexive Verben sind Verben, bei denen die Handlung auf die Person selbst zurückgeht.')" title="Écouter">🔊</button>
+                        <p class="text-base md:text-lg font-bold text-gray-900">
+                            Reflexive Verben sind Verben, bei denen die Handlung auf die Person selbst zurückgeht.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 bg-white/40 p-3 rounded-2xl border border-white/60">
+                        <button class="audio-btn" onclick="speak('Die Person macht etwas mit sich selbst.')" title="Écouter">🔊</button>
+                        <p class="text-base md:text-lg font-bold text-gray-900">
+                            Die Person macht etwas mit sich selbst.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white/50 border border-white/70 rounded-2xl p-4 text-center font-bold flex items-center justify-between">
+                        <div>
+                            <div class="text-xl text-amber-950 font-black">Ich wasche mich.</div>
+                            <div class="text-sm text-gray-700">Je me lave.</div>
+                        </div>
+                        <button class="audio-btn" onclick="speak('Ich wasche mich.')" title="Écouter">🔊</button>
+                    </div>
+
+                    <div class="bg-white/50 border border-white/70 rounded-2xl p-4 text-center font-bold flex items-center justify-between">
+                        <div>
+                            <div class="text-xl text-amber-950 font-black">Du wäschst dich.</div>
+                            <div class="text-sm text-gray-700">Tu te laves.</div>
+                        </div>
+                        <button class="audio-btn" onclick="speak('Du wäschst dich.')" title="Écouter">🔊</button>
+                    </div>
+
+                    <div class="bg-white/50 border border-white/70 rounded-2xl p-4 text-center font-bold flex items-center justify-between">
+                        <div>
+                            <div class="text-xl text-amber-950 font-black">Sie wäscht sich.</div>
+                            <div class="text-sm text-gray-700">Elle se lave.</div>
+                        </div>
+                        <button class="audio-btn" onclick="speak('Sie wäscht sich.')" title="Écouter">🔊</button>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-amber-500/20 border-l-4 border-amber-600 p-4 rounded-r-2xl font-bold text-amber-950 flex items-center justify-between gap-3">
+                    <span>📌 Das Reflexivpronomen zeigt, wer die Handlung bekommt.</span>
+                    <button class="audio-btn" onclick="speak('Das Reflexivpronomen zeigt, wer die Handlung bekommt.')" title="Écouter">🔊</button>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center text-3xl shadow-lg">
+                            📐
+                        </div>
+                        <div>
+                            <span class="text-xs font-black uppercase tracking-widest text-indigo-950">Abschnitt 2</span>
+                            <h2 class="text-2xl md:text-3xl font-black">2. Formel</h2>
+                        </div>
+                    </div>
+                    <button onclick="speak('Hauptsatz: Subjekt plus Verb plus Reflexivpronomen plus Ergänzung. Ich wasche mich jeden Morgen.')" class="bg-white/60 hover:bg-white text-indigo-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2">
+                        <span>▶</span> Lektion Starten
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/50 backdrop-blur border border-white/70 rounded-2xl p-5 shadow-sm space-y-3">
+                        <span class="bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase">Hauptsatz</span>
+                        <div class="font-mono font-bold text-sm bg-blue-900/10 p-2.5 rounded-xl text-blue-950 flex items-center justify-between">
+                            <span>Subjekt + Verb + Reflexivpronomen + Ergänzung</span>
+                        </div>
+                        <div class="flex items-center justify-between font-bold text-gray-800">
+                            <span><span class="text-blue-700">Ich</span> <span class="text-indigo-700">wasche</span> <span class="text-pink-600">mich</span> jeden Morgen.</span>
+                            <button class="audio-btn" onclick="speak('Ich wasche mich jeden Morgen.')" title="Écouter">🔊</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/50 backdrop-blur border border-white/70 rounded-2xl p-5 shadow-sm space-y-3">
+                        <span class="bg-indigo-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase">Frage</span>
+                        <div class="font-mono font-bold text-sm bg-indigo-900/10 p-2.5 rounded-xl text-indigo-950 flex items-center justify-between">
+                            <span>Verb + Subjekt + Reflexivpronomen + ...?</span>
+                        </div>
+                        <div class="flex items-center justify-between font-bold text-gray-800">
+                            <span><span class="text-indigo-700">Wäschst</span> <span class="text-blue-700">du</span> <span class="text-pink-600">dich</span> jeden Morgen?</span>
+                            <button class="audio-btn" onclick="speak('Wäschst du dich jeden Morgen?')" title="Écouter">🔊</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/50 backdrop-blur border border-white/70 rounded-2xl p-5 shadow-sm space-y-3">
+                        <span class="bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase">Verneinung</span>
+                        <div class="font-mono font-bold text-sm bg-purple-900/10 p-2.5 rounded-xl text-purple-950 flex items-center justify-between">
+                            <span>Subjekt + Verb + Reflexivpronomen + nicht</span>
+                        </div>
+                        <div class="flex items-center justify-between font-bold text-gray-800">
+                            <span><span class="text-blue-700">Ich</span> <span class="text-indigo-700">wasche</span> <span class="text-pink-600">mich</span> <span class="text-red-600">nicht</span>.</span>
+                            <button class="audio-btn" onclick="speak('Ich wasche mich nicht.')" title="Écouter">🔊</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center text-3xl shadow-lg">
+                            🔤
+                        </div>
+                        <div>
+                            <span class="text-xs font-black uppercase tracking-widest text-purple-950">Abschnitt 3</span>
+                            <h2 class="text-2xl md:text-3xl font-black">3. Reflexivpronomen</h2>
+                        </div>
+                    </div>
+                    <button onclick="speak('Reflexivpronomen: mich, dich, sich, uns, euch, sich.')" class="bg-white/60 hover:bg-white text-purple-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2">
+                        <span>▶</span> Lektion Starten
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-purple-900 text-white font-black text-sm uppercase">
+                                <th class="p-4 rounded-l-2xl">Person</th>
+                                <th class="p-4">Reflexivpronomen</th>
+                                <th class="p-4 rounded-r-2xl text-right">Audio</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/30 font-bold">
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">ich</td><td class="p-4 text-purple-900 font-extrabold text-lg">mich</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('ich - mich')" title="Écouter">🔊</button></td></tr>
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">du</td><td class="p-4 text-purple-900 font-extrabold text-lg">dich</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('du - dich')" title="Écouter">🔊</button></td></tr>
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">er / sie / es</td><td class="p-4 text-purple-900 font-extrabold text-lg">sich</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('er, sie, es - sich')" title="Écouter">🔊</button></td></tr>
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">wir</td><td class="p-4 text-purple-900 font-extrabold text-lg">uns</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('wir - uns')" title="Écouter">🔊</button></td></tr>
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">ihr</td><td class="p-4 text-purple-900 font-extrabold text-lg">euch</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('ihr - euch')" title="Écouter">🔊</button></td></tr>
+                            <tr class="hover:bg-white/20 transition"><td class="p-4">sie / Sie</td><td class="p-4 text-purple-900 font-extrabold text-lg">sich</td><td class="p-4 text-right"><button class="audio-btn" onclick="speak('sie, Sie - sich')" title="Écouter">🔊</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-gradient-to-r from-amber-400 to-yellow-300 rounded-2xl p-6 text-center text-amber-950 shadow-md flex items-center justify-between gap-4">
+                    <div class="flex-1">
+                        <div class="text-xl font-black uppercase tracking-wider mb-2">⭐ Merksatz</div>
+                        <div class="text-2xl md:text-3xl font-black tracking-wide font-mono">mich – dich – sich – uns – euch – sich</div>
+                    </div>
+                    <button class="audio-btn" onclick="speak('mich, dich, sich, uns, euch, sich')" title="Écouter">🔊</button>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center text-3xl shadow-lg">🔄</div>
+                        <div>
+                            <span class="text-xs font-black uppercase tracking-widest text-teal-950">Abschnitt 4</span>
+                            <h2 class="text-2xl md:text-3xl font-black">4. Konjugation: <span class="italic">sich waschen</span></h2>
+                        </div>
+                    </div>
+                    <button onclick="speak('Ich wasche mich. Du wäschst dich. Er wäscht sich. Wir waschen uns. Ihr wascht euch. Sie waschen sich.')" class="bg-white/60 hover:bg-white text-teal-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2">
+                        <span>▶</span> Lektion Starten
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead><tr class="bg-teal-900 text-white font-black text-sm uppercase"><th class="p-4 rounded-l-2xl">Person</th><th class="p-4">Konjugation</th><th class="p-4 rounded-r-2xl text-right">Audio</th></tr></thead>
+                            <tbody class="divide-y divide-white/30 font-bold">
+                                <tr class="hover:bg-white/20"><td class="p-3">ich</td><td class="p-3 text-teal-950">ich wasche mich</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('ich wasche mich')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">du</td><td class="p-3 text-teal-950">du wäschst dich</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('du wäschst dich')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">er</td><td class="p-3 text-teal-950">er wäscht sich</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('er wäscht sich')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">sie</td><td class="p-3 text-teal-950">sie wäscht sich</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('sie wäscht sich')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">wir</td><td class="p-3 text-teal-950">wir waschen uns</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('wir waschen uns')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">ihr</td><td class="p-3 text-teal-950">ihr wascht euch</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('ihr wascht euch')" title="Écouter">🔊</button></td></tr>
+                                <tr class="hover:bg-white/20"><td class="p-3">sie / Sie</td><td class="p-3 text-teal-950">sie waschen sich</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('sie waschen sich')" title="Écouter">🔊</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-teal-500/20 border-2 border-teal-600/40 rounded-2xl p-6 flex flex-col justify-center space-y-4">
+                        <div class="font-black text-xl text-teal-950 flex items-center gap-2"><span>⚠️</span> Wichtig!</div>
+                        <div class="space-y-3 font-bold text-teal-950 text-sm">
+                            <div class="flex items-center justify-between bg-white/30 p-2.5 rounded-xl"><span>Das Verb wird normal konjugiert.</span><button class="audio-btn" onclick="speak('Das Verb wird normal konjugiert.')" title="Écouter">🔊</button></div>
+                            <div class="flex items-center justify-between bg-white/30 p-2.5 rounded-xl"><span>Das Reflexivpronomen wird an die Person angepasst.</span><button class="audio-btn" onclick="speak('Das Reflexivpronomen wird an die Person angepasst.')" title="Écouter">🔊</button></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 text-white flex items-center justify-center text-3xl shadow-lg">🧴</div>
+                        <div><span class="text-xs font-black uppercase tracking-widest text-rose-950">Abschnitt 5</span><h2 class="text-2xl md:text-3xl font-black">5. Reflexive Verben im Alltag</h2></div>
+                    </div>
+                    <button onclick="speak('Körperpflege: sich waschen, sich duschen, sich baden, sich kämmen, sich rasieren, sich schminken, sich anziehen, sich ausziehen.')" class="bg-white/60 hover:bg-white text-rose-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white/40 rounded-2xl p-6 border border-white/60"><h3 class="text-xl font-black mb-4 text-pink-900 flex items-center gap-2">🧼 Körperpflege</h3>
+                        <ul class="space-y-2 font-bold text-gray-900 text-sm md:text-base">
+                            <li>sich waschen – <span class="text-gray-700 font-semibold">se laver</span> <button class="audio-btn" onclick="speak('sich waschen')" title="Écouter">🔊</button></li>
+                            <li>sich duschen – <span class="text-gray-700 font-semibold">se doucher</span> <button class="audio-btn" onclick="speak('sich duschen')" title="Écouter">🔊</button></li>
+                            <li>sich baden – <span class="text-gray-700 font-semibold">se baigner</span> <button class="audio-btn" onclick="speak('sich baden')" title="Écouter">🔊</button></li>
+                            <li>sich kämmen – <span class="text-gray-700 font-semibold">se coiffer</span> <button class="audio-btn" onclick="speak('sich kämmen')" title="Écouter">🔊</button></li>
+                            <li>sich rasieren – <span class="text-gray-700 font-semibold">se raser</span> <button class="audio-btn" onclick="speak('sich rasieren')" title="Écouter">🔊</button></li>
+                            <li>sich schminken – <span class="text-gray-700 font-semibold">se maquiller</span> <button class="audio-btn" onclick="speak('sich schminken')" title="Écouter">🔊</button></li>
+                            <li>sich anziehen – <span class="text-gray-700 font-semibold">s'habiller</span> <button class="audio-btn" onclick="speak('sich anziehen')" title="Écouter">🔊</button></li>
+                            <li>sich ausziehen – <span class="text-gray-700 font-semibold">se déshabiller</span> <button class="audio-btn" onclick="speak('sich ausziehen')" title="Écouter">🔊</button></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white/40 rounded-2xl p-6 border border-white/60"><h3 class="text-xl font-black mb-4 text-purple-900 flex items-center gap-2">🏡 Alltag</h3>
+                        <ul class="space-y-2 font-bold text-gray-900 text-sm md:text-base">
+                            <li>sich setzen – <span class="text-gray-700 font-semibold">s'asseoir</span> <button class="audio-btn" onclick="speak('sich setzen')" title="Écouter">🔊</button></li>
+                            <li>sich hinlegen – <span class="text-gray-700 font-semibold">s'allonger</span> <button class="audio-btn" onclick="speak('sich hinlegen')" title="Écouter">🔊</button></li>
+                            <li>sich beeilen – <span class="text-gray-700 font-semibold">se dépêcher</span> <button class="audio-btn" onclick="speak('sich beeilen')" title="Écouter">🔊</button></li>
+                            <li>sich ausruhen – <span class="text-gray-700 font-semibold">se reposer</span> <button class="audio-btn" onclick="speak('sich ausruhen')" title="Écouter">🔊</button></li>
+                            <li>sich fühlen – <span class="text-gray-700 font-semibold">se sentir</span> <button class="audio-btn" onclick="speak('sich fühlen')" title="Écouter">🔊</button></li>
+                            <li>sich treffen – <span class="text-gray-700 font-semibold">se rencontrer</span> <button class="audio-btn" onclick="speak('sich treffen')" title="Écouter">🔊</button></li>
+                            <li>sich freuen – <span class="text-gray-700 font-semibold">être content</span> <button class="audio-btn" onclick="speak('sich freuen')" title="Écouter">🔊</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white flex items-center justify-center text-3xl shadow-lg">🌅</div><div><span class="text-xs font-black uppercase tracking-widest text-cyan-950">Abschnitt 6</span><h2 class="text-2xl md:text-3xl font-black">6. Beispiele im Alltag</h2></div></div><button onclick="speak('Morgens: Ich wasche mich jeden Morgen. Ich dusche mich. Ich kämme mich. Ich ziehe mich an.')" class="bg-white/60 hover:bg-white text-cyan-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-gradient-to-b from-amber-200/80 to-orange-200/80 p-5 rounded-2xl border border-white/60 space-y-2"><h4 class="font-black text-amber-900 text-lg mb-2">🌅 Morgens</h4><div>Ich wasche mich jeden Morgen. <button class="audio-btn" onclick="speak('Ich wasche mich jeden Morgen.')" title="Écouter">🔊</button></div><div>Ich dusche mich. <button class="audio-btn" onclick="speak('Ich dusche mich.')" title="Écouter">🔊</button></div><div>Ich kämme mich. <button class="audio-btn" onclick="speak('Ich kämme mich.')" title="Écouter">🔊</button></div><div>Ich ziehe mich an. <button class="audio-btn" onclick="speak('Ich ziehe mich an.')" title="Écouter">🔊</button></div></div>
+                    <div class="bg-gradient-to-b from-blue-200/80 to-indigo-200/80 p-5 rounded-2xl border border-white/60 space-y-2"><h4 class="font-black text-blue-900 text-lg mb-2">💼 Bei der Arbeit</h4><div>Ich beeile mich, weil ich spät bin. <button class="audio-btn" onclick="speak('Ich beeile mich, weil ich spät bin.')" title="Écouter">🔊</button></div><div>Ich setze mich auf den Stuhl. <button class="audio-btn" onclick="speak('Ich setze mich auf den Stuhl.')" title="Écouter">🔊</button></div></div>
+                    <div class="bg-gradient-to-b from-teal-200/80 to-emerald-200/80 p-5 rounded-2xl border border-white/60 space-y-2"><h4 class="font-black text-teal-900 text-lg mb-2">☕ Nach der Arbeit</h4><div>Ich ruhe mich aus. <button class="audio-btn" onclick="speak('Ich ruhe mich aus.')" title="Écouter">🔊</button></div><div>Ich fühle mich müde. <button class="audio-btn" onclick="speak('Ich fühle mich müde.')" title="Écouter">🔊</button></div></div>
+                    <div class="bg-gradient-to-b from-purple-200/80 to-indigo-300/80 p-5 rounded-2xl border border-white/60 space-y-2"><h4 class="font-black text-purple-900 text-lg mb-2">🌙 Abends</h4><div>Ich dusche mich. <button class="audio-btn" onclick="speak('Ich dusche mich.')" title="Écouter">🔊</button></div><div>Ich ziehe mich aus. <button class="audio-btn" onclick="speak('Ich ziehe mich aus.')" title="Écouter">🔊</button></div><div>Ich lege mich hin. <button class="audio-btn" onclick="speak('Ich lege mich hin.')" title="Écouter">🔊</button></div></div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-pink-600 text-white flex items-center justify-center text-3xl shadow-lg">✂️</div><div><span class="text-xs font-black uppercase tracking-widest text-red-950">Abschnitt 7</span><h2 class="text-2xl md:text-3xl font-black">7. Trennbare reflexive Verben</h2></div></div><button onclick="speak('Einige reflexive Verben sind trennbare Verben. Ich ziehe mich an. Ich ziehe mich aus. Ich lege mich hin. Ich ruhe mich aus.')" class="bg-white/60 hover:bg-white text-red-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="flex items-center justify-between bg-white/40 p-3 rounded-2xl border border-white/60 font-bold text-gray-900 mb-4"><span>Einige reflexive Verben sind trennbare Verben.</span><button class="audio-btn" onclick="speak('Einige reflexive Verben sind trennbare Verben.')" title="Écouter">🔊</button></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white/50 p-4 rounded-2xl font-bold border border-white/60"><div>sich anziehen</div><div class="text-lg text-red-900 font-black mt-1">Ich ziehe mich <span class="underline text-red-600">an</span>.</div><button class="audio-btn" onclick="speak('sich anziehen. Ich ziehe mich an.')" title="Écouter">🔊</button></div>
+                    <div class="bg-white/50 p-4 rounded-2xl font-bold border border-white/60"><div>sich ausziehen</div><div class="text-lg text-red-900 font-black mt-1">Ich ziehe mich <span class="underline text-red-600">aus</span>.</div><button class="audio-btn" onclick="speak('sich ausziehen. Ich ziehe mich aus.')" title="Écouter">🔊</button></div>
+                    <div class="bg-white/50 p-4 rounded-2xl font-bold border border-white/60"><div>sich hinlegen</div><div class="text-lg text-red-900 font-black mt-1">Ich lege mich <span class="underline text-red-600">hin</span>.</div><button class="audio-btn" onclick="speak('sich hinlegen. Ich lege mich hin.')" title="Écouter">🔊</button></div>
+                    <div class="bg-white/50 p-4 rounded-2xl font-bold border border-white/60"><div>sich ausruhen</div><div class="text-lg text-red-900 font-black mt-1">Ich ruhe mich <span class="underline text-red-600">aus</span>.</div><button class="audio-btn" onclick="speak('sich ausruhen. Ich ruhe mich aus.')" title="Écouter">🔊</button></div>
+                </div>
+                <div class="bg-red-500/20 border-l-4 border-red-600 p-4 rounded-r-2xl font-bold text-red-950 flex items-center justify-between gap-3"><span>💡 Das Reflexivpronomen steht dabei vor dem abgetrennten Präfix.</span><button class="audio-btn" onclick="speak('Das Reflexivpronomen steht dabei vor dem abgetrennten Präfix.')" title="Écouter">🔊</button></div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-purple-800 text-white flex items-center justify-center text-3xl shadow-lg">🦷</div><div><span class="text-xs font-black uppercase tracking-widest text-violet-950">Abschnitt 8 & 9</span><h2 class="text-2xl md:text-3xl font-black">8 & 9. Reflexive Verben mit Körperteilen</h2></div></div><button onclick="speak('Bei Körperteilen benutzt man das Dativ-Reflexivpronomen. Ich wasche mich. Ich wasche mir die Hände.')" class="bg-white/60 hover:bg-white text-violet-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="flex items-center justify-between bg-white/40 p-3 rounded-2xl border border-white/60 font-bold text-gray-900 mb-4"><span>Bei Körperteilen benutzt man häufig das Dativ-Reflexivpronomen.</span><button class="audio-btn" onclick="speak('Bei Körperteilen benutzt man häufig das Dativ-Reflexivpronomen.')" title="Écouter">🔊</button></div>
+                <div class="bg-violet-900 text-white rounded-2xl p-4 text-center font-mono font-bold mb-6 text-sm md:text-base flex items-center justify-between"><span class="mx-auto">Subjekt + Verb + Dativpronomen + Körperteil</span><button class="audio-btn" onclick="speak('Subjekt plus Verb plus Dativpronomen plus Körperteil')" title="Écouter">🔊</button></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white/40 p-5 rounded-2xl border-2 border-pink-400"><div class="text-xs font-black uppercase text-pink-700 mb-1">Ohne Körperteil → Akkusativ</div><div class="text-2xl font-black text-gray-900">Ich wasche <span class="text-pink-600">mich</span>.</div><button class="audio-btn" onclick="speak('Ich wasche mich.')" title="Écouter">🔊</button></div>
+                    <div class="bg-white/40 p-5 rounded-2xl border-2 border-violet-500"><div class="text-xs font-black uppercase text-violet-700 mb-1">Mit Körperteil → Dativ</div><div class="text-2xl font-black text-gray-900">Ich wasche <span class="text-violet-700">mir</span> die Hände.</div><button class="audio-btn" onclick="speak('Ich wasche mir die Hände.')" title="Écouter">🔊</button></div>
+                </div>
+                <h3 class="text-lg font-black mb-3">Dativ-Reflexivpronomen</h3>
+                <div class="overflow-x-auto"><table class="w-full text-left border-collapse"><thead><tr class="bg-violet-900 text-white font-black text-xs uppercase"><th class="p-3 rounded-l-xl">Person</th><th class="p-3">Dativpronomen</th><th class="p-3">Beispiel</th><th class="p-3 rounded-r-xl text-right">Audio</th></tr></thead><tbody class="divide-y divide-white/30 font-bold text-sm">
+                    <tr><td class="p-3">ich</td><td class="p-3 text-violet-900 font-extrabold">mir</td><td class="p-3">Ich putze mir die Zähne.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Ich putze mir die Zähne.')" title="Écouter">🔊</button></td></tr>
+                    <tr><td class="p-3">du</td><td class="p-3 text-violet-900 font-extrabold">dir</td><td class="p-3">Du wäschst dir die Hände.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Du wäschst dir die Hände.')" title="Écouter">🔊</button></td></tr>
+                    <tr><td class="p-3">er / sie / es</td><td class="p-3 text-violet-900 font-extrabold">sich</td><td class="p-3">Sie kämmt sich die Haare.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Sie kämmt sich die Haare.')" title="Écouter">🔊</button></td></tr>
+                    <tr><td class="p-3">wir</td><td class="p-3 text-violet-900 font-extrabold">uns</td><td class="p-3">Wir waschen uns die Hände.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Wir waschen uns die Hände.')" title="Écouter">🔊</button></td></tr>
+                    <tr><td class="p-3">ihr</td><td class="p-3 text-violet-900 font-extrabold">euch</td><td class="p-3">Ihr putzt euch die Zähne.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Ihr putzt euch die Zähne.')" title="Écouter">🔊</button></td></tr>
+                    <tr><td class="p-3">sie / Sie</td><td class="p-3 text-violet-900 font-extrabold">sich</td><td class="p-3">Sie waschen sich die Hände.</td><td class="p-3 text-right"><button class="audio-btn" onclick="speak('Sie waschen sich die Hände.')" title="Écouter">🔊</button></td></tr>
+                </tbody></table></div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-400 to-teal-400 text-white flex items-center justify-center text-3xl shadow-lg">❓</div><div><span class="text-xs font-black uppercase tracking-widest text-teal-950">Abschnitt 10</span><h2 class="text-2xl md:text-3xl font-black">10. Fragen und Antworten</h2></div></div><button onclick="speak('Wäschst du dich jeden Morgen? Ja, ich wasche mich jeden Morgen. Duscht du dich morgens? Ja, ich dusche mich morgens.')" class="bg-white/60 hover:bg-white text-teal-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-bold">
+                    <div>Wäschst du dich jeden Morgen?<br><span class="text-emerald-800 font-black">→ Ja, ich wasche mich jeden Morgen.</span></div>
+                    <div>Duscht du dich morgens?<br><span class="text-emerald-800 font-black">→ Ja, ich dusche mich morgens.</span></div>
+                    <div>Wann ziehst du dich an?<br><span class="text-emerald-800 font-black">→ Ich ziehe mich um 6:30 Uhr an.</span></div>
+                    <div>Warum beeilst du dich?<br><span class="text-emerald-800 font-black">→ Ich bin spät dran.</span></div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-600 text-white flex items-center justify-center text-3xl shadow-lg">💬</div><div><span class="text-xs font-black uppercase tracking-widest text-purple-950">Abschnitt 11</span><h2 class="text-2xl md:text-3xl font-black">11. Mini-Dialog</h2></div></div><button onclick="speak('Anna: Was machst du morgens? Lisa: Ich stehe um 6 Uhr auf. Dann wasche ich mich.')" class="bg-white/60 hover:bg-white text-purple-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="glass-dark rounded-3xl p-6 space-y-4 max-w-2xl mx-auto text-white">
+                    <div>Anna: Was machst du morgens? 🔊</div>
+                    <div>Lisa: Ich stehe um 6 Uhr auf. Dann wasche ich mich. 🔊</div>
+                    <div>Anna: Duscht du dich auch? 🔊</div>
+                    <div>Lisa: Ja, ich dusche mich jeden Morgen. 🔊</div>
+                    <div>Anna: Wann ziehst du dich an? 🔊</div>
+                    <div>Lisa: Nach dem Duschen ziehe ich mich an. 🔊</div>
+                    <div>Anna: Beeilst du dich? 🔊</div>
+                    <div>Lisa: Ja, ich muss zur Arbeit. 🔊</div>
+                </div>
+            </section>
+
+            <section class="glass rounded-3xl p-6 md:p-8 lesson-card shadow-xl">
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-6"><div class="flex items-center gap-4"><div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 text-white flex items-center justify-center text-3xl shadow-lg">✍️</div><div><span class="text-xs font-black uppercase tracking-widest text-orange-950">Abschnitt 12</span><h2 class="text-2xl md:text-3xl font-black">12. Übungen</h2></div></div><button onclick="speak('Übung 1: Ergänze das Reflexivpronomen. Übung 2: Konjugiere sich waschen. Übung 3: Bilde einen Satz.')" class="bg-white/60 hover:bg-white text-orange-950 font-black px-5 py-2.5 rounded-2xl text-sm border border-white/80 shadow transition flex items-center gap-2"><span>▶</span> Lektion Starten</button></div>
+                <div class="space-y-8">
+                    <div class="bg-white/40 p-6 rounded-2xl border border-white/60"><h3 class="font-black text-lg text-gray-900">Übung 1: Ergänze das Reflexivpronomen.</h3><p>1. Ich wasche ___ . 2. Du wäschst ___ . 3. Er rasiert ___ . 4. Wir treffen ___ . 5. Ihr setzt ___ . 6. Sie schminkt ___ . 7. Ich ziehe ___ an. 8. Du beeilst ___.</p></div>
+                    <div class="bg-white/40 p-6 rounded-2xl border border-white/60"><h3 class="font-black text-lg text-gray-900">Übung 2: Konjugiere „sich waschen“.</h3><p>ich → ___ &nbsp; du → ___ &nbsp; er → ___ &nbsp; wir → ___ &nbsp; ihr → ___ &nbsp; sie → ___</p></div>
+                    <div class="bg-white/40 p-6 rounded-2xl border border-white/60"><h3 class="font-black text-lg text-gray-900">Übung 3: Bilde einen Satz.</h3><p>1. ich / mich / waschen<br>2. du / dich / anziehen<br>3. wir / uns / treffen<br>4. sie / sich / ausruhen<br>5. ihr / euch / beeilen</p></div>
+                </div>
+            </section>
+
+            <section class="bg-gradient-to-br from-yellow-400 via-amber-400 to-orange-500 rounded-3xl p-6 md:p-8 text-amber-950 shadow-2xl">
+                <div class="flex items-center justify-between mb-6"><div class="flex items-center gap-3"><span class="text-4xl">⭐</span><h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Das musst du auf A1 können</h2></div><button class="audio-btn" onclick="speak('Das musst du auf A1 können. Reflexivpronomen: mich, dich, sich, uns, euch, sich. Ich wasche mich. Du wäschst dich. Er wäscht sich. Wir waschen uns. Ihr wascht euch. Sie waschen sich.')" title="Écouter Tout">🔊</button></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-white/40 p-5 rounded-2xl border border-white/60"><h3 class="font-black text-lg mb-2">Reflexivpronomen</h3><div class="text-xl md:text-2xl font-black tracking-wide font-mono">mich – dich – sich – uns – euch – sich</div></div><div class="bg-white/40 p-5 rounded-2xl border border-white/60"><h3 class="font-black text-lg mb-2">Beispiele</h3><ul class="font-extrabold text-sm space-y-1"><li>• Ich wasche mich.</li><li>• Du wäschst dich.</li><li>• Er wäscht sich.</li><li>• Wir waschen uns.</li><li>• Ihr wascht euch.</li><li>• Sie waschen sich.</li></ul></div></div>
+            </section>
+        </div>
+
+        <section class="flex justify-center mt-16"><a href="index.html#a1" class="bg-black text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-2xl flex items-center gap-2"><span>←</span> Zurück zu A1 Lektionen</a></section>
+    </main>
+
+    <script>
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'de-DE';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Dein Browser unterstützt die Audio-Wiedergabe leider nicht.');
+            }
+        }
+    </script>
+
 </body>
 </html>
