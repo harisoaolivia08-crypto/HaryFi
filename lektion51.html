@@ -1,23 +1,525 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HaryFi – A1 Lektion 51: Artikel</title>
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<title>HaryFi – A1: Plural, Zahlen & Mengen</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,sans-serif;color:#17120d;background:linear-gradient(-45deg,#ff4500,#ff7e00,#ffd000,#00c9ff,#7c3aed,#ff3cac);background-size:500% 500%;animation:bg 18s ease infinite}@keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 100%}}.glass{background:rgba(255,255,255,.8);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.65)}table{width:100%;border-collapse:collapse}td,th{border:1px solid #ccc;padding:.7rem;text-align:left}
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(-45deg, #ff4500, #ff7e00, #ffd000, #00c9ff, #7c3aed, #ff3cac);
+    background-size: 500% 500%;
+    animation: gradientMove 18s ease infinite;
+    padding-bottom: 50px;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+.glass {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.45);
+}
+
+/* DASHBOARD */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.75rem;
+}
+@media (min-width: 768px) {
+    .dashboard-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* CARTES */
+.section-card {
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    transition: transform .3s ease, box-shadow .3s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.section-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+.card-1 { background: linear-gradient(135deg, #ff4500, #ff7e00); }
+.card-2 { background: linear-gradient(135deg, #00c9ff, #4f46e5); }
+.card-3 { background: linear-gradient(135deg, #7c3aed, #ff3cac); }
+.card-4 { background: linear-gradient(135deg, #059669, #0284c7); }
+.card-5 { background: linear-gradient(135deg, #f59e0b, #ec4899); }
+.card-6 { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+
+.section-btn {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+}
+.section-icon-box {
+    width: 75px;
+    height: 75px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+.section-part {
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.85;
+    margin-bottom: 6px;
+}
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+.section-desc {
+    font-size: 0.88rem;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+.open-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.25);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: background .2s ease, transform .2s ease;
+}
+.section-btn:hover .open-action-btn {
+    background: rgba(255,255,255,0.4);
+    transform: scale(1.05);
+}
+
+/* PAGES DES 6 SECTIONS */
+.section-page {
+    display: none;
+    background: rgba(255,255,255,0.95);
+    color: #17120d;
+    border-radius: 2rem;
+    padding: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    animation: fadeIn .3s ease;
+    text-align: left;
+}
+.section-page.active { display: block; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* INFO */
+.info-box {
+    padding: 16px;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(99,102,241,.08), rgba(16,185,129,.08));
+    border: 1px solid rgba(99,102,241,.15);
+    margin-bottom: 14px;
+}
+.info-box h3 { color: #3730a3; font-weight: 800; margin-bottom: 6px; }
+.info-box p { color: #475569; font-weight: 600; font-size: 0.9rem; }
+
+/* SOUS DOSSIERS */
+.sub-folder {
+    margin-top: 12px;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background: rgba(248,250,252,.9);
+}
+.sub-btn {
+    width: 100%;
+    border: none;
+    background: #f8fafc;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    color: #334155;
+    text-align: left;
+    font-size: 0.92rem;
+}
+.sub-btn:hover { background: #eef2ff; }
+.sub-arrow { margin-left: auto; color: #4f46e5; transition: transform .3s ease; }
+.sub-folder.active .sub-arrow { transform: rotate(180deg); }
+.sub-content { display: none; padding: 14px; background: white; }
+.sub-folder.active .sub-content { display: block; }
+
+/* AUDIO BUTTON */
+.audio-btn {
+    background: #4C1D95;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: background .2s ease;
+}
+.audio-btn:hover { background: #0891B2; }
+
+/* GRAMMAR & WORD GRIDS */
+.grammar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+.grammar-card {
+    padding: 12px;
+    border-radius: 0.85rem;
+    text-align: center;
+    background: linear-gradient(145deg, #eef2ff, #f0fdf4);
+    border: 1px solid #dbeafe;
+    font-weight: 700;
+    color: #3730a3;
+}
+.word-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+.word-card {
+    padding: 14px;
+    border-radius: 0.85rem;
+    text-align: center;
+    background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+    border: 1px solid #ddd6fe;
+}
+.word-card .emoji { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+.word-card b { color: #3730a3; font-size: 0.9rem; }
+
+/* TABLES */
+.table-wrap { overflow-x: auto; margin-top: 10px; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f8fafc;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+th {
+    background: linear-gradient(135deg, #4338CA, #2563EB);
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 0.85rem;
+}
+td { border: 1px solid #e2e8f0; padding: 10px; font-size: 0.85rem; color: #1e293b; }
+tr:nth-child(even) { background: #f1f5f9; }
+
+/* REGLES & MERKSTEXTE */
+.rule-box {
+    padding: 14px;
+    border-radius: 0.85rem;
+    margin: 10px 0;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+}
+.rule-box h3 { color: #92400e; font-weight: 800; margin-bottom: 4px; font-size: 0.9rem; }
+.rule-big { font-size: 1.05rem; font-weight: 900; color: #92400e; text-align: center; padding: 6px; }
+
+/* DIALOG */
+.dialog { background: linear-gradient(135deg, #eef2ff, #f0fdf4); padding: 14px; border-radius: 1rem; }
+.dialog-line {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 10px;
+}
+.avatar {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    box-shadow: 0 4px 10px rgba(15,23,42,.10);
+    font-size: 15px;
+}
+.bubble {
+    flex: 1;
+    background: white;
+    padding: 10px 12px;
+    border-radius: 4px 14px 14px 14px;
+    box-shadow: 0 4px 12px rgba(15,23,42,.06);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e293b;
+}
+.speaker { display: block; color: #4f46e5; font-weight: 900; font-size: 0.75rem; margin-bottom: 2px; }
+.fr-text { display: block; font-size: 0.78rem; color: #0891b2; margin-top: 3px; font-weight: 700; }
+
+/* EXERCICES */
+.exercise {
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 0.85rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+.exercise-number { font-weight: 900; color: #4f46e5; margin-bottom: 5px; font-size: 0.88rem; }
+.exercise input {
+    border: 1px solid #c7d2fe;
+    border-radius: 8px;
+    padding: 8px 10px;
+    width: 100%;
+    margin-top: 5px;
+    background: white;
+    outline: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #1e293b;
+}
+.solution-btn {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-top: 8px;
+}
+.solution-text { display: none; margin-top: 6px; color: #166534; font-weight: bold; font-size: 0.85rem; }
+
+/* MEMOIRE */
+.remember {
+    padding: 14px;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, rgba(79,70,229,.10), rgba(16,185,129,.09));
+    border: 1px solid rgba(79,70,229,.15);
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+.remember h3 { color: #3730a3; font-weight: 800; margin-bottom: 5px; font-size: 0.95rem; }
+.remember p { font-size: 0.88rem; font-weight: 600; }
+
+/* BOUTON START */
+.print-btn {
+    border: none;
+    border-radius: 1rem;
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.9);
+    color: #4f46e5;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform .25s ease;
+}
+.print-btn:hover { transform: scale(1.05); }
+
 </style>
 </head>
+
 <body>
-<header class="px-5 py-5"><div class="max-w-5xl mx-auto flex justify-between items-center gap-4"><a href="index.html#a1" class="glass rounded-2xl px-5 py-3 font-black">← A1 Lektionen</a><div class="glass rounded-full px-5 py-2 font-bold">🇩🇪 Deutschkurs</div></div></header>
-<main class="max-w-5xl mx-auto px-5 pb-16">
-<section class="text-center pt-8 pb-10"><div class="inline-block glass rounded-full px-5 py-2 mb-5 text-xs font-black uppercase">A1 · Lektion 51</div><h1 class="text-5xl md:text-7xl font-black mb-5">Artikel</h1><p class="text-lg font-semibold">Bestimmte, unbestimmte und negative Artikel verstehen und verwenden.</p></section>
-<section class="glass rounded-3xl p-6 md:p-8 mb-6"><h2 class="text-3xl font-black mb-4">1. Was ist ein Artikel?</h2><p class="text-lg mb-4">Ein <strong>Artikel</strong> steht meistens vor einem Nomen. Er zeigt das grammatische Geschlecht (Genus) an. Lerne Nomen am besten immer mit ihrem Artikel.</p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><div class="bg-white/70 rounded-2xl p-4"><h3 class="text-xl font-black">der Mann</h3><p>maskulin</p></div><div class="bg-white/70 rounded-2xl p-4"><h3 class="text-xl font-black">die Frau</h3><p>feminin</p></div><div class="bg-white/70 rounded-2xl p-4"><h3 class="text-xl font-black">das Kind</h3><p>neutral</p></div></div></section>
-<section class="glass rounded-3xl p-6 md:p-8 mb-6"><h2 class="text-3xl font-black mb-4">2. Bestimmter Artikel: der, die, das</h2><p class="mb-4">Wir verwenden den bestimmten Artikel, wenn wir über etwas Bestimmtes oder bereits Bekanntes sprechen.</p><div class="overflow-x-auto"><table><thead><tr><th>Genus / Zahl</th><th>Artikel</th><th>Beispiel</th></tr></thead><tbody><tr><td>Maskulin</td><td><strong>der</strong></td><td>der Tisch</td></tr><tr><td>Feminin</td><td><strong>die</strong></td><td>die Tasche</td></tr><tr><td>Neutrum</td><td><strong>das</strong></td><td>das Buch</td></tr><tr><td>Plural</td><td><strong>die</strong></td><td>die Bücher</td></tr></tbody></table></div><p class="mt-4"><strong>Beispiel:</strong> Das ist ein Buch. <strong>Das Buch</strong> ist interessant.</p></section>
-<section class="glass rounded-3xl p-6 md:p-8 mb-6"><h2 class="text-3xl font-black mb-4">3. Unbestimmter Artikel: ein, eine</h2><p class="mb-4">Wir verwenden den unbestimmten Artikel oft, wenn wir etwas zum ersten Mal nennen.</p><div class="overflow-x-auto"><table><thead><tr><th>Genus</th><th>Artikel</th><th>Beispiel</th></tr></thead><tbody><tr><td>Maskulin</td><td><strong>ein</strong></td><td>ein Tisch</td></tr><tr><td>Feminin</td><td><strong>eine</strong></td><td>eine Tasche</td></tr><tr><td>Neutrum</td><td><strong>ein</strong></td><td>ein Buch</td></tr><tr><td>Plural</td><td>—</td><td>Bücher</td></tr></tbody></table></div><p class="mt-4"><strong>Beispiel:</strong> Das ist <em>ein Tisch</em>.</p></section>
-<section class="glass rounded-3xl p-6 md:p-8 mb-6"><h2 class="text-3xl font-black mb-4">4. Negativartikel: kein, keine</h2><p class="mb-4"><strong>Kein</strong> verneint ein Nomen mit unbestimmtem Artikel oder ohne Artikel.</p><div class="overflow-x-auto"><table><thead><tr><th>Genus / Zahl</th><th>Form</th><th>Beispiel</th></tr></thead><tbody><tr><td>Maskulin</td><td><strong>kein</strong></td><td>Das ist kein Tisch.</td></tr><tr><td>Feminin</td><td><strong>keine</strong></td><td>Das ist keine Tasche.</td></tr><tr><td>Neutrum</td><td><strong>kein</strong></td><td>Das ist kein Buch.</td></tr><tr><td>Plural</td><td><strong>keine</strong></td><td>Das sind keine Bücher.</td></tr></tbody></table></div></section>
-<section class="glass rounded-3xl p-6 md:p-8"><h2 class="text-3xl font-black mb-4">5. Artikel im Akkusativ</h2><p class="mb-4">Bei maskulinen Nomen ändert sich der Artikel im Akkusativ: <strong>der → den</strong>, <strong>ein → einen</strong>, <strong>kein → keinen</strong>.</p><div class="overflow-x-auto"><table><thead><tr><th>Nominativ</th><th>Akkusativ</th><th>Beispiel</th></tr></thead><tbody><tr><td>der</td><td><strong>den</strong></td><td>Ich sehe den Mann.</td></tr><tr><td>ein</td><td><strong>einen</strong></td><td>Ich kaufe einen Apfel.</td></tr><tr><td>kein</td><td><strong>keinen</strong></td><td>Ich habe keinen Bruder.</td></tr><tr><td>die / eine / keine</td><td>bleiben gleich</td><td>Ich sehe die Frau.</td></tr><tr><td>das / ein / kein</td><td>bleiben gleich</td><td>Ich lese ein Buch.</td></tr></tbody></table></div><p class="mt-5 font-bold">Merke: Lerne jedes Nomen mit Artikel und achte auf den Kasus im Satz.</p></section>
+<header class="px-5 py-5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <a href="index.html#a1" class="glass rounded-2xl px-5 py-3 font-black text-lg hover:scale-105 transition">← Zurück</a>
+        <div class="glass rounded-full px-5 py-2 font-bold text-sm">🇩🇪 Deutschkurs A1</div>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-5 pb-16">
+
+<div id="dashboard-view">
+    <section class="text-center pt-6 pb-10">
+        <h1 class="text-4xl md:text-6xl font-black tracking-tight mb-4 drop-shadow-md">Plural, Zahlen & Mengen</h1>
+        <p class="text-base md:text-lg font-semibold max-w-2xl mx-auto opacity-95">Lerne die Mehrzahl, Zahlen und Mengenangaben im Alltag auszudrücken und sicher anzuwenden.</p>
+        <div class="mt-5 p-4 bg-white/20 backdrop-blur-md rounded-2xl max-w-lg mx-auto border border-white/40 mb-6">
+            <h3 class="font-black text-lg text-white mb-1">💜 Deutsch Schritt für Schritt 💜</h3>
+            <p class="text-sm font-semibold">Ein Wort wird zu vielen Wörtern – und du kannst immer mehr sagen! ❤️</p>
+        </div>
+        <div class="mt-5 flex justify-center gap-4 flex-wrap">
+            <button class="print-btn" onclick="startLesson()">🚀 Lektion Starten</button>
+            <button class="print-btn" onclick="window.print()">🖨️ Diese Lektion drucken</button>
+        </div>
+    </section>
+
+    <div class="dashboard-grid">
+        <div class="section-card card-1"><button class="section-btn" onclick="openSection(1)"><div class="section-icon-box">🔢</div><div class="section-part">Teil 1</div><div class="section-title">Singular & Plural</div><div class="section-desc">Eins ist Singular, viele sind Plural. Wichtige Beispiele & Vokabeln.</div><div class="open-action-btn">Öffnen →</div></button></div>
+        <div class="section-card card-2"><button class="section-btn" onclick="openSection(2)"><div class="section-icon-box">📚</div><div class="section-part">Teil 2</div><div class="section-title">Pluralregeln & Artikel</div><div class="section-desc">Endungen (-e, -er, -en, -s), Umlaute, Artikelwechsel und kein/keine.</div><div class="open-action-btn">Öffnen →</div></button></div>
+        <div class="section-card card-3"><button class="section-btn" onclick="openSection(3)"><div class="section-icon-box">🛒</div><div class="section-part">Teil 3</div><div class="section-title">Zahlen, Mengen & „Wie viele?“</div><div class="section-desc">Zahlen im Plural, Frage „Wie viele?“, Mengenangaben & „Es gibt“.</div><div class="open-action-btn">Öffnen →</div></button></div>
+        <div class="section-card card-4"><button class="section-btn" onclick="openSection(4)"><div class="section-icon-box">💬</div><div class="section-part">Teil 4</div><div class="section-title">Dialog im Supermarkt</div><div class="section-desc">Einkaufen im echten Gespräch mit französischen Übersetzungen.</div><div class="open-action-btn">Öffnen →</div></button></div>
+        <div class="section-card card-5"><button class="section-btn" onclick="openSection(5)"><div class="section-icon-box">🧠</div><div class="section-part">Teil 5</div><div class="section-title">Zusammenfassung</div><div class="section-desc">Das Wichtigste auf einen Blick: Merksätze & Grundregeln.</div><div class="open-action-btn">Öffnen →</div></button></div>
+        <div class="section-card card-6"><button class="section-btn" onclick="openSection(6)"><div class="section-icon-box">✏️</div><div class="section-part">Teil 6</div><div class="section-title">Übungen & Selbsttest</div><div class="section-desc">Interaktive Aufgaben zum Plural trainieren und Testen.</div><div class="open-action-btn">Öffnen →</div></button></div>
+    </div>
+
+    <section class="flex justify-center mt-12"><a href="index.html#a1" class="bg-black text-white px-8 py-4 rounded-2xl font-black hover:scale-105 transition shadow-xl">← Zurück zu A1 Lektionen</a></section>
+</div>
+
+<div id="page-1" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">1. Singular und Plural</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="info-box" style="border-left: 4px solid #ff7e00;"><h3>❤️ MERKSATZ ❤️</h3><p><b>Eins ist Singular.</b><br><b>Viele sind Plural.</b><br><br>🌸 Im Plural steht der Artikel immer: <b>DIE</b>.</p></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">❤️ Was bedeutet Singular und Plural? <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="grammar-grid"><div class="grammar-card"><b>Singular</b><br>der Apfel 🍎</div><div class="grammar-card"><b>Plural</b><br>die Äpfel 🍎🍎🍎</div><div class="grammar-card"><b>Singular</b><br>das Buch 📖</div><div class="grammar-card"><b>Plural</b><br>die Bücher 📚</div></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">📚 Viele wichtige Beispiele <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="table-wrap"><table><tr><th>Singular</th><th>Plural</th><th>🇫🇷 Französisch</th><th>🔊 Audio</th></tr>
+    <tr><td>der Tisch</td><td><b>die Tische</b></td><td>table</td><td><button class="audio-btn" onclick="speak('der Tisch, die Tische')">🔊</button></td></tr>
+    <tr><td>der Stuhl</td><td><b>die Stühle</b></td><td>chaise</td><td><button class="audio-btn" onclick="speak('der Stuhl, die Stühle')">🔊</button></td></tr>
+    <tr><td>die Tasche</td><td><b>die Taschen</b></td><td>sac</td><td><button class="audio-btn" onclick="speak('die Tasche, die Taschen')">🔊</button></td></tr>
+    <tr><td>das Kind</td><td><b>die Kinder</b></td><td>enfant</td><td><button class="audio-btn" onclick="speak('das Kind, die Kinder')">🔊</button></td></tr>
+    <tr><td>das Buch</td><td><b>die Bücher</b></td><td>livre</td><td><button class="audio-btn" onclick="speak('das Buch, die Bücher')">🔊</button></td></tr>
+    <tr><td>das Auto</td><td><b>die Autos</b></td><td>voiture</td><td><button class="audio-btn" onclick="speak('das Auto, die Autos')">🔊</button></td></tr></table></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🖼️ Plural im Alltag (Vokabeln) <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="word-grid">
+    <div class="word-card"><span class="emoji">🍎</span><b>der Apfel</b><br>→ die Äpfel</div><div class="word-card"><span class="emoji">👩</span><b>die Frau</b><br>→ die Frauen</div><div class="word-card"><span class="emoji">👨</span><b>der Mann</b><br>→ die Männer</div><div class="word-card"><span class="emoji">👧</span><b>die Tochter</b><br>→ die Töchter</div><div class="word-card"><span class="emoji">🏠</span><b>das Haus</b><br>→ die Häuser</div><div class="word-card"><span class="emoji">🚗</span><b>das Auto</b><br>→ die Autos</div><div class="word-card"><span class="emoji">📚</span><b>das Buch</b><br>→ die Bücher</div><div class="word-card"><span class="emoji">🪑</span><b>der Stuhl</b><br>→ die Stühle</div>
+    </div></div></div>
+</div>
+
+<div id="page-2" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">2. Die wichtigsten Pluralregeln</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🔤 Plural-Endungen & Wichtiges <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="table-wrap"><table><tr><th>Endung</th><th>Beispiel</th><th>Plural</th><th>🇫🇷</th></tr><tr><td>-e</td><td>der Tisch</td><td>die Tische</td><td>table</td></tr><tr><td>-er</td><td>das Kind</td><td>die Kinder</td><td>enfant</td></tr><tr><td>-en</td><td>die Frau</td><td>die Frauen</td><td>femme</td></tr><tr><td>-s</td><td>das Auto</td><td>die Autos</td><td>voiture</td></tr><tr><td>ohne Endung</td><td>der Lehrer</td><td>die Lehrer</td><td>enseignant</td></tr></table></div><div class="rule-box mt-3"><h3>💡 Wichtig!</h3><p>Es gibt keine Pluralregel, die immer funktioniert.<br><br>❤️ Deshalb: <b>Das Nomen am besten mit dem Plural lernen.</b></p></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🌸 Umlaut im Plural <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="word-grid"><div class="word-card"><span class="emoji">🍎</span>der Apfel<br>→ <b>die Äpfel</b></div><div class="word-card"><span class="emoji">👨</span>der Vater<br>→ <b>die Väter</b></div><div class="word-card"><span class="emoji">👧</span>die Tochter<br>→ <b>die Töchter</b></div><div class="word-card"><span class="emoji">📖</span>das Buch<br>→ <b>die Bücher</b></div></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🟣 Artikel im Plural <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="grammar-grid"><div class="grammar-card"><b>der</b><br>→ <b>die</b></div><div class="grammar-card"><b>die</b><br>→ <b>die</b></div><div class="grammar-card"><b>das</b><br>→ <b>die</b></div></div><div class="rule-box mt-3"><h3>❤️ Super-Merksatz ❤️</h3><div class="rule-big">Im Plural ist der Artikel immer „DIE“.</div></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🚫 ein / eine und kein / keine <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="table-wrap"><table><tr><th>Singular</th><th>Plural</th></tr><tr><td>ein Buch</td><td><b>Bücher</b></td></tr><tr><td>eine Tasche</td><td><b>Taschen</b></td></tr><tr><td>kein Buch</td><td><b>keine Bücher</b></td></tr><tr><td>keine Tasche</td><td><b>keine Taschen</b></td></tr></table></div><div class="rule-box mt-3"><h3>❤️ Achtung!</h3><p>❌ zwei ein Bücher<br>✅ zwei Bücher<br><br>❌ keine ein Taschen<br>✅ keine Taschen</p></div></div></div>
+</div>
+
+<div id="page-3" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">3. Zahlen, Mengen & „Wie viele?“</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🔢 Zahlen + Plural <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="grammar-grid"><div class="grammar-card"><b>1</b> Apfel 🍎</div><div class="grammar-card"><b>2</b> Äpfel 🍎🍎</div><div class="grammar-card"><b>3</b> Äpfel</div><div class="grammar-card"><b>10</b> Äpfel</div></div><div class="rule-box mt-3"><h3>💡 Denk daran!</h3><p>Nach <b>zwei, drei, vier...</b> steht das Nomen meistens im Plural.</p></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">❓ Wie viele? / Wie viel? <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="table-wrap"><table><tr><th>Frage</th><th>Antwort</th><th>🇫🇷</th></tr><tr><td><b>Wie viele Äpfel?</b></td><td>Drei Äpfel.</td><td>Combien de pommes ?</td></tr><tr><td><b>Wie viele Bücher?</b></td><td>Fünf Bücher.</td><td>Combien de livres ?</td></tr><tr><td><b>Wie viel Wasser?</b></td><td>Ein Liter Wasser.</td><td>Combien d'eau ?</td></tr></table></div><button class="audio-btn mt-3" onclick="speak('Wie viele Äpfel? Drei Äpfel.')">🔊 Anhören</button></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🛒 Mengen im Alltag <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="word-grid"><div class="word-card"><span class="emoji">🥤</span><b>eine Flasche Wasser</b><br><span style="font-size:0.75rem;color:#64748b">une bouteille d'eau</span></div><div class="word-card"><span class="emoji">🍎</span><b>ein Kilo Äpfel</b><br><span style="font-size:0.75rem;color:#64748b">un kilo de pommes</span></div><div class="word-card"><span class="emoji">🥛</span><b>zwei Flaschen Milch</b><br><span style="font-size:0.75rem;color:#64748b">deux bouteilles de lait</span></div><div class="word-card"><span class="emoji">🍝</span><b>eine Packung Nudeln</b><br><span style="font-size:0.75rem;color:#64748b">un paquet de pâtes</span></div></div></div></div>
+    <div class="sub-folder"><button class="sub-btn" onclick="toggleSub(this)">🗣️ „Es gibt ...“ <span class="sub-arrow">⌄</span></button><div class="sub-content"><div class="rule-box"><h3>💡 Satzmuster</h3><div class="rule-big">Es gibt + Akkusativ.</div></div><p class="font-semibold text-slate-700 mt-2">Es gibt <b>einen Tisch</b>.<br>Es gibt <b>zwei Tische</b>.<br>Es gibt <b>viele Stühle</b>.</p><button class="audio-btn mt-3" onclick="speak('Es gibt einen Tisch. Es gibt zwei Tische. Es gibt viele Stühle.')">🔊 Anhören</button></div></div>
+</div>
+
+<div id="page-4" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">Mini-Dialog im Supermarkt</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="dialog">
+        <div class="dialog-line"><div class="avatar">👩</div><div class="bubble"><span class="speaker">Verkäuferin:</span>Wie viele Äpfel möchten Sie?<span class="fr-text">🇫🇷 Combien de pommes voulez-vous ?</span></div><button class="audio-btn" onclick="speak('Wie viele Äpfel möchten Sie?')">🔊</button></div>
+        <div class="dialog-line"><div class="avatar">👤</div><div class="bubble"><span class="speaker">Kundin:</span>Ich möchte fünf Äpfel.<span class="fr-text">🇫🇷 Je voudrais cinq pommes.</span></div><button class="audio-btn" onclick="speak('Ich möchte fünf Äpfel.')">🔊</button></div>
+        <div class="dialog-line"><div class="avatar">👩</div><div class="bubble"><span class="speaker">Verkäuferin:</span>Möchten Sie noch etwas?<span class="fr-text">🇫🇷 Vous voulez encore quelque chose ?</span></div><button class="audio-btn" onclick="speak('Möchten Sie noch etwas?')">🔊</button></div>
+        <div class="dialog-line"><div class="avatar">👤</div><div class="bubble"><span class="speaker">Kundin:</span>Ja, zwei Flaschen Wasser, bitte.<span class="fr-text">🇫🇷 Oui, deux bouteilles d'eau, s'il vous plaît.</span></div><button class="audio-btn" onclick="speak('Ja, zwei Flaschen Wasser, bitte.')">🔊</button></div>
+    </div>
+</div>
+
+<div id="page-5" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">Zusammenfassung & Merksätze</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="remember"><h3>🌸 DU SCHAFFST DAS! ❤️</h3><p><b>Ein Tisch → viele Tische.</b><br><b>Ein Buch → viele Bücher.</b><br><b>Eine Frau → viele Frauen.</b><br><br>🌷 <b>Im Plural steht der Artikel immer „DIE“.</b><br><br>❤️ Schritt für Schritt wird dein Deutsch immer besser!</p></div>
+    <div class="remember"><h3>📌 Wichtige Regeln im Überblick</h3><p>• Eins ist Singular, viele sind Plural.<br>• Nach Zahlen (zwei, drei...) steht das Nomen im Plural.<br>• Es gibt keine feste Pluralregel für alle Wörter – am besten mit Plural lernen!</p></div>
+</div>
+
+<div id="page-6" class="section-page">
+    <div class="flex justify-between items-center mb-4"><h2 class="text-2xl font-black text-slate-900">4. Übungen – Plural trainieren</h2><button onclick="showDashboard()" class="audio-btn">🏠 Übersicht</button></div>
+    <div class="info-box" style="border-left: 4px solid #8b5cf6; margin-bottom: 16px;"><h3>✏️ Interaktives Training</h3><p>Teste dein Wissen zu Plural, Zahlen und Mengenangaben.</p></div>
+    <div class="exercise"><div class="exercise-number">✏️ Übung 1 – Schreibe den Plural</div>1. der Tisch → die <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung anzeigen</button><div class="solution-text">Tische</div></div>
+    <div class="exercise"><div class="exercise-number">✏️ Übung 1 (Teil 2)</div>2. das Kind → die <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung anzeigen</button><div class="solution-text">Kinder</div></div>
+    <div class="exercise"><div class="exercise-number">✏️ Übung 1 (Teil 3)</div>3. die Frau → die <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung anzeigen</button><div class="solution-text">Frauen</div></div>
+    <div class="exercise"><div class="exercise-number">✏️ Übung 1 (Teil 4)</div>4. das Buch → die <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung anzeigen</button><div class="solution-text">Bücher</div></div>
+    <div class="exercise"><div class="exercise-number">🔢 Übung 2 – Singular oder Plural?</div>1. zwei ______ (Auto) <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung</button><div class="solution-text">Autos</div></div>
+    <div class="exercise"><div class="exercise-number">🔢 Übung 2 (Teil 2)</div>2. drei ______ (Apfel) <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung</button><div class="solution-text">Äpfel</div></div>
+    <div class="exercise"><div class="exercise-number">🔢 Übung 2 (Teil 3)</div>3. fünf ______ (Buch) <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung</button><div class="solution-text">Bücher</div></div>
+    <div class="exercise"><div class="exercise-number">❓ Übung 3 – Wie viele?</div>🍎🍎🍎<br><br>Wie viele Äpfel? <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung</button><div class="solution-text">Drei Äpfel.</div></div>
+    <div class="exercise"><div class="exercise-number">❓ Übung 3 (Teil 2)</div>📚📚📚📚<br><br>Wie viele Bücher? <input type="text" placeholder="..."><br><button class="solution-btn" onclick="toggleSolution(this)">Lösung</button><div class="solution-text">Vier Bücher.</div></div>
+</div>
+
 </main>
+
+<script>
+function startLesson() {
+    speak("Willkommen zur Lektion Plural, Zahlen und Mengen!");
+}
+function openSection(num) {
+    document.getElementById('dashboard-view').style.display = 'none';
+    document.querySelectorAll('.section-page').forEach(page => page.classList.remove('active'));
+    const targetPage = document.getElementById('page-' + num);
+    if (targetPage) targetPage.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function showDashboard() {
+    document.querySelectorAll('.section-page').forEach(page => page.classList.remove('active'));
+    document.getElementById('dashboard-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleSub(button) {
+    const folder = button.parentElement;
+    folder.classList.toggle("active");
+}
+function toggleSolution(button) {
+    const solutionDiv = button.nextElementSibling;
+    if (solutionDiv.style.display === "block") {
+        solutionDiv.style.display = "none";
+        button.textContent = "Lösung anzeigen";
+    } else {
+        solutionDiv.style.display = "block";
+        button.textContent = "Lösung verstecken";
+    }
+}
+function speak(text) {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "de-DE";
+        utterance.rate = 0.85;
+        utterance.pitch = 1;
+        window.speechSynthesis.speak(utterance);
+    } else {
+        alert("Dein Browser unterstützt leider keine Sprachausgabe.");
+    }
+}
+</script>
+
 </body>
 </html>
