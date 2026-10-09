@@ -18,6 +18,7 @@ function showLevels() { switchPage("levelsPage"); }
 function openA1() { switchPage("a1Page"); }
 function openAlphabet() { window.location.href = "lektion1.html"; }
 function openLektion2() { window.location.href = "lektion2.html"; }
+function openLektion51() { window.location.href = "lektion51.html"; }
 
 const a1Lessons = [
     "Alphabet & Aussprache", "Begrüßung & Verabschiedung", "Personalpronomen &amp; Reflexivpronomen", "Verben", "Uhrzeit", "W-Fragen", "Plural", "Trennbare Verben", "W-Fragen", "Reflexive Verben", "Negation: nicht / kein", "Zahlen", "sein & haben", "Datum & Wochentage", "Monate & Jahreszeiten", "Familie", "Berufe", "Wohnen & Wohnung", "Möbel & Haushalt", "Essen & Trinken", "Einkaufen", "Kleidung & Farben", "Freizeit & Hobbys", "Tagesablauf", "Schule & Arbeit", "Stadt & Orte", "Wegbeschreibung", "Verkehr & Reisen", "Wetter", "Körper & Gesundheit", "Arzt & Apotheke", "Modalverben", "Possessivartikel", "Akkusativ", "Dativ – Grundlagen", "Präpositionen", "Trennbare Verben", "Imperativ", "Perfekt – Grundlagen", "Adjektive & Vergleiche", "Konnektoren", "Alltagssituationen", "Telefonieren & Nachrichten", "Termine & Verabredungen", "Schreiben & E-Mail", "Hörverstehen", "Leseverstehen", "Sprechen & Dialoge", "A1-Wortschatz", "A1-Wiederholung & Prüfungsvorbereitung", "Artikel"
@@ -36,6 +37,7 @@ function createLessonList() {
         card.append(number, name);
         if (index === 0) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
         else if (index === 1) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
+        else if (index === 50) { card.dataset.href = "lektion51.html"; card.addEventListener("click", openLektion51); }
         else card.dataset.href = `lektion${index + 1}.html`;
         container.appendChild(card);
     });
