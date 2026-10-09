@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HaryFi – Deutsch A1 | Interactive Präpositionen Master</title>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Canvas Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Plus Jakarta Sans', 'sans-serif'],
+          heading: ['Outfit', 'sans-serif'],
+        },
+        animation: {
+          'pulse-slow': 'pulse 3s infinite',
+          'float': 'float 4s ease-in-out infinite',
+          'glow': 'glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          'gradient-bg': 'gradientBg 15s ease infinite',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-10px)' },
+          },
+          gradientBg: {
+            '0%': { 'background-position': '0% 50%' },
+            '50%': { 'background-position': '100% 50%' },
+            '100%': { 'background-position': '0% 50%' },
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+:root {
+  --theme-bg: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #c2e9fb, #fddb92, #d4fc79);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --card-shadow: 0 20px 40px rgba(80, 40, 120, 0.12);
+  --text-main: #1e1b4b;
+  --accent-color: #8b5cf6;
+}
+
+body.theme-cyber {
+  --theme-bg: linear-gradient(-45deg, #0f172a, #311042, #111827, #0284c7);
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --text-main: #f8fafc;
+  --accent-color: #38bdf8;
+}
+
+body.theme-sunset {
+  --theme-bg: linear-gradient(-45deg, #ff9a9e, #fecfef, #feada6, #f5efef);
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --card-shadow: 0 20px 40px rgba(225, 29, 72, 0.12);
+  --text-main: #881337;
+  --accent-color: #f43f5e;
+}
+
+body.theme-emerald {
+  --theme-bg: linear-gradient(-45deg, #d4fc79, #96e6a1, #84fab0, #8fd3f4);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --card-shadow: 0 20px 40px rgba(6, 78, 59, 0.12);
+  --text-main: #064e3b;
+  --accent-color: #10b981;
+}
+
+body {
+  background: var(--theme-bg);
+  background-size: 400% 400%;
+  animation: gradientBg 18s ease infinite;
+  color: var(--text-main);
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.5s ease;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow);
+}
+
+/* Flip Card 3D Effect */
+.perspective-1000 { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.5); border-radius: 999px; }
+
+/* Pulse animation for voice reading */
+.reading-wave span {
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background-color: #8b5cf6;
+  border-radius: 2px;
+  animation: wave 1s infinite ease-in-out;
+}
+.reading-wave span:nth-child(2) { animation-delay: 0.2s; }
+.reading-wave span:nth-child(3) { animation-delay: 0.4s; }
+.reading-wave span:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes wave {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+</style>
+</head>
+
+<body class="theme-emerald antialiased selection:bg-purple-500 selection:text-white pb-16">
+
+<div class="max-w-7xl mx-auto px-4 pt-6">
+
+  <!-- Top Navigation Bar (Zurück button & HaryFi logo) -->
+  <div class="flex items-center justify-between">
+    <button onclick="window.history.back()" class="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 text-purple-700 dark:text-purple-300 font-extrabold text-base border border-slate-200 dark:border-slate-700 shadow-md transition-all hover:scale-105 active:scale-95">
+      <i class="fa-solid fa-arrow-left text-lg"></i>
+      <span>A1 Lektionen</span>
+    </button>
+
+    <div class="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 text-purple-700 dark:text-purple-300 font-extrabold text-base md:text-lg border border-slate-200 dark:border-slate-700 shadow-md">
+      <span class="text-xl">🇩🇪</span>
+      <span class="font-heading tracking-wide">HaryFi</span>
+    </div>
+  </div>
+
+  <!-- Main Title -->
+  <div class="text-center flex flex-col items-center gap-4 my-6 md:my-8">
+    <h2 class="text-3xl md:text-5xl font-extrabold font-heading tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
+      Präpositionen in der deutschen Sprache!
+    </h2>
+    <button onclick="playTTS('Präpositionen in der deutschen Sprache! Willkommen.'); document.querySelector('nav').scrollIntoView({ behavior: 'smooth' });" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-700 hover:via-pink-700 hover:to-indigo-700 text-white font-extrabold text-base md:text-lg shadow-xl shadow-purple-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 border border-white/30">
+      <i class="fa-solid fa-circle-play text-xl"></i>
+      <span>Lektion Starten</span>
+    </button>
+  </div>
+
+  <nav class="flex flex-wrap gap-2 justify-center p-1.5 glass-panel rounded-2xl shadow-inner mb-6 md:mb-8">
+    <button onclick="showTab('start', this)" class="nav-tab active flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md">
+      <i class="fa-solid fa-house"></i> <span>Start</span>
+    </button>
+    <button onclick="showTab('ort', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-location-dot text-rose-500"></i> <span>📍 Ort (Wo?)</span>
+    </button>
+    <button onclick="showTab('zeit', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-clock text-amber-500"></i> <span>🕒 Zeit (Wann?)</span>
+    </button>
+    <button onclick="showTab('dativ', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-users text-emerald-500"></i> <span>👥 Dativ</span>
+    </button>
+    <button onclick="showTab('akk', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-gift text-blue-500"></i> <span>🎁 Akkusativ</span>
+    </button>
+    <button onclick="showTab('videos', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-circle-play text-red-500"></i> <span>🎬 Media Studio</span>
+    </button>
+    <button onclick="showTab('game', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-gamepad text-purple-500"></i> <span>🎮 Mini Game</span>
+    </button>
+    <button onclick="showTab('uebungen', this)" class="nav-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-all text-slate-700 dark:text-slate-200 hover:bg-purple-100/50 dark:hover:bg-slate-800">
+      <i class="fa-solid fa-pen-to-square text-pink-500"></i> <span>✏️ Übungen</span>
+    </button>
+  </nav>
+
+  <!-- TAB 1: START / OVERVIEW -->
+  <section id="start" class="tab-content block space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 md:p-10 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="space-y-4 max-w-2xl z-10">
+        <p class="text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+          Präpositionen zeigen uns <span class="font-bold text-purple-600 dark:text-purple-400">Wo</span> (Ort), 
+          <span class="font-bold text-amber-600 dark:text-amber-400">Wann</span> (Zeit), oder 
+          <span class="font-bold text-emerald-600 dark:text-emerald-400">Mit wem</span> (Begleitung) wir etwas machen.
+        </p>
+        <p class="fr-text text-sm italic text-slate-500 dark:text-slate-400 border-l-4 border-purple-400 pl-3">
+          Les prépositions indiquent par exemple le lieu, le temps ou les personnes avec qui on effectue une action.
+        </p>
+      </div>
+
+      <div class="relative w-full max-w-xs md:max-w-sm flex justify-center items-center">
+        <div class="w-64 h-64 rounded-3xl bg-gradient-to-br from-purple-400/30 via-pink-400/20 to-blue-400/30 blur-2xl absolute -z-10 animate-pulse-slow"></div>
+        <div class="glass-panel p-6 rounded-3xl text-center space-y-4 border border-white/60 shadow-2xl w-full">
+          <div class="text-6xl animate-float">🧭</div>
+          <div class="font-bold text-lg">Positionen & Zeit</div>
+          <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+            <span class="bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 py-2 rounded-xl">📍 in / auf / unter</span>
+            <span class="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 py-2 rounded-xl">🕒 um / am / im</span>
+            <span class="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 py-2 rounded-xl">👥 mit / aus / zu</span>
+            <span class="bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 py-2 rounded-xl">🎁 für / ohne</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="text-2xl font-bold font-heading flex items-center gap-2">
+          <i class="fa-solid fa-clone text-purple-500"></i> Interaktive Flashcards
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Flashcard 1 -->
+        <div class="h-60 perspective-1000 group cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="relative w-full h-full duration-500 transform-style-3d group-[.flipped]:rotate-y-180">
+            <!-- Front -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-5 flex flex-col justify-between items-center text-center backface-hidden border-2 border-purple-200 dark:border-slate-700">
+              <div class="w-full flex items-center justify-between">
+                <button onclick="event.stopPropagation(); playTTS('in. Ich bin in der Schule.')" class="w-8 h-8 rounded-full bg-purple-100 hover:bg-purple-200 dark:bg-purple-900/50 dark:hover:bg-purple-800 text-purple-600 dark:text-purple-300 flex items-center justify-center transition shadow-sm" title="Anhören">
+                  <i class="fa-solid fa-volume-high text-xs"></i>
+                </button>
+                <span class="text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-100 dark:bg-purple-900/50 px-3 py-1 rounded-full">Ort</span>
+                <div class="w-8"></div>
+              </div>
+              <div class="text-5xl my-1">🏫</div>
+              <div class="text-2xl font-bold text-purple-700 dark:text-purple-300">in</div>
+              <div class="text-xs text-slate-500">Ich bin <b>in</b> der Schule.</div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center rotate-y-180 backface-hidden bg-gradient-to-br from-purple-600 to-indigo-700 text-white">
+              <div class="text-xs font-bold uppercase tracking-wider text-purple-200">Français</div>
+              <div class="text-xl font-bold">dans / à</div>
+              <p class="text-sm italic">Je suis à l'école.</p>
+              <button onclick="event.stopPropagation(); playTTS('Ich bin in der Schule')" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold flex items-center gap-2">
+                <i class="fa-solid fa-volume-high"></i> Anhören
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard 2 -->
+        <div class="h-60 perspective-1000 group cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="relative w-full h-full duration-500 transform-style-3d group-[.flipped]:rotate-y-180">
+            <!-- Front -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-5 flex flex-col justify-between items-center text-center backface-hidden border-2 border-pink-200 dark:border-slate-700">
+              <div class="w-full flex items-center justify-between">
+                <button onclick="event.stopPropagation(); playTTS('auf. Die Bücher liegen auf dem Tisch.')" class="w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 dark:bg-pink-900/50 dark:hover:bg-pink-800 text-pink-600 dark:text-pink-300 flex items-center justify-center transition shadow-sm" title="Anhören">
+                  <i class="fa-solid fa-volume-high text-xs"></i>
+                </button>
+                <span class="text-xs font-bold uppercase tracking-wider text-pink-600 bg-pink-100 dark:bg-pink-900/50 px-3 py-1 rounded-full">Ort</span>
+                <div class="w-8"></div>
+              </div>
+              <div class="text-5xl my-1">📚</div>
+              <div class="text-2xl font-bold text-pink-700 dark:text-pink-300">auf</div>
+              <div class="text-xs text-slate-500">Die Bücher liegen <b>auf</b> dem Tisch.</div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center rotate-y-180 backface-hidden bg-gradient-to-br from-pink-600 to-rose-700 text-white">
+              <div class="text-xs font-bold uppercase tracking-wider text-pink-200">Français</div>
+              <div class="text-xl font-bold">sur</div>
+              <p class="text-sm italic">Les livres sont sur la table.</p>
+              <button onclick="event.stopPropagation(); playTTS('Die Bücher liegen auf dem Tisch')" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold flex items-center gap-2">
+                <i class="fa-solid fa-volume-high"></i> Anhören
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard 3 -->
+        <div class="h-60 perspective-1000 group cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="relative w-full h-full duration-500 transform-style-3d group-[.flipped]:rotate-y-180">
+            <!-- Front -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-5 flex flex-col justify-between items-center text-center backface-hidden border-2 border-amber-200 dark:border-slate-700">
+              <div class="w-full flex items-center justify-between">
+                <button onclick="event.stopPropagation(); playTTS('mit. Ich fahre mit dem Bus.')" class="w-8 h-8 rounded-full bg-amber-100 hover:bg-amber-200 dark:bg-amber-900/50 dark:hover:bg-amber-800 text-amber-600 dark:text-amber-300 flex items-center justify-center transition shadow-sm" title="Anhören">
+                  <i class="fa-solid fa-volume-high text-xs"></i>
+                </button>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-100 dark:bg-amber-900/50 px-3 py-1 rounded-full">Dativ</span>
+                <div class="w-8"></div>
+              </div>
+              <div class="text-5xl my-1">🚌</div>
+              <div class="text-2xl font-bold text-amber-700 dark:text-amber-300">mit</div>
+              <div class="text-xs text-slate-500">Ich fahre <b>mit</b> dem Bus.</div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center rotate-y-180 backface-hidden bg-gradient-to-br from-amber-500 to-orange-600 text-white">
+              <div class="text-xs font-bold uppercase tracking-wider text-amber-200">Français</div>
+              <div class="text-xl font-bold">avec / en</div>
+              <p class="text-sm italic">Je prends le bus.</p>
+              <button onclick="event.stopPropagation(); playTTS('Ich fahre mit dem Bus')" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold flex items-center gap-2">
+                <i class="fa-solid fa-volume-high"></i> Anhören
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard 4 -->
+        <div class="h-60 perspective-1000 group cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="relative w-full h-full duration-500 transform-style-3d group-[.flipped]:rotate-y-180">
+            <!-- Front -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-5 flex flex-col justify-between items-center text-center backface-hidden border-2 border-emerald-200 dark:border-slate-700">
+              <div class="w-full flex items-center justify-between">
+                <button onclick="event.stopPropagation(); playTTS('um. Der Kurs beginnt um 8 Uhr.')" class="w-8 h-8 rounded-full bg-emerald-100 hover:bg-emerald-200 dark:bg-emerald-900/50 dark:hover:bg-emerald-800 text-emerald-600 dark:text-emerald-300 flex items-center justify-center transition shadow-sm" title="Anhören">
+                  <i class="fa-solid fa-volume-high text-xs"></i>
+                </button>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-100 dark:bg-emerald-900/50 px-3 py-1 rounded-full">Zeit</span>
+                <div class="w-8"></div>
+              </div>
+              <div class="text-5xl my-1">⏰</div>
+              <div class="text-2xl font-bold text-emerald-700 dark:text-emerald-300">um</div>
+              <div class="text-xs text-slate-500">Der Kurs beginnt <b>um</b> 8 Uhr.</div>
+            </div>
+            <!-- Back -->
+            <div class="absolute inset-0 glass-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center rotate-y-180 backface-hidden bg-gradient-to-br from-emerald-600 to-teal-700 text-white">
+              <div class="text-xs font-bold uppercase tracking-wider text-emerald-200">Français</div>
+              <div class="text-xl font-bold">à (heure)</div>
+              <p class="text-sm italic">Le cours commence à 8 heures.</p>
+              <button onclick="event.stopPropagation(); playTTS('Der Kurs beginnt um 8 Uhr')" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-bold flex items-center gap-2">
+                <i class="fa-solid fa-volume-high"></i> Anhören
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="glass-panel p-6 rounded-3xl space-y-4">
+      <h3 class="text-xl font-bold font-heading flex items-center gap-2">
+        <i class="fa-solid fa-circle-question text-purple-600"></i> Die wichtigsten Leitfragen
+      </h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-700 text-purple-700 dark:text-purple-300 font-bold text-sm">
+              <th class="p-3">Frage (Deutsch)</th>
+              <th class="p-3 fr-text">Traduction (FR)</th>
+              <th class="p-3">Beispiel</th>
+              <th class="p-3 text-center">Audio</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm font-medium">
+            <tr class="hover:bg-purple-50/50 dark:hover:bg-slate-800/50 transition">
+              <td class="p-3 font-bold text-purple-600">Wo?</td>
+              <td class="p-3 fr-text text-slate-500 italic">Où ?</td>
+              <td class="p-3">Ich bin <b>in der Schule</b>.</td>
+              <td class="p-3 text-center">
+                <button onclick="playTTS('Ich bin in der Schule')" class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 hover:bg-purple-200 transition"><i class="fa-solid fa-volume-high"></i></button>
+              </td>
+            </tr>
+            <tr class="hover:bg-purple-50/50 dark:hover:bg-slate-800/50 transition">
+              <td class="p-3 font-bold text-amber-600">Wann?</td>
+              <td class="p-3 fr-text text-slate-500 italic">Quand ?</td>
+              <td class="p-3"><b>Am Montag</b> lerne ich Deutsch.</td>
+              <td class="p-3 text-center">
+                <button onclick="playTTS('Am Montag lerne ich Deutsch')" class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 hover:bg-amber-200 transition"><i class="fa-solid fa-volume-high"></i></button>
+              </td>
+            </tr>
+            <tr class="hover:bg-purple-50/50 dark:hover:bg-slate-800/50 transition">
+              <td class="p-3 font-bold text-emerald-600">Mit wem?</td>
+              <td class="p-3 fr-text text-slate-500 italic">Avec qui ?</td>
+              <td class="p-3">Ich lerne <b>mit meiner Freundin</b>.</td>
+              <td class="p-3 text-center">
+                <button onclick="playTTS('Ich lerne mit meiner Freundin')" class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 transition"><i class="fa-solid fa-volume-high"></i></button>
+              </td>
+            </tr>
+            <tr class="hover:bg-purple-50/50 dark:hover:bg-slate-800/50 transition">
+              <td class="p-3 font-bold text-blue-600">Womit?</td>
+              <td class="p-3 fr-text text-slate-500 italic">Avec quoi ?</td>
+              <td class="p-3">Ich fahre <b>mit dem Bus</b>.</td>
+              <td class="p-3 text-center">
+                <button onclick="playTTS('Ich fahre mit dem Bus')" class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition"><i class="fa-solid fa-volume-high"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="ort" class="tab-content hidden space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-rose-600 dark:text-rose-400">📍 2. Lokale Präpositionen (Ort)</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Wo ist die Person oder die Sache?</p>
+          <p class="fr-text text-xs italic text-slate-500">Elles indiquent la position d'une personne ou d'un objet.</p>
+        </div>
+        <div class="px-4 py-2 bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300 rounded-2xl font-bold text-xs">
+          Frage: WO? + Dativ
+        </div>
+      </div>
+
+      <!-- Spatial Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- IN -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-indigo-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-indigo-600">IN</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-indigo-50 dark:bg-slate-800 text-indigo-600 rounded-lg">dans / à</span>
+          </div>
+          <div class="h-32 bg-indigo-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            🏫
+          </div>
+          <p class="text-sm font-semibold">Ich bin <b>in der Schule</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Je suis à l'école.</p>
+          <button onclick="playTTS('Ich bin in der Schule')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+        <!-- AUF -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-rose-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-rose-600">AUF</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-rose-50 dark:bg-slate-800 text-rose-600 rounded-lg">sur</span>
+          </div>
+          <div class="h-32 bg-rose-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            📚
+          </div>
+          <p class="text-sm font-semibold">Die Bücher liegen <b>auf dem Tisch</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Les livres sont sur la table.</p>
+          <button onclick="playTTS('Die Bücher liegen auf dem Tisch')" class="w-full py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+        <!-- UNTER -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-amber-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-amber-600">UNTER</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-amber-50 dark:bg-slate-800 text-amber-600 rounded-lg">sous</span>
+          </div>
+          <div class="h-32 bg-amber-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            🪑
+          </div>
+          <p class="text-sm font-semibold">Die Tasche ist <b>unter dem Stuhl</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Le sac est sous la chaise.</p>
+          <button onclick="playTTS('Die Tasche ist unter dem Stuhl')" class="w-full py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+        <!-- NEBEN -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-emerald-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-emerald-600">NEBEN</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-emerald-50 dark:bg-slate-800 text-emerald-600 rounded-lg">à côté de</span>
+          </div>
+          <div class="h-32 bg-emerald-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            🪑🪑
+          </div>
+          <p class="text-sm font-semibold">Ich sitze <b>neben Maria</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Je suis assis(e) à côté de Maria.</p>
+          <button onclick="playTTS('Ich sitze neben Maria')" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+        <!-- VOR -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-teal-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-teal-600">VOR</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-teal-50 dark:bg-slate-800 text-teal-600 rounded-lg">devant</span>
+          </div>
+          <div class="h-32 bg-teal-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            🚪
+          </div>
+          <p class="text-sm font-semibold">Ich stehe <b>vor der Tür</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Je suis devant la porte.</p>
+          <button onclick="playTTS('Ich stehe vor der Tür')" class="w-full py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+        <!-- HINTER -->
+        <div class="glass-panel p-5 rounded-2xl border-2 border-purple-200 dark:border-slate-700 hover:shadow-xl transition-all space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-black text-purple-600">HINTER</span>
+            <span class="fr-text text-xs font-semibold px-2.5 py-1 bg-purple-50 dark:bg-slate-800 text-purple-600 rounded-lg">derrière</span>
+          </div>
+          <div class="h-32 bg-purple-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-6xl shadow-inner">
+            🏠🌳
+          </div>
+          <p class="text-sm font-semibold">Der Garten ist <b>hinter dem Haus</b>.</p>
+          <p class="fr-text text-xs italic text-slate-500">Le jardin est derrière la maison.</p>
+          <button onclick="playTTS('Der Garten ist hinter dem Haus')" class="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-volume-high"></i> Anhören
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Rule Tip Box -->
+      <div class="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-start gap-3">
+        <i class="fa-solid fa-lightbulb text-amber-500 text-xl mt-1"></i>
+        <div class="text-xs md:text-sm text-slate-700 dark:text-slate-200">
+          <span class="font-bold text-amber-600 dark:text-amber-400">Merke dir für A1:</span> Bei Fragen nach <b>WO?</b> verändert sich der Artikel im Dativ:<br>
+          • <i>der / das → dem</i> (dem Tisch, dem Haus)<br>
+          • <i>die → der</i> (der Schule, der Tür)
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="zeit" class="tab-content hidden space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+        <h2 class="text-3xl font-bold font-heading text-amber-600 dark:text-amber-400">🕒 3. Zeitliche Präpositionen (Zeit)</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Wann passiert etwas?</p>
+      </div>
+
+      <!-- Time Helper Formula Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        
+        <div class="p-5 rounded-2xl bg-amber-50 dark:bg-slate-800 border border-amber-200 dark:border-slate-700 text-center space-y-2">
+          <div class="text-3xl font-extrabold text-amber-600">UM</div>
+          <div class="text-xs font-bold text-slate-500">Uhrzeit (Heures)</div>
+          <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">um 8 Uhr</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-orange-50 dark:bg-slate-800 border border-orange-200 dark:border-slate-700 text-center space-y-2">
+          <div class="text-3xl font-extrabold text-orange-600">AM</div>
+          <div class="text-xs font-bold text-slate-500">Wochentage / Datum</div>
+          <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">am Montag</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-rose-50 dark:bg-slate-800 border border-rose-200 dark:border-slate-700 text-center space-y-2">
+          <div class="text-3xl font-extrabold text-rose-600">IM</div>
+          <div class="text-xs font-bold text-slate-500">Monate / Jahreszeiten</div>
+          <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">im Januar / im Sommer</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-indigo-50 dark:bg-slate-800 border border-indigo-200 dark:border-slate-700 text-center space-y-2">
+          <div class="text-3xl font-extrabold text-indigo-600">VON...BIS</div>
+          <div class="text-xs font-bold text-slate-500">Anfang und Ende</div>
+          <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">von 8 bis 12 Uhr</div>
+        </div>
+
+      </div>
+
+      <!-- Examples with TTS -->
+      <div class="space-y-3">
+        <h3 class="text-lg font-bold font-heading">Beispielsätze mit Audio</h3>
+        
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border flex items-center justify-between gap-4">
+          <div>
+            <p class="font-bold text-slate-800 dark:text-slate-100">📅 Ich arbeite <b>am Montag</b>.</p>
+            <p class="fr-text text-xs text-slate-500 italic">Je travaille lundi.</p>
+          </div>
+          <button onclick="playTTS('Ich arbeite am Montag')" class="px-3 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border flex items-center justify-between gap-4">
+          <div>
+            <p class="font-bold text-slate-800 dark:text-slate-100">⏰ Der Unterricht beginnt <b>um 8 Uhr</b>.</p>
+            <p class="fr-text text-xs text-slate-500 italic">Le cours commence à 8h.</p>
+          </div>
+          <button onclick="playTTS('Der Unterricht beginnt um 8 Uhr')" class="px-3 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border flex items-center justify-between gap-4">
+          <div>
+            <p class="font-bold text-slate-800 dark:text-slate-100">❄️ Ich habe <b>im Winter</b> Ferien.</p>
+            <p class="fr-text text-xs text-slate-500 italic">J'ai des vacances en hiver.</p>
+          </div>
+          <button onclick="playTTS('Ich habe im Winter Ferien')" class="px-3 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-white/70 dark:bg-slate-800/70 border flex items-center justify-between gap-4">
+          <div>
+            <p class="font-bold text-slate-800 dark:text-slate-100">🕗 Ich lerne <b>von 9 bis 11 Uhr</b>.</p>
+            <p class="fr-text text-xs text-slate-500 italic">J'étudie de 9h à 11h.</p>
+          </div>
+          <button onclick="playTTS('Ich lerne von 9 bis 11 Uhr')" class="px-3 py-2 bg-amber-500 text-white rounded-xl text-xs font-bold"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="dativ" class="tab-content hidden space-y-8 animate-fadeIn">
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+        <h2 class="text-3xl font-bold font-heading text-emerald-600 dark:text-emerald-400">👥 4. Präpositionen mit Dativ</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Diese Präpositionen erfordern IMMER den Dativ!</p>
+        <p class="fr-text text-xs italic text-slate-500">Ces prépositions sont toujours suivies du datif.</p>
+      </div>
+
+      <!-- Article Transformation Table -->
+      <div class="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl space-y-3">
+        <h3 class="text-lg font-bold text-emerald-700 dark:text-emerald-300">Artikelveränderung im Dativ:</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm font-bold">
+          <div class="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+            <span class="text-slate-400 text-xs">der (Maskulin)</span><br>
+            <span class="text-emerald-600 text-lg">→ dem</span>
+          </div>
+          <div class="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+            <span class="text-slate-400 text-xs">die (Feminin)</span><br>
+            <span class="text-emerald-600 text-lg">→ der</span>
+          </div>
+          <div class="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+            <span class="text-slate-400 text-xs">das (Neutral)</span><br>
+            <span class="text-emerald-600 text-lg">→ dem</span>
+          </div>
+          <div class="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+            <span class="text-slate-400 text-xs">die (Plural)</span><br>
+            <span class="text-emerald-600 text-lg">→ den (+n)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- List of Dativ Prepositions -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl border space-y-1">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-emerald-600 text-lg">mit</span>
+            <span class="fr-text text-xs text-slate-500">avec / en</span>
+          </div>
+          <p class="text-sm font-medium">Ich fahre <b>mit dem Bus</b>.</p>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl border space-y-1">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-emerald-600 text-lg">aus</span>
+            <span class="fr-text text-xs text-slate-500">de / originatire de</span>
+          </div>
+          <p class="text-sm font-medium">Ich komme <b>aus Madagaskar</b>.</p>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl border space-y-1">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-emerald-600 text-lg">bei</span>
+            <span class="fr-text text-xs text-slate-500">chez / à</span>
+          </div>
+          <p class="text-sm font-medium">Ich bin <b>bei meiner Freundin</b>.</p>
+        </div>
+
+        <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl border space-y-1">
+          <div class="flex justify-between items-center">
+            <span class="font-extrabold text-emerald-600 text-lg">zu</span>
+            <span class="fr-text text-xs text-slate-500">vers / chez</span>
+          </div>
+          <p class="text-sm font-medium">Ich gehe <b>zum Arzt</b> (zu + dem).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="akk" class="tab-content hidden space-y-8 animate-fadeIn">
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+        <h2 class="text-3xl font-bold font-heading text-blue-600 dark:text-blue-400">🎁 5. Präpositionen mit Akkusativ</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Für A1 sind diese 3 Wörter besonders wichtig!</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 rounded-3xl bg-blue-50 dark:bg-slate-800 border-2 border-blue-200 dark:border-slate-700 text-center space-y-4">
+          <div class="text-4xl font-black text-blue-600">FÜR</div>
+          <div class="fr-text text-xs text-slate-500 font-bold uppercase">pour</div>
+          <p class="text-sm font-semibold">Das Geschenk ist <b>für dich</b>.</p>
+          <button onclick="playTTS('Das Geschenk ist für dich')" class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold w-full"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-indigo-50 dark:bg-slate-800 border-2 border-indigo-200 dark:border-slate-700 text-center space-y-4">
+          <div class="text-4xl font-black text-indigo-600">OHNE</div>
+          <div class="fr-text text-xs text-slate-500 font-bold uppercase">sans</div>
+          <p class="text-sm font-semibold">Ich trinke Tee <b>ohne Zucker</b>.</p>
+          <button onclick="playTTS('Ich trinke Tee ohne Zucker')" class="px-4 py-2 bg-indigo-600 text-white rounded-xl text-xs font-bold w-full"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-purple-50 dark:bg-slate-800 border-2 border-purple-200 dark:border-slate-700 text-center space-y-4">
+          <div class="text-4xl font-black text-purple-600">DURCH</div>
+          <div class="fr-text text-xs text-slate-500 font-bold uppercase">à travers / par</div>
+          <p class="text-sm font-semibold">Wir gehen <b>durch den Park</b>.</p>
+          <button onclick="playTTS('Wir gehen durch den Park')" class="px-4 py-2 bg-purple-600 text-white rounded-xl text-xs font-bold w-full"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" class="tab-content hidden space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+        <h2 class="text-3xl font-bold font-heading text-red-600 dark:text-red-400">🎬 Video & Interactive Audio Studio</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Schaue dir Erklärvideos an und übe deine Aussprache!</p>
+      </div>
+
+      <!-- Video Player Card Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Video 1 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+          <div class="relative aspect-video bg-slate-900">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/N3N09SllU78" title="Präpositionen Deutsch A1" allowfullscreen></iframe>
+          </div>
+          <div class="p-4 space-y-2">
+            <h3 class="font-bold text-base">🎥 Deutsch A1 Präpositionen Übersicht</h3>
+            <p class="text-xs text-slate-500">Lerne in 5 Minuten die wichtigsten Wörter im Alltag kennen.</p>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="glass-panel rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+          <div class="relative aspect-video bg-slate-900">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/S2q_rO39z9M" title="Wechselpräpositionen A1" allowfullscreen></iframe>
+          </div>
+          <div class="p-4 space-y-2">
+            <h3 class="font-bold text-base">🎥 Wo oder Wohin? (Ort & Bewegung)</h3>
+            <p class="text-xs text-slate-500">Anschauliche Animation zur Position von Objekten.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Audio Speech Visualizer -->
+      <div class="p-6 rounded-2xl bg-gradient-to-r from-purple-900 via-indigo-900 to-slate-900 text-white space-y-4 shadow-2xl">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-widest text-purple-300">Audio Speech Lab</span>
+          <!-- Active Wave Visualizer -->
+          <div id="speech-wave" class="reading-wave hidden">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold">Lies laut mit und teste deine Aussprache!</h3>
+        <p id="tts-active-text" class="text-sm text-purple-200 italic font-mono bg-white/10 p-4 rounded-xl">
+          "Ich fahre mit dem Bus zur Arbeit."
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <button onclick="playTTS('Ich fahre mit dem Bus zur Arbeit.')" class="px-5 py-2.5 bg-purple-500 hover:bg-purple-600 rounded-xl text-xs font-bold flex items-center gap-2">
+            <i class="fa-solid fa-play"></i> Satz 1
+          </button>
+          <button onclick="playTTS('Mein Kurs beginnt um 8 Uhr am Montag.')" class="px-5 py-2.5 bg-purple-500 hover:bg-purple-600 rounded-xl text-xs font-bold flex items-center gap-2">
+            <i class="fa-solid fa-play"></i> Satz 2
+          </button>
+          <button onclick="playTTS('Das Buch liegt auf dem Tisch neben der Lampe.')" class="px-5 py-2.5 bg-purple-500 hover:bg-purple-600 rounded-xl text-xs font-bold flex items-center gap-2">
+            <i class="fa-solid fa-play"></i> Satz 3
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="game" class="tab-content hidden space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 rounded-3xl space-y-6">
+      <div class="border-b border-slate-200 dark:border-slate-700 pb-4 text-center">
+        <h2 class="text-3xl font-bold font-heading text-purple-600 dark:text-purple-400">🎮 Mini Game: Wo ist Felix die Katze? 🐱</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Klicke auf die richtige Präposition, um die Katze zu setzen!</p>
+      </div>
+
+      <!-- Game Interactive Canvas Scene -->
+      <div class="max-w-xl mx-auto space-y-6">
+        
+        <div class="relative h-64 bg-slate-100 dark:bg-slate-800 rounded-3xl border-4 border-dashed border-purple-300 dark:border-slate-600 flex items-center justify-center overflow-hidden p-6">
+          
+          <!-- Box Element -->
+          <div class="w-32 h-32 bg-amber-400 rounded-2xl border-4 border-amber-600 shadow-xl flex items-center justify-center font-black text-amber-900 text-xl z-10">
+            Kiste 📦
+          </div>
+
+          <!-- Felix Cat Emoji -->
+          <div id="cat-element" class="absolute text-5xl transition-all duration-500 z-20 animate-bounce" style="top: 15px;">
+            🐱
+          </div>
+
+        </div>
+
+        <!-- Position Selector Buttons -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button onclick="moveCat('auf')" class="p-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xs shadow-md">
+            AUF (Sur)
+          </button>
+          <button onclick="moveCat('unter')" class="p-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xs shadow-md">
+            UNTER (Sous)
+          </button>
+          <button onclick="moveCat('in')" class="p-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xs shadow-md">
+            IN (Dans)
+          </button>
+          <button onclick="moveCat('neben')" class="p-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-bold text-xs shadow-md">
+            NEBEN (À côté)
+          </button>
+        </div>
+
+        <div id="game-feedback" class="p-4 rounded-2xl bg-purple-100 dark:bg-slate-800 text-center font-bold text-purple-700 dark:text-purple-300 text-sm">
+          Die Katze ist <b>auf</b> der Kiste!
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section id="uebungen" class="tab-content hidden space-y-8 animate-fadeIn">
+    
+    <div class="glass-panel p-6 md:p-8 rounded-3xl space-y-8">
+      
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-pink-600 dark:text-pink-400">✏️ 7. Interaktive Übungen</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Teste dein Wissen und sammle XP!</p>
+        </div>
+        <button onclick="resetQuiz()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 text-slate-800 dark:text-slate-200 rounded-xl text-xs font-bold transition">
+          🔄 Neu starten
+        </button>
+      </div>
+
+      <!-- Multiple Choice Quiz -->
+      <form id="quiz-form" class="space-y-6">
+        
+        <!-- Question 1 -->
+        <div class="p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+          <p class="font-bold text-base">1. Ich fahre ___ dem Bus zur Arbeit.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q1" value="a" class="accent-purple-600"> <span>für</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q1" value="b" class="accent-purple-600"> <span>mit</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q1" value="c" class="accent-purple-600"> <span>ohne</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+          <p class="font-bold text-base">2. Der Unterricht beginnt ___ 8 Uhr.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q2" value="a" class="accent-purple-600"> <span>am</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q2" value="b" class="accent-purple-600"> <span>im</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q2" value="c" class="accent-purple-600"> <span>um</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+          <p class="font-bold text-base">3. Ich komme ___ Madagaskar.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q3" value="a" class="accent-purple-600"> <span>aus</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q3" value="b" class="accent-purple-600"> <span>um</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q3" value="c" class="accent-purple-600"> <span>auf</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-3">
+          <p class="font-bold text-base">4. Das Buch liegt ___ dem Tisch.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q4" value="a" class="accent-purple-600"> <span>auf</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q4" value="b" class="accent-purple-600"> <span>von</span>
+            </label>
+            <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 cursor-pointer hover:bg-purple-50 dark:hover:bg-slate-700">
+              <input type="radio" name="q4" value="c" class="accent-purple-600"> <span>um</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="button" onclick="checkQuiz()" class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-2xl font-bold text-lg shadow-xl shadow-purple-500/30 hover:scale-[1.01] transition-transform">
+          ✅ Antworten kontrollieren
+        </button>
+
+        <div id="quiz-result" class="p-4 rounded-2xl hidden text-center font-bold text-base"></div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+</div>
+
+<footer class="mt-16 text-center text-xs text-slate-500 dark:text-slate-400 space-y-1">
+  <p class="font-bold">💜 HaryFi – Deutsch lernen Schritt für Schritt</p>
+  <p class="fr-text italic">Apprendre l'allemand avec confiance et sérénité !</p>
+</footer>
+
+<script>
+// State Variables
+let currentSpeechRate = 1.0;
+let userXP = 120;
+let frenchVisible = true;
+
+// Map tab names to spoken German text
+const tabSpeechMap = {
+  'start': 'Start Übersicht',
+  'ort': 'Lokale Präpositionen. Ort, wo?',
+  'zeit': 'Zeitliche Präpositionen. Zeit, wann?',
+  'dativ': 'Präpositionen mit Dativ',
+  'akk': 'Präpositionen mit Akkusativ',
+  'videos': 'Media Studio',
+  'game': 'Mini Game',
+  'uebungen': 'Übungen'
+};
+
+// Tab Switching with audio speech playback
+function showTab(tabId, buttonEl) {
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.add('hidden');
+    tab.classList.remove('block');
+  });
+
+  const selectedTab = document.getElementById(tabId);
+  if(selectedTab) {
+    selectedTab.classList.remove('hidden');
+    selectedTab.classList.add('block');
+  }
+
+  document.querySelectorAll('.nav-tab').forEach(btn => {
+    btn.classList.remove('bg-gradient-to-r', 'from-purple-600', 'to-indigo-600', 'text-white', 'shadow-md');
+    btn.classList.add('text-slate-700', 'dark:text-slate-200');
+  });
+
+  if(buttonEl) {
+    buttonEl.classList.add('bg-gradient-to-r', 'from-purple-600', 'to-indigo-600', 'text-white', 'shadow-md');
+  }
+
+  // Play audio vocal reading for the clicked tab
+  if (tabSpeechMap[tabId]) {
+    playTTS(tabSpeechMap[tabId]);
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Text to Speech Engine
+function playTTS(text) {
+  if (!('speechSynthesis' in window)) {
+    console.log("Audio wird von diesem Browser nicht unterstützt.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const activeTextEl = document.getElementById('tts-active-text');
+  if(activeTextEl) activeTextEl.textContent = `"${text}"`;
+
+  const waveEl = document.getElementById('speech-wave');
+  if(waveEl) waveEl.classList.remove('hidden');
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'de-DE';
+  utterance.rate = currentSpeechRate;
+
+  utterance.onend = function() {
+    if(waveEl) waveEl.classList.add('hidden');
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+// Interactive Cat Game Logic
+function moveCat(position) {
+  const cat = document.getElementById('cat-element');
+  const feedback = document.getElementById('game-feedback');
+
+  if(position === 'auf') {
+    cat.style.top = '15px';
+    cat.style.left = 'calc(50% - 24px)';
+    feedback.innerHTML = 'Richtig! Die Katze ist <b>AUF</b> der Kiste. 📦🐱';
+    playTTS('Die Katze ist auf der Kiste.');
+  } else if(position === 'unter') {
+    cat.style.top = '175px';
+    cat.style.left = 'calc(50% - 24px)';
+    feedback.innerHTML = 'Richtig! Die Katze ist <b>UNTER</b> der Kiste. 🐱📦';
+    playTTS('Die Katze ist unter der Kiste.');
+  } else if(position === 'in') {
+    cat.style.top = '95px';
+    cat.style.left = 'calc(50% - 24px)';
+    feedback.innerHTML = 'Richtig! Die Katze ist <b>IN</b> der Kiste. 📦';
+    playTTS('Die Katze ist in der Kiste.');
+  } else if(position === 'neben') {
+    cat.style.top = '95px';
+    cat.style.left = 'calc(50% + 70px)';
+    feedback.innerHTML = 'Richtig! Die Katze ist <b>NEBEN</b> der Kiste. 📦 🐱';
+    playTTS('Die Katze ist neben der Kiste.');
+  }
+}
+
+// Check Multiple Choice Quiz
+function checkQuiz() {
+  const answers = {
+    q1: 'b',
+    q2: 'c',
+    q3: 'a',
+    q4: 'a'
+  };
+
+  let score = 0;
+  let total = Object.keys(answers).length;
+
+  for(const [q, val] of Object.entries(answers)) {
+    const selected = document.querySelector(`input[name="${q}"]:checked`);
+    if(selected && selected.value === val) {
+      score++;
+    }
+  }
+
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+  if(score === total) {
+    resultEl.classList.add('bg-emerald-100', 'text-emerald-800');
+    resultEl.innerHTML = `🌟 Bravo! Du hast ${score}/${total} richtig beantwortet!`;
+    playTTS('Bravo! Du hast alle Fragen richtig beantwortet!');
+    if(typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+    }
+  } else {
+    resultEl.classList.add('bg-rose-100', 'text-rose-800');
+    resultEl.innerHTML = `💪 Du hast ${score}/${total} richtig. Lies dir die Lektion nochmal durch!`;
+    playTTS(`Du hast ${score} von ${total} richtig.`);
+  }
+}
+
+function resetQuiz() {
+  document.getElementById('quiz-form').reset();
+  const resultEl = document.getElementById('quiz-result');
+  resultEl.classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
