@@ -63,7 +63,7 @@ body{margin:0;min-height:100vh;font-family:'Plus Jakarta Sans',Arial,sans-serif;
 <div class="footer">✨ HaryFi Deutsch A2 · Schritt für Schritt lernen ✨</div>
 </div>
 <script>
-function switchTab(id,button){document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');button.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function switchTab(id,button){document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));const section=document.getElementById(id);section.classList.add('active');button.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});const audioText=section.innerText.replace(/\s+/g,' ').trim();if(audioText)playAudio(audioText);}
 function toggleSection(button){button.classList.toggle('open');const content=button.nextElementSibling;if(content&&content.classList.contains('section-content'))content.classList.toggle('open');}
 function toggleVocab(card){card.classList.toggle('open')}
 function playAudio(text){if(!('speechSynthesis'in window)){alert('Audio wird von diesem Browser leider nicht unterstützt.');return}speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang='de-DE';utterance.rate=0.86;utterance.pitch=1;speechSynthesis.speak(utterance);}
