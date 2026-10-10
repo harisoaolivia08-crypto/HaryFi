@@ -131,26 +131,44 @@ body {
   50% { height: 22px; }
 }
 </style>
+<style id="haryfi-topbar-style">
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px;position:sticky;top:0;z-index:50;
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.topbar-link{
+  display:inline-flex;align-items:center;padding:12px 20px;
+  border:1px solid rgba(255,255,255,.45);border-radius:16px;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);color:white;text-decoration:none;
+  font-weight:900;font-size:18px;transition:all .25s ease;white-space:nowrap;
+}
+.topbar-link:hover{background:rgba(255,255,255,.4)}
+.topbar-brand{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border:1px solid rgba(255,255,255,.45);
+  border-radius:16px;background:rgba(255,255,255,.25);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  color:white;font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap;
+}
+@media(max-width:520px){
+  .topbar{padding:12px;gap:8px}
+  .topbar-link{padding:10px 12px;font-size:14px}
+  .topbar-brand{padding:10px 12px;font-size:14px}
+}
+</style>
 </head>
 
 <body class="theme-emerald antialiased selection:bg-purple-500 selection:text-white pb-16">
 
 <div class="max-w-7xl mx-auto px-4 pt-6">
 
-  <!-- Top Navigation Bar (Zurück button & HaryFi logo) -->
-  <div class="flex items-center justify-between">
-    <button onclick="window.history.back()" class="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 text-purple-700 dark:text-purple-300 font-extrabold text-base border border-slate-200 dark:border-slate-700 shadow-md transition-all hover:scale-105 active:scale-95">
-      <i class="fa-solid fa-arrow-left text-lg"></i>
-      <span>A1 Lektionen</span>
-    </button>
-
-    <div class="flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 text-purple-700 dark:text-purple-300 font-extrabold text-base md:text-lg border border-slate-200 dark:border-slate-700 shadow-md">
-      <span class="text-xl">🇩🇪</span>
-      <span class="font-heading tracking-wide">HaryFi</span>
-    </div>
-  </div>
-
-  <!-- Main Title -->
+  <header class="topbar" aria-label="Hauptnavigation">
+  <a href="index.html#a1" class="topbar-link">← A1-Lektionen</a>
+  <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</header>
+    <!-- Main Title -->
   <div class="text-center flex flex-col items-center gap-4 my-6 md:my-8">
     <h2 class="text-3xl md:text-5xl font-extrabold font-heading tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
       Präpositionen in der deutschen Sprache!
