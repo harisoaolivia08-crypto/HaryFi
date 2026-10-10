@@ -89,6 +89,33 @@ main{max-width:1120px;margin:auto;padding:25px 18px 55px}
   to{opacity:1;transform:translateY(0)}
 }
 .page-title{font-size:clamp(25px,4vw,34px);font-weight:900;margin:18px 0}
+.section-title-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:18px 0;
+  text-align:center;
+}
+.section-title-row .page-title{margin:0;min-width:0}
+.section-start-audio{
+  flex:0 0 auto;
+  border:0;
+  border-radius:10px;
+  padding:9px 14px;
+  background:#4338ca;
+  color:white;
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.section-start-audio:hover{background:#3730a3}
+@media(max-width:520px){
+  .section-title-row{gap:8px}
+  .section-title-row .page-title{font-size:clamp(22px,6vw,29px)}
+  .section-start-audio{padding:8px 11px;font-size:12px}
+}
 .page-subtitle{font-size:15px;color:var(--muted);line-height:1.7}
 .page-actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
 .back-btn,.print-btn{
@@ -345,7 +372,10 @@ main{
 <!-- TEIL 1 -->
 <section class="lesson-page" id="page1">
   
-  <h2 class="page-title">📅 Die Wochentage</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">📅 Die Wochentage</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page1')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Les jours de la semaine — Lerne die sieben Tage und wie du über Tage sprichst.</p>
 
   <div class="folder open">
@@ -405,7 +435,10 @@ main{
 <!-- TEIL 2 -->
 <section class="lesson-page" id="page2">
   
-  <h2 class="page-title">🗓️ Die Monate</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">🗓️ Die Monate</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page2')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Les mois — Die zwölf Monate des Jahres und die Verwendung von „im“.</p>
 
   <div class="folder open">
@@ -454,7 +487,10 @@ main{
 <!-- TEIL 3 -->
 <section class="lesson-page" id="page3">
   
-  <h2 class="page-title">🌸 Die Jahreszeiten</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">🌸 Die Jahreszeiten</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page3')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Les saisons — Lerne die vier Jahreszeiten und beschreibe das Wetter.</p>
 
   <div class="folder open">
@@ -501,7 +537,10 @@ main{
 <!-- TEIL 4 -->
 <section class="lesson-page" id="page4">
   
-  <h2 class="page-title">📆 Das Datum sagen</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">📆 Das Datum sagen</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page4')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Dire la date — So fragst du nach dem Datum und sagst, wann du Geburtstag hast.</p>
 
   <div class="folder open">
@@ -564,7 +603,10 @@ main{
 <!-- TEIL 5 -->
 <section class="lesson-page" id="page5">
   
-  <h2 class="page-title">🧠 Zusammenfassung</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">🧠 Zusammenfassung</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page5')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Die wichtigsten Regeln zum Wiederholen.</p>
 
   <div class="folder open">
@@ -612,7 +654,10 @@ main{
 <!-- TEIL 6 -->
 <section class="lesson-page" id="page6">
   
-  <h2 class="page-title">✍️ Übungen & Reflexion</h2>
+  <div class="section-title-row">
+    <h2 class="page-title">✍️ Übungen & Reflexion</h2>
+    <button type="button" class="section-start-audio" onclick="speakSection('page6')" aria-label="Deutschen Inhalt dieser Sektion vorlesen">▶ Start</button>
+  </div>
   <p class="page-subtitle">Schreibe die Antworten auf Deutsch. Klicke anschließend auf „Antworten prüfen“.</p>
 
   <div class="folder open">
@@ -728,6 +773,24 @@ function speak(text){
   }
   window.speechSynthesis.cancel();
   const utterance=new SpeechSynthesisUtterance(text);
+  utterance.lang='de-DE';
+  utterance.rate=0.88;
+  utterance.pitch=1;
+  window.speechSynthesis.speak(utterance);
+}
+function speakSection(sectionId){
+  if(!('speechSynthesis' in window)){
+    alert('Die Audiofunktion wird von diesem Browser nicht unterstützt.');
+    return;
+  }
+  const section=document.getElementById(sectionId);
+  if(!section) return;
+  const copy=section.cloneNode(true);
+  copy.querySelectorAll('button, input, .page-subtitle, .vocab span, em, .feedback, #score, #reflection-result').forEach(el=>el.remove());
+  const textToRead=copy.innerText.replace(/\\s+/g,' ').trim();
+  if(!textToRead) return;
+  window.speechSynthesis.cancel();
+  const utterance=new SpeechSynthesisUtterance(textToRead);
   utterance.lang='de-DE';
   utterance.rate=0.88;
   utterance.pitch=1;
