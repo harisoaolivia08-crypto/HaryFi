@@ -55,6 +55,7 @@ button{font:inherit;cursor:pointer}
   font-weight:900;
   font-size:18px;
   transition:all .25s ease;
+  white-space:nowrap;
 }
 .topbar-link:hover{background:rgba(255,255,255,.4)}
 .topbar-brand{
@@ -249,7 +250,7 @@ tr:nth-child(even){background:#f8fafc}
 <body>
 <!-- HEADER : STYLE COMME DANS LEKTION 8 -->
 <header class="topbar" aria-label="Hauptnavigation">
-  <a href="index.html#a1" id="nav-a1-link" class="topbar-link" onclick="return handleTopNavigation()">A1-Lektionen</a>
+  <a href="index.html#a1" id="nav-a1-link" class="topbar-link" onclick="return handleTopNavigation()">← A1-Lektionen</a>
   <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
 </header>
 
@@ -617,7 +618,7 @@ function showDashboard(){
     p.classList.remove("active");
   });
   const navButton=document.getElementById("nav-a1-link");
-  navButton.textContent="A1-Lektionen";
+  navButton.textContent="← A1-Lektionen";
   navButton.href="index.html#a1";
   window.scrollTo({top:0,behavior:"smooth"});
 }
