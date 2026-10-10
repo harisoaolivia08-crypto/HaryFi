@@ -290,7 +290,8 @@ main{
 <body>
 <!-- HEADER : STYLE COMME DANS LEKTION 8 -->
 <header class="topbar" aria-label="Hauptnavigation">
-  <a href="index.html#a1" class="topbar-link">← A1-Lektionen</a>
+  <a href="index.html#a1" id="nav-a1-link" class="topbar-link">← A1-Lektionen</a>
+  <button type="button" id="nav-overview-btn" class="topbar-link" onclick="showDashboard()" style="display:none">← Zurück zur Übersicht</button>
   <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
 </header>
 <main>
@@ -699,6 +700,8 @@ main{
 <script>
 function openSection(n){
   document.body.classList.add('section-open');
+  document.getElementById('nav-a1-link').style.display='none';
+  document.getElementById('nav-overview-btn').style.display='inline-flex';
   document.getElementById('hero').style.display='none';
   document.getElementById('dashboard').style.display='none';
   document.querySelectorAll('.lesson-page').forEach(p=>p.classList.remove('active'));
@@ -707,6 +710,8 @@ function openSection(n){
 }
 function showDashboard(){
   document.body.classList.remove('section-open');
+  document.getElementById('nav-a1-link').style.display='inline-flex';
+  document.getElementById('nav-overview-btn').style.display='none';
   document.getElementById('hero').style.display='';
   document.getElementById('dashboard').style.display='grid';
   document.querySelectorAll('.lesson-page').forEach(p=>p.classList.remove('active'));
