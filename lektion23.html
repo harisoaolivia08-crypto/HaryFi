@@ -249,7 +249,7 @@ tr:nth-child(even){background:#f8fafc}
 <body>
 <!-- HEADER : STYLE COMME DANS LEKTION 8 -->
 <header class="topbar" aria-label="Hauptnavigation">
-  <a href="#" id="nav-a1-link" class="topbar-link" onclick="showDashboard(); return false;">Zurück</a>
+  <a href="index.html#a1" id="nav-a1-link" class="topbar-link" onclick="return handleTopNavigation()">A1-Lektionen</a>
   <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
 </header>
 
@@ -601,12 +601,24 @@ tr:nth-child(even){background:#f8fafc}
 </main>
 
 <script>
+function handleTopNavigation(){
+  const sectionOpen = Array.from(document.querySelectorAll(".lesson-page"))
+    .some(page => page.classList.contains("active"));
+  if(sectionOpen){
+    showDashboard();
+    return false;
+  }
+  return true;
+}
 function showDashboard(){
   document.getElementById("hero").style.display="block";
   document.getElementById("dashboard").style.display="grid";
   document.querySelectorAll(".lesson-page").forEach(p=>{
     p.classList.remove("active");
   });
+  const navButton=document.getElementById("nav-a1-link");
+  navButton.textContent="A1-Lektionen";
+  navButton.href="index.html#a1";
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function openSection(n){
@@ -617,6 +629,9 @@ function openSection(n){
   });
   const page=document.getElementById("page"+n);
   page.classList.add("active");
+  const navButton=document.getElementById("nav-a1-link");
+  navButton.textContent="Zurück";
+  navButton.href="#";
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function toggleFolder(button){
