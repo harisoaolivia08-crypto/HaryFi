@@ -88,42 +88,47 @@ main{max-width:1120px;margin:auto;padding:25px 18px 55px}
   from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:translateY(0)}
 }
-.page-title{font-size:clamp(25px,4vw,34px);font-weight:900;margin:18px 0}
+.page-title{font-size:clamp(25px,4vw,34px);font-weight:900;margin:0}
+
+/* ===== MODIFIÉ : Titre et Bouton Start côte à côte (serrés à gauche) ===== */
 .section-title-row{
   position:relative;
   display:flex;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
   flex-wrap:wrap;
-  gap:12px;
-  margin:-8px 0 0;
-  text-align:center;
+  gap:20px;
+  margin:0 0 4px 0;
 }
 .section-title-row .page-title{
   margin:0;
-  min-width:0;
-  width:100%;
+  width:auto;
   text-align:left;
 }
 .section-start-audio{
   flex:0 0 auto;
   border:0;
-  border-radius:12px;
-  padding:12px 22px;
+  border-radius:14px;
+  padding:14px 28px;
   background:#f97316;
   color:white;
-  font-size:16px;
+  font-size:18px;
   font-weight:900;
   white-space:nowrap;
-  box-shadow:0 4px 10px rgba(249,115,22,.25);
+  box-shadow:0 4px 12px rgba(249,115,22,.3);
+  transition:all .2s ease;
 }
-.section-start-audio:hover{background:#ea580c}
+.section-start-audio:hover{
+  background:#ea580c;
+  transform:translateY(-2px);
+}
 @media(max-width:520px){
-  .section-title-row{gap:10px}
-  .section-title-row .page-title{font-size:clamp(22px,6vw,29px)}
-  .section-start-audio{padding:12px 24px;font-size:16px}
+  .section-title-row{gap:12px}
+  .section-title-row .page-title{font-size:clamp(20px,5vw,26px)}
+  .section-start-audio{padding:12px 20px;font-size:16px}
 }
-.page-subtitle{font-size:15px;color:var(--muted);line-height:1.6;margin:-2px 0 8px}
+
+.page-subtitle{font-size:15px;color:var(--muted);line-height:1.6;margin:4px 0 12px}
 .page-actions{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
 .back-btn,.print-btn{
   border:0;border-radius:12px;padding:11px 15px;font-weight:900;
@@ -794,7 +799,7 @@ function speakSection(sectionId){
   if(!section) return;
   const copy=section.cloneNode(true);
   copy.querySelectorAll('button, input, .page-subtitle, .vocab span, em, .feedback, #score, #reflection-result').forEach(el=>el.remove());
-  const textToRead=copy.innerText.replace(/\\s+/g,' ').trim();
+  const textToRead=copy.innerText.replace(/\s+/g,' ').trim();
   if(!textToRead) return;
   window.speechSynthesis.cancel();
   const utterance=new SpeechSynthesisUtterance(textToRead);
