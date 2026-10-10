@@ -766,6 +766,7 @@ function openSection(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function showDashboard(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
   document.body.classList.remove('section-open');
   document.getElementById('nav-a1-link').style.display='inline-flex';
   document.getElementById('nav-overview-btn').style.display='none';
