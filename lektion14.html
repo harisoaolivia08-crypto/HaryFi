@@ -221,10 +221,57 @@ main{
   body{animation:none}
   .lesson-card,.arrow{transition:none}
 }
+
+/* ===== HARYFI : BARRE DE NAVIGATION ===== */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  position:relative;
+  z-index:2;
+}
+.topbar-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:10px 14px;
+  border:1px solid #ffffff70;
+  border-radius:12px;
+  background:#ffffff20;
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  font-size:14px;
+  transition:background .2s, transform .2s;
+}
+.topbar-link:hover{
+  background:#ffffff35;
+  transform:translateY(-1px);
+}
+.topbar-brand{
+  color:white;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.3px;
+  text-decoration:none;
+  text-shadow:0 2px 8px #0003;
+}
+@media(max-width:420px){
+  .topbar{padding:12px;gap:8px}
+  .topbar-link{padding:9px 10px;font-size:12px}
+  .topbar-brand{font-size:17px}
+}
+
 </style>
 </head>
 
 <body>
+<nav class="topbar" aria-label="Hauptnavigation">
+  <a class="topbar-link" href="index.html#a1">← A1-Lektionen</a>
+  <a class="topbar-brand" href="index.html" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</nav>
 <main>
 <section class="hero" id="hero">
   <h1>📅 Kalender & Datum</h1>
