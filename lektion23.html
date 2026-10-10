@@ -31,15 +31,14 @@ button{font:inherit;cursor:pointer}
 header{
   padding:18px 5%;display:flex;align-items:center;
   justify-content:space-between;gap:12px;flex-wrap:wrap;
-  background:#0f172a66;border-bottom:1px solid #ffffff30;
-  backdrop-filter:blur(12px);
+  background:transparent;border:0;backdrop-filter:none;
+}
+.header-link{
+  color:white;text-decoration:none;font-weight:900;font-size:16px;
+  padding:6px 0;
 }
 .logo{font-size:22px;font-weight:900}
 .logo span{color:#67e8f9}
-.header-btn{
-  color:white;background:#ffffff18;border:1px solid #ffffff40;
-  border-radius:12px;padding:10px 15px;font-weight:bold;
-}
 main{max-width:1120px;margin:auto;padding:25px 18px 55px}
 .hero{text-align:center;padding:30px 8px 40px}
 .eyebrow{
@@ -205,8 +204,8 @@ tr:nth-child(even){background:#f8fafc}
 
 <body>
 <header>
-  <div class="logo">Hary<span>Fi</span> · Deutsch A1</div>
-  <button class="header-btn" onclick="showDashboard()">⌂ Übersicht</button>
+  <a class="header-link" href="index.html#a1">← A1-Lektionen</a>
+  <div class="logo">HaryFi 🇩🇪</div>
 </header>
 
 <main>
