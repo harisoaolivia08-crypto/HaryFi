@@ -632,6 +632,9 @@ function handleTopNavigation(){
   return true;
 }
 function showDashboard(){
+  if("speechSynthesis" in window){
+    window.speechSynthesis.cancel();
+  }
   document.getElementById("hero").style.display="block";
   document.getElementById("dashboard").style.display="grid";
   document.querySelectorAll(".lesson-page").forEach(p=>{
