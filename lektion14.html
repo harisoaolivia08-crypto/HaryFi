@@ -187,6 +187,14 @@ tr:nth-child(even){background:#f8fafc}
   opacity:.92;
 }
 
+body.section-open #weather-canvas{
+  z-index:0;
+}
+
+body.section-open .lesson-page.active{
+  background:rgba(255,255,255,.88);
+}
+
 main{
   position:relative;
   z-index:1;
@@ -690,6 +698,7 @@ main{
 
 <script>
 function openSection(n){
+  document.body.classList.add('section-open');
   document.getElementById('hero').style.display='none';
   document.getElementById('dashboard').style.display='none';
   document.querySelectorAll('.lesson-page').forEach(p=>p.classList.remove('active'));
@@ -697,6 +706,7 @@ function openSection(n){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function showDashboard(){
+  document.body.classList.remove('section-open');
   document.getElementById('hero').style.display='';
   document.getElementById('dashboard').style.display='grid';
   document.querySelectorAll('.lesson-page').forEach(p=>p.classList.remove('active'));
