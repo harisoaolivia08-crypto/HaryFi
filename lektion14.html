@@ -222,56 +222,69 @@ main{
   .lesson-card,.arrow{transition:none}
 }
 
-/* ===== HARYFI : BARRE DE NAVIGATION ===== */
+/* ===== HARYFI : NAVIGATION STYLE LEKTION 8 ===== */
 .topbar{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:12px;
-  padding:14px 18px;
-  position:relative;
-  z-index:2;
+  justify-content:space-between;
+  gap:16px;
+  padding:20px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
 .topbar-link{
   display:inline-flex;
   align-items:center;
-  gap:7px;
-  padding:10px 14px;
-  border:1px solid #ffffff70;
-  border-radius:12px;
-  background:#ffffff20;
+  padding:12px 20px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:16px;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
   color:white;
   text-decoration:none;
   font-weight:900;
-  font-size:14px;
-  transition:background .2s, transform .2s;
+  font-size:18px;
+  transition:all .25s ease;
 }
 .topbar-link:hover{
-  background:#ffffff35;
-  transform:translateY(-1px);
+  background:rgba(255,255,255,.4);
 }
 .topbar-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 20px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:999px;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
   color:white;
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:.3px;
+  font-size:14px;
+  font-weight:700;
   text-decoration:none;
-  text-shadow:0 2px 8px #0003;
+  white-space:nowrap;
 }
-@media(max-width:420px){
+@media(max-width:520px){
   .topbar{padding:12px;gap:8px}
-  .topbar-link{padding:9px 10px;font-size:12px}
-  .topbar-brand{font-size:17px}
+  .topbar-link{padding:10px 12px;font-size:14px}
+  .topbar-brand{padding:8px 12px;font-size:12px}
 }
 
 </style>
 </head>
 
 <body>
-<nav class="topbar" aria-label="Hauptnavigation">
-  <a class="topbar-link" href="index.html#a1">← A1-Lektionen</a>
-  <a class="topbar-brand" href="index.html" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
-</nav>
+<!-- HEADER : STYLE COMME DANS LEKTION 8 -->
+<header class="topbar" aria-label="Hauptnavigation">
+  <a href="index.html#a1" class="topbar-link">← A1-Lektionen</a>
+  <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</header>
 <main>
 <section class="hero" id="hero">
   <h1>📅 Kalender & Datum</h1>
