@@ -776,7 +776,23 @@ function showDashboard(){
 }
 function startLesson(){openSection(1)}
 function toggleFolder(button){
-  button.parentElement.classList.toggle('open');
+  const folder=button.parentElement;
+  const willOpen=!folder.classList.contains('open');
+  folder.classList.toggle('open');
+
+  if(willOpen){
+    const content=folder.querySelector('.folder-content');
+    if(!content) return;
+
+    const copy=content.cloneNode(true);
+    copy.querySelectorAll('button,input,textarea,select,.feedback,#score,#reflection-result').forEach(el=>el.remove());
+    copy.querySelectorAll('span,em').forEach(el=>el.remove());
+
+    const textToRead=copy.innerText.replace(/\s+/g,' ').trim();
+    if(textToRead) speak(textToRead);
+  }else if('speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+  }
 }
 function speak(text){
   if(!('speechSynthesis' in window)){
