@@ -159,15 +159,20 @@ main{max-width:1120px;margin:auto;padding:25px 18px 55px}
   border:none;
 }
 .folder{
-  border:1px solid #e2e8f0;border-radius:15px;overflow:hidden;margin:12px 0;
+  margin-top:12px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid #e2e8f0;
+  background:rgba(248,250,252,.9);
+  box-shadow:0 8px 20px rgba(15,23,42,.06);
 }
 .folder-toggle{
   width:100%;padding:16px;border:0;background:#f8fafc;
   display:flex;gap:10px;align-items:center;text-align:left;
-  font-weight:900;color:#334155;
+  font-weight:900;color:#334155;transition:background .25s ease;
 }
 .folder-toggle:hover{background:#eef2ff}
-.arrow{margin-left:auto;color:#4f46e5;transition:transform .2s}
+.arrow{margin-left:auto;color:#4f46e5;transition:transform .3s ease}
 .folder.open .arrow{transform:rotate(180deg)}
 .folder-content{display:none;padding:16px;background:white}
 .folder.open .folder-content{display:block}
@@ -358,7 +363,7 @@ tr:nth-child(even){background:#f8fafc}
   <h2 class="page-title">💬 Fragen und Antworten</h2>
   <p class="page-subtitle">Pose des questions et parle de tes loisirs.</p>
 
-  <div class="folder open">
+  <div class="folder">
     <button class="folder-toggle" onclick="toggleFolder(this)">📘 2.1 Nach Hobbys fragen <span class="arrow">⌄</span></button>
     <div class="folder-content">
       <div class="example"><strong>Was machst du gern in deiner Freizeit?</strong><br><span class="fr">Qu'est-ce que tu aimes faire pendant ton temps libre ?</span></div>
@@ -400,7 +405,7 @@ tr:nth-child(even){background:#f8fafc}
   <h2 class="page-title">⚽ Sport und Bewegung</h2>
   <p class="page-subtitle">Le sport et les activités physiques.</p>
 
-  <div class="folder open">
+  <div class="folder">
     <button class="folder-toggle" onclick="toggleFolder(this)">📘 3.1 Sportarten und Verben <span class="arrow">⌄</span></button>
     <div class="folder-content">
       <table>
@@ -447,7 +452,7 @@ tr:nth-child(even){background:#f8fafc}
   <h2 class="page-title">💚 gern, nicht gern und mögen</h2>
   <p class="page-subtitle">Exprimer ce que tu aimes et ce que tu n'aimes pas.</p>
 
-  <div class="folder open">
+  <div class="folder">
     <button class="folder-toggle" onclick="toggleFolder(this)">📘 4.1 Das Wort „gern“ <span class="arrow">⌄</span></button>
     <div class="folder-content">
       <div class="rule"><h3>Regel</h3>Mit <strong>gern</strong> sagst du, dass du eine Aktivität magst. „Gern“ steht oft nach dem Verb.</div>
@@ -489,7 +494,7 @@ tr:nth-child(even){background:#f8fafc}
   <h2 class="page-title">🗓️ Freizeit im Alltag</h2>
   <p class="page-subtitle">Parler de ses loisirs à la maison, avec ses amis et le week-end.</p>
 
-  <div class="folder open">
+  <div class="folder">
     <button class="folder-toggle" onclick="toggleFolder(this)">🏠 5.1 Zu Hause <span class="arrow">⌄</span></button>
     <div class="folder-content">
       <div class="example"><strong>Nach der Arbeit höre ich Musik.</strong><br><span class="fr">Après le travail, j'écoute de la musique.</span></div>
@@ -636,7 +641,18 @@ function openSection(n){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 function toggleFolder(button){
-  button.parentElement.classList.toggle("open");
+  const folder=button.parentElement;
+  const willOpen=!folder.classList.contains("open");
+  folder.classList.toggle("open",willOpen);
+  if(willOpen){
+    const content=folder.querySelector(".folder-content");
+    if(content){
+      const clone=content.cloneNode(true);
+      clone.querySelectorAll(".fr,button,a,audio,script,style").forEach(el=>el.remove());
+      const germanText=clone.innerText.replace(/\s+/g," ").trim();
+      if(germanText) speak(germanText);
+    }
+  }
 }
 function speak(text){
   if(!("speechSynthesis" in window)){
