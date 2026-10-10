@@ -658,6 +658,12 @@ function openSection(n){
 function toggleFolder(button){
   const folder=button.parentElement;
   const willOpen=!folder.classList.contains("open");
+
+  // Arrêter l'audio dès qu'on quitte une section.
+  if(!willOpen && "speechSynthesis" in window){
+    window.speechSynthesis.cancel();
+  }
+
   folder.classList.toggle("open",willOpen);
   if(willOpen){
     const content=folder.querySelector(".folder-content");
