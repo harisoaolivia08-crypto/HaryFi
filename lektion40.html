@@ -22,10 +22,40 @@ body{margin:0;min-height:100vh;font-family:'Plus Jakarta Sans',Arial,sans-serif;
 .vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.vocab-card{background:#fffffff0;padding:16px;border-radius:16px;cursor:pointer;box-shadow:0 4px 12px #0000000d}.vocab-type{color:#7c3aed;font-size:.72rem;font-weight:900;text-transform:uppercase;margin-bottom:4px}.vocab-word{font-size:1rem;font-weight:900}.vocab-meaning{display:none;color:#475569;font-size:.85rem;margin-top:8px}.vocab-card.open .vocab-meaning{display:block}.compare{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.compare-box{text-align:center;padding:15px 8px;border-radius:18px;background:#ffffffbd}.compare-box .emoji{font-size:2.6rem}.compare-box h3{margin:8px 0}.check{background:#ffffffb8;padding:18px;border-radius:17px;margin:18px 0}.option{width:100%;text-align:left;border:0;background:white;padding:13px;border-radius:10px;margin:6px 0;cursor:pointer;font-size:16px;font-family:inherit;font-weight:700}.option:hover{background:#eceaff}.result{margin-top:10px;font-weight:900}.side-panel{height:max-content;position:sticky;top:15px}.merkhilfe h3{margin-top:0}.merkhilfe p{font-size:.87rem;font-weight:700;line-height:1.55}.merk-word{display:inline-block;padding:7px 10px;border-radius:10px;background:#ffffff99;font-weight:900;margin:4px}.footer{text-align:center;margin-top:24px;font-weight:800}
 @media(max-width:900px){.lesson-grid{grid-template-columns:1fr}.side-panel{position:static}}@media(max-width:600px){.container{padding:14px 10px 40px}.header{padding:19px 14px}.main-content,.side-panel{padding:17px}.nav-btn{width:100%}.grammar-table{display:block;overflow-x:auto;white-space:nowrap}.lesson-photo{height:200px}.compare{grid-template-columns:1fr}}@media print{body{background:white;animation:none}.top-navigation,.main-nav,.start-lesson-btn,.play-btn{display:none!important}.lesson-grid{display:block}.tab-content{display:block!important}.section-content{display:block!important}.side-panel{position:static}}
 </style>
+<style id="haryfi-topbar-style">
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px;position:sticky;top:0;z-index:50;
+  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
+}
+.topbar-link{
+  display:inline-flex;align-items:center;padding:12px 20px;
+  border:1px solid rgba(255,255,255,.45);border-radius:16px;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);color:white;text-decoration:none;
+  font-weight:900;font-size:18px;transition:all .25s ease;white-space:nowrap;
+}
+.topbar-link:hover{background:rgba(255,255,255,.4)}
+.topbar-brand{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;border:1px solid rgba(255,255,255,.45);
+  border-radius:16px;background:rgba(255,255,255,.25);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  color:white;font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap;
+}
+@media(max-width:520px){
+  .topbar{padding:12px;gap:8px}
+  .topbar-link{padding:10px 12px;font-size:14px}
+  .topbar-brand{padding:10px 12px;font-size:14px}
+}
+</style>
 </head>
 <body>
 <div class="container">
-<div class="top-navigation"><a href="index.html#a1" class="back-button">← A1-Lektionen</a><div class="course-label">HaryFi 🇩🇪</div></div>
+<header class="topbar" aria-label="Hauptnavigation">
+  <a href="index.html#a1" class="topbar-link">← A1-Lektionen</a>
+  <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</header></div>
 <header class="header"><h1>📈 Komparativ & Superlativ</h1><p>Adjektive steigern · Vergleichen · Deutsch & Français · Audio · Übungen</p><button class="start-lesson-btn" onclick="playLessonStartAudio()">🚀 Lektion starten</button></header>
 <nav class="main-nav"><button class="nav-btn btn1 active" onclick="switchTab('grundlagen',this)">1. Grundlagen</button><button class="nav-btn btn2" onclick="switchTab('formen',this)">2. Formen</button><button class="nav-btn btn3" onclick="switchTab('beispiele',this)">3. Beispiele & Dialog</button><button class="nav-btn btn4" onclick="switchTab('merkworter',this)">4. Merkwörter</button><button class="nav-btn btn5" onclick="switchTab('uebungen',this)">5. Übungen & Quiz</button></nav>
 <div class="lesson-grid">
