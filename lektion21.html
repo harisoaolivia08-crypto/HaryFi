@@ -57,30 +57,39 @@ button{font-family:inherit;cursor:pointer}
 }
 .back-btn:hover{background:#1d4ed8}
 
-/* En-tête de section (Titre + Bouton Start à droite) */
+/* En-tête de section avec bouton Start centré au milieu */
 .section-header{
   display:flex;
   flex-direction:column;
-  align-items:stretch;
-  gap:12px;
-  margin-bottom:6px;
+  align-items:center;
+  text-align:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+.title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 .section-header h2{
-  min-width:0;
+  font-size:clamp(1.5rem,4vw,2.1rem);
+  color:#1d4ed8;
+  margin:0;
 }
-.section-header .section-start-btn{
-  align-self:center;
-  margin:0 auto;
+.subtitle{
+  color:#475569;
+  font-weight:700;
+  margin:0;
+  display:block;
 }
 .section-start-btn{
-  display:block;
-  margin:12px auto 0;
   background:linear-gradient(135deg,#ff7a00,#ff4d00);
   color:white;
   border:0;
-  padding:15px 27px;
+  padding:12px 28px;
   border-radius:21px;
-  font-size:1.35rem;
+  font-size:1.1rem;
   font-weight:900;
   box-shadow:0 4px 12px rgba(255,122,0,0.3);
   white-space:nowrap;
@@ -99,8 +108,6 @@ button{font-family:inherit;cursor:pointer}
 }
 .page.active{display:block}
 @keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-h2{font-size:clamp(1.5rem,4vw,2.1rem);color:#1d4ed8;margin:0}
-.subtitle{color:#475569;font-weight:700;margin-bottom:16px;display:block}
 h3{margin-top:20px}
 
 /* Grille de cartes à l'intérieur d'une section */
@@ -171,7 +178,7 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
   <div id="homeView" class="view-home">
     <header class="hero">
       <div class="emoji">🛒</div>
-      <h1>EINKAUFEN & ESSEN</h1>
+      <h1>Einkaufen & Essen</h1>
       <p>Block 06 · Deutsch A1 · Mein Alltag in Deutschland</p>
       <button class="start-btn" onclick="speak('Willkommen zur Lektion Einkaufen und Essen. Wir lernen wichtige Wörter und Sätze.')">🔊 Lektion anhören</button>
     </header>
@@ -196,10 +203,12 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="start" class="page">
       <div class="section-header">
-        <h2>Willkommen! 👋</h2>
+        <div class="title-group">
+          <h2>Willkommen! 👋</h2>
+          <span class="subtitle">Lerne Deutsch für den Einkauf im Supermarkt.</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Willkommen! Lerne Deutsch für den Einkauf im Supermarkt.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Lerne Deutsch für den Einkauf im Supermarkt.</span>
       <div class="info">
         <strong>🎯 Das lernst du in dieser Lektion:</strong><br>
         🛒 Im Supermarkt einkaufen<br>
@@ -219,19 +228,23 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="einkaufen" class="page">
       <div class="section-header">
-        <h2>🛒 Einkaufen</h2>
+        <div class="title-group">
+          <h2>🛒 Einkaufen</h2>
+          <span class="subtitle">Wichtige Wörter im Supermarkt</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Einkaufen. Wichtige Wörter im Supermarkt.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Wichtige Wörter im Supermarkt</span>
       <div class="grid" id="einkaufenGrid"></div>
     </section>
 
     <section id="obst" class="page">
       <div class="section-header">
-        <h2>🍎 Obst</h2>
+        <div class="title-group">
+          <h2>🍎 Obst</h2>
+          <span class="subtitle">Viele Obstsorten mit Artikel</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Obst. Viele Obstsorten mit Artikel.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Viele Obstsorten mit Artikel</span>
       <div class="grid" id="obstGrid"></div>
       <div class="info"><strong>Beispiele:</strong><br>
       Ich kaufe drei Äpfel.<br>
@@ -243,10 +256,12 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="gemuese" class="page">
       <div class="section-header">
-        <h2>🥕 Gemüse</h2>
+        <div class="title-group">
+          <h2>🥕 Gemüse</h2>
+          <span class="subtitle">Viele Gemüsesorten im Supermarkt</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Gemüse. Viele Gemüsesorten im Supermarkt.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Viele Gemüsesorten im Supermarkt</span>
       <div class="grid" id="gemueseGrid"></div>
       <div class="info"><strong>Beispiele:</strong><br>
       Ich brauche zwei Karotten.<br>
@@ -258,10 +273,12 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="lebensmittel" class="page">
       <div class="section-header">
-        <h2>🥛 Lebensmittel</h2>
+        <div class="title-group">
+          <h2>🥛 Lebensmittel</h2>
+          <span class="subtitle">Grundnahrungsmittel, Milchprodukte, Fleisch, Fisch und mehr</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Lebensmittel. Grundnahrungsmittel, Milchprodukte, Fleisch, Fisch und mehr.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Grundnahrungsmittel, Milchprodukte, Fleisch, Fisch und mehr</span>
       <div class="grid" id="lebensmittelGrid"></div>
       <div class="info"><strong>Beispiele:</strong><br>
       Ich kaufe eine Packung Reis.<br>
@@ -273,10 +290,12 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="getraenke" class="page">
       <div class="section-header">
-        <h2>🥤 Getränke</h2>
+        <div class="title-group">
+          <h2>🥤 Getränke</h2>
+          <span class="subtitle">Was trinkst du gern?</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Getränke. Was trinkst du gern?')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Was trinkst du gern?</span>
       <div class="grid" id="getraenkeGrid"></div>
       <div class="info"><strong>Beispiele:</strong><br>
       Ich trinke Wasser.<br>
@@ -288,10 +307,12 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="mengen" class="page">
       <div class="section-header">
-        <h2>⚖️ Mengen und Verpackungen</h2>
+        <div class="title-group">
+          <h2>⚖️ Mengen und Verpackungen</h2>
+          <span class="subtitle">Wie viel möchtest du?</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Mengen und Verpackungen. Wie viel möchtest du?')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Wie viel möchtest du?</span>
       <div class="grid" id="mengenGrid"></div>
       <div class="info"><strong>Merke:</strong><br>
       ein Kilo Äpfel · ein Liter Milch · eine Flasche Wasser · eine Packung Nudeln · eine Dose Bohnen · eine Scheibe Brot.
@@ -300,37 +321,45 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 
     <section id="saetze" class="page">
       <div class="section-header">
-        <h2>💬 Wichtige Sätze</h2>
+        <div class="title-group">
+          <h2>💬 Wichtige Sätze</h2>
+          <span class="subtitle">Höflich fragen und antworten</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Wichtige Sätze. Höflich fragen und antworten.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Höflich fragen und antworten</span>
       <div class="phrase-list" id="saetzeListe"></div>
     </section>
 
     <section id="dialog" class="page">
       <div class="section-header">
-        <h2>🗣️ Dialog im Supermarkt</h2>
+        <div class="title-group">
+          <h2>🗣️ Dialog im Supermarkt</h2>
+          <span class="subtitle">Lies den Dialog und höre die Sätze an.</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Dialog im Supermarkt. Lies den Dialog und höre die Sätze an.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Lies den Dialog und höre die Sätze an.</span>
       <div class="phrase-list" id="dialogListe"></div>
     </section>
 
     <section id="verben" class="page">
       <div class="section-header">
-        <h2>📚 Wichtige Verben</h2>
+        <div class="title-group">
+          <h2>📚 Wichtige Verben</h2>
+          <span class="subtitle">Verben für den Einkauf und das Essen</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Wichtige Verben für den Einkauf und das Essen.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Verben für den Einkauf und das Essen</span>
       <div class="grid" id="verbenGrid"></div>
     </section>
 
     <section id="uebungen" class="page">
       <div class="section-header">
-        <h2>✍️ Übungen</h2>
+        <div class="title-group">
+          <h2>✍️ Übungen</h2>
+          <span class="subtitle">Wähle die richtige Antwort.</span>
+        </div>
         <button class="section-start-btn" onclick="speak('Übungen. Wähle die richtige Antwort.')">▶️ Start 🔊</button>
       </div>
-      <span class="subtitle">Wähle die richtige Antwort.</span>
 
       <div class="quiz-question">
       <strong>1. Welcher Artikel passt? ___ Wasser</strong>
@@ -791,7 +820,7 @@ const saetze = [
 ['Das ist alles, danke.','Du bist mit dem Einkauf fertig.'],
 ['Kann ich kontaktlos bezahlen?','Frage nach einer Zahlungsart.'],
 ['Wo ist die Kasse?','Frage nach dem Ort zum Bezahlen.'],
-['Ich bezahle bar.','Du bezahlst mit Bargeld.'],
+['Ich bezahle bar.','Du bezahlast mit Bargeld.'],
 ['Ich hätte gern 200 Gramm Käse.','Du bestellst eine bestimmte Menge.'],
 ['Sind diese Äpfel süß?','Frage nach dem Geschmack.'],
 ['Ich möchte eine reife Mango.','Du wünschst eine reife Frucht.'],
