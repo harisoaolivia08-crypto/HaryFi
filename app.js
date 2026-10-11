@@ -18,14 +18,14 @@ function showLevels() { switchPage("levelsPage"); }
 function openA1() { switchPage("a1Page"); }
 function openAlphabet() { window.location.href = "lektion1.html"; }
 function openLektion2() { window.location.href = "lektion2.html"; }
-function openLektion21() { window.location.href = "lektion21.html"; }
-function openLektion51() { window.location.href = "lektion51.html"; }
+function openLektion16() { window.location.href = "lektion16.html"; }
+function openLektion41() { window.location.href = "lektion41.html"; }
 
 const a1Lessons = [
     "Alphabet & Aussprache", "Begrüßung & Verabschiedung", "Personalpronomen & Reflexivpronomen", "Verben", "Uhrzeit", "W-Fragen & Antworten", "Nominativ, Akkusativ & Dativ", "Trennbare Verben", "Reflexive Verben", "Zahlen", "Kalender & Datum", "Monate & Jahreszeiten", "Familie", "Berufe", "Wohnen & Wohnung", "Einkaufen & Essen", "Kleidung & Farben", "Freizeit & Hobbys", "Tagesablauf", "Stadt & Orte", "Wegbeschreibung", "Verkehr & Reisen", "Wetter", "Körper & Gesundheit", "Possessivartikel", "Präpositionen", "Trennbare Verben", "Imperativ", "Perfekt – Grundlagen", "Komparativ & Superlativ", "Konnektoren & Bindewörter", "Alltagssituationen", "Telefonieren & Nachrichten", "Termine & Verabredungen", "Schreiben & E-Mail", "Hörverstehen", "Leseverstehen", "Sprechen & Dialoge", "A1-Wortschatz", "A1-Wiederholung & Prüfungsvorbereitung", "Plural, Zahlen & Mengen"
 ];
 
-const a1LessonFileNumbers = Array.from({ length: 51 }, (_, index) => index + 1).filter(number => ![9, 11, 13, 19, 20, 25, 31, 32, 34, 35].includes(number));
+const a1LessonFileNumbers = Array.from({ length: a1Lessons.length }, (_, index) => index + 1);
 
 function createLessonList() {
     const container = document.getElementById("lessonList");
@@ -41,8 +41,8 @@ function createLessonList() {
         const fileNumber = a1LessonFileNumbers[index];
         if (fileNumber === 1) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
         else if (fileNumber === 2) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
-        else if (fileNumber === 21) { card.dataset.href = "lektion21.html"; card.addEventListener("click", openLektion21); }
-        else if (fileNumber === 51) { card.dataset.href = "lektion51.html"; card.addEventListener("click", openLektion51); }
+        else if (fileNumber === 16) { card.dataset.href = "lektion16.html"; card.addEventListener("click", openLektion16); }
+        else if (fileNumber === 41) { card.dataset.href = "lektion41.html"; card.addEventListener("click", openLektion41); }
         else card.dataset.href = `lektion${fileNumber}.html`;
         container.appendChild(card);
     });
