@@ -25,13 +25,14 @@ const a1Lessons = [
     "Alphabet & Aussprache", "Begrüßung & Verabschiedung", "Personalpronomen & Reflexivpronomen", "Verben", "Uhrzeit", "W-Fragen & Antworten", "Nominativ, Akkusativ & Dativ", "Trennbare Verben", "Reflexive Verben", "Zahlen", "Kalender & Datum", "Monate & Jahreszeiten", "Familie", "Berufe", "Wohnen & Wohnung", "Einkaufen & Essen", "Kleidung & Farben", "Freizeit & Hobbys", "Tagesablauf", "Stadt & Orte", "Wegbeschreibung", "Verkehr & Reisen", "Wetter", "Körper & Gesundheit", "Possessivartikel", "Präpositionen", "Trennbare Verben", "Imperativ", "Perfekt – Grundlagen", "Komparativ & Superlativ", "Konnektoren & Bindewörter", "Alltagssituationen", "Telefonieren & Nachrichten", "Termine & Verabredungen", "Schreiben & E-Mail", "Hörverstehen", "Leseverstehen", "Sprechen & Dialoge", "A1-Wortschatz", "A1-Wiederholung & Prüfungsvorbereitung", "Plural, Zahlen & Mengen"
 ];
 
-const a1LessonFileNumbers = Array.from({ length: a1Lessons.length }, (_, index) => index + 1);
+const a1LessonFileNumbers = Array.from({ length: 41 }, (_, index) => index + 1).filter(number => ![12, 15, 23, 34].includes(number));
+const visibleA1Lessons = a1Lessons.filter((_, index) => ![12, 15, 23, 34].includes(index + 1));
 
 function createLessonList() {
     const container = document.getElementById("lessonList");
     if (!container) return;
     container.innerHTML = "";
-    a1Lessons.forEach((lesson, index) => {
+    visibleA1Lessons.forEach((lesson, index) => {
         const card = document.createElement("div");
         card.className = "lesson-card";
         card.style.animationDelay = `${index * 0.025}s`;
