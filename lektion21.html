@@ -153,7 +153,7 @@ input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:
 <!-- HEADER -->
 <header class="topbar" aria-label="Hauptnavigation">
   <a href="index.html#a1" id="nav-a1-link" class="topbar-link">← A1-Lektionen</a>
-  <button type="button" id="nav-overview-btn" class="topbar-link" onclick="showOverview()" style="display:none">← Zurück zur Übersicht</button>
+  <button type="button" id="nav-overview-btn" class="topbar-link" onclick="showHome()" style="display:none">← Zurück</button>
   <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
 </header>
 
@@ -427,6 +427,8 @@ function openPage(pageId) {
     const selectedPage = document.getElementById(pageId);
     if (!selectedPage) return;
     selectedPage.classList.add('active');
+    document.getElementById('nav-a1-link').style.display = 'none';
+    document.getElementById('nav-overview-btn').style.display = 'inline-flex';
     window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -435,6 +437,8 @@ function showHome() {
         page.classList.remove('active');
     });
     document.getElementById('homeView').style.display = 'block';
+    document.getElementById('nav-a1-link').style.display = 'inline-flex';
+    document.getElementById('nav-overview-btn').style.display = 'none';
     window.scrollTo({top:0,behavior:'smooth'});
 }
 
