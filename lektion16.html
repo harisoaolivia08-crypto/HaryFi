@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HaryFi – Block 06 | Einkaufen & Essen</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+:root{
+  --blue:#2563eb;--green:#059669;--purple:#7c3aed;
+  --orange:#ff7a00;--dark:#17120d;
+}
+body{
+  margin:0;min-height:100vh;font-family:'Plus Jakarta Sans',Arial,sans-serif;
+  color:var(--dark);
+  background:linear-gradient(-45deg,#ff4500,#ffbd00,#00c9ff,#7c3aed,#ff3cac);
+  background-size:500% 500%;animation:bgmove 18s ease infinite;
+}
+@keyframes bgmove{0%{background-position:0% 50%}50%{background-position:100% 100%}100%{background-position:0% 50%}}
+.container{max-width:1180px;margin:auto;padding:15px 16px 40px}
+
+/* En-tête (Hero) */
+.hero{
+  text-align:center;padding:16px 20px;margin-bottom:16px;border-radius:20px;
+  background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.6);
+  backdrop-filter:blur(15px);box-shadow:0 10px 25px #0002;
+}
+.hero .emoji{font-size:2.8rem;line-height:1;margin-bottom:4px}
+.hero h1{font-size:clamp(1.6rem,4vw,2.5rem);margin:6px 0;font-weight:900}
+.hero p{font-size:0.95rem;margin:4px 0;font-weight:800}
+button{font-family:inherit;cursor:pointer}
+.start-btn{
+  background:linear-gradient(135deg,#ff7a00,#ff4d00);color:white;border:0;
+  padding:10px 20px;border-radius:14px;font-size:0.9rem;font-weight:900;
+  margin-top:6px;
+}
+
+/* Grille du Menu Principal (1ère Page) */
+.nav-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:22px;
+}
+.nav-card-btn{
+  padding:16px 12px;border:2px solid white;border-radius:18px;
+  background:#fffb;color:#2563eb;font-size:1.05rem;font-weight:900;
+  box-shadow:0 6px 16px #0002;transition:.2s;text-align:center;
+}
+.nav-card-btn:hover{transform:translateY(-3px);background:white}
+
+/* Bouton Retour dans les sous-pages */
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#2563eb;color:white;border:0;padding:10px 18px;
+  border-radius:12px;font-size:0.95rem;font-weight:800;margin-bottom:16px;
+  transition:.2s;
+}
+.back-btn:hover{background:#1d4ed8}
+
+/* En-tête de section avec bouton Start centré au milieu */
+.section-header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+.title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.section-header h2{
+  font-size:clamp(1.5rem,4vw,2.1rem);
+  color:#1d4ed8;
+  margin:0;
+}
+.subtitle{
+  color:#475569;
+  font-weight:700;
+  margin:0;
+  display:block;
+}
+.section-start-btn{
+  background:linear-gradient(135deg,#ff7a00,#ff4d00);
+  color:white;
+  border:0;
+  padding:12px 28px;
+  border-radius:21px;
+  font-size:1.1rem;
+  font-weight:900;
+  box-shadow:0 4px 12px rgba(255,122,0,0.3);
+  white-space:nowrap;
+  transition:.2s;
+}
+.section-start-btn:hover{
+  transform:scale(1.04);
+}
+
+/* Structure des Pages */
+.view-home{display:block;}
+.page{
+  display:none;padding:24px;border-radius:22px;background:#ffffffdc;
+  box-shadow:0 15px 35px #0002;animation:appear .25s ease;
+  min-height: 400px;
+}
+.page.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+h3{margin-top:20px}
+
+/* Grille de cartes à l'intérieur d'une section */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
+  gap:16px;
+  margin-bottom:20px;
+}
+.card{
+  background:white;border-radius:19px;overflow:hidden;
+  box-shadow:0 5px 16px #00000010;border:1px solid #e5e7eb;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.card-top{text-align:center;padding:18px 10px 8px;background:linear-gradient(135deg,#eff6ff,#ecfdf5)}
+.card-emoji{font-size:2.8rem}
+.card-body{padding:12px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:space-between;flex-grow:1}
+.word{font-size:1rem;font-weight:900;overflow-wrap:anywhere;line-height:1.2;margin-bottom:4px}
+.article{color:#64748b;font-size:.8rem;margin-bottom:8px}
+.example{font-size:.85rem;color:#334155;margin:6px 0;line-height:1.4}
+.audio{
+  border:0;border-radius:50%;width:36px;height:36px;background:#ff7a00;color:white;
+  font-size:1rem;font-weight:900;flex-shrink:0;margin-top:auto;
+}
+
+.info{
+  padding:16px;border-radius:16px;background:#eff6ff;border-left:5px solid #2563eb;
+  line-height:1.7;margin:20px 0 0 0;
+}
+.phrase-list{display:grid;gap:10px}
+.phrase{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  background:white;padding:14px;border-radius:14px;border-left:5px solid #10b981;
+}
+.phrase strong{display:block}
+.small{font-size:.88rem;color:#64748b;margin-top:4px}
+input[type=text]{width:100%;padding:13px;border:2px solid #cbd5e1;border-radius:12px;font:inherit}
+.quiz-question{padding:16px;background:white;border-radius:16px;margin:14px 0}
+.quiz-question label{display:block;margin:10px 0;cursor:pointer}
+.check-btn{padding:13px 20px;border:0;border-radius:14px;background:#2563eb;color:white;font-weight:900}
+.result{font-weight:900;margin-top:15px}
+.footer{text-align:center;padding:18px;font-weight:800;color:#111827}
+@media(min-width:750px){
+  .nav-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+}
+</style>
+<style id="haryfi-topbar-style">
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px;position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+.topbar-link{display:inline-flex;align-items:center;padding:12px 20px;border:1px solid rgba(255,255,255,.45);border-radius:16px;background:rgba(255,255,255,.25);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:white;text-decoration:none;font-weight:900;font-size:18px;transition:all .25s ease;white-space:nowrap}
+.topbar-link:hover{background:rgba(255,255,255,.4)}
+.topbar-brand{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border:1px solid rgba(255,255,255,.45);border-radius:16px;background:rgba(255,255,255,.25);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:white;font-size:18px;font-weight:900;text-decoration:none;white-space:nowrap}
+@media(max-width:520px){.topbar{padding:12px;gap:8px}.topbar-link{padding:10px 12px;font-size:14px}.topbar-brand{padding:10px 12px;font-size:14px}}
+</style>
+</head>
+
+<body>
+<!-- HEADER -->
+<header class="topbar" aria-label="Hauptnavigation">
+  <a href="index.html#a1" id="nav-a1-link" class="topbar-link">← A1-Lektionen</a>
+  <button type="button" id="nav-overview-btn" class="topbar-link" onclick="showHome()" style="display:none">← Zurück</button>
+  <a href="index.html" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</header>
+
+<div class="container">
+
+  <!-- ==================== 1ère PAGE : ACCUEIL MAIN ==================== -->
+  <div id="homeView" class="view-home">
+    <header class="hero">
+      <div class="emoji">🛒</div>
+      <h1>Einkaufen & Essen</h1>
+      <p>  Thema Deutsch A1 · Mein Alltag in Deutschland---Ndao dray ary hianatra Hiantsena</p>
+      <button class="start-btn" onclick="speak('Willkommen zur Lektion Einkaufen und Essen. Wir lernen wichtige Wörter und Sätze.')">🔊 Lektion anhören</button>
+    </header>
+
+    <nav class="nav-grid" aria-label="Lektionsmenü">
+      <button class="nav-card-btn" onclick="openPage('start')">🏠 Start</button>
+      <button class="nav-card-btn" onclick="openPage('einkaufen')">🛒 Einkaufen</button>
+      <button class="nav-card-btn" onclick="openPage('obst')">🍎 Obst</button>
+      <button class="nav-card-btn" onclick="openPage('gemuese')">🥕 Gemüse</button>
+      <button class="nav-card-btn" onclick="openPage('lebensmittel')">🥛 Lebensmittel</button>
+      <button class="nav-card-btn" onclick="openPage('getraenke')">🥤 Getränke</button>
+      <button class="nav-card-btn" onclick="openPage('mengen')">⚖️ Mengen</button>
+      <button class="nav-card-btn" onclick="openPage('saetze')">💬 Wichtige Sätze</button>
+      <button class="nav-card-btn" onclick="openPage('dialog')">🗣️ Dialog</button>
+      <button class="nav-card-btn" onclick="openPage('verben')">📚 Verben</button>
+      <button class="nav-card-btn" onclick="openPage('uebungen')">✍️ Übungen</button>
+    </nav>
+  </div>
+
+  <!-- ==================== 2ème PAGE : SOUS-PAGES ==================== -->
+  <main>
+
+    <section id="start" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>Willkommen! 👋</h2>
+          <span class="subtitle">Lerne Deutsch für den Einkauf im Supermarkt.</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Willkommen! Lerne Deutsch für den Einkauf im Supermarkt.')">▶️ Start 🔊</button>
+      </div>
+      <div class="info">
+        <strong>🎯 Das lernst du in dieser Lektion:</strong><br>
+        🛒 Im Supermarkt einkaufen<br>
+        🍎 Viele Obst- und Gemüsesorten benennen<br>
+        🥛 Lebensmittel und Getränke verstehen<br>
+        ⚖️ Mengen und Preise sagen<br>
+        💬 Höflich fragen und bezahlen
+      </div>
+      <h3>So lernst du</h3>
+      <div class="phrase-list">
+        <div class="phrase"><div><strong>1. Wörter lernen</strong><div class="small">Lies die Wörter laut vor und lerne den Artikel mit.</div></div><span>📖</span></div>
+        <div class="phrase"><div><strong>2. Audio anhören</strong><div class="small">Tippe auf 🔊, um die Aussprache zu hören.</div></div><span>🔊</span></div>
+        <div class="phrase"><div><strong>3. Sätze üben</strong><div class="small">Sprich die Beispielsätze nach.</div></div><span>💬</span></div>
+        <div class="phrase"><div><strong>4. Übungen machen</strong><div class="small">Teste dein Wissen am Ende.</div></div><span>✍️</span></div>
+      </div>
+    </section>
+
+    <section id="einkaufen" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🛒 Einkaufen</h2>
+          <span class="subtitle">Wichtige Wörter im Supermarkt</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Einkaufen. Wichtige Wörter im Supermarkt.')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="einkaufenGrid"></div>
+    </section>
+
+    <section id="obst" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🍎 Obst</h2>
+          <span class="subtitle">Viele Obstsorten mit Artikel</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Obst. Viele Obstsorten mit Artikel.')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="obstGrid"></div>
+      <div class="info"><strong>Beispiele:</strong><br>
+      Ich kaufe drei Äpfel.<br>
+      Die Erdbeeren sind süß.<br>
+      Ich möchte ein Kilo Bananen.<br>
+      Die Mango ist reif.
+      </div>
+    </section>
+
+    <section id="gemuese" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🥕 Gemüse</h2>
+          <span class="subtitle">Viele Gemüsesorten im Supermarkt</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Gemüse. Viele Gemüsesorten im Supermarkt.')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="gemueseGrid"></div>
+      <div class="info"><strong>Beispiele:</strong><br>
+      Ich brauche zwei Karotten.<br>
+      Die Tomaten sind frisch.<br>
+      Ich koche heute Kartoffeln.<br>
+      Bitte geben Sie mir ein Kilo Zwiebeln.
+      </div>
+    </section>
+
+    <section id="lebensmittel" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🥛 Lebensmittel</h2>
+          <span class="subtitle">Grundnahrungsmittel, Milchprodukte, Fleisch, Fisch und mehr</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Lebensmittel. Grundnahrungsmittel, Milchprodukte, Fleisch, Fisch und mehr.')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="lebensmittelGrid"></div>
+      <div class="info"><strong>Beispiele:</strong><br>
+      Ich kaufe eine Packung Reis.<br>
+      Ich brauche frisches Brot und Eier.<br>
+      Der Käse ist im Kühlschrank.<br>
+      Ich möchte eine Dose Bohnen.
+      </div>
+    </section>
+
+    <section id="getraenke" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🥤 Getränke</h2>
+          <span class="subtitle">Was trinkst du gern?</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Getränke. Was trinkst du gern?')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="getraenkeGrid"></div>
+      <div class="info"><strong>Beispiele:</strong><br>
+      Ich trinke Wasser.<br>
+      Ich möchte einen Kaffee, bitte.<br>
+      Trinkst du gern Tee?<br>
+      Ich kaufe eine Flasche Apfelsaft.
+      </div>
+    </section>
+
+    <section id="mengen" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>⚖️ Mengen und Verpackungen</h2>
+          <span class="subtitle">Wie viel möchtest du?</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Mengen und Verpackungen. Wie viel möchtest du?')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="mengenGrid"></div>
+      <div class="info"><strong>Merke:</strong><br>
+      ein Kilo Äpfel · ein Liter Milch · eine Flasche Wasser · eine Packung Nudeln · eine Dose Bohnen · eine Scheibe Brot.
+      </div>
+    </section>
+
+    <section id="saetze" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>💬 Wichtige Sätze</h2>
+          <span class="subtitle">Höflich fragen und antworten</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Wichtige Sätze. Höflich fragen und antworten.')">▶️ Start 🔊</button>
+      </div>
+      <div class="phrase-list" id="saetzeListe"></div>
+    </section>
+
+    <section id="dialog" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>🗣️ Dialog im Supermarkt</h2>
+          <span class="subtitle">Lies den Dialog und höre die Sätze an.</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Dialog im Supermarkt. Lies den Dialog und höre die Sätze an.')">▶️ Start 🔊</button>
+      </div>
+      <div class="phrase-list" id="dialogListe"></div>
+    </section>
+
+    <section id="verben" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>📚 Wichtige Verben</h2>
+          <span class="subtitle">Verben für den Einkauf und das Essen</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Wichtige Verben für den Einkauf und das Essen.')">▶️ Start 🔊</button>
+      </div>
+      <div class="grid" id="verbenGrid"></div>
+    </section>
+
+    <section id="uebungen" class="page">
+      <div class="section-header">
+        <div class="title-group">
+          <h2>✍️ Übungen</h2>
+          <span class="subtitle">Wähle die richtige Antwort.</span>
+        </div>
+        <button class="section-start-btn" onclick="speak('Übungen. Wähle die richtige Antwort.')">▶️ Start 🔊</button>
+      </div>
+
+      <div class="quiz-question">
+      <strong>1. Welcher Artikel passt? ___ Wasser</strong>
+      <label><input type="radio" name="q1" value="a"> der</label>
+      <label><input type="radio" name="q1" value="b"> die</label>
+      <label><input type="radio" name="q1" value="c"> das</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>2. Was bedeutet „die Milch“?</strong>
+      <label><input type="radio" name="q2" value="a"> Milch</label>
+      <label><input type="radio" name="q2" value="b"> Brot</label>
+      <label><input type="radio" name="q2" value="c"> Wasser</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>3. Wie fragst du nach dem Preis?</strong>
+      <label><input type="radio" name="q3" value="a"> Wo wohnst du?</label>
+      <label><input type="radio" name="q3" value="b"> Wie viel kostet das?</label>
+      <label><input type="radio" name="q3" value="c"> Wie heißt du?</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>4. Was ist eine Verpackung?</strong>
+      <label><input type="radio" name="q4" value="a"> eine Flasche</label>
+      <label><input type="radio" name="q4" value="b"> ein Apfelbaum</label>
+      <label><input type="radio" name="q4" value="c"> eine Straße</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>5. Was trinkst du?</strong>
+      <label><input type="radio" name="q5" value="a"> Ich esse Wasser.</label>
+      <label><input type="radio" name="q5" value="b"> Ich trinke Wasser.</label>
+      <label><input type="radio" name="q5" value="c"> Ich kaufe trinken.</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>6. Welcher Artikel passt? ___ Banane</strong>
+      <label><input type="radio" name="q6" value="a"> der</label>
+      <label><input type="radio" name="q6" value="b"> die</label>
+      <label><input type="radio" name="q6" value="c"> das</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>7. Was ist Gemüse?</strong>
+      <label><input type="radio" name="q7" value="a"> die Karotte</label>
+      <label><input type="radio" name="q7" value="b"> der Apfelsaft</label>
+      <label><input type="radio" name="q7" value="c"> der Kuchen</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>8. Was bedeutet „ein Liter“?</strong>
+      <label><input type="radio" name="q8" value="a"> Eine Mengenangabe für Flüssigkeiten</label>
+      <label><input type="radio" name="q8" value="b"> Eine Obstsorte</label>
+      <label><input type="radio" name="q8" value="c"> Ein Zahlungsmittel</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>9. Wie bittest du höflich um Brot?</strong>
+      <label><input type="radio" name="q9" value="a"> Gib Brot!</label>
+      <label><input type="radio" name="q9" value="b"> Ich hätte gern Brot, bitte.</label>
+      <label><input type="radio" name="q9" value="c"> Wo ist mein Haus?</label>
+      </div>
+
+      <div class="quiz-question">
+      <strong>10. Was machst du an der Kasse?</strong>
+      <label><input type="radio" name="q10" value="a"> Ich bezahle.</label>
+      <label><input type="radio" name="q10" value="b"> Ich schlafe.</label>
+      <label><input type="radio" name="q10" value="c"> Ich schwimme.</label>
+      </div>
+
+      <button class="check-btn" onclick="checkQuiz()">Antworten prüfen</button>
+      <div id="quizResult" class="result" aria-live="polite"></div>
+
+      <div class="info"><strong>Zusatzaufgabe:</strong><br>
+      Schreibe fünf Sätze über deinen Einkauf. Verwende mindestens zwei Obstsorten, zwei Gemüsesorten und ein Getränk.
+      </div>
+    </section>
+
+  </main>
+  <div class="footer">HaryFi · Deutsch A1 · Schritt für Schritt lernen 🌟</div>
+</div>
+
+<script>
+function openPage(pageId) {
+    document.getElementById('homeView').style.display = 'none';
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+    const selectedPage = document.getElementById(pageId);
+    if (!selectedPage) return;
+    selectedPage.classList.add('active');
+    document.getElementById('nav-a1-link').style.display = 'none';
+    document.getElementById('nav-overview-btn').style.display = 'inline-flex';
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showHome() {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
+    document.getElementById('homeView').style.display = 'block';
+    document.getElementById('nav-a1-link').style.display = 'inline-flex';
+    document.getElementById('nav-overview-btn').style.display = 'none';
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function createCards(id, items) {
+    const grid = document.getElementById(id);
+    if(!grid) return;
+    grid.innerHTML = items.map(function(item) {
+        return `
+        <div class="card">
+          <div class="card-top"><div class="card-emoji">${item.emoji}</div></div>
+          <div class="card-body">
+            <div>
+              <div class="word">${item.word}</div>
+              <div class="article">${item.article}</div>
+              ${item.example ? `<div class="example">${item.example}</div>` : ''}
+            </div>
+            <button class="audio" aria-label="Aussprache von ${item.word}"
+              onclick="speak('${item.word.replace(/'/g, "\\'")}')">🔊</button>
+          </div>
+        </div>`;
+    }).join('');
+}
+
+/* Einkaufen */
+createCards('einkaufenGrid', [
+{emoji:'🛒',word:'der Einkaufswagen',article:'maskulin · der'},
+{emoji:'🧺',word:'der Einkaufskorb',article:'maskulin · der'},
+{emoji:'🛍️',word:'die Einkaufstasche',article:'feminin · die'},
+{emoji:'🏷️',word:'das Preisschild',article:'neutral · das'},
+{emoji:'💶',word:'der Preis',article:'maskulin · der'},
+{emoji:'🧾',word:'der Kassenbon',article:'maskulin · der'},
+{emoji:'💳',word:'die Kasse',article:'feminin · die'},
+{emoji:'💳',word:'die Karte',article:'feminin · die'},
+{emoji:'🪙',word:'das Kleingeld',article:'neutral · das'},
+{emoji:'💵',word:'das Bargeld',article:'neutral · das'},
+{emoji:'🏪',word:'der Supermarkt',article:'maskulin · der'},
+{emoji:'🛍️',word:'das Geschäft',article:'neutral · das'},
+{emoji:'🧑‍💼',word:'der Verkäufer',article:'maskulin · der'},
+{emoji:'🧑‍💼',word:'die Verkäuferin',article:'feminin · die'},
+{emoji:'📝',word:'der Einkaufszettel',article:'maskulin · der'},
+{emoji:'⚖️',word:'die Waage',article:'feminin · die'},
+{emoji:'🗄️',word:'das Regal',article:'neutral · das'},
+{emoji:'🚪',word:'der Eingang',article:'maskulin · der'},
+{emoji:'🚪',word:'der Ausgang',article:'maskulin · der'},
+{emoji:'🧊',word:'die Tiefkühltruhe',article:'feminin · die'},
+{emoji:'🛍️',word:'die Tüte',article:'feminin · die'},
+{emoji:'🧾',word:'die Quittung',article:'feminin · die'}
+]);
+
+/* Obst */
+createCards('obstGrid', [
+{emoji:'🍎',word:'der Apfel',article:'maskulin · der'},
+{emoji:'🍌',word:'die Banane',article:'feminin · die'},
+{emoji:'🍊',word:'die Orange',article:'feminin · die'},
+{emoji:'🍇',word:'die Traube',article:'feminin · die'},
+{emoji:'🍓',word:'die Erdbeere',article:'feminin · die'},
+{emoji:'🍐',word:'die Birne',article:'feminin · die'},
+{emoji:'🍉',word:'die Wassermelone',article:'feminin · die'},
+{emoji:'🍋',word:'die Zitrone',article:'feminin · die'},
+{emoji:'🍍',word:'die Ananas',article:'feminin · die'},
+{emoji:'🥭',word:'die Mango',article:'feminin · die'},
+{emoji:'🥝',word:'die Kiwi',article:'feminin · die'},
+{emoji:'🍒',word:'die Kirsche',article:'feminin · die'},
+{emoji:'🍑',word:'der Pfirsich',article:'maskulin · der'},
+{emoji:'🍈',word:'die Honigmelone',article:'feminin · die'},
+{emoji:'🫐',word:'die Blaubeere',article:'feminin · die'},
+{emoji:'🫐',word:'die Heidelbeere',article:'feminin · die'},
+{emoji:'🍓',word:'die Himbeere',article:'feminin · die'},
+{emoji:'🫐',word:'die Brombeere',article:'feminin · die'},
+{emoji:'🍏',word:'der grüne Apfel',article:'maskulin · der'},
+{emoji:'🍊',word:'die Mandarine',article:'feminin · die'},
+{emoji:'🍋',word:'die Limette',article:'feminin · die'},
+{emoji:'🥥',word:'die Kokosnuss',article:'feminin · die'},
+{emoji:'🥭',word:'die Papaya',article:'feminin · die'},
+{emoji:'🍇',word:'die Weintraube',article:'feminin · die'},
+{emoji:'🍓',word:'die Stachelbeere',article:'feminin · die'},
+{emoji:'🍐',word:'die Quitte',article:'feminin · die'},
+{emoji:'🟤',word:'die Feige',article:'feminin · die'},
+{emoji:'🥑',word:'die Avocado',article:'feminin · die'},
+{emoji:'🟣',word:'die Pflaume',article:'feminin · die'},
+{emoji:'🍑',word:'die Aprikose',article:'feminin · die'},
+{emoji:'🍒',word:'die Sauerkirsche',article:'feminin · die'},
+{emoji:'🍒',word:'die Süßkirsche',article:'feminin · die'},
+{emoji:'🔴',word:'die Johannisbeere',article:'feminin · die'},
+{emoji:'🔴',word:'die Preiselbeere',article:'feminin · die'},
+{emoji:'🍑',word:'die Nektarine',article:'feminin · die'},
+{emoji:'🍎',word:'der Granatapfel',article:'maskulin · der'},
+{emoji:'🟣',word:'die Maracuja',article:'feminin · die'},
+{emoji:'🟣',word:'die Passionsfrucht',article:'feminin · die'},
+{emoji:'🩷',word:'die Drachenfrucht',article:'feminin · die'},
+{emoji:'🔴',word:'die Litschi',article:'feminin · die'},
+{emoji:'🟢',word:'die Guave',article:'feminin · die'},
+{emoji:'⭐',word:'die Sternfrucht',article:'feminin · die'},
+{emoji:'🟠',word:'die Kaki',article:'feminin · die'},
+{emoji:'🟤',word:'die Dattel',article:'feminin · die'},
+{emoji:'🟤',word:'die Rosine',article:'feminin · die'},
+{emoji:'🔴',word:'die Cranberry',article:'feminin · die'},
+{emoji:'🟠',word:'die Physalis',article:'feminin · die'},
+{emoji:'🟢',word:'die Jackfrucht',article:'feminin · die'},
+{emoji:'🟡',word:'die Pomelo',article:'feminin · die'},
+{emoji:'🍊',word:'die Clementine',article:'feminin · die'}
+]);
+
+/* Gemüse */
+createCards('gemueseGrid', [
+{emoji:'🥕',word:'die Karotte',article:'feminin · die'},
+{emoji:'🥔',word:'die Kartoffel',article:'feminin · die'},
+{emoji:'🍅',word:'die Tomate',article:'feminin · die'},
+{emoji:'🥒',word:'die Gurke',article:'feminin · die'},
+{emoji:'🧅',word:'die Zwiebel',article:'feminin · die'},
+{emoji:'🧄',word:'der Knoblauch',article:'maskulin · der'},
+{emoji:'🥬',word:'der Salat',article:'maskulin · der'},
+{emoji:'🫑',word:'die Paprika',article:'feminin · die'},
+{emoji:'🥦',word:'der Brokkoli',article:'maskulin · der'},
+{emoji:'🥬',word:'der Kohl',article:'maskulin · der'},
+{emoji:'🥬',word:'der Weißkohl',article:'maskulin · der'},
+{emoji:'🟣',word:'der Rotkohl',article:'maskulin · der'},
+{emoji:'🥦',word:'der Blumenkohl',article:'maskulin · der'},
+{emoji:'🌽',word:'der Mais',article:'maskulin · der'},
+{emoji:'🍆',word:'die Aubergine',article:'feminin · die'},
+{emoji:'🥒',word:'die Zucchini',article:'feminin · die'},
+{emoji:'🍄',word:'der Champignon',article:'maskulin · der'},
+{emoji:'🫛',word:'die Erbse',article:'feminin · die'},
+{emoji:'🫘',word:'die Bohne',article:'feminin · die'},
+{emoji:'🌶️',word:'die Chilischote',article:'feminin · die'},
+{emoji:'🥬',word:'der Spinat',article:'maskulin · der'},
+{emoji:'🧅',word:'der Lauch',article:'maskulin · der'},
+{emoji:'🌿',word:'der Spargel',article:'maskulin · der'},
+{emoji:'🥬',word:'der Rosenkohl',article:'maskulin · der'},
+{emoji:'🔴',word:'die Rote Bete',article:'feminin · die'},
+{emoji:'🌿',word:'der Sellerie',article:'maskulin · der'},
+{emoji:'🌿',word:'der Fenchel',article:'maskulin · der'},
+{emoji:'🥗',word:'der Feldsalat',article:'maskulin · der'},
+{emoji:'🫛',word:'die Linse',article:'feminin · die'},
+{emoji:'🧅',word:'die Frühlingszwiebel',article:'feminin · die'},
+{emoji:'🥕',word:'der Rettich',article:'maskulin · der'},
+{emoji:'🔴',word:'das Radieschen',article:'neutral · das'},
+{emoji:'🥬',word:'der Grünkohl',article:'maskulin · der'},
+{emoji:'🥬',word:'der Wirsing',article:'maskulin · der'},
+{emoji:'🥬',word:'der Chinakohl',article:'maskulin · der'},
+{emoji:'🥬',word:'der Pak Choi',article:'maskulin · der'},
+{emoji:'🥕',word:'die Pastinake',article:'feminin · die'},
+{emoji:'🥕',word:'die Petersilienwurzel',article:'feminin · die'},
+{emoji:'🥔',word:'die Süßkartoffel',article:'feminin · die'},
+{emoji:'🎃',word:'der Kürbis',article:'maskulin · der'},
+{emoji:'🫛',word:'die Zuckerschote',article:'feminin · die'},
+{emoji:'🫛',word:'die grüne Bohne',article:'feminin · die'},
+{emoji:'🫘',word:'die Kidneybohne',article:'feminin · die'},
+{emoji:'🫘',word:'die Kichererbse',article:'feminin · die'},
+{emoji:'🌶️',word:'die Peperoni',article:'feminin · die'},
+{emoji:'🥬',word:'der Rucola',article:'maskulin · der'},
+{emoji:'🥬',word:'der Eisbergsalat',article:'maskulin · der'},
+{emoji:'🥬',word:'der Kopfsalat',article:'maskulin · der'},
+{emoji:'🌿',word:'die Petersilie',article:'feminin · die'},
+{emoji:'🌿',word:'der Schnittlauch',article:'maskulin · der'},
+{emoji:'🌿',word:'der Koriander',article:'maskulin · der'},
+{emoji:'🫚',word:'der Ingwer',article:'maskulin · der'},
+{emoji:'🥬',word:'die Artischocke',article:'feminin · die'},
+{emoji:'🥬',word:'die Okraschote',article:'feminin · die'},
+{emoji:'🌱',word:'der Bambusspross',article:'maskulin · der'},
+{emoji:'🍄',word:'der Kräuterseitling',article:'maskulin · der'},
+{emoji:'🍄',word:'der Steinpilz',article:'maskulin · der'},
+{emoji:'🍄',word:'der Pfifferling',article:'maskulin · der'},
+{emoji:'🥒',word:'die Gewürzgurke',article:'feminin · die'},
+{emoji:'🥬',word:'der Mangold',article:'maskulin · der'},
+{emoji:'☘️',word:'die Kresse',article:'feminin · die'}
+]);
+
+/* Lebensmittel */
+createCards('lebensmittelGrid', [
+{emoji:'🍞',word:'das Brot',article:'neutral · das'},
+{emoji:'🥖',word:'das Baguette',article:'neutral · das'},
+{emoji:'🥨',word:'die Brezel',article:'feminin · die'},
+{emoji:'🥐',word:'das Croissant',article:'neutral · das'},
+{emoji:'🍞',word:'das Vollkornbrot',article:'neutral · das'},
+{emoji:'🥯',word:'das Brötchen',article:'neutral · das'},
+{emoji:'🌾',word:'das Mehl',article:'neutral · das'},
+{emoji:'🍚',word:'der Reis',article:'maskulin · der'},
+{emoji:'🍝',word:'die Nudeln',article:'Plural · die'},
+{emoji:'🥣',word:'die Haferflocken',article:'Plural · die'},
+{emoji:'🌾',word:'der Grieß',article:'maskulin · der'},
+{emoji:'🌾',word:'der Couscous',article:'maskulin · der'},
+{emoji:'🌾',word:'die Hirse',article:'feminin · die'},
+{emoji:'🌾',word:'die Quinoa',article:'feminin · die'},
+{emoji:'🧀',word:'der Käse',article:'maskulin · der'},
+{emoji:'🥚',word:'das Ei',article:'neutral · das'},
+{emoji:'🧈',word:'die Butter',article:'feminin · die'},
+{emoji:'🥣',word:'der Joghurt',article:'maskulin · der'},
+{emoji:'🥛',word:'die Sahne',article:'feminin · die'},
+{emoji:'🧀',word:'der Frischkäse',article:'maskulin · der'},
+{emoji:'🧀',word:'der Mozzarella',article:'maskulin · der'},
+{emoji:'🧀',word:'der Parmesan',article:'maskulin · der'},
+{emoji:'🥛',word:'der Quark',article:'maskulin · der'},
+{emoji:'🥛',word:'der Kefir',article:'maskulin · der'},
+{emoji:'🍮',word:'der Pudding',article:'maskulin · der'},
+{emoji:'🍨',word:'das Eis',article:'neutral · das'},
+{emoji:'🫒',word:'das Öl',article:'neutral · das'},
+{emoji:'🧂',word:'das Salz',article:'neutral · das'},
+{emoji:'🍬',word:'der Zucker',article:'maskulin · der'},
+{emoji:'🍯',word:'der Honig',article:'maskulin · der'},
+{emoji:'🫙',word:'die Marmelade',article:'feminin · die'},
+{emoji:'🍫',word:'die Schokolade',article:'feminin · die'},
+{emoji:'🍪',word:'der Keks',article:'maskulin · der'},
+{emoji:'🍰',word:'der Kuchen',article:'maskulin · der'},
+{emoji:'🍬',word:'die Süßigkeit',article:'feminin · die'},
+{emoji:'🍿',word:'das Popcorn',article:'neutral · das'},
+{emoji:'🥜',word:'die Erdnuss',article:'feminin · die'},
+{emoji:'🌰',word:'die Haselnuss',article:'feminin · die'},
+{emoji:'🌰',word:'die Walnuss',article:'feminin · die'},
+{emoji:'🌰',word:'die Mandel',article:'feminin · die'},
+{emoji:'🥜',word:'die Cashewnuss',article:'feminin · die'},
+{emoji:'🫘',word:'die Kidneybohnen',article:'Plural · die'},
+{emoji:'🫘',word:'die Kichererbsen',article:'Plural · die'},
+{emoji:'🫘',word:'die Linsen',article:'Plural · die'},
+{emoji:'🥫',word:'die Konservendose',article:'feminin · die'},
+{emoji:'🥫',word:'die Tomatensoße',article:'feminin · die'},
+{emoji:'🥫',word:'die passierten Tomaten',article:'Plural · die'},
+{emoji:'🥥',word:'die Kokosmilch',article:'feminin · die'},
+{emoji:'🍲',word:'die Gemüsebrühe',article:'feminin · die'},
+{emoji:'🍅',word:'der Ketchup',article:'maskulin · der'},
+{emoji:'🟡',word:'der Senf',article:'maskulin · der'},
+{emoji:'🫙',word:'die Mayonnaise',article:'feminin · die'},
+{emoji:'🧂',word:'der Pfeffer',article:'maskulin · der'},
+{emoji:'🌿',word:'der Oregano',article:'maskulin · der'},
+{emoji:'🌿',word:'der Basilikum',article:'maskulin · der'},
+{emoji:'🌶️',word:'das Paprikapulver',article:'neutral · das'},
+{emoji:'🍗',word:'das Hähnchenfleisch',article:'neutral · das'},
+{emoji:'🥩',word:'das Rindfleisch',article:'neutral · das'},
+{emoji:'🥩',word:'das Schweinefleisch',article:'neutral · das'},
+{emoji:'🍗',word:'die Putenbrust',article:'feminin · die'},
+{emoji:'🥓',word:'der Speck',article:'maskulin · der'},
+{emoji:'🌭',word:'die Wurst',article:'feminin · die'},
+{emoji:'🌭',word:'die Bratwurst',article:'feminin · die'},
+{emoji:'🥓',word:'der Schinken',article:'maskulin · der'},
+{emoji:'🍖',word:'das Hackfleisch',article:'neutral · das'},
+{emoji:'🐟',word:'der Fisch',article:'maskulin · der'},
+{emoji:'🐟',word:'der Lachs',article:'maskulin · der'},
+{emoji:'🐟',word:'der Thunfisch',article:'maskulin · der'},
+{emoji:'🦐',word:'die Garnele',article:'feminin · die'},
+{emoji:'🐟',word:'die Sardine',article:'feminin · die'},
+{emoji:'🌱',word:'der Tofu',article:'maskulin · der'},
+{emoji:'🌱',word:'das Tempeh',article:'neutral · das'},
+{emoji:'🥣',word:'der Hummus',article:'maskulin · der'},
+{emoji:'🥟',word:'die Teigtasche',article:'feminin · die'},
+{emoji:'🍕',word:'die Pizza',article:'feminin · die'},
+{emoji:'🍝',word:'die Lasagne',article:'feminin · die'},
+{emoji:'🥣',word:'die Suppe',article:'feminin · die'},
+{emoji:'🍲',word:'der Eintopf',article:'maskulin · der'},
+{emoji:'🥗',word:'der Kartoffelsalat',article:'maskulin · der'},
+{emoji:'🥗',word:'der Nudelsalat',article:'maskulin · der'},
+{emoji:'🥞',word:'der Pfannkuchen',article:'maskulin · der'},
+{emoji:'🧇',word:'die Waffel',article:'feminin · die'},
+{emoji:'🍯',word:'der Ahornsirup',article:'maskulin · der'},
+{emoji:'🫙',word:'das Pesto',article:'neutral · das'},
+{emoji:'🥜',word:'die Erdnussbutter',article:'feminin · die'},
+{emoji:'🧂',word:'das Backpulver',article:'neutral · das'},
+{emoji:'🍫',word:'das Kakaopulver',article:'neutral · das'},
+{emoji:'🌾',word:'die Speisestärke',article:'feminin · die'},
+{emoji:'🫙',word:'der Essig',article:'maskulin · der'},
+{emoji:'🫙',word:'die Sojasoße',article:'feminin · die'},
+{emoji:'🍲',word:'die Brühe',article:'feminin · die'},
+{emoji:'🍯',word:'der Sirup',article:'maskulin · der'},
+{emoji:'🍮',word:'die Gelatine',article:'feminin · die'},
+{emoji:'🫘',word:'die weiße Bohne',article:'feminin · die'},
+{emoji:'🌰',word:'die Marone',article:'feminin · die'}
+]);
+
+/* Getränke */
+createCards('getraenkeGrid', [
+{emoji:'💧',word:'das Wasser',article:'neutral · das'},
+{emoji:'🫧',word:'das Mineralwasser',article:'neutral · das'},
+{emoji:'🧃',word:'der Saft',article:'maskulin · der'},
+{emoji:'🍎',word:'der Apfelsaft',article:'maskulin · der'},
+{emoji:'🍊',word:'der Orangensaft',article:'maskulin · der'},
+{emoji:'🥛',word:'die Milch',article:'feminin · die'},
+{emoji:'☕',word:'der Kaffee',article:'maskulin · der'},
+{emoji:'🍵',word:'der Tee',article:'maskulin · der'},
+{emoji:'🥤',word:'die Limonade',article:'feminin · die'},
+{emoji:'🥤',word:'die Cola',article:'feminin · die'},
+{emoji:'🍇',word:'der Traubensaft',article:'maskulin · der'},
+{emoji:'🍒',word:'der Kirschsaft',article:'maskulin · der'},
+{emoji:'🍐',word:'der Birnensaft',article:'maskulin · der'},
+{emoji:'🍅',word:'der Tomatensaft',article:'maskulin · der'},
+{emoji:'🥕',word:'der Karottensaft',article:'maskulin · der'},
+{emoji:'🍋',word:'die Zitronenlimonade',article:'feminin · die'},
+{emoji:'🫖',word:'der Kräutertee',article:'maskulin · der'},
+{emoji:'🫖',word:'der Früchtetee',article:'maskulin · der'},
+{emoji:'☕',word:'der Espresso',article:'maskulin · der'},
+{emoji:'☕',word:'der Cappuccino',article:'maskulin · der'},
+{emoji:'☕',word:'der Latte macchiato',article:'maskulin · der'},
+{emoji:'🥛',word:'die Hafermilch',article:'feminin · die'},
+{emoji:'🥛',word:'die Sojamilch',article:'feminin · die'},
+{emoji:'🥛',word:'die Mandelmilch',article:'feminin · die'},
+{emoji:'🥛',word:'die laktosefreie Milch',article:'feminin · die'},
+{emoji:'🥤',word:'der Eistee',article:'maskulin · der'},
+{emoji:'🧃',word:'der Multivitaminsaft',article:'maskulin · der'},
+{emoji:'🥤',word:'das Energydrink',article:'neutral · das'},
+{emoji:'🥤',word:'das Getränk',article:'neutral · das'},
+{emoji:'🫧',word:'das Sprudelwasser',article:'neutral · das'},
+{emoji:'🥤',word:'die Orangenlimonade',article:'feminin · die'},
+{emoji:'🍫',word:'der Kakao',article:'maskulin · der'},
+{emoji:'🥥',word:'das Kokoswasser',article:'neutral · das'},
+{emoji:'🍋',word:'der Zitronensaft',article:'maskulin · der'},
+{emoji:'🧃',word:'der Johannisbeersaft',article:'maskulin · der'},
+{emoji:'🧃',word:'der Cranberrysaft',article:'maskulin · der'}
+]);
+
+/* Mengen und Verpackungen */
+createCards('mengenGrid', [
+{emoji:'⚖️',word:'ein Kilo',article:'Menge',example:'ein Kilo Äpfel'},
+{emoji:'⚖️',word:'ein halbes Kilo',article:'Menge',example:'ein halbes Kilo Tomaten'},
+{emoji:'⚖️',word:'100 Gramm',article:'Gewicht',example:'100 Gramm Käse'},
+{emoji:'⚖️',word:'250 Gramm',article:'Gewicht',example:'250 Gramm Butter'},
+{emoji:'🥛',word:'ein Liter',article:'Flüssigkeitsmenge',example:'ein Liter Milch'},
+{emoji:'🥛',word:'ein halber Liter',article:'Flüssigkeitsmenge',example:'ein halber Liter Saft'},
+{emoji:'🍞',word:'ein Stück',article:'Einzelmenge',example:'ein Stück Kuchen'},
+{emoji:'🥫',word:'eine Dose',article:'Verpackung',example:'eine Dose Bohnen'},
+{emoji:'📦',word:'eine Packung',article:'Verpackung',example:'eine Packung Nudeln'},
+{emoji:'🍾',word:'eine Flasche',article:'Verpackung',example:'eine Flasche Wasser'},
+{emoji:'🥛',word:'ein Glas',article:'Gefäß',example:'ein Glas Saft'},
+{emoji:'🥡',word:'eine Schachtel',article:'Verpackung',example:'eine Schachtel Pralinen'},
+{emoji:'🍞',word:'eine Scheibe',article:'Einzelmenge',example:'eine Scheibe Brot'},
+{emoji:'🥚',word:'ein Dutzend',article:'Menge',example:'ein Dutzend Eier'},
+{emoji:'🧺',word:'ein Korb',article:'Behälter',example:'ein Korb Erdbeeren'},
+{emoji:'🛍️',word:'eine Tüte',article:'Verpackung',example:'eine Tüte Kartoffeln'},
+{emoji:'🥣',word:'eine Schüssel',article:'Gefäß',example:'eine Schüssel Salat'},
+{emoji:'🥄',word:'ein Löffel',article:'Menge',example:'ein Löffel Zucker'},
+{emoji:'🥄',word:'ein Teelöffel',article:'Menge',example:'ein Teelöffel Salz'},
+{emoji:'🥄',word:'ein Esslöffel',article:'Menge',example:'ein Esslöffel Öl'},
+{emoji:'🧈',word:'ein Päckchen',article:'Verpackung',example:'ein Päckchen Butter'},
+{emoji:'🫙',word:'ein Glas Marmelade',article:'Verpackung',example:'ein Glas Marmelade'},
+{emoji:'🧃',word:'ein Karton',article:'Verpackung',example:'ein Karton Milch'},
+{emoji:'🥬',word:'ein Bund',article:'Menge',example:'ein Bund Petersilie'}
+]);
+
+/* Wichtige Sätze */
+const saetze = [
+['Entschuldigung, wo finde ich das Brot?','Frage nach einem Produkt.'],
+['Wie viel kostet das?','Frage nach dem Preis.'],
+['Ich hätte gern ein Kilo Äpfel.','Eine höfliche Bestellung.'],
+['Ich möchte eine Flasche Wasser, bitte.','Ein Getränk bestellen.'],
+['Kann ich mit Karte bezahlen?','Frage nach Kartenzahlung.'],
+['Das ist zu teuer.','Der Preis ist zu hoch.'],
+['Danke, schönen Tag noch!','Eine freundliche Verabschiedung.'],
+['Haben Sie frische Erdbeeren?','Frage nach der Frische.'],
+['Wo finde ich das Gemüse?','Frage nach dem Standort.'],
+['Ich suche die Milch.','Du suchst ein Produkt.'],
+['Kann ich bitte eine Tüte haben?','Frage nach einer Tüte.'],
+['Ich brauche zwei Kilo Kartoffeln.','Du nennst eine Menge.'],
+['Was kostet ein Kilo Tomaten?','Frage nach einem Kilopreis.'],
+['Haben Sie auch Vollkornbrot?','Frage nach einer Brotsorte.'],
+['Ist das im Angebot?','Frage nach einem Sonderpreis.'],
+['Das ist alles, danke.','Du bist mit dem Einkauf fertig.'],
+['Kann ich kontaktlos bezahlen?','Frage nach einer Zahlungsart.'],
+['Wo ist die Kasse?','Frage nach dem Ort zum Bezahlen.'],
+['Ich bezahle bar.','Du bezahlast mit Bargeld.'],
+['Ich hätte gern 200 Gramm Käse.','Du bestellst eine bestimmte Menge.'],
+['Sind diese Äpfel süß?','Frage nach dem Geschmack.'],
+['Ich möchte eine reife Mango.','Du wünschst eine reife Frucht.'],
+['Haben Sie Hafermilch?','Frage nach einem Produkt.'],
+['Kann ich den Kassenbon haben?','Bitte um den Beleg.']
+];
+document.getElementById('saetzeListe').innerHTML = saetze.map(function(s) {
+return `<div class="phrase"><div><strong>${s[0]}</strong><div class="small">${s[1]}</div></div><button class="audio" onclick="speak('${s[0].replace(/'/g,"\\'")}')">🔊</button></div>`;
+}).join('');
+
+/* Dialog */
+const dialog = [
+['Kundin:','Guten Tag! Wo finde ich das Wasser?'],
+['Mitarbeiter:','Das Wasser finden Sie dort hinten.'],
+['Kundin:','Danke. Ich möchte auch einen Apfelsaft.'],
+['Mitarbeiter:','Sonst noch etwas?'],
+['Kundin:','Ja, bitte. Ich hätte gern ein Kilo Äpfel und zwei Gurken.'],
+['Mitarbeiter:','Gern. Möchten Sie noch etwas?'],
+['Kundin:','Nein, danke. Was kostet das zusammen?'],
+['Mitarbeiter:','Das macht acht Euro fünfzig, bitte.'],
+['Kundin:','Kann ich mit Karte bezahlen?'],
+['Mitarbeiter:','Ja, natürlich.'],
+['Kundin:','Bitte schön. Auf Wiedersehen!'],
+['Mitarbeiter:','Auf Wiedersehen und einen schönen Tag!']
+];
+document.getElementById('dialogListe').innerHTML = dialog.map(function(d) {
+const full = d[0] + ' ' + d[1];
+return `<div class="phrase"><div><strong>${d[0]}</strong> ${d[1]}</div><button class="audio" onclick="speak('${full.replace(/'/g,"\\'")}')">🔊</button></div>`;
+}).join('');
+
+/* Verben */
+createCards('verbenGrid', [
+{emoji:'🛒',word:'kaufen',article:'Verb',example:'Ich kaufe Brot.'},
+{emoji:'💶',word:'bezahlen',article:'Verb',example:'Ich bezahle mit Karte.'},
+{emoji:'🥤',word:'trinken',article:'Verb',example:'Ich trinke Wasser.'},
+{emoji:'🍽️',word:'essen',article:'Verb',example:'Ich esse einen Apfel.'},
+{emoji:'👀',word:'suchen',article:'Verb',example:'Ich suche die Milch.'},
+{emoji:'🧾',word:'kosten',article:'Verb',example:'Was kostet das?'},
+{emoji:'🛍️',word:'brauchen',article:'Verb',example:'Ich brauche Kartoffeln.'},
+{emoji:'💬',word:'bestellen',article:'Verb',example:'Ich bestelle einen Kaffee.'},
+{emoji:'⚖️',word:'wiegen',article:'Verb',example:'Ich wiege die Äpfel.'},
+{emoji:'🍳',word:'kochen',article:'Verb',example:'Ich koche eine Suppe.'},
+{emoji:'🔪',word:'schneiden',article:'Verb',example:'Ich schneide Gemüse.'},
+{emoji:'🥣',word:'mischen',article:'Verb',example:'Ich mische den Salat.'},
+{emoji:'🧊',word:'kühlen',article:'Verb',example:'Ich kühle die Getränke.'},
+{emoji:'🔥',word:'backen',article:'Verb',example:'Ich backe einen Kuchen.'},
+{emoji:'🍲',word:'braten',article:'Verb',example:'Ich brate Kartoffeln.'},
+{emoji:'🧺',word:'mitnehmen',article:'Verb',example:'Ich nehme eine Tüte mit.'},
+{emoji:'🔍',word:'finden',article:'Verb',example:'Ich finde das Brot.'},
+{emoji:'🛒',word:'einkaufen',article:'Verb',example:'Ich kaufe im Supermarkt ein.'},
+{emoji:'🥛',word:'probieren',article:'Verb',example:'Ich probiere den Käse.'},
+{emoji:'🧂',word:'würzen',article:'Verb',example:'Ich würze die Suppe.'}
+]);
+
+function speak(text) {
+    if (!('speechSynthesis' in window)) {
+        alert('Die Audiofunktion wird von diesem Browser nicht unterstützt.');
+        return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    utterance.rate = 0.85;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+}
+
+function checkQuiz() {
+    const answers = {
+        q1:'c',q2:'a',q3:'b',q4:'a',q5:'b',
+        q6:'b',q7:'a',q8:'a',q9:'b',q10:'a'
+    };
+    let score = 0;
+    let unanswered = 0;
+
+    Object.keys(answers).forEach(function(question) {
+        const selected = document.querySelector('input[name="' + question + '"]:checked');
+        if (!selected) {
+            unanswered++;
+        } else if (selected.value === answers[question]) {
+            score++;
+        }
+    });
+
+    const result = document.getElementById('quizResult');
+    if (unanswered > 0) {
+        result.textContent = 'Bitte beantworte noch alle Fragen. Offene Fragen: ' + unanswered + '.';
+        result.style.color = '#b45309';
+        return;
+    }
+
+    result.textContent = 'Dein Ergebnis: ' + score + ' von 10 Punkten.';
+    result.style.color = score === 10 ? '#047857' : '#1d4ed8';
+
+    if (score === 10) {
+        result.textContent += ' Super gemacht! 🎉';
+    } else {
+        result.textContent += ' Lies die Lektion noch einmal und versuche es erneut.';
+    }
+}
+</script>
+</body>
+</html>
