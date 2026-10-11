@@ -18,6 +18,7 @@ function showLevels() { switchPage("levelsPage"); }
 function openA1() { switchPage("a1Page"); }
 function openAlphabet() { window.location.href = "lektion1.html"; }
 function openLektion2() { window.location.href = "lektion2.html"; }
+function openLektion21() { window.location.href = "lektion21.html"; }
 function openLektion51() { window.location.href = "lektion51.html"; }
 
 const a1Lessons = [
@@ -37,6 +38,7 @@ function createLessonList() {
         card.append(number, name);
         if (index === 0) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
         else if (index === 1) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
+  else if (index === 20) { card.dataset.href = "lektion21.html"; card.addEventListener("click", openLektion21); }
         else if (index === 50) { card.dataset.href = "lektion51.html"; card.addEventListener("click", openLektion51); }
         else card.dataset.href = `lektion${index + 1}.html`;
         container.appendChild(card);
