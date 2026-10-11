@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HaryFi – Lektion A1 | Konnektoren & Bindewörter</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --und-grad:linear-gradient(135deg,#60a5fa,#3b82f6,#1d4ed8);
+    --aber-grad:linear-gradient(135deg,#34d399,#10b981,#047857);
+    --oder-grad:linear-gradient(135deg,#a78bfa,#8b5cf6,#6d28d9);
+    --denn-grad:linear-gradient(135deg,#f472b6,#ec4899,#be185d);
+    --sondern-grad:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);
+    --ueb-grad:linear-gradient(135deg,#fb7185,#e11d48,#9f1239);
+
+    --und-color:#2563eb;
+    --aber-color:#059669;
+    --oder-color:#7c3aed;
+    --denn-color:#db2777;
+    --sondern-color:#d97706;
+    --ueb-color:#e11d48;
+
+    --orange:#ff7a00;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Plus Jakarta Sans',Arial,sans-serif;
+    color:#17120d;
+    background:
+    linear-gradient(
+        -45deg,
+        #ff4500,
+        #ff7e00,
+        #ffd000,
+        #00c9ff,
+        #7c3aed,
+        #ff3cac
+    );
+    background-size:500% 500%;
+    animation:gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%}
+    25%{background-position:100% 50%}
+    50%{background-position:100% 100%}
+    75%{background-position:0% 100%}
+    100%{background-position:0% 50%}
+}
+
+.container{
+    width:100%;
+    max-width:1180px;
+    margin:auto;
+    padding:24px 16px 60px;
+}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding:20px 0;position:sticky;top:0;z-index:50;
+  background:transparent;
+}
+.topbar-link,
+.topbar-brand{
+  display:inline-flex;align-items:center;padding:12px 20px;
+  border:1px solid rgba(255,255,255,.45);border-radius:16px;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);color:white;text-decoration:none;
+  font-weight:900;font-size:18px;transition:all .25s ease;white-space:nowrap;
+}
+.topbar-link:hover,
+.topbar-brand:hover{background:rgba(255,255,255,.4)}
+
+.header{
+    text-align:center;
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:28px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.header h1{
+    margin:0 0 8px;
+    font-size:clamp(2rem,5vw,3.2rem);
+    font-weight:900;
+    letter-spacing:-1px;
+    color:#111827;
+}
+
+.header p{
+    margin:0 0 14px;
+    font-size:1.1rem;
+    font-weight:800;
+    color:#1f2937;
+}
+
+.start-lesson-btn{
+    background:linear-gradient(135deg,#ff7a00,#ff5a00);
+    color:white;
+    border:none;
+    padding:12px 24px;
+    font-size:1rem;
+    font-weight:900;
+    border-radius:16px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(255,122,0,0.3);
+    transition:.25s;
+}
+
+.start-lesson-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+    background:linear-gradient(135deg,#ff5a00,#e04a00);
+}
+
+.main-nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+}
+
+.nav-btn{
+    border:2px solid rgba(255,255,255,.8);
+    padding:13px 19px;
+    font-size:.92rem;
+    font-weight:900;
+    border-radius:16px;
+    cursor:pointer;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(10px);
+    box-shadow:0 7px 18px rgba(0,0,0,.12);
+    transition:.25s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-4px) scale(1.02);
+}
+
+.nav-btn.active{
+    color:white;
+    border-color:white;
+}
+
+.nav-btn.btn-und{color:var(--und-color)}
+.nav-btn.btn-und.active{background:var(--und-grad)}
+
+.nav-btn.btn-aber{color:var(--aber-color)}
+.nav-btn.btn-aber.active{background:var(--aber-grad)}
+
+.nav-btn.btn-oder{color:var(--oder-color)}
+.nav-btn.btn-oder.active{background:var(--oder-grad)}
+
+.nav-btn.btn-denn{color:var(--denn-color)}
+.nav-btn.btn-denn.active{background:var(--denn-grad)}
+
+.nav-btn.btn-sondern{color:var(--sondern-color)}
+.nav-btn.btn-sondern.active{background:var(--sondern-grad)}
+
+.nav-btn.btn-ueb{color:var(--ueb-color)}
+.nav-btn.btn-ueb.active{background:var(--ueb-grad)}
+
+.lesson-grid{
+    display:grid;
+    grid-template-columns:
+        minmax(0,2.2fr)
+        minmax(260px,1fr);
+    gap:20px;
+}
+
+.main-content,
+.side-panel{
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:26px;
+    padding:24px;
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+}
+
+.tab-content,
+.side-content{
+    display:none;
+}
+
+.tab-content.active,
+.side-content.active{
+    display:block;
+}
+
+.case-title{
+    margin:0 0 6px;
+    font-size:clamp(1.75rem,4vw,2.35rem);
+    font-weight:900;
+    letter-spacing:-.7px;
+}
+
+.theme-und .case-title{color:var(--und-color)}
+.theme-aber .case-title{color:var(--aber-color)}
+.theme-oder .case-title{color:var(--oder-color)}
+.theme-denn .case-title{color:var(--denn-color)}
+.theme-sondern .case-title{color:var(--sondern-color)}
+.theme-ueb .case-title{color:var(--ueb-color)}
+
+.fr-sub{
+    display:block;
+    font-size:.9rem;
+    color:#374151;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.section-toggle{
+    width:100%;
+    border:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:17px 18px;
+    margin:20px 0 10px;
+    border-radius:18px;
+    background:rgba(255,255,255,.48);
+    border:1px solid rgba(255,255,255,.65);
+    color:#111827;
+    font-family:inherit;
+    font-size:1.08rem;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.section-toggle:hover{
+    background:rgba(255,255,255,.7);
+    transform:translateY(-2px);
+}
+
+.toggle-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.toggle-arrow{
+    width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:rgba(255,255,255,.7);
+    transition:.25s;
+}
+
+.section-toggle.open .toggle-arrow{
+    transform:rotate(90deg);
+}
+
+.section-content{
+    display:none;
+    animation:sectionOpen .25s ease;
+}
+
+.section-content.open{
+    display:block;
+}
+
+@keyframes sectionOpen{
+    from{
+        opacity:0;
+        transform:translateY(-5px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.grammar-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    overflow:hidden;
+    border-radius:16px;
+    margin:14px 0 24px;
+    box-shadow:0 5px 16px rgba(0,0,0,.07);
+}
+
+.grammar-table th,
+.grammar-table td{
+    padding:12px;
+    text-align:left;
+    font-size:.9rem;
+}
+
+.grammar-table tr{
+    background:rgba(255,255,255,.92);
+}
+
+.grammar-table tr:nth-child(even){
+    background:rgba(248,250,252,.92);
+}
+
+.theme-und .grammar-table th{background:#dbeafe;color:var(--und-color)}
+.theme-aber .grammar-table th{background:#d1fae5;color:var(--aber-color)}
+.theme-oder .grammar-table th{background:#ede9fe;color:var(--oder-color)}
+.theme-denn .grammar-table th{background:#fce7f3;color:var(--denn-color)}
+.theme-sondern .grammar-table th{background:#fef3c7;color:var(--sondern-color)}
+.theme-ueb .grammar-table th{background:#ffe4e6;color:var(--ueb-color)}
+
+.play-btn{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#ff7a00;
+    color:white;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 5px 12px rgba(0,0,0,.18);
+    transition:.2s;
+    flex-shrink:0;
+}
+
+.play-btn:hover{
+    transform:scale(1.12);
+    background:#ff5a00;
+}
+
+.play-triangle{
+    width:0;
+    height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:11px solid white;
+    margin-left:3px;
+}
+
+.example-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.example-card{
+    background:rgba(255,255,255,.92);
+    padding:14px 15px;
+    border-radius:15px;
+    border-left:6px solid #cbd5e1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.theme-und .example-card{border-left-color:var(--und-color)}
+.theme-aber .example-card{border-left-color:var(--aber-color)}
+.theme-oder .example-card{border-left-color:var(--oder-color)}
+.theme-denn .example-card{border-left-color:var(--denn-color)}
+.theme-sondern .example-card{border-left-color:var(--sondern-color)}
+.theme-ueb .example-card{border-left-color:var(--ueb-color)}
+
+.ex-de{
+    font-weight:900;
+    font-size:1rem;
+}
+
+.ex-fr{
+    font-size:.84rem;
+    color:#64748b;
+    margin-top:3px;
+    font-weight:600;
+}
+
+.ex-mg{
+    font-size:.84rem;
+    color:#059669;
+    margin-top:2px;
+    font-weight:700;
+}
+
+.side-panel{
+    height:max-content;
+    position:sticky;
+    top:15px;
+}
+
+.merkhilfe{
+    padding:4px 2px 5px;
+}
+
+.merkhilfe h3{
+    color:#111827;
+    margin-top:0;
+    margin-bottom:8px;
+    font-size:1.2rem;
+}
+
+.merkhilfe p{
+    margin:6px 0;
+    font-size:.87rem;
+    font-weight:700;
+    line-height:1.55;
+}
+
+.merk-beispiel{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:10px;
+}
+
+.merk-word{
+    padding:7px 10px;
+    border-radius:10px;
+    background:rgba(255,255,255,.6);
+    font-weight:900;
+}
+
+.quiz-container {
+    background: rgba(255,255,255,.92);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+}
+.quiz-question {
+    font-weight: 900;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+.quiz-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.quiz-opt-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all .2s;
+}
+.quiz-opt-btn:hover {
+    background: #f1f5f9;
+}
+.quiz-opt-btn.correct {
+    background: #10b981 !important;
+    color: white;
+    border-color: #10b981;
+}
+.quiz-opt-btn.wrong {
+    background: #ef4444 !important;
+    color: white;
+    border-color: #ef4444;
+}
+.quiz-feedback {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+.footer-back{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+}
+
+.footer-back a{
+    text-decoration:none;
+    background:rgba(0,0,0,.85);
+    color:white;
+    padding:13px 22px;
+    border-radius:15px;
+    font-weight:900;
+}
+
+@media(max-width:900px){
+    .lesson-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    .container{
+        padding:14px 10px 40px;
+    }
+    .header{
+        padding:19px 14px;
+        border-radius:22px;
+    }
+    .main-content,
+    .side-panel{
+        padding:17px;
+        border-radius:21px;
+    }
+    .nav-btn{
+        width:100%;
+    }
+    .grammar-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+    .side-panel{
+        position:static;
+    }
+    .section-toggle{
+        padding:14px;
+        font-size:1rem;
+    }
+}
+</style>
+</head>
+
+<body class="theme-und">
+
+<div class="container">
+
+<header class="topbar" aria-label="Hauptnavigation">
+  <a href="index.html#a1" class="topbar-link" onclick="stopAudio()">← A1-Lektionen</a>
+  <a href="#" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
+</header>
+
+<div class="header">
+    <h1>Konnektoren (mpampifandray)</h1>
+    <p> Ito kosa aloha tonga de hainao</p>
+    <button class="start-lesson-btn" onclick="playLessonStartAudio()">🚀 Lektion Starten</button>
+</div>
+
+<nav class="main-nav" aria-label="Lektion Bereiche">
+    <button class="nav-btn btn-und active" onclick="switchTab('und',this)">
+        1. und (sy)
+    </button>
+    <button class="nav-btn btn-aber" onclick="switchTab('aber',this)">
+        2. aber (fa)
+    </button>
+    <button class="nav-btn btn-oder" onclick="switchTab('oder',this)">
+        3. oder (na)
+    </button>
+    <button class="nav-btn btn-denn" onclick="switchTab('denn',this)">
+        4. denn (satria)
+    </button>
+    <button class="nav-btn btn-sondern" onclick="switchTab('sondern',this)">
+        5. sondern (fa ihany koa)
+    </button>
+    <button class="nav-btn btn-ueb" onclick="switchTab('uebungen',this)">
+        Übungen
+    </button>
+</nav>
+
+<div class="lesson-grid">
+
+<div class="main-content">
+
+<!-- 1. UND -->
+<div id="und" class="tab-content active">
+    <h2 class="case-title">1. „und“ (et / sy)</h2>
+    <span class="fr-sub">Addition und Ergänzung von Informationen • Malagasy: <strong>sy</strong></span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Grammatik & Position 0</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
+            <p style="margin-top:0; font-weight:700; line-height:1.6;">
+                Das Wort <strong>„und“</strong> (= <strong>sy</strong>) verbindet zwei Hauptsätze oder Satzteile miteinander. Es steht auf der <strong>Position 0</strong> und verändert die normale Wortstellung (Subjekt + Verb + Objekt) <em>nicht</em>.
+            </p>
+            <table class="grammar-table">
+                <thead>
+                    <tr>
+                        <th>Hauptsatz 1</th>
+                        <th>Pos. 0</th>
+                        <th>Hauptsatz 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ich trinke Kaffee</td>
+                        <td><strong>und (sy)</strong></td>
+                        <td>ich esse ein Brötchen.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Alltagssätze</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich trinke Kaffee <strong>und</strong> ich esse ein Brötchen.</div>
+                    <div class="ex-fr">Je bois du café et je mange un petit pain.</div>
+                    <div class="ex-mg">🇲🇬 Mihinam-brotchen <strong>sy</strong> misotro kafe aho.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich trinke Kaffee und ich esse ein Brötchen.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Anna singt <strong>und</strong> Tom tanzt.</div>
+                    <div class="ex-fr">Anna chante et Tom danse.</div>
+                    <div class="ex-mg">🇲🇬 Mihira Anna <strong>sy</strong> mandihy Tom.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Anna singt und Tom tanzt.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. ABER -->
+<div id="aber" class="tab-content">
+    <h2 class="case-title">2. „aber“ (mais / fa)</h2>
+    <span class="fr-sub">Gegensatz und unerwartete Einschränkung • Malagasy: <strong>fa</strong></span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Grammatik & Verwendung</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
+            <p style="margin-top:0; font-weight:700; line-height:1.6;">
+                Mit <strong>„aber“</strong> (= <strong>fa</strong>) drückst du einen Gegensatz oder eine Einschränkung aus. Auch hier bleibt die Wortstellung nach dem Konnektor unverändert.
+            </p>
+            <table class="grammar-table">
+                <thead>
+                    <tr>
+                        <th>Hauptsatz 1</th>
+                        <th>Pos. 0</th>
+                        <th>Hauptsatz 2 (Einschränkung)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ich habe heute frei,</td>
+                        <td><strong>aber (fa)</strong></td>
+                        <td>ich muss viel lernen.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Alltagssätze</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich habe heute frei, <strong>aber</strong> ich muss viel lernen.</div>
+                    <div class="ex-fr">J'ai congé aujourd'hui, mais je dois beaucoup étudier.</div>
+                    <div class="ex-mg">🇲🇬 Maimaim-poana aho androany, <strong>fa</strong> tsy maintsy mianatra be.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich habe heute frei, aber ich muss viel lernen.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Das Wetter ist schön, <strong>aber</strong> es ist kalt.</div>
+                    <div class="ex-fr">Il fait beau, mais il fait froid.</div>
+                    <div class="ex-mg">🇲🇬 Tsara ny andro, <strong>fa</strong> mangatsiaka.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Das Wetter ist schön, aber es ist kalt.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 3. ODER -->
+<div id="oder" class="tab-content">
+    <h2 class="case-title">3. „oder“ (ou / na)</h2>
+    <span class="fr-sub">Alternativen und Auswahlmöglichkeiten • Malagasy: <strong>na</strong></span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Grammatik & Verwendung</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
+            <p style="margin-top:0; font-weight:700; line-height:1.6;">
+                <strong>„Oder“</strong> (= <strong>na</strong>) stellt zwei Optionen oder Möglichkeiten gegenüber, zwischen denen man wählen kann.
+            </p>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Alltagssätze</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Trinkst du Tee <strong>oder</strong> trinkst du Wasser?</div>
+                    <div class="ex-fr">Tu bois du thé ou tu bois de l'eau ?</div>
+                    <div class="ex-mg">🇲🇬 Misotro dite ve ianao <strong>na</strong> misotro rano?</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Trinkst du Tee oder trinkst du Wasser?')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Fahren wir nach Berlin <strong>oder</strong> nach Hamburg?</div>
+                    <div class="ex-fr">Allons-nous à Berlin ou à Hambourg ?</div>
+                    <div class="ex-mg">🇲🇬 Handeha ho any Berlin ve isika <strong>na</strong> ho any Hamburg?</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Fahren wir nach Berlin oder nach Hamburg?')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4. DENN -->
+<div id="denn" class="tab-content">
+    <h2 class="case-title">4. „denn“ (car / satria)</h2>
+    <span class="fr-sub">Begründung und Ursache (Position 0) • Malagasy: <strong>satria</strong></span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Grammatik & Verwendung</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
+            <p style="margin-top:0; font-weight:700; line-height:1.6;">
+                Mit <strong>„denn“</strong> (= <strong>satria</strong>) nennst du einen Grund. Wichtig für A1: Im Gegensatz zu <em>weil</em> bleibt bei <em>denn</em> das konjugierte Verb direkt auf Position 2 im zweiten Satz!
+            </p>
+            <table class="grammar-table">
+                <thead>
+                    <tr>
+                        <th>Hauptsatz</th>
+                        <th>Pos. 0</th>
+                        <th>Hauptsatz (Grund, Subjekt + Verb...)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Anna bleibt zu Hause,</td>
+                        <td><strong>denn (satria)</strong></td>
+                        <td>sie <strong>ist</strong> krank.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Alltagssätze</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Anna bleibt zu Hause, <strong>denn</strong> sie ist krank.</div>
+                    <div class="ex-fr">Anna reste à la maison, car elle est malade.</div>
+                    <div class="ex-mg">🇲🇬 Mijanona ao an-trano i Anna <strong>satria</strong> marary izy.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Anna bleibt zu Hause, denn sie ist krank.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich kaufe das Buch, <strong>denn</strong> es ist sehr interessant.</div>
+                    <div class="ex-fr">J'achète le livre, car il est très intéressant.</div>
+                    <div class="ex-mg">🇲🇬 Mividy ilay boky aho <strong>satria</strong> mahaliana be izy.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich kaufe das Buch, denn es ist sehr interessant.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 5. SONDERN -->
+<div id="sondern" class="tab-content">
+    <h2 class="case-title">5. „sondern“ (mais plutôt / fa ihany koa)</h2>
+    <span class="fr-sub">Korrektur nach einer Verneinung • Malagasy: <strong>fa ihany koa</strong></span>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Grammatik & Verwendung</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
+            <p style="margin-top:0; font-weight:700; line-height:1.6;">
+                <strong>„Sondern“</strong> (= <strong>fa ihany koa</strong>) wird nach einer Verneinung (oft <em>nicht</em> oder <em>kein</em>) verwendet, um das Gegenteil zu korrigieren.
+            </p>
+        </div>
+    </div>
+
+    <button class="section-toggle" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Beispiele & Alltagssätze</span>
+        </span>
+    </button>
+    <div class="section-content">
+        <div class="example-list">
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Ich trinke keinen Kaffee, <strong>sondern</strong> ich trinke Tee.</div>
+                    <div class="ex-fr">Je ne bois pas de café, mais plutôt du thé.</div>
+                    <div class="ex-mg">🇲🇬 Tsy misotro kafe aho, <strong>fa ihany koa</strong> misotro dite.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Ich trinke keinen Kaffee, sondern ich trinke Tee.')"><span class="play-triangle"></span></button>
+            </div>
+            <div class="example-card">
+                <div>
+                    <div class="ex-de">Das ist kein Hund, <strong>sondern</strong> das ist eine Katze.</div>
+                    <div class="ex-fr">Ce n'est pas un chien, mais c'est un chat.</div>
+                    <div class="ex-mg">🇲🇬 Tsy alika io, <strong>fa ihany koa</strong> saka.</div>
+                </div>
+                <button class="play-btn" onclick="playAudio('Das ist kein Hund, sondern das ist eine Katze.')"><span class="play-triangle"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ÜBUNGEN -->
+<div id="uebungen" class="tab-content">
+    <h2 class="case-title">Interaktive Übungen</h2>
+    <span class="fr-sub">Teste dein Wissen über Konnektoren</span>
+
+    <button class="section-toggle open" onclick="toggleSection(this)">
+        <span class="toggle-left">
+            <span class="toggle-arrow">▶</span>
+            <span>Mini-Quiz: Wähle den richtigen Konnektor</span>
+        </span>
+    </button>
+    <div class="section-content open">
+        <div class="quiz-container">
+            <div class="quiz-question">1. Ich habe heute frei, _____ ich muss arbeiten. (fa)</div>
+            <div class="quiz-options">
+                <button class="quiz-opt-btn" onclick="checkQuiz(this, false, 'Leider falsch! Hier haben wir einen Gegensatz. Richtig ist: aber (fa)')">und (sy)</button>
+                <button class="quiz-opt-btn" onclick="checkQuiz(this, true, 'Richtig! „aber“ (= fa) drückt hier den Gegensatz aus.')">aber (fa)</button>
+                <button class="quiz-opt-btn" onclick="checkQuiz(this, false, 'Falsch. Probiere es nochmal!')">oder (na)</button>
+            </div>
+            <div class="quiz-feedback" id="fb-1"></div>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question">2. Anna lernt Deutsch, _____ sie wohnt in Berlin. (satria)</div>
+            <div class="quiz-options">
+                <button class="quiz-opt-btn" onclick="checkQuiz2(this, true, 'Richtig! „denn“ (= satria) nennt den Grund.')">denn (satria)</button>
+                <button class="quiz-opt-btn" onclick="checkQuiz2(this, false, 'Falsch. Es wird ein Grund genannt.')">sondern (fa ihany koa)</button>
+                <button class="quiz-opt-btn" onclick="checkQuiz2(this, false, 'Falsch. Versuche es nochmal.')">aber (fa)</button>
+            </div>
+            <div class="quiz-feedback" id="fb-2"></div>
+        </div>
+
+        <div style="background:rgba(255,255,255,.92); padding:16px; border-radius:15px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 12px rgba(0,0,0,.05); margin-top:20px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:1.8rem;">📄</span>
+                <div>
+                    <div style="font-weight:900; font-size:1rem; color:var(--ueb-color);">Übungsblatt Konnektoren A1.pdf</div>
+                    <div style="font-size:0.82rem; color:#64748b; font-weight:600;">A1 Niveau • Zum Herunterladen</div>
+                </div>
+            </div>
+            <a href="#" onclick="alert('Téléchargement simulé réussi !'); return false;" style="background:var(--ueb-grad); color:white; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:900; font-size:0.9rem; box-shadow:0 4px 12px rgba(225,29,72,0.3);">📥 Télécharger</a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="side-panel">
+
+    <div id="side-und" class="side-content active">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe: und = sy</h3>
+            <p><strong>und</strong> (sy) verbindet gleichwertige Ideen.</p>
+            <p>Die Wortstellung bleibt unverändert (Position 0).</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">und = sy</div>
+                <div class="merk-word">Pos. 0</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-aber" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe: aber = fa</h3>
+            <p><strong>aber</strong> (fa) zeigt einen Gegensatz oder eine Einschränkung auf.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">aber = fa</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-oder" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe: oder = na</h3>
+            <p><strong>oder</strong> (na) präsentiert eine Alternative oder Wahl.</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">oder = na</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-denn" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe: denn = satria</h3>
+            <p><strong>denn</strong> (satria) gibt einen Grund an. Das Verb bleibt an Position 2!</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">denn = satria</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-sondern" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe: sondern = fa ihany koa</h3>
+            <p><strong>sondern</strong> (fa ihany koa) korrigiert eine vorherige Verneinung (nicht ... sondern ...).</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">sondern = fa ihany koa</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="side-uebungen" class="side-content">
+        <div class="merkhilfe">
+            <h3>💡 Merkhilfe</h3>
+            <p>Wiederhole regelmäßig die Konnektoren, um flüssiger zu sprechen!</p>
+            <div class="merk-beispiel">
+                <div class="merk-word">Viel Erfolg!</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="footer-back">
+    <a href="#">
+        ← Zurück zu den A1 Lektionen
+    </a>
+</div>
+
+</div>
+
+<script>
+function switchTab(caseName, button){
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+    document.querySelectorAll('.side-content').forEach(side => side.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+    document.body.className = 'theme-' + caseName;
+
+    const activeTab = document.getElementById(caseName);
+    if(activeTab) {
+        activeTab.classList.add('active');
+    }
+    const sideContent = document.getElementById('side-' + caseName);
+    if(sideContent) {
+        sideContent.classList.add('active');
+    }
+    button.classList.add('active');
+
+    if(caseName === 'uebungen'){
+        playAudio('Übungen');
+    } else {
+        playAudio(caseName);
+    }
+}
+
+function toggleSection(button){
+    const content = button.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+
+    if(isOpen){
+        content.classList.remove('open');
+        button.classList.remove('open');
+    }else{
+        content.classList.add('open');
+        button.classList.add('open');
+        const sectionText = content.innerText.trim();
+        if(sectionText){
+            playAudio(sectionText);
+        }
+    }
+}
+
+function stopAudio(){
+    if('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
+    }
+}
+
+function playLessonStartAudio(){
+    playAudio("Konnektoren A1 Lektion starten.");
+}
+
+function playAudio(text){
+    if('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'de-DE';
+        utterance.rate = 0.88;
+        window.speechSynthesis.speak(utterance);
+    } else {
+        console.log('Audio speech synthesis not supported for: ' + text);
+    }
+}
+
+function checkQuiz(btn, isCorrect, message) {
+    const container = btn.closest('.quiz-container');
+    const buttons = container.querySelectorAll('.quiz-opt-btn');
+    buttons.forEach(b => {
+        b.classList.remove('correct', 'wrong');
+    });
+    
+    const feedback = container.querySelector('#fb-1');
+    if(isCorrect) {
+        btn.classList.add('correct');
+        feedback.style.color = '#059669';
+        feedback.textContent = message;
+        playAudio('Richtig!');
+    } else {
+        btn.classList.add('wrong');
+        feedback.style.color = '#dc2626';
+        feedback.textContent = message;
+        playAudio('Falsch');
+    }
+}
+
+function checkQuiz2(btn, isCorrect, message) {
+    const container = btn.closest('.quiz-container');
+    const buttons = container.querySelectorAll('.quiz-opt-btn');
+    buttons.forEach(b => {
+        b.classList.remove('correct', 'wrong');
+    });
+    
+    const feedback = container.querySelector('#fb-2');
+    if(isCorrect) {
+        btn.classList.add('correct');
+        feedback.style.color = '#059669';
+        feedback.textContent = message;
+        playAudio('Richtig!');
+    } else {
+        btn.classList.add('wrong');
+        feedback.style.color = '#dc2626';
+        feedback.textContent = message;
+        playAudio('Falsch');
+    }
+}
+</script>
+
+</body>
+</html>
