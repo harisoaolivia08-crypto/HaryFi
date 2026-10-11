@@ -581,13 +581,13 @@ body{
     <h2 class="case-title">1. „und“ (et / sy)</h2>
     <span class="fr-sub">Addition und Ergänzung von Informationen • Malagasy: <strong>sy</strong></span>
 
-    <button class="section-toggle open" onclick="toggleSection(this)">
+    <button class="section-toggle" onclick="toggleSection(this)">
         <span class="toggle-left">
             <span class="toggle-arrow">▶</span>
             <span>Grammatik & Position 0</span>
         </span>
     </button>
-    <div class="section-content open">
+    <div class="section-content">
         <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
             <p style="margin-top:0; font-weight:700; line-height:1.6;">
                 Das Wort <strong>„und“</strong> (= <strong>sy</strong>) verbindet zwei Hauptsätze oder Satzteile miteinander. Es steht auf der <strong>Position 0</strong> und verändert die normale Wortstellung (Subjekt + Verb + Objekt) <em>nicht</em>.
@@ -644,13 +644,13 @@ body{
     <h2 class="case-title">2. „aber“ (mais / fa)</h2>
     <span class="fr-sub">Gegensatz und unerwartete Einschränkung • Malagasy: <strong>fa</strong></span>
 
-    <button class="section-toggle open" onclick="toggleSection(this)">
+    <button class="section-toggle" onclick="toggleSection(this)">
         <span class="toggle-left">
             <span class="toggle-arrow">▶</span>
             <span>Grammatik & Verwendung</span>
         </span>
     </button>
-    <div class="section-content open">
+    <div class="section-content">
         <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
             <p style="margin-top:0; font-weight:700; line-height:1.6;">
                 Mit <strong>„aber“</strong> (= <strong>fa</strong>) drückst du einen Gegensatz oder eine Einschränkung aus. Auch hier bleibt die Wortstellung nach dem Konnektor unverändert.
@@ -707,13 +707,13 @@ body{
     <h2 class="case-title">3. „oder“ (ou / na)</h2>
     <span class="fr-sub">Alternativen und Auswahlmöglichkeiten • Malagasy: <strong>na</strong></span>
 
-    <button class="section-toggle open" onclick="toggleSection(this)">
+    <button class="section-toggle" onclick="toggleSection(this)">
         <span class="toggle-left">
             <span class="toggle-arrow">▶</span>
             <span>Grammatik & Verwendung</span>
         </span>
     </button>
-    <div class="section-content open">
+    <div class="section-content">
         <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
             <p style="margin-top:0; font-weight:700; line-height:1.6;">
                 <strong>„Oder“</strong> (= <strong>na</strong>) stellt zwei Optionen oder Möglichkeiten gegenüber, zwischen denen man wählen kann.
@@ -754,13 +754,13 @@ body{
     <h2 class="case-title">4. „denn“ (car / satria)</h2>
     <span class="fr-sub">Begründung und Ursache (Position 0) • Malagasy: <strong>satria</strong></span>
 
-    <button class="section-toggle open" onclick="toggleSection(this)">
+    <button class="section-toggle" onclick="toggleSection(this)">
         <span class="toggle-left">
             <span class="toggle-arrow">▶</span>
             <span>Grammatik & Verwendung</span>
         </span>
     </button>
-    <div class="section-content open">
+    <div class="section-content">
         <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
             <p style="margin-top:0; font-weight:700; line-height:1.6;">
                 Mit <strong>„denn“</strong> (= <strong>satria</strong>) nennst du einen Grund. Wichtig für A1: Im Gegensatz zu <em>weil</em> bleibt bei <em>denn</em> das konjugierte Verb direkt auf Position 2 im zweiten Satz!
@@ -817,13 +817,13 @@ body{
     <h2 class="case-title">5. „sondern“ (mais plutôt / fa ihany koa)</h2>
     <span class="fr-sub">Korrektur nach einer Verneinung • Malagasy: <strong>fa ihany koa</strong></span>
 
-    <button class="section-toggle open" onclick="toggleSection(this)">
+    <button class="section-toggle" onclick="toggleSection(this)">
         <span class="toggle-left">
             <span class="toggle-arrow">▶</span>
             <span>Grammatik & Verwendung</span>
         </span>
     </button>
-    <div class="section-content open">
+    <div class="section-content">
         <div style="background:rgba(255,255,255,.92); padding:18px; border-radius:16px; margin-bottom:14px;">
             <p style="margin-top:0; font-weight:700; line-height:1.6;">
                 <strong>„Sondern“</strong> (= <strong>fa ihany koa</strong>) wird nach einer Verneinung (oft <em>nicht</em> oder <em>kein</em>) verwendet, um das Gegenteil zu korrigieren.
@@ -1017,6 +1017,10 @@ function toggleSection(button){
     }else{
         content.classList.add('open');
         button.classList.add('open');
+        const sectionText = content.innerText.trim();
+        if(sectionText){
+            playAudio(sectionText);
+        }
     }
 }
 
