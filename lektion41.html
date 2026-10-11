@@ -541,7 +541,7 @@ body{
 <div class="container">
 
 <header class="topbar" aria-label="Hauptnavigation">
-  <a href="#" class="topbar-link">← A1-Lektionen</a>
+  <a href="#" class="topbar-link" onclick="stopAudio()">← A1-Lektionen</a>
   <a href="#" class="topbar-brand" aria-label="HaryFi Startseite">HaryFi 🇩🇪</a>
 </header>
 
@@ -1021,6 +1021,12 @@ function toggleSection(button){
         if(sectionText){
             playAudio(sectionText);
         }
+    }
+}
+
+function stopAudio(){
+    if('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
     }
 }
 
