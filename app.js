@@ -22,10 +22,10 @@ function openLektion21() { window.location.href = "lektion21.html"; }
 function openLektion51() { window.location.href = "lektion51.html"; }
 
 const a1Lessons = [
-    "Alphabet & Aussprache", "Begrüßung & Verabschiedung", "Personalpronomen & Reflexivpronomen", "Verben", "Uhrzeit", "W-Fragen & Antworten", "Nominativ, Akkusativ & Dativ", "Trennbare Verben", "Reflexive Verben", "Zahlen", "Kalender & Datum", "Monate & Jahreszeiten", "Wohnen & Wohnung", "Möbel & Haushalt", "Essen & Trinken", "Einkaufen & Essen", "Freizeit & Hobbys", "Tagesablauf", "Schule & Arbeit", "Stadt & Orte", "Wegbeschreibung", "Possessivartikel", "Akkusativ", "Dativ – Grundlagen", "Präpositionen", "Trennbare Verben", "Imperativ", "Perfekt – Grundlagen", "Komparativ & Superlativ", "Konnektoren & Bindewörter", "Alltagssituationen", "Telefonieren & Nachrichten", "Termine & Verabredungen", "Schreiben & E-Mail", "Hörverstehen", "Leseverstehen", "Sprechen & Dialoge", "A1-Wortschatz", "A1-Wiederholung & Prüfungsvorbereitung", "Plural, Zahlen & Mengen"
+    "Alphabet & Aussprache", "Begrüßung & Verabschiedung", "Personalpronomen & Reflexivpronomen", "Verben", "Uhrzeit", "W-Fragen & Antworten", "Nominativ, Akkusativ & Dativ", "Trennbare Verben", "Reflexive Verben", "Zahlen", "Kalender & Datum", "Monate & Jahreszeiten", "Familie", "Berufe", "Wohnen & Wohnung", "Kleidung & Farben", "Freizeit & Hobbys", "Tagesablauf", "Stadt & Orte", "Wegbeschreibung", "Verkehr & Reisen", "Wetter", "Körper & Gesundheit", "Possessivartikel", "Präpositionen", "Trennbare Verben", "Imperativ", "Perfekt – Grundlagen", "Komparativ & Superlativ", "Konnektoren & Bindewörter", "Alltagssituationen", "Telefonieren & Nachrichten", "Termine & Verabredungen", "Schreiben & E-Mail", "Hörverstehen", "Leseverstehen", "Sprechen & Dialoge", "A1-Wortschatz", "A1-Wiederholung & Prüfungsvorbereitung", "Plural, Zahlen & Mengen"
 ];
 
-const a1LessonFileNumbers = Array.from({ length: 51 }, (_, index) => index + 1).filter(number => ![9, 11, 13, 16, 17, 22, 28, 29, 31, 32].includes(number));
+const a1LessonFileNumbers = Array.from({ length: 51 }, (_, index) => index + 1).filter(number => ![9, 11, 13, 19, 20, 25, 31, 32, 34, 35].includes(number));
 
 function createLessonList() {
     const container = document.getElementById("lessonList");
