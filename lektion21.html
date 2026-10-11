@@ -60,18 +60,17 @@ button{font-family:inherit;cursor:pointer}
 /* En-tête de section (Titre + Bouton Start à droite) */
 .section-header{
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
+  flex-direction:column;
+  align-items:stretch;
+  gap:12px;
   margin-bottom:6px;
 }
 .section-header h2{
-  flex:1;
   min-width:0;
 }
 .section-header .section-start-btn{
-  margin:0;
-  flex-shrink:0;
+  align-self:center;
+  margin:0 auto;
 }
 .section-start-btn{
   display:block;
@@ -79,9 +78,9 @@ button{font-family:inherit;cursor:pointer}
   background:linear-gradient(135deg,#ff7a00,#ff4d00);
   color:white;
   border:0;
-  padding:22.5px 40.5px;
-  border-radius:31.5px;
-  font-size:2.025rem;
+  padding:15px 27px;
+  border-radius:21px;
+  font-size:1.35rem;
   font-weight:900;
   box-shadow:0 4px 12px rgba(255,122,0,0.3);
   white-space:nowrap;
