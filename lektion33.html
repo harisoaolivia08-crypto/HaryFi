@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A1 – Beruf • Schule • Arbeit</title>
+<style>
+:root{--blue:#2457a7;--pale:#eef5ff;--green:#19734b;--ink:#202938;--line:#dbe3ee}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(135deg,#17427f,#3976c9);color:white;padding:28px 18px;text-align:center}header h1{margin:0 0 6px;font-size:clamp(1.6rem,5vw,2.3rem)}header p{margin:0}
+main{max-width:900px;margin:20px auto;padding:0 14px 36px}.intro,.lesson{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #17345b0b}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}nav a{background:var(--pale);color:var(--blue);padding:8px 12px;border-radius:20px;text-decoration:none;font-weight:700;font-size:.92rem}
+h2{font-size:1.35rem;color:var(--blue);margin-top:0}h3{font-size:1.05rem;margin-bottom:6px}.tag{display:inline-block;background:#e7f6ee;color:var(--green);border-radius:8px;padding:3px 9px;font-size:.82rem;font-weight:700}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{padding:9px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--pale)}button{border:0;border-radius:9px;padding:9px 12px;background:var(--blue);color:white;font-weight:700;cursor:pointer;margin:4px 3px 4px 0}button.secondary{background:#e8eef8;color:#23436f}.word{display:inline-block;background:#f0f5fc;border-radius:8px;padding:4px 8px;margin:3px}
+.dialog{background:#f8fbff;border-left:4px solid #6c9ce2;padding:10px 13px;margin:8px 0;border-radius:6px}.exercise{border:1px solid var(--line);border-radius:12px;padding:13px;margin:12px 0}.exercise input{padding:8px;border:1px solid #aab8ca;border-radius:7px;max-width:100%;width:190px}.feedback{font-weight:700;margin-left:6px}.good{color:var(--green)}.bad{color:#b42318}.small{font-size:.9rem;color:#526174}footer{text-align:center;color:#607086;padding:15px}
+@media(max-width:600px){th,td{padding:7px;font-size:.93rem}.intro,.lesson{padding:14px}}
+</style>
+</head>
+<body>
+<header><h1>Beruf • Schule • Arbeit</h1><p>Deutsch lernen – Niveau A1</p></header>
+<main>
+<section class="intro"><span class="tag">Lektion A1</span><h2>Was lernst du?</h2><p>In dieser Lektion lernst du einfache Wörter und Sätze über Berufe, Schule, Arbeit und Arbeitsorte.</p><p><strong>Lernziele:</strong> einen Beruf nennen, über die Ausbildung sprechen und sagen, wo man arbeitet.</p><nav><a href="#berufe">1. Berufe</a><a href="#schule">2. Schule und Ausbildung</a><a href="#arbeit">3. Arbeit</a><a href="#orte">4. Arbeitsorte</a><a href="#sprechen">5. Sprechen</a><a href="#uebungen">Übungen</a></nav></section>
+<section class="lesson" id="berufe"><h2>1. Berufe – Welche Berufe gibt es?</h2><p>Höre das Wort und sprich nach.</p><table><thead><tr><th>Beruf</th><th>Beispielsatz</th><th>Audio</th></tr></thead><tbody>
+<tr><td>der Arzt / die Ärztin</td><td>Der Arzt hilft kranken Menschen.</td><td><button onclick="speak('der Arzt, die Ärztin')">🔊 Hören</button></td></tr>
+<tr><td>der Lehrer / die Lehrerin</td><td>Die Lehrerin arbeitet in einer Schule.</td><td><button onclick="speak('der Lehrer, die Lehrerin')">🔊 Hören</button></td></tr>
+<tr><td>der Koch / die Köchin</td><td>Der Koch kocht Essen.</td><td><button onclick="speak('der Koch, die Köchin')">🔊 Hören</button></td></tr>
+<tr><td>der Verkäufer / die Verkäuferin</td><td>Die Verkäuferin arbeitet im Geschäft.</td><td><button onclick="speak('der Verkäufer, die Verkäuferin')">🔊 Hören</button></td></tr>
+<tr><td>der Pfleger / die Pflegefachfrau</td><td>Die Pflegefachfrau pflegt Menschen.</td><td><button onclick="speak('der Pfleger, die Pflegefachfrau')">🔊 Hören</button></td></tr>
+<tr><td>der Fahrer / die Fahrerin</td><td>Der Fahrer fährt einen Bus.</td><td><button onclick="speak('der Fahrer, die Fahrerin')">🔊 Hören</button></td></tr>
+</tbody></table><h3>Wichtige Frage</h3><div class="dialog"><strong>Was bist du von Beruf?</strong><br>Ich bin Pflegefachfrau in Ausbildung.<br><strong>Was machst du beruflich?</strong><br>Ich mache eine Ausbildung in der Pflege.</div></section>
+<section class="lesson" id="schule"><h2>2. Schule und Ausbildung</h2><p>Diese Wörter sind wichtig:</p><p><span class="word">die Schule</span><span class="word">die Ausbildung</span><span class="word">der Unterricht</span><span class="word">die Prüfung</span><span class="word">lernen</span><span class="word">üben</span><span class="word">die Lehrkraft</span><span class="word">die Klasse</span></p><table><tr><th>Frage</th><th>Antwort</th></tr><tr><td>Wo lernst du?</td><td>Ich lerne in der Schule und in der Praxis.</td></tr><tr><td>Was lernst du?</td><td>Ich lerne Deutsch und Pflege.</td></tr><tr><td>Wann hast du Unterricht?</td><td>Ich habe heute Unterricht.</td></tr><tr><td>Hast du eine Prüfung?</td><td>Ja, ich habe nächste Woche eine Prüfung.</td></tr></table><button onclick="speak('Ich mache eine Ausbildung. Ich lerne in der Schule und in der Praxis.')">🔊 Sätze hören</button></section>
+<section class="lesson" id="arbeit"><h2>3. Arbeit – Was machst du?</h2><p><strong>Verben:</strong> arbeiten, lernen, helfen, pflegen, kochen, verkaufen, fahren.</p><table><tr><th>Person</th><th>arbeiten</th><th>lernen</th></tr><tr><td>ich</td><td>ich arbeite</td><td>ich lerne</td></tr><tr><td>du</td><td>du arbeitest</td><td>du lernst</td></tr><tr><td>er/sie</td><td>er/sie arbeitet</td><td>er/sie lernt</td></tr><tr><td>wir</td><td>wir arbeiten</td><td>wir lernen</td></tr></table><div class="dialog"><strong>Wie ist deine Arbeit?</strong><br>Meine Arbeit ist interessant.<br><strong>Arbeitest du gern?</strong><br>Ja, ich arbeite gern. Ich helfe gern Menschen.<br><strong>Wann arbeitest du?</strong><br>Ich arbeite am Morgen / am Nachmittag / in der Nacht.</div><button onclick="speak('Meine Ausbildung läuft gut. Ich sammle neue Erfahrungen. Ich finde die Arbeit interessant und sinnvoll.')">🔊 Beispiel hören</button></section>
+<section class="lesson" id="orte"><h2>4. Arbeitsorte – Wo arbeitet man?</h2><table><tr><th>Beruf</th><th>Arbeitsort</th></tr><tr><td>Der Arzt / die Ärztin</td><td>im Krankenhaus / in einer Praxis</td></tr><tr><td>Der Lehrer / die Lehrerin</td><td>in der Schule</td></tr><tr><td>Der Koch / die Köchin</td><td>im Restaurant</td></tr><tr><td>Der Verkäufer / die Verkäuferin</td><td>im Geschäft / im Supermarkt</td></tr><tr><td>Die Pflegefachfrau / der Pflegefachmann</td><td>im Krankenhaus / im Pflegeheim</td></tr><tr><td>Der Fahrer / die Fahrerin</td><td>im Bus / im Taxi</td></tr></table><p><strong>Merke:</strong> „in dem“ wird oft zu „im“: in dem Krankenhaus → im Krankenhaus. „in der“ bleibt: in der Schule.</p><button onclick="speak('Ich arbeite im Krankenhaus. Die Lehrerin arbeitet in der Schule. Der Koch arbeitet im Restaurant.')">🔊 Sätze hören</button></section>
+<section class="lesson" id="sprechen"><h2>5. Sprechen – Einfache Dialoge</h2><div class="dialog"><strong>A:</strong> Was machst du?<br><strong>B:</strong> Ich mache eine Ausbildung.<br><strong>A:</strong> Welche Ausbildung machst du?<br><strong>B:</strong> Ich mache eine Ausbildung zur Pflegefachfrau.<br><strong>A:</strong> Wo lernst du?<br><strong>B:</strong> Ich lerne in der Schule und im Krankenhaus.</div><div class="dialog"><strong>A:</strong> Was möchtest du später machen?<br><strong>B:</strong> Ich möchte als Pflegefachfrau arbeiten.<br><strong>A:</strong> Warum?<br><strong>B:</strong> Weil ich gern Menschen helfe.</div><button onclick="speak('Was machst du? Ich mache eine Ausbildung. Welche Ausbildung machst du? Ich mache eine Ausbildung zur Pflegefachfrau. Wo lernst du? Ich lerne in der Schule und im Krankenhaus.')">🔊 Dialog hören</button></section>
+<section class="lesson" id="uebungen"><h2>Übungen</h2><p>Schreibe die passende Antwort. Du kannst die Antwort kontrollieren.</p>
+<div class="exercise"><p><strong>1.</strong> Eine Person, die in der Schule unterrichtet, ist ein …</p><input id="q1" placeholder="Antwort"><button onclick="check('q1',['lehrer','Lehrer','lehrer.'],'f1')">Prüfen</button><span id="f1" class="feedback"></span></div>
+<div class="exercise"><p><strong>2.</strong> Eine Pflegefachfrau arbeitet zum Beispiel im …</p><input id="q2" placeholder="Antwort"><button onclick="check('q2',['krankenhaus','Krankenhaus','pflegeheim','Pflegeheim'],'f2')">Prüfen</button><span id="f2" class="feedback"></span></div>
+<div class="exercise"><p><strong>3.</strong> Ergänze: Ich ___ eine Ausbildung. (machen)</p><input id="q3" placeholder="Antwort"><button onclick="check('q3',['mache'],'f3')">Prüfen</button><span id="f3" class="feedback"></span></div>
+<div class="exercise"><p><strong>4.</strong> Wo arbeitet ein Koch?</p><input id="q4" placeholder="Antwort"><button onclick="check('q4',['im restaurant','restaurant','in einem restaurant'],'f4')">Prüfen</button><span id="f4" class="feedback"></span></div>
+<div class="exercise"><p><strong>5.</strong> Antworte: Was machst du beruflich?</p><input id="q5" placeholder="Deine Antwort"><button onclick="showSample()">Beispiel zeigen</button><span id="f5" class="feedback"></span><p id="sample" class="small"></p></div>
+<button class="secondary" onclick="speechSynthesis.cancel()">⏹ Audio stoppen</button>
+</section>
+<footer>Deutsch A1 · Beruf • Schule • Arbeit</footer>
+</main>
+<script>
+function speak(text){if(!('speechSynthesis' in window)){alert('Die Audiofunktion wird von diesem Browser nicht unterstützt.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.85;speechSynthesis.speak(u)}
+function check(id,answers,feedbackId){const value=document.getElementById(id).value.trim().toLowerCase().replace(/[.!?]/g,'');const ok=answers.some(a=>value===a.toLowerCase().replace(/[.!?]/g,''));const el=document.getElementById(feedbackId);el.textContent=ok?'Richtig!':'Versuche es noch einmal.';el.className='feedback '+(ok?'good':'bad')}
+function showSample(){document.getElementById('sample').textContent='Beispiel: Ich mache eine Ausbildung zur Pflegefachfrau.'}
+</script>
+</body>
+</html>
