@@ -40,7 +40,9 @@ function createLessonList() {
         const name = document.createElement("div"); name.className = "lesson-name"; name.textContent = lesson;
         card.append(number, name);
         const fileNumber = a1LessonFileNumbers[index];
-        if (fileNumber === 1) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
+        // Geburtstag nutzt bewusst die überarbeitete Lektion 27.
+        if (lesson === "Geburtstag") { card.dataset.href = "lektion27.html"; }
+        else if (fileNumber === 1) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
         else if (fileNumber === 2) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
         else if (fileNumber === 16) { card.dataset.href = "lektion16.html"; card.addEventListener("click", openLektion16); }
         else if (fileNumber === 41) { card.dataset.href = "lektion41.html"; card.addEventListener("click", openLektion41); }
