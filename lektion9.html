@@ -86,6 +86,16 @@
         .audio-btn:active {
             transform: scale(0.95);
         }
+    
+        @media print {
+            body { background: white !important; animation: none !important; color: #111 !important; }
+            body * { visibility: hidden !important; }
+            #print-target, #print-target * { visibility: visible !important; }
+            #print-target { position: absolute; inset: 0; width: 100%; padding: 12px; background: white; }
+            #print-target img { height: 110px; object-fit: cover; }
+            #print-target button { display: none !important; }
+        }
+
     </style>
 <style id="haryfi-topbar-style">
 .topbar{
@@ -456,6 +466,40 @@
                 </div>
             </section>
 
+            
+            <section id="wortschatz-druck" class="glass rounded-3xl p-6 md:p-8">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                    <div><p class="font-black text-sm uppercase tracking-widest">A1 · Wortschatz</p><h2 class="text-2xl md:text-3xl font-black">Wichtige reflexive Verben</h2><p class="mt-2 text-sm">Deutsch – Französisch · Lerne zuerst diese Verben.</p></div>
+                    <button type="button" onclick="printSection('wortschatz-druck')" class="bg-black text-white px-4 py-3 rounded-xl font-bold">🖨️ Wortschatz drucken</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=700&q=80" alt="Eine Person wäscht sich die Hände" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich waschen</h3><p class="text-sm">se laver</p><p class="mt-2">Ich wasche mich.</p><button onclick="speak('sich waschen. Ich wasche mich.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=700&q=80" alt="Kleidung zum Anziehen" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich anziehen</h3><p class="text-sm">s’habiller</p><p class="mt-2">Ich ziehe mich an.</p><button onclick="speak('sich anziehen. Ich ziehe mich an.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Eine Person macht sich fertig" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich rasieren</h3><p class="text-sm">se raser</p><p class="mt-2">Er rasiert sich.</p><button onclick="speak('sich rasieren. Er rasiert sich.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" alt="Eine Frau lächelt" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich freuen</h3><p class="text-sm">se réjouir</p><p class="mt-2">Ich freue mich.</p><button onclick="speak('sich freuen. Ich freue mich.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=80" alt="Freunde treffen sich" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich treffen</h3><p class="text-sm">se rencontrer</p><p class="mt-2">Wir treffen uns.</p><button onclick="speak('sich treffen. Wir treffen uns.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                    <article class="vocab-print bg-white/70 rounded-2xl overflow-hidden border border-white/70">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=700&q=80" alt="Eine Person entspannt sich" loading="lazy" class="w-full h-36 object-cover">
+                        <div class="p-4"><h3 class="font-black text-lg">sich ausruhen</h3><p class="text-sm">se reposer</p><p class="mt-2">Ich ruhe mich aus.</p><button onclick="speak('sich ausruhen. Ich ruhe mich aus.')" class="audio-btn mt-2" aria-label="Wort anhören">🔊</button></div>
+                    </article>
+                </div>
+            </section>
+
             <section class="bg-gradient-to-br from-yellow-400 via-amber-400 to-orange-500 rounded-3xl p-6 md:p-8 text-amber-950 shadow-2xl">
                 <div class="flex items-center justify-between mb-6"><div class="flex items-center gap-3"><span class="text-4xl">⭐</span><h2 class="text-2xl md:text-3xl font-black uppercase tracking-tight">Das musst du auf A1 können</h2></div><button class="audio-btn" onclick="speak('Das musst du auf A1 können. Reflexivpronomen: mich, dich, sich, uns, euch, sich. Ich wasche mich. Du wäschst dich. Er wäscht sich. Wir waschen uns. Ihr wascht euch. Sie waschen sich.')" title="Écouter Tout">🔊</button></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="bg-white/40 p-5 rounded-2xl border border-white/60"><h3 class="font-black text-lg mb-2">Reflexivpronomen</h3><div class="text-xl md:text-2xl font-black tracking-wide font-mono">mich – dich – sich – uns – euch – sich</div></div><div class="bg-white/40 p-5 rounded-2xl border border-white/60"><h3 class="font-black text-lg mb-2">Beispiele</h3><ul class="font-extrabold text-sm space-y-1"><li>• Ich wasche mich.</li><li>• Du wäschst dich.</li><li>• Er wäscht sich.</li><li>• Wir waschen uns.</li><li>• Ihr wascht euch.</li><li>• Sie waschen sich.</li></ul></div></div>
@@ -466,6 +510,19 @@
     </main>
 
     <script>
+
+        function printSection(id) {
+            const section = document.getElementById(id);
+            if (!section) return;
+            const old = document.getElementById('print-target');
+            if (old) old.remove();
+            const clone = section.cloneNode(true);
+            clone.id = 'print-target';
+            document.body.appendChild(clone);
+            window.print();
+            clone.remove();
+        }
+
         function speak(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
