@@ -37,9 +37,9 @@ function createLessonList() {
         card.className = "lesson-card";
         card.style.animationDelay = `${index * 0.025}s`;
         const number = document.createElement("div"); number.className = "lesson-number"; number.textContent = String(index + 1).padStart(2, "0");
-        const name = document.createElement("div"); name.className = "lesson-name"; name.textContent = lesson;
+        const name = document.createElement("div"); name.className = "lesson-name"; name.textContent = index === 19 ? "Körper & Gesundheit" : lesson;
         card.append(number, name);
-        const fileNumber = a1LessonFileNumbers[index];
+        const fileNumber = index === 19 ? 20 : a1LessonFileNumbers[index];
         if (fileNumber === 1) { card.dataset.href = "lektion1.html"; card.addEventListener("click", openAlphabet); }
         else if (fileNumber === 2) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
         else if (fileNumber === 16) { card.dataset.href = "lektion16.html"; card.addEventListener("click", openLektion16); }
