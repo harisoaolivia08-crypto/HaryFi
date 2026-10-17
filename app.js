@@ -44,7 +44,7 @@ function createLessonList() {
         else if (fileNumber === 2) { card.dataset.href = "lektion2.html"; card.addEventListener("click", openLektion2); }
         else if (fileNumber === 16) { card.dataset.href = "lektion16.html"; card.addEventListener("click", openLektion16); }
         else if (fileNumber === 41) { card.dataset.href = "lektion41.html"; card.addEventListener("click", openLektion41); }
-        else card.dataset.href = `lektion${fileNumber}.html`;
+        else { card.dataset.href = `lektion${fileNumber}.html`; card.addEventListener("click", () => { window.location.href = card.dataset.href; }); }
         container.appendChild(card);
     });
 }
