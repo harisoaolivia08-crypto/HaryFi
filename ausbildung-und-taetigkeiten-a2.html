@@ -129,5 +129,5 @@ function checkAnswer(btn,correct,message){const box=btn.closest('.check');box.qu
 function countWords(){const t=document.getElementById('writingTask').value.trim();const n=t?t.split(/\s+/).length:0;document.getElementById('wordCount').textContent='Wörter: '+n+(n<80?' · Versuche, 80–100 Wörter zu schreiben.':n<=100?' · Sehr gut, du bist im Zielbereich!':' · Dein Text ist länger als 100 Wörter.')}
 // Start-Audio und Tabsteuerung funktionieren ohne externe Bibliotheken.
 </script>
-</body>
+<script src="audio-bilingual.js" defer></script></body>
 </html>
