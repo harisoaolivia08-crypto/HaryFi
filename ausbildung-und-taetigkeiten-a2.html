@@ -52,15 +52,6 @@ body{margin:0;min-height:100vh;font-family:'Plus Jakarta Sans',Arial,sans-serif;
 <div class="container">
 <div class="top-navigation"><a href="kurs.html?niveau=A2" class="back-button">← A2 Lektionen</a><div class="course-label">Deutsch A2 · Ausbildung</div></div>
 <header class="header"><h1>Ausbildung &amp; Tätigkeiten</h1><p>Berufe · Ausbildung · Vergangenheit · Lebenslauf · Tagesablauf</p><button class="start-lesson-btn" onclick="playLessonStartAudio()">🚀 Lektion starten</button></header>
-<section class="info-box" aria-labelledby="malagasy-title" style="margin:16px 0;border-left:5px solid #0f766e">
-<h2 id="malagasy-title">🇲🇬 Fanazavana amin’ny teny Malagasy</h2>
-<p><strong>Ny lohahevitra:</strong> Ausbildung &amp; Tätigkeiten = fiofanana arak’asa sy asa atao.</p>
-<p><strong>Sich vorstellen:</strong> midika hoe mampahafantatra ny tena. Ohatra: <em>Ich heiße …</em> (… no anarako), <em>Ich komme aus Madagaskar.</em> (Avy eto Madagasikara aho), <em>Ich mache eine Ausbildung.</em> (Miofana arak’asa aho).</p>
-<p><strong>Beruf und Tätigkeit:</strong> ny <em>Beruf</em> dia asa na asa aman-draharaha; ny <em>Tätigkeit</em> dia asa atao na andraikitra. Ohatra: <em>Eine Pflegefachfrau betreut Patienten.</em> = Mikarakara marary ny mpitsabo mpanampy matihanina.</p>
-<p><strong>Perfekt:</strong> ampiasaina hiresahana zavatra efa nitranga. Matetika izy io dia <em>haben/sein + Partizip II</em>. Ohatra: <em>Ich habe gelernt.</em> = Nianatra aho. <em>Ich bin früh aufgestanden.</em> = Nifoha maraina aho.</p>
-<p><strong>Modalverb:</strong> ny <em>müssen</em> dia milaza zavatra tsy maintsy atao: <em>Ich muss heute lernen.</em> = Tsy maintsy mianatra aho androany.</p>
-<button class="start-lesson-btn" onclick="playAudio('Ich heiße. Ich komme aus Madagaskar. Ich mache eine Ausbildung. Ich habe gelernt. Ich muss heute lernen.')">🔊 Henoy ny ohatra amin’ny teny alemà</button>
-</section>
 <nav class="main-nav">
 <button class="nav-btn btn-aus active" onclick="switchTab('ausbildung',this)">1. Sich vorstellen</button><button class="nav-btn btn-ber" onclick="switchTab('berufe',this)">2. Berufe &amp; Tätigkeiten</button><button class="nav-btn btn-ver" onclick="switchTab('vergangenheit',this)">3. Vergangenes</button><button class="nav-btn btn-sch" onclick="switchTab('schule',this)">4. Schule &amp; Ausbildung</button><button class="nav-btn btn-leb" onclick="switchTab('lebenslauf',this)">5. Lebenslauf</button><button class="nav-btn btn-tag" onclick="switchTab('tagesablauf',this)">6. Tagesablauf</button><button class="nav-btn btn-ueb" onclick="switchTab('uebungen',this)">7. Übungen</button>
 </nav>
@@ -132,7 +123,7 @@ window.scrollTo({top:0,behavior:'smooth'});
 }
 function toggleSection(btn){btn.classList.toggle('open');const content=btn.nextElementSibling;if(content&&content.classList.contains('section-content'))content.classList.toggle('open')}
 function toggleVocab(card){card.classList.toggle('open')}
-function playAudio(text){if(!('speechSynthesis' in window)){alert('Die Audiofunktion wird von diesem Browser nicht unterstützt.');return}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.9;u.pitch=1;const voices=window.speechSynthesis.getVoices().filter(v=>v.lang&&v.lang.toLowerCase().startsWith('de'));u.voice=voices.find(v=>/female|weib|katja|petra|helena|anna|vicki|siri.*de|google.*deutsch/i.test(v.name))||voices[0]||null;window.speechSynthesis.speak(u)}
+function playAudio(text){if(!('speechSynthesis' in window)){alert('Die Audiofunktion wird von diesem Browser nicht unterstützt.');return}window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';u.rate=.88;window.speechSynthesis.speak(u)}
 function playLessonStartAudio(){playAudio('Willkommen zur A2-Lektion Ausbildung und Tätigkeiten. Wir lernen Berufe, Ausbildung, das Perfekt, den Lebenslauf und den Tagesablauf. Viel Erfolg!')}
 function checkAnswer(btn,correct,message){const box=btn.closest('.check');box.querySelectorAll('.option').forEach(x=>{x.disabled=true;x.style.opacity='.72'});btn.style.background=correct?'#dcfce7':'#fee2e2';btn.style.border=correct?'2px solid #16a34a':'2px solid #dc2626';const result=box.querySelector('.result');result.textContent=(correct?'✅ ':'❌ ')+message;result.style.color=correct?'#166534':'#991b1b'}
 function countWords(){const t=document.getElementById('writingTask').value.trim();const n=t?t.split(/\s+/).length:0;document.getElementById('wordCount').textContent='Wörter: '+n+(n<80?' · Versuche, 80–100 Wörter zu schreiben.':n<=100?' · Sehr gut, du bist im Zielbereich!':' · Dein Text ist länger als 100 Wörter.')}
