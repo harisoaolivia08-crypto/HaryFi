@@ -153,6 +153,7 @@ const lines=button.parentElement.querySelectorAll('.scene-line');
 lines.forEach((line,i)=>{line.style.animation='none';void line.offsetWidth;line.style.animation='scenePop .55s ease '+(i*.8)+'s both'});
 }
 function openLesson(i){
+if(level==='A2'&&i===0){window.location.href='ausbildung-und-taetigkeiten-a2.html';return;}
 if(level==='A2'&&i===2){window.location.href='geld-und-konsum-a2.html';return;}
 const t=topics[i],c=(CONTENT[level]||CONTENT.A2)[i];
 list.hidden=true;detail.hidden=false;
