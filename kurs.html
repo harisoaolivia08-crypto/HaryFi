@@ -157,6 +157,7 @@ lines.forEach((line,i)=>{line.style.animation='none';void line.offsetWidth;line.
 }
 function openLesson(i){
 if(level==='A2'&&i===0){window.location.href='ausbildung-und-taetigkeiten-a2.html';return;}
+if(level==='A2'&&i===1){window.location.href='hobbys-und-freizeit-a2.html';return;}
 if(level==='A2'&&i===2){window.location.href='geld-und-konsum-a2.html';return;}
 const t=topics[i],c=(CONTENT[level]||CONTENT.A2)[i];
 list.hidden=true;detail.hidden=false;
