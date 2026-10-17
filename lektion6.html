@@ -1058,5 +1058,59 @@ function playAudio(text){
 
 </script>
 
+
+<section id="wortschatz-franzoesisch" class="haryfi-vocab-section">
+  <div class="haryfi-vocab-heading"><div><p class="haryfi-vocab-label">A1 · WICHTIGE WÖRTER</p><h2>Wortschatz: W-Fragen</h2><p>Deutsch · Französisch · kurzer Beispielsatz</p></div><button class="haryfi-print-btn" onclick="haryfiPrintVocab()">🖨️ Wortschatz drucken</button></div>
+  <div class="haryfi-vocab-grid">
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Person" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>wer</h3><p class="haryfi-fr">qui</p><p>Wer ist das?</p><button type="button" onclick="if(typeof speak==='function'){speak('wer. Wer ist das?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('wer. Wer ist das?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article>
+
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=700&q=80" alt="Aktivität" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>was</h3><p class="haryfi-fr">quoi / que</p><p>Was machst du?</p><button type="button" onclick="if(typeof speak==='function'){speak('was. Was machst du?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('was. Was machst du?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article>
+
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80" alt="Wohnung" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>wo</h3><p class="haryfi-fr">où</p><p>Wo wohnst du?</p><button type="button" onclick="if(typeof speak==='function'){speak('wo. Wo wohnst du?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('wo. Wo wohnst du?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article>
+
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" alt="Person" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>woher</h3><p class="haryfi-fr">d’où</p><p>Woher kommst du?</p><button type="button" onclick="if(typeof speak==='function'){speak('woher. Woher kommst du?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('woher. Woher kommst du?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article>
+
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=700&q=80" alt="Kalender" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>wann</h3><p class="haryfi-fr">quand</p><p>Wann beginnt der Kurs?</p><button type="button" onclick="if(typeof speak==='function'){speak('wann. Wann beginnt der Kurs?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('wann. Wann beginnt der Kurs?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article>
+
+      <article class="haryfi-vocab-card">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="Person" loading="lazy">
+        <div class="haryfi-vocab-copy"><h3>wie</h3><p class="haryfi-fr">comment</p><p>Wie heißt du?</p><button type="button" onclick="if(typeof speak==='function'){speak('wie. Wie heißt du?')}else if('speechSynthesis' in window){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance('wie. Wie heißt du?');u.lang='de-DE';speechSynthesis.speak(u)}">🔊 Anhören</button></div>
+      </article></div>
+</section>
+<style>
+.haryfi-vocab-section{margin:28px auto;padding:clamp(16px,3vw,28px);max-width:1120px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.7);border-radius:24px;box-shadow:0 12px 30px #38210018;color:#20170e}
+.haryfi-vocab-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.haryfi-vocab-label{font-size:.76rem;font-weight:900;letter-spacing:.12em;color:#8a4b00;margin:0 0 6px}
+.haryfi-vocab-heading h2{font-size:clamp(1.35rem,3vw,2rem);font-weight:900;margin:0}
+.haryfi-vocab-heading p{margin:6px 0 0;color:#574638}
+.haryfi-print-btn,.haryfi-vocab-copy button{border:0;border-radius:12px;padding:10px 14px;background:#17120d;color:white;font-weight:800;cursor:pointer}
+.haryfi-vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.haryfi-vocab-card{overflow:hidden;background:white;border:1px solid #eadfd2;border-radius:17px}
+.haryfi-vocab-card img{width:100%;height:145px;object-fit:cover;display:block}
+.haryfi-vocab-copy{padding:13px}
+.haryfi-vocab-copy h3{font-size:1.12rem;font-weight:900;margin:0}
+.haryfi-vocab-copy p{margin:5px 0}
+.haryfi-vocab-copy .haryfi-fr{font-weight:800;color:#8a4b00}
+@media(max-width:560px){.haryfi-vocab-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.haryfi-vocab-card img{height:105px}.haryfi-vocab-copy{padding:10px}}
+@media print{body *{visibility:hidden!important}#haryfi-print-sheet,#haryfi-print-sheet *{visibility:visible!important}#haryfi-print-sheet{display:block!important;position:absolute;left:0;top:0;width:100%;background:white;padding:10mm;box-shadow:none;border:0}#haryfi-print-sheet .haryfi-print-btn,#haryfi-print-sheet button{display:none!important}#haryfi-print-sheet .haryfi-vocab-grid{grid-template-columns:repeat(3,1fr)}#haryfi-print-sheet .haryfi-vocab-card img{height:90px}}
+</style>
+<script>
+function haryfiPrintVocab(){const sec=document.getElementById('wortschatz-franzoesisch');if(!sec)return;const clone=sec.cloneNode(true);clone.id='haryfi-print-sheet';document.body.appendChild(clone);window.print();clone.remove();}
+</script>
 </body>
 </html>
