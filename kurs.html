@@ -161,6 +161,25 @@ if(level==='A2'&&i===1){window.location.href='hobbys-und-freizeit-a2.html';retur
 if(level==='A2'&&i===2){window.location.href='geld-und-konsum-a2.html';return;}
 if(level==='A2'&&i===3){window.location.href='arbeit-und-beruf-a2.html';return;}
 if(level==='A2'&&i===4){window.location.href='urlaub-und-reisen-a2.html';return;}
+if(level==='A2'&&i===5){window.location.href='tiere-und-menschen-a2.html';return;}
+if(level==='A2'&&i===6){window.location.href='wohnen-und-essen-a2.html';return;}
+if(level==='A2'&&i===7){window.location.href='politik-und-technik-a2.html';return;}
+if(level==='B1'&&i===0){window.location.href='zeit-und-zeitvertreib-b1.html';return;}
+if(level==='B1'&&i===1){window.location.href='arbeit-und-beruf-b1.html';return;}
+if(level==='B1'&&i===2){window.location.href='medien-b1.html';return;}
+if(level==='B1'&&i===3){window.location.href='werbung-und-konsum-b1.html';return;}
+if(level==='B1'&&i===4){window.location.href='lernen-lernen-und-nochmals-lernen-b1.html';return;}
+if(level==='B1'&&i===5){window.location.href='verkehr-und-mobilitat-b1.html';return;}
+if(level==='B1'&&i===6){window.location.href='gefuhle-und-eigenschaften-b1.html';return;}
+if(level==='B1'&&i===7){window.location.href='essen-und-trinken-b1.html';return;}
+if(level==='B2'&&i===0){window.location.href='personen-und-berufe-b2.html';return;}
+if(level==='B2'&&i===1){window.location.href='daheim-und-unterwegs-b2.html';return;}
+if(level==='B2'&&i===2){window.location.href='erfahrungen-und-perspektiven-b2.html';return;}
+if(level==='B2'&&i===3){window.location.href='konsum-und-wirtschaft-b2.html';return;}
+if(level==='B2'&&i===4){window.location.href='zeit-und-tatigkeit-b2.html';return;}
+if(level==='B2'&&i===5){window.location.href='information-und-gesellschaft-b2.html';return;}
+if(level==='B2'&&i===6){window.location.href='technik-und-zukunftsaussichten-b2.html';return;}
+if(level==='B2'&&i===7){window.location.href='gesundheit-und-umwelt-b2.html';return;}
 const t=topics[i],c=(CONTENT[level]||CONTENT.A2)[i];
 list.hidden=true;detail.hidden=false;
 const vocab=c.words.map((w,j)=>'<div class="vocab-item"><img loading="lazy" src="'+vocabPhoto(w[0],level,j)+'" alt="'+esc(w[0])+'"><div class="vocab-copy"><strong>'+esc(w[0])+'</strong>'+(w[2]?' <span class="de-label">· '+esc(w[2])+'</span>':'')+'<br><p><small>Beispiel: '+esc(c.examples[j%c.examples.length][1])+'</small></p><button class="k-btn gold" onclick="speak('+JSON.stringify(w[0]).replace(/</g,'\\u003c')+')">🔊 Wort anhören</button></div></div>').join('');
