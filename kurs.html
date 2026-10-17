@@ -98,7 +98,7 @@ B2:[
 const q=new URLSearchParams(location.search);const level=(q.get('niveau')||'A2').toUpperCase();const topics=COURSES[level]||COURSES.A2;
 document.title='HaryFi – '+level+' Lektionen';document.getElementById('levelTitle').textContent=level+' – Lektionen';document.getElementById('levelIntro').textContent='Wähle ein Kapitel. Wortschatz, Grammatik und Übungen sind übersichtlich getrennt.';
 const list=document.getElementById('lessonList'),detail=document.getElementById('lessonDetail');
-topics.forEach((t,i)=>{const b=document.createElement('button');b.className='k-card';b.innerHTML='<span class="k-num">'+String(i+1).padStart(2,'0')+'</span><span><strong>'+t[0]+'</strong></span>';b.addEventListener('click',()=>openLesson(i));list.appendChild(b)});
+topics.forEach((t,i)=>{const b=document.createElement('button');b.className='k-card';b.innerHTML='<span class="k-num">'+String(i+1).padStart(2,'0')+'</span><span><strong>'+esc(t[0])+'</strong><small>'+esc(t[1])+'</small></span>';b.addEventListener('click',()=>openLesson(i));list.appendChild(b)});
 // Direktaufruf eines einzelnen Begegnungen-Kapitels über ?niveau=A2&kapitel=2
 const requestedChapter=Number(q.get('kapitel'));
 if(Number.isInteger(requestedChapter)&&requestedChapter>=1&&requestedChapter<=topics.length){openLesson(requestedChapter-1)}
