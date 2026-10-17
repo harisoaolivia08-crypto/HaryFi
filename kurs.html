@@ -159,6 +159,7 @@ function openLesson(i){
 if(level==='A2'&&i===0){window.location.href='ausbildung-und-taetigkeiten-a2.html';return;}
 if(level==='A2'&&i===1){window.location.href='hobbys-und-freizeit-a2.html';return;}
 if(level==='A2'&&i===2){window.location.href='geld-und-konsum-a2.html';return;}
+if(level==='A2'&&i===3){window.location.href='arbeit-und-beruf-a2.html';return;}
 const t=topics[i],c=(CONTENT[level]||CONTENT.A2)[i];
 list.hidden=true;detail.hidden=false;
 const vocab=c.words.map((w,j)=>'<div class="vocab-item"><img loading="lazy" src="'+vocabPhoto(w[0],level,j)+'" alt="'+esc(w[0])+'"><div class="vocab-copy"><strong>'+esc(w[0])+'</strong>'+(w[2]?' <span class="de-label">· '+esc(w[2])+'</span>':'')+'<br><p><small>Beispiel: '+esc(c.examples[j%c.examples.length][1])+'</small></p><button class="k-btn gold" onclick="speak('+JSON.stringify(w[0]).replace(/</g,'\\u003c')+')">🔊 Wort anhören</button></div></div>').join('');
