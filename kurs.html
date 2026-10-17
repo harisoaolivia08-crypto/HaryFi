@@ -12,6 +12,25 @@ body{min-height:100vh;font-family:"Segoe UI",Arial,sans-serif;color:#17120d;line
 @media(max-width:760px){.k-list{grid-template-columns:repeat(2,minmax(0,1fr))}.lesson-vocab{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.k-list,.lesson-vocab,.lesson-columns{grid-template-columns:1fr}.k-card{min-height:82px}.lesson-nav{grid-template-columns:1fr}.lesson-nav button{width:100%}.lesson-hero{height:210px}}
 @media print{body{background:white;animation:none;padding:0}.k-head,.k-detail,.lesson-section,.lesson-memory{box-shadow:none}.lesson-nav,.k-btn,.back-button,.btn-print{display:none!important}.section-body{display:block!important}.lesson-section{break-inside:avoid}.lesson-hero{height:180px}}
+</style><style>
+.animated-lesson{background:#ffffffd9;border:1px solid #ffffffdd;border-radius:20px;padding:16px}
+.scene-stage{height:230px;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(#b9e6ff 0 65%,#c7f0b0 65% 100%);margin:14px 0;display:flex;align-items:center;justify-content:center}
+.scene-sun{position:absolute;right:22px;top:15px;font-size:2.1rem;animation:sunFloat 3s ease-in-out infinite}
+.scene-ground{position:absolute;bottom:0;left:0;right:0;height:24px;background:#72c46b}
+.scene-people{font-size:3.3rem;z-index:1;animation:peopleMove 3s ease-in-out infinite}
+.scene-title{position:absolute;top:12px;left:12px;background:#ffffffd9;padding:6px 11px;border-radius:12px;font-weight:900;color:#4c1d95;max-width:75%}
+.scene-playing .scene-people{animation:sceneWalk 3s ease-in-out}
+.scene-playing .scene-sun{animation:sunFloat .7s ease-in-out infinite}
+.scene-dialogue{display:grid;gap:10px}
+.scene-line{display:flex;gap:10px;align-items:flex-start;background:#f5f3ff;border-radius:15px;padding:10px}
+.scene-person{font-size:2rem}
+.scene-bubble{background:white;border-radius:12px;padding:10px;flex:1;min-width:0}
+.scene-bubble p{margin:5px 0}
+@keyframes sunFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes peopleMove{0%,100%{transform:translateX(-8px)}50%{transform:translateX(8px)}}
+@keyframes sceneWalk{0%{transform:translateX(-80px)}45%{transform:translateX(30px)}70%{transform:translateX(-10px)}100%{transform:translateX(0)}}
+@keyframes scenePop{from{opacity:.2;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media print{.scene-stage{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
 </style></head><body><canvas id="wordCanvas"></canvas><main class="k-wrap"><header class="k-head"><button class="back-button" onclick="location.href='index.html#levels'">← Zurück zu HaryFi</button><div class="header-logo">HARY<span>FI</span></div><p class="course-kicker">ND AO HIANATRA ALLEMAND</p><h1 id="levelTitle">Deutsch lernen</h1><p class="k-muted" id="levelIntro">Wähle ein Kapitel und lerne die wichtigsten Inhalte Schritt für Schritt.</p></header><section id="lessonList" class="k-list"></section><section id="lessonDetail" hidden></section></main>
 <script>
 const COURSES={
@@ -173,6 +192,18 @@ const el=document.getElementById('money-score');if(open){el.textContent='Bitte b
 el.textContent='Dein Ergebnis: '+score+' von 5 Punkten.'+(score===5?' Sehr gut! 🎉':' Lies die Rückmeldungen und versuche es erneut.');
 }
 
+function animatedScene(title,c){
+const lines=(c.dialog||[]).slice(0,3).map(d=>({name:d[0],text:d[1]}));
+while(lines.length<3)lines.push({name:"Lernziel",text:"Sprich den Satz laut nach und achte auf die Verbposition."});
+const cards=lines.map((d,i)=>'<div class="scene-line scene-line-'+i+'"><span class="scene-person">'+(i%2===0?'👩🏻‍🎓':'👩🏽‍💼')+'</span><div class="scene-bubble"><b>'+esc(d.name)+'</b><p>'+esc(d.text)+'</p><button class="k-btn gold" onclick="speak('+JSON.stringify(d.text).replace(/</g,'\\u003c')+')">🔊 Anhören</button></div></div>').join('');
+return '<div class="animated-lesson"><p>Eine kurze animierte Szene zum Kapitel <b>'+esc(title)+'</b>. Starte die Szene, höre die Sätze und sprich sie nach.</p><div class="scene-stage" id="scene-stage"><div class="scene-sun">☀️</div><div class="scene-ground"></div><div class="scene-people">🧍🏻‍♀️　🧍🏽‍♀️</div><div class="scene-title">'+esc(title)+'</div></div><button class="k-btn gold" onclick="replayScene(this)">▶ Szene abspielen</button><div class="scene-dialogue">'+cards+'</div><p class="k-muted">Lerntipp: Höre zuerst zu. Wiederhole danach jeden Satz und bilde zum Schluss einen eigenen Satz zum Thema.</p></div>';
+}
+function replayScene(button){
+const stage=button.parentElement.querySelector('.scene-stage');
+stage.classList.remove('scene-playing');void stage.offsetWidth;stage.classList.add('scene-playing');
+const lines=button.parentElement.querySelectorAll('.scene-line');
+lines.forEach((line,i)=>{line.style.animation='none';void line.offsetWidth;line.style.animation='scenePop .55s ease '+(i*.8)+'s both'});
+}
 function openLesson(i){
 if(level==='A2'&&i===2){openMoneyLesson();return;}
 const t=topics[i],c=(CONTENT[level]||CONTENT.A2)[i];
@@ -191,6 +222,8 @@ sec(5,'Dialog und mündliche Prüfung','<p>Lies zuerst beide Rollen. Höre dir d
 sec(6,'Schreiben – Schritt für Schritt','<p>'+esc(c.writing)+'</p><div class="task-card"><h4>Checkliste für deinen Text</h4><ul><li>Habe ich alle Punkte der Aufgabe beantwortet?</li><li>Steht das Verb an der richtigen Stelle?</li><li>Habe ich passende Konnektoren verwendet?</li><li>Sind Großschreibung, Artikel und Endungen richtig?</li><li>Ist mein Text klar gegliedert?</li></ul></div>')+
 sec(7,'Übungen – Grammatik und Prüfung','<p>Bearbeite zuerst die Aufgaben ohne Hilfsmittel. Kontrolliere anschließend deine Antworten und schreibe fehlerhafte Sätze richtig auf.</p>'+examTraining(level,t[0],c)+'<div class="task-card"><h4>Aufgabe 1 · Grammatik</h4><p>'+esc(c.quiz[0])+'</p>'+c.quiz[1].map((a,j)=>'<button class="k-answer" onclick="answer(this,'+(j===c.quiz[2])+')">'+String.fromCharCode(65+j)+'. '+esc(a)+'</button>').join('')+'<p id="feedback" aria-live="polite"></p></div><div class="task-card"><h4>Aufgabe 2 · Eigene Sätze</h4><p>Schreibe fünf eigene Sätze zum Kapitelthema. Verwende mindestens zwei Grammatikstrukturen aus der Lektion und vier Wörter aus dem Wortschatz.</p><textarea style="width:100%;min-height:120px;border:2px solid #8b5cf6;border-radius:12px;padding:12px;font:inherit" placeholder="Schreibe deine Antworten hier …"></textarea></div><div class="task-card"><h4>Aufgabe 3 · Freies Sprechen</h4><p>Sprich 60–90 Sekunden über das Thema. Verwende eine Einleitung, mindestens drei Informationen und einen abschließenden Satz.</p></div>')+
 sec(8,'Lösungen und Selbstkontrolle','<p><b>Lösung zu Aufgabe 1:</b> '+esc(c.quiz[1][c.quiz[2]])+'</p><p><b>Selbstkontrolle:</b> Kannst du die Grammatik erklären, fünf eigene Sätze bilden, den Lesetext zusammenfassen und ungefähr eine Minute frei sprechen?</p><p>Wenn du unsicher bist, wiederhole zuerst die Grammatik und mache die Übungen anschließend noch einmal ohne nachzusehen.</p>')+
+sec(9,'Animierte Lernszene – sehen und hören',animatedScene(t[0],c))+
+
 '<button class="k-btn" id="backListBottom">← Zur Kapitelübersicht</button></article>';
 detail.innerHTML=body;
 document.getElementById('backList').onclick=backToList;
