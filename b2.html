@@ -26,4 +26,4 @@
 <script>
 function checkAnswer(el,ok){document.querySelectorAll('.course-answer').forEach(b=>b.classList.remove('correct','wrong'));el.classList.add(ok?'correct':'wrong');document.getElementById('feedback').textContent=ok?'Richtig! Sehr gut. 🎉':'Noch nicht ganz. Versuche es noch einmal!';}
 function sayGerman(text){if(!('speechSynthesis'in window)){alert('Audioausgabe wird von diesem Browser nicht unterstützt.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='de-DE';const voices=speechSynthesis.getVoices();const german=voices.filter(v=>v.lang.toLowerCase().startsWith('de'));const preferred=german.find(v=>/female|katja|petra|helena|anna|vicki|google deutsch/i.test(v.name));if(preferred)u.voice=preferred;u.rate=.88;speechSynthesis.speak(u);}
-</script></body></html>
+</script><script src="audio-bilingual.js" defer></script></body></html>
