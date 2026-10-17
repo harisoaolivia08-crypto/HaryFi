@@ -21,4 +21,4 @@ function speak(t){if(!('speechSynthesis'in window)){alert('Die Audiofunktion wir
 function openPage(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');if(b)b.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
 function reveal(id){const e=document.getElementById(id);e.style.display=e.style.display==='block'?'none':'block'}
 function check(i,correct,explain){const s=document.querySelector('input[name="q'+i+'"]:checked');const f=document.getElementById('f'+i);f.textContent=!s?'Bitte wähle zuerst eine Antwort.':Number(s.value)===correct?'Richtig! '+explain:'Noch nicht. '+explain;f.style.color=s&&Number(s.value)===correct?'#15803d':'#b91c1c'}
-</script></body></html>
+</script><script src="audio-bilingual.js" defer></script></body></html>
