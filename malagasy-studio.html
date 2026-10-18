@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HaryFi – Malagasy-Stimmstudio</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:18px;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#21180e;background:linear-gradient(135deg,#fff0bd,#ffcf8c 45%,#d9f4ff)}main{max-width:760px;margin:18px auto}.card{background:#ffffffed;border:1px solid #fff;border-radius:22px;padding:clamp(18px,4vw,30px);margin:14px 0;box-shadow:0 14px 36px #4b2a121c}h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.15;margin:.3em 0}h2{margin:.1em 0 .6em}.muted{color:#665648}.tag{font-size:.8rem;font-weight:800;letter-spacing:.08em;color:#995000}.prompt{font-size:1.2rem;font-weight:700;padding:15px;background:#fff3ce;border-radius:14px}.row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}button,a.btn{border:0;border-radius:12px;padding:12px 16px;background:#20180f;color:white;font-weight:800;font-size:1rem;text-decoration:none;cursor:pointer}button.gold{background:#ffc400;color:#21180e}button:disabled{opacity:.45;cursor:not-allowed}input{width:100%;padding:12px;border:1px solid #cdbda6;border-radius:10px;font:inherit;margin:6px 0 12px}audio{width:100%;margin:10px 0}.status{padding:10px 12px;border-radius:10px;background:#f4f0e9}.steps li{margin:.5em 0}.small{font-size:.9rem}@media(max-width:480px){body{padding:10px}.row button{flex:1}}
+</style>
+</head>
+<body>
+<main>
+<section class="card">
+<div class="tag">HARYFI · AUDIO-STUDIO</div>
+<h1>🎙️ Nimm deine Malagasy-Stimme auf</h1>
+<p>Mit dieser Seite kannst du direkt auf deinem Tablet deine madagassische Erklärung aufnehmen, anhören und als Audiodatei speichern. Die Aufnahme wird nicht automatisch hochgeladen.</p>
+<a class="btn" href="index.html">← Zur HaryFi-Startseite</a>
+</section>
+<section class="card">
+<h2>1. Deinen Text sprechen</h2>
+<p class="muted">Du kannst diesen Beispielsatz lesen oder deinen eigenen Text vorlesen.</p>
+<div class="prompt" id="prompt">Manao ahoana! Tongasoa eto amin’ny HaryFi. Androany isika dia hianatra teny alemà miaraka.</div>
+<label for="customText"><b>Eigener Aufnahmetext (optional)</b></label>
+<textarea id="customText" rows="3" style="width:100%;padding:12px;border:1px solid #cdbda6;border-radius:10px;font:inherit" placeholder="Schreibe hier deine Malagasy-Erklärung …"></textarea>
+<div class="row"><button class="gold" id="useText">Text übernehmen</button></div>
+<label for="filename"><b>Dateiname</b></label>
+<input id="filename" value="a2-lektion01-malagasy-intro" autocomplete="off">
+<p class="muted small">Verwende nur Buchstaben, Zahlen, Bindestriche oder Unterstriche. Die Datei wird als WebM-Audio gespeichert.</p>
+<div class="row">
+<button id="start" class="gold">🔴 Aufnahme starten</button>
+<button id="stop" disabled>⏹ Aufnahme beenden</button>
+</div>
+<div id="status" class="status" role="status" aria-live="polite">Bereit. Erlaube den Mikrofonzugriff, wenn dein Browser danach fragt.</div>
+<audio id="player" controls hidden></audio>
+<div class="row">
+<button id="download" disabled>⬇️ Aufnahme speichern</button>
+<button id="again" disabled>Nochmal aufnehmen</button>
+</div>
+</section>
+<section class="card">
+<h2>2. Aufnahme in HaryFi einbauen</h2>
+<ol class="steps">
+<li>Nimm deine Malagasy-Erklärung auf und tippe auf <b>Aufnahme speichern</b>.</li>
+<li>Öffne dein Repository <a href="https://github.com/harisoaolivia08-crypto/HaryFi" target="_blank" rel="noopener">HaryFi auf GitHub</a>.</li>
+<li>Erstelle den Ordner <code>audio/malagasy</code>, falls er noch nicht existiert, und lade die Audiodatei dort hoch.</li>
+<li>Danach kann die Website die Datei über einen Audio-Wiedergabeknopf abspielen.</li>
+</ol>
+<p class="muted small">Hinweis: Diese Seite erstellt und speichert die Aufnahme auf deinem Gerät. Sie lädt sie nicht selbst in GitHub hoch. Für Mikrofonzugriff muss die Website über HTTPS geöffnet sein.</p>
+</section>
+</main>
+<script>
+(function(){
+const $=id=>document.getElementById(id);let recorder=null,chunks=[],blob=null,url=null,stream=null;
+function setStatus(t){$('status').textContent=t}
+$('useText').addEventListener('click',()=>{const t=$('customText').value.trim();if(t){$('prompt').textContent=t;setStatus('Dein eigener Text wurde übernommen. Du kannst ihn jetzt vorlesen.')}else setStatus('Gib zuerst deinen Malagasy-Text ein.')});
+$('start').addEventListener('click',async()=>{
+ if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){setStatus('Dieser Browser unterstützt die Mikrofonaufnahme nicht. Öffne die Seite bitte in Chrome.');return}
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];blob=null;
+ const mime=MediaRecorder.isTypeSupported('audio/webm;codecs=opus')?'audio/webm;codecs=opus':(MediaRecorder.isTypeSupported('audio/webm')?'audio/webm':'');
+ recorder=new MediaRecorder(stream,mime?{mimeType:mime}:undefined);
+ recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+ recorder.onstop=()=>{blob=new Blob(chunks,{type:recorder.mimeType||'audio/webm'});if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(blob);$('player').src=url;$('player').hidden=false;$('download').disabled=false;$('again').disabled=false;setStatus('Aufnahme fertig. Höre sie dir an und speichere sie, wenn du zufrieden bist.');if(stream)stream.getTracks().forEach(t=>t.stop());};
+ recorder.start();$('start').disabled=true;$('stop').disabled=false;$('download').disabled=true;$('again').disabled=true;setStatus('Aufnahme läuft … Sprich natürlich und deutlich auf Malagasy.');
+ }catch(e){setStatus(e&&e.name==='NotAllowedError'?'Mikrofonzugriff verweigert. Erlaube das Mikrofon in den Browser-Einstellungen.':'Mikrofon konnte nicht gestartet werden. Prüfe die Browser-Berechtigung.');}
+});
+$('stop').addEventListener('click',()=>{if(recorder&&recorder.state!=='inactive'){recorder.stop();$('stop').disabled=true;$('start').disabled=false}});
+$('download').addEventListener('click',()=>{if(!blob)return;let name=$('filename').value.trim().replace(/[^a-zA-Z0-9_-]+/g,'-').replace(/^-+|-+$/g,'')||'haryfi-malagasy-audio';const ext=blob.type.includes('ogg')?'ogg':blob.type.includes('mp4')?'m4a':'webm';const a=document.createElement('a');a.href=url;a.download=name+'.'+ext;document.body.appendChild(a);a.click();a.remove();setStatus('Download gestartet. Die Datei liegt normalerweise im Ordner „Downloads“.')});
+$('again').addEventListener('click',()=>{if(url)URL.revokeObjectURL(url);url=null;blob=null;$('player').hidden=true;$('player').removeAttribute('src');$('download').disabled=true;$('again').disabled=true;setStatus('Bereit für eine neue Aufnahme.')});
+})();
+</script>
+</body>
+</html>
