@@ -512,8 +512,15 @@
     <script>
 
         let lessonIntroAudio;
+        const fallbackLessonAudio = 'https://d8j0ntlcm91z4.cloudfront.net/user_3KkWOHXDDDl2C1pOJLvyOKbFLDW/hf_20261018_145320_a72e8a23-9cd8-45d8-bf1b-270b70ccd89d.wav';
         function playLessonIntro() {
-            if (!lessonIntroAudio) lessonIntroAudio = new Audio('https://d8j0ntlcm91z4.cloudfront.net/user_3KkWOHXDDDl2C1pOJLvyOKbFLDW/hf_20261018_145320_a72e8a23-9cd8-45d8-bf1b-270b70ccd89d.wav');
+            if (!lessonIntroAudio) {
+                lessonIntroAudio = new Audio('reflexive-verben-audio.mp3');
+                lessonIntroAudio.onerror = () => {
+                    lessonIntroAudio = new Audio(fallbackLessonAudio);
+                    lessonIntroAudio.play().catch(() => {});
+                };
+            }
             lessonIntroAudio.currentTime = 0;
             lessonIntroAudio.play().catch(() => {});
         }
